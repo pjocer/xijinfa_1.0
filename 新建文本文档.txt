@@ -1,0 +1,86 @@
+
+1,首页接口：
+http://api.xijinfa.com/api/system/layout-home
+响应：
+{
+    "errCode": 0,
+    "errMsg": "",
+    "result": {
+        "type": "home",
+        "items": [
+            {
+                "title": "首页幻灯轮播",
+                "type": "carousel",
+                "source": "http://api.xijinfa.com/api/system/home-carousel",
+                "size": 8
+            },
+            {
+                "title": "继续观看",
+                "type": "resume"
+            },
+            {
+                "title": "八个ICON",
+                "type": "icons",
+                "source": "http://api.xijinfa.com/api/system/home-icons",
+                "size": 8
+            },
+            {
+                "title": "边看边谈",
+                "link": "http://api.xijinfa.com/api/dept1/",
+                "type": "snapshots",
+                "source": "http://api.xijinfa.com/api/dept1/?size=4",
+                "size": 4
+            },
+            {
+                "title": "金融百科",
+                "link": "http://api.xijinfa.com/api/dept2/",
+                "type": "snapshots",
+                "source": "http://api.xijinfa.com/api/dept2/?size=4",
+                "size": 4
+            },
+            {
+                "title": "猜你喜欢",
+                "link": "http://api.xijinfa.com/api/recommend/",
+                "type": "snapshots",
+                "source": "http://api.xijinfa.com/api/recommend/?size=4",
+                "size": 8,
+                "load_more": true
+            }
+        ]
+    }
+}
+
+2、金融百科
+http://api.xijinfa.com/api/dept2?page=1&size=20
+响应：
+  data： {
+                "id": 51174,
+                "user_id": 4,
+                "type": "course",
+                "department": "dept2",
+                "title": "沪指三连阳，越过2850婴儿底",
+                "image_id": 13,
+                "video_id": 1,
+                "summary": "",
+                "content": "<p>截至今日收盘，沪指涨1.08%，报2867.34点；深成指涨1.16%，报10161.77点；创业板指涨0.61%，报2215.34点。两市全天成交近5700亿元。</p>",
+                "keywords": "",
+                "metadata": "",
+                "status": 1,
+                "view": 0,
+                "sorting": 0,
+                "created_at": "2016-04-09 20:37:01",
+                "updated_at": "2016-04-09 20:37:01",
+                "is_album": false,
+                "thumbnail": "http://api.xijinfa.com/files/sample/images/thumbnail-9.jpg",
+                "video": {
+                    "480": "",
+                    "720": "",
+                    "1080": ""
+                },
+                "purchased": false,
+                "subscribed": false,
+                "price": -1,
+                "package": [
+                    
+                ]
+            },
