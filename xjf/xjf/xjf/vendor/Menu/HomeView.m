@@ -63,9 +63,11 @@
 
 #pragma mark 内存相关
 -(void)dealloc{
-    [mMenuHriZontal release],mMenuHriZontal = nil;
-    [mScrollPageView release],mScrollPageView = nil;
-    [super dealloc];
+//    [mMenuHriZontal release],
+    mMenuHriZontal = nil;
+//    [mScrollPageView release],
+    mScrollPageView = nil;
+//    [super dealloc];
 }
 
 #pragma mark - 其他辅助功能
