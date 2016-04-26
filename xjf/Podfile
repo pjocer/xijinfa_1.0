@@ -9,3 +9,6 @@ target 'xjf' do
 pod 'AFNetworking', '~> 3.1.0'
 end
 
+# pod can't find: Menu, XMShareView
+# can't find, but on github: SCNavTabBar, UzysGridView, YRBackGesture, ZFTabBar
+# others can be replaced by pod
