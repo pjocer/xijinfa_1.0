@@ -271,13 +271,14 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     // 延迟隐藏controlView
     [self animateShow];
     
+    ///////--------注掉后，解决了， 4s机型播放器frame的问题
     // 解决4s，屏幕宽高比不是16：9的问题,player加到控制器上时候
-    if (iPhone4s && !self.isCellVideo) {
-        [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            CGFloat width = [UIScreen mainScreen].bounds.size.width;
-            make.height.mas_equalTo(width*320/480);
-        }];
-    }
+//    if (iPhone4s && !self.isCellVideo) {
+//        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+//            CGFloat width = [UIScreen mainScreen].bounds.size.width;
+//            make.height.mas_equalTo(width*320/480);
+//        }];
+//    }
 }
 
 #pragma mark - 设置视频URL
