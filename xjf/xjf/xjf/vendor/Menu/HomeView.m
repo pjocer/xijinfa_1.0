@@ -10,6 +10,8 @@
 #import "HomeViewCell.h"
 
 
+#define MENUHEIHT 40
+
 @implementation HomeView
 
 - (id)initWithFrame:(CGRect)frame

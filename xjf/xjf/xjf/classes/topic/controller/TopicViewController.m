@@ -126,13 +126,14 @@
                                   ];
     
     if (_mMenuHriZontal == nil) {
-        _mMenuHriZontal = [[MenuHrizontal alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headView.frame), self.view.frame.size.width, MENUHEIHT) ButtonItems:vButtonItemArray];
+        //        _mMenuHriZontal = [[MenuHrizontal alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, MENUHEIHT) ButtonItems:vButtonItemArray];
+        _mMenuHriZontal = [[MenuHrizontal alloc] initWithFrame:CGRectMake(0, 60, 375, 80) ButtonItems:vButtonItemArray];
         _mMenuHriZontal.delegate = self;
-        _mMenuHriZontal.backgroundColor = [UIColor cyanColor];
     }
     //初始化滑动列表
     if (_mScrollPageView == nil) {
-        _mScrollPageView = [[ScrollPageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mMenuHriZontal.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(self.mMenuHriZontal.frame) - 49)];
+        _mScrollPageView = [[ScrollPageView alloc] initWithFrame:CGRectMake(0, 60, 375, 500)];
+//        _mScrollPageView = [[ScrollPageView alloc] initWithFrame:CGRectMake(0, MENUHEIHT, self.frame.size.width, self.frame.size.height - MENUHEIHT)];
         _mScrollPageView.delegate = self;
     }
     [_mScrollPageView setContentOfTables:vButtonItemArray.count];
@@ -142,18 +143,5 @@
     [self.view addSubview:_mScrollPageView];
     [self.view addSubview:_mMenuHriZontal];
 }
-- (void)didMenuHrizontalClickedButtonAtIndex:(NSInteger)aIndex
-{
-    NSLog(@"第%ld个Button点击了",aIndex);
-    [_mScrollPageView moveScrollowViewAthIndex:aIndex];
-}
-#pragma mark ScrollPageViewDelegate
--(void)didScrollPageViewChangedPage:(NSInteger)aPage{
-    NSLog(@"CurrentPage:%ld",aPage);
-    [_mMenuHriZontal changeButtonStateAtIndex:aPage];
-    //    if (aPage == 3) {
-    //刷新当页数据
-    //    [_mScrollPageView freshContentTableAtIndex:aPage];
-    //    }
-}
+
 @end

@@ -86,7 +86,6 @@
     UIButton *vButton = [mButtonArray objectAtIndex:aIndex];
     [self changeButtonsToNormalState];
     vButton.selected = YES;
-    [vButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
     [self moveScrolViewWithIndex:aIndex];
 }
 
