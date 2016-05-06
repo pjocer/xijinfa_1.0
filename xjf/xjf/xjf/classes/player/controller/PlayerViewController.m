@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
      self.view.backgroundColor = [UIColor whiteColor];
-    [[ZFHttpManager shared] registerNetworkStatusMoniterEvent];
+//    [[ZFHttpManager shared] registerNetworkStatusMoniterEvent];
     [self initMainUI];
 }
 - (void)viewWillAppear:(BOOL)animated

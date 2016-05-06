@@ -11,13 +11,15 @@
 #import "SCNavTabBarController.h"
 #import "MenuHrizontal.h"
 #import "ScrollPageView.h"
+#import "HomeView.h"
 
 @interface TopicViewController ()<MenuHrizontalDelegate,ScrollPageViewDelegate>
 {
     
 }
-@property(nonatomic,strong)HomeView *mHomeView;;
+@property(nonatomic,strong)HomeView *mHomeView;
 @property(nonatomic,strong)ScrollPageView *mScrollPageView;
+@property(nonatomic,strong)MenuHrizontal *mMenuHriZontal;
 @end
 
 @implementation TopicViewController
@@ -124,12 +126,14 @@
                                   ];
     
     if (_mMenuHriZontal == nil) {
-        _mMenuHriZontal = [[MenuHrizontal alloc] initWithFrame:CGRectMake(0, 0, self..frame.size.width, MENUHEIHT) ButtonItems:vButtonItemArray];
+        //        _mMenuHriZontal = [[MenuHrizontal alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, MENUHEIHT) ButtonItems:vButtonItemArray];
+        _mMenuHriZontal = [[MenuHrizontal alloc] initWithFrame:CGRectMake(0, 60, 375, 80) ButtonItems:vButtonItemArray];
         _mMenuHriZontal.delegate = self;
     }
     //初始化滑动列表
     if (_mScrollPageView == nil) {
-        _mScrollPageView = [[ScrollPageView alloc] initWithFrame:CGRectMake(0, MENUHEIHT, self.frame.size.width, self.frame.size.height - MENUHEIHT)];
+        _mScrollPageView = [[ScrollPageView alloc] initWithFrame:CGRectMake(0, 60, 375, 500)];
+//        _mScrollPageView = [[ScrollPageView alloc] initWithFrame:CGRectMake(0, MENUHEIHT, self.frame.size.width, self.frame.size.height - MENUHEIHT)];
         _mScrollPageView.delegate = self;
     }
     [_mScrollPageView setContentOfTables:vButtonItemArray.count];

@@ -32,7 +32,7 @@
        
         NSArray *arr2 = @[@"http://www.5068.com/u/faceimg/20140725173411.jpg", @"http://file27.mafengwo.net/M00/52/F2/wKgB6lO_PTyAKKPBACID2dURuk410.jpeg", @"http://file27.mafengwo.net/M00/B2/12/wKgB6lO0ahWAMhL8AAV1yBFJDJw20.jpeg"];
     
-        _carouselView = [[XRCarouselView alloc] initWithImageArray:arr2];
+        _carouselView = [[XRCarouselView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 150) imageArray:arr2];
         _carouselView.frame = CGRectMake(0, 0, SCREENWITH, 150);
         //用代理处理图片点击，如果两个都实现，block优先级高于代理
         _carouselView.delegate = self;
@@ -44,15 +44,10 @@
         };
 
         //设置分页控件的图片
-        [_carouselView setPageImage:[UIImage imageNamed:@"other"] andCurrentImage:[UIImage imageNamed:@"current"]];
+//        [_carouselView setPageImage:[UIImage imageNamed:@"other"] andCurrentImage:[UIImage imageNamed:@"current"]];
         
         //设置分页控件的frame
-        CGFloat width = arr2.count * 30;
-        CGFloat height = 20;
-        CGFloat x = _carouselView.frame.size.width - width - 10;
-        CGFloat y = _carouselView.frame.size.height - height - 20;
-        _carouselView.pageControl.frame = CGRectMake(x, y, width, height);
-        
+        _carouselView.pagePosition = PositionBottomCenter;
         [self addSubview:_carouselView];
         
 

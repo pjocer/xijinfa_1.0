@@ -34,7 +34,7 @@
 }
 
 - (void)dealloc {
-    [_headerImageView release];
-    [super dealloc];
+//    [_headerImageView release];
+//    [super dealloc];
 }
 @end

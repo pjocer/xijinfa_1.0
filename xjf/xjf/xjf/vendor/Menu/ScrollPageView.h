@@ -31,3 +31,4 @@
 -(void)freshContentTableAtIndex:(NSInteger)aIndex;
 #pragma mark 改变TableView上面滚动栏的内容
 -(void)changeHeaderContentWithCustomTable:(CustomTableView *)aTableContent;
+@end
