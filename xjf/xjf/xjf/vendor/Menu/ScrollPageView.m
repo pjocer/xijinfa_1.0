@@ -48,13 +48,13 @@
 #pragma mark 添加ScrollowViewd的ContentView
 -(void)setContentOfTables:(NSInteger)aNumerOfTables{
     for (int i = 0; i < aNumerOfTables; i++) {
-        CustomTableView *vCustomTableView = [[CustomTableView alloc] initWithFrame:CGRectMake(320 * i, 0, 320, self.frame.size.height)];
+        CustomTableView *vCustomTableView = [[CustomTableView alloc] initWithFrame:CGRectMake(self.frame.size.width * i, 0, self.frame.size.width, self.frame.size.height)];
         vCustomTableView.delegate = self;
         vCustomTableView.dataSource = self;
         [_scrollView addSubview:vCustomTableView];
         [_contentItems addObject:vCustomTableView];
     }
-    [_scrollView setContentSize:CGSizeMake(320 * aNumerOfTables, self.frame.size.height)];
+    [_scrollView setContentSize:CGSizeMake(self.frame.size.width * aNumerOfTables, self.frame.size.height)];
 }
 
 #pragma mark 移动ScrollView到某个页面
@@ -88,7 +88,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    int page = (_scrollView.contentOffset.x+320/2.0) / 320;
+    int page = (_scrollView.contentOffset.x+self.frame.size.width/2.0) / self.frame.size.width;
     if (mCurrentPage == page) {
         return;
     }

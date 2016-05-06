@@ -10,6 +10,8 @@
 #import "MenuHrizontal.h"
 #import "ScrollPageView.h"
 
+#define MENUHEIHT 40
+
 @interface HomeView : UIView<MenuHrizontalDelegate,ScrollPageViewDelegate>
 {
     MenuHrizontal *mMenuHriZontal;

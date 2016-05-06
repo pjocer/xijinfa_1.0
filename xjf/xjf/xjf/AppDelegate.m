@@ -21,16 +21,6 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     RootViewController *root = [[RootViewController alloc] init];
     UINavigationController *navRoot = [[UINavigationController alloc] initWithRootViewController:root];
     navRoot.navigationBarHidden = YES;
