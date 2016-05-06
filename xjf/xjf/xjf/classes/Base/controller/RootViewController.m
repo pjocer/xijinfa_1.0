@@ -66,7 +66,7 @@
 {
     if (self.selectedIndex == to && to == 0 ) {//双击刷新制定页面的列表
         UINavigationController *nav = self.viewControllers[0];
-        IndexViewController *firstVC = nav.viewControllers[0];
+//        IndexViewController *firstVC = nav.viewControllers[0];
 //        [firstVC refrshUI];
     }
     self.selectedIndex = to;
@@ -79,20 +79,20 @@
 {
     IndexViewController *vc1 = [[IndexViewController alloc] init];
     vc1.tabBarItem.badgeValue = @"8";
-    [self setupChildViewController:vc1 title:@"首页" imageName:@"tabbar_home" selectedImageName:@"tabbar_home_selected"];
+    [self setupChildViewController:vc1 title:@"首页" imageName:@"tab_home" selectedImageName:@"tab_home_selected"];
     
     
     TopicViewController *vc2 = [[TopicViewController alloc] init];
-    [self setupChildViewController:vc2 title:@"话题" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
+    [self setupChildViewController:vc2 title:@"话题" imageName:@"tab_topic" selectedImageName:@"tab_topic_selected"];
 
     VipViewController *vc3 = [[VipViewController alloc] init];
-    [self setupChildViewController:vc3 title:@"会员" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
+    [self setupChildViewController:vc3 title:@"会员" imageName:@"tab_vip" selectedImageName:@"tab_vip_selected"];
     
-    SubscribeViewController *vc4 = [[SubscribeViewController alloc] init];
-    [self setupChildViewController:vc4 title:@"订阅" imageName:@"tabbar_discover" selectedImageName:@"tabbar_discover_selected"];
+//    SubscribeViewController *vc4 = [[SubscribeViewController alloc] init];
+//    [self setupChildViewController:vc4 title:@"订阅" imageName:@"tabbar_discover" selectedImageName:@"tabbar_discover_selected"];
 
     MyViewController *vc5 = [[MyViewController alloc] init];
-    [self setupChildViewController:vc5 title:@"我的" imageName:@"tabbar_profile" selectedImageName:@"tabbar_profile_selected"];
+    [self setupChildViewController:vc5 title:@"我的" imageName:@"tab_user" selectedImageName:@"tab_user_selected"];
 
 }
 
