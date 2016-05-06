@@ -19,6 +19,7 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - XRCarouselView (2.4.4)
   - ZFPlayer (1.0.9):
     - Masonry
 
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - Masonry (~> 1.0.0)
   - MBProgressHUD (~> 0.9.2)
   - SDWebImage (~> 3.7.5)
+  - XRCarouselView (~> 2.4.4)
   - ZFPlayer (~> 1.0.5)
 
 SPEC CHECKSUMS:
@@ -34,6 +36,7 @@ SPEC CHECKSUMS:
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  XRCarouselView: 9d59a0b06fe29b27492c1ddf095b290163339a53
   ZFPlayer: ecda6d92552f6d26e23b78c1d9d8eb2cefb8cca3
 
 COCOAPODS: 0.39.0

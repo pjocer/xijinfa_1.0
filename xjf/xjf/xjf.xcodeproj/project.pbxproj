@@ -10,8 +10,6 @@
 		3AED799BF1F21F042B35E944 /* libPods-xjf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F32E948AFD35FE66FCEA3CA4 /* libPods-xjf.a */; };
 		5A687AE31CDC2F5300A0A912 /* ZFPlayerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A687AE11CDC2F5300A0A912 /* ZFPlayerSingleton.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
-		644C10BA1CBA29BA00892E2C /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B91CBA29BA00892E2C /* XRCarouselView.m */; };
-		644C10BC1CBA2D9F00892E2C /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10BB1CBA2D9F00892E2C /* placeholder.png */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
 		644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10C51CBA61AC00892E2C /* UzysGridView.m */; };
@@ -142,9 +140,6 @@
 		5A687AE21CDC2F5300A0A912 /* ZFPlayerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerSingleton.h; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
-		644C10B81CBA29BA00892E2C /* XRCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRCarouselView.h; sourceTree = "<group>"; };
-		644C10B91CBA29BA00892E2C /* XRCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRCarouselView.m; sourceTree = "<group>"; };
-		644C10BB1CBA2D9F00892E2C /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		644C10C21CBA61AC00892E2C /* icon_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del.png; sourceTree = "<group>"; };
 		644C10C31CBA61AC00892E2C /* icon_del_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del_h.png; sourceTree = "<group>"; };
 		644C10C41CBA61AC00892E2C /* UzysGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysGridView.h; sourceTree = "<group>"; };
@@ -401,16 +396,6 @@
 				AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		644C10B71CBA29A900892E2C /* XRCarouselView */ = {
-			isa = PBXGroup;
-			children = (
-				644C10BB1CBA2D9F00892E2C /* placeholder.png */,
-				644C10B81CBA29BA00892E2C /* XRCarouselView.h */,
-				644C10B91CBA29BA00892E2C /* XRCarouselView.m */,
-			);
-			path = XRCarouselView;
 			sourceTree = "<group>";
 		};
 		644C10C01CBA61AC00892E2C /* UzysGridView */ = {
@@ -1107,7 +1092,6 @@
 				644C112E1CBA90A000892E2C /* XMShareView */,
 				644C10F71CBA7FA600892E2C /* RTLabel */,
 				644C10C01CBA61AC00892E2C /* UzysGridView */,
-				644C10B71CBA29A900892E2C /* XRCarouselView */,
 				CD1CCC211CB36D61002FC0C9 /* ZFTabBar */,
 			);
 			path = vendor;
@@ -1196,7 +1180,6 @@
 				CD06685A1CBB2E41003CF45A /* icon_comment_times.png in Resources */,
 				CD06685C1CBB2E41003CF45A /* icon_favorite.png in Resources */,
 				CD0668571CBB2E41003CF45A /* ic_history_white.png in Resources */,
-				644C10BC1CBA2D9F00892E2C /* placeholder.png in Resources */,
 				CD0668551CBB2E41003CF45A /* ic_history_white_2x.png in Resources */,
 				CD0668591CBB2E41003CF45A /* icon_check.png in Resources */,
 				CD0668661CBB2E41003CF45A /* portrait_teacher.png in Resources */,
@@ -1331,7 +1314,6 @@
 				CD416D951CBC85B90097A5E9 /* SCNavTabBarController.m in Sources */,
 				CD1CCC291CB36D61002FC0C9 /* ZFTabBar.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
-				644C10BA1CBA29BA00892E2C /* XRCarouselView.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				644C11561CBA90A000892E2C /* XMShareUtil.m in Sources */,
