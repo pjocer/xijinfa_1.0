@@ -15,7 +15,6 @@
 		644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10C51CBA61AC00892E2C /* UzysGridView.m */; };
 		644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10C71CBA61AC00892E2C /* UzysGridViewCell.m */; };
 		644C10F61CBA7F0B00892E2C /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10F51CBA7F0B00892E2C /* TopicCell.m */; };
-		644C10FA1CBA7FA600892E2C /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10F91CBA7FA600892E2C /* RTLabel.m */; };
 		644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10FD1CBA80BC00892E2C /* NSString+Extensions.m */; };
 		644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11001CBA81BF00892E2C /* UILabel+StringFrame.m */; };
 		644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11101CBA89FD00892E2C /* SettingViewController.m */; };
@@ -149,8 +148,6 @@
 		644C10EA1CBA785400892E2C /* TopicConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicConfigure.h; sourceTree = "<group>"; };
 		644C10F41CBA7F0B00892E2C /* TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCell.h; sourceTree = "<group>"; };
 		644C10F51CBA7F0B00892E2C /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
-		644C10F81CBA7FA600892E2C /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
-		644C10F91CBA7FA600892E2C /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		644C10FC1CBA80BC00892E2C /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
 		644C10FD1CBA80BC00892E2C /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		644C10FF1CBA81BF00892E2C /* UILabel+StringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+StringFrame.h"; sourceTree = "<group>"; };
@@ -417,15 +414,6 @@
 				644C10C31CBA61AC00892E2C /* icon_del_h.png */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		644C10F71CBA7FA600892E2C /* RTLabel */ = {
-			isa = PBXGroup;
-			children = (
-				644C10F81CBA7FA600892E2C /* RTLabel.h */,
-				644C10F91CBA7FA600892E2C /* RTLabel.m */,
-			);
-			path = RTLabel;
 			sourceTree = "<group>";
 		};
 		644C10FB1CBA80B400892E2C /* category */ = {
@@ -1090,7 +1078,6 @@
 				CD416D891CBC85B90097A5E9 /* SCNavTabBar */,
 				CD416D851CBC817A0097A5E9 /* YRBackGesture */,
 				644C112E1CBA90A000892E2C /* XMShareView */,
-				644C10F71CBA7FA600892E2C /* RTLabel */,
 				644C10C01CBA61AC00892E2C /* UzysGridView */,
 				CD1CCC211CB36D61002FC0C9 /* ZFTabBar */,
 			);
@@ -1320,7 +1307,6 @@
 				CD416D971CBC85B90097A5E9 /* SCPopView.m in Sources */,
 				644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */,
 				CD416D9E1CBC95330097A5E9 /* ScrollPageView.m in Sources */,
-				644C10FA1CBA7FA600892E2C /* RTLabel.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
