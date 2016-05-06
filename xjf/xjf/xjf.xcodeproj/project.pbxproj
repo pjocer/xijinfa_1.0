@@ -38,9 +38,6 @@
 		644C115D1CBA90A000892E2C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C114E1CBA90A000892E2C /* libWeChatSDK.a */; };
 		644C115E1CBA90A000892E2C /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 644C114F1CBA90A000892E2C /* read_me.txt */; };
 		644C115F1CBA90A000892E2C /* XMShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11531CBA90A000892E2C /* XMShareView.m */; };
-		644C11651CBA90C500892E2C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 644C11611CBA90C500892E2C /* LICENSE */; };
-		644C11661CBA90C500892E2C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11631CBA90C500892E2C /* MBProgressHUD.m */; };
-		644C11671CBA90C500892E2C /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 644C11641CBA90C500892E2C /* README.mdown */; };
 		644C116A1CBA90FF00892E2C /* LPPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11691CBA90FF00892E2C /* LPPopup.m */; };
 		644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C116C1CBA919000892E2C /* UIColor+hexColor.m */; };
 		644C116F1CBA91DD00892E2C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C116E1CBA91DD00892E2C /* libsqlite3.tbd */; };
@@ -230,10 +227,6 @@
 		644C11511CBA90A000892E2C /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		644C11521CBA90A000892E2C /* XMShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShareView.h; sourceTree = "<group>"; };
 		644C11531CBA90A000892E2C /* XMShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMShareView.m; sourceTree = "<group>"; };
-		644C11611CBA90C500892E2C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		644C11621CBA90C500892E2C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		644C11631CBA90C500892E2C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		644C11641CBA90C500892E2C /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		644C11681CBA90FF00892E2C /* LPPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPopup.h; sourceTree = "<group>"; };
 		644C11691CBA90FF00892E2C /* LPPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPopup.m; sourceTree = "<group>"; };
 		644C116B1CBA919000892E2C /* UIColor+hexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hexColor.h"; sourceTree = "<group>"; };
@@ -662,17 +655,6 @@
 				644C11511CBA90A000892E2C /* WXApiObject.h */,
 			);
 			path = WeChatSDK;
-			sourceTree = "<group>";
-		};
-		644C11601CBA90C500892E2C /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				644C11611CBA90C500892E2C /* LICENSE */,
-				644C11621CBA90C500892E2C /* MBProgressHUD.h */,
-				644C11631CBA90C500892E2C /* MBProgressHUD.m */,
-				644C11641CBA90C500892E2C /* README.mdown */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		CD144EEF1CBB732900A0636D /* index */ = {
@@ -1265,7 +1247,6 @@
 				CD416D891CBC85B90097A5E9 /* SCNavTabBar */,
 				CD416D851CBC817A0097A5E9 /* YRBackGesture */,
 				CD144F1E1CBB8E3A00A0636D /* ZFPlayer */,
-				644C11601CBA90C500892E2C /* MBProgressHUD */,
 				644C112E1CBA90A000892E2C /* XMShareView */,
 				644C10F71CBA7FA600892E2C /* RTLabel */,
 				644C10C01CBA61AC00892E2C /* UzysGridView */,
@@ -1356,7 +1337,6 @@
 				CD0668601CBB2E41003CF45A /* icon_played_times.png in Resources */,
 				CD0668561CBB2E41003CF45A /* ic_history_white_3x.png in Resources */,
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
-				644C11651CBA90C500892E2C /* LICENSE in Resources */,
 				CD06685A1CBB2E41003CF45A /* icon_comment_times.png in Resources */,
 				CD06685C1CBB2E41003CF45A /* icon_favorite.png in Resources */,
 				CD0668571CBB2E41003CF45A /* ic_history_white.png in Resources */,
@@ -1468,7 +1448,6 @@
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				CD144F451CBB8E3A00A0636D /* ZFPlayerSingleton.m in Sources */,
-				644C11671CBA90C500892E2C /* README.mdown in Sources */,
 				CD144F411CBB8E3A00A0636D /* ZFHttpOperation.m in Sources */,
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
 				CD1CCBE21CB35874002FC0C9 /* NSArray+MASAdditions.m in Sources */,
@@ -1492,7 +1471,6 @@
 				CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */,
 				CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */,
 				CD1CCBDD1CB35874002FC0C9 /* MASConstraint.m in Sources */,
-				644C11661CBA90C500892E2C /* MBProgressHUD.m in Sources */,
 				644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */,
 				CD0668701CBB3656003CF45A /* UserCheckInCell.m in Sources */,
 				CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */,
