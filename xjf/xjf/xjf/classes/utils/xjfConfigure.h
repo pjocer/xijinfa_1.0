@@ -5,10 +5,25 @@
 //  Created by yiban on 16/4/5.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
+/*
+ 
+ //各种机型尺寸
+ iPad Air {{0, 0}, {768, 1024}}
+ //Iphone4: 4s :{320,480}       960*640
+ //Iphone5: 5s :{320,568}       1136*640
+ //Iphone6: 6s :{375,667}       1334*750
+ //iphone6plus{414,736}         1920*1080
+ Apple Watch 1.65inches(英寸)    320*640
+ */
 
 #define HEADHEIGHT 64
 #define SCREENWITH [UIScreen mainScreen].bounds.size.width
 #define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+#define WIDTH [UIScreen mainScreen].bounds.size.width/375
+#define HEIGHT [UIScreen mainScreen].bounds.size.height/667
+#define kTabBarH        49.0f
+#define kStatusBarH     20.0f
+#define kNavigationBarH 44.0f
 //
 #define LSpacing 2
 #define PHOTO_FRAME_WIDTH_16   floor([UIScreen mainScreen].bounds.size.width/16)
@@ -37,3 +52,95 @@
 [文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt "\n-------------------------------------------END---------------------------------------------------\n\n\n\n"\
 ), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #endif
+
+//////////////////////////
+#if DEBUG
+
+#define NSLog(FORMAT, ...) fprintf(stderr, "[%s:%d行] %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+
+#else
+
+#define NSLog(FORMAT, ...) nil
+
+#endif
+
+
+//如果是 DEBUG 模式用测试服务器地址
+#if DEBUG
+
+#define     HttpBaseURL        @"http://www.test.com/" // 测试服务器
+
+#else
+
+#define     HttpBaseURL        @"http://www.baidu.com/" // 正式服务器
+
+#endif
+
+/**
+ *  the saving objects      存储对象
+ *
+ *  @param __VALUE__ V
+ *  @param __KEY__   K
+ *
+ *  @return
+ */
+#define UserDefaultSetObjectForKey(__VALUE__,__KEY__) \
+{\
+[[NSUserDefaults standardUserDefaults] setObject:__VALUE__ forKey:__KEY__];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+/**
+ *  get the saved objects       获得存储的对象
+ */
+#define UserDefaultObjectForKey(__KEY__)  [[NSUserDefaults standardUserDefaults] objectForKey:__KEY__]
+
+/**
+ *  delete objects      删除对象
+ */
+#define UserDefaultRemoveObjectForKey(__KEY__) \
+{\
+[[NSUserDefaults standardUserDefaults] removeObjectForKey:__KEY__];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+//GCD
+#define GCDWithGlobal(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define GCDWithMain(block) dispatch_async(dispatch_get_main_queue(),block)
+
+
+//----------------------ABOUT SYSTYM & VERSION 系统与版本 ----------------------------
+//Get the OS version.       判断操作系统版本
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])
+#define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+//judge the simulator or hardware device        判断是真机还是模拟器
+#if TARGET_OS_IPHONE
+//iPhone Device
+#endif
+
+#if TARGET_IPHONE_SIMULATOR
+//iPhone Simulator
+#endif
+
+
+/** 获取系统版本 */
+#define iOS_VERSION ([[[UIDevice currentDevice] systemVersion] floatValue])
+#define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])
+
+/** 是否为iOS6 */
+#define iOS6 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) ? YES : NO)
+
+/** 是否为iOS7 */
+#define iOS7 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) ? YES : NO)
+
+/** 是否为iOS8 */
+#define iOS8 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) ? YES : NO)
+
+/** 是否为iOS9 */
+#define iOS9 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) ? YES : NO)
+
+/** 获取当前语言 */
+#define kCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
