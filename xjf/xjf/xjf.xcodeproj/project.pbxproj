@@ -100,6 +100,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
 		644C10C21CBA61AC00892E2C /* icon_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del.png; sourceTree = "<group>"; };
@@ -786,6 +788,8 @@
 				CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */,
 				CD1CCC411CB37BDB002FC0C9 /* XjfRequest.h */,
 				CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */,
+				5A7EEE931CE0299C007BAECD /* Header.h */,
+				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 			);
 			path = utils;
 			sourceTree = "<group>";
