@@ -26,7 +26,6 @@
     navRoot.enableBackGesture=YES;
     self.window.rootViewController = navRoot;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

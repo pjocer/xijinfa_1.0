@@ -69,9 +69,14 @@
     _headView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, HEADHEIGHT)];
     _headView.backgroundColor = [UIColor whiteColor];
     //
-    _titleLabel =[[UILabel alloc] initWithFrame:CGRectMake(20, 20+(HEADHEIGHT-20-20)/2, self.view.frame.size.width/2, 20)];
+    
+    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10+(HEADHEIGHT-20-20)/2, 35, 35)];
+    iconImage.image = [UIImage imageNamed:@"Logo"];
+    [_headView addSubview:iconImage];
+    
+    _titleLabel =[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImage.frame)+8, 20+(HEADHEIGHT-20-20)/2, self.view.frame.size.width/2, 20)];
     _titleLabel.backgroundColor = [UIColor clearColor];
-    _titleLabel.textColor = UIColorFromRGB(0x808080);
+    _titleLabel.textColor = [UIColor blackColor];
     _titleLabel.textAlignment = NSTextAlignmentLeft;
     _titleLabel.font = FONT(16);
     [_headView addSubview:_titleLabel];
@@ -92,7 +97,7 @@
     [_rightButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
     [_rightButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
     [_headView addSubview:_rightButton];
-    
+    [_headView addShadow];
     [self.view addSubview:_headView];
    
 }

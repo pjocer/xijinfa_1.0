@@ -7,5 +7,4 @@
 //
 
 #import "SettingViewController.h"
-#import "UserHeaderCell.h"
-#import "UserCheckInCell.h"
+#import "UserUnLoadCell.h"

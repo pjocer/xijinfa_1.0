@@ -13,6 +13,7 @@
 
 #pragma -UzysGridViewCellDelegate
 @protocol UzysGridViewCellDelegate<NSObject>
+@optional
 -(void) gridViewCell:(UzysGridViewCell *)cell touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 -(void) gridViewCell:(UzysGridViewCell *)cell touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 -(void) gridViewCell:(UzysGridViewCell *)cell touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;

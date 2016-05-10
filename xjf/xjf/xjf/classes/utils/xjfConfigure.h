@@ -25,6 +25,14 @@
 #define kStatusBarH     20.0f
 #define kNavigationBarH 44.0f
 //
+
+//Color
+#define PrimaryColor [UIColor xjfStringToColor:@"#0061b0"];
+#define NormalColor [UIColor xjfStringToColor:@"#444444"];
+#define AssistColor [UIColor xjfStringToColor:@"#9a9a9a"];
+#define SegementColor [UIColor xjfStringToColor:@"#c7c7cc"];
+#define BackgroundColor [UIColor xjfStringToColor:@"#efefef"];
+//
 #define LSpacing 2
 #define PHOTO_FRAME_WIDTH_16   floor([UIScreen mainScreen].bounds.size.width/16)
 #define PHOTO_FRAME_WIDTH   10

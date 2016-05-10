@@ -18,6 +18,7 @@
 //category
 #import "UIColor+hexColor.h"
 #import "ZToastManager.h"
+#import "UIView+Addtion.h"
 #import "UILabel+StringFrame.h"
 #import "NSString+Extensions.h"
 

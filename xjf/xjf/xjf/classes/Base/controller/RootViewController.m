@@ -65,7 +65,7 @@
 - (void)tabBar:(ZFTabBar *)tabBar didSelectedButtonFrom:(NSInteger)from to:(NSInteger)to
 {
     if (self.selectedIndex == to && to == 0 ) {//双击刷新制定页面的列表
-        UINavigationController *nav = self.viewControllers[0];
+//        UINavigationController *nav = self.viewControllers[0];
 //        IndexViewController *firstVC = nav.viewControllers[0];
 //        [firstVC refrshUI];
     }
