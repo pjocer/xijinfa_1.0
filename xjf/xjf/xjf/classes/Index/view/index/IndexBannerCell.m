@@ -32,8 +32,7 @@
        
         NSArray *arr2 = @[@"http://www.5068.com/u/faceimg/20140725173411.jpg", @"http://file27.mafengwo.net/M00/52/F2/wKgB6lO_PTyAKKPBACID2dURuk410.jpeg", @"http://file27.mafengwo.net/M00/B2/12/wKgB6lO0ahWAMhL8AAV1yBFJDJw20.jpeg"];
     
-        _carouselView = [[XRCarouselView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 150) imageArray:arr2];
-        _carouselView.frame = CGRectMake(0, 0, SCREENWITH, 150);
+        _carouselView = [[XRCarouselView alloc] initWithFrame:CGRectNull imageArray:arr2];
         //用代理处理图片点击，如果两个都实现，block优先级高于代理
         _carouselView.delegate = self;
         //设置每张图片的停留时间
@@ -66,6 +65,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    self.carouselView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
 /// 根据数据模型来显示内容
 - (void)showInfo:(id)model key:(id)key indexPath:(NSIndexPath *)indexPath
@@ -82,7 +82,7 @@
 {
     NSDictionary *dict =(NSDictionary*)model;
 
-    return 150;
+    return 175;
     
 }
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index

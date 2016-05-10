@@ -30,18 +30,15 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        self.backgroundColor=[UIColor redColor];
         //
-        UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
-        _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 30)];
-        _sectionView.titleLabel.text=@"｜析金学堂";
-        _sectionView.userInteractionEnabled =YES;
-        [_sectionView addGestureRecognizer:singleRecognizer];
-        singleRecognizer=nil;
+        _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
+        _sectionView.titleLabel.text=@" 人气讲师";
+        _sectionView.moreLabel.text =@"";
+        _sectionView.userInteractionEnabled =NO;
         [self addSubview:_sectionView];
         
         //
-        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0, 30, self.bounds.size.width, self.bounds.size.height-30) numOfRow:4 numOfColumns:1 cellMargin:1];
+        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height-35) numOfRow:1 numOfColumns:3 cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
@@ -77,17 +74,15 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     NSDictionary *dict =(NSDictionary*)model;
-    return 200;
+    return 170;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {
-    return 4;
+    return 3;
 }
 -(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index
 {
     TeacherGridViewCell *cell = [[TeacherGridViewCell alloc] initWithFrame:CGRectNull];
-    cell.textLabel.text = @"1212";
-    cell.backgroundView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     cell.deletable = NO;
     return cell;
 }

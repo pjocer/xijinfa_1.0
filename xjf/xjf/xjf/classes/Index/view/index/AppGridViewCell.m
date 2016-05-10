@@ -8,10 +8,15 @@
 
 #import "AppGridViewCell.h"
 
-@implementation AppGridViewCell
+@interface AppGridViewCell ()
 
-@synthesize textLabel;
-@synthesize backgroundView;
+@property (nonatomic, strong) UIImageView *imageTag;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UILabel *detailLable;
+
+@end
+
+@implementation AppGridViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -20,18 +25,28 @@
         // Initialization code
         // Background view
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectNull];
-        self.backgroundView.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundView.backgroundColor = [UIColor whiteColor ];
         [self addSubview:self.backgroundView];
+     
+        //imageView
+        self.imageTag = [[UIImageView alloc] init];
+        self.imageTag.backgroundColor = [UIColor cyanColor];
+        [self addSubview:self.imageTag];
         
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-        self.textLabel.textAlignment = NSTextAlignmentCenter;
-        self.textLabel.backgroundColor = [UIColor clearColor];
-        self.textLabel.textColor = [UIColor whiteColor];
-        self.textLabel.font = [UIFont systemFontOfSize:12];
-        self.textLabel.center = self.center;
+        //titleLable
+        self.titleLable = [[UILabel alloc] init];
+        [self addSubview:self.titleLable];
+        self.titleLable.textColor = [UIColor xjfStringToColor:@"#444444"];
+        self.titleLable.font = FONT15;
+        self.titleLable.text = @"XXXXX";
         
-        [self addSubview:self.textLabel];
-        [self bringSubviewToFront:self.ButtonDelete];
+        //detailLable
+        self.detailLable = [[UILabel alloc] init];
+        [self addSubview:self.detailLable];
+        self.detailLable.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
+        self.detailLable.text = @"xxxxxx";
+        self.detailLable.font = FONT12;
+    
     }
     return self;
 }
@@ -41,24 +56,28 @@
 {
     [super layoutSubviews];
     
-    int inset = 5;
-    
     // Background view
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    // Layout label background
-    CGRect f = CGRectMake(0,
-                          0,
-                          self.textLabel.superview.bounds.size.width,
-                          self.textLabel.superview.bounds.size.height);
-    self.textLabel.frame = CGRectInset(f, inset, 0);
-    self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-}
-
-- (void)dealloc
-{
-   
+    //imageView
+    [self.imageTag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.mas_centerY);
+        make.left.mas_equalTo(self).offset(20);
+        make.size.mas_equalTo(CGSizeMake(55, 55));
+    }];
+    //titleLable
+    [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.imageTag);
+        make.left.equalTo(self.imageTag.mas_right).with.offset(10);
+        make.right.equalTo(self).with.offset(-10);
+        make.height.mas_equalTo(self.imageTag).multipliedBy(0.5);
+    }];
+    //titleLable
+    [self.detailLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.titleLable);
+        make.bottom.equalTo(self.imageTag);
+        make.size.mas_equalTo(self.titleLable);
+    }];
 }
 
 

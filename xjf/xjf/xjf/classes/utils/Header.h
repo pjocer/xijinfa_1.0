@@ -11,7 +11,6 @@
 
 //thirds
 #import <AFNetworking.h>
-#import <MJRefresh.h>
 #import "MBProgressHUD.h"
 #import <Masonry.h>
 #import <UIImageView+WebCache.h>
@@ -25,6 +24,6 @@
 //
 #import "xjfConfigure.h"
 #import "XjfShare.h"
-#import "XjfRequest"
+#import "XjfRequest.h"
 
 #endif /* Header_h */

@@ -32,10 +32,17 @@
 //
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
-
+//字体
 #define FONT_NAME_BOLD   ((SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) ? (@"PingFangSC-Regular") : (@"STHeitiSC-Light"))
 #define FONT_NAME  ((SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) ? (@"PingFangSC-Light") : (@"STHeitiSC-Light"))
-
+#define FONT14 [UIFont systemFontOfSize:14.0f]
+#define FONT16 [UIFont systemFontOfSize:16.0f]
+#define FONT12 [UIFont systemFontOfSize:12.0f]
+#define FONT13 [UIFont systemFontOfSize:13.0f]
+#define FONT15 [UIFont systemFontOfSize:15.0f]
+#define FONT10 [UIFont systemFontOfSize:10.0f]
+#define FONT20 [UIFont systemFontOfSize:20.0f]
+#define FONT18 [UIFont systemFontOfSize:18.0f]
 #define FONT(Size)  [UIFont fontWithName:FONT_NAME size:Size]
 #define FONT_BOLD(Size) [UIFont fontWithName:FONT_NAME_BOLD size:Size]
 //

@@ -28,8 +28,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        self.backgroundColor=[UIColor redColor];
-        _gridView = [[UzysGridView alloc] initWithFrame:self.bounds numOfRow:2 numOfColumns:4 cellMargin:2];
+        self.backgroundColor=[UIColor clearColor];
+        _gridView = [[UzysGridView alloc] initWithFrame:self.bounds numOfRow:2 numOfColumns:2 cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
@@ -64,17 +64,15 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     NSDictionary *dict =(NSDictionary*)model;
-    return 130;
+    return 200;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {
-    return 8;
+    return 4;
 }
 -(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index
 {
     AppGridViewCell *cell = [[AppGridViewCell alloc] initWithFrame:CGRectNull];
-    cell.textLabel.text = @"1212";
-    cell.backgroundView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     cell.deletable = NO;
     return cell;
 }

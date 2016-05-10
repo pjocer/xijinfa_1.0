@@ -13,5 +13,7 @@
 @interface UIColor (hexColor)
 
 + (UIColor *)hexFloatColor:(NSString *)hexStr;
+///十六进制颜色转换
++ (UIColor *) xjfStringToColor: (NSString *) stringToConvert;
 
 @end

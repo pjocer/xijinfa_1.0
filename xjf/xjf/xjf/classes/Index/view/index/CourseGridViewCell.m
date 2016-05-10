@@ -8,10 +8,15 @@
 
 #import "CourseGridViewCell.h"
 
-@implementation CourseGridViewCell
+@interface CourseGridViewCell ()
 
-@synthesize textLabel;
-@synthesize backgroundView;
+@property (nonatomic, strong) UIImageView *titleImage;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UILabel *detailLable;
+
+@end
+
+@implementation CourseGridViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,16 +27,20 @@
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectNull];
         self.backgroundView.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.backgroundView];
+
+        //titleImage
+        self.titleImage = [[UIImageView alloc] init];
+        [self addSubview:self.titleImage];
+        self.titleImage.backgroundColor = [UIColor blueColor]; 
         
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-        self.textLabel.textAlignment = NSTextAlignmentCenter;
-        self.textLabel.backgroundColor = [UIColor clearColor];
-        self.textLabel.textColor = [UIColor whiteColor];
-        self.textLabel.font = [UIFont systemFontOfSize:12];
-        self.textLabel.center = self.center;
+        //titleLable
+        self.titleLable = [[UILabel alloc] init];
+        [self addSubview:self.titleLable];
         
-        [self addSubview:self.textLabel];
-        [self bringSubviewToFront:self.ButtonDelete];
+        //detailLable
+        self.detailLable = [[UILabel alloc] init];
+        [self addSubview:self.detailLable];
+        
     }
     return self;
 }
@@ -41,25 +50,25 @@
 {
     [super layoutSubviews];
     
-    int inset = 5;
-    
     // Background view
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    // Layout label background
-    CGRect f = CGRectMake(0,
-                          0,
-                          self.textLabel.superview.bounds.size.width,
-                          self.textLabel.superview.bounds.size.height);
-    self.textLabel.frame = CGRectInset(f, inset, 0);
-    self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-}
-
-- (void)dealloc
-{
+    //titleImage
+    [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.backgroundView);
+        make.left.mas_equalTo(20);
+        make.size.mas_equalTo(CGSizeMake(20, 20));
+        
+    }];
+    
+    //titleLable
+    
+    
+    //detailLable
     
 }
+
 
 
 @end

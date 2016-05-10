@@ -1308,6 +1308,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/QQSDK",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/xjf/classes/utils/PrefixHeader.pch";
 				INFOPLIST_FILE = xjf/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1334,6 +1335,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/QQSDK",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/xjf/classes/utils/PrefixHeader.pch";
 				INFOPLIST_FILE = xjf/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

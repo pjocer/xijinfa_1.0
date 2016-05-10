@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface IndexSectionView : UIView
-{
-    
-}
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *moreLabel;
 @end

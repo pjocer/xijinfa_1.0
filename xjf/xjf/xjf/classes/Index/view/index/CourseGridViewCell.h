@@ -9,6 +9,5 @@
 #import "UzysGridViewCell.h"
 
 @interface CourseGridViewCell : UzysGridViewCell
-@property (nonatomic, retain) UILabel *textLabel;
 @property (nonatomic, retain) UIView *backgroundView;
 @end

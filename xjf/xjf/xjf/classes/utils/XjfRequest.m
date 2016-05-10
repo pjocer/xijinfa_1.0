@@ -10,4 +10,9 @@
 
 @implementation XjfRequest
 
++ (void)test
+{
+    NSLog(@"XjfRequest  测试。。。。。");
+}
+
 @end

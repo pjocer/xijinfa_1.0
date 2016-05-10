@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor =[UIColor whiteColor];
+    self.view.backgroundColor = [UIColor xjfStringToColor:@"#efefef"];
      self.navigationController.navigationBarHidden = YES;
     [self headerView];
 }
@@ -67,7 +67,7 @@
 -(void)headerView
 {
     _headView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, HEADHEIGHT)];
-    _headView.backgroundColor =UIColorFromRGB(0xcccccc);
+    _headView.backgroundColor = [UIColor whiteColor];
     //
     _titleLabel =[[UILabel alloc] initWithFrame:CGRectMake(20, 20+(HEADHEIGHT-20-20)/2, self.view.frame.size.width/2, 20)];
     _titleLabel.backgroundColor = [UIColor clearColor];

@@ -83,8 +83,7 @@
 -(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index
 {
     TeacherGridViewCell *cell = [[TeacherGridViewCell alloc] initWithFrame:CGRectNull];
-    cell.textLabel.text = @"1212";
-    cell.backgroundView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+
     cell.deletable = NO;
     return cell;
 }

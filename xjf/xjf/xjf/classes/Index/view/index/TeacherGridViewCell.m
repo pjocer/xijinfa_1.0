@@ -8,10 +8,15 @@
 
 #import "TeacherGridViewCell.h"
 
-@implementation TeacherGridViewCell
+@interface TeacherGridViewCell ()
 
-@synthesize textLabel;
-@synthesize backgroundView;
+@property (nonatomic, strong) UIImageView *teacherImage;
+@property (nonatomic, strong) UILabel *teacherName;
+@property (nonatomic, strong) UILabel *teacherDetail;
+
+@end
+
+@implementation TeacherGridViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -20,18 +25,29 @@
         // Initialization code
         // Background view
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectNull];
-        self.backgroundView.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.backgroundView];
         
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-        self.textLabel.textAlignment = NSTextAlignmentCenter;
-        self.textLabel.backgroundColor = [UIColor clearColor];
-        self.textLabel.textColor = [UIColor whiteColor];
-        self.textLabel.font = [UIFont systemFontOfSize:12];
-        self.textLabel.center = self.center;
+        //teacherImage
+        self.teacherImage = [[UIImageView alloc] init];
+        [self addSubview:self.teacherImage];
+        self.teacherImage.backgroundColor = [UIColor orangeColor];
         
-        [self addSubview:self.textLabel];
-        [self bringSubviewToFront:self.ButtonDelete];
+        //teacherName
+        self.teacherName = [[UILabel alloc] init];
+        [self addSubview:self.teacherName];
+        self.teacherName.textColor = [UIColor xjfStringToColor:@"#444444"];
+        self.teacherName.text = @"XXXX";
+        self.teacherName.textAlignment = NSTextAlignmentCenter;
+        self.teacherName.font = FONT15;
+        
+        //teacherDetail
+        self.teacherDetail = [[UILabel alloc] init];
+        [self addSubview:self.teacherDetail];
+        self.teacherDetail.text = @"xxxxxxxxxxxx";
+        self.teacherDetail.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
+        self.teacherDetail.textAlignment = NSTextAlignmentCenter;
+        self.teacherName.font = FONT12;
     }
     return self;
 }
@@ -40,24 +56,33 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    int inset = 5;
-    
+
     // Background view
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    // Layout label background
-    CGRect f = CGRectMake(0,
-                          0,
-                          self.textLabel.superview.bounds.size.width,
-                          self.textLabel.superview.bounds.size.height);
-    self.textLabel.frame = CGRectInset(f, inset, 0);
-    self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-}
 
-- (void)dealloc
-{
+    //teacherImage
+    [self.teacherImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.backgroundView.mas_centerY);
+        make.centerX.mas_equalTo(self.backgroundView);
+        make.size.mas_equalTo(CGSizeMake(55, 55));
+    }];
+    
+    //teacherDetail
+    [self.teacherDetail mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.teacherImage);
+        make.bottom.mas_equalTo(self.backgroundView).with.offset(-10);
+        make.width.mas_equalTo(self.backgroundView);
+        make.height.mas_equalTo(15);
+    }];
+    
+    //teacherName
+    [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.teacherImage);
+        make.bottom.mas_equalTo(self.teacherDetail).with.offset(-10);
+        make.width.mas_equalTo(self.backgroundView);
+        make.height.mas_equalTo(30);
+    }];
     
 }
 

@@ -8,57 +8,78 @@
 
 #import "TalkGridViewCell.h"
 
-@implementation TalkGridViewCell
+@interface TalkGridViewCell ()
 
-@synthesize textLabel;
-@synthesize backgroundView;
+@property (nonatomic, strong) UIImageView *titleImage;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UILabel *detailLable;
+
+@end
+
+@implementation TalkGridViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         // Initialization code
         // Background view
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectNull];
-        self.backgroundView.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.backgroundView];
         
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-        self.textLabel.textAlignment = NSTextAlignmentCenter;
-        self.textLabel.backgroundColor = [UIColor clearColor];
-        self.textLabel.textColor = [UIColor whiteColor];
-        self.textLabel.font = [UIFont systemFontOfSize:12];
-        self.textLabel.center = self.center;
+        //titleImage
+        self.titleImage = [[UIImageView alloc] init];
+        [self addSubview:self.titleImage];
+        self.titleImage.backgroundColor = [UIColor orangeColor];
         
-        [self addSubview:self.textLabel];
-        [self bringSubviewToFront:self.ButtonDelete];
+        //titleLable
+        self.titleLable = [[UILabel alloc] init];
+        [self addSubview:self.titleLable];
+        self.titleLable.textColor = [UIColor xjfStringToColor:@"#444444"];
+        self.titleLable.text = @"证监会";
+        self.titleLable.font = FONT15;
+    
+        //detailLable
+        self.detailLable = [[UILabel alloc] init];
+        [self addSubview:self.detailLable];
+        self.detailLable.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
+        self.detailLable.text = @"xxx 人看过";
+        self.detailLable.font = FONT12;
+    
     }
     return self;
 }
-
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    int inset = 5;
-    
     // Background view
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+   
+    //titleImage
+   [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+       make.top.left.mas_equalTo(self.backgroundView).with.offset(17);
+       make.right.mas_equalTo(-17);
+       make.height.mas_equalTo(81);
+    }];
     
-    // Layout label background
-    CGRect f = CGRectMake(0,
-                          0,
-                          self.textLabel.superview.bounds.size.width,
-                          self.textLabel.superview.bounds.size.height);
-    self.textLabel.frame = CGRectInset(f, inset, 0);
-    self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-}
-
-- (void)dealloc
-{
+    //titleLable
+    [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleImage.mas_bottom);
+        make.left.right.equalTo(self.titleImage);
+        make.height.mas_equalTo(30);
+    }];
     
+    //detailLable
+    [self.detailLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLable.mas_bottom);
+        make.left.right.equalTo(self.titleLable);
+        make.height.mas_equalTo(15);
+    }];
 }
 
 

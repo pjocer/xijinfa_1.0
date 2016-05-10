@@ -34,6 +34,8 @@
     //
     [self extendheadView];
     [self initMainUI];
+   
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,7 +125,7 @@
 //main UI
 -(void)initMainUI
 {
-    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-45) style:UITableViewStyleGrouped];
+    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-45) style:UITableViewStylePlain];
     _tableview.dataSource=self;
     _tableview.delegate=self;
     _tableview.showsVerticalScrollIndicator = NO;
@@ -177,7 +179,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     NSString *sectionTitle =[self.sectionsArray objectAtIndex:section];
-    if ([sectionTitle isEqualToString:@"bannercell"])
+    if ([sectionTitle isEqualToString:@"bannercell"] || [sectionTitle isEqualToString:@"appcell"])
     {
            return 0.01;
     }
@@ -208,7 +210,6 @@
         if(cell == nil)
         {
             cell = [[IndexAppCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexAppCell"];
-            cell.backgroundColor=[UIColor redColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             __weak typeof (self) wSelf = self;
             [cell setCallBack:^(BEventType t, UIView *v,id obj,id key,NSIndexPath *indexPath) {
@@ -224,7 +225,6 @@
         if(cell == nil)
         {
             cell = [[IndexTalkCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexTalkCell"];
-            cell.backgroundColor=[UIColor redColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             __weak typeof (self) wSelf = self;
             [cell setCallBack:^(BEventType t, UIView *v,id obj,id key,NSIndexPath *indexPath) {
@@ -240,7 +240,6 @@
         if(cell == nil)
         {
             cell = [[IndexBaikeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexBaikeCell"];
-            cell.backgroundColor=[UIColor redColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             __weak typeof (self) wSelf = self;
             [cell setCallBack:^(BEventType t, UIView *v,id obj,id key,NSIndexPath *indexPath) {
@@ -256,7 +255,6 @@
         if(cell == nil)
         {
             cell = [[IndexTeacherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexTeacherCell"];
-            cell.backgroundColor=[UIColor redColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             __weak typeof (self) wSelf = self;
             [cell setCallBack:^(BEventType t, UIView *v,id obj,id key,NSIndexPath *indexPath) {

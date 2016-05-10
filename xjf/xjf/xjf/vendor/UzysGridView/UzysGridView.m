@@ -113,7 +113,6 @@
     }
     else
     {
-        NSLog(@"editAniworking clear");
 
         for(UzysGridViewCell *cell in _cellInfo)
         {            
@@ -390,7 +389,6 @@
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight; 
     self.contentMode = UIViewContentModeRedraw;
     self.backgroundColor = [UIColor clearColor];
-    NSLog(@"uzysView bound:%@",NSStringFromCGRect(self.bounds));
     _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds] ;
     _scrollView.delegate = self;
     _scrollView.backgroundColor = [UIColor clearColor];
@@ -425,7 +423,7 @@
     // Drawing code
     [self LoadTotalView];
     [self editableAnimation];
-    NSLog(@"Call drawRect");
+
 }
 
 - (void)reloadData

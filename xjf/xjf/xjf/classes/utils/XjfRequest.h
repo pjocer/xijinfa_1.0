@@ -10,4 +10,6 @@
 
 @interface XjfRequest : NSObject
 
++ (void)test;
+
 @end
