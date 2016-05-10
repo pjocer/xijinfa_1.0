@@ -368,7 +368,8 @@
 				644C11171CBA8B4B00892E2C /* controller */,
 				644C11181CBA8B4B00892E2C /* model */,
 			);
-			path = user;
+			name = user;
+			path = classes/user;
 			sourceTree = "<group>";
 		};
 		644C11161CBA8B4B00892E2C /* view */ = {
@@ -541,7 +542,8 @@
 				CD1CCBF91CB35A2D002FC0C9 /* view */,
 				CD1CCC471CB37D54002FC0C9 /* IndexConfigure.h */,
 			);
-			path = Index;
+			name = Index;
+			path = classes/Index;
 			sourceTree = "<group>";
 		};
 		CD1CCBF51CB35A2D002FC0C9 /* controller */ = {
@@ -583,7 +585,8 @@
 				CD1CCBFF1CB35A2D002FC0C9 /* view */,
 				644C11121CBA8A1300892E2C /* myConfigure.h */,
 			);
-			path = my;
+			name = my;
+			path = classes/my;
 			sourceTree = "<group>";
 		};
 		CD1CCBFB1CB35A2D002FC0C9 /* controller */ = {
@@ -624,7 +627,8 @@
 				CD1CCC041CB35A2D002FC0C9 /* model */,
 				CD1CCC051CB35A2D002FC0C9 /* view */,
 			);
-			path = subscribe;
+			name = subscribe;
+			path = classes/subscribe;
 			sourceTree = "<group>";
 		};
 		CD1CCC011CB35A2D002FC0C9 /* controller */ = {
@@ -660,7 +664,8 @@
 				CD1CCC0B1CB35A2D002FC0C9 /* view */,
 				644C10EA1CBA785400892E2C /* TopicConfigure.h */,
 			);
-			path = topic;
+			name = topic;
+			path = classes/topic;
 			sourceTree = "<group>";
 		};
 		CD1CCC071CB35A2D002FC0C9 /* controller */ = {
@@ -697,7 +702,8 @@
 				CD1CCC101CB35A2D002FC0C9 /* model */,
 				CD1CCC111CB35A2D002FC0C9 /* view */,
 			);
-			path = vip;
+			name = vip;
+			path = classes/vip;
 			sourceTree = "<group>";
 		};
 		CD1CCC0D1CB35A2D002FC0C9 /* controller */ = {
@@ -732,7 +738,8 @@
 				CD1CCC1B1CB36386002FC0C9 /* model */,
 				CD1CCC1C1CB36386002FC0C9 /* view */,
 			);
-			path = Base;
+			name = Base;
+			path = classes/Base;
 			sourceTree = "<group>";
 		};
 		CD1CCC181CB36386002FC0C9 /* controller */ = {
@@ -791,7 +798,8 @@
 				5A7EEE931CE0299C007BAECD /* Header.h */,
 				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 			);
-			path = utils;
+			name = utils;
+			path = classes/utils;
 			sourceTree = "<group>";
 		};
 		CD1CCC4A1CB39B3D002FC0C9 /* player */ = {
@@ -802,7 +810,8 @@
 				CD1CCC511CB39B3D002FC0C9 /* view */,
 				CD1CCC5A1CB39BE4002FC0C9 /* playerConfigure.h */,
 			);
-			path = player;
+			name = player;
+			path = classes/player;
 			sourceTree = "<group>";
 		};
 		CD1CCC4B1CB39B3D002FC0C9 /* controller */ = {
@@ -913,7 +922,15 @@
 		CDF57AC21C9F825D00049AF0 /* xjf */ = {
 			isa = PBXGroup;
 			children = (
-				CDF57B1B1C9F848600049AF0 /* classes */,
+				644C11151CBA8B4B00892E2C /* user */,
+				CD1CCC4A1CB39B3D002FC0C9 /* player */,
+				CD1CCC3A1CB37B89002FC0C9 /* utils */,
+				CD1CCC171CB36386002FC0C9 /* Base */,
+				CD1CCBF41CB35A2D002FC0C9 /* Index */,
+				CD1CCBFA1CB35A2D002FC0C9 /* my */,
+				CD1CCC001CB35A2D002FC0C9 /* subscribe */,
+				CD1CCC061CB35A2D002FC0C9 /* topic */,
+				CD1CCC0C1CB35A2D002FC0C9 /* vip */,
 				CDF57B1D1C9F848600049AF0 /* Utils */,
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
@@ -932,22 +949,6 @@
 				CDF57AC41C9F825D00049AF0 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CDF57B1B1C9F848600049AF0 /* classes */ = {
-			isa = PBXGroup;
-			children = (
-				644C11151CBA8B4B00892E2C /* user */,
-				CD1CCC4A1CB39B3D002FC0C9 /* player */,
-				CD1CCC3A1CB37B89002FC0C9 /* utils */,
-				CD1CCC171CB36386002FC0C9 /* Base */,
-				CD1CCBF41CB35A2D002FC0C9 /* Index */,
-				CD1CCBFA1CB35A2D002FC0C9 /* my */,
-				CD1CCC001CB35A2D002FC0C9 /* subscribe */,
-				CD1CCC061CB35A2D002FC0C9 /* topic */,
-				CD1CCC0C1CB35A2D002FC0C9 /* vip */,
-			);
-			path = classes;
 			sourceTree = "<group>";
 		};
 		CDF57B1D1C9F848600049AF0 /* Utils */ = {
