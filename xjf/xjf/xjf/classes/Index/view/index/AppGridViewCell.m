@@ -8,12 +8,12 @@
 
 #import "AppGridViewCell.h"
 
-@interface AppGridViewCell ()
-
-@property (nonatomic, strong) UIImageView *imageTag;
-@property (nonatomic, strong) UILabel *titleLable;
-
-@end
+//@interface AppGridViewCell ()
+//
+//@property (nonatomic, strong) UIImageView *imageTag;
+//@property (nonatomic, strong) UILabel *titleLable;
+//
+//@end
 
 @implementation AppGridViewCell
 
@@ -25,8 +25,9 @@
         self.backgroundColor = [UIColor whiteColor];
         //imageView
         self.imageTag = [[UIImageView alloc] init];
-        self.imageTag.backgroundColor = [UIColor cyanColor];
         [self addSubview:self.imageTag];
+        self.imageTag.layer.masksToBounds = YES;
+        self.imageTag.layer.cornerRadius = 22.5;
         
         //titleLable
         self.titleLable = [[UILabel alloc] init];

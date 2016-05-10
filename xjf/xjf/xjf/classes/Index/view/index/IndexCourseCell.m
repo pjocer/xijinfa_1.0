@@ -88,4 +88,13 @@
         self.actionBlock(BEventType_More,nil,self.data,nil,self.indexPath);
     }
 }
+
+- (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
+{
+    if (self.actionBlock) {
+        self.actionBlock(BEventType_More,nil,self.data,nil,self.indexPath);
+    }
+    
+}
+
 @end

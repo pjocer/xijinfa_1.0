@@ -10,4 +10,7 @@
 
 @interface AppGridViewCell : UzysGridViewCell
 
+@property (nonatomic, strong) UIImageView *imageTag;
+@property (nonatomic, strong) UILabel *titleLable;
+
 @end

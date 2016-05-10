@@ -66,7 +66,6 @@
     // Background view
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    NSLog(@" xxxx  %lf",self.frame.size.height);
     
     //titleImage
     [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {

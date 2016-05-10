@@ -10,9 +10,7 @@
 #import "IndexConfigure.h"
 #import "playerConfigure.h"
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
-{
-    
-}
+
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray *sectionsArray;
 @end
@@ -326,5 +324,7 @@
         }
             break;
     }
+    
+    
 }
 @end
