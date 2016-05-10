@@ -47,7 +47,7 @@
         self.teacherDetail.text = @"xxxxxxxxxxxx";
         self.teacherDetail.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
         self.teacherDetail.textAlignment = NSTextAlignmentCenter;
-        self.teacherName.font = FONT12;
+        self.teacherDetail.font = FONT12;
     }
     return self;
 }

@@ -12,12 +12,10 @@
 #import "CourseGridViewCell.h"
 
 @interface IndexCourseCell()<UzysGridViewDelegate,UzysGridViewDataSource>
-{
-    
-}
 @property(nonatomic,strong)IndexSectionView *sectionView;
 @property(nonatomic,strong)UzysGridView *gridView;
 @end
+
 @implementation IndexCourseCell
 @synthesize gridView=_gridView;
 
@@ -36,7 +34,7 @@
         _sectionView.userInteractionEnabled =YES;
         [self addSubview:_sectionView];
         //
-        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height-35) numOfRow:3 numOfColumns:1 cellMargin:3];
+        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height-35) numOfRow:3 numOfColumns:1 cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
@@ -72,7 +70,7 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     NSDictionary *dict =(NSDictionary*)model;
-    return 300;
+    return 342;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {

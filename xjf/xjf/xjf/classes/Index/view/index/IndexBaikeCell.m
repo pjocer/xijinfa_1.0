@@ -78,7 +78,7 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     NSDictionary *dict =(NSDictionary*)model;
-    return 200;
+    return 240;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {

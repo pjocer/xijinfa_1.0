@@ -11,13 +11,10 @@
 #import "AppGridViewCell.h"
 
 @interface IndexAppCell()<UzysGridViewDelegate,UzysGridViewDataSource>
-{
-    
-}
 @property(nonatomic,strong)UzysGridView *gridView;
 @end
+
 @implementation IndexAppCell
-@synthesize gridView=_gridView;
 
 -(void)setCallBack:(void(^)(BEventType,UIView*,id,id,NSIndexPath *))callback
 {
@@ -28,8 +25,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        self.backgroundColor=[UIColor clearColor];
-        _gridView = [[UzysGridView alloc] initWithFrame:self.bounds numOfRow:2 numOfColumns:2 cellMargin:1];
+        self.backgroundColor = [UIColor whiteColor];
+        _gridView = [[UzysGridView alloc] initWithFrame:self.bounds numOfRow:1 numOfColumns:4 cellMargin:0.01];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
@@ -64,7 +61,7 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     NSDictionary *dict =(NSDictionary*)model;
-    return 200;
+    return 100;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {

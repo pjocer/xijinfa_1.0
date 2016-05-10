@@ -125,7 +125,7 @@
 //main UI
 -(void)initMainUI
 {
-    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-45) style:UITableViewStylePlain];
+    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-45) style:UITableViewStyleGrouped];
     _tableview.dataSource=self;
     _tableview.delegate=self;
     _tableview.showsVerticalScrollIndicator = NO;
@@ -270,7 +270,6 @@
         if(cell == nil)
         {
             cell = [[IndexCourseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexCourseCell"];
-            cell.backgroundColor=[UIColor redColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             __weak typeof (self) wSelf = self;
             [cell setCallBack:^(BEventType t, UIView *v,id obj,id key,NSIndexPath *indexPath) {

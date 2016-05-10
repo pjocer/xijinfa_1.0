@@ -69,10 +69,9 @@
 
     //titleImage
     [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.backgroundView.mas_top).with.offset(10);
-        make.left.mas_equalTo(self.backgroundView.mas_left).with.offset(10);
-        make.bottom.mas_equalTo(self.backgroundView.mas_bottom).with.offset(-10);
-        make.width.mas_equalTo(136);
+        make.centerY.mas_equalTo(self.backgroundView.mas_centerY);
+        make.left.mas_equalTo(20);
+        make.size.mas_equalTo(CGSizeMake(136, 76.5));
     }];
 
     //titleLable
