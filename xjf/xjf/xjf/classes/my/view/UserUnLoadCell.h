@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UserUnLoadCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
 @end

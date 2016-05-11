@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navTitle =@"下载";
+
 }
 
 - (void)didReceiveMemoryWarning {

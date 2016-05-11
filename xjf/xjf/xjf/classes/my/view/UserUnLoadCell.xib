@@ -61,7 +61,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bottomLine" destination="gDp-Fc-SBX" id="twt-2s-hYd"/>
-                <outlet property="icon" destination="o4c-X2-dXb" id="2uu-pu-sig"/>
+                <outlet property="icon" destination="o4c-X2-dXb" id="zfb-iX-OD8"/>
             </connections>
             <point key="canvasLocation" x="265" y="275"/>
         </tableViewCell>

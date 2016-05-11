@@ -40,9 +40,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-
-    self.navTitle =@"会员昵称";
-    
     self.txtUser.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, 100, SCREENWITH-PHOTO_FRAME_WIDTH*4, PHOTO_FRAME_WIDTH*4);
     self.txtUser.text =[self.userinfo objectForKey:@"nick_name"];
 }

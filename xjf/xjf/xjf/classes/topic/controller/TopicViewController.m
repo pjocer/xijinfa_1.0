@@ -7,11 +7,7 @@
 //
 
 #import "TopicViewController.h"
-#import "IndexConfigure.h"
-#import "SCNavTabBarController.h"
-#import "MenuHrizontal.h"
-#import "ScrollPageView.h"
-#import "HomeView.h"
+#import "TopicConfigure.h"
 
 @interface TopicViewController ()<MenuHrizontalDelegate,ScrollPageViewDelegate>
 {
@@ -29,8 +25,8 @@
     // Do any additional setup after loading the view.
      self.view.backgroundColor = [UIColor whiteColor];
     self.isIndex = YES;
-    self.navTitle =@"话题";
-    [self extendheadView];
+
+    [self extendheadViewFor:Topic];
     [self initMainUI];
 }
 
@@ -42,64 +38,65 @@
 {
     
 }
-//head UI
--(void)extendheadView
-{
-    //
-    UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-    downButton.tag =10;
-    downButton.hidden=NO;
-    downButton.titleLabel.font =FONT(14);
-    [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [downButton setTitle:@"发表" forState:UIControlStateNormal];
-    [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [self.headView  addSubview:downButton];
-    //
-    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-    searchButton.tag =11;
-    searchButton.hidden=NO;
-    searchButton.titleLabel.font =FONT(14);
-    [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
-    [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [self.headView  addSubview:searchButton];
-}
-
-
--(void)headerClickEvent:(id)sender
-{
-    UIButton *btn =(UIButton *)sender;
-    switch (btn.tag) {
-        case 0:
-        {
-            if (self.navigationController) {
-                if (self.navigationController.viewControllers.count == 1) {
-                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                } else {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        }
-            break;
-        case 10://发表
-        {
-        }
-            break;
-        case 11://搜索 #import "SearchViewController.h"
-        {
-            SearchViewController *download =[[SearchViewController alloc] init];
-            [self.navigationController pushViewController:download animated:YES];
-            
-        }
-            break;
-        default:
-            break;
-    }
-}
+////head UI
+//-(void)extendheadView
+//{
+////    [self initHeaderView];
+//    //
+//    UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+//    downButton.tag =10;
+//    downButton.hidden=NO;
+//    downButton.titleLabel.font =FONT(14);
+//    [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+//    [downButton setTitle:@"发表" forState:UIControlStateNormal];
+//    [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.headView  addSubview:downButton];
+//    //
+//    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+//    searchButton.tag =11;
+//    searchButton.hidden=NO;
+//    searchButton.titleLabel.font =FONT(14);
+//    [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+//    [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
+//    [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.headView  addSubview:searchButton];
+//}
+//
+//
+//-(void)headerClickEvent:(id)sender
+//{
+//    UIButton *btn =(UIButton *)sender;
+//    switch (btn.tag) {
+//        case 0:
+//        {
+//            if (self.navigationController) {
+//                if (self.navigationController.viewControllers.count == 1) {
+//                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//                } else {
+//                    [self.navigationController popViewControllerAnimated:YES];
+//                }
+//            } else {
+//                [self dismissViewControllerAnimated:YES completion:nil];
+//            }
+//        }
+//            break;
+//        case 10://发表
+//        {
+//        }
+//            break;
+//        case 11://搜索 #import "SearchViewController.h"
+//        {
+//            SearchViewController *download =[[SearchViewController alloc] init];
+//            [self.navigationController pushViewController:download animated:YES];
+//            
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+//}
 //mainui
 -(void)initMainUI
 {

@@ -12,14 +12,18 @@
 #import "BaseViewCell.h"
 #import "ZToastManager.h"
 
+//为首界面设置HeaderView
+FOUNDATION_EXTERN NSString * const Index;
+FOUNDATION_EXTERN NSString * const My;
+FOUNDATION_EXTERN NSString * const Topic;
+FOUNDATION_EXTERN NSString * const Vip;
+FOUNDATION_EXTERN NSString * const Subscribe;
+
+
 @interface BaseViewController : UIViewController
-{
-    
-}
-@property(nonatomic,strong) UIView *headView;
+
 @property(nonatomic,assign)BOOL isIndex;
-@property(nonatomic,strong)NSString* navTitle;
 -(BOOL)isLogin;
--(void)headerClickEvent:(id)sender;
 -(UIView *)footerView:(NSString*)msg;
+- (void)extendheadViewFor:(NSString *)name;
 @end

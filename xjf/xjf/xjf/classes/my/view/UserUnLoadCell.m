@@ -11,7 +11,6 @@
 @implementation UserUnLoadCell
 {
     __weak IBOutlet UILabel *bottomLine;
-    __weak IBOutlet UIImageView *icon;
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

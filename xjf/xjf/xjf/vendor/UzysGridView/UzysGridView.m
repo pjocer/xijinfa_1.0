@@ -1066,6 +1066,6 @@
 }
 -(void) gridViewCell:(UzysGridViewCell *)cell handleLongPress:(NSUInteger)index
 {
-    self.editable =YES;    
+    self.editable =NO;
 }
 @end

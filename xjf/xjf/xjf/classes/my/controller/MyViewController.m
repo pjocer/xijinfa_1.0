@@ -7,11 +7,8 @@
 //
 
 #import "MyViewController.h"
-#import "SettingViewController.h"
 #import "myConfigure.h"
-#import "LoginViewController.h"
-#import "UserDelegate.h"
-#import "UserComponentCell.h"
+
 @interface MyViewController ()<UITableViewDataSource, UITableViewDelegate,UserDelegate,UserComponentCellDelegate>
 {
 
@@ -24,72 +21,72 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.isIndex = YES;
-    self.navTitle =@"我的";
-    [self extendheadView];
+    [self extendheadViewFor:My];
     [self initMainUI];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//head UI
--(void)extendheadView
-{
-    //
-    UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-    downButton.tag =10;
-    downButton.hidden=NO;
-    downButton.titleLabel.font =FONT(14);
-    [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [downButton setTitle:@"通知" forState:UIControlStateNormal];
-    [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [self.headView  addSubview:downButton];
-    //
-    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-    searchButton.tag =11;
-    searchButton.hidden=NO;
-    searchButton.titleLabel.font =FONT(14);
-    [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [searchButton setTitle:@"设置" forState:UIControlStateNormal];
-    [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [self.headView  addSubview:searchButton];
-}
-
-
--(void)headerClickEvent:(id)sender
-{
-    UIButton *btn =(UIButton *)sender;
-    switch (btn.tag) {
-        case 0:
-        {
-            if (self.navigationController) {
-                if (self.navigationController.viewControllers.count == 1) {
-                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                } else {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        }
-            break;
-        case 10://通知
-        {
-        }
-            break;
-        case 11://设置
-        {
-            SettingViewController *download =[[SettingViewController alloc] init];
-            [self.navigationController pushViewController:download animated:YES];
-        }
-            break;
-        default:
-            break;
-    }
-}
+////head UI
+//-(void)extendheadView
+//{
+//    //
+////    [self initHeaderView];
+//     =@"我的";
+//    self.isIndex = YES;
+//    UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+//    downButton.tag =10;
+//    downButton.titleLabel.font =FONT(14);
+//    [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+//    [downButton setTitle:@"通知" forState:UIControlStateNormal];
+//    [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.headView  addSubview:downButton];
+//    //
+//    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+//    searchButton.tag =11;
+//    searchButton.hidden=NO;
+//    searchButton.titleLabel.font =FONT(14);
+//    [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+//    [searchButton setTitle:@"设置" forState:UIControlStateNormal];
+//    [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.headView  addSubview:searchButton];
+//}
+//
+//
+//-(void)headerClickEvent:(id)sender
+//{
+//    UIButton *btn =(UIButton *)sender;
+//    switch (btn.tag) {
+//        case 0:
+//        {
+//            if (self.navigationController) {
+//                if (self.navigationController.viewControllers.count == 1) {
+//                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//                } else {
+//                    [self.navigationController popViewControllerAnimated:YES];
+//                }
+//            } else {
+//                [self dismissViewControllerAnimated:YES completion:nil];
+//            }
+//        }
+//            break;
+//        case 10://通知
+//        {
+//        }
+//            break;
+//        case 11://设置
+//        {
+//            SettingViewController *download =[[SettingViewController alloc] init];
+//            [self.navigationController pushViewController:download animated:YES];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+//}
 //main UI
 -(void)initMainUI
 {

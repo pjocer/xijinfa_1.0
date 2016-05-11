@@ -6,3 +6,8 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
+#import "IndexConfigure.h"
+#import "SCNavTabBarController.h"
+#import "MenuHrizontal.h"
+#import "ScrollPageView.h"
+#import "HomeView.h"

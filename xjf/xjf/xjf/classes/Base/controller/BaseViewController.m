@@ -8,9 +8,16 @@
 
 #import "BaseViewController.h"
 #import "UserNavigationController.h"
-#import "XJFNavgationBar.h"
-@interface BaseViewController ()<UserDelegate>
+#import "IndexConfigure.h"
+#import "myConfigure.h"
+NSString * const Index = @"IndexViewController";
+NSString * const My = @"MyViewController";
+NSString * const Topic = @"TopicViewController";
+NSString * const Vip = @"VipViewController";
+NSString * const Subscribe = @"SubscribeViewController";
 
+@interface BaseViewController ()<UserDelegate>
+@property(nonatomic,strong) UIView *headView;
 @property(nonatomic,strong) UIButton *backButton;
 @property(nonatomic,strong) UILabel *titleLabel;
 @property(nonatomic,strong) UIButton *rightButton;
@@ -21,28 +28,36 @@
 @synthesize backButton=_backButton;
 @synthesize rightButton=_rightButton;
 @synthesize isIndex=_isIndex;
-@synthesize navTitle=_navTitle;
-
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    if (!self.isIndex) {
+        self.navigationController.navigationBarHidden = NO;
+        if (self.headView) {
+            self.headView.hidden = YES;
+        }
+    }else {
+        self.navigationController.navigationBarHidden = YES;
+        if (self.headView) {
+            self.headView.hidden = NO;
+        }
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor xjfStringToColor:@"#efefef"];
-     self.navigationController.navigationBarHidden = YES;
-    [self headerView];
 }
 -(void)dealloc
 {
+    
     self.backButton=nil;
     self.rightButton =nil;
     self.titleLabel=nil;
-    self.navTitle =nil;
     self.headView=nil;
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -64,42 +79,85 @@
     
 }
 
--(void)headerView
-{
-    _headView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, HEADHEIGHT)];
-    _headView.backgroundColor = [UIColor whiteColor];
-    
-    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(8, 15+(HEADHEIGHT-20-20)/2, 35, 35)];
-    iconImage.image = [UIImage imageNamed:@"Logo"];
-    [_headView addSubview:iconImage];
-    
-    _titleLabel =[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImage.frame)+8, 21+(HEADHEIGHT-20-20)/2, self.view.frame.size.width/2, 20)];
-    _titleLabel.backgroundColor = [UIColor clearColor];
-    _titleLabel.textColor = [UIColor blackColor];
-    _titleLabel.textAlignment = NSTextAlignmentLeft;
-    _titleLabel.font = FONT(16);
-    [_headView addSubview:_titleLabel];
-    //
-    _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _backButton.frame = CGRectMake(0, 20+(HEADHEIGHT-20-25)/2, 30, 25);
-    _backButton.tag =0;
-    _backButton.hidden = NO;
-    [_backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [_backButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [_headView addSubview:_backButton];
-    //
-    _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _rightButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-    _rightButton.tag =1;
-    _rightButton.hidden=YES;
-    _rightButton.titleLabel.font =FONT(14);
-    [_rightButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [_rightButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [_headView addSubview:_rightButton];
-    [_headView addShadow];
-    [self.view addSubview:_headView];
-   
+-(void)extendheadViewFor:(NSString *)name {
+    [self initHeaderView];
+    self.navigationItem.title = @"";
+    self.isIndex = YES;
+    if ([name isEqualToString:My]) {
+        _titleLabel.text = @"我的";
+        UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        downButton.tag =9;
+        downButton.titleLabel.font =FONT(14);
+        [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+        [downButton setTitle:@"通知" forState:UIControlStateNormal];
+        [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:downButton];
+        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        searchButton.tag =13;
+        searchButton.hidden=NO;
+        searchButton.titleLabel.font =FONT(14);
+        [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+        [searchButton setTitle:@"设置" forState:UIControlStateNormal];
+        [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:searchButton];
+    }else if ([name isEqualToString:Index]) {
+        _titleLabel.text = @"首页";
+        UIButton *hisButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        hisButton.frame = CGRectMake(SCREENWITH -160, 20+(HEADHEIGHT-20-25)/2, 30, 25);
+        hisButton.tag =10;
+        hisButton.hidden = NO;
+        hisButton.titleLabel.font =FONT(14);
+        [hisButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+        [hisButton setTitle:@"历史" forState:UIControlStateNormal];
+        [hisButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView addSubview:hisButton];
+        UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        downButton.tag =11;
+        downButton.hidden=NO;
+        downButton.titleLabel.font =FONT(14);
+        [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+        [downButton setTitle:@"下载" forState:UIControlStateNormal];
+        [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:downButton];
+        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        searchButton.tag =12;
+        searchButton.hidden=NO;
+        searchButton.titleLabel.font =FONT(14);
+        [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+        [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
+        [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:searchButton];
+    }else if ([name isEqualToString:Subscribe]) {
+        _titleLabel.text = @"订阅";
+    }else if ([name isEqualToString:Topic]) {
+        _titleLabel.text = @"话题";
+        UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        downButton.tag =14;
+        downButton.hidden=NO;
+        downButton.titleLabel.font =FONT(14);
+        [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+        [downButton setTitle:@"发表" forState:UIControlStateNormal];
+        [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:downButton];
+        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        searchButton.tag =15;
+        searchButton.hidden=NO;
+        searchButton.titleLabel.font =FONT(14);
+        [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
+        [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
+        [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:searchButton];
+    }else if ([name isEqualToString:Vip]) {
+        _titleLabel.text = @"会员";
+    }
 }
+
 -(void)headerClickEvent:(id)sender
 {
     UIButton *btn =(UIButton *)sender;
@@ -117,22 +175,69 @@
             }
         }
             break;
+        case 9://通知
+        {
             
+        }
+        case 10://历史
+        {
+            PlayerHistoryViewController *history =[[PlayerHistoryViewController alloc] init];
+            [self.navigationController pushViewController:history animated:YES];
+        }
+            break;
+        case 11://下载
+        {
+            PlayerDownLoadViewController *download =[[PlayerDownLoadViewController alloc] init];
+            [self.navigationController pushViewController:download animated:YES];
+        }
+            break;
+        case 12://搜索 #import "SearchViewController.h"
+        {
+            SearchViewController *download =[[SearchViewController alloc] init];
+            [self.navigationController pushViewController:download animated:YES];
+            
+        }
+            break;
+        case 13://设置
+        {
+            SettingViewController *download =[[SettingViewController alloc] init];
+            [self.navigationController pushViewController:download animated:YES];
+        }
+        case 14://发表
+        {
+            
+            
+        }
+            break;
+        case 15://搜索
+        {
+           
+        }
         default:
             break;
     }
 }
--(void)setIsIndex:(BOOL)isIndex
+
+-(void)initHeaderView
 {
-    _isIndex=isIndex;
-    _backButton.hidden =YES;
-    _rightButton.hidden =YES;
+    self.navigationController.navigationBarHidden = YES;
+    _headView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, HEADHEIGHT)];
+    _headView.backgroundColor = [UIColor whiteColor];
+    
+    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(8, 15+(HEADHEIGHT-20-20)/2, 35, 35)];
+    iconImage.image = [UIImage imageNamed:@"Logo"];
+    [_headView addSubview:iconImage];
+    
+    _titleLabel =[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImage.frame)+8, 21+(HEADHEIGHT-20-20)/2, self.view.frame.size.width/2, 20)];
+    _titleLabel.backgroundColor = [UIColor clearColor];
+    _titleLabel.textColor = [UIColor blackColor];
+    _titleLabel.textAlignment = NSTextAlignmentLeft;
+    _titleLabel.font = FONT(16);
+    [_headView addSubview:_titleLabel];
+    
+    [self.view addSubview:_headView];
 }
--(void)setNavTitle:(NSString *)navTitle
-{
-    _navTitle=navTitle;
-    _titleLabel.text = navTitle;
-}
+
 -(UIView *)footerView:(NSString*)msg
 {
     if (msg==nil || msg.length==0) {

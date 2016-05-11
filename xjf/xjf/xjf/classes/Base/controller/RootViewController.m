@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "ZFTabBar.h"
+#import "UINavigationController+YRBackGesture.h"
 #import "IndexViewController.h"
 #import "TopicViewController.h"
 #import "VipViewController.h"
@@ -106,6 +107,7 @@
  */
 - (void)setupChildViewController:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:childVc];
     // 1.设置控制器的属性
     childVc.title = title;
     // 设置图标
@@ -115,7 +117,7 @@
     
     childVc.tabBarItem.selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    [self addChildViewController:childVc];
+    [self addChildViewController:nav];
     
     // 3.添加tabbar内部的按钮
     [self.customTabBar addTabBarButtonWithItem:childVc.tabBarItem];

@@ -25,73 +25,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.navTitle = self.titleName;
     if (!_sectionsArray) {
         _sectionsArray =[[NSMutableArray alloc] init];
     }
     _sectionsArray=[NSMutableArray arrayWithObjects:@"morebannercell",@"morerecommendcell",@"moresubscribecell", nil];
     //
-    [self extendheadView];
     [self initMainUI];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(void)dealloc
-{
-    
-}
-//head UI
--(void)extendheadView
-{
-    //
-    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-    searchButton.tag =10;
-    searchButton.hidden=NO;
-    searchButton.titleLabel.font =FONT(14);
-    [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
-    [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [self.headView  addSubview:searchButton];
-}
-
-
--(void)headerClickEvent:(id)sender
-{
-    UIButton *btn =(UIButton *)sender;
-    switch (btn.tag) {
-        case 0:
-        {
-            if (self.navigationController) {
-                if (self.navigationController.viewControllers.count == 1) {
-                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                } else {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        }
-            break;
-        case 10://搜索 #import "SearchViewController.h"
-        {
-            SearchViewController *download =[[SearchViewController alloc] init];
-            [self.navigationController pushViewController:download animated:YES];
-            
-        }
-            break;
-        default:
-            break;
-    }
-}
 //main UI
 -(void)initMainUI
 {
-    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT) style:UITableViewStylePlain];
+    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT) style:UITableViewStylePlain];
     _tableview.dataSource=self;
     _tableview.delegate=self;
     _tableview.showsVerticalScrollIndicator = NO;

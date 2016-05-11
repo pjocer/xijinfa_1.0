@@ -17,4 +17,5 @@
 #import "MoreBannerCell.h"
 #import "MoreRecommendCell.h"
 #import "MoreSubscribeCell.h"
+#import "playerConfigure.h"
 #import "XRCarouselView.h"
