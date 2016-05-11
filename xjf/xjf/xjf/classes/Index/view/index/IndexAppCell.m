@@ -27,8 +27,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        self.dataTitle = @[@"金融百科",@"析金学堂",@"从业培训",@"金融资讯"];
-        self.dataImage = @[@"home_wiki",@"home_lesson",@"home_traning",@"home_news"];
+        if (!self.dataTitle || !self.dataImage) {
+            self.dataTitle = @[@"金融百科",@"析金学堂",@"从业培训",@"金融资讯"];
+            self.dataImage = @[@"home_wiki",@"home_lesson",@"home_traning",@"home_news"];
+        }
         self.backgroundColor = [UIColor whiteColor];
         _gridView = [[UzysGridView alloc] initWithFrame:self.bounds numOfRow:1 numOfColumns:4 cellMargin:0.01];
         _gridView.delegate = self;
@@ -83,7 +85,7 @@
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
 {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_Unknow,nil,self.data,nil,self.indexPath);
+        self.actionBlock(BEventType_Unknow,nil,self.dataTitle,[NSString stringWithFormat:@"%ld",index],self.indexPath);
     }
 }
 

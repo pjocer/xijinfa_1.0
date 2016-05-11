@@ -49,22 +49,24 @@
 {
     //
     UIButton *hisButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    hisButton.frame = CGRectMake(SCREENWITH -160, 20+(HEADHEIGHT-20-25)/2, 30, 25);
     hisButton.tag =10;
     hisButton.hidden = NO;
-    hisButton.titleLabel.font =FONT(14);
-    [hisButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [hisButton setTitle:@"历史" forState:UIControlStateNormal];
+    [hisButton setImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
+    hisButton.backgroundColor = [UIColor yellowColor];
     [hisButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
     [self.headView addSubview:hisButton];
+    [hisButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(-11);
+//        make.centerY.mas_equalTo(23);
+//        make.size.mas_equalTo(CGSizeMake(35, 35));
+       
+    }];
     //
     UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
     downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+     [downButton setImage:[UIImage imageNamed:@"history"] forState:UIControlStateNormal];
     downButton.tag =11;
     downButton.hidden=NO;
-    downButton.titleLabel.font =FONT(14);
-    [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [downButton setTitle:@"下载" forState:UIControlStateNormal];
     [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
     [self.headView  addSubview:downButton];
     //
@@ -72,9 +74,6 @@
     searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
     searchButton.tag =12;
     searchButton.hidden=NO;
-    searchButton.titleLabel.font =FONT(14);
-    [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-    [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
     [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
     [self.headView  addSubview:searchButton];
 }
@@ -284,46 +283,81 @@
     }
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSString *sectionTitle =[self.sectionsArray objectAtIndex:indexPath.section];
-    if ([sectionTitle isEqualToString:@"bannercell"])
-    {
-        
-    }else if ([sectionTitle isEqualToString:@"appcell"])
-    {
-        
-    }else if ([sectionTitle isEqualToString:@"talkcell"])
-    {
-        
-    }
-    else if ([sectionTitle isEqualToString:@"baikecell"])
-    {
-        
-    }
-    else if ([sectionTitle isEqualToString:@"teachercell"])
-    {
-        
-    }
-    else if ([sectionTitle isEqualToString:@"coursecell"])
-    {
-        
-    }
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    NSString *sectionTitle =[self.sectionsArray objectAtIndex:indexPath.section];
+//    if ([sectionTitle isEqualToString:@"bannercell"])
+//    {
+//        
+//    }else if ([sectionTitle isEqualToString:@"appcell"])
+//    {
+//        
+//    }else if ([sectionTitle isEqualToString:@"talkcell"])
+//    {
+//        
+//    }
+//    else if ([sectionTitle isEqualToString:@"baikecell"])
+//    {
+//        
+//    }
+//    else if ([sectionTitle isEqualToString:@"teachercell"])
+//    {
+//        
+//    }
+//    else if ([sectionTitle isEqualToString:@"coursecell"])
+//    {
+//        
+//    }
+//}
 -(void)cellAction:(BEventType)type views:(UIView *)v obj:(id)obj key:(id)key indexPath:(NSIndexPath *)indexPath
 {
     switch (type)
     {
         case BEventType_Unknow:
             
-            
-            
-        
-            
+            if (indexPath.section == 0) {
+                XRCarouselView *carouselView = obj;
+                carouselView.imageClickBlock = ^(NSInteger index) {
+                    NSLog(@"第%ld张图片被点击", index);
+                };
+            }
+            else if (indexPath.section == 1) {
+                
+                if ([key isEqualToString:@"0"]) {
+                        NSLog(@"%@",obj[0]);
+                }else if ([key isEqualToString:@"1"]){
+                        NSLog(@"%@",obj[1]);
+                }else if ([key isEqualToString:@"2"]){
+                        NSLog(@"%@",obj[2]);
+                }else if ([key isEqualToString:@"3"]){
+                        NSLog(@"%@",obj[3]);
+                }
+                
+            }
+            else if (indexPath.section == 2){
+                //金融百科
+            }
+            else if (indexPath.section == 3){
+                //析金学堂
+            }
+            else if (indexPath.section == 4){
+                //人气讲师
+            }
+            else if (indexPath.section == 5){
+                //从业培训
+            }
+
             break;
         case BEventType_More:
         {
+            if (indexPath.section == 2) {
+                //金融百科更多
+            }
+            else if (indexPath.section == 3){
+                //析金学堂更多
+            }
+            
             IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
             [self.navigationController pushViewController:more animated:YES];
         }

@@ -7,7 +7,6 @@
 //
 
 #import "IndexBannerCell.h"
-
 #import "XRCarouselView.h"
 @interface IndexBannerCell()<XRCarouselViewDelegate>
 {
@@ -38,9 +37,9 @@
         //设置每张图片的停留时间
         _carouselView.time = 5;
         //用block处理图片点击
-        _carouselView.imageClickBlock = ^(NSInteger index) {
-            NSLog(@"第%ld张图片被点击", index);
-        };
+//        _carouselView.imageClickBlock = ^(NSInteger index) {
+//            NSLog(@"第%ld张图片被点击", index);
+//        };
 
         //设置分页控件的图片
 //        [_carouselView setPageImage:[UIImage imageNamed:@"other"] andCurrentImage:[UIImage imageNamed:@"current"]];
@@ -85,8 +84,10 @@
     return 175;
     
 }
-//- (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
-//{
-//    
-//}
+- (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
+{
+    if (self.actionBlock) {
+        self.actionBlock(BEventType_Unknow,nil,self.carouselView,nil,self.indexPath);
+    }
+}
 @end
