@@ -19,3 +19,8 @@
 #import "MoreSubscribeCell.h"
 #import "playerConfigure.h"
 #import "XRCarouselView.h"
+#import "WikipediaViewController.h"
+#import "WikiBannerView.h"
+#import "WikiSectionHeaderView.h"
+#import "WikiTalkGridViewCell.h"
+#import "WikiFirstSectionCell.h"

@@ -107,33 +107,33 @@ NSString * const Subscribe = @"SubscribeViewController";
         [self.headView  addSubview:searchButton];
     }else if ([name isEqualToString:Index]) {
         _titleLabel.text = @"首页";
+       
         UIButton *hisButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        hisButton.frame = CGRectMake(SCREENWITH -160, 20+(HEADHEIGHT-20-25)/2, 30, 25);
+        hisButton.frame = CGRectMake(SCREENWITH -90, 20+(HEADHEIGHT-20-25)/2, 30, 30);
         hisButton.tag =10;
         hisButton.hidden = NO;
-        hisButton.titleLabel.font =FONT(14);
-        [hisButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-        [hisButton setTitle:@"历史" forState:UIControlStateNormal];
+        [hisButton setImage:[UIImage imageNamed:@"history"] forState:UIControlStateNormal];
+        hisButton.contentMode = UIViewContentModeScaleToFill;
         [hisButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView addSubview:hisButton];
+        
         UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        downButton.frame = CGRectMake(SCREENWITH -40, 20+(HEADHEIGHT-20-25)/2, 30, 30);
         downButton.tag =11;
         downButton.hidden=NO;
         downButton.titleLabel.font =FONT(14);
-        [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-        [downButton setTitle:@"下载" forState:UIControlStateNormal];
+        [downButton setImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
         [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView  addSubview:downButton];
+        
         UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
+        searchButton.frame = CGRectMake(SCREENWITH -140, 20+(HEADHEIGHT-20-25)/2, 30, 30);
         searchButton.tag =12;
         searchButton.hidden=NO;
-        searchButton.titleLabel.font =FONT(14);
-        [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-        [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
+        [searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
         [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView  addSubview:searchButton];
+        
     }else if ([name isEqualToString:Subscribe]) {
         _titleLabel.text = @"订阅";
     }else if ([name isEqualToString:Topic]) {

@@ -8,15 +8,15 @@
 
 #import "IndexViewController.h"
 #import "IndexConfigure.h"
+
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray *sectionsArray;
+
 @end
 
 @implementation IndexViewController
-@synthesize tableview=_tableview;
-@synthesize sectionsArray=_sectionsArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,92 +31,6 @@
  
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (void)dealloc
-{
-    self.sectionsArray=nil;
-}
-////head UI
-//-(void)extendheadView
-//{
-////    [self initHeaderView];
-//    //
-//    UIButton *hisButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    hisButton.frame = CGRectMake(SCREENWITH -160, 20+(HEADHEIGHT-20-25)/2, 30, 25);
-//    hisButton.tag =10;
-//    hisButton.hidden = NO;
-//    hisButton.titleLabel.font =FONT(14);
-//    [hisButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-//    [hisButton setTitle:@"历史" forState:UIControlStateNormal];
-//    [hisButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.headView addSubview:hisButton];
-//    //
-//    UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-//    downButton.tag =11;
-//    downButton.hidden=NO;
-//    downButton.titleLabel.font =FONT(14);
-//    [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-//    [downButton setTitle:@"下载" forState:UIControlStateNormal];
-//    [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.headView  addSubview:downButton];
-//    //
-//    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-//    searchButton.tag =12;
-//    searchButton.hidden=NO;
-//    searchButton.titleLabel.font =FONT(14);
-//    [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-//    [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
-//    [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.headView  addSubview:searchButton];
-//}
-//
-//
-//-(void)headerClickEvent:(id)sender
-//{
-//    UIButton *btn =(UIButton *)sender;
-//    switch (btn.tag) {
-//        case 0:
-//        {
-//            if (self.navigationController) {
-//                if (self.navigationController.viewControllers.count == 1) {
-//                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-//                } else {
-//                    [self.navigationController popViewControllerAnimated:YES];
-//                }
-//            } else {
-//                [self dismissViewControllerAnimated:YES completion:nil];
-//            }
-//        }
-//            break;
-//        case 10://历史
-//        {
-//            PlayerHistoryViewController *history =[[PlayerHistoryViewController alloc] init];
-//            [self.navigationController pushViewController:history animated:YES];
-//        }
-//            break;
-//        case 11://下载
-//        {
-//            PlayerDownLoadViewController *download =[[PlayerDownLoadViewController alloc] init];
-//            [self.navigationController pushViewController:download animated:YES];
-//        }
-//            break;
-//        case 12://搜索 #import "SearchViewController.h"
-//        {
-//            SearchViewController *download =[[SearchViewController alloc] init];
-//            [self.navigationController pushViewController:download animated:YES];
-//            
-//        }
-//            break;
-//        default:
-//            break;
-//    }
-//}
-//main UI
 -(void)initMainUI
 {
     _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-45) style:UITableViewStyleGrouped];
@@ -128,6 +42,7 @@
     [self.view addSubview:_tableview];
     _tableview.tableFooterView = [self footerView:@""];
 }
+
 //tableview
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -280,33 +195,7 @@
     }
     return cell;
 }
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    NSString *sectionTitle =[self.sectionsArray objectAtIndex:indexPath.section];
-//    if ([sectionTitle isEqualToString:@"bannercell"])
-//    {
-//        
-//    }else if ([sectionTitle isEqualToString:@"appcell"])
-//    {
-//        
-//    }else if ([sectionTitle isEqualToString:@"talkcell"])
-//    {
-//        
-//    }
-//    else if ([sectionTitle isEqualToString:@"baikecell"])
-//    {
-//        
-//    }
-//    else if ([sectionTitle isEqualToString:@"teachercell"])
-//    {
-//        
-//    }
-//    else if ([sectionTitle isEqualToString:@"coursecell"])
-//    {
-//        
-//    }
-//}
+
 -(void)cellAction:(BEventType)type views:(UIView *)v obj:(id)obj key:(id)key indexPath:(NSIndexPath *)indexPath
 {
     switch (type)
@@ -322,7 +211,9 @@
             else if (indexPath.section == 1) {
                 
                 if ([key isEqualToString:@"0"]) {
-                        NSLog(@"%@",obj[0]);
+                    
+                    [self.navigationController pushViewController:[WikipediaViewController new] animated:YES];
+                    
                 }else if ([key isEqualToString:@"1"]){
                         NSLog(@"%@",obj[1]);
                 }else if ([key isEqualToString:@"2"]){
@@ -350,13 +241,14 @@
         {
             if (indexPath.section == 2) {
                 //金融百科更多
+       
             }
             else if (indexPath.section == 3){
                 //析金学堂更多
             }
             
-            IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
-            [self.navigationController pushViewController:more animated:YES];
+//            IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
+//            [self.navigationController pushViewController:more animated:YES];
         }
             break;
     }

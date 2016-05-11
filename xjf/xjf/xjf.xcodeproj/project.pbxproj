@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */; };
+		5A240DF81CE33E49003B7971 /* WikiBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF71CE33E49003B7971 /* WikiBannerView.m */; };
+		5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */; };
+		5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */; };
+		5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
@@ -101,6 +106,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaViewController.h; sourceTree = "<group>"; };
+		5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikipediaViewController.m; sourceTree = "<group>"; };
+		5A240DF61CE33E49003B7971 /* WikiBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiBannerView.h; sourceTree = "<group>"; };
+		5A240DF71CE33E49003B7971 /* WikiBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiBannerView.m; sourceTree = "<group>"; };
+		5A240DF91CE33E99003B7971 /* WikiSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiSectionHeaderView.h; sourceTree = "<group>"; };
+		5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiSectionHeaderView.m; sourceTree = "<group>"; };
+		5A240DFC1CE34238003B7971 /* WikiFirstSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WikiFirstSectionCell.h; path = ../index/WikiFirstSectionCell.h; sourceTree = "<group>"; };
+		5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiFirstSectionCell.m; path = ../index/WikiFirstSectionCell.m; sourceTree = "<group>"; };
+		5A240DFF1CE34377003B7971 /* WikiTalkGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WikiTalkGridViewCell.h; path = ../index/WikiTalkGridViewCell.h; sourceTree = "<group>"; };
+		5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiTalkGridViewCell.m; path = ../index/WikiTalkGridViewCell.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
@@ -325,6 +340,21 @@
 				AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5A240DF51CE33DD2003B7971 /* Wikipedia */ = {
+			isa = PBXGroup;
+			children = (
+				5A240DF61CE33E49003B7971 /* WikiBannerView.h */,
+				5A240DF71CE33E49003B7971 /* WikiBannerView.m */,
+				5A240DF91CE33E99003B7971 /* WikiSectionHeaderView.h */,
+				5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */,
+				5A240DFC1CE34238003B7971 /* WikiFirstSectionCell.h */,
+				5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */,
+				5A240DFF1CE34377003B7971 /* WikiTalkGridViewCell.h */,
+				5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */,
+			);
+			path = Wikipedia;
 			sourceTree = "<group>";
 		};
 		644C10C01CBA61AC00892E2C /* UzysGridView */ = {
@@ -559,6 +589,8 @@
 				CD1CCC5E1CB39CE1002FC0C9 /* SearchViewController.m */,
 				CD0668711CBB4BC9003CF45A /* IndexMoreViewController.h */,
 				CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */,
+				5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */,
+				5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -573,6 +605,7 @@
 		CD1CCBF91CB35A2D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5A240DF51CE33DD2003B7971 /* Wikipedia */,
 				CD144EEF1CBB732900A0636D /* index */,
 				CD144F081CBB732900A0636D /* more */,
 			);
@@ -1120,6 +1153,7 @@
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
 				CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */,
+				5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */,
 				D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */,
 				644C116A1CBA90FF00892E2C /* LPPopup.m in Sources */,
 				CD416DA91CBC9D910097A5E9 /* HomeView.m in Sources */,
@@ -1143,6 +1177,7 @@
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
 				CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
+				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
 				CD1CCC2A1CB36D61002FC0C9 /* ZFTabBarButton.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
@@ -1153,6 +1188,8 @@
 				CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */,
 				644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */,
 				CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */,
+				644C111E1CBA8BC900892E2C /* UserNavigationController.m in Sources */,
+				5A240DF81CE33E49003B7971 /* WikiBannerView.m in Sources */,
 				CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				644C10F61CBA7F0B00892E2C /* TopicCell.m in Sources */,
@@ -1160,6 +1197,7 @@
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
+				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
 				CD416D951CBC85B90097A5E9 /* SCNavTabBarController.m in Sources */,
@@ -1178,6 +1216,7 @@
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
 				644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */,
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,
+				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */,
 				CD1CCC141CB35A2D002FC0C9 /* SubscribeViewController.m in Sources */,
 				CD1CCC281CB36D61002FC0C9 /* ZFBadgeButton.m in Sources */,
