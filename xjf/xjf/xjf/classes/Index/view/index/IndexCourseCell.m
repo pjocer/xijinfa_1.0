@@ -79,20 +79,14 @@
 -(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index
 {
     CourseGridViewCell *cell = [[CourseGridViewCell alloc] initWithFrame:CGRectNull];
-    cell.deletable = NO;
     return cell;
-}
--(void)handleSingleTapFrom
-{
-    if (self.actionBlock) {
-        self.actionBlock(BEventType_More,nil,self.data,nil,self.indexPath);
-    }
 }
 
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
 {
+    
     if (self.actionBlock) {
-        self.actionBlock(BEventType_More,nil,self.data,nil,self.indexPath);
+        self.actionBlock(BEventType_Unknow,nil,self.data,nil,self.indexPath);
     }
     
 }

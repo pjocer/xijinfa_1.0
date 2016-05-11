@@ -85,8 +85,8 @@
     return 175;
     
 }
-- (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
-{
-    
-}
+//- (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
+//{
+//    
+//}
 @end

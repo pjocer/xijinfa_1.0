@@ -316,6 +316,11 @@
     switch (type)
     {
         case BEventType_Unknow:
+            
+            
+            
+        
+            
             break;
         case BEventType_More:
         {

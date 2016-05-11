@@ -187,7 +187,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *sectionTitle =[self.sectionsArray objectAtIndex:indexPath.section];
-    if ([sectionTitle isEqualToString:@"morebannercell"])
+    if ([sectionTitle isEqualToString:@"morerecommendcell"])
     {
         
     }
