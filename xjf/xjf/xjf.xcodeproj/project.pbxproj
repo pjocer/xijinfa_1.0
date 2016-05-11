@@ -94,6 +94,7 @@
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
 		CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
+		D046B9501CE2D646003EF74E /* XJFNavgationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D046B94F1CE2D646003EF74E /* XJFNavgationBar.m */; };
 		D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */; };
 		D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534981CE1AE1F00F0047B /* UIView+Addtion.m */; };
 		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
@@ -292,6 +293,8 @@
 		CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF57AD21C9F825D00049AF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D046B94E1CE2D646003EF74E /* XJFNavgationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFNavgationBar.h; sourceTree = "<group>"; };
+		D046B94F1CE2D646003EF74E /* XJFNavgationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFNavgationBar.m; sourceTree = "<group>"; };
 		D05843A31CDC5F7C00B1363C /* ZFPlayerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerSingleton.h; sourceTree = "<group>"; };
 		D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerSingleton.m; sourceTree = "<group>"; };
 		D08534971CE1AE1F00F0047B /* UIView+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addtion.h"; sourceTree = "<group>"; };
@@ -745,6 +748,8 @@
 				CD1CCC181CB36386002FC0C9 /* controller */,
 				CD1CCC1B1CB36386002FC0C9 /* model */,
 				CD1CCC1C1CB36386002FC0C9 /* view */,
+				D046B94E1CE2D646003EF74E /* XJFNavgationBar.h */,
+				D046B94F1CE2D646003EF74E /* XJFNavgationBar.m */,
 			);
 			name = Base;
 			path = classes/Base;
@@ -753,8 +758,8 @@
 		CD1CCC181CB36386002FC0C9 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				CD1CCC191CB36386002FC0C9 /* BaseViewController.m */,
 				CD1CCC1A1CB36386002FC0C9 /* BaseViewController.h */,
+				CD1CCC191CB36386002FC0C9 /* BaseViewController.m */,
 				CD1CCC1E1CB363F5002FC0C9 /* RootViewController.h */,
 				CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */,
 				CD144F471CBB95E000A0636D /* BaseUINavigationController.h */,
@@ -1130,6 +1135,7 @@
 				CD416DA91CBC9D910097A5E9 /* HomeView.m in Sources */,
 				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
+				D046B9501CE2D646003EF74E /* XJFNavgationBar.m in Sources */,
 				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				CD416D9B1CBC8C9D0097A5E9 /* MenuHrizontal.m in Sources */,
 				644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */,

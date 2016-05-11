@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "UserNavigationController.h"
-
+#import "XJFNavgationBar.h"
 @interface BaseViewController ()<UserDelegate>
 
 @property(nonatomic,strong) UIButton *backButton;
@@ -68,7 +68,6 @@
 {
     _headView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, HEADHEIGHT)];
     _headView.backgroundColor = [UIColor whiteColor];
-    //
     
     UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(8, 15+(HEADHEIGHT-20-20)/2, 35, 35)];
     iconImage.image = [UIImage imageNamed:@"Logo"];
