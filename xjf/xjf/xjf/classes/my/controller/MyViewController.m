@@ -14,7 +14,7 @@
 #import "UserComponentCell.h"
 @interface MyViewController ()<UITableViewDataSource, UITableViewDelegate,UserDelegate,UserComponentCellDelegate>
 {
-    
+
 }
 @property(nonatomic,strong)UITableView *tableview;
 @end
@@ -98,7 +98,7 @@
     _tableview.delegate=self;
     _tableview.showsVerticalScrollIndicator = NO;
     _tableview.backgroundColor = [UIColor clearColor];
-    
+
     [self.view addSubview:_tableview];
     [_tableview registerNib:[UINib nibWithNibName:@"UserUnLoadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserUnLoadCell"];
     [_tableview registerClass:[UserComponentCell class] forCellReuseIdentifier:@"UserComponentCell"];
@@ -149,13 +149,13 @@
 
 #pragma UserDelegate
 - (void)userLoginOK:(id)userinfo {
-    
+
 }
 - (void)userLoginFail {
-    
+
 }
 - (void)userDidCancel {
-    
+
 }
 
 #pragma UserComponentDelegate
@@ -164,37 +164,37 @@
     NSLog(@"%lu",index);
     switch (index) {
         case 0:
-            
+
             break;
         case 1:
-            
+
             break;
         case 2:
-            
+
             break;
         case 3:
-            
+
             break;
         case 4:
-            
+
             break;
         case 5:
-            
+
             break;
         case 6:
-            
+
             break;
         case 7:
-            
+
             break;
         case 8:
-            
+
             break;
         case 9:
-            
+
             break;
         case 10:
-            
+
             break;
         default:
             break;

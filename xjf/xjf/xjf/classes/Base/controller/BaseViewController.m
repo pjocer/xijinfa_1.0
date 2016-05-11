@@ -70,11 +70,11 @@
     _headView.backgroundColor = [UIColor whiteColor];
     //
     
-    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10+(HEADHEIGHT-20-20)/2, 35, 35)];
+    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(8, 15+(HEADHEIGHT-20-20)/2, 35, 35)];
     iconImage.image = [UIImage imageNamed:@"Logo"];
     [_headView addSubview:iconImage];
     
-    _titleLabel =[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImage.frame)+8, 20+(HEADHEIGHT-20-20)/2, self.view.frame.size.width/2, 20)];
+    _titleLabel =[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImage.frame)+8, 21+(HEADHEIGHT-20-20)/2, self.view.frame.size.width/2, 20)];
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.textColor = [UIColor blackColor];
     _titleLabel.textAlignment = NSTextAlignmentLeft;
