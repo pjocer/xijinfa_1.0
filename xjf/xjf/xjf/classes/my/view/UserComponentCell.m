@@ -22,15 +22,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        self.icon = [[UIImageView alloc]initWithFrame:CGRectMake(0,0, 25, 25)];
+        self.icon = [[UIImageView alloc]initWithFrame:CGRectZero];
         [self addSubview:_icon];
-        self.icon.center = self.center;
         
-        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 16, 40)];
+        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectZero];
         [self addSubview:_titleLabel];
         self.titleLabel.textAlignment = 1;
-        self.titleLabel.center = CGPointMake(CGRectGetMaxX(_icon.frame), CGRectGetMaxY(_icon.frame)+10);
-        self.titleLabel.font = FONT13;
+        self.titleLabel.font = FONT12;
         
     }
     return self;
@@ -47,8 +45,17 @@
 }
 -(void)layoutSubviews {
     [super layoutSubviews];
-    _icon.frame = CGRectMake(40,45, 25, 25);
-    _titleLabel.frame = CGRectMake(40, 5, 16, 40);
+    CGFloat x_icon = self.frame.size.width/2.0;
+    CGFloat y_icon = self.frame.size.height/2.0-17.5f;
+    CGPoint center_icon = CGPointMake(x_icon, y_icon);
+    _icon.frame = CGRectMake(0,0, 25, 25);
+    _icon.center = center_icon;
+    
+    CGFloat x_titleLabel = self.frame.size.width/2.0;
+    CGFloat y_titleLabel = self.frame.size.height/2.0+17.5f;
+    CGPoint center_titleLabel = CGPointMake(x_titleLabel, y_titleLabel);
+    _titleLabel.frame = CGRectMake(0, 0, 80, 13);
+    _titleLabel.center = center_titleLabel;
 }
 @end
 
@@ -78,7 +85,6 @@
 }
 -(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     UserComponent *component = [[UserComponent alloc]initWithFrame:CGRectNull];
-    component.deletable = NO;
     if (index != 11) {
         UIImage *image = [UIImage imageNamed:self.images[index]];
         component.image = image;
@@ -87,7 +93,9 @@
     return component;
 }
 -(void) gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index {
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(componentDidSelected:)]) {
+        [self.delegate componentDidSelected:index];
+    }
 }
 -(NSMutableArray *)images {
     if (_images == nil || !_images) {

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "myConfigure.h"
 @interface UserComponentCell : UITableViewCell
+
+@property (nonatomic, weak)id <UserComponentCellDelegate> delegate;
 
 @end

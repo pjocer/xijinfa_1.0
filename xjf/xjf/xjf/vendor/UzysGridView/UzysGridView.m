@@ -645,7 +645,6 @@
 #pragma - UzysGridView callback
 - (void)cellWasSelected:(UzysGridViewCell *)cell
 {
-    NSLog(@"Cellwasselected");
     if (delegate && [delegate respondsToSelector:@selector(gridView:didSelectCell:atIndex:)]) {
         [delegate gridView:self didSelectCell:cell atIndex:cell.index];
     }
@@ -990,7 +989,6 @@
                 case 0: //오랫동안 길게 누른경우
                 {
                     CGPoint curPos = [touch locationInView:self];
-                    NSLog(@"CELL Frame:%@",NSStringFromCGRect(cell.frame));
                     if(CGRectContainsPoint(cell.frame, curPos))
                     {
                         //select
@@ -1021,8 +1019,6 @@
         }
 
     }
-    
-    NSLog(@"TE");
 }
 
 -(void) gridViewCell:(UzysGridViewCell *)cell touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event

@@ -30,7 +30,8 @@
     self = [super initWithFrame:frame];
     if (self) {
          // Initialization code       
-        deletable = YES;
+        deletable = NO;
+        [self setEdit:NO];
         ButtonDelete = [UIButton buttonWithType:UIButtonTypeCustom];
         [ButtonDelete addTarget:self action:@selector(BtnActionDelete) forControlEvents:UIControlEventTouchUpInside];
         [ButtonDelete setImage:[UIImage imageNamed:@"icon_del.png"] forState:UIControlStateNormal];
@@ -88,9 +89,6 @@
         [self.delegate gridViewCell:self touchesBegan:touches withEvent:event];        
     }
 	[super touchesBegan:touches withEvent:event];
-
-    NSLog(@"TB");
-    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -125,13 +123,10 @@
 
 - (void) BtnActionDelete;
 {
-    NSLog(@"Delete Button %d",self.index);
-
     if(self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:didDelete:)])
     {
         [self.delegate gridViewCell:self didDelete:self.index];        
-    }
-    
+    }   
 }
 
 /*

@@ -8,3 +8,9 @@
 
 #import "SettingViewController.h"
 #import "UserUnLoadCell.h"
+
+@protocol UserComponentCellDelegate <NSObject>
+
+- (void)componentDidSelected:(NSUInteger)index;
+
+@end

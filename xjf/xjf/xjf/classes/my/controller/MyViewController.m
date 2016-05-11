@@ -12,7 +12,7 @@
 #import "LoginViewController.h"
 #import "UserDelegate.h"
 #import "UserComponentCell.h"
-@interface MyViewController ()<UITableViewDataSource, UITableViewDelegate,UserDelegate>
+@interface MyViewController ()<UITableViewDataSource, UITableViewDelegate,UserDelegate,UserComponentCellDelegate>
 {
     
 }
@@ -132,6 +132,7 @@
     }else {
         UserComponentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserComponentCell" forIndexPath:indexPath];
         cell.backgroundColor = BackgroundColor;
+        cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -157,12 +158,47 @@
     
 }
 
-//-(void)cellAction:(BEventType)type views:(UIView *)v obj:(id)obj key:(id)key indexPath:(NSIndexPath *)indexPath
-//{
-//    switch (type)
-//    {
-//        case BEventType_Unknow:
-//            break;
-//    }
-//}
+#pragma UserComponentDelegate
+
+-(void)componentDidSelected:(NSUInteger)index {
+    NSLog(@"%lu",index);
+    switch (index) {
+        case 0:
+            
+            break;
+        case 1:
+            
+            break;
+        case 2:
+            
+            break;
+        case 3:
+            
+            break;
+        case 4:
+            
+            break;
+        case 5:
+            
+            break;
+        case 6:
+            
+            break;
+        case 7:
+            
+            break;
+        case 8:
+            
+            break;
+        case 9:
+            
+            break;
+        case 10:
+            
+            break;
+        default:
+            break;
+    }
+}
+
 @end

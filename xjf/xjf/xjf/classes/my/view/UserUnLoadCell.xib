@@ -24,7 +24,7 @@
                         <color key="textColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="o4c-X2-dXb">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_unload" translatesAutoresizingMaskIntoConstraints="NO" id="o4c-X2-dXb">
                         <rect key="frame" x="20" y="20" width="75" height="75"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="75" id="Vi1-mF-zjX"/>
@@ -32,7 +32,10 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录/注册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eut-b1-RmS">
-                        <rect key="frame" x="115" y="44" width="74" height="27"/>
+                        <rect key="frame" x="115" y="44" width="74" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="q4V-DP-cOS"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -49,6 +52,12 @@
                     <constraint firstItem="eut-b1-RmS" firstAttribute="leading" secondItem="o4c-X2-dXb" secondAttribute="trailing" constant="20" id="y3a-fY-2nE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gDp-Fc-SBX" secondAttribute="trailing" constant="-8" id="ySd-No-tUv"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="csX-Dz-q55"/>
+                        <exclude reference="wC1-E1-G2V"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="bottomLine" destination="gDp-Fc-SBX" id="twt-2s-hYd"/>
@@ -58,6 +67,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Logo" width="29" height="29"/>
+        <image name="user_unload" width="55" height="55"/>
     </resources>
 </document>
