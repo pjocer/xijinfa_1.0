@@ -7,6 +7,6 @@
 //
 #import "PlayerBaseViewController.h"
 
-@interface PlayerViewController : UIViewController
+@interface PlayerViewController : PlayerBaseViewController
 @property(nonatomic,strong)NSString *playUrl;
 @end

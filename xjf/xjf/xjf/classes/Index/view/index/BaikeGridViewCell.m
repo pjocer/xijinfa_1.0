@@ -38,7 +38,8 @@
         self.titleLable = [[UILabel alloc] init];
         [self addSubview:self.titleLable];
         self.titleLable.textColor = [UIColor xjfStringToColor:@"#444444"];
-        self.titleLable.text = @"XXXXXXXXXX";
+        self.titleLable.text = @"XXXXXXXXXXXXXXXXXXXXXXXXXX";
+        self.titleLable.numberOfLines = 2;
         self.titleLable.font = FONT15;
 
         //teacherLable
@@ -79,7 +80,7 @@
         make.top.equalTo(self.titleImage);
         make.left.mas_equalTo(self.titleImage.mas_right).with.offset(10);
         make.right.mas_equalTo(self.backgroundView);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(40);
     }];
     
     //classesLable

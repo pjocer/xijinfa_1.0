@@ -22,6 +22,18 @@ static NSString * wikiSectionHeaderView_HeaderId = @"wikiSectionHeaderView_Heade
 static NSString * talkGridViewCell_Id = @"talkGridViewCell_Id";
 static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigation];
@@ -50,7 +62,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
         _layout.minimumLineSpacing = 0.0;   //最小列间距默认10
     _layout.minimumInteritemSpacing = 0.0;//左右间隔
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 64) collectionViewLayout:_layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
     
@@ -139,7 +151,10 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if (indexPath.section == 1) {
+        PlayerViewController *player = [[PlayerViewController alloc] init];
+        [self.navigationController pushViewController:player animated:YES];
+    }
   
 }
 

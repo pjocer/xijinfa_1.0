@@ -247,8 +247,8 @@
                 //析金学堂更多
             }
             
-//            IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
-//            [self.navigationController pushViewController:more animated:YES];
+            IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
+            [self.navigationController pushViewController:more animated:YES];
         }
             break;
     }

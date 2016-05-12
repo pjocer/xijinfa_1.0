@@ -12,6 +12,13 @@
 		5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */; };
 		5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */; };
 		5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */; };
+		5A240E041CE426A3003B7971 /* PlayerPageDescribeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E031CE426A3003B7971 /* PlayerPageDescribeHeaderView.m */; };
+		5A240E071CE4270F003B7971 /* PlayerPageDescribeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E061CE4270F003B7971 /* PlayerPageDescribeFooterView.m */; };
+		5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E091CE42738003B7971 /* PlayerPageRecommendedHeaderView.m */; };
+		5A240E0D1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E0C1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m */; };
+		5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E0F1CE42774003B7971 /* PlayerPageCommentsFooterView.m */; };
+		5A240E131CE427A3003B7971 /* PlayerPageDescribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E121CE427A3003B7971 /* PlayerPageDescribeCell.m */; };
+		5A240E161CE427C0003B7971 /* PlayerPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E151CE427C0003B7971 /* PlayerPageCommentsCell.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
@@ -116,6 +123,20 @@
 		5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiFirstSectionCell.m; path = ../index/WikiFirstSectionCell.m; sourceTree = "<group>"; };
 		5A240DFF1CE34377003B7971 /* WikiTalkGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WikiTalkGridViewCell.h; path = ../index/WikiTalkGridViewCell.h; sourceTree = "<group>"; };
 		5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiTalkGridViewCell.m; path = ../index/WikiTalkGridViewCell.m; sourceTree = "<group>"; };
+		5A240E021CE426A3003B7971 /* PlayerPageDescribeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageDescribeHeaderView.h; path = xjf/classes/Index/view/index/PlayerPageDescribeHeaderView.h; sourceTree = SOURCE_ROOT; };
+		5A240E031CE426A3003B7971 /* PlayerPageDescribeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageDescribeHeaderView.m; path = xjf/classes/Index/view/index/PlayerPageDescribeHeaderView.m; sourceTree = SOURCE_ROOT; };
+		5A240E051CE4270F003B7971 /* PlayerPageDescribeFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageDescribeFooterView.h; path = xjf/classes/Index/view/index/PlayerPageDescribeFooterView.h; sourceTree = SOURCE_ROOT; };
+		5A240E061CE4270F003B7971 /* PlayerPageDescribeFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageDescribeFooterView.m; path = xjf/classes/Index/view/index/PlayerPageDescribeFooterView.m; sourceTree = SOURCE_ROOT; };
+		5A240E081CE42738003B7971 /* PlayerPageRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageRecommendedHeaderView.h; path = xjf/classes/Index/view/index/PlayerPageRecommendedHeaderView.h; sourceTree = SOURCE_ROOT; };
+		5A240E091CE42738003B7971 /* PlayerPageRecommendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageRecommendedHeaderView.m; path = xjf/classes/Index/view/index/PlayerPageRecommendedHeaderView.m; sourceTree = SOURCE_ROOT; };
+		5A240E0B1CE4275B003B7971 /* PlayerPageCommentsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageCommentsHeaderView.h; path = xjf/classes/Index/view/index/PlayerPageCommentsHeaderView.h; sourceTree = SOURCE_ROOT; };
+		5A240E0C1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageCommentsHeaderView.m; path = xjf/classes/Index/view/index/PlayerPageCommentsHeaderView.m; sourceTree = SOURCE_ROOT; };
+		5A240E0E1CE42774003B7971 /* PlayerPageCommentsFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageCommentsFooterView.h; path = xjf/classes/Index/view/index/PlayerPageCommentsFooterView.h; sourceTree = SOURCE_ROOT; };
+		5A240E0F1CE42774003B7971 /* PlayerPageCommentsFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageCommentsFooterView.m; path = xjf/classes/Index/view/index/PlayerPageCommentsFooterView.m; sourceTree = SOURCE_ROOT; };
+		5A240E111CE427A3003B7971 /* PlayerPageDescribeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageDescribeCell.h; path = xjf/classes/Index/view/index/PlayerPageDescribeCell.h; sourceTree = SOURCE_ROOT; };
+		5A240E121CE427A3003B7971 /* PlayerPageDescribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageDescribeCell.m; path = xjf/classes/Index/view/index/PlayerPageDescribeCell.m; sourceTree = SOURCE_ROOT; };
+		5A240E141CE427C0003B7971 /* PlayerPageCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageCommentsCell.h; path = xjf/classes/Index/view/index/PlayerPageCommentsCell.h; sourceTree = SOURCE_ROOT; };
+		5A240E151CE427C0003B7971 /* PlayerPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageCommentsCell.m; path = xjf/classes/Index/view/index/PlayerPageCommentsCell.m; sourceTree = SOURCE_ROOT; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
@@ -875,6 +896,20 @@
 		CD1CCC511CB39B3D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5A240E021CE426A3003B7971 /* PlayerPageDescribeHeaderView.h */,
+				5A240E031CE426A3003B7971 /* PlayerPageDescribeHeaderView.m */,
+				5A240E051CE4270F003B7971 /* PlayerPageDescribeFooterView.h */,
+				5A240E061CE4270F003B7971 /* PlayerPageDescribeFooterView.m */,
+				5A240E081CE42738003B7971 /* PlayerPageRecommendedHeaderView.h */,
+				5A240E091CE42738003B7971 /* PlayerPageRecommendedHeaderView.m */,
+				5A240E0B1CE4275B003B7971 /* PlayerPageCommentsHeaderView.h */,
+				5A240E0C1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m */,
+				5A240E0E1CE42774003B7971 /* PlayerPageCommentsFooterView.h */,
+				5A240E0F1CE42774003B7971 /* PlayerPageCommentsFooterView.m */,
+				5A240E111CE427A3003B7971 /* PlayerPageDescribeCell.h */,
+				5A240E121CE427A3003B7971 /* PlayerPageDescribeCell.m */,
+				5A240E141CE427C0003B7971 /* PlayerPageCommentsCell.h */,
+				5A240E151CE427C0003B7971 /* PlayerPageCommentsCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1161,10 +1196,12 @@
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
 				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				CD416D9B1CBC8C9D0097A5E9 /* MenuHrizontal.m in Sources */,
+				5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */,
 				644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */,
 				644C115F1CBA90A000892E2C /* XMShareView.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
 				CD416D961CBC85B90097A5E9 /* SCNavTabBar.m in Sources */,
+				5A240E131CE427A3003B7971 /* PlayerPageDescribeCell.m in Sources */,
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				644C11571CBA90A000892E2C /* XMShareWechatUtil.m in Sources */,
 				644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */,
@@ -1172,6 +1209,7 @@
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
 				644C11241CBA8CE000892E2C /* RegisterViewController.m in Sources */,
+				5A240E0D1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m in Sources */,
 				CD416DA51CBC9B640097A5E9 /* HomeViewCell.m in Sources */,
 				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
@@ -1188,9 +1226,9 @@
 				CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */,
 				644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */,
 				CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */,
-				644C111E1CBA8BC900892E2C /* UserNavigationController.m in Sources */,
 				5A240DF81CE33E49003B7971 /* WikiBannerView.m in Sources */,
 				CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */,
+				5A240E071CE4270F003B7971 /* PlayerPageDescribeFooterView.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				644C10F61CBA7F0B00892E2C /* TopicCell.m in Sources */,
 				CD1CCC301CB3793B002FC0C9 /* SubscribeBaseViewController.m in Sources */,
@@ -1207,10 +1245,12 @@
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				644C11561CBA90A000892E2C /* XMShareUtil.m in Sources */,
+				5A240E041CE426A3003B7971 /* PlayerPageDescribeHeaderView.m in Sources */,
 				CD416D971CBC85B90097A5E9 /* SCPopView.m in Sources */,
 				644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */,
 				CD416D9E1CBC95330097A5E9 /* ScrollPageView.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
+				5A240E161CE427C0003B7971 /* PlayerPageCommentsCell.m in Sources */,
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
 				D08534A21CE1DD1F00F0047B /* UserComponentCell.m in Sources */,
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
@@ -1220,6 +1260,7 @@
 				CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */,
 				CD1CCC141CB35A2D002FC0C9 /* SubscribeViewController.m in Sources */,
 				CD1CCC281CB36D61002FC0C9 /* ZFBadgeButton.m in Sources */,
+				5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */,
 				CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */,
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
