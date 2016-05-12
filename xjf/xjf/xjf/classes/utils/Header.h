@@ -26,5 +26,6 @@
 #import "xjfConfigure.h"
 #import "XjfShare.h"
 #import "XjfRequest.h"
-
+#import "RequestAPI.h"
+#import "NotificationUtil.h"
 #endif /* Header_h */

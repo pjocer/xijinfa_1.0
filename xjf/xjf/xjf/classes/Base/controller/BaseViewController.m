@@ -50,6 +50,10 @@ NSString * const Subscribe = @"SubscribeViewController";
         }
     }
 }
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationItem.title = @"";
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
@@ -86,25 +90,22 @@ NSString * const Subscribe = @"SubscribeViewController";
     [self initHeaderView];
     self.navigationItem.title = @"";
     self.isIndex = YES;
+    _titleLabel.font = FONT15;
     if ([name isEqualToString:My]) {
         _titleLabel.text = @"我的";
-        UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        downButton.frame = CGRectMake(SCREENWITH -110, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-        downButton.tag =9;
-        downButton.titleLabel.font =FONT(14);
-        [downButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-        [downButton setTitle:@"通知" forState:UIControlStateNormal];
-        [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headView  addSubview:downButton];
-        UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        searchButton.frame = CGRectMake(SCREENWITH -50, 20+(HEADHEIGHT-20-25)/2, 50, 25);
-        searchButton.tag =13;
-        searchButton.hidden=NO;
-        searchButton.titleLabel.font =FONT(14);
-        [searchButton setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-        [searchButton setTitle:@"设置" forState:UIControlStateNormal];
-        [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headView  addSubview:searchButton];
+        UIButton *notification = [UIButton buttonWithType:UIButtonTypeCustom];
+        notification.frame = CGRectMake(SCREENWITH -70, 20+(HEADHEIGHT-20-25)/2, 20, 20);
+        notification.tag =9;
+        [notification setBackgroundImage:[UIImage imageNamed:@"notification"] forState:UIControlStateNormal];
+        [notification addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:notification];
+        UIButton *setting = [UIButton buttonWithType:UIButtonTypeCustom];
+        setting.frame = CGRectMake(SCREENWITH -40, 20+(HEADHEIGHT-20-25)/2, 20, 20);
+        setting.tag =13;
+        setting.hidden=NO;
+        [setting setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
+        [setting addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headView  addSubview:setting];
     }else if ([name isEqualToString:Index]) {
         _titleLabel.text = @"首页";
        
@@ -121,7 +122,6 @@ NSString * const Subscribe = @"SubscribeViewController";
         downButton.frame = CGRectMake(SCREENWITH -40, 20+(HEADHEIGHT-20-25)/2, 30, 30);
         downButton.tag =11;
         downButton.hidden=NO;
-        downButton.titleLabel.font =FONT(14);
         [downButton setImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
         [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView  addSubview:downButton];
@@ -256,6 +256,11 @@ NSString * const Subscribe = @"SubscribeViewController";
     footLabel.text =msg;
     [footerview addSubview:footLabel];
     return footerview;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 
 -(BOOL)isLogin

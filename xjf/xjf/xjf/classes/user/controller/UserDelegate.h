@@ -14,4 +14,7 @@
 - (void)userLoginFail;
 - (void)userDidCancel;
 
+- (void)userRegistOK:(id)userInfo;
+- (void)userRegistFail;
+
 @end

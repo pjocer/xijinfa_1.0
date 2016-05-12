@@ -8,7 +8,8 @@
 
 #import "LoginViewController.h"
 #import "ZPlatformShare.h"
-#import "RegisterViewController.h"
+#import "RegistViewController.h"
+#import "PasswordSettingViewController.h"
 @interface LoginViewController ()<UITextFieldDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UserDelegate>
 {
     
@@ -27,6 +28,9 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationItem.title = @"登录";
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"hadLogin"]) {
+        self.txtNickname.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    }
     self.navigationController.navigationBarHidden = NO;
 }
 
@@ -42,8 +46,9 @@
 }
 - (void)setNavigationBar {
     UIColor *normalColor = NormalColor;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:normalColor,NSFontAttributeName:[UIFont systemFontOfSize:17]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:normalColor,NSFontAttributeName:[UIFont systemFontOfSize:16]};
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registAction:)];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName:normalColor,NSFontAttributeName:[UIFont systemFontOfSize:16]} forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = item;
     UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
     self.view.userInteractionEnabled =YES;
@@ -199,8 +204,8 @@
 }
 
 - (void)registAction:(UIBarButtonItem *)item {
-    self.navigationItem.title = @"";
-    RegisterViewController *controller = [RegisterViewController newWithDelegate:self];
+    RegistViewController *controller = [RegistViewController newWithDelegate:self];
+    controller.title_item = @"注册";
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -225,7 +230,9 @@
             break;
         case 2://忘记密码
         {
-            
+            RegistViewController *controller = [RegistViewController newWithDelegate:self];
+            controller.title_item = @"找回密码";
+            [self.navigationController pushViewController:controller animated:YES];
         }
             break;
         case 4://QQ登录
@@ -307,9 +314,8 @@
     __weak typeof (self) wSelf = self;
     NSMutableDictionary *dict =[NSMutableDictionary dictionary];
     
-    [dict setValue:@"login" forKey:@"action"];
-    [dict setValue:@"" forKey:@"nickname"];
-    [dict setValue:self.txtNickname.text forKey:@"email"];
+    [dict setValue:@"yes" forKey:@"hadLogin"];
+    [dict setValue:self.txtNickname.text forKey:@"username"];
     [dict setValue:self.txtPass.text forKey:@"password"];
    
     
@@ -332,13 +338,10 @@
 }
 
 #pragma mark - UserDelegate
-- (void)userLoginOK:(id)userinfo {
+-(void)userRegistOK:(id)userInfo {
     
 }
-- (void)userLoginFail {
-    
-}
-- (void)userDidCancel {
+- (void)userRegistFail {
     
 }
 //-(void)parserResultObject:(id)resultObject

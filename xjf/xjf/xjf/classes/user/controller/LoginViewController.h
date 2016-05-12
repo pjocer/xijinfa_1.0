@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 #import "UserDelegate.h"
 @interface LoginViewController : BaseViewController
-@property (weak) id<UserDelegate> delegate;
+@property (nonatomic,weak) id<UserDelegate> delegate;
 @end

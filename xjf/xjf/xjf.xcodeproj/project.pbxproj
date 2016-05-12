@@ -29,7 +29,6 @@
 		644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11001CBA81BF00892E2C /* UILabel+StringFrame.m */; };
 		644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11101CBA89FD00892E2C /* SettingViewController.m */; };
 		644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11201CBA8C4700892E2C /* LoginViewController.m */; };
-		644C11241CBA8CE000892E2C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11231CBA8CE000892E2C /* RegisterViewController.m */; };
 		644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11261CBA8DAA00892E2C /* UserThirdLogin.m */; };
 		644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11291CBA907A00892E2C /* ZToastManager.m */; };
 		644C112D1CBA908200892E2C /* ZPlatformShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C112C1CBA908200892E2C /* ZPlatformShare.m */; };
@@ -74,9 +73,6 @@
 		CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC0F1CB35A2D002FC0C9 /* VipViewController.m */; };
 		CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC191CB36386002FC0C9 /* BaseViewController.m */; };
 		CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */; };
-		CD1CCC281CB36D61002FC0C9 /* ZFBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC231CB36D61002FC0C9 /* ZFBadgeButton.m */; };
-		CD1CCC291CB36D61002FC0C9 /* ZFTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC251CB36D61002FC0C9 /* ZFTabBar.m */; };
-		CD1CCC2A1CB36D61002FC0C9 /* ZFTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC271CB36D61002FC0C9 /* ZFTabBarButton.m */; };
 		CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC2C1CB37927002FC0C9 /* IndexBaseViewController.m */; };
 		CD1CCC301CB3793B002FC0C9 /* SubscribeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC2F1CB3793B002FC0C9 /* SubscribeBaseViewController.m */; };
 		CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */; };
@@ -106,6 +102,11 @@
 		CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
 		D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */; };
+		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
+		D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E651CE41A4D003BF1F3 /* RegistViewController.xib */; };
+		D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E691CE42B25003BF1F3 /* PasswordSettingViewController.m */; };
+		D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */; };
+		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
 		D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534981CE1AE1F00F0047B /* UIView+Addtion.m */; };
 		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
 		D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */; };
@@ -160,8 +161,6 @@
 		644C11191CBA8B9F00892E2C /* UserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
 		644C111F1CBA8C4700892E2C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		644C11201CBA8C4700892E2C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		644C11221CBA8CE000892E2C /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		644C11231CBA8CE000892E2C /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		644C11251CBA8DAA00892E2C /* UserThirdLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserThirdLogin.h; sourceTree = "<group>"; };
 		644C11261CBA8DAA00892E2C /* UserThirdLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserThirdLogin.m; sourceTree = "<group>"; };
 		644C11281CBA907A00892E2C /* ZToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZToastManager.h; sourceTree = "<group>"; };
@@ -263,12 +262,6 @@
 		CD1CCC1A1CB36386002FC0C9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC1E1CB363F5002FC0C9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		CD1CCC221CB36D61002FC0C9 /* ZFBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBadgeButton.h; sourceTree = "<group>"; };
-		CD1CCC231CB36D61002FC0C9 /* ZFBadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBadgeButton.m; sourceTree = "<group>"; };
-		CD1CCC241CB36D61002FC0C9 /* ZFTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFTabBar.h; sourceTree = "<group>"; };
-		CD1CCC251CB36D61002FC0C9 /* ZFTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFTabBar.m; sourceTree = "<group>"; };
-		CD1CCC261CB36D61002FC0C9 /* ZFTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFTabBarButton.h; sourceTree = "<group>"; };
-		CD1CCC271CB36D61002FC0C9 /* ZFTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFTabBarButton.m; sourceTree = "<group>"; };
 		CD1CCC2B1CB37927002FC0C9 /* IndexBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexBaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC2C1CB37927002FC0C9 /* IndexBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexBaseViewController.m; sourceTree = "<group>"; };
 		CD1CCC2E1CB3793B002FC0C9 /* SubscribeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeBaseViewController.h; sourceTree = "<group>"; };
@@ -327,6 +320,15 @@
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D05843A31CDC5F7C00B1363C /* ZFPlayerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerSingleton.h; sourceTree = "<group>"; };
 		D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerSingleton.m; sourceTree = "<group>"; };
+		D0698E631CE41A4D003BF1F3 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
+		D0698E641CE41A4D003BF1F3 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
+		D0698E651CE41A4D003BF1F3 /* RegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistViewController.xib; sourceTree = "<group>"; };
+		D0698E681CE42B25003BF1F3 /* PasswordSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordSettingViewController.h; sourceTree = "<group>"; };
+		D0698E691CE42B25003BF1F3 /* PasswordSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordSettingViewController.m; sourceTree = "<group>"; };
+		D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordSettingViewController.xib; sourceTree = "<group>"; };
+		D0698E7E1CE45059003BF1F3 /* RequestAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestAPI.h; sourceTree = "<group>"; };
+		D0698E7F1CE45AED003BF1F3 /* NotificationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtil.h; sourceTree = "<group>"; };
+		D0698E801CE45AED003BF1F3 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationUtil.m; sourceTree = "<group>"; };
 		D08534971CE1AE1F00F0047B /* UIView+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addtion.h"; sourceTree = "<group>"; };
 		D08534981CE1AE1F00F0047B /* UIView+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addtion.m"; sourceTree = "<group>"; };
 		D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnLoadCell.h; sourceTree = "<group>"; };
@@ -440,8 +442,12 @@
 				644C11191CBA8B9F00892E2C /* UserDelegate.h */,
 				644C111F1CBA8C4700892E2C /* LoginViewController.h */,
 				644C11201CBA8C4700892E2C /* LoginViewController.m */,
-				644C11221CBA8CE000892E2C /* RegisterViewController.h */,
-				644C11231CBA8CE000892E2C /* RegisterViewController.m */,
+				D0698E631CE41A4D003BF1F3 /* RegistViewController.h */,
+				D0698E641CE41A4D003BF1F3 /* RegistViewController.m */,
+				D0698E651CE41A4D003BF1F3 /* RegistViewController.xib */,
+				D0698E681CE42B25003BF1F3 /* PasswordSettingViewController.h */,
+				D0698E691CE42B25003BF1F3 /* PasswordSettingViewController.m */,
+				D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */,
 				644C11251CBA8DAA00892E2C /* UserThirdLogin.h */,
 				644C11261CBA8DAA00892E2C /* UserThirdLogin.m */,
 			);
@@ -828,30 +834,16 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		CD1CCC211CB36D61002FC0C9 /* ZFTabBar */ = {
-			isa = PBXGroup;
-			children = (
-				CD1CCC221CB36D61002FC0C9 /* ZFBadgeButton.h */,
-				CD1CCC231CB36D61002FC0C9 /* ZFBadgeButton.m */,
-				CD1CCC241CB36D61002FC0C9 /* ZFTabBar.h */,
-				CD1CCC251CB36D61002FC0C9 /* ZFTabBar.m */,
-				CD1CCC261CB36D61002FC0C9 /* ZFTabBarButton.h */,
-				CD1CCC271CB36D61002FC0C9 /* ZFTabBarButton.m */,
-			);
-			path = ZFTabBar;
-			sourceTree = "<group>";
-		};
 		CD1CCC3A1CB37B89002FC0C9 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				D0698E781CE447F9003BF1F3 /* XJFRequest */,
+				644C10FB1CBA80B400892E2C /* category */,
 				644C112B1CBA908200892E2C /* ZPlatformShare.h */,
 				644C112C1CBA908200892E2C /* ZPlatformShare.m */,
-				644C10FB1CBA80B400892E2C /* category */,
 				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
 				CD1CCC3E1CB37BB6002FC0C9 /* XjfShare.h */,
 				CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */,
-				CD1CCC411CB37BDB002FC0C9 /* XjfRequest.h */,
-				CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */,
 				5A7EEE931CE0299C007BAECD /* Header.h */,
 				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 			);
@@ -1032,10 +1024,21 @@
 				CD416D851CBC817A0097A5E9 /* YRBackGesture */,
 				644C112E1CBA90A000892E2C /* XMShareView */,
 				644C10C01CBA61AC00892E2C /* UzysGridView */,
-				CD1CCC211CB36D61002FC0C9 /* ZFTabBar */,
 			);
 			name = Utils;
 			path = vendor;
+			sourceTree = "<group>";
+		};
+		D0698E781CE447F9003BF1F3 /* XJFRequest */ = {
+			isa = PBXGroup;
+			children = (
+				D0698E7F1CE45AED003BF1F3 /* NotificationUtil.h */,
+				D0698E801CE45AED003BF1F3 /* NotificationUtil.m */,
+				CD1CCC411CB37BDB002FC0C9 /* XjfRequest.h */,
+				CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */,
+				D0698E7E1CE45059003BF1F3 /* RequestAPI.h */,
+			);
+			name = XJFRequest;
 			sourceTree = "<group>";
 		};
 		D1AB19A49ED20349657DC2CC /* Frameworks */ = {
@@ -1090,6 +1093,7 @@
 				TargetAttributes = {
 					CDF57ABF1C9F825D00049AF0 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 49X2X2Y4J5;
 					};
 				};
 			};
@@ -1126,6 +1130,8 @@
 				644C10C81CBA61AC00892E2C /* icon_del.png in Resources */,
 				644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */,
 				CD416D941CBC85B90097A5E9 /* SCNavTabBar.bundle in Resources */,
+				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
+				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1187,6 +1193,7 @@
 			files = (
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
+				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
 				CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */,
 				5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */,
 				D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */,
@@ -1208,15 +1215,12 @@
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
-				644C11241CBA8CE000892E2C /* RegisterViewController.m in Sources */,
-				5A240E0D1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m in Sources */,
 				CD416DA51CBC9B640097A5E9 /* HomeViewCell.m in Sources */,
 				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
 				CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
-				CD1CCC2A1CB36D61002FC0C9 /* ZFTabBarButton.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
@@ -1236,11 +1240,11 @@
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
+				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
 				CD416D951CBC85B90097A5E9 /* SCNavTabBarController.m in Sources */,
 				D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */,
-				CD1CCC291CB36D61002FC0C9 /* ZFTabBar.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
@@ -1248,6 +1252,7 @@
 				5A240E041CE426A3003B7971 /* PlayerPageDescribeHeaderView.m in Sources */,
 				CD416D971CBC85B90097A5E9 /* SCPopView.m in Sources */,
 				644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */,
+				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				CD416D9E1CBC95330097A5E9 /* ScrollPageView.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
 				5A240E161CE427C0003B7971 /* PlayerPageCommentsCell.m in Sources */,
@@ -1259,8 +1264,6 @@
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */,
 				CD1CCC141CB35A2D002FC0C9 /* SubscribeViewController.m in Sources */,
-				CD1CCC281CB36D61002FC0C9 /* ZFBadgeButton.m in Sources */,
-				5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */,
 				CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */,
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
@@ -1387,7 +1390,7 @@
 			baseConfigurationReference = FA5730763C928D50ED312F03 /* Pods-xjf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: wenshan wang (SFDAPVE6C9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1414,7 +1417,7 @@
 			baseConfigurationReference = AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: wenshan wang (SFDAPVE6C9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
