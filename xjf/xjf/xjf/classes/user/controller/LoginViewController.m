@@ -9,113 +9,68 @@
 #import "LoginViewController.h"
 #import "ZPlatformShare.h"
 #import "RegisterViewController.h"
-@interface LoginViewController ()<UITextFieldDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface LoginViewController ()<UITextFieldDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UserDelegate>
 {
     
 }
 @property(nonatomic,strong)void(^actionBlock)(id,id);
 @property(nonatomic,strong) UITextField     *txtNickname;
 @property(nonatomic,strong) UITextField     *txtPass;
+@property(nonatomic,strong) UITextField     *txtCode;
 @property(nonatomic,strong) UIButton     *loginBtn;
 @property(nonatomic,strong) UIButton     *settingBtn;
-@property(nonatomic,strong) UIButton     *registerBtn;
-@property(nonatomic,strong) UIImageView  *iconView;
-@property(nonatomic,strong) UILabel  *logLabel;
+@property(nonatomic,strong) UIImageView *codeImageView;
 @end
 
 @implementation LoginViewController
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.navigationItem.title = @"登录";
     self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self setNavigationBar];
     [self initUI];
-    UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
-    self.view.userInteractionEnabled =YES;
-    [self.view addGestureRecognizer:singleRecognizer];
-    singleRecognizer=nil;
     
 }
 -(void)setSelectedCallBack:(void(^)(id,id))callback
 {
     self.actionBlock=callback;
 }
--(void)clickNavEvent:(id)sender
-{
-    UIButton *btn =(UIButton*)sender;
-    switch (btn.tag) {
-        case 0:
-        {
-            if ([_delegate respondsToSelector:@selector(userDidCancel)]) {
-                [_delegate userDidCancel];
-            }
-        }
-            break;
-            
-        default:
-            break;
-    }
+- (void)setNavigationBar {
+    UIColor *normalColor = NormalColor;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:normalColor,NSFontAttributeName:[UIFont systemFontOfSize:17]};
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registAction:)];
+    self.navigationItem.rightBarButtonItem = item;
+    UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
+    self.view.userInteractionEnabled =YES;
+    [self.view addGestureRecognizer:singleRecognizer];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    DLog(@"%s", __PRETTY_FUNCTION__);
 }
--(void)dealloc
-{
-    [self.txtNickname resignFirstResponder];
-    [self.txtPass resignFirstResponder];
-    self.txtNickname=nil;
-    self.txtPass=nil;
-    self.loginBtn=nil;
-    self.settingBtn=nil;
-    self.registerBtn=nil;
-    self.iconView=nil;
-    self.logLabel=nil;
-    
-    DLog(@"%s", __PRETTY_FUNCTION__);
-}
--(UIImageView*)iconView
-{
-    if (!_iconView) {
-        UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom1)];
-        self.iconView =[[UIImageView alloc] initWithFrame:CGRectZero];
-        self.iconView.frame = CGRectMake((SCREENWITH-80)/2,35, 80, 80);
-        self.iconView.layer.cornerRadius=40;
-        self.iconView.layer.masksToBounds = YES;
-        self.iconView.image =[UIImage imageNamed:@"user_face.png"];
-        self.iconView.userInteractionEnabled =YES;
-        [self.iconView addGestureRecognizer:singleRecognizer];
-        [self.view addSubview:self.iconView];
-        singleRecognizer=nil;
+-(UIImageView *)codeImageView {
+    if (!_codeImageView) {
+        _codeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWITH-90, 10, 60, 30)];
+        _codeImageView.layer.cornerRadius = 5;
+        _codeImageView.backgroundColor = PrimaryColor;
+        _codeImageView.layer.masksToBounds = YES;
+        _codeImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changeCodeImage:)];
+        [_codeImageView addGestureRecognizer:tap];
     }
-    
-    return _iconView;
+    return _codeImageView;
 }
--(UILabel*)logLabel
-{
-    if (!_logLabel) {
-        self.logLabel =[[UILabel alloc] initWithFrame:CGRectZero];
-        self.logLabel.backgroundColor =[UIColor clearColor];
-        self.logLabel.font = FONT(12);
-        self.logLabel.textColor =UIColorFromRGB(0xcccccc);
-        self.logLabel.textAlignment = NSTextAlignmentCenter;
-        self.logLabel.text =@" - 以一顶百";
-        [self.view addSubview:self.logLabel];
-    }
-    return _logLabel;
-}
+
 -(UIButton*)loginBtn
 {
     if (!_loginBtn) {
         self.loginBtn =[UIButton buttonWithType:UIButtonTypeRoundedRect];
-        self.loginBtn.backgroundColor =UIColorFromRGB(0xd00202);
+        self.loginBtn.backgroundColor =PrimaryColor;
         self.loginBtn.layer.cornerRadius = 6;
         self.loginBtn.tag=0;
         [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -125,20 +80,7 @@
     }
     return _loginBtn;
 }
--(UIButton*)registerBtn
-{
-    if (!_registerBtn) {
-        self.registerBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        self.registerBtn.backgroundColor =[UIColor clearColor];
-        self.registerBtn.tag= 1;
-        self.registerBtn.titleLabel.font =FONT(13);
-        [self.registerBtn setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-        [self.registerBtn setTitle:@"注册会员>" forState:UIControlStateNormal];
-        [self.registerBtn addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.registerBtn];
-    }
-    return _registerBtn;
-}
+
 -(UIButton*)settingBtn
 {
     if (!_settingBtn) {
@@ -146,11 +88,12 @@
         self.settingBtn.backgroundColor =[UIColor clearColor];
         self.settingBtn.tag =2;
         self.settingBtn.titleLabel.font =FONT(13);
-        [self.settingBtn setTitleColor:UIColorFromRGB(0x285790) forState:UIControlStateNormal];
-        [self.settingBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
+        UIColor *color = AssistColor;
+        [self.settingBtn setTitleColor:color forState:UIControlStateNormal];
+        [self.settingBtn setTitle:@"忘记密码?" forState:UIControlStateNormal];
         self.settingBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;
         [self.settingBtn addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.settingBtn];
+        [self.txtPass addSubview:self.settingBtn];
     }
     return _settingBtn;
 }
@@ -158,16 +101,16 @@
 {
     if (!_txtNickname) {
         self.txtNickname = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.txtNickname.placeholder = @" 邮箱地址/手机号";
-        [self.txtNickname setBorderStyle:UITextBorderStyleRoundedRect];
+        self.txtNickname.placeholder = @"邮箱地址/手机号";
+        [self.txtNickname setBorderStyle:UITextBorderStyleNone];
         self.txtNickname.font = FONT(13);
+        self.txtNickname.tag = 100;
         self.txtNickname.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"user_email"];
         self.txtNickname.autocorrectionType = UITextAutocorrectionTypeNo;
         self.txtNickname.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.txtNickname.returnKeyType = UIReturnKeyNext;
         self.txtNickname.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.txtNickname.delegate=self;
-        [self.view addSubview:self.txtNickname];
     }
     return _txtNickname;
 }
@@ -175,118 +118,117 @@
 {
     if (!_txtPass) {
         self.txtPass = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.txtPass.placeholder = @" 密码";
-        [self.txtPass setBorderStyle:UITextBorderStyleRoundedRect];
+        self.txtPass.placeholder = @"密码";
+        [self.txtPass setBorderStyle:UITextBorderStyleNone];
         self.txtPass.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.txtPass.font = FONT(13);
+        self.txtPass.tag = 101;
         self.txtPass.secureTextEntry = YES;
         self.txtPass.autocorrectionType = UITextAutocorrectionTypeNo;
         self.txtPass.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        self.txtPass.returnKeyType = UIReturnKeyGo;
-        self.txtPass.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.txtPass.returnKeyType = UIReturnKeyNext;
         self.txtPass.delegate=self;
-        [self.view addSubview:self.txtPass];
     }
     return _txtPass;
+}
+
+- (UITextField *)txtCode {
+    if (!_txtCode) {
+        self.txtCode = [[UITextField alloc]initWithFrame:CGRectZero];
+        self.txtCode.placeholder = @"请输入图片验证码";
+        [self.txtCode setBorderStyle:UITextBorderStyleNone];
+        self.txtCode.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.txtCode.font = FONT13;
+        self.txtCode.tag = 102;
+        self.txtCode.secureTextEntry = YES;
+        self.txtCode.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.txtCode.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        self.txtCode.returnKeyType = UIReturnKeyGo;
+        self.txtCode.delegate = self;
+    }
+    return _txtCode;
 }
 
 //按下Done按钮的调用方法，我们让键盘消失
 -(void)handleSingleTapFrom
 {
-    [self.txtNickname resignFirstResponder];
-    [self.txtPass resignFirstResponder];
+    [self.view endEditing:YES];
 }
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-    if (textField==self.txtNickname) {
-        [self.txtPass becomeFirstResponder];
-    }else  if (textField==self.txtPass){
-        [self btnLoginAction];
-        [textField resignFirstResponder];
-    }else
-    {
-        [textField resignFirstResponder];
-    }
-    return YES;
-}
+
 
 -(void)initUI
 {
-    self.txtNickname.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, 100, SCREENWITH-PHOTO_FRAME_WIDTH*4, PHOTO_FRAME_WIDTH*4);
-    self.txtPass.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, 150, SCREENWITH-PHOTO_FRAME_WIDTH*4, PHOTO_FRAME_WIDTH*4);
-    self.loginBtn.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, 200, SCREENWITH-PHOTO_FRAME_WIDTH*4, PHOTO_FRAME_WIDTH*4);
-    self.settingBtn.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, 250, PHOTO_FRAME_WIDTH*10, PHOTO_FRAME_WIDTH*4);
-    self.registerBtn.frame =CGRectMake(SCREENWITH - PHOTO_FRAME_WIDTH*13, 250, PHOTO_FRAME_WIDTH*12, PHOTO_FRAME_WIDTH*4);
+    self.txtNickname.frame =CGRectMake(20, 25.0, SCREENWITH, PHOTO_FRAME_WIDTH*5.0);
+    [self addWhiteColorFor:self.txtNickname];
+    self.txtPass.frame =CGRectMake(20, 76.0, SCREENWITH, PHOTO_FRAME_WIDTH*5.0);
+    [self addWhiteColorFor:self.txtPass];
+    self.txtCode.frame = CGRectMake(20, 127.0, SCREENWITH, PHOTO_FRAME_WIDTH*5.0);
+    [self addWhiteColorFor:self.txtCode];
+    self.loginBtn.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, CGRectGetMaxY(self.txtCode.frame)+25, SCREENWITH-PHOTO_FRAME_WIDTH*4, PHOTO_FRAME_WIDTH*5);
+    self.settingBtn.frame = CGRectMake(SCREENWITH-90, 10, 60, 30);
+    [self.txtCode addSubview:self.codeImageView];
     
-    UIImage *infoim =[UIImage imageNamed:@"dsfdl_title.png"];
-    UIImageView *infoImage =[[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-infoim.size.width)/2, 350,infoim.size.width , 20)];
-    infoImage.image =infoim;
-    [self.view addSubview:infoImage];
     
-    CGFloat pading =(SCREENWITH - PHOTO_FRAME_WIDTH*3 - 50*3)/3;
+    
+    CGFloat qq_x = SCREENWITH/2-62.5;
+    CGFloat y = CGRectGetMaxY(self.txtCode.frame)+100;
+    CGFloat wechat_x = SCREENWITH/2+12.5;
     
     BOOL hadInstalledQQ = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]];
     UIButton *qq =[UIButton buttonWithType:UIButtonTypeCustom];
     qq.tag =4;
-    qq.frame =CGRectMake(PHOTO_FRAME_WIDTH*5, 400,50 , 50);
-    [qq setBackgroundImage:[UIImage imageNamed:@"qq.png"] forState:UIControlStateNormal];
+    qq.frame =CGRectMake(qq_x, y,50,50);
+    [qq setBackgroundImage:[UIImage imageNamed:@"QQ"] forState:UIControlStateNormal];
     [qq addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:qq];
     
     BOOL hadInstalledWeixin = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]];
     UIButton *wx =[UIButton buttonWithType:UIButtonTypeCustom];
     wx.tag =5;
-    wx.frame =CGRectMake(qq.frame.origin.x+qq.frame.size.width+pading, 400,50 , 50);
-    [wx setBackgroundImage:[UIImage imageNamed:@"wechat.png"] forState:UIControlStateNormal];
+    wx.frame =CGRectMake(wechat_x,y,50,50);
+    [wx setBackgroundImage:[UIImage imageNamed:@"Wechat"] forState:UIControlStateNormal];
     [wx addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wx];
-    
-    BOOL hadInstalledWeibo = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weibo://"]];
-    UIButton *sina =[UIButton buttonWithType:UIButtonTypeCustom];
-    sina.tag =6;
-    sina.frame =CGRectMake(wx.frame.origin.x+wx.frame.size.width+pading, 400,50 , 50);
-    [sina setBackgroundImage:[UIImage imageNamed:@"sina.png"] forState:UIControlStateNormal];
-    [sina addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:sina];
-//    if (!hadInstalledQQ) {
+    if (!hadInstalledQQ) {
 //        qq.hidden=YES;
-//    }
-//    if (!hadInstalledWeixin) {
+    }
+    if (!hadInstalledWeixin) {
 //        wx.hidden =YES;
-//    }
-//    if (!hadInstalledWeibo) {
-//        sina.hidden=YES;
-//    }
+    }
     
+}
+
+- (void)registAction:(UIBarButtonItem *)item {
+    self.navigationItem.title = @"";
+    RegisterViewController *controller = [RegisterViewController newWithDelegate:self];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+//点击更换图片验证码
+- (void)changeCodeImage:(UITapGestureRecognizer *)gesture {
+    
+}
+- (void)addWhiteColorFor:(UITextField *)view {
+    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 25.0+51*(view.tag-100), SCREENWITH, PHOTO_FRAME_WIDTH*5.0)];
+    backView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:backView];
+    [self.view addSubview:view];
 }
 -(void)loginbtnClick:(id)sender
 {
     UIButton *btn =(UIButton*)sender;
     switch (btn.tag) {
-        case 0:
+        case 0://登录
         {
             [self btnLoginAction];
         }
             break;
-        case 1:
+        case 2://忘记密码
         {
-            RegisterViewController *reg =[RegisterViewController newWithDelegate:_delegate];
-            [self.navigationController pushViewController:reg animated:YES];
-        }
-            break;
-        case 2:
-        {
-            
             
         }
             break;
-        case 3:
-        {
-            
-            
-        }
-            break;
-        case 4:
+        case 4://QQ登录
         {
             __weak typeof (self) wSelf = self;
             [ZPlatformShare qqLoginWithSuccess:^(NSDictionary *message) {
@@ -297,7 +239,7 @@
             
         }
             break;
-        case 5:
+        case 5://微信登录
         {
             __weak typeof (self) wSelf = self;
             [ZPlatformShare wxLoginWithSuccess:^(NSDictionary *message) {
@@ -308,20 +250,6 @@
             
         }
             break;
-        case 6:
-        {
-            __weak typeof (self) wSelf = self;
-            [ZPlatformShare wbLoginWithSuccess:^(NSDictionary *message) {
-                
-                [wSelf thirdLogin:message type:@"4"];
-            } failure:^(NSDictionary *message, NSError *error) {
-                
-            }];
-            
-        }
-            break;
-            
-            
         default:
             break;
     }
@@ -384,6 +312,33 @@
     [dict setValue:self.txtNickname.text forKey:@"email"];
     [dict setValue:self.txtPass.text forKey:@"password"];
    
+    
+}
+
+#pragma mark - TextFiled Delegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    if (textField==self.txtNickname) {
+        [self.txtPass becomeFirstResponder];
+    }else  if (textField==self.txtPass){
+        
+        [self.txtCode becomeFirstResponder];
+    }else
+    {
+        [self btnLoginAction];
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+#pragma mark - UserDelegate
+- (void)userLoginOK:(id)userinfo {
+    
+}
+- (void)userLoginFail {
+    
+}
+- (void)userDidCancel {
     
 }
 //-(void)parserResultObject:(id)resultObject

@@ -16,7 +16,6 @@
 		644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10FD1CBA80BC00892E2C /* NSString+Extensions.m */; };
 		644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11001CBA81BF00892E2C /* UILabel+StringFrame.m */; };
 		644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11101CBA89FD00892E2C /* SettingViewController.m */; };
-		644C111E1CBA8BC900892E2C /* UserNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C111D1CBA8BC900892E2C /* UserNavigationController.m */; };
 		644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11201CBA8C4700892E2C /* LoginViewController.m */; };
 		644C11241CBA8CE000892E2C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11231CBA8CE000892E2C /* RegisterViewController.m */; };
 		644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11261CBA8DAA00892E2C /* UserThirdLogin.m */; };
@@ -123,8 +122,6 @@
 		644C11101CBA89FD00892E2C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		644C11121CBA8A1300892E2C /* myConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myConfigure.h; sourceTree = "<group>"; };
 		644C11191CBA8B9F00892E2C /* UserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
-		644C111C1CBA8BC900892E2C /* UserNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNavigationController.h; sourceTree = "<group>"; };
-		644C111D1CBA8BC900892E2C /* UserNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNavigationController.m; sourceTree = "<group>"; };
 		644C111F1CBA8C4700892E2C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		644C11201CBA8C4700892E2C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		644C11221CBA8CE000892E2C /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -390,8 +387,6 @@
 			isa = PBXGroup;
 			children = (
 				644C11191CBA8B9F00892E2C /* UserDelegate.h */,
-				644C111C1CBA8BC900892E2C /* UserNavigationController.h */,
-				644C111D1CBA8BC900892E2C /* UserNavigationController.m */,
 				644C111F1CBA8C4700892E2C /* LoginViewController.h */,
 				644C11201CBA8C4700892E2C /* LoginViewController.m */,
 				644C11221CBA8CE000892E2C /* RegisterViewController.h */,
@@ -1158,7 +1153,6 @@
 				CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */,
 				644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */,
 				CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */,
-				644C111E1CBA8BC900892E2C /* UserNavigationController.m in Sources */,
 				CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				644C10F61CBA7F0B00892E2C /* TopicCell.m in Sources */,

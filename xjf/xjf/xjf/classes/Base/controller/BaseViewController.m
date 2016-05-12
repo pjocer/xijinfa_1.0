@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "UserNavigationController.h"
 #import "IndexConfigure.h"
 #import "myConfigure.h"
 NSString * const Index = @"IndexViewController";
@@ -32,7 +31,12 @@ NSString * const Subscribe = @"SubscribeViewController";
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor xjfStringToColor:@"#444444"]];
+    [self.navigationController.navigationBar addShadow];
+    //去除NacigationBar底部黑线
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     if (!self.isIndex) {
         self.navigationController.navigationBarHidden = NO;
@@ -48,8 +52,7 @@ NSString * const Subscribe = @"SubscribeViewController";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor xjfStringToColor:@"#efefef"];
+    self.view.backgroundColor = BackgroundColor;
 }
 -(void)dealloc
 {
@@ -257,8 +260,6 @@ NSString * const Subscribe = @"SubscribeViewController";
 
 -(BOOL)isLogin
 {
-    UserNavigationController *viewcontroller =[UserNavigationController newWithCameraDelegate:self];
-    [self presentViewController:viewcontroller animated:NO completion:nil];
     return NO;
 }
 -(void)userLoginOK:(id)userinfo

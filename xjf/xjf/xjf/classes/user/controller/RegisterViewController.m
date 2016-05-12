@@ -33,34 +33,12 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)headerClickEvent:(id)sender
-{
-    UIButton *btn =(UIButton *)sender;
-    switch (btn.tag) {
-        case 0:
-        {
-            if (self.navigationController) {
-                if (self.navigationController.viewControllers.count == 1) {
-                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                } else {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        }
-            break;
-        default:
-            break;
-    }
 }
 
 @end
