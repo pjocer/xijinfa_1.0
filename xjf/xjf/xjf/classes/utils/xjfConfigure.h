@@ -28,7 +28,7 @@
 
 //Color
 #define PrimaryColor [UIColor xjfStringToColor:@"#0061b0"];
-#define NormalColor [UIColor xjfStringToColor:@"#444444"]; //RGB 68/68/68
+#define NormalColor [UIColor xjfStringToColor:@"#444444"];
 #define AssistColor [UIColor xjfStringToColor:@"#9a9a9a"];
 #define SegementColor [UIColor xjfStringToColor:@"#c7c7cc"];
 #define BackgroundColor [UIColor xjfStringToColor:@"#efefef"];
