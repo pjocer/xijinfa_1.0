@@ -67,25 +67,6 @@ NSString * const Subscribe = @"SubscribeViewController";
     self.headView=nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
-}
-
 -(void)extendheadViewFor:(NSString *)name {
     [self initHeaderView];
     self.navigationItem.title = @"";
