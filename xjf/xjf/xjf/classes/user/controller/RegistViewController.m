@@ -9,14 +9,18 @@
 #import "RegistViewController.h"
 #import "PasswordSettingViewController.h"
 #import "XjfRequest.h"
+#import "ImageCodeModel.h"
 
 @interface RegistViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (weak, nonatomic) IBOutlet UITextField *txtCodePhone;
 @property (weak, nonatomic) IBOutlet UITextField *txtPhone;
 @property (weak, nonatomic) IBOutlet UITextField *txtCodeImage;
 @property (weak, nonatomic) IBOutlet UIImageView *codeImage;
 @property (weak, nonatomic) IBOutlet UIButton *codeButton;
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) ImageCodeModel *model;
+@property (assign, nonatomic) BOOL phoneIsOK;
+@property (assign, nonatomic) BOOL imageCodeIsOk;
 @end
 
 @implementation RegistViewController
@@ -39,68 +43,65 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changeCodeImage:)];
     [self.codeImage addGestureRecognizer:tap];
     self.codeButton.layer.cornerRadius = 5;
-    self.nextButton.layer.cornerRadius = 5;
+    self.codeButton.enabled = NO;
+    self.codeButton.backgroundColor = self.codeButton.enabled?[UIColor xjfStringToColor:@"#0061b0"]:SegementColor;
     self.txtCodePhone.delegate = self;
     self.txtCodeImage.delegate = self;
     self.txtPhone.delegate = self;
     
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self requestData:get_image_code method:GET];
+}
+
 -(void)setTitle_item:(NSString *)title_item {
     _title_item = title_item;
     self.navigationItem.title = title_item;
 }
 //点击更换图片验证码
 - (void)changeCodeImage:(UITapGestureRecognizer *)gesture {
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:get_image_code RequestMethod:GET];
-    [request startWithSuccessBlock:^(NSDictionary * _Nullable responseData) {
-        NSLog(@"%@",responseData);
-    } failedBlock:^(NSError * _Nullable error) {
-        NSLog(@"%@",error);
-    }];
+    [self requestData:get_image_code method:GET];
 }
 - (IBAction)codeButtonClicked:(UIButton *)sender {
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:regist_message_code RequestMethod:POST];
-    [request startWithSuccessBlock:^(id  _Nullable responseData) {
-        NSLog(@"%@",responseData);
-    } failedBlock:^(NSError * _Nullable error) {
-        NSLog(@"%@",error);
-    }];
+    [self requestData:regist_message_code method:POST];
 }
-- (IBAction)nextButtonClicked:(UIButton *)sender {
-    if(self.txtPhone.text.length==0)
-    {
-        [[ZToastManager ShardInstance] showtoast:@"请输入手机号码"];
-        return;
-    }
-    if(self.txtCodeImage.text.length==0)
-    {
-        [[ZToastManager ShardInstance] showtoast:@"请输入图片验证码"];
-        return;
-    }
-    if (self.txtCodePhone.text.length==0) {
-        [[ZToastManager ShardInstance] showtoast:@"请输入手机验证码"];
-        return;
-    }
-    [[ZToastManager ShardInstance] showprogress];
-    __weak typeof (self) wSelf = self;
-    
-    
-    
-    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
-    [dict setValue:@"login" forKey:@"hadLogin"];
-    [dict setValue:self.txtPhone.text forKey:@"username"];
-    
-    PasswordSettingViewController *password = [[PasswordSettingViewController alloc]init];
-    if ([self.title_item isEqualToString:@"注册"]) {
-        password.itemTitle = @"设置密码";
-    }else {
-        password.itemTitle = @"重设密码";
-    }
-    [self.navigationController pushViewController:password animated:YES];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)requestData:(APIName *)api method:(RequestMethod)method{
+    __weak typeof (self) wSelf = self;
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+    if ([api isEqualToString:regist_message_code]) {
+        [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
+        [request.requestParams setObject:self.txtCodeImage.text forKey:@"secure_code"];
+        [request.requestParams setObject:self.model.result.secure_key forKey:@"secure_key"];
+    }
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        __strong typeof (self)sSelf = wSelf;
+        [[ZToastManager ShardInstance] hideprogress];
+        if ([api isEqualToString:get_image_code]) {
+            [sSelf.indicator stopAnimating];
+            sSelf.model = [[ImageCodeModel alloc]initWithData:responseData error:nil];
+            NSURL *url = [NSURL URLWithString:sSelf.model.result.secure_image];
+            NSData *imageData = [NSData dataWithContentsOfURL:url];
+            UIImage *ret = [UIImage imageWithData:imageData];
+            sSelf.codeImage.image = ret;
+        }else {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dic);
+            ImageCodeModel *model = [[ImageCodeModel alloc]initWithData:responseData error:nil];
+            NSLog(@"%@",model);
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance]showtoast:@"请求失败"];
+    }];
 }
 
 #pragma mark - TextFiled Delegate
@@ -110,12 +111,31 @@
         [self.txtCodeImage becomeFirstResponder];
     }else  if (textField==self.txtCodeImage){
         [self.txtCodePhone becomeFirstResponder];
-    }else
-    {
-        [self nextButtonClicked:self.nextButton];
+    }else {
         [textField resignFirstResponder];
     }
     return YES;
+}
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField==self.txtPhone) {
+        if ([self.txtPhone.text isValidEmail] || [textField.text isValidPhoneNumber]) {
+            self.phoneIsOK = YES;
+        }else {
+            [[ZToastManager ShardInstance] showtoast:@"请输入正确的手机号码"];
+        }
+    }else  if (textField==self.txtCodeImage){
+        if ([textField.text isEqualToString:self.model.result.secure_code]) {
+            self.imageCodeIsOk = YES;
+        }else {
+            [[ZToastManager ShardInstance] showtoast:@"请输入正确的图片验证码"];
+        }
+    }
+    self.codeButton.enabled = self.phoneIsOK && self.imageCodeIsOk;
+    self.codeButton.backgroundColor = self.codeButton.enabled?[UIColor xjfStringToColor:@"#0061b0"]:SegementColor;
+    
 }
 /*
 #pragma mark - Navigation

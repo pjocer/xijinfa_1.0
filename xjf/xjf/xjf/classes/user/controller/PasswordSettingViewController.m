@@ -57,7 +57,7 @@
     [[ZToastManager ShardInstance] showprogress];
     if ([self.itemTitle isEqualToString:@"重设密码"]) {
         XjfRequest *request = [[XjfRequest alloc]initWithAPIName:reset_password RequestMethod:POST];
-        [request startWithSuccessBlock:^(NSDictionary * _Nullable responseData) {
+        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
             
         } failedBlock:^(NSError * _Nullable error) {
             

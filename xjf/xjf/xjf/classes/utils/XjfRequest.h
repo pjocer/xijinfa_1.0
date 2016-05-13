@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef const NSString APIName;
+typedef NSString APIName;
 
 @class XjfRequest;
 
@@ -17,7 +17,7 @@ typedef NS_OPTIONS(short, RequestMethod) {
     POST
 };
 
-typedef void(^SuccessBlock)( NSDictionary * _Nullable responseData);
+typedef void(^SuccessBlock)( NSData * _Nullable responseData);
 typedef void(^FailedBlock)(NSError * _Nullable error);
 
 

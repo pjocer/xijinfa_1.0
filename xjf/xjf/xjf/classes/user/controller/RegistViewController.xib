@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="codeButton" destination="t5M-mZ-9Da" id="1ve-Yw-uNg"/>
                 <outlet property="codeImage" destination="3ek-qj-euI" id="5KP-w1-34G"/>
-                <outlet property="nextButton" destination="0Gc-Og-wZQ" id="oYG-bm-YbT"/>
+                <outlet property="indicator" destination="EgX-Zk-lUy" id="ci0-3O-UAp"/>
                 <outlet property="txtCodeImage" destination="maL-dq-KUn" id="vCG-Xj-wbB"/>
                 <outlet property="txtCodePhone" destination="Nit-E3-SZi" id="nUI-kO-cET"/>
                 <outlet property="txtPhone" destination="aow-Zb-Vx3" id="baA-i3-Wde"/>
@@ -35,6 +35,9 @@
                                 <constraint firstAttribute="width" constant="60" id="fEk-Ny-Z0l"/>
                             </constraints>
                         </imageView>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EgX-Zk-lUy">
+                            <rect key="frame" x="550" y="15" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -80,6 +83,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="tfC-yF-vZ5"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="获取验证码">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -100,19 +104,6 @@
                         <constraint firstItem="Nit-E3-SZi" firstAttribute="leading" secondItem="EUz-WY-ube" secondAttribute="leading" constant="20" id="i2Z-7d-rJ0"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-Og-wZQ">
-                    <rect key="frame" x="20" y="202" width="560" height="50"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="4eP-zI-ol3"/>
-                    </constraints>
-                    <state key="normal" title="下一步">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="nextButtonClicked:" destination="-1" eventType="touchUpInside" id="ut5-9C-Xjy"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.26763677785570472" green="0.26493648423154365" blue="0.26763677785570472" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -120,14 +111,11 @@
                 <constraint firstItem="EUz-WY-ube" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fx1-Lu-9AW"/>
                 <constraint firstItem="EUz-WY-ube" firstAttribute="top" secondItem="LAZ-Hm-YoK" secondAttribute="bottom" constant="1" id="HiP-ef-mOF"/>
                 <constraint firstAttribute="trailing" secondItem="LAZ-Hm-YoK" secondAttribute="trailing" id="IOc-Q6-0qg"/>
-                <constraint firstItem="0Gc-Og-wZQ" firstAttribute="top" secondItem="EUz-WY-ube" secondAttribute="bottom" constant="25" id="MM3-kT-v3H"/>
                 <constraint firstAttribute="trailing" secondItem="983-20-Zr1" secondAttribute="trailing" id="QDy-VN-ae2"/>
                 <constraint firstItem="LAZ-Hm-YoK" firstAttribute="top" secondItem="983-20-Zr1" secondAttribute="bottom" constant="1" id="Wyn-W0-Glt"/>
-                <constraint firstAttribute="trailing" secondItem="0Gc-Og-wZQ" secondAttribute="trailing" constant="20" id="YZB-ox-AC2"/>
                 <constraint firstItem="LAZ-Hm-YoK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ciR-a0-ADf"/>
                 <constraint firstItem="983-20-Zr1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="nIg-Ix-chS"/>
                 <constraint firstItem="983-20-Zr1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="svn-SY-ljO"/>
-                <constraint firstItem="0Gc-Og-wZQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="svt-Xj-e5y"/>
             </constraints>
             <point key="canvasLocation" x="363" y="268"/>
         </view>

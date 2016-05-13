@@ -15,7 +15,7 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
 @interface XjfRequest ()
 @property (nonatomic, copy) NSString *api_name;
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
-@property (nonatomic, strong) NSDictionary *responseData;
+@property (nonatomic, strong) NSData *responseData;
 @end
 
 @implementation XjfRequest
@@ -24,6 +24,8 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
     self = [super init];
     if (self) {
         _requestMethod = method;
+        _requestParams = [NSMutableDictionary dictionary];
+        _requestHeaders = [NSMutableDictionary dictionary];
         _api_name = [NSString stringWithFormat:@"%@%@",defaultAPIHost,apiName];
         _manager = [AFHTTPSessionManager manager];
         [self configureRequestHeaders];
@@ -67,9 +69,7 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
 
 - (void)formmatSessionDataTask:(NSHTTPURLResponse *)task data:(id)responseObject {
     _responseStatusCode = task.statusCode;
-    NSError *error = nil;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
-    _responseData = dic;
+    _responseData = responseObject;
 }
 
 - (void)configureRequestHeaders {
