@@ -14,3 +14,8 @@ static APIName *get_image_code = @"/api/auth/captcha";
 
 //重置密码
 static APIName *reset_password = @"/api/auth/reset-password";
+
+//验证验证码是否有效
+static APIName *check_code_message = @"/api/auth/verify-security-code";
+
+//

@@ -31,6 +31,7 @@
                         </textField>
                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ek-qj-euI">
                             <rect key="frame" x="530" y="10" width="60" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="fEk-Ny-Z0l"/>
                             </constraints>
@@ -77,9 +78,9 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="go"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5M-mZ-9Da">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5M-mZ-9Da">
                             <rect key="frame" x="510" y="10" width="80" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.26763677790000001" green="0.26493648419999999" blue="0.26763677790000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="tfC-yF-vZ5"/>
                             </constraints>
@@ -87,6 +88,7 @@
                             <state key="normal" title="获取验证码">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="disabled" title="获取验证码"/>
                             <connections>
                                 <action selector="codeButtonClicked:" destination="-1" eventType="touchUpInside" id="hkS-pf-qkf"/>
                             </connections>
