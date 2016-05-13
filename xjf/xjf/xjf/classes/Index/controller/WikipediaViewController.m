@@ -127,7 +127,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 }
 - (void)handleSingleTapFrom
 {
-    NSLog(@"点击.....");
+   [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
 }
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
 {
@@ -153,7 +153,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 {
     
     if (indexPath.section == 0) {
-        
+        [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
     }
     else if (indexPath.section == 1) {
         PlayerViewController *player = [[PlayerViewController alloc] init];
@@ -168,7 +168,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 {
     if (indexPath.section == 0) {
         _layout.minimumLineSpacing = 0;
-        return  CGSizeMake((SCREENWITH - 0)/ 4, 50);
+        return  CGSizeMake((SCREENWITH - 0)/ 4, 40);
         
         
     }else{

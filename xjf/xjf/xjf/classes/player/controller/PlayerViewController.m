@@ -287,7 +287,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 #pragma mark 查看全部评论
 - (void)CommentsFooterViewlookCommentsButton:(UIButton *)sender
 {
-    NSLog(@"查看全部评论");
+    [self.navigationController pushViewController:[CommentsViewController new] animated:YES];
 }
 #pragma mark 评论
 - (void)comments:(UIButton *)sender

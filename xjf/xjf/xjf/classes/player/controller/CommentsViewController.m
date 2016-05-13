@@ -1,20 +1,22 @@
 //
-//  VideolistViewController.m
+//  CommentsViewController.m
 //  xjf
 //
 //  Created by Hunter_wang on 16/5/13.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "VideolistViewController.h"
-#import "IndexConfigure.h"
-@interface VideolistViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "CommentsViewController.h"
+#import "playerConfigure.h"
+@interface CommentsViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+
 @end
 
-@implementation VideolistViewController
-static NSString *videListCell_id = @"videListCell_id";
+@implementation CommentsViewController
+static NSString *CommentsCell_id = @"CommentsCell_id";
 
 
 - (void)viewWillAppear:(BOOL)animated
@@ -31,6 +33,7 @@ static NSString *videListCell_id = @"videListCell_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"全部评论";
     [self initTabelView];
 }
 #pragma mark- initTabelView
@@ -46,7 +49,7 @@ static NSString *videListCell_id = @"videListCell_id";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
     
-    [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:videListCell_id];
+    [self.tableView registerClass:[CommentsPageCommentsCell class] forCellReuseIdentifier:CommentsCell_id];
 }
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -56,15 +59,15 @@ static NSString *videListCell_id = @"videListCell_id";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:videListCell_id];
-
+    CommentsPageCommentsCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CommentsCell_id];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlayerViewController *player = [[PlayerViewController alloc] init];
-    [self.navigationController pushViewController:player animated:YES];
+  
 }
 
 
