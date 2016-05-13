@@ -19,6 +19,7 @@
 		5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E0F1CE42774003B7971 /* PlayerPageCommentsFooterView.m */; };
 		5A240E131CE427A3003B7971 /* PlayerPageDescribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E121CE427A3003B7971 /* PlayerPageDescribeCell.m */; };
 		5A240E161CE427C0003B7971 /* PlayerPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E151CE427C0003B7971 /* PlayerPageCommentsCell.m */; };
+		5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C531CE5E001000CF748 /* VideolistViewController.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
@@ -85,7 +86,6 @@
 		CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC551CB39B93002FC0C9 /* PlayerHistoryViewController.m */; };
 		CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC581CB39BAB002FC0C9 /* PlayerDownLoadViewController.m */; };
 		CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC5E1CB39CE1002FC0C9 /* SearchViewController.m */; };
-		CD416D881CBC817A0097A5E9 /* UINavigationController+YRBackGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = CD416D871CBC817A0097A5E9 /* UINavigationController+YRBackGesture.m */; };
 		CD416D941CBC85B90097A5E9 /* SCNavTabBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD416D8B1CBC85B90097A5E9 /* SCNavTabBar.bundle */; };
 		CD416D951CBC85B90097A5E9 /* SCNavTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD416D8E1CBC85B90097A5E9 /* SCNavTabBarController.m */; };
 		CD416D961CBC85B90097A5E9 /* SCNavTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD416D911CBC85B90097A5E9 /* SCNavTabBar.m */; };
@@ -139,6 +139,8 @@
 		5A240E121CE427A3003B7971 /* PlayerPageDescribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageDescribeCell.m; path = xjf/classes/Index/view/index/PlayerPageDescribeCell.m; sourceTree = SOURCE_ROOT; };
 		5A240E141CE427C0003B7971 /* PlayerPageCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerPageCommentsCell.h; path = xjf/classes/Index/view/index/PlayerPageCommentsCell.h; sourceTree = SOURCE_ROOT; };
 		5A240E151CE427C0003B7971 /* PlayerPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerPageCommentsCell.m; path = xjf/classes/Index/view/index/PlayerPageCommentsCell.m; sourceTree = SOURCE_ROOT; };
+		5A441C521CE5E000000CF748 /* VideolistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideolistViewController.h; sourceTree = "<group>"; };
+		5A441C531CE5E001000CF748 /* VideolistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideolistViewController.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
@@ -290,8 +292,6 @@
 		CD1CCC5A1CB39BE4002FC0C9 /* playerConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerConfigure.h; sourceTree = "<group>"; };
 		CD1CCC5D1CB39CE1002FC0C9 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		CD1CCC5E1CB39CE1002FC0C9 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		CD416D861CBC817A0097A5E9 /* UINavigationController+YRBackGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+YRBackGesture.h"; sourceTree = "<group>"; };
-		CD416D871CBC817A0097A5E9 /* UINavigationController+YRBackGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+YRBackGesture.m"; sourceTree = "<group>"; };
 		CD416D8A1CBC85B90097A5E9 /* CommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMacro.h; sourceTree = "<group>"; };
 		CD416D8B1CBC85B90097A5E9 /* SCNavTabBar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SCNavTabBar.bundle; sourceTree = "<group>"; };
 		CD416D8D1CBC85B90097A5E9 /* SCNavTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNavTabBarController.h; sourceTree = "<group>"; };
@@ -623,6 +623,8 @@
 				CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */,
 				5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */,
 				5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */,
+				5A441C521CE5E000000CF748 /* VideolistViewController.h */,
+				5A441C531CE5E001000CF748 /* VideolistViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -911,15 +913,6 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		CD416D851CBC817A0097A5E9 /* YRBackGesture */ = {
-			isa = PBXGroup;
-			children = (
-				CD416D861CBC817A0097A5E9 /* UINavigationController+YRBackGesture.h */,
-				CD416D871CBC817A0097A5E9 /* UINavigationController+YRBackGesture.m */,
-			);
-			path = YRBackGesture;
-			sourceTree = "<group>";
-		};
 		CD416D891CBC85B90097A5E9 /* SCNavTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,7 +1019,6 @@
 				D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */,
 				CD416D981CBC8C7D0097A5E9 /* Menu */,
 				CD416D891CBC85B90097A5E9 /* SCNavTabBar */,
-				CD416D851CBC817A0097A5E9 /* YRBackGesture */,
 				644C112E1CBA90A000892E2C /* XMShareView */,
 				644C10C01CBA61AC00892E2C /* UzysGridView */,
 			);
@@ -1262,6 +1254,7 @@
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				CD416D9E1CBC95330097A5E9 /* ScrollPageView.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
+				5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */,
 				5A240E161CE427C0003B7971 /* PlayerPageCommentsCell.m in Sources */,
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
 				D08534A21CE1DD1F00F0047B /* UserComponentCell.m in Sources */,
@@ -1275,7 +1268,6 @@
 				CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */,
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
-				CD416D881CBC817A0097A5E9 /* UINavigationController+YRBackGesture.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,

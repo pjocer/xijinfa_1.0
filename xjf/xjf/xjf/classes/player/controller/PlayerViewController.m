@@ -50,28 +50,19 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     [super viewDidLoad];
     [self initMainUI];
 }
-
+#pragma mark 横竖屏状态
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
-        self.view.backgroundColor = [UIColor whiteColor];
+        self.view.backgroundColor = BackgroundColor;
+        self.collectionView.hidden = NO;
         self.playerView.frame =CGRectMake(0, 20, SCREENHEIGHT, 211);
     }else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight || toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-        self.view.backgroundColor = [UIColor clearColor];
+        self.view.backgroundColor = [UIColor blackColor];
+        self.collectionView.hidden = YES;
         self.playerView.frame =CGRectMake(0, 0, SCREENHEIGHT,SCREENWITH);
     }
-    NSLog(@"---%@",NSStringFromCGRect(self.playerView.frame));
 }
-// 哪些页面支持自动转屏
-- (BOOL)shouldAutorotate{
-    return ![ZFPlayerSingleton sharedZFPlayer].isLockScreen;;
-}
-
-// viewcontroller支持哪些转屏方向
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
 
 #pragma mark- mainUI
 -(void)initMainUI
@@ -318,7 +309,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [_playView removeFromSuperview];
         _playView=nil;
     }
-    
+
     NSLog(@"%@释放了",self.class);
 }
 

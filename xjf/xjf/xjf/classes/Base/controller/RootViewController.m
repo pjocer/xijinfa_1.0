@@ -7,18 +7,28 @@
 //
 
 #import "RootViewController.h"
-#import "UINavigationController+YRBackGesture.h"
 #import "IndexViewController.h"
 #import "TopicViewController.h"
 #import "VipViewController.h"
 #import "SubscribeViewController.h"
 #import "MyViewController.h"
+#import "PlayerViewController.h"
+
 @interface RootViewController ()
 
 @end
 
 
 @implementation RootViewController
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.selectedIndex = 0;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -70,18 +80,16 @@
     nav.tabBarItem = item;
     [self addChildViewController:nav];
 }
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
+
+// viewcontroller支持哪些转屏方向
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+
+    UINavigationController *nav = self.viewControllers[self.selectedIndex];
+    if ([nav.topViewController isKindOfClass:[PlayerViewController class]]) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end

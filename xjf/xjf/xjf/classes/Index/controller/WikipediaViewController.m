@@ -151,7 +151,11 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    
+    if (indexPath.section == 0) {
+        
+    }
+    else if (indexPath.section == 1) {
         PlayerViewController *player = [[PlayerViewController alloc] init];
         [self.navigationController pushViewController:player animated:YES];
     }
