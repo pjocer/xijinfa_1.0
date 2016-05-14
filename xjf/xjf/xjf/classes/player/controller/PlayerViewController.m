@@ -86,8 +86,8 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     _playView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 231)];
     _playView.backgroundColor =[UIColor blackColor];
     [self.view addSubview:_playView];
-    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
-    
+//    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
+    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
         [_playerView resetPlayer];
