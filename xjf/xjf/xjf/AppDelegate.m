@@ -8,13 +8,12 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

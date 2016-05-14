@@ -25,8 +25,7 @@
 
 @implementation ZFPlayerSingleton
 
-+ (instancetype)sharedZFPlayer
-{
++ (instancetype)sharedZFPlayer {
     static ZFPlayerSingleton *_sharedPlayer = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
