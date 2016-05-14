@@ -34,7 +34,7 @@
         self.thumbUpImage.backgroundColor = [UIColor redColor];
         [self.thumbUpImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
-            make.left.equalTo(self).with.offset(20);
+            make.left.equalTo(self).with.offset(10);
             make.size.mas_equalTo(CGSizeMake(20, 20));
         }];
         

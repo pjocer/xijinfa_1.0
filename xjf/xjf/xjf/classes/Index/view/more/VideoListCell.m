@@ -42,9 +42,9 @@
         [self.contentView addSubview:self.videoImage];
         self.videoImage.backgroundColor = BackgroundColor;
         [self.videoImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(self.contentView);
-            make.left.mas_equalTo(20);
-            make.size.mas_equalTo(CGSizeMake(100, 80));
+            make.top.left.mas_equalTo(self.contentView).with.offset(10);
+            make.bottom.mas_equalTo(self.contentView).with.offset(-10);
+            make.height.equalTo(self.videoImage.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
         }];
         
         //videoTitle

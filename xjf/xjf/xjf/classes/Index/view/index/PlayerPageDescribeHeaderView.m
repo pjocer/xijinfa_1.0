@@ -33,7 +33,7 @@
         self.collectionButton.backgroundColor = [UIColor redColor];
         [self.collectionButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.topBackGroundView);
-            make.right.equalTo(self).with.offset(-20);
+            make.right.equalTo(self).with.offset(-10);
             make.size.mas_equalTo(CGSizeMake(25, 25));
         }];
         
@@ -69,7 +69,7 @@
         self.title.font = FONT15;
         self.title.text = @"XXXXXX";
         [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.equalTo(self.bottomBackGroundView).with.offset(20);
+            make.top.left.equalTo(self.bottomBackGroundView).with.offset(10);
             make.right.equalTo(self).with.offset(-80);
             make.height.mas_equalTo(15);
         }];
@@ -79,7 +79,7 @@
         self.rightButton.backgroundColor = [UIColor redColor];
         [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.title);
-            make.right.equalTo(self).with.offset(-20);
+            make.right.equalTo(self).with.offset(-10);
             make.size.mas_equalTo(CGSizeMake(15, 15));
         }];
         

@@ -37,7 +37,7 @@
         self.userImage.layer.cornerRadius = 20;
         [self.contentView addSubview:self.userImage];
         [self.userImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.equalTo(self).with.offset(20);
+            make.left.top.equalTo(self).with.offset(10);
             make.size.mas_offset(CGSizeMake(40, 40));
         }];
         
@@ -58,7 +58,7 @@
         [self.contentView addSubview:self.commentsTime];
         self.commentsTime.font = FONT12;
         self.commentsTime.textColor = AssistColor;
-        self.commentsTime.text = @" 03-30 11:25";
+        self.commentsTime.text = @"  03-30 11:25";
         self.commentsText.textAlignment = NSTextAlignmentLeft;
         [self.commentsTime mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.userName);
@@ -90,7 +90,7 @@
         [self.commentsText mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.userImage.mas_bottom);
             make.left.equalTo(self.userName);
-            make.right.equalTo(self).with.offset(-20);
+            make.right.equalTo(self).with.offset(-10);
             make.bottom.equalTo(self);
         }];
     }

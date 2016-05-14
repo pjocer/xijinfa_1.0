@@ -14,6 +14,7 @@
 
 @implementation PlayerBaseViewController
 
+#pragma mark- viewWillAppear
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -21,7 +22,7 @@
     self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = YES;
 }
-
+#pragma mark- viewWillDisappear
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -29,7 +30,6 @@
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = NO;
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];

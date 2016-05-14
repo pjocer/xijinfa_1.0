@@ -220,6 +220,7 @@ NSString * const Subscribe = @"SubscribeViewController";
     [_headView addSubview:_titleLabel];
     
     [self.view addSubview:_headView];
+    [self.headView addShadow];
 }
 
 -(UIView *)footerView:(NSString*)msg
@@ -239,10 +240,10 @@ NSString * const Subscribe = @"SubscribeViewController";
     return footerview;
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    [self.view endEditing:YES];
-}
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    [super touchesBegan:touches withEvent:event];
+//    [self.view endEditing:YES];
+//}
 
 -(BOOL)isLogin
 {

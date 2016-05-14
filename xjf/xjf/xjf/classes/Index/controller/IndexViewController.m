@@ -8,7 +8,8 @@
 
 #import "IndexViewController.h"
 #import "IndexConfigure.h"
-
+#import "VideolistViewController.h"
+#import "PlayerViewController.h"
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic,strong)UITableView *tableview;
@@ -27,7 +28,6 @@
     //
     [self extendheadViewFor:Index];
     [self initMainUI];
-   
  
 }
 
@@ -225,6 +225,7 @@
             }
             else if (indexPath.section == 2){
                 //金融百科
+                [self.navigationController pushViewController:[PlayerViewController new] animated:YES];
             }
             else if (indexPath.section == 3){
                 //析金学堂
@@ -241,14 +242,14 @@
         {
             if (indexPath.section == 2) {
                 //金融百科更多
-       
+                [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
             }
             else if (indexPath.section == 3){
                 //析金学堂更多
             }
-            
-            IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
-            [self.navigationController pushViewController:more animated:YES];
+//            
+//            IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
+//            [self.navigationController pushViewController:more animated:YES];
         }
             break;
     }

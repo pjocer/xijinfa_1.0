@@ -173,7 +173,21 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
         
     }else{
         _layout.minimumLineSpacing = 1;
-        return CGSizeMake((SCREENWITH - 2)/ 2, 150);
+        CGFloat height;
+        if (iPhone4 || iPhone5)
+        {
+            height = 140;
+        }
+        else if (iPhone6)
+        {
+            height = 155;
+        }
+        else if (iPhone6P)
+        {
+            height = 165;
+        }
+        
+        return CGSizeMake((SCREENWITH - 2)/ 2, height);
     }
 }
 

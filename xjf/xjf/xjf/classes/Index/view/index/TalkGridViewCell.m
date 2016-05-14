@@ -61,12 +61,11 @@
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
    
     //titleImage
-   [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.top.left.mas_equalTo(self.backgroundView).with.offset(17);
-       make.right.mas_equalTo(-17);
-       make.height.mas_equalTo(81);
+    [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(self.backgroundView).with.offset(10);
+        make.right.mas_equalTo(self.backgroundView).with.offset(-10);
+        make.height.equalTo(self.titleImage.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
     }];
-    
     //titleLable
     [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleImage.mas_bottom);

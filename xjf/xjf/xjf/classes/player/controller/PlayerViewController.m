@@ -13,15 +13,20 @@
 #import "ZFPlayerSingleton.h"
 #import "playerConfigure.h"
 
-@interface PlayerViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface PlayerViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
 
 @property(nonatomic,strong)UIView *playView;
 @property (strong, nonatomic) ZFPlayerView *playerView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
 @property (nonatomic, retain) NSMutableArray *dataSource; /**< 数据源 */
+
 ///是否展示视频描述
 @property (nonatomic, assign) BOOL isShowVideDescrible;
+
+@property (nonatomic, retain) UIView *keyBoardView; /**< 键盘背景图 */
+@property (nonatomic, retain) UIView *keyBoardAppearView; /**< 键盘出现，屏幕背景图 */
+@property (nonatomic, retain) UITextField *textField; /**< 键盘 */
 
 @end
 
@@ -69,6 +74,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     [self initPlayerView];
     [self initCollectionView];
+    [self initTextField];
 }
 #pragma mark PlayerView
 - (void) initPlayerView
@@ -129,6 +135,36 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     
     
 }
+#pragma mark 键盘
+/**键盘 */
+- (void)initTextField
+{
+    self.keyBoardAppearView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.keyBoardAppearView.backgroundColor = [UIColor blackColor];
+    self.keyBoardAppearView.alpha = 0.2;
+    [self.view addSubview:self.keyBoardAppearView];
+    self.keyBoardAppearView.hidden = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardresignFirstResponder:)];
+    [self.keyBoardAppearView addGestureRecognizer:tap];
+    
+    
+    self.keyBoardView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 40)];
+    self.keyBoardView.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:self.keyBoardView];
+    
+    self.textField = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 250) / 2,5,250,30)];
+    self.textField.backgroundColor = [UIColor whiteColor];
+    self.textField.placeholder = @"请输入";
+    [self.keyBoardView addSubview:self.textField];
+    
+    
+    //UIKeyboardWillShow
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardwillAppear:) name:UIKeyboardWillShowNotification object:nil];
+    //UIKeyboardWillHide
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UIKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+
 #pragma mark- CollectionViewDelegate & DataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -255,7 +291,20 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     }
     else if (indexPath.section == 1) {
         _layout.minimumLineSpacing = 1;
-        return CGSizeMake((SCREENWITH - 2)/ 2, 150);
+        CGFloat height;
+        if (iPhone4 || iPhone5)
+        {
+            height = 140;
+        }
+        else if (iPhone6)
+        {
+            height = 155;
+        }
+        else if (iPhone6P)
+        {
+            height = 165;
+        }
+        return CGSizeMake((SCREENWITH - 2)/ 2, height);
     }
     return CGSizeMake(SCREENWITH, 100);
 }
@@ -293,6 +342,36 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)comments:(UIButton *)sender
 {
     NSLog(@"评论");
+    [self.textField becomeFirstResponder];
+}
+
+
+#pragma mark- KeyboardAction
+/** UIKeyboardWillHide */
+- (void)UIKeyboardWillHide:(NSNotification *)notifation
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.keyBoardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 40);
+    }];
+    self.keyBoardAppearView.hidden = YES;
+}
+
+
+/** keyBoardwillAppear */
+- (void)keyBoardwillAppear:(NSNotification *)notifation
+{
+    NSLog(@"%@",notifation);
+    CGRect KeyboardFrame = [[notifation.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    NSLog(@"%@",NSStringFromCGRect(KeyboardFrame));
+    self.keyBoardAppearView.hidden = NO;
+    //UIView动画
+    [UIView animateWithDuration:0.25 animations:^{
+        self.keyBoardView.frame = CGRectMake(0 , self.view.frame.size.height - KeyboardFrame.size.height -50, self.view.frame.size.width, 50);
+    }];
+}
+
+- (void)keyBoardresignFirstResponder:(UITapGestureRecognizer *)sender{
+    [self.textField resignFirstResponder];
 }
 
 
@@ -301,6 +380,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
+        [_playerView pause];
         [_playerView resetPlayer];
         [_playerView removeFromSuperview];
         _playerView=nil;
@@ -309,8 +389,6 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [_playView removeFromSuperview];
         _playView=nil;
     }
-
     NSLog(@"%@释放了",self.class);
 }
-
 @end

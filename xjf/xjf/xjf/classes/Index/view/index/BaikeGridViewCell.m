@@ -70,16 +70,16 @@
 
     //titleImage
     [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.backgroundView.mas_centerY);
-        make.left.mas_equalTo(20);
-        make.size.mas_equalTo(CGSizeMake(136, 76.5));
+        make.top.left.mas_equalTo(self).with.offset(10);
+        make.bottom.mas_equalTo(self).with.offset(-10);
+        make.width.equalTo(self.titleImage.mas_height).multipliedBy(16.0f/9.0f).with.priority(750);
     }];
 
     //titleLable
     [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleImage);
         make.left.mas_equalTo(self.titleImage.mas_right).with.offset(10);
-        make.right.mas_equalTo(self.backgroundView);
+        make.right.mas_equalTo(self.backgroundView).with.offset(-10);
         make.height.mas_equalTo(40);
     }];
     

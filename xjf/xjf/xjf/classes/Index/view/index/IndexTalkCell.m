@@ -77,8 +77,17 @@
 /// 返回Cell高度
 + (CGFloat)returnCellHeight:(id)model
 {
+    
     NSDictionary *dict =(NSDictionary*)model;
-    return 350;
+    if (iPhone4 || iPhone5)
+    {
+        return 320;
+    }
+    else if (iPhone6)
+    {
+        return 350;
+    }
+        return 370;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {
@@ -92,6 +101,7 @@
 }
 -(void)handleSingleTapFrom
 {
+    
     if (self.actionBlock) {
         self.actionBlock(BEventType_More,nil,self.data,nil,self.indexPath);
     }

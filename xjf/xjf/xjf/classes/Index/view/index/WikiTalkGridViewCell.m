@@ -55,11 +55,10 @@
     
     //titleImage
     [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.mas_equalTo(self.contentView).with.offset(17);
-        make.right.mas_equalTo(-17);
-        make.height.mas_equalTo(81);
+        make.top.left.mas_equalTo(self.contentView).with.offset(10);
+        make.width.mas_equalTo((SCREENWITH / 2) - 20);
+        make.height.equalTo(self.titleImage.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
     }];
-    
     //titleLable
     [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleImage.mas_bottom);
