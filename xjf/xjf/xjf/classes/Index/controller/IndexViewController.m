@@ -27,8 +27,8 @@
     //
     [self extendheadViewFor:Index];
     [self initMainUI];
-
-
+   
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +39,6 @@
 {
     self.sectionsArray=nil;
 }
-
 ////head UI
 //-(void)extendheadView
 //{
@@ -110,14 +109,13 @@
 //        {
 //            SearchViewController *download =[[SearchViewController alloc] init];
 //            [self.navigationController pushViewController:download animated:YES];
-//
+//            
 //        }
 //            break;
 //        default:
 //            break;
 //    }
 //}
-
 //main UI
 -(void)initMainUI
 {
@@ -134,7 +132,7 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.sectionsArray.count;
-
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -165,7 +163,7 @@
     {
         return [IndexCourseCell returnCellHeight:nil];
     }
-
+ 
     return 50;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -183,7 +181,7 @@
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     NSString *sectionTitle =[self.sectionsArray objectAtIndex:indexPath.section];
     if ([sectionTitle isEqualToString:@"bannercell"])
     {
@@ -214,7 +212,7 @@
         }
         [cell showInfo:nil key:sectionTitle indexPath:indexPath];
         return cell;
-
+        
     }else if ([sectionTitle isEqualToString:@"talkcell"])
     {
         IndexTalkCell *cell = (IndexTalkCell*)[tableView  dequeueReusableCellWithIdentifier:@"IndexTalkCell"];
@@ -288,25 +286,25 @@
 //    NSString *sectionTitle =[self.sectionsArray objectAtIndex:indexPath.section];
 //    if ([sectionTitle isEqualToString:@"bannercell"])
 //    {
-//
+//        
 //    }else if ([sectionTitle isEqualToString:@"appcell"])
 //    {
-//
+//        
 //    }else if ([sectionTitle isEqualToString:@"talkcell"])
 //    {
-//
+//        
 //    }
 //    else if ([sectionTitle isEqualToString:@"baikecell"])
 //    {
-//
+//        
 //    }
 //    else if ([sectionTitle isEqualToString:@"teachercell"])
 //    {
-//
+//        
 //    }
 //    else if ([sectionTitle isEqualToString:@"coursecell"])
 //    {
-//
+//        
 //    }
 //}
 -(void)cellAction:(BEventType)type views:(UIView *)v obj:(id)obj key:(id)key indexPath:(NSIndexPath *)indexPath
@@ -314,7 +312,7 @@
     switch (type)
     {
         case BEventType_Unknow:
-
+            
             if (indexPath.section == 0) {
                 XRCarouselView *carouselView = obj;
                 carouselView.imageClickBlock = ^(NSInteger index) {
@@ -322,7 +320,7 @@
                 };
             }
             else if (indexPath.section == 1) {
-
+                
                 if ([key isEqualToString:@"0"]) {
                         NSLog(@"%@",obj[0]);
                 }else if ([key isEqualToString:@"1"]){
@@ -332,7 +330,7 @@
                 }else if ([key isEqualToString:@"3"]){
                         NSLog(@"%@",obj[3]);
                 }
-
+                
             }
             else if (indexPath.section == 2){
                 //金融百科
@@ -356,13 +354,13 @@
             else if (indexPath.section == 3){
                 //析金学堂更多
             }
-
+            
             IndexMoreViewController *more = [[IndexMoreViewController alloc] init];
             [self.navigationController pushViewController:more animated:YES];
         }
             break;
     }
-
-
+    
+    
 }
 @end
