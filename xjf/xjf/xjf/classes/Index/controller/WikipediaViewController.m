@@ -8,12 +8,15 @@
 
 #import "WikipediaViewController.h"
 #import "IndexConfigure.h"
+#import "WikiPediaCategoriesModel.h"
+
 @interface WikipediaViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property (nonatomic, retain) NSMutableArray *dataArray; /**< 数据源 */
-
+@property (nonatomic, retain) NSMutableArray *dataArrayByBanner; /**< 广告数据源 */
+@property (nonatomic, strong) BannerModel *bannermodel;
+@property (nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
 @end
 
 @implementation WikipediaViewController
@@ -38,6 +41,51 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
     [super viewDidLoad];
     [self setNavigation];
     [self initCollectionView];
+    [self requestBannerData:appDeptCarousel2 method:GET];
+    [self requestCategoriesData:talkGridCategories method:GET];
+}
+#pragma mark requestData
+- (void)requestBannerData:(APIName *)api method:(RequestMethod)method
+{
+    __weak typeof (self) wSelf = self;
+    self.dataArrayByBanner = [NSMutableArray array];
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+    
+    //bannermodel
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        
+        __strong typeof (self)sSelf = wSelf;
+        [[ZToastManager ShardInstance] hideprogress];
+        sSelf.bannermodel = [[BannerModel alloc]initWithData:responseData error:nil];
+        for (BannerResultModel *model in sSelf.bannermodel.result.data) {
+            [self.dataArrayByBanner addObject:model.thumbnail];
+        }
+        [sSelf.collectionView reloadData];
+        
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+    }];
+    
+}
+- (void)requestCategoriesData:(APIName *)api method:(RequestMethod)method
+{
+    __weak typeof (self) wSelf = self;
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+    
+    //Categories
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        
+        __strong typeof (self)sSelf = wSelf;
+    
+        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+        sSelf.wikiPediaCategoriesModel = [[WikiPediaCategoriesModel alloc] init];
+        [sSelf.wikiPediaCategoriesModel setValuesForKeysWithDictionary:result];
+        [sSelf.collectionView reloadData];
+
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+    }];
 }
 
 
@@ -86,8 +134,8 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 8;
+    if (section == 0 && self.wikiPediaCategoriesModel.resultModel.dataModelArray != 0) {
+        return self.wikiPediaCategoriesModel.resultModel.dataModelArray.count;
     }
     else if (section == 1) {
         return 4;
@@ -99,7 +147,10 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 {
     if (indexPath.section == 0) {
         WikiFirstSectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:firstSectionCell_Id forIndexPath:indexPath];
-        
+        if (self.wikiPediaCategoriesModel.resultModel.dataModelArray.count != 0) {
+            WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.resultModel.dataModelArray[indexPath.row];
+            cell.label.text = model.name;
+        }
         return cell;
     }
         WikiTalkGridViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:talkGridViewCell_Id forIndexPath:indexPath];
@@ -113,6 +164,8 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
         if (indexPath.section == 0) {
             WikiBannerView *wikiBannerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:wikiBannerView_HeaderId forIndexPath:indexPath];
             wikiBannerView.carouselView.delegate = self;
+            wikiBannerView.carouselView.imageArray = self.dataArrayByBanner;
+            
             return wikiBannerView;
         }
         else if (indexPath.section == 1) {
