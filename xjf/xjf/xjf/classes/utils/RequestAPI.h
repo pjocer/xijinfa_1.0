@@ -6,6 +6,10 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 #pragma mark- PerryJi
+
+//找回密码页面获取短信验证码
+static APIName *reset_message_code = @"/api/auth/generate-reset-security-code";
+
 //注册页面获取短信验证码
 static APIName *regist_message_code = @"/api/auth/generate-register-security-code";
 
@@ -15,9 +19,17 @@ static APIName *get_image_code = @"/api/auth/captcha";
 //重置密码
 static APIName *reset_password = @"/api/auth/reset-password";
 
-//验证验证码是否有效
+//验证短信验证码是否有效
 static APIName *check_code_message = @"/api/auth/verify-security-code";
 
+//本地登录API
+static APIName *local_login = @"/api/auth/login";
+
+//第三方登录API
+static APIName *third_login = @"/api/auth/third";
+
+//提交注册API
+static APIName *commit_register = @"/api/auth/register";
 
 #pragma mark- Hunter_Wang
 

@@ -10,6 +10,8 @@
 #import "ZPlatformShare.h"
 #import "RegistViewController.h"
 #import "PasswordSettingViewController.h"
+#import "RegistFinalModel.h"
+#import "ImageCodeModel.h"
 @interface LoginViewController ()<UITextFieldDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UserDelegate>
 {
     
@@ -21,6 +23,8 @@
 @property(nonatomic,strong) UIButton     *loginBtn;
 @property(nonatomic,strong) UIButton     *settingBtn;
 @property(nonatomic,strong) UIImageView *codeImageView;
+@property(nonatomic,copy)   NSString *secure_key;
+@property(nonatomic,copy)   NSString *secure_code;
 @end
 
 @implementation LoginViewController
@@ -31,6 +35,7 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"hadLogin"]) {
         self.txtNickname.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     }
+    [self requestData:get_image_code method:GET params:nil];
     self.navigationController.navigationBarHidden = NO;
 }
 
@@ -62,7 +67,7 @@
     if (!_codeImageView) {
         _codeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWITH-90, 10, 60, 30)];
         _codeImageView.layer.cornerRadius = 5;
-        _codeImageView.backgroundColor = PrimaryColor;
+        _codeImageView.backgroundColor = [UIColor clearColor];
         _codeImageView.layer.masksToBounds = YES;
         _codeImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changeCodeImage:)];
@@ -195,10 +200,10 @@
     [wx addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wx];
     if (!hadInstalledQQ) {
-//        qq.hidden=YES;
+        qq.hidden=YES;
     }
     if (!hadInstalledWeixin) {
-//        wx.hidden =YES;
+        wx.hidden =YES;
     }
     
 }
@@ -211,7 +216,7 @@
 
 //点击更换图片验证码
 - (void)changeCodeImage:(UITapGestureRecognizer *)gesture {
-    
+    [self requestData:get_image_code method:GET params:nil];
 }
 - (void)addWhiteColorFor:(UITextField *)view {
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 25.0+51*(view.tag-100), SCREENWITH, PHOTO_FRAME_WIDTH*5.0)];
@@ -239,9 +244,8 @@
         {
             __weak typeof (self) wSelf = self;
             [ZPlatformShare qqLoginWithSuccess:^(NSDictionary *message) {
-                [wSelf thirdLogin:message type:@"3"];
+                [wSelf thirdLogin:message type:@"1"];
             } failure:^(NSDictionary *message, NSError *error) {
-                
             }];
             
         }
@@ -261,27 +265,31 @@
             break;
     }
 }
+
+
+
 -(void)thirdLogin:(NSDictionary *)message type:(NSString*)type
 {
     //third_type：第三方网站编码，0-本站，1-淘宝，2-微信，3-qq，4-微博
-    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
-    [dict setValue:@"third_party" forKey:@"action"];
-    [dict setValue:type forKey:@"third_type"];
+    NSMutableDictionary *dict = nil;
+    XjfRequest *request = nil;
     int typev =[type intValue];
     if (typev==1) {
+        [dict setValue:@"qq" forKey:@"type"];
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"nick_name"]] replaceNullString] forKey:@"nick_name"];
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"user_face"]] replaceNullString] forKey:@"user_face"];
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"third_id"]] replaceNullString] forKey:@"third_id"];
-    }else if (typev==2) {
-        [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"nickname"]] replaceNullString] forKey:@"nick_name"];
-        [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"headimgurl"]] replaceNullString] forKey:@"user_face"];
-        [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"openid"]] replaceNullString] forKey:@"third_id"];
-        [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"accessToken"]] replaceNullString] forKey:@"accessToken"];
-    }else if (typev==3) {
+    }else if (typev==2)
+    {
+        dict = [NSMutableDictionary dictionaryWithDictionary:message];
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict,@"credentials",@"wechat",@"type", nil];
+        request = [[XjfRequest alloc]initWithAPIName:third_login RequestMethod:POST];
+        request.requestParams = params;
+    }else if (typev==3)
+    {
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"nickname"]] replaceNullString] forKey:@"nick_name"];
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"figureurl_qq_2"]]replaceNullString] forKey:@"user_face"];
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"openId"]] replaceNullString] forKey:@"third_id"];
-        
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"accessToken"]] replaceNullString] forKey:@"accessToken"];
     }else if (typev==4)
     {
@@ -289,20 +297,25 @@
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"user_face"]]replaceNullString] forKey:@"user_face"];
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"openId"]] replaceNullString] forKey:@"third_id"];
         [dict setValue:[[NSString stringWithFormat:@"%@",[message objectForKey:@"accessToken"]] replaceNullString] forKey:@"accessToken"];
-        
-        
     }
-  
+    if (request) {
+        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+            RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
+            if (model.errCode == 0) {
+                SendNotification(loginSuccess, model);
+            }else {
+                NSLog(@"第三方登录失败--error:%@",model.errMsg);
+            }
+        } failedBlock:^(NSError * _Nullable error) {
+            NSLog(@"第三方登录失败");
+        }];
+    }
 }
--(void)handleSingleTapFrom1
-{
-    
-}
+
 - (void)btnLoginAction
 {
-    if(self.txtNickname.text.length==0)
-    {
-        [[ZToastManager ShardInstance] showtoast:@"请输入邮箱地址"];
+    if (!([self.txtNickname.text isValidEmail] || [self.txtNickname.text isValidPhoneNumber])) {
+        [[ZToastManager ShardInstance] showtoast:@"请输入正确的邮箱地址/手机号码"];
         return;
     }
     if(self.txtPass.text.length==0)
@@ -310,14 +323,13 @@
         [[ZToastManager ShardInstance] showtoast:@"请输入密码"];
         return;
     }
-    [[ZToastManager ShardInstance] showprogress];
-    __weak typeof (self) wSelf = self;
-    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
     
-    [dict setValue:@"yes" forKey:@"hadLogin"];
+    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
+    [dict setValue:self.secure_key forKey:@"secure_key"];
+    [dict setValue:self.secure_code forKey:@"secure_code"];
     [dict setValue:self.txtNickname.text forKey:@"username"];
     [dict setValue:self.txtPass.text forKey:@"password"];
-   
+    [self requestData:local_login method:POST params:dict];
     
 }
 
@@ -336,7 +348,38 @@
     }
     return YES;
 }
-
+- (void)requestData:(APIName *)api method:(RequestMethod)method params:(NSMutableDictionary *)params{
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+    if (params) {
+        request.requestParams = params;
+    }
+    __weak typeof (self) wSelf = self;
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        [[ZToastManager ShardInstance]hideprogress];
+        if ([api isEqualToString:local_login]) {
+            RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
+            if (model.errCode == 0) {
+                SendNotification(loginSuccess, model);
+            }else {
+                [[ZToastManager ShardInstance]showtoast:model.errMsg];
+            }
+        }
+        if ([api isEqualToString:get_image_code]) {
+            ImageCodeModel *model = [[ImageCodeModel alloc]initWithData:responseData error:nil];
+            NSURL *url = [NSURL URLWithString:model.result.secure_image];
+            NSData *imageData = [NSData dataWithContentsOfURL:url];
+            UIImage *ret = [UIImage imageWithData:imageData];
+            wSelf.secure_key = model.result.secure_key;
+            wSelf.secure_code = model.result.secure_code;
+            self.codeImageView.image = ret;
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance]hideprogress];
+        [[ZToastManager ShardInstance]showtoast:@"请求失败"];
+    }];
+    
+}
 #pragma mark - UserDelegate
 -(void)userRegistOK:(id)userInfo {
     

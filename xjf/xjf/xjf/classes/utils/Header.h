@@ -28,4 +28,6 @@
 #import "XjfRequest.h"
 #import "RequestAPI.h"
 #import "NotificationUtil.h"
+#import "NotificationSet.h"
+#import "AlertUtils.h"
 #endif /* Header_h */

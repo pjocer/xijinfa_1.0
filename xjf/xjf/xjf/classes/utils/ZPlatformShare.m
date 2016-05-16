@@ -43,9 +43,9 @@
 + (void)initPlatformData
 {
     
-   BOOL wx=  [WXApi registerApp:APP_KEY_WEIXIN withDescription:@"weixin"];
-   BOOL wb=  [WeiboSDK registerApp:APP_KEY_WEIBO];
-  DLog(@"--WXApi--%d-----WeiboSDK-%d",wx,wb);
+   [WXApi registerApp:APP_KEY_WEIXIN withDescription:@"Wechat"];
+//   BOOL wb=  [WeiboSDK registerApp:APP_KEY_WEIBO];
+//  DLog(@"--WXApi--%d-----WeiboSDK-%d",wx,wb);
     
 }
 -(BOOL)handleOpenURL:(NSURL *)url

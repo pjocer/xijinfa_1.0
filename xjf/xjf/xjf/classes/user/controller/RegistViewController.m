@@ -68,7 +68,8 @@
 }
 - (IBAction)codeButtonClicked:(UIButton *)sender {
     self.codeIsOk = YES;
-    [self requestData:regist_message_code method:POST];
+    [self requestData:get_image_code method:GET];
+    [self requestData:[self.title_item isEqualToString:@"注册"]?regist_message_code:reset_message_code method:POST];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,7 +81,7 @@
     __weak typeof (self) wSelf = self;
     [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
-    if ([api isEqualToString:regist_message_code]) {
+    if ([api isEqualToString:regist_message_code]||[api isEqualToString:reset_message_code]) {
         [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
         [request.requestParams setObject:self.txtCodeImage.text forKey:@"secure_code"];
         [request.requestParams setObject:self.model.result.secure_key forKey:@"secure_key"];
@@ -88,8 +89,8 @@
     if ([api isEqualToString:check_code_message]) {
         [request.requestParams removeAllObjects];
         [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
-        [request.requestParams setObject:self.txtCodePhone.text forKey:@"code"];
-        NSLog(@"%@",request.requestParams);
+        NSString *c = [self.txtCodePhone.text substringToIndex:1];
+        [request.requestParams setObject:[self.txtCodePhone.text stringByAppendingString:c] forKey:@"code"];
     }
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         __strong typeof (self)sSelf = wSelf;
@@ -101,7 +102,7 @@
             NSData *imageData = [NSData dataWithContentsOfURL:url];
             UIImage *ret = [UIImage imageWithData:imageData];
             sSelf.codeImage.image = ret;
-        }else if ([api isEqualToString:regist_message_code]) {
+        }else if ([api isEqualToString:regist_message_code]||[api isEqualToString:reset_message_code]) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
             if ([dic[@"errCode"] integerValue] == 0) {
                 [[ZToastManager ShardInstance] showtoast:@"发送验证码成功"];
@@ -114,7 +115,6 @@
             [self.timer fire];
         }else if ([api isEqualToString:check_code_message]) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"%@",dic);
             if ([dic[@"errCode"] integerValue] == 0) {
                 [[ZToastManager ShardInstance] showtoast:@"验证码正确"];
                 [_timer invalidate];
@@ -123,7 +123,8 @@
                 self.codeButton.enabled = YES;
                 self.codeButton.backgroundColor = PrimaryColor;
                 PasswordSettingViewController *controller = [[PasswordSettingViewController alloc]init];
-                controller.itemTitle = @"设置密码";
+                controller.itemTitle = [self.title_item isEqualToString:@"注册"]?@"设置密码":@"重设密码";
+                controller.dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:wSelf.txtPhone.text,@"phone",wSelf.txtCodePhone.text,@"code", nil];
                 [sSelf.navigationController pushViewController:controller animated:YES];
             }else {
                 [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];

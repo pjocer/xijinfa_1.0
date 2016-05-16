@@ -17,12 +17,12 @@ void SendNotification(NSString *name, id object)
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:object];
 }
 
-void SendUpdateNotification(UpdateCategory category, UpdateType type, id object)
-{
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"category":[NSNumber numberWithInt:category], @"type":[NSNumber numberWithInt:type]}];
-    if (object) [dictionary setObject:object forKey:@"object"];
-    SendNotification(UpdateInfoNotification, dictionary);
-}
+//void SendUpdateNotification(UpdateCategory category, UpdateType type, id object)
+//{
+//    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"category":[NSNumber numberWithInt:category], @"type":[NSNumber numberWithInt:type]}];
+//    if (object) [dictionary setObject:object forKey:@"object"];
+//    SendNotification(UpdateInfoNotification, dictionary);
+//}
 
 id ReceivedNotification(id target, NSString *name, NotificationBlock block)
 {
@@ -43,15 +43,15 @@ id ReceivedNotification(id target, NSString *name, NotificationBlock block)
     return notification;
 }
 
-id ReceivedUpdateNotification(id target, UpdateNotificationBlock block)
-{
-    return ReceivedNotification(target, UpdateInfoNotification, ^(NSNotification *notification) {
-        NSDictionary *infoObject = notification.object;
-        if (block) block((UpdateCategory)[infoObject[@"category"] intValue],
-                         (UpdateType)[infoObject[@"type"] intValue],
-                         infoObject[@"object"]);
-    });
-}
+//id ReceivedUpdateNotification(id target, UpdateNotificationBlock block)
+//{
+//    return ReceivedNotification(target, UpdateInfoNotification, ^(NSNotification *notification) {
+//        NSDictionary *infoObject = notification.object;
+//        if (block) block((UpdateCategory)[infoObject[@"category"] intValue],
+//                         (UpdateType)[infoObject[@"type"] intValue],
+//                         infoObject[@"object"]);
+//    });
+//}
 
 void RemoveNotification(id target)
 {

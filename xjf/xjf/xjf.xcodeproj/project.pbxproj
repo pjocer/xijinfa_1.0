@@ -111,6 +111,8 @@
 		D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E691CE42B25003BF1F3 /* PasswordSettingViewController.m */; };
 		D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */; };
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
+		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
+		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
 		D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534981CE1AE1F00F0047B /* UIView+Addtion.m */; };
 		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
 		D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */; };
@@ -341,6 +343,11 @@
 		D0698E7E1CE45059003BF1F3 /* RequestAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestAPI.h; sourceTree = "<group>"; };
 		D0698E7F1CE45AED003BF1F3 /* NotificationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtil.h; sourceTree = "<group>"; };
 		D0698E801CE45AED003BF1F3 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationUtil.m; sourceTree = "<group>"; };
+		D073E8131CE9D66C00AED895 /* RegistFinalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistFinalModel.h; path = xjf/classes/user/controller/RegistFinalModel.h; sourceTree = SOURCE_ROOT; };
+		D073E8141CE9D66C00AED895 /* RegistFinalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistFinalModel.m; path = xjf/classes/user/controller/RegistFinalModel.m; sourceTree = SOURCE_ROOT; };
+		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationSet.h; sourceTree = "<group>"; };
+		D073E8171CE9E5B200AED895 /* AlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtils.h; sourceTree = "<group>"; };
+		D073E8181CE9E5B200AED895 /* AlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtils.m; sourceTree = "<group>"; };
 		D08534971CE1AE1F00F0047B /* UIView+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addtion.h"; sourceTree = "<group>"; };
 		D08534981CE1AE1F00F0047B /* UIView+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addtion.m"; sourceTree = "<group>"; };
 		D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnLoadCell.h; sourceTree = "<group>"; };
@@ -471,6 +478,8 @@
 			children = (
 				D065BFE21CE5751800D11804 /* ImageCodeModel.h */,
 				D065BFE31CE5751800D11804 /* ImageCodeModel.m */,
+				D073E8131CE9D66C00AED895 /* RegistFinalModel.h */,
+				D073E8141CE9D66C00AED895 /* RegistFinalModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -859,6 +868,8 @@
 				644C10FB1CBA80B400892E2C /* category */,
 				644C112B1CBA908200892E2C /* ZPlatformShare.h */,
 				644C112C1CBA908200892E2C /* ZPlatformShare.m */,
+				D073E8171CE9E5B200AED895 /* AlertUtils.h */,
+				D073E8181CE9E5B200AED895 /* AlertUtils.m */,
 				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
 				CD1CCC3E1CB37BB6002FC0C9 /* XjfShare.h */,
 				CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */,
@@ -1049,6 +1060,7 @@
 				CD1CCC411CB37BDB002FC0C9 /* XjfRequest.h */,
 				CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */,
 				D0698E7E1CE45059003BF1F3 /* RequestAPI.h */,
+				D073E8161CE9DA4E00AED895 /* NotificationSet.h */,
 			);
 			name = XJFRequest;
 			sourceTree = "<group>";
@@ -1233,6 +1245,7 @@
 				CD416DA51CBC9B640097A5E9 /* HomeViewCell.m in Sources */,
 				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
 				5A441C5D1CE5FC32000CF748 /* CommentsPageCommentsCell.m in Sources */,
+				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
 				CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
@@ -1283,6 +1296,7 @@
 				CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */,
 				CD1CCC141CB35A2D002FC0C9 /* SubscribeViewController.m in Sources */,
 				5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */,
+				D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */,
 				CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */,
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,

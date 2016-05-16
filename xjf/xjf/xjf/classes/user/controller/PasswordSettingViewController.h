@@ -10,5 +10,6 @@
 #import "UserDelegate.h"
 @interface PasswordSettingViewController : BaseViewController
 @property (nonatomic, copy) NSString *itemTitle;
+@property (nonatomic, strong) NSMutableDictionary *dict;
 @property (nonatomic, weak)id <UserDelegate>delegate;
 @end

@@ -17,20 +17,20 @@
 
 +(BOOL)isInstalled
 {
-    if([WXApi isWXAppInstalled])
-    {
-        return YES;
-    }
-    return NO;
+    return [WXApi isWXAppInstalled];
 }
 -(void)Auth:(NSString*)scope Success:(authSuccess)success Fail:(authFail)fail
 {
-    SendAuthReq* req =[[SendAuthReq alloc ] init];
-    req.scope = @"snsapi_userinfo,snsapi_base";
-    req.state = @"Weixinauth";
-    [WXApi sendReq:req];
-    self.authSuccess=success;
-    self.authFail=fail;
+    if ([WXApi isWXAppInstalled]) {
+        SendAuthReq* req =[[SendAuthReq alloc ] init];
+        req.scope = @"snsapi_userinfo,snsapi_base";
+        req.state = @"Weixinauth";
+        [WXApi sendReq:req];
+        self.authSuccess=success;
+        self.authFail=fail;
+    }else {
+        NSLog(@"微信未安装");
+    }
     
 }
 -(BOOL)handleOpenURL:(NSURL *)url
@@ -72,36 +72,20 @@
                 NSURL *zoneUrl = [NSURL URLWithString:url];
                 NSString *zoneStr = [NSString stringWithContentsOfURL:zoneUrl encoding:NSUTF8StringEncoding error:nil];
                 NSData *data = [zoneStr dataUsingEncoding:NSUTF8StringEncoding];
-                if (data==nil || ![data isKindOfClass:[NSData class]]) {
-                    if (self.authFail) {
-                        self.authFail(nil,nil);
-                    }
-                    return ;
-                }
-                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                //
-                NSString *access_token =[dic objectForKey:@"access_token"];
-                NSString *openid =[dic objectForKey:@"openid"];
-                NSString *uurl =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",access_token,openid];
-                NSURL *uzoneUrl = [NSURL URLWithString:uurl];
-                NSString *uzoneStr = [NSString stringWithContentsOfURL:uzoneUrl encoding:NSUTF8StringEncoding error:nil];
-                NSData *udata = [uzoneStr dataUsingEncoding:NSUTF8StringEncoding];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (udata) {
-                        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:udata options:NSJSONReadingMutableContainers error:nil];
-                        NSMutableDictionary *dict  =[NSMutableDictionary dictionaryWithDictionary:dic];
-                        [dict setValue:access_token forKey:@"accessToken"];
-                        NSLog(@"onResp===>%@",dic);
-                        if (self.authSuccess) {
-                            self.authSuccess(dict);
-                        }
-                        
-                    }else{
+                if (data) {
+                    NSError *error = nil;
+                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                    if ([dic objectForKey:@"errcode"]) {
+                        NSLog(@"获取AccessToken失败");
                         if (self.authFail) {
-                            self.authFail(nil,nil);
+                            self.authFail(dic,error);
                         }
+                    }else {
+                        [self saveAccessToken:dic];
+                        if (self.authSuccess) self.authSuccess (dic);
+//                        [self getUserInfoWithAccessToken:[dic objectForKey:@"access_token"] andOpenId:[dic objectForKey:@"openid"]];
                     }
-                });
+                }
             });
             
         }else{
@@ -112,6 +96,55 @@
         
     }
     
+}
+- (void)getUserInfoWithAccessToken:(NSString *)accessToken andOpenId:(NSString *)openId {
+    NSString *uurl =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",accessToken,openId];
+    NSURL *uzoneUrl = [NSURL URLWithString:uurl];
+    NSString *uzoneStr = [NSString stringWithContentsOfURL:uzoneUrl encoding:NSUTF8StringEncoding error:nil];
+    NSData *udata = [uzoneStr dataUsingEncoding:NSUTF8StringEncoding];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (udata) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:udata options:NSJSONReadingMutableContainers error:nil];
+            NSMutableDictionary *dict  =[NSMutableDictionary dictionaryWithDictionary:dic];
+            if ([dict objectForKey:@"errcode"]) {
+                NSLog(@"AccessToken失效");
+                [self getAccessTokenWithRefreshToken:[dict objectForKey:@"refresh_token"]];
+            }else {
+                if (self.authSuccess) {
+                    self.authSuccess(dict);
+                }
+            }
+        }else{
+            if (self.authFail) {
+                self.authFail(nil,nil);
+            }
+        }
+    });
+}
+- (void)getAccessTokenWithRefreshToken:(NSString *)refreshToken {
+    NSString *urlString =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@",APP_KEY_WEIXIN,refreshToken];
+    NSURL *url = [NSURL URLWithString:urlString];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *dataStr = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        NSData *data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (data) {
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                if ([dic objectForKey:@"errcode"]) {
+                    NSLog(@"授权过期");
+                }else {
+                    NSLog(@"-------%@",dic);
+                    [self getUserInfoWithAccessToken:[dic objectForKey:@"access_token"] andOpenId:[dic objectForKey:@"openid"]];
+                    [self saveAccessToken:dic];
+                }
+            }
+        });
+    });
+}
+- (void)saveAccessToken:(NSDictionary *)dic {
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"access_token"] forKey:@"access_token"];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"openid"] forKey:@"openid"];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"refresh_token"] forKey:@"refresh_token"];
 }
 - (void)shareToWeixinSession
 {

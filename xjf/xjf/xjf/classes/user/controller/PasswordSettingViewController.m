@@ -8,6 +8,7 @@
 
 #import "PasswordSettingViewController.h"
 #import "XjfRequest.h"
+#import "RegistFinalModel.h"
 
 @interface PasswordSettingViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.nextButton.layer.cornerRadius = 5;
+    self.password.secureTextEntry = YES;
+    self.password_again.secureTextEntry = YES;
     if (![self.itemTitle isEqualToString:@"设置密码"]) {
         self.password.placeholder = @"请输入您的新密码";
         self.password_again.placeholder = @"请再次输入您的新密码";
@@ -55,24 +58,29 @@
         return;
     }
     [[ZToastManager ShardInstance] showprogress];
-    if ([self.itemTitle isEqualToString:@"重设密码"]) {
-        XjfRequest *request = [[XjfRequest alloc]initWithAPIName:reset_password RequestMethod:POST];
-        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-            
-        } failedBlock:^(NSError * _Nullable error) {
-            
-        }];
-    }
-    if ([self.itemTitle isEqualToString:@"设置密码"]) {
-//        XjfRequest *request = [XjfRequest alloc]initWithAPIName:<#(nonnull APIName *)#> RequestMethod:<#(RequestMethod)#>
-    }
+    APIName *name = [self.itemTitle isEqualToString:@"重设密码"]?reset_password:commit_register;
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:name RequestMethod:POST];
+    [self.dict setValue:self.password.text forKey:@"password"];
+    request.requestParams = self.dict;
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        [[ZToastManager ShardInstance]hideprogress];
+        RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
+        if (model.errCode == 0) {
+            SendNotification(loginSuccess, model);
+        } else {
+            [[ZToastManager ShardInstance]showtoast:model.errMsg];
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance]hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"请求失败"];
+    }];
     __weak typeof (self) wSelf = self;
     NSMutableDictionary *dict =[NSMutableDictionary dictionary];
     
     [dict setValue:@"login" forKey:@"hadLogin"];
     [dict setValue:self.password.text forKey:@"password"];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 #pragma mark - TextFiled Delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
