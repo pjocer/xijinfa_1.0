@@ -11,5 +11,5 @@
 @interface WikiFirstSectionCell : UICollectionViewCell
 
 @property (nonatomic, strong) UILabel *label;
-
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end

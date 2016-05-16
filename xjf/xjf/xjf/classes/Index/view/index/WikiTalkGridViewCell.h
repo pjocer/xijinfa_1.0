@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TalkGridModel.h"
 @interface WikiTalkGridViewCell : UICollectionViewCell
-
+@property (nonatomic, strong) TalkGridModel *model;
 @end

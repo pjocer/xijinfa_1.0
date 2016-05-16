@@ -9,6 +9,7 @@
 #import "WikipediaViewController.h"
 #import "IndexConfigure.h"
 #import "WikiPediaCategoriesModel.h"
+#import "TalkGridModel.h"
 
 @interface WikipediaViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate>
 
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) NSMutableArray *dataArrayByBanner; /**< 广告数据源 */
 @property (nonatomic, strong) BannerModel *bannermodel;
 @property (nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
+@property (nonatomic, strong) NSMutableArray *talkGridDataArray;
 @end
 
 @implementation WikipediaViewController
@@ -43,6 +45,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
     [self initCollectionView];
     [self requestBannerData:appDeptCarousel2 method:GET];
     [self requestCategoriesData:talkGridCategories method:GET];
+    [self requestCategoriesTalkGridData:talkGrid method:GET];
 }
 #pragma mark requestData
 - (void)requestBannerData:(APIName *)api method:(RequestMethod)method
@@ -87,8 +90,29 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
         [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
     }];
 }
-
-
+- (void)requestCategoriesTalkGridData:(APIName *)api method:(RequestMethod)method
+{
+    __weak typeof (self) wSelf = self;
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+    
+    //TalkGridData
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        
+        __strong typeof (self)sSelf = wSelf;
+        
+        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+        sSelf.talkGridDataArray = [NSMutableArray array];
+        for (NSDictionary *dic in result[@"result"][@"data"]) {
+            TalkGridModel *model = [[TalkGridModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [sSelf.talkGridDataArray addObject:model];
+            [self.collectionView reloadData];
+        }
+        
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+    }];
+}
 #pragma mark -- Navigation
 - (void)setNavigation
 {
@@ -137,8 +161,8 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
     if (section == 0 && self.wikiPediaCategoriesModel.resultModel.dataModelArray != 0) {
         return self.wikiPediaCategoriesModel.resultModel.dataModelArray.count;
     }
-    else if (section == 1) {
-        return 4;
+    else if (section == 1 && self.talkGridDataArray.count != 0) {
+        return self.talkGridDataArray.count;
     }
     return 0;
 }
@@ -154,6 +178,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
         return cell;
     }
         WikiTalkGridViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:talkGridViewCell_Id forIndexPath:indexPath];
+        cell.model = self.talkGridDataArray[indexPath.row];
         return cell;
 }
 
@@ -210,6 +235,8 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
     }
     else if (indexPath.section == 1) {
         PlayerViewController *player = [[PlayerViewController alloc] init];
+        TalkGridModel *model = self.talkGridDataArray[indexPath.row];
+        player.talkGridModel = model;
         [self.navigationController pushViewController:player animated:YES];
     }
   

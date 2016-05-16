@@ -27,7 +27,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.videoDescribe.frame = CGRectMake(20, 0, self.bounds.size.width - 40, 20);
+    self.videoDescribe.frame = CGRectMake(10, 0, self.bounds.size.width - 40, 20);
 }
 
 

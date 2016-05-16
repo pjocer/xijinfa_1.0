@@ -74,5 +74,14 @@
     }];
 }
 
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.titleLable.text = model.title;
+//    self.detailLable.text = model;
+}
 
 @end

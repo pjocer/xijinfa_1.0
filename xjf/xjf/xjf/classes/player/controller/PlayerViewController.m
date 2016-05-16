@@ -19,7 +19,6 @@
 @property (strong, nonatomic) ZFPlayerView *playerView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property (nonatomic, retain) NSMutableArray *dataSource; /**< 数据源 */
 
 ///是否展示视频描述
 @property (nonatomic, assign) BOOL isShowVideDescrible;
@@ -54,6 +53,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    
 }
 #pragma mark 横竖屏状态
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -87,7 +87,8 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     _playView.backgroundColor =[UIColor blackColor];
     [self.view addSubview:_playView];
 //    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
-    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
+//    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
+    self.playUrl = self.talkGridModel.auto_;
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
         [_playerView resetPlayer];
@@ -192,6 +193,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     if (indexPath.section == 0) {
         PlayerPageDescribeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlayerVC_Describe_Cell_Id forIndexPath:indexPath];
+        cell.videoDescribe.text = self.talkGridModel.content;
         return cell;
     }
     else if (indexPath.section == 1) {
@@ -210,7 +212,9 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         if (indexPath.section == 0) {
             
             PlayerPageDescribeHeaderView *describeHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PlayerVC_Describe_HeaderId forIndexPath:indexPath];
-            [describeHeaderView.rightButton addTarget:self action:@selector(describeHeaderViewRightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+            describeHeaderView.title.text = self.talkGridModel.title;
+            
+           [describeHeaderView.rightButton addTarget:self action:@selector(describeHeaderViewRightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
            [describeHeaderView.downLoadButton addTarget:self action:@selector(describeHeaderViewdownLoadButtonAction:) forControlEvents:UIControlEventTouchUpInside];
            [describeHeaderView.shareButton addTarget:self action:@selector(describeHeaderViewshareButtonAction:) forControlEvents:UIControlEventTouchUpInside];
            [describeHeaderView.collectionButton addTarget:self action:@selector(describeHeaderViewcollectionButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -287,7 +291,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return  CGSizeMake(SCREENWITH, 100);
+        return  CGSizeMake(SCREENWITH, 20);
     }
     else if (indexPath.section == 1) {
         _layout.minimumLineSpacing = 1;

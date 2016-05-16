@@ -6,7 +6,8 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 #import "PlayerBaseViewController.h"
-
+#import "TalkGridModel.h"
 @interface PlayerViewController : PlayerBaseViewController
-@property(nonatomic,strong)NSString *playUrl;
+@property (nonatomic, retain) TalkGridModel *talkGridModel;
+@property (nonatomic, strong) NSString *playUrl;
 @end
