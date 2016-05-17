@@ -10,6 +10,7 @@
 #import "IndexConfigure.h"
 #import "WikiPediaCategoriesModel.h"
 #import "TalkGridModel.h"
+#import "BannerModel.h"
 
 @interface WikipediaViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate,WikiFirstSectionCellDelegate>
 

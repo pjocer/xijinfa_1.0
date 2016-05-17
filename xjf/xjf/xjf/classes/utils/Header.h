@@ -10,9 +10,9 @@
 #define Header_h
 
 //thirds
-#import <AFNetworking.h>
 #import "MBProgressHUD.h"
 #import <Masonry.h>
+//TODO:
 #import <UIImageView+WebCache.h>
 
 //category
@@ -31,7 +31,7 @@
 
 #import "NotificationSet.h"
 #import "AlertUtils.h"
-#import "BannerModel.h"
+#import "StringUtil.h"
 
 
 //RAC
