@@ -74,13 +74,6 @@
         [[ZToastManager ShardInstance]hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"请求失败"];
     }];
-    __weak typeof (self) wSelf = self;
-    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
-    
-    [dict setValue:@"login" forKey:@"hadLogin"];
-    [dict setValue:self.password.text forKey:@"password"];
-    
-//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 #pragma mark - TextFiled Delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

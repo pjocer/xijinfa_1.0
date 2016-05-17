@@ -107,6 +107,8 @@
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
 		CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
+		D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2631CEAF85C00873D10 /* StringUtil.m */; };
+		D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2661CEAF87800873D10 /* NSDate+Convenience.m */; };
 		D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -339,6 +341,10 @@
 		CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF57AD21C9F825D00049AF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D053D2621CEAF85C00873D10 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
+		D053D2631CEAF85C00873D10 /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtil.m; sourceTree = "<group>"; };
+		D053D2651CEAF87800873D10 /* NSDate+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Convenience.h"; sourceTree = "<group>"; };
+		D053D2661CEAF87800873D10 /* NSDate+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Convenience.m"; sourceTree = "<group>"; };
 		D05843A31CDC5F7C00B1363C /* ZFPlayerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerSingleton.h; sourceTree = "<group>"; };
 		D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerSingleton.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -883,6 +889,10 @@
 				644C10FB1CBA80B400892E2C /* category */,
 				644C112B1CBA908200892E2C /* ZPlatformShare.h */,
 				644C112C1CBA908200892E2C /* ZPlatformShare.m */,
+				D053D2621CEAF85C00873D10 /* StringUtil.h */,
+				D053D2631CEAF85C00873D10 /* StringUtil.m */,
+				D053D2651CEAF87800873D10 /* NSDate+Convenience.h */,
+				D053D2661CEAF87800873D10 /* NSDate+Convenience.m */,
 				D073E8171CE9E5B200AED895 /* AlertUtils.h */,
 				D073E8181CE9E5B200AED895 /* AlertUtils.m */,
 				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
@@ -1254,6 +1264,7 @@
 				644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */,
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */,
+				D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */,
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */,
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
@@ -1299,6 +1310,7 @@
 				5A240E041CE426A3003B7971 /* PlayerPageDescribeHeaderView.m in Sources */,
 				CD416D971CBC85B90097A5E9 /* SCPopView.m in Sources */,
 				644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */,
+				D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				CD416D9E1CBC95330097A5E9 /* ScrollPageView.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,

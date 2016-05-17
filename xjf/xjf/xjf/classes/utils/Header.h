@@ -31,7 +31,10 @@
 
 #import "NotificationSet.h"
 #import "AlertUtils.h"
-
 #import "BannerModel.h"
+
+
+//RAC
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #endif /* Header_h */

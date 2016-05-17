@@ -56,6 +56,7 @@ NSString *const Subscribe = @"SubscribeViewController";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationItem.title = @"";
+    RemoveNotification(self);
 }
 
 - (void)viewDidLoad {

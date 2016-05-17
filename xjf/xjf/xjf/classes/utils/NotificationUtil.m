@@ -59,10 +59,12 @@ void RemoveNotification(id target)
     
     NSString *key = NSStringFromClass([target class]);
     NSArray *array = __notification_targets[key];
-    for (id object in array) {
-        [[NSNotificationCenter defaultCenter] removeObserver:object];
+    if (array) {
+        for (id object in array) {
+            [[NSNotificationCenter defaultCenter] removeObserver:object];
+        }
+        [__notification_targets removeObjectForKey:key];
     }
-    [__notification_targets removeObjectForKey:key];
 }
 
 void ClearAllNotifications()

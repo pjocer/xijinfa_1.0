@@ -50,7 +50,14 @@
     self.txtCodePhone.delegate = self;
     self.txtCodeImage.delegate = self;
     self.txtPhone.delegate = self;
-    
+    @weakify(self)
+    [[self.txtCodePhone.rac_textSignal filter:^BOOL(NSString *value) {
+        if (value.length==6) return YES;
+        return NO;
+    }] subscribeNext:^(id x) {
+        @strongify(self)
+        [self requestData:check_code_message method:POST];
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -68,7 +75,6 @@
 }
 - (IBAction)codeButtonClicked:(UIButton *)sender {
     self.codeIsOk = YES;
-    [self requestData:get_image_code method:GET];
     [self requestData:[self.title_item isEqualToString:@"注册"]?regist_message_code:reset_message_code method:POST];
 }
 
@@ -89,8 +95,8 @@
     if ([api isEqualToString:check_code_message]) {
         [request.requestParams removeAllObjects];
         [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
-        NSString *c = [self.txtCodePhone.text substringToIndex:1];
-        [request.requestParams setObject:[self.txtCodePhone.text stringByAppendingString:c] forKey:@"code"];
+        NSLog(@"%@",self.txtCodePhone.text);
+        [request.requestParams setObject:self.txtCodePhone.text forKey:@"code"];
     }
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         __strong typeof (self)sSelf = wSelf;
@@ -114,6 +120,7 @@
             self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(setValidateBtnTitle) userInfo:nil repeats:YES];
             [self.timer fire];
         }else if ([api isEqualToString:check_code_message]) {
+            [self.txtCodePhone resignFirstResponder];
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
             if ([dic[@"errCode"] integerValue] == 0) {
                 [[ZToastManager ShardInstance] showtoast:@"验证码正确"];
@@ -157,14 +164,6 @@
         [self.txtCodePhone becomeFirstResponder];
     }else {
         [textField resignFirstResponder];
-    }
-    return YES;
-}
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (textField == self.txtCodePhone) {
-        if (range.location == 5) {
-            [self requestData:check_code_message method:POST];
-        }
     }
     return YES;
 }

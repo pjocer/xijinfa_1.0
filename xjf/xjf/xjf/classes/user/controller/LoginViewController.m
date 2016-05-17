@@ -43,7 +43,19 @@
     [super viewDidLoad];
     [self setNavigationBar];
     [self initUI];
-    
+    @weakify(self)
+    [self.txtCode.rac_textSignal subscribeNext:^(NSString *x) {
+        @strongify(self)
+        if (x.length >= 20) self.txtCode.text = [self.txtCode.text substringToIndex:20];
+    }];
+    [self.txtPass.rac_textSignal subscribeNext:^(NSString *x) {
+        @strongify(self)
+        if (x.length >= 20) self.txtCode.text = [self.txtPass.text substringToIndex:20];
+    }];
+    [self.txtNickname.rac_textSignal subscribeNext:^(NSString *x) {
+        @strongify(self)
+        if (x.length >= 20) self.txtCode.text = [self.txtNickname.text substringToIndex:20];
+    }];
 }
 -(void)setSelectedCallBack:(void(^)(id,id))callback
 {
@@ -65,7 +77,7 @@
 }
 -(UIImageView *)codeImageView {
     if (!_codeImageView) {
-        _codeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWITH-90, 10, 60, 30)];
+        _codeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWITH-80, 10, 60, 30)];
         _codeImageView.layer.cornerRadius = 5;
         _codeImageView.backgroundColor = [UIColor clearColor];
         _codeImageView.layer.masksToBounds = YES;
@@ -80,13 +92,13 @@
 {
     if (!_loginBtn) {
         self.loginBtn =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+        self.loginBtn.frame = CGRectMake(25, 150+27+20, SCREENWITH-50, 50);
         self.loginBtn.backgroundColor =PrimaryColor;
         self.loginBtn.layer.cornerRadius = 6;
         self.loginBtn.tag=0;
         [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.loginBtn setTitle:@"登陆" forState:UIControlStateNormal];
         [self.loginBtn addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.loginBtn];
     }
     return _loginBtn;
 }
@@ -95,6 +107,7 @@
 {
     if (!_settingBtn) {
         self.settingBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        self.settingBtn.frame = CGRectMake(SCREENWITH-80, 10, 60, 30);
         self.settingBtn.backgroundColor =[UIColor clearColor];
         self.settingBtn.tag =2;
         self.settingBtn.titleLabel.font =FONT(13);
@@ -110,12 +123,12 @@
 -(UITextField *)txtNickname
 {
     if (!_txtNickname) {
-        self.txtNickname = [[UITextField alloc] initWithFrame:CGRectZero];
+        self.txtNickname = [[UITextField alloc] initWithFrame:CGRectMake(20, 25, SCREENWITH-20, 50)];
         self.txtNickname.placeholder = @"邮箱地址/手机号";
         [self.txtNickname setBorderStyle:UITextBorderStyleNone];
         self.txtNickname.font = FONT(13);
         self.txtNickname.tag = 100;
-        self.txtNickname.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"user_email"];
+        self.txtNickname.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
         self.txtNickname.autocorrectionType = UITextAutocorrectionTypeNo;
         self.txtNickname.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.txtNickname.returnKeyType = UIReturnKeyNext;
@@ -127,7 +140,7 @@
 -(UITextField *)txtPass
 {
     if (!_txtPass) {
-        self.txtPass = [[UITextField alloc] initWithFrame:CGRectZero];
+        self.txtPass = [[UITextField alloc] initWithFrame:CGRectMake(20, 76, SCREENWITH-20-60-20, 50)];
         self.txtPass.placeholder = @"密码";
         [self.txtPass setBorderStyle:UITextBorderStyleNone];
         self.txtPass.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -144,13 +157,12 @@
 
 - (UITextField *)txtCode {
     if (!_txtCode) {
-        self.txtCode = [[UITextField alloc]initWithFrame:CGRectZero];
+        self.txtCode = [[UITextField alloc]initWithFrame:CGRectMake(20, 127, SCREENWITH-20-60-20, 50)];
         self.txtCode.placeholder = @"请输入图片验证码";
         [self.txtCode setBorderStyle:UITextBorderStyleNone];
         self.txtCode.clearButtonMode = UITextFieldViewModeWhileEditing;
-        self.txtCode.font = FONT13;
+        self.txtCode.font = FONT(13);
         self.txtCode.tag = 102;
-        self.txtCode.secureTextEntry = YES;
         self.txtCode.autocorrectionType = UITextAutocorrectionTypeNo;
         self.txtCode.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.txtCode.returnKeyType = UIReturnKeyGo;
@@ -168,17 +180,10 @@
 
 -(void)initUI
 {
-    self.txtNickname.frame =CGRectMake(20, 25.0, SCREENWITH, PHOTO_FRAME_WIDTH*5.0);
     [self addWhiteColorFor:self.txtNickname];
-    self.txtPass.frame =CGRectMake(20, 76.0, SCREENWITH, PHOTO_FRAME_WIDTH*5.0);
     [self addWhiteColorFor:self.txtPass];
-    self.txtCode.frame = CGRectMake(20, 127.0, SCREENWITH, PHOTO_FRAME_WIDTH*5.0);
     [self addWhiteColorFor:self.txtCode];
-    self.loginBtn.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, CGRectGetMaxY(self.txtCode.frame)+25, SCREENWITH-PHOTO_FRAME_WIDTH*4, PHOTO_FRAME_WIDTH*5);
-    self.settingBtn.frame = CGRectMake(SCREENWITH-90, 10, 60, 30);
-    [self.txtCode addSubview:self.codeImageView];
-    
-    
+    [self.view addSubview:self.loginBtn];
     
     CGFloat qq_x = SCREENWITH/2-62.5;
     CGFloat y = CGRectGetMaxY(self.txtCode.frame)+100;
@@ -221,6 +226,12 @@
 - (void)addWhiteColorFor:(UITextField *)view {
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 25.0+51*(view.tag-100), SCREENWITH, PHOTO_FRAME_WIDTH*5.0)];
     backView.backgroundColor = [UIColor whiteColor];
+    if (view.tag == 102) {
+        [backView addSubview:self.codeImageView];
+    }
+    if (view.tag == 101) {
+        [backView addSubview:self.settingBtn];
+    }
     [self.view addSubview:backView];
     [self.view addSubview:view];
 }

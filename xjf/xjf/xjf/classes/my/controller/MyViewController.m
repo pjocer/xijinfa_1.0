@@ -8,6 +8,7 @@
 
 #import "MyViewController.h"
 #import "myConfigure.h"
+#import "RegistFinalModel.h"
 
 @interface MyViewController ()<UITableViewDataSource, UITableViewDelegate,UserDelegate,UserComponentCellDelegate>
 {
@@ -23,7 +24,17 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self extendheadViewFor:My];
     [self initMainUI];
+    
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    ReceivedNotification(self,loginSuccess,^(NSNotification *notificaton) {
+        RegistFinalModel *model = notificaton.object;
+        NSLog(@"%@",model);
+    });
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
