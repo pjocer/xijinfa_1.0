@@ -24,7 +24,7 @@ void SendNotification(NSString *name, id object)
 //    SendNotification(UpdateInfoNotification, dictionary);
 //}
 
-id ReceivedNotification(id target, NSString *name, NotificationBlock block)
+id ReceivedNotification(id target, NotificationName *name, NotificationBlock block)
 {
     if (!target) return nil;
     

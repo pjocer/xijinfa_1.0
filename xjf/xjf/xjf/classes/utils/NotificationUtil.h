@@ -26,7 +26,7 @@ FOUNDATION_EXTERN void SendNotification(NotificationName *name, id object);
  @param name 通知名称
  @param block 通知回调
  */
-FOUNDATION_EXTERN id ReceivedNotification(id target, NSString *name, NotificationBlock block);
+FOUNDATION_EXTERN id ReceivedNotification(id target, NotificationName *name, NotificationBlock block);
 
 /**
  根据target对象移除其通知
