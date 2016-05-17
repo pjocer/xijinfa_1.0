@@ -67,11 +67,7 @@ static APIName *talkGridcomments = @"/api/courses2/ID/comments";
 #pragma mark 内容-金融百科-发表评论   POST
 static APIName *talkGridSendComments = @"/api/courses2/ID/comments";
 
-
-
-
-
-
-
+#pragma mark 金融百科分类- 视频列表
+static APIName *categoriesVideoList = @"/api/courses2/?category_id=";
 
 

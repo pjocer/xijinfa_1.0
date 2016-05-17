@@ -8,6 +8,7 @@
 
 #import "IndexBaseViewController.h"
 
+
 @interface WikipediaViewController : IndexBaseViewController
 
 @end

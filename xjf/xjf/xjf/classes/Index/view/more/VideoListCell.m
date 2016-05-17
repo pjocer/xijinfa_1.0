@@ -43,8 +43,9 @@
         self.videoImage.backgroundColor = BackgroundColor;
         [self.videoImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(self.contentView).with.offset(10);
-            make.bottom.mas_equalTo(self.contentView).with.offset(-10);
+            make.width.mas_equalTo((SCREENWITH / 2) - 20);
             make.height.equalTo(self.videoImage.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
+
         }];
         
         //videoTitle
@@ -74,6 +75,16 @@
         }];
     }
     return self;
+}
+
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.videoTitle.text = model.title;
+    self.viedoDetail.text = model.content;
 }
 
 

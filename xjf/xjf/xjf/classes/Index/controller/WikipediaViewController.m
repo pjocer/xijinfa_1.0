@@ -11,7 +11,7 @@
 #import "WikiPediaCategoriesModel.h"
 #import "TalkGridModel.h"
 
-@interface WikipediaViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate>
+@interface WikipediaViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate,WikiFirstSectionCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
@@ -31,6 +31,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
+    [self setNavigation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -41,10 +42,8 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigation];
     [self initCollectionView];
     [self requestBannerData:appDeptCarousel2 method:GET];
-    [self requestCategoriesData:talkGridCategories method:GET];
     [self requestCategoriesTalkGridData:talkGrid method:GET];
 }
 #pragma mark requestData
@@ -71,25 +70,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
     }];
     
 }
-- (void)requestCategoriesData:(APIName *)api method:(RequestMethod)method
-{
-    __weak typeof (self) wSelf = self;
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
-    
-    //Categories
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        
-        __strong typeof (self)sSelf = wSelf;
-    
-        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-        sSelf.wikiPediaCategoriesModel = [[WikiPediaCategoriesModel alloc] init];
-        [sSelf.wikiPediaCategoriesModel setValuesForKeysWithDictionary:result];
-        [sSelf.collectionView reloadData];
 
-    } failedBlock:^(NSError * _Nullable error) {
-        [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
-    }];
-}
 - (void)requestCategoriesTalkGridData:(APIName *)api method:(RequestMethod)method
 {
     __weak typeof (self) wSelf = self;
@@ -116,7 +97,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 #pragma mark -- Navigation
 - (void)setNavigation
 {
-    self.title = @"金融百科";
+    self.navigationItem.title = @"金融百科";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonItemAction:)];
     
 }
@@ -158,8 +139,8 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (section == 0 && self.wikiPediaCategoriesModel.resultModel.dataModelArray != 0) {
-        return self.wikiPediaCategoriesModel.resultModel.dataModelArray.count;
+    if (section == 0) {
+        return 1;
     }
     else if (section == 1 && self.talkGridDataArray.count != 0) {
         return self.talkGridDataArray.count;
@@ -171,10 +152,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 {
     if (indexPath.section == 0) {
         WikiFirstSectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:firstSectionCell_Id forIndexPath:indexPath];
-        if (self.wikiPediaCategoriesModel.resultModel.dataModelArray.count != 0) {
-            WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.resultModel.dataModelArray[indexPath.row];
-            cell.label.text = model.name;
-        }
+        cell.delegate = self;
         return cell;
     }
         WikiTalkGridViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:talkGridViewCell_Id forIndexPath:indexPath];
@@ -195,18 +173,18 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
         }
         else if (indexPath.section == 1) {
             WikiSectionHeaderView *wikiSectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:wikiSectionHeaderView_HeaderId forIndexPath:indexPath];
-            UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
-            [wikiSectionHeaderView addGestureRecognizer:singleRecognizer];
+//            UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
+//            [wikiSectionHeaderView addGestureRecognizer:singleRecognizer];
             return wikiSectionHeaderView;
         }
 
     }
     return nil;
 }
-- (void)handleSingleTapFrom
-{
-   [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
-}
+//- (void)handleSingleTapFrom
+//{
+//   [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
+//}
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
 {
     NSLog(@"点击..... %ld",index);
@@ -231,16 +209,36 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 {
     
     if (indexPath.section == 0) {
-        [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
+      
     }
     else if (indexPath.section == 1) {
         PlayerViewController *player = [[PlayerViewController alloc] init];
         TalkGridModel *model = self.talkGridDataArray[indexPath.row];
         player.talkGridModel = model;
+        NSLog(@"--------------%@",model.id_);
         [self.navigationController pushViewController:player animated:YES];
     }
   
 }
+
+///wikiFirstSectionCell Action
+- (void)wikiFirstSectionCell:(WikiFirstSectionCell *)cell DidSelectedItemAtIndex:(NSInteger)index WithOtherObject:(id)object
+{
+    if (index == 7) {
+        
+    }
+    else{
+        WikiPediaCategoriesDataModel *model = cell.tempArray[index];
+        
+        VideolistViewController *videolistViewController = [VideolistViewController new];
+        videolistViewController.ID = object;
+        videolistViewController.title = model.name;
+        
+        [self.navigationController pushViewController:videolistViewController animated:YES];
+    }
+
+}
+
 
 #pragma mark FlowLayoutDelegate
 /** 每个分区item的大小 */
@@ -248,9 +246,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
 {
     if (indexPath.section == 0) {
         _layout.minimumLineSpacing = 0;
-        return  CGSizeMake((SCREENWITH - 0)/ 4, 40);
-        
-        
+        return  CGSizeMake(SCREENWITH , 80);
     }else{
         _layout.minimumLineSpacing = 1;
         CGFloat height;

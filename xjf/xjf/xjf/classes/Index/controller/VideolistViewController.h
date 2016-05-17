@@ -9,5 +9,6 @@
 #import "IndexBaseViewController.h"
 
 @interface VideolistViewController : IndexBaseViewController
-
+@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, strong) NSString *title;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TalkGridModel.h"
 @interface VideoListCell : UITableViewCell
-
+@property (nonatomic, strong) TalkGridModel *model;
 @end
