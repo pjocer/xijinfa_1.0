@@ -51,25 +51,6 @@
     return dateString;
 }
 
-+ (NSString *)getDayTimeString:(NSString *)string
-{
-    NSDate *date = [NSDate dateFromHourString:string];
-    NSArray *dayTimeComponent = @[@"上午", @"下午", @"晚间"];
-    NSInteger index = 0;
-    if (date.hour >= 0 && date.hour < 12) {
-        index = 0;
-    }
-    else if (date.hour >= 12 && date.hour < 18) {
-        index = 1;
-    }
-    else
-    {
-        index = 2;
-    }
-    NSString *timeString = [NSString stringWithFormat:@"%@ %@", [date dateStringWithPoint], dayTimeComponent[index]];
-    return timeString;
-}
-
 + (NSString *)getDateStringComponentDate:(NSString *)dateString
 {
     NSParameterAssert(dateString);
@@ -200,29 +181,6 @@
     NSString *phoneRegex = @"^(1)\\d{10}$";
     NSPredicate *phonePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     return [phonePredicate evaluateWithObject:phoneNum];
-}
-
-+ (NSString *)formatSelectStackItemWithMonth:(NSString *)title departmentName:(NSString *)departmentName itemType:(TrendType)type{
-    NSString *yearString = [title substringToIndex:[title rangeOfString:@"-"].location];
-    NSString *monthString = [title substringFromIndex:[title rangeOfString:@"-"].location + 1];
-    NSString *dateString = [NSString stringWithFormat:@"%@年%@月", yearString, monthString];
-    switch (type){
-        case EnterpriseCostTrendType:{
-            return [NSString stringWithFormat:@"%@%@消费占比", dateString, departmentName];
-            break;
-        }
-        case PersonCostTrendType:{
-            return [NSString stringWithFormat:@"%@个人消费占比", dateString];
-            break;
-        }
-        case TripNumberTrendType:{
-             return [NSString stringWithFormat:@"%@%@出差次数", dateString, departmentName];
-             break;
-        }
-        default:
-            break;
-    }
-    return nil;
 }
 
 + (NSString *)getMonthFromString:(NSString *)dateString{

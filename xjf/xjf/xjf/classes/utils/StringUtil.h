@@ -46,7 +46,6 @@
 + (BOOL)isEmpty:(NSString *)string;
 + (BOOL)isValidatePhone:(NSString *)phoneNum;
 
-+ (NSString *)formatSelectStackItemWithMonth:(NSString *)title departmentName:(NSString *)departmentName itemType:(TrendType)type;
 + (NSString *)stringFromSelectDate:(NSDate *)date;
 
 @end
