@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    CellTypeUnload,
+    CellTypeLoadWithoutVIP,
+    CellTypeLoadWithVIP,
+} CellType;
+
 @interface UserUnLoadCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (assign, nonatomic) CellType type;
 @end

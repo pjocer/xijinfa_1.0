@@ -8,13 +8,13 @@
 
 #import "MyViewController.h"
 #import "myConfigure.h"
-#import "RegistFinalModel.h"
 
 @interface MyViewController ()<UITableViewDataSource, UITableViewDelegate,UserDelegate,UserComponentCellDelegate>
 {
     
 }
-@property(nonatomic,strong)UITableView *tableview;
+@property (nonatomic, strong) AccountInfoModel *model;
+@property (nonatomic, strong) UITableView *tableview;
 @end
 
 @implementation MyViewController
@@ -24,14 +24,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self extendheadViewFor:My];
     [self initMainUI];
-    
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    ReceivedNotification(self,loginSuccess,^(NSNotification *notificaton) {
-        RegistFinalModel *model = notificaton.object;
-        NSLog(@"%@",model);
+    @weakify(self)
+    ReceivedNotification(self, UserInfoDidChangedNotification, ^(NSNotification *notification) {
+        @strongify(self)
+        self.model = notification.object;
+        [self.tableview reloadData];
     });
 }
 
@@ -77,7 +74,8 @@
 {
     if (indexPath.row == 0) {
         UserUnLoadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserUnLoadCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.type = (self.model = nil)?:
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else {
         UserComponentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserComponentCell" forIndexPath:indexPath];

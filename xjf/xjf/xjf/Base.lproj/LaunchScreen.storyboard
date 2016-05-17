@@ -16,7 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lauch" translatesAutoresizingMaskIntoConstraints="NO" id="BsB-J2-N5o">
+                                <rect key="frame" x="225" y="225" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="aJU-1k-ehG"/>
+                                    <constraint firstAttribute="height" constant="150" id="aer-yW-wMY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BsB-J2-N5o" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bHc-Y0-ifA"/>
+                            <constraint firstItem="BsB-J2-N5o" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="r6k-gL-vwu"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lauch" width="150" height="150"/>
+    </resources>
 </document>

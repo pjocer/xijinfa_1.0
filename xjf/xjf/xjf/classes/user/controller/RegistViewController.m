@@ -95,7 +95,6 @@
     if ([api isEqualToString:check_code_message]) {
         [request.requestParams removeAllObjects];
         [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
-        NSLog(@"%@",self.txtCodePhone.text);
         [request.requestParams setObject:self.txtCodePhone.text forKey:@"code"];
     }
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {

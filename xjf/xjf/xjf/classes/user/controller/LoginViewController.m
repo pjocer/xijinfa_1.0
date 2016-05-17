@@ -314,11 +314,12 @@
             RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
             if (model.errCode == 0) {
                 SendNotification(loginSuccess, model);
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }else {
-                NSLog(@"第三方登录失败--error:%@",model.errMsg);
+                [[ZToastManager ShardInstance] showtoast:model.errMsg];
             }
         } failedBlock:^(NSError * _Nullable error) {
-            NSLog(@"第三方登录失败");
+            [[ZToastManager ShardInstance] showtoast:@"登录失败"];
         }];
     }
 }
@@ -372,6 +373,7 @@
             RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
             if (model.errCode == 0) {
                 SendNotification(loginSuccess, model);
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }else {
                 [[ZToastManager ShardInstance]showtoast:model.errMsg];
             }

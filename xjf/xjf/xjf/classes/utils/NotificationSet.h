@@ -8,3 +8,6 @@
 
 //登录、注册成功通知
 static NotificationName *loginSuccess = @"loginSuccess";
+
+//用户信息改变
+static NotificationName *UserInfoDidChangedNotification = @"UserInfoDidChangedNotification";

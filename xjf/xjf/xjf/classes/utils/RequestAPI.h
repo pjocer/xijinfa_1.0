@@ -31,6 +31,9 @@ static APIName *third_login = @"/api/auth/third";
 //提交注册API
 static APIName *commit_register = @"/api/auth/register";
 
+//获取用户信息API
+static APIName *user_info = @"/api/user/profile";
+
 #pragma mark- Hunter_Wang
 
 
