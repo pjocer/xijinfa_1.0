@@ -67,6 +67,7 @@
         RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
         if (model.errCode == 0) {
             SendNotification(loginSuccess, model);
+            [self.navigationController popToRootViewControllerAnimated:YES];
         } else {
             [[ZToastManager ShardInstance]showtoast:model.errMsg];
         }
