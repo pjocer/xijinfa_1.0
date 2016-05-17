@@ -27,12 +27,12 @@
         _titleLabel.font = FONT15;
         [self addSubview:_titleLabel];
         //
-//        _moreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWITH-110, 0, 100, 35)];
-//        _moreLabel.textAlignment = NSTextAlignmentRight;
-//        _moreLabel.textColor = [UIColor xjfStringToColor:@"#0061b0"];
-//        _moreLabel.font = FONT12;
-//        _moreLabel.text=@"更多";
-//        [self addSubview:_moreLabel];
+        _moreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWITH-110, 0, 100, 35)];
+        _moreLabel.textAlignment = NSTextAlignmentRight;
+        _moreLabel.textColor = [UIColor xjfStringToColor:@"#0061b0"];
+        _moreLabel.font = FONT12;
+        _moreLabel.text=@"更多";
+        [self addSubview:_moreLabel];
     }
     return self;
 }

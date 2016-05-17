@@ -11,6 +11,10 @@
 		5A105E4E1CE9B2620079BEFE /* WikiPediaCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E4D1CE9B2620079BEFE /* WikiPediaCategoriesModel.m */; };
 		5A105E511CE9E85C0079BEFE /* TalkGridModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E501CE9E85C0079BEFE /* TalkGridModel.m */; };
 		5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E531CEAE3B00079BEFE /* CommentsModel.m */; };
+		5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E561CEB17450079BEFE /* LessonViewController.m */; };
+		5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */; };
+		5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */; };
+		5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E601CEB30C30079BEFE /* TeacherListViewController.m */; };
 		5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */; };
 		5A240DF81CE33E49003B7971 /* WikiBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF71CE33E49003B7971 /* WikiBannerView.m */; };
 		5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */; };
@@ -134,6 +138,14 @@
 		5A105E501CE9E85C0079BEFE /* TalkGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TalkGridModel.m; path = xjf/classes/player/controller/TalkGridModel.m; sourceTree = SOURCE_ROOT; };
 		5A105E521CEAE3B00079BEFE /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsModel.h; path = xjf/classes/player/controller/CommentsModel.h; sourceTree = SOURCE_ROOT; };
 		5A105E531CEAE3B00079BEFE /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsModel.m; path = xjf/classes/player/controller/CommentsModel.m; sourceTree = SOURCE_ROOT; };
+		5A105E551CEB17450079BEFE /* LessonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonViewController.h; sourceTree = "<group>"; };
+		5A105E561CEB17450079BEFE /* LessonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonViewController.m; sourceTree = "<group>"; };
+		5A105E591CEB1BE20079BEFE /* LessonIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonIndexCell.h; sourceTree = "<group>"; };
+		5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonIndexCell.m; sourceTree = "<group>"; };
+		5A105E5C1CEB1C320079BEFE /* TearcherIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TearcherIndexCell.h; sourceTree = "<group>"; };
+		5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TearcherIndexCell.m; sourceTree = "<group>"; };
+		5A105E5F1CEB30C30079BEFE /* TeacherListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherListViewController.h; sourceTree = "<group>"; };
+		5A105E601CEB30C30079BEFE /* TeacherListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherListViewController.m; sourceTree = "<group>"; };
 		5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaViewController.h; sourceTree = "<group>"; };
 		5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikipediaViewController.m; sourceTree = "<group>"; };
 		5A240DF61CE33E49003B7971 /* WikiBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiBannerView.h; sourceTree = "<group>"; };
@@ -402,6 +414,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5A105E581CEB1A9F0079BEFE /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				5A105E591CEB1BE20079BEFE /* LessonIndexCell.h */,
+				5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */,
+				5A105E5C1CEB1C320079BEFE /* TearcherIndexCell.h */,
+				5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
 		5A240DF51CE33DD2003B7971 /* Wikipedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,8 +684,12 @@
 				CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */,
 				5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */,
 				5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */,
+				5A105E551CEB17450079BEFE /* LessonViewController.h */,
+				5A105E561CEB17450079BEFE /* LessonViewController.m */,
 				5A441C521CE5E000000CF748 /* VideolistViewController.h */,
 				5A441C531CE5E001000CF748 /* VideolistViewController.m */,
+				5A105E5F1CEB30C30079BEFE /* TeacherListViewController.h */,
+				5A105E601CEB30C30079BEFE /* TeacherListViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -683,6 +710,7 @@
 		CD1CCBF91CB35A2D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5A105E581CEB1A9F0079BEFE /* Lesson */,
 				5A240DF51CE33DD2003B7971 /* Wikipedia */,
 				CD144EEF1CBB732900A0636D /* index */,
 				CD144F081CBB732900A0636D /* more */,
@@ -1245,6 +1273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
@@ -1295,6 +1324,7 @@
 				CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */,
 				5A240E071CE4270F003B7971 /* PlayerPageDescribeFooterView.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
+				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,
 				644C10F61CBA7F0B00892E2C /* TopicCell.m in Sources */,
 				CD1CCC301CB3793B002FC0C9 /* SubscribeBaseViewController.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
@@ -1316,6 +1346,7 @@
 				CD416D971CBC85B90097A5E9 /* SCPopView.m in Sources */,
 				644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */,
 				D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */,
+				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				CD416D9E1CBC95330097A5E9 /* ScrollPageView.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
@@ -1338,6 +1369,7 @@
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,
+				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
 				644C112D1CBA908200892E2C /* ZPlatformShare.m in Sources */,
 				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,

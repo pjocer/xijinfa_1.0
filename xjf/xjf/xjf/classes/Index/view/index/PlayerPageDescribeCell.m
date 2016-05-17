@@ -21,13 +21,27 @@
         self.videoDescribe.font = FONT12;
         self.videoDescribe.textColor = AssistColor;
         self.videoDescribe.text = @"xxxxxxxxx";
+        
+        CGRect tempRect = [StringUtil calculateLabelRect:self.model.content width:SCREENWITH - 20 fontsize:12];
+        self.videoDescribe.frame = CGRectMake(10, 10, self.bounds.size.width - 20, tempRect.size.height);
     }
     return self;
 }
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.videoDescribe.frame = CGRectMake(10, 0, self.bounds.size.width - 40, 20);
+      CGRect tempRect = [StringUtil calculateLabelRect:self.model.content width:SCREENWITH - 20 fontsize:12];
+    self.videoDescribe.frame = CGRectMake(10, 10, self.bounds.size.width - 20, tempRect.size.height);
+    
+}
+
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    self.videoDescribe.text = model.content;
+    
 }
 
 

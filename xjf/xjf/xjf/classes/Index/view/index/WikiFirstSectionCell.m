@@ -101,7 +101,6 @@
             }
         }
         self.dataArray = self.wikiPediaCategoriesModel.resultModel.dataModelArray;
-
     } failedBlock:^(NSError * _Nullable error) {
         [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
     }];

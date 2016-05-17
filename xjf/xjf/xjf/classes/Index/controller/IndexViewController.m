@@ -211,11 +211,9 @@
             else if (indexPath.section == 1) {
                 
                 if ([key isEqualToString:@"0"]) {
-                    
                     [self.navigationController pushViewController:[WikipediaViewController new] animated:YES];
-                    
                 }else if ([key isEqualToString:@"1"]){
-                        NSLog(@"%@",obj[1]);
+                    [self.navigationController pushViewController:[LessonViewController new] animated:YES];
                 }else if ([key isEqualToString:@"2"]){
                         NSLog(@"%@",obj[2]);
                 }else if ([key isEqualToString:@"3"]){

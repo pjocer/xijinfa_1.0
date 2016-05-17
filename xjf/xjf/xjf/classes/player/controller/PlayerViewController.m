@@ -70,16 +70,20 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     //GET
     if (method == 0) {
-        __weak typeof (self) wSelf = self;
+        @weakify(self)
         [[ZToastManager ShardInstance] showprogress];
         XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
         
         [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-            
-            __strong typeof (self)sSelf = wSelf;
-            [[ZToastManager ShardInstance] hideprogress];
-            sSelf.commentsModel = [[CommentsAllDataList alloc]initWithData:responseData error:nil];
-            [sSelf.collectionView reloadData];
+        @strongify(self)
+            if (self.commentsModel.errCode == 0) {
+                [[ZToastManager ShardInstance] hideprogress];
+                self.commentsModel = [[CommentsAllDataList alloc]initWithData:responseData error:nil];
+                [self.collectionView reloadData];
+            }else
+                {[[ZToastManager ShardInstance] hideprogress];
+                [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+            }
             
         } failedBlock:^(NSError * _Nullable error) {
             [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
@@ -88,18 +92,28 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     //POST
     else if (method == 1)
     {
-//        XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
-//        [request.requestParams setObject:self.textField.text forKey:@"comments"];
-//         __weak typeof (self) wSelf = self;
-//        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-//            __strong typeof (self)sSelf = wSelf;
-//            sSelf.commentsModel = [[CommentsAllDataList alloc]initWithData:responseData error:nil];
-//            [sSelf.collectionView reloadData];
-//            
-//        } failedBlock:^(NSError * _Nullable error) {
-//            [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
-//        }];
-//
+        XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setValue:self.textField.text forKey:@"comments"];
+        [dic setValue:self.talkGridModel.id_ forKey:@"ID"];
+        request.requestParams = dic;
+        @weakify(self)
+        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+            @strongify(self)
+
+            if (self.commentsModel.errCode == 0) {
+                self.commentsModel = [[CommentsAllDataList alloc]initWithData:responseData error:nil];
+                [self.collectionView reloadData];
+            }else
+            {
+                [[ZToastManager ShardInstance]showtoast:self.commentsModel.errMsg];
+            }
+            
+            
+        } failedBlock:^(NSError * _Nullable error) {
+            [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+        }];
+
     }
 
     
@@ -161,7 +175,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)initCollectionView
 {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
-    _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);//针对分区 
+//    _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);//针对分区 
     _layout.minimumLineSpacing = 0.0;   //最小列间距默认10
     _layout.minimumInteritemSpacing = 0.0;//左右间隔
     
@@ -246,7 +260,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     if (indexPath.section == 0) {
         PlayerPageDescribeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlayerVC_Describe_Cell_Id forIndexPath:indexPath];
-        cell.videoDescribe.text = self.talkGridModel.content;
+        cell.model = self.talkGridModel;
         return cell;
     }
     else if (indexPath.section == 1) {
@@ -346,7 +360,14 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return  CGSizeMake(SCREENWITH, 20);
+        if (self.talkGridModel.content != nil && self.talkGridModel.content.length != 0) {
+            CGRect tempRect = [StringUtil calculateLabelRect:self.talkGridModel.content width:SCREENWITH - 20 fontsize:12];
+            return  CGSizeMake(SCREENWITH, tempRect.size.height + 10);
+        }
+        else
+        {
+            return CGSizeMake(SCREENWITH,0);
+        }
     }
     else if (indexPath.section == 1) {
         _layout.minimumLineSpacing = 1;
@@ -365,7 +386,9 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         }
         return CGSizeMake((SCREENWITH - 2)/ 2, height);
     }
-    return CGSizeMake(SCREENWITH, 100);
+    CommentsModel *model = self.commentsModel.result.data[indexPath.row];
+    CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:12];
+    return CGSizeMake(SCREENWITH, tempRect.size.height + 70);
 }
 
 #pragma mark- 右按钮展示视频描述详情
@@ -406,7 +429,6 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-
     [self requestCommentsData:self.api method:POST];
     [self.textField resignFirstResponder];
     return YES;

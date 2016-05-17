@@ -32,7 +32,7 @@
         //titleImage
         self.titleImage = [[UIImageView alloc] init];
         [self addSubview:self.titleImage];
-        self.titleImage.backgroundColor = [UIColor blueColor]; 
+        self.titleImage.backgroundColor = BackgroundColor;
         
         //titleLable
         self.titleLable = [[UILabel alloc] init];

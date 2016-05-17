@@ -26,3 +26,11 @@
 #import "WikiFirstSectionCell.h"
 #import "VideolistViewController.h"
 #import "VideoListCell.h"
+#import "LessonViewController.h"
+#import "LessonIndexCell.h"
+#import "TearcherIndexCell.h"
+#import "TeacherListViewController.h"
+
+
+
+

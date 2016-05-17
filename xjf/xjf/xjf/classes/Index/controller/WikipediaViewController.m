@@ -174,6 +174,7 @@ static NSString * firstSectionCell_Id = @"firstSectionCell_Id";
         }
         else if (indexPath.section == 1) {
             WikiSectionHeaderView *wikiSectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:wikiSectionHeaderView_HeaderId forIndexPath:indexPath];
+            wikiSectionHeaderView.moreLabel.hidden = YES;
 //            UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
 //            [wikiSectionHeaderView addGestureRecognizer:singleRecognizer];
             return wikiSectionHeaderView;

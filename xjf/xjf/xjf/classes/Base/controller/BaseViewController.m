@@ -100,26 +100,26 @@ NSString *const Subscribe = @"SubscribeViewController";
         _titleLabel.text = @"首页";
 
         UIButton *hisButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        hisButton.frame = CGRectMake(SCREENWITH - 90, 20 + (HEADHEIGHT - 20 - 25) / 2, 30, 30);
-        hisButton.tag = 10;
+        hisButton.frame = CGRectMake(SCREENWITH -40, 20+(HEADHEIGHT-20-25)/2, 30, 30);
+        hisButton.tag =10;
         hisButton.hidden = NO;
         [hisButton setImage:[UIImage imageNamed:@"history"] forState:UIControlStateNormal];
         hisButton.contentMode = UIViewContentModeScaleToFill;
         [hisButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView addSubview:hisButton];
-
-        UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        downButton.frame = CGRectMake(SCREENWITH - 40, 20 + (HEADHEIGHT - 20 - 25) / 2, 30, 30);
-        downButton.tag = 11;
-        downButton.hidden = NO;
-        [downButton setImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
-        [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headView addSubview:downButton];
-
+        
+//        UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        downButton.frame = CGRectMake(SCREENWITH -40, 20+(HEADHEIGHT-20-25)/2, 30, 30);
+//        downButton.tag =11;
+//        downButton.hidden=NO;
+//        [downButton setImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
+//        [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.headView  addSubview:downButton];
+        
         UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        searchButton.frame = CGRectMake(SCREENWITH - 140, 20 + (HEADHEIGHT - 20 - 25) / 2, 30, 30);
-        searchButton.tag = 12;
-        searchButton.hidden = NO;
+        searchButton.frame = CGRectMake(SCREENWITH -90, 20+(HEADHEIGHT-20-25)/2, 30, 30);
+        searchButton.tag =12;
+        searchButton.hidden=NO;
         [searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
         [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView addSubview:searchButton];
@@ -182,8 +182,8 @@ NSString *const Subscribe = @"SubscribeViewController";
             break;
         case 11://下载
         {
-            PlayerDownLoadViewController *download = [[PlayerDownLoadViewController alloc] init];
-            [self.navigationController pushViewController:download animated:YES];
+//            PlayerDownLoadViewController *download =[[PlayerDownLoadViewController alloc] init];
+//            [self.navigationController pushViewController:download animated:YES];
         }
             break;
         case 12://搜索 #import "SearchViewController.h"
