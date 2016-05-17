@@ -97,6 +97,19 @@
     return self;
 }
 
+- (void)setCommentsModel:(CommentsModel *)commentsModel
+{
+    if (commentsModel) {
+        _commentsModel = commentsModel;
+    }
+    [self.userImage sd_setImageWithURL:[NSURL URLWithString:commentsModel.user_avatar]];
+    self.userName.text = commentsModel.user_nickname;
+    self.commentsText.text = commentsModel.content;
+//    self.commentsTime.text = commentsModel.updated_at;
+    [self.commentsText boundingRectWithSize:CGSizeMake(SCREENWITH - 70, 100)];
+}
+
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];

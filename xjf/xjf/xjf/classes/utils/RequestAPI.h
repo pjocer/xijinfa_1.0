@@ -62,7 +62,7 @@ static APIName *talkGridCategories = @"/api/categories2";
 static APIName *talkGridDetailContent = @"/api/courses2/ID";
 
 #pragma mark 内容-金融百科-获取评论
-static APIName *talkGridcomments = @"/api/courses2/ID/comments";
+static APIName *talkGridcomments = @"/api/courses2/";
 
 #pragma mark 内容-金融百科-发表评论   POST
 static APIName *talkGridSendComments = @"/api/courses2/ID/comments";

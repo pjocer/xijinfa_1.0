@@ -94,13 +94,14 @@
         [sSelf.wikiPediaCategoriesModel setValuesForKeysWithDictionary:result];
 
         self.tempArray = [NSMutableArray array];
-        for (int i = 0; i < 8; i++) {
-            WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.resultModel.dataModelArray[i];
-            [self.tempArray addObject:model];
+        if (self.wikiPediaCategoriesModel.resultModel.dataModelArray.count != 0 && self.wikiPediaCategoriesModel.resultModel.dataModelArray.count > 7) {
+            for (int i = 0; i < 8; i++) {
+                WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.resultModel.dataModelArray[i];
+                [self.tempArray addObject:model];
+            }
         }
-
         self.dataArray = self.wikiPediaCategoriesModel.resultModel.dataModelArray;
-        
+
     } failedBlock:^(NSError * _Nullable error) {
         [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
     }];

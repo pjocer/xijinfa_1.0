@@ -10,6 +10,7 @@
 		5A105E4B1CE99A8E0079BEFE /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E4A1CE99A8E0079BEFE /* BannerModel.m */; };
 		5A105E4E1CE9B2620079BEFE /* WikiPediaCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E4D1CE9B2620079BEFE /* WikiPediaCategoriesModel.m */; };
 		5A105E511CE9E85C0079BEFE /* TalkGridModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E501CE9E85C0079BEFE /* TalkGridModel.m */; };
+		5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E531CEAE3B00079BEFE /* CommentsModel.m */; };
 		5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */; };
 		5A240DF81CE33E49003B7971 /* WikiBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF71CE33E49003B7971 /* WikiBannerView.m */; };
 		5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */; };
@@ -131,6 +132,8 @@
 		5A105E4D1CE9B2620079BEFE /* WikiPediaCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiPediaCategoriesModel.m; path = xjf/classes/player/controller/WikiPediaCategoriesModel.m; sourceTree = SOURCE_ROOT; };
 		5A105E4F1CE9E85C0079BEFE /* TalkGridModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalkGridModel.h; path = xjf/classes/player/controller/TalkGridModel.h; sourceTree = SOURCE_ROOT; };
 		5A105E501CE9E85C0079BEFE /* TalkGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TalkGridModel.m; path = xjf/classes/player/controller/TalkGridModel.m; sourceTree = SOURCE_ROOT; };
+		5A105E521CEAE3B00079BEFE /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsModel.h; path = xjf/classes/player/controller/CommentsModel.h; sourceTree = SOURCE_ROOT; };
+		5A105E531CEAE3B00079BEFE /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsModel.m; path = xjf/classes/player/controller/CommentsModel.m; sourceTree = SOURCE_ROOT; };
 		5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaViewController.h; sourceTree = "<group>"; };
 		5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikipediaViewController.m; sourceTree = "<group>"; };
 		5A240DF61CE33E49003B7971 /* WikiBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiBannerView.h; sourceTree = "<group>"; };
@@ -937,6 +940,8 @@
 		CD1CCC501CB39B3D002FC0C9 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				5A105E521CEAE3B00079BEFE /* CommentsModel.h */,
+				5A105E531CEAE3B00079BEFE /* CommentsModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1334,6 +1339,7 @@
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,
 				644C112D1CBA908200892E2C /* ZPlatformShare.m in Sources */,
+				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,
 				CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */,
 			);

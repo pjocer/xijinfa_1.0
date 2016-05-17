@@ -12,6 +12,7 @@
 #import "ZFPlayer.h"
 #import "ZFPlayerSingleton.h"
 #import "playerConfigure.h"
+#import "CommentsModel.h"
 
 @interface PlayerViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
 
@@ -26,6 +27,11 @@
 @property (nonatomic, retain) UIView *keyBoardView; /**< 键盘背景图 */
 @property (nonatomic, retain) UIView *keyBoardAppearView; /**< 键盘出现，屏幕背景图 */
 @property (nonatomic, retain) UITextField *textField; /**< 键盘 */
+
+///评论api
+@property (nonatomic, strong) NSString *api;
+///评论数据
+@property (nonatomic, strong) CommentsAllDataList *commentsModel;
 
 @end
 
@@ -53,8 +59,54 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    self.api = [NSString stringWithFormat:@"%@%@/comments",talkGridcomments,self.talkGridModel.id_];
+    
+    
+    [self requestCommentsData:self.api method:GET];
     
 }
+#pragma mark requestData
+- (void)requestCommentsData:(APIName *)api method:(RequestMethod)method
+{
+    //GET
+    if (method == 0) {
+        __weak typeof (self) wSelf = self;
+        [[ZToastManager ShardInstance] showprogress];
+        XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+        
+        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+            
+            __strong typeof (self)sSelf = wSelf;
+            [[ZToastManager ShardInstance] hideprogress];
+            sSelf.commentsModel = [[CommentsAllDataList alloc]initWithData:responseData error:nil];
+            [sSelf.collectionView reloadData];
+            
+        } failedBlock:^(NSError * _Nullable error) {
+            [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+        }];
+    }
+    //POST
+    else if (method == 1)
+    {
+//        XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+//        [request.requestParams setObject:self.textField.text forKey:@"comments"];
+//         __weak typeof (self) wSelf = self;
+//        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+//            __strong typeof (self)sSelf = wSelf;
+//            sSelf.commentsModel = [[CommentsAllDataList alloc]initWithData:responseData error:nil];
+//            [sSelf.collectionView reloadData];
+//            
+//        } failedBlock:^(NSError * _Nullable error) {
+//            [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+//        }];
+//
+    }
+
+    
+}
+
+
+
 #pragma mark 横竖屏状态
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
@@ -157,6 +209,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     self.textField.backgroundColor = [UIColor whiteColor];
     self.textField.placeholder = @"请输入";
     [self.keyBoardView addSubview:self.textField];
+    self.textField.delegate = self;
     
     
     //UIKeyboardWillShow
@@ -186,7 +239,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     else if (section == 1) {
         return 4;
     }
-    return 2;
+    return self.commentsModel.result.data.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -201,6 +254,8 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         return cell;
     }
     PlayerPageCommentsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlayerVC_Comments_Cell_Id forIndexPath:indexPath];
+    
+    cell.commentsModel = self.commentsModel.result.data[indexPath.row];
     return cell;
     
 }
@@ -347,6 +402,14 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     NSLog(@"评论");
     [self.textField becomeFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+
+    [self requestCommentsData:self.api method:POST];
+    [self.textField resignFirstResponder];
+    return YES;
 }
 
 
