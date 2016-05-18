@@ -27,7 +27,7 @@
 			<string>tencentopenapi</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tencent1104807398</string>
+				<string>tencent1105208113</string>
 			</array>
 		</dict>
 		<dict>
@@ -45,8 +45,14 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>mqq</string>
 		<string>wechat</string>
+		<string>mqzone</string>
+		<string>wtloginmqq2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqqwpa</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqq</string>
 		<string>weixin</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>

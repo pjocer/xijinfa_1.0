@@ -16,6 +16,18 @@
  Apple Watch 1.65inches(英寸)    320*640
  */
 
+#define ACCESS_TOKEN_WEIXIN @"access_token_weixin"
+#define OPEN_ID_WEIXIN @"open_id_weixin"
+
+#define ACCESS_TOKEN_QQ @"access_token_qq"
+#define OPEN_ID_QQ @"open_id_qq"
+
+//包含AccessToken在内的隐私数据
+#define ACCOUNT_INFO @"account_info"
+#define ACCOUNT_ACCESS_TOKEN @"account_access_token"
+//用户信息
+#define USER_INFO @"user_info"
+
 #define HEADHEIGHT 64
 #define SCREENWITH [UIScreen mainScreen].bounds.size.width
 #define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
@@ -99,7 +111,7 @@
  *
  *  @return
  */
-#define UserDefaultSetObjectForKey(__VALUE__,__KEY__) \
+#define UserDefaultSetObjectForKey(__VALUE__, __KEY__) \
 {\
 [[NSUserDefaults standardUserDefaults] setObject:__VALUE__ forKey:__KEY__];\
 [[NSUserDefaults standardUserDefaults] synchronize];\

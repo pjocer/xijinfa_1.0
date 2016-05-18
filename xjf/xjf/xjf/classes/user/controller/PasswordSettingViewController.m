@@ -10,6 +10,7 @@
 #import "XjfRequest.h"
 #import "RegistFinalModel.h"
 #import "XJFAccountManager.h"
+#import "XJAccountManager.h"
 
 @interface PasswordSettingViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -68,6 +69,8 @@
         RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
         if (model.errCode == 0) {
             SendNotification(loginSuccess, model);
+            XJAccountManager *manager = [XJAccountManager defaultManager];
+            [manager setAccuontInfo:[model toDictionary]];
             [self.navigationController popToRootViewControllerAnimated:YES];
         } else {
             [[ZToastManager ShardInstance]showtoast:model.errMsg];

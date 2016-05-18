@@ -11,7 +11,7 @@
 
 @implementation AccountInfoResultAccountModel
 
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 
@@ -19,7 +19,7 @@
 
 @implementation AccountInfoResultModel
 
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 
@@ -27,7 +27,7 @@
 
 @implementation AccountInfoModel
 
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 
@@ -40,34 +40,30 @@ static RegistFinalModel *account_final_model;
 static AccountInfoModel *account_info_model;
 
 
-void getAccountInfo (void) {
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:user_info RequestMethod:GET];
+void getAccountInfo(void) {
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:user_info RequestMethod:GET];
     NSString *access_token = account_final_model.result.credential.access_token;
-    [request setValue:[NSString stringWithFormat:@"Bearer %@",access_token] forHTTPHeaderField:@"Authorization"];
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        account_info_model = [[AccountInfoModel alloc]initWithData:responseData error:nil];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", access_token] forHTTPHeaderField:@"Authorization"];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        account_info_model = [[AccountInfoModel alloc] initWithData:responseData error:nil];
         SendNotification(UserInfoDidChangedNotification, account_info_model);
-    } failedBlock:^(NSError * _Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"获取用户信息失败"];
     }];
 }
 
-@interface XJFAccountManager : NSObject
-+ (instancetype)sharedAccount;
-@end
-
 @implementation XJFAccountManager
 
-+(instancetype)sharedAccount {
++ (instancetype)sharedAccount {
     static XJFAccountManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[XJFAccountManager alloc]init];
+        manager = [[XJFAccountManager alloc] init];
     });
     return manager;
 }
 
-+(void)load {
++ (void)load {
     [super load];
     [[self sharedAccount] registerNotifications];
 }
@@ -83,14 +79,11 @@ void getAccountInfo (void) {
 
 #pragma mark - Current Display Controller
 
-UIWindow * getCurrentWindow (UIWindow *window) {
-    if (window.windowLevel != UIWindowLevelNormal)
-    {
+UIWindow *getCurrentWindow(UIWindow *window) {
+    if (window.windowLevel != UIWindowLevelNormal) {
         NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows)
-        {
-            if (tmpWin.windowLevel == UIWindowLevelNormal)
-            {
+        for (UIWindow *tmpWin in windows) {
+            if (tmpWin.windowLevel == UIWindowLevelNormal) {
                 return tmpWin;
             }
         }
@@ -98,37 +91,40 @@ UIWindow * getCurrentWindow (UIWindow *window) {
     return window;
 }
 
-UIViewController * getAvailableViewController (UIViewController *viewController) {
+UIViewController *getAvailableViewController(UIViewController *viewController) {
     UIViewController *result;
     if ([viewController presentedViewController]) {
         UIViewController *controller = viewController.presentedViewController;
         result = getAvailableViewController(controller);
-    }else if ([viewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *nvc  = (UINavigationController *)viewController;
+    } else if ([viewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *nvc = (UINavigationController *) viewController;
         UIViewController *controller = nvc.topViewController;
         result = getAvailableViewController(controller);
-    }else if ([viewController isKindOfClass:[UITabBarController class]]) {
-        UITabBarController *tab = (UITabBarController *)viewController;
+    } else if ([viewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tab = (UITabBarController *) viewController;
         UIViewController *controller = tab.selectedViewController;
         result = getAvailableViewController(controller);
-    }else {
+    } else {
         result = viewController;
     }
     return result;
 }
 
-UIViewController * _Nullable  getCurrentDisplayController(void) {
+UIViewController *_Nullable getCurrentDisplayController(void) {
     UIWindow *window = getCurrentWindow([[UIApplication sharedApplication] keyWindow]);
     UIViewController *controller = window.rootViewController;
-    UIViewController *vc = getAvailableViewController (controller);
+    UIViewController *vc = getAvailableViewController(controller);
     return vc;
 }
 
 #pragma mark Get Current User Info
+
 AccountInfoModel *_Nullable getCurrentUserInfo(void) {
     return account_info_model;
 }
+
 #pragma  mark - Get User Access Token
+
 NSString *_Nullable getUserAccessToken(void) {
     return account_final_model.result.credential.access_token;
 }

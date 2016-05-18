@@ -112,6 +112,10 @@
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
 		CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
+		D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA4E1CEC041600CD5359 /* XJAccountManager.m */; };
+		D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA511CEC047600CD5359 /* UserProfileModel.m */; };
+		D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA541CEC0D3400CD5359 /* UserLoadCell.m */; };
+		D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */; };
 		D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2631CEAF85C00873D10 /* StringUtil.m */; };
 		D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2661CEAF87800873D10 /* NSDate+Convenience.m */; };
 		D053D26A1CEB159F00873D10 /* XJFAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2691CEB159F00873D10 /* XJFAccountManager.m */; };
@@ -357,6 +361,13 @@
 		CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF57AD21C9F825D00049AF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D049BA4D1CEC041600CD5359 /* XJAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJAccountManager.h; sourceTree = "<group>"; };
+		D049BA4E1CEC041600CD5359 /* XJAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAccountManager.m; sourceTree = "<group>"; };
+		D049BA501CEC047600CD5359 /* UserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModel.h; sourceTree = "<group>"; };
+		D049BA511CEC047600CD5359 /* UserProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileModel.m; sourceTree = "<group>"; };
+		D049BA531CEC0D3400CD5359 /* UserLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoadCell.h; sourceTree = "<group>"; };
+		D049BA541CEC0D3400CD5359 /* UserLoadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoadCell.m; sourceTree = "<group>"; };
+		D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserLoadCell.xib; sourceTree = "<group>"; };
 		D053D2621CEAF85C00873D10 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
 		D053D2631CEAF85C00873D10 /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtil.m; sourceTree = "<group>"; };
 		D053D2651CEAF87800873D10 /* NSDate+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Convenience.h"; sourceTree = "<group>"; };
@@ -759,6 +770,9 @@
 				D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */,
 				D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */,
 				D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */,
+				D049BA531CEC0D3400CD5359 /* UserLoadCell.h */,
+				D049BA541CEC0D3400CD5359 /* UserLoadCell.m */,
+				D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */,
 				D085349F1CE1DD1F00F0047B /* UserComponentCell.h */,
 				D08534A01CE1DD1F00F0047B /* UserComponentCell.m */,
 			);
@@ -934,6 +948,10 @@
 				CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */,
 				D053D2681CEB159F00873D10 /* XJFAccountManager.h */,
 				D053D2691CEB159F00873D10 /* XJFAccountManager.m */,
+				D049BA4D1CEC041600CD5359 /* XJAccountManager.h */,
+				D049BA4E1CEC041600CD5359 /* XJAccountManager.m */,
+				D049BA501CEC047600CD5359 /* UserProfileModel.h */,
+				D049BA511CEC047600CD5359 /* UserProfileModel.m */,
 				5A7EEE931CE0299C007BAECD /* Header.h */,
 				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 			);
@@ -1207,6 +1225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */,
 				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
 				644C115A1CBA90A000892E2C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CD416DA61CBC9B640097A5E9 /* HomeViewCell.xib in Resources */,
@@ -1280,6 +1299,7 @@
 			files = (
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
+				D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
 				5A105E4E1CE9B2620079BEFE /* WikiPediaCategoriesModel.m in Sources */,
@@ -1307,6 +1327,7 @@
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */,
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
+				D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */,
 				5A240E0D1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m in Sources */,
 				CD416DA51CBC9B640097A5E9 /* HomeViewCell.m in Sources */,
 				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
@@ -1315,6 +1336,7 @@
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
 				CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
+				D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,

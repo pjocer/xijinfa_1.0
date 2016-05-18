@@ -9,19 +9,24 @@
 #import "MyViewController.h"
 #import "myConfigure.h"
 
-@interface MyViewController ()<UITableViewDataSource, UITableViewDelegate,UserDelegate,UserComponentCellDelegate>
-{
-    
+@interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
+
 }
-@property (nonatomic, strong) AccountInfoModel *model;
-@property (nonatomic, strong) UITableView *tableview;
+@property(nonatomic, strong) UserProfileModel *model;
+@property(nonatomic, strong) UITableView *tableview;
 @end
 
 @implementation MyViewController
-@synthesize tableview=_tableview;
+@synthesize tableview = _tableview;
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = BackgroundColor
+    self.model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
     [self extendheadViewFor:My];
     [self initMainUI];
     @weakify(self)
@@ -38,46 +43,49 @@
 }
 
 //main UI
--(void)initMainUI
-{
-    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-45) style:UITableViewStylePlain];
-    _tableview.dataSource=self;
-    _tableview.delegate=self;
+- (void)initMainUI {
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT - HEADHEIGHT - 40) style:UITableViewStylePlain];
+    _tableview.dataSource = self;
+    _tableview.delegate = self;
     _tableview.showsVerticalScrollIndicator = NO;
     _tableview.backgroundColor = [UIColor clearColor];
-    
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 1)];
+    self.tableview.tableHeaderView = header;
     [self.view addSubview:_tableview];
     [_tableview registerNib:[UINib nibWithNibName:@"UserUnLoadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserUnLoadCell"];
+    [_tableview registerNib:[UINib nibWithNibName:@"UserLoadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserLoadCell"];
     [_tableview registerClass:[UserComponentCell class] forCellReuseIdentifier:@"UserComponentCell"];
-    _tableview.tableFooterView = [self footerView:@""];
+//    _tableview.tableFooterView = [self footerView:@""];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark - TableView Delegate
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 2;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return 120;
     }
     return 320;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 10;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        UserUnLoadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserUnLoadCell" forIndexPath:indexPath];
-//        cell.type = (self.model = nil)?:
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }else {
+        if (self.model == nil) {
+            UserUnLoadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserUnLoadCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        } else {
+            UserLoadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserLoadCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.model = self.model;
+            return cell;
+        }
+
+    } else {
         UserComponentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserComponentCell" forIndexPath:indexPath];
         cell.backgroundColor = BackgroundColor;
         cell.delegate = self;
@@ -86,6 +94,7 @@
     }
     return nil;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
@@ -94,52 +103,58 @@
         [self.navigationController pushViewController:login animated:YES];
     }
 }
+
 #pragma UserDelegate
+
 - (void)userLoginOK:(id)userinfo {
-    
+
 }
+
 - (void)userLoginFail {
-    
+
 }
+
 - (void)userDidCancel {
-    
+
 }
+
 #pragma UserComponentDelegate
--(void)componentDidSelected:(NSUInteger)index {
-    NSLog(@"%lu",index);
+
+- (void)componentDidSelected:(NSUInteger)index {
+    NSLog(@"%lu", index);
     switch (index) {
         case 0:
-            
+
             break;
         case 1:
-            
+
             break;
         case 2:
-            
+
             break;
         case 3:
-            
+
             break;
         case 4:
-            
+
             break;
         case 5:
-            
+
             break;
         case 6:
-            
+
             break;
         case 7:
-            
+
             break;
         case 8:
-            
+
             break;
         case 9:
-            
+
             break;
         case 10:
-            
+
             break;
         default:
             break;

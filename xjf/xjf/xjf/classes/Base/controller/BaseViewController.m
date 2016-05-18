@@ -31,6 +31,7 @@ NSString *const Subscribe = @"SubscribeViewController";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
 

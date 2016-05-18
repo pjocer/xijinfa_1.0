@@ -13,7 +13,7 @@
 #define    kWXAppID @"wxe965d9a1b339214c"
 #define    kWXAppKey @"6a0f4f8e57feeeec93b35147c88fd460"
 #define    kQQAppID @"1104807398"
-#define    kQQAppKey @"7pgyqaGO29iju2ck"
+#define    kQQAppKey @"FxOGZT7gmO4XOH22"
 #define    kWBAppID @"1073901728"
 #define    kWBAppKey @"b94207cba10d4bc6f5449e3f09d438ec"
 #define    kWBRUrl @"http://api.danpin.com/redirect_weibo.php"
@@ -23,7 +23,9 @@
 
 #define APP_SECRET_WEIXIN         @"6a0f4f8e57feeeec93b35147c88fd460"
 
-#define APP_KEY_QQ                @"1104807398"
+#define APP_KEY_QQ                @"1105208113"
+
+#define APP_SECRET_QQ             @"FxOGZT7gmO4XOH22"
 
 #define APP_KEY_WEIBO             @"1073901728"
 
@@ -45,7 +47,7 @@
 [View.layer setMasksToBounds:YES]
 
 ///  View加边框
-#define ViewBorder(View, BorderColor, BorderWidth )\
+#define ViewBorder(View, BorderColor, BorderWidth)\
 \
 View.layer.borderColor = BorderColor.CGColor;\
 View.layer.borderWidth = BorderWidth;

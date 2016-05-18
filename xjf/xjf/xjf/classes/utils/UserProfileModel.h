@@ -1,14 +1,14 @@
 //
-//  asdad.h
+//  UserProfileModel.h
 //  xjf
 //
-//  Created by PerryJ on 16/5/17.
+//  Created by PerryJ on 16/5/18.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <JSONModel/JSONModel.h>
 
-@interface AccountInfoResultAccountModel : JSONModel
+@interface UserInfoResultAccountModel : JSONModel
 @property(nonatomic, copy) NSString *available;
 @property(nonatomic, copy) NSString *balance;
 @property(nonatomic, copy) NSString *created_at;
@@ -18,7 +18,7 @@
 @property(nonatomic, copy) NSString *user_id;
 @end
 
-@interface AccountInfoResultModel : JSONModel
+@interface UserInfoResultModel : JSONModel
 @property(nonatomic, copy) NSString *age;
 @property(nonatomic, copy) NSString *avatar;
 @property(nonatomic, copy) NSString *city;
@@ -43,43 +43,11 @@
 @property(nonatomic, copy) NSString *sex;
 @property(nonatomic, copy) NSString *status;
 @property(nonatomic, copy) NSString *updated_at;
-@property(nonatomic, strong) AccountInfoResultAccountModel *account;
+@property(nonatomic, strong) UserInfoResultAccountModel *account;
 @end
 
-@interface AccountInfoModel : JSONModel
+@interface UserProfileModel : JSONModel
 @property(nonatomic, copy) NSString *errCode;
 @property(nonatomic, copy) NSString *errMsg;
-@property(nonatomic, strong) AccountInfoResultModel *result;
-@end
-/**
- Init User Info
- 
- - returns: Null
- */
-//FOUNDATION_EXTERN void initAccountInfo (void) NS_UNAVAILABLE;
-/**
- Update User Info
- 
- - returns: Null
- */
-//FOUNDATION_EXTERN void updateAccountInfo(void) NS_UNAVAILABLE;
-/**
- Get Current Display Controller
- 
- - returns: Current Display Controller
- */
-FOUNDATION_EXTERN UIViewController *_Nullable getCurrentDisplayController(void);
-/**
- Get Current User Info
- 
- - returns: Current User Info
- */
-FOUNDATION_EXTERN AccountInfoModel *_Nullable getCurrentUserInfo(void);
-/**
- *  Get User Access Token
- */
-FOUNDATION_EXTERN NSString *_Nullable getUserAccessToken(void);
-
-@interface XJFAccountManager : NSObject
-+ (instancetype)sharedAccount;
+@property(nonatomic, strong) UserInfoResultModel *result;
 @end
