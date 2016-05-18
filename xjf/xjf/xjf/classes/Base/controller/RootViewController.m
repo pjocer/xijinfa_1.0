@@ -13,7 +13,7 @@
 #import "SubscribeViewController.h"
 #import "MyViewController.h"
 #import "PlayerViewController.h"
-
+#import "LessonPlayerViewController.h"
 @interface RootViewController ()
 
 @end
@@ -99,7 +99,7 @@
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
 
     UINavigationController *nav = self.viewControllers[self.selectedIndex];
-    if ([nav.topViewController isKindOfClass:[PlayerViewController class]]) {
+    if ([nav.topViewController isKindOfClass:[PlayerViewController class]] || [nav.topViewController isKindOfClass:[LessonPlayerViewController class]]) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }
     return UIInterfaceOrientationMaskPortrait;

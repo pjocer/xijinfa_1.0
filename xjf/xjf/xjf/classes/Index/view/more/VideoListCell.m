@@ -73,6 +73,61 @@
             make.right.mas_equalTo(self.contentView).with.offset(-20);
             make.height.mas_equalTo(15);
         }];
+        
+        //lessonCount
+        self.lessonCount = [[UILabel alloc] init];
+        [self.contentView addSubview:self.lessonCount];
+        self.lessonCount.textColor = AssistColor
+        self.lessonCount.text = @"课时: xxxx";
+        self.lessonCount.font = FONT12;
+        self.lessonCount.hidden = YES;
+        [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.videoTitle);
+            make.bottom.mas_equalTo(self.videoImage);
+            make.right.equalTo(self.contentView).with.offset(-80);
+            make.height.mas_equalTo(14);
+        }];
+        
+        //teacherName
+        self.teacherName = [[UILabel alloc] init];
+        [self.contentView addSubview:self.teacherName];
+        self.teacherName.textColor = AssistColor
+        self.teacherName.text = @"主讲: xxxx";
+        self.teacherName.font = FONT12;
+        self.teacherName.hidden = YES;
+        [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.videoTitle);
+            make.bottom.mas_equalTo(self.lessonCount.mas_top).with.offset(-3);
+            make.right.equalTo(self.contentView).with.offset(-80);
+            make.height.mas_equalTo(14);
+        }];
+        
+        //oldPrice
+        self.oldPrice = [[UILabel alloc] init];
+        [self.contentView addSubview:self.oldPrice];
+        self.oldPrice.textColor = AssistColor
+        self.oldPrice.text = @"$00";
+        self.oldPrice.font = FONT12;
+        self.oldPrice.hidden = YES;
+        [self.oldPrice mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.lessonCount);
+            make.right.equalTo(self.contentView).with.offset(-10);
+            make.size.mas_equalTo(CGSizeMake(25, 14));
+        }];
+        
+        //price
+        self.price = [[UILabel alloc] init];
+        [self.contentView addSubview:self.price];
+        self.price.textColor = [UIColor redColor];
+        self.price.text = @"$000";
+        self.price.font = FONT15;
+        self.price.hidden = YES;
+        [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.lessonCount);
+            make.right.equalTo(self.oldPrice.mas_left).with.offset(-3);
+            make.size.mas_equalTo(CGSizeMake(38, 18));
+        }];
+        
     }
     return self;
 }

@@ -9,6 +9,7 @@
 #import "LessonViewController.h"
 #import "IndexConfigure.h"
 #import "BannerModel.h"
+#import "LessonPlayerViewController.h"
 @interface LessonViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -159,7 +160,8 @@ static NSString * teacherCell_Id = @"teacherCell_Id";
         [self.navigationController pushViewController:videolistViewController animated:YES];
     }
     else if (indexPath.section == 1) {
-
+         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
     }
     
 }

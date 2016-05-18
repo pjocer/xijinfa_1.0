@@ -10,4 +10,13 @@
 #import "TalkGridModel.h"
 @interface VideoListCell : UITableViewCell
 @property (nonatomic, strong) TalkGridModel *model;
+
+///主讲老师
+@property (nonatomic, strong) UILabel *teacherName;
+///课时
+@property (nonatomic, strong) UILabel *lessonCount;
+///现在价格
+@property (nonatomic, strong) UILabel *price;
+///之前前个
+@property (nonatomic, strong) UILabel *oldPrice;
 @end

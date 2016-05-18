@@ -22,7 +22,11 @@
 #import "CommentsViewController.h"
 #import "CommentsPageCommentsCell.h"
 
-
+#import "LessonPlayerLessonListViewController.h"
+#import "LessonPlayerLessonDescribeViewController.h"
+#import "LessonPlayerLessonCommentsViewController.h"
+#import "LessonPlayerLessonRecommendedViewController.h"
+#import "LessonPlayerVideoBottomView.h"
 
 
 
