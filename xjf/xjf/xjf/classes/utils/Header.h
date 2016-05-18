@@ -32,6 +32,7 @@
 #import "NotificationSet.h"
 #import "AlertUtils.h"
 #import "StringUtil.h"
+#import <JSONModel.h>
 
 
 //RAC
