@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TalkGridModel.h"
 @interface LessonDetailTitleView : UIView
-
+@property (nonatomic, strong) TalkGridModel *model;
 @end

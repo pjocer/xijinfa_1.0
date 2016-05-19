@@ -37,8 +37,10 @@
 @property (nonatomic, strong) NSString *updated_at;
 @property (nonatomic, strong) NSString *user_id;
 
-@property (nonatomic, strong) NSString *auto_;
-@property (nonatomic, strong) NSString *view;
+///分辨率
+@property (nonatomic, strong) NSString *resolution;
+///URL
+@property (nonatomic, strong) NSString *url;
 
 @property (nonatomic, strong) NSString *video_id;
 

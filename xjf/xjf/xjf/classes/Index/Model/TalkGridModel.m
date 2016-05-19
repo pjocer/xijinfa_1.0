@@ -29,8 +29,11 @@
         _id_ = value;
     }
     if ([key isEqualToString:@"video"]) {
-        _auto_ = value[@"auto"];
-        _view = value[@"view"];
+        NSArray *tempArray = value;
+        NSDictionary *tempDic = tempArray.firstObject;
+        _resolution = tempDic[@"resolution"];
+        _url = tempDic[@"url"];
+
     }
 }
 

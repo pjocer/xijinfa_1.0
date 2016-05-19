@@ -9,6 +9,7 @@
 #import "LessonListViewController.h"
 #import "VideoListCell.h"
 #import "LessonPlayerViewController.h"
+#import "LessonDetailViewController.h"
 
 @interface LessonListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -105,10 +106,14 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LessonPlayerViewController *player = [[LessonPlayerViewController alloc] init];
+//    LessonPlayerViewController *player = [[LessonPlayerViewController alloc] init];
 //    TalkGridModel *model = self.dataSource[indexPath.row];
 //    player.talkGridModel = model;
-    [self.navigationController pushViewController:player animated:YES];
+//    [self.navigationController pushViewController:player animated:YES];
+    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+    lessonDetailViewController.model = self.dataSource[indexPath.row];
+    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+    
 }
 
 
