@@ -9,6 +9,7 @@
 #import "LessonListViewController.h"
 #import "VideoListCell.h"
 #import "LessonPlayerViewController.h"
+
 @interface LessonListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -21,7 +22,7 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = self.title;
+    self.navigationItem.title = self.LessonListTitle;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -33,14 +34,15 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 - (void)viewDidLoad {
     [super viewDidLoad];
    [self initTabelView];
-//    NSString *api = [NSString stringWithFormat:@"%@%@",categoriesVideoList,self.ID];
-//    [self requesData:api method:GET];
+    NSString *api = [NSString stringWithFormat:@"%@%@",coursesProject,self.ID];
+    [self requesData:api method:GET];
 }
 
 
 #pragma mark requestData
 - (void)requesData:(APIName *)api method:(RequestMethod)method
 {
+    
     __weak typeof (self) wSelf = self;
     self.dataSource = [NSMutableArray array];
     [[ZToastManager ShardInstance] showprogress];
@@ -58,7 +60,9 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
             [self.tableView reloadData];
         }
         
+        NSLog(@"%@",sSelf.dataSource);
     } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
     }];
 }
@@ -84,14 +88,13 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return self.dataSource.count;
-    return 10;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:lessonListCell_id];
-//    cell.model = self.dataSource[indexPath.row];
+    cell.model = self.dataSource[indexPath.row];
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;

@@ -73,4 +73,17 @@ static APIName *talkGridSendComments = @"/api/courses2/ID/comments";
 #pragma mark 金融百科分类- 视频列表
 static APIName *categoriesVideoList = @"/api/courses2/?category_id=";
 
+#pragma mark-- 内容-析金学堂页面 -----------------------------
+#pragma mark 析金学堂-专题列表
+static APIName *projectList = @"/api/projects3";
+#pragma mark 析金学堂-视频列表--按专题筛选
+static APIName *coursesProject = @"/api/courses3/?project_id=";
+
+
+
+
+
+
+
+
 

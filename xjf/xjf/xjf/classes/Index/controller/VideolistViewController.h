@@ -10,5 +10,5 @@
 
 @interface VideolistViewController : IndexBaseViewController
 @property (nonatomic, strong) NSString *ID;
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *videoListTitle;
 @end

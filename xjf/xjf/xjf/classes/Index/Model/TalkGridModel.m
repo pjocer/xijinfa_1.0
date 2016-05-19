@@ -13,6 +13,11 @@
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     [super setValue:value forKey:key];
+    if ([key isEqualToString:@"price"]) {
+        if ([[NSString stringWithFormat:@"%@",value] isEqualToString:@"-1"]) {
+            value = @"免费";
+        }
+    }
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
