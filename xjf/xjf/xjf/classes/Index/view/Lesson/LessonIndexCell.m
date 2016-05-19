@@ -25,7 +25,6 @@
         //titleImage
         self.titleImage = [[UIImageView alloc] init];
         [self.contentView addSubview:self.titleImage];
-        self.titleImage.backgroundColor = BackgroundColor;
         
         //titleLable
         self.titleLable = [[UILabel alloc] init];
@@ -73,5 +72,14 @@
     }];
 }
 
+- (void)setModel:(ProjectListByModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.icon]];
+    self.titleLable.text = model.title;
+    self.detailLable.text = model.summary;
+}
 
 @end
