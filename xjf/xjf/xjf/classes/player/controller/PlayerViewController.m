@@ -127,11 +127,15 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
         self.view.backgroundColor = BackgroundColor;
         self.collectionView.hidden = NO;
-        self.playerView.frame =CGRectMake(0, 20, SCREENHEIGHT, 211);
+        [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view).offset(20);
+        }];
     }else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight || toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
         self.view.backgroundColor = [UIColor blackColor];
         self.collectionView.hidden = YES;
-        self.playerView.frame =CGRectMake(0, 0, SCREENHEIGHT,SCREENWITH);
+        [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view).offset(0);
+        }];
     }
 }
 
@@ -149,11 +153,17 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [_playView removeFromSuperview];
         _playView=nil;
     }
-    _playView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 231)];
+     _playView =[[UIView alloc] init];
     _playView.backgroundColor =[UIColor blackColor];
     [self.view addSubview:_playView];
-//    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
-//    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
+    [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(self.playView.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
+    }];
+    
+    //    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
+    //    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
     self.playUrl = self.talkGridModel.auto_;
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
@@ -162,14 +172,23 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         _playerView=nil;
     }
     _playerView = [ZFPlayerView sharedPlayerView];
-    _playerView.frame =CGRectMake(0, 20, SCREENWITH, 211);
     _playerView.backgroundColor=[UIColor blackColor];
+    [self.view addSubview:_playerView];
+    
+    [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(20);
+        make.left.right.equalTo(self.view);
+        // 注意此处，宽高比16：9优先级比1000低就行，在因为iPhone 4S宽高比不是16：9
+        make.height.equalTo(self.playerView.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
+    }];
+    
     __weak typeof(self) weakSelf = self;
     _playerView.goBackBlock = ^{
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
+    self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-    [self.view addSubview:_playerView];
+    
 }
 #pragma mark CollectionView
 - (void)initCollectionView
@@ -179,13 +198,18 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     _layout.minimumLineSpacing = 0.0;   //最小列间距默认10
     _layout.minimumInteritemSpacing = 0.0;//左右间隔
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.playView.frame), SCREENWITH, SCREENHEIGHT - CGRectGetMaxY(self.playView.frame)) collectionViewLayout:_layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectNull collectionViewLayout:_layout];
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.playerView.mas_bottom);
+        make.bottom.left.right.equalTo(self.view);
+    }];
+    
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    [self.view addSubview:self.collectionView];
     
     //注册
     [self.collectionView registerClass:[PlayerPageDescribeCell class] forCellWithReuseIdentifier:PlayerVC_Describe_Cell_Id];

@@ -41,15 +41,15 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 #pragma mark- initTabelView
 - (void)initTabelView
 {
-    //    static const CGFloat  videoBottomViewH = 49;
-    //    static const CGFloat  playViewH = 231;
-    //    static const CGFloat  titleH = 35;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, SCREENHEIGHT - 49 - 231 - 36) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.view);
+        
+    }];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
-    
     
     if (iPhone5) {
         self.tableView.rowHeight = 100;

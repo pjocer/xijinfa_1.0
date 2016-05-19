@@ -12,12 +12,8 @@
 #import "playerConfigure.h"
 
 static CGFloat  videoBottomViewH = 49;
-static CGFloat  playViewH = 231;
 static CGFloat  titleH = 35;
 static CGFloat  selViewH = 3;
-static CGFloat  navBarH = 64;
-static CGFloat  maxTitleScale = 1.3;
-
 
 
 @interface LessonPlayerViewController ()<UIScrollViewDelegate>
@@ -81,7 +77,6 @@ static CGFloat  maxTitleScale = 1.3;
         _playView=nil;
     }
     _playView =[[UIView alloc] init];
-//    _playView.frame = CGRectMake(0, 0, SCREENWITH, playViewH);
     _playView.backgroundColor =[UIColor blackColor];
     [self.view addSubview:_playView];
     [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,10 +96,8 @@ static CGFloat  maxTitleScale = 1.3;
     }
     
     _playerView = [ZFPlayerView sharedPlayerView];
-//    _playerView.frame =CGRectMake(0, 20, SCREENWITH, playViewH - 20);
     [self.view addSubview:_playerView];
-    
-    
+
     [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(20);
         make.left.right.equalTo(self.view);
@@ -131,7 +124,6 @@ static CGFloat  maxTitleScale = 1.3;
         self.contentScrollView.hidden = NO;
         self.selBackGroundView .hidden = NO;
         self.selView.hidden = NO;
-//        self.playerView.frame =CGRectMake(0, 20, SCREENHEIGHT, playViewH - 20);
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(20);
         }];
@@ -142,7 +134,6 @@ static CGFloat  maxTitleScale = 1.3;
         self.contentScrollView.hidden = YES;
         self.selBackGroundView .hidden = YES;
         self.selView.hidden = YES;
-//        self.playerView.frame =CGRectMake(0, 0, SCREENHEIGHT,SCREENWITH);
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(0);
         }];
@@ -153,11 +144,9 @@ static CGFloat  maxTitleScale = 1.3;
 #pragma mark - setVideoBottomView
 - (void)setVideoBottomView
 {
-//    self.videoBottomView = [[LessonPlayerVideoBottomView alloc] initWithFrame:CGRectMake(0, playViewH, SCREENWITH, videoBottomViewH)];
         self.videoBottomView = [[LessonPlayerVideoBottomView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.playerView.frame), SCREENWITH, videoBottomViewH)];
     self.videoBottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.videoBottomView];
-    
     
 }
 
@@ -165,9 +154,6 @@ static CGFloat  maxTitleScale = 1.3;
 #pragma mark - 设置头部标题栏
 - (void)setupTitleScrollView
 {
-    // 判断是否存在导航控制器来判断y值
-//    CGFloat y = self.navigationController ? navBarH : 0;
-//    CGRect rect = CGRectMake(0, playViewH + videoBottomViewH + 1, SCREENWITH, titleH);
      CGRect rect = CGRectMake(0, CGRectGetMaxY(self.videoBottomView.frame) + 1, SCREENWITH, titleH);
     
     UIScrollView *titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
@@ -183,7 +169,6 @@ static CGFloat  maxTitleScale = 1.3;
     CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH);
     
     UIScrollView *contentScrollView = [[UIScrollView alloc] initWithFrame:rect];
-    //    contentScrollView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:contentScrollView];
     
     self.contentScrollView = contentScrollView;
