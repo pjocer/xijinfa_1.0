@@ -7,6 +7,7 @@
 //
 
 #import "ShoppingCartViewController.h"
+
 #import "SubmitOrdersView.h"
 #import "VideoListCell.h"
 #import "IndexSectionView.h"
@@ -132,5 +133,6 @@ static CGFloat submitOrdersViewHeight = 50;
 {
     
 }
+
 
 @end

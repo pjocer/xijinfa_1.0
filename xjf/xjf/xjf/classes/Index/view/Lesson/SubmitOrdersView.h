@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SubmitOrdersView : UIView
+
 @property (nonatomic, strong) UILabel *selectedLabel;
 @property (nonatomic, strong) UIButton *selectedButton;
 @property (nonatomic, strong) UIButton *submitOrdersButton;
 @property (nonatomic, strong) UILabel *price;
+
 @end

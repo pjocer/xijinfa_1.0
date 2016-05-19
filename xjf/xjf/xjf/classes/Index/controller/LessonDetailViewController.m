@@ -7,6 +7,7 @@
 //
 
 #import "LessonDetailViewController.h"
+
 #import "LessonDetailTitleView.h"
 #import "ShoppingCartViewController.h"
 
@@ -15,6 +16,7 @@
 @property (nonatomic, strong) UIButton *addShoppingCart;
 ///立刻购买按钮
 @property (nonatomic, strong) UIButton *nowPay;
+
 @end
 
 @implementation LessonDetailViewController
@@ -115,4 +117,5 @@
 {
     
 }
+
 @end

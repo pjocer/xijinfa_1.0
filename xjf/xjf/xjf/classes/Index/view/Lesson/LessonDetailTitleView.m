@@ -8,6 +8,7 @@
 
 #import "LessonDetailTitleView.h"
 
+
 @interface LessonDetailTitleView ()
 ///视频图片
 @property (nonatomic, strong) UIImageView *videoImage;
@@ -141,5 +142,6 @@
     }
     
 }
+
 
 @end
