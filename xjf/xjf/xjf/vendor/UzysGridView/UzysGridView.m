@@ -327,6 +327,8 @@
         self.cellMargin = cellMargins;
         [self createLayout:YES];
         [self InitVariable];
+        
+        
 
     }
     return self;
@@ -363,7 +365,7 @@
     _scrollView.delegate = self;
     _scrollView.backgroundColor = BackgroundColor;
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _scrollView.alwaysBounceHorizontal = YES;
+    _scrollView.alwaysBounceHorizontal = NO;
     _scrollView.alwaysBounceVertical = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;

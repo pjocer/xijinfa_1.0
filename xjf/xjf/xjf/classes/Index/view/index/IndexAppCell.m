@@ -32,7 +32,10 @@
             self.dataImage = @[@"home_wiki",@"home_lesson",@"home_traning",@"home_news"];
         }
         self.backgroundColor = [UIColor whiteColor];
-        _gridView = [[UzysGridView alloc] initWithFrame:self.bounds numOfRow:1 numOfColumns:4 cellMargin:0.01];
+        _gridView = [[UzysGridView alloc] initWithFrame:self.bounds numOfRow:1 numOfColumns:4 cellMargin:0];
+        _gridView.backgroundColor = [UIColor whiteColor];
+        _gridView.scrollView.backgroundColor = [UIColor whiteColor];
+
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];

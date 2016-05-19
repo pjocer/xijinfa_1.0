@@ -10,6 +10,7 @@
 #import "IndexConfigure.h"
 #import "BannerModel.h"
 #import "LessonPlayerViewController.h"
+#import "LessonListViewController.h"
 @interface LessonViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -42,7 +43,35 @@ static NSString * teacherCell_Id = @"teacherCell_Id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCollectionView];
+    [self requestBannerData:appDeptCarousel3 method:GET];
 }
+
+#pragma mark requestData
+- (void)requestBannerData:(APIName *)api method:(RequestMethod)method
+{
+    __weak typeof (self) wSelf = self;
+    self.dataArrayByBanner = [NSMutableArray array];
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
+    
+    //bannermodel
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        
+        __strong typeof (self)sSelf = wSelf;
+        [[ZToastManager ShardInstance] hideprogress];
+        sSelf.bannermodel = [[BannerModel alloc]initWithData:responseData error:nil];
+        for (BannerResultModel *model in sSelf.bannermodel.result.data) {
+            [self.dataArrayByBanner addObject:model.thumbnail];
+        }
+        [sSelf.collectionView reloadData];
+        
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
+    }];
+    
+}
+
+
 
 #pragma mark -- Navigation
 - (void)setNavigation
@@ -156,12 +185,12 @@ static NSString * teacherCell_Id = @"teacherCell_Id";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        VideolistViewController *videolistViewController = [VideolistViewController new];
-        [self.navigationController pushViewController:videolistViewController animated:YES];
+        LessonListViewController *lessonListViewController = [LessonListViewController new];
+        [self.navigationController pushViewController:lessonListViewController animated:YES];
     }
     else if (indexPath.section == 1) {
-         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
-        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+//         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+//        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
     }
     
 }
