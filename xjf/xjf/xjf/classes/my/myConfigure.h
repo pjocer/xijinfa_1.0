@@ -16,3 +16,5 @@
 #import "XJFAccountManager.h"
 #import "RegistFinalModel.h"
 #import "UserProfileModel.h"
+#import "UserInfoViewController.h"
+#import "UserInfoCell.h"

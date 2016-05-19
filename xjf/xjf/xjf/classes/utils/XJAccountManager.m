@@ -45,14 +45,14 @@
 - (void)setAccuontInfo:(NSDictionary *)info {
     self.accountFinalModel = [[RegistFinalModel alloc] initWithDictionary:info error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:info forKey:ACCOUNT_INFO];
-    [[NSUserDefaults standardUserDefaults] setObject:self.accountFinalModel.result.credential.access_token forKey:ACCOUNT_ACCESS_TOKEN];
+    [[NSUserDefaults standardUserDefaults] setObject:self.accountFinalModel.result.credential.bearer forKey:ACCOUNT_ACCESS_TOKEN];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self getAccountInfo];
 }
 
 - (void)getAccountInfo {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:user_info RequestMethod:GET];
-    NSString *access_token = self.accountFinalModel.result.credential.access_token;
+    NSString *access_token = self.accountFinalModel.result.credential.bearer;
     [request setValue:[NSString stringWithFormat:@"Bearer %@", access_token] forHTTPHeaderField:@"Authorization"];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         _user_model = [[UserProfileModel alloc] initWithData:responseData error:nil];

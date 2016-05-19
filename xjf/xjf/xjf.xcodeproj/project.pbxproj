@@ -136,6 +136,21 @@
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
+		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
+		D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */; };
+		D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */; };
+		D07D74451CED7E240037B1A9 /* UserInfoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D74431CED7E240037B1A9 /* UserInfoListCell.m */; };
+		D07D74461CED7E240037B1A9 /* UserInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07D74441CED7E240037B1A9 /* UserInfoListCell.xib */; };
+		D07D74471CED95AB0037B1A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C117E1CBA927F00892E2C /* QuartzCore.framework */; };
+		D07D74491CED95BA0037B1A9 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07D74481CED95BA0037B1A9 /* CoreText.framework */; };
+		D07D744A1CED95CB0037B1A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C117C1CBA927600892E2C /* CoreGraphics.framework */; };
+		D07D744C1CED95DA0037B1A9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07D744B1CED95DA0037B1A9 /* CFNetwork.framework */; };
+		D07D744E1CED95E50037B1A9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07D744D1CED95E50037B1A9 /* CoreMotion.framework */; };
+		D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D07D744F1CED96040037B1A9 /* AlipaySDK.bundle */; };
+		D07D74521CED96040037B1A9 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07D74501CED96040037B1A9 /* AlipaySDK.framework */; };
+		D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D74561CED9EAC0037B1A9 /* XJPay.m */; };
+		D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D74591CEDA4CC0037B1A9 /* Order.m */; };
+		D07D749F1CEDE03B0037B1A9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D749E1CEDE03B0037B1A9 /* MyLessonsViewController.m */; };
 		D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534981CE1AE1F00F0047B /* UIView+Addtion.m */; };
 		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
 		D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */; };
@@ -416,6 +431,25 @@
 		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationSet.h; sourceTree = "<group>"; };
 		D073E8171CE9E5B200AED895 /* AlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtils.h; sourceTree = "<group>"; };
 		D073E8181CE9E5B200AED895 /* AlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtils.m; sourceTree = "<group>"; };
+		D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
+		D07D74421CED7E240037B1A9 /* UserInfoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoListCell.h; sourceTree = "<group>"; };
+		D07D74431CED7E240037B1A9 /* UserInfoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoListCell.m; sourceTree = "<group>"; };
+		D07D74441CED7E240037B1A9 /* UserInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoListCell.xib; sourceTree = "<group>"; };
+		D07D74481CED95BA0037B1A9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		D07D744B1CED95DA0037B1A9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D07D744D1CED95E50037B1A9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		D07D744F1CED96040037B1A9 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		D07D74501CED96040037B1A9 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		D07D74551CED9EAC0037B1A9 /* XJPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJPay.h; sourceTree = "<group>"; };
+		D07D74561CED9EAC0037B1A9 /* XJPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJPay.m; sourceTree = "<group>"; };
+		D07D74581CEDA4CC0037B1A9 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		D07D74591CEDA4CC0037B1A9 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		D07D749D1CEDE03B0037B1A9 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
+		D07D749E1CEDE03B0037B1A9 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
 		D08534971CE1AE1F00F0047B /* UIView+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addtion.h"; sourceTree = "<group>"; };
 		D08534981CE1AE1F00F0047B /* UIView+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addtion.m"; sourceTree = "<group>"; };
 		D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnLoadCell.h; sourceTree = "<group>"; };
@@ -431,6 +465,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07D744E1CED95E50037B1A9 /* CoreMotion.framework in Frameworks */,
+				D07D744C1CED95DA0037B1A9 /* CFNetwork.framework in Frameworks */,
+				D07D744A1CED95CB0037B1A9 /* CoreGraphics.framework in Frameworks */,
+				D07D74491CED95BA0037B1A9 /* CoreText.framework in Frameworks */,
+				D07D74471CED95AB0037B1A9 /* QuartzCore.framework in Frameworks */,
+				D07D74521CED96040037B1A9 /* AlipaySDK.framework in Frameworks */,
 				644C11911CBA93A500892E2C /* libc++.tbd in Frameworks */,
 				644C11771CBA921800892E2C /* libiconv.tbd in Frameworks */,
 				644C11751CBA920A00892E2C /* libz.tbd in Frameworks */,
@@ -573,6 +613,8 @@
 				D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */,
 				644C11251CBA8DAA00892E2C /* UserThirdLogin.h */,
 				644C11261CBA8DAA00892E2C /* UserThirdLogin.m */,
+				D07D749D1CEDE03B0037B1A9 /* MyLessonsViewController.h */,
+				D07D749E1CEDE03B0037B1A9 /* MyLessonsViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -582,8 +624,6 @@
 			children = (
 				D065BFE21CE5751800D11804 /* ImageCodeModel.h */,
 				D065BFE31CE5751800D11804 /* ImageCodeModel.m */,
-				D073E8131CE9D66C00AED895 /* RegistFinalModel.h */,
-				D073E8141CE9D66C00AED895 /* RegistFinalModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -802,6 +842,8 @@
 				CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */,
 				644C110F1CBA89FD00892E2C /* SettingViewController.h */,
 				644C11101CBA89FD00892E2C /* SettingViewController.m */,
+				D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */,
+				D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -824,6 +866,12 @@
 				D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */,
 				D085349F1CE1DD1F00F0047B /* UserComponentCell.h */,
 				D08534A01CE1DD1F00F0047B /* UserComponentCell.m */,
+				D07D74421CED7E240037B1A9 /* UserInfoListCell.h */,
+				D07D74431CED7E240037B1A9 /* UserInfoListCell.m */,
+				D07D74441CED7E240037B1A9 /* UserInfoListCell.xib */,
+				D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */,
+				D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */,
+				D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -982,6 +1030,8 @@
 		CD1CCC3A1CB37B89002FC0C9 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				D07D74541CED9E640037B1A9 /* XJPay */,
+				D07D74531CED9E340037B1A9 /* XJAccount */,
 				D0698E781CE447F9003BF1F3 /* XJFRequest */,
 				644C10FB1CBA80B400892E2C /* category */,
 				644C112B1CBA908200892E2C /* ZPlatformShare.h */,
@@ -995,12 +1045,6 @@
 				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
 				CD1CCC3E1CB37BB6002FC0C9 /* XjfShare.h */,
 				CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */,
-				D053D2681CEB159F00873D10 /* XJFAccountManager.h */,
-				D053D2691CEB159F00873D10 /* XJFAccountManager.m */,
-				D049BA4D1CEC041600CD5359 /* XJAccountManager.h */,
-				D049BA4E1CEC041600CD5359 /* XJAccountManager.m */,
-				D049BA501CEC047600CD5359 /* UserProfileModel.h */,
-				D049BA511CEC047600CD5359 /* UserProfileModel.m */,
 				5A7EEE931CE0299C007BAECD /* Header.h */,
 				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 			);
@@ -1203,9 +1247,40 @@
 			name = XJFRequest;
 			sourceTree = "<group>";
 		};
+		D07D74531CED9E340037B1A9 /* XJAccount */ = {
+			isa = PBXGroup;
+			children = (
+				D073E8131CE9D66C00AED895 /* RegistFinalModel.h */,
+				D073E8141CE9D66C00AED895 /* RegistFinalModel.m */,
+				D049BA501CEC047600CD5359 /* UserProfileModel.h */,
+				D049BA511CEC047600CD5359 /* UserProfileModel.m */,
+				D053D2681CEB159F00873D10 /* XJFAccountManager.h */,
+				D053D2691CEB159F00873D10 /* XJFAccountManager.m */,
+				D049BA4D1CEC041600CD5359 /* XJAccountManager.h */,
+				D049BA4E1CEC041600CD5359 /* XJAccountManager.m */,
+			);
+			name = XJAccount;
+			sourceTree = "<group>";
+		};
+		D07D74541CED9E640037B1A9 /* XJPay */ = {
+			isa = PBXGroup;
+			children = (
+				D07D74551CED9EAC0037B1A9 /* XJPay.h */,
+				D07D74561CED9EAC0037B1A9 /* XJPay.m */,
+				D07D74581CEDA4CC0037B1A9 /* Order.h */,
+				D07D74591CEDA4CC0037B1A9 /* Order.m */,
+			);
+			name = XJPay;
+			sourceTree = "<group>";
+		};
 		D1AB19A49ED20349657DC2CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D07D744F1CED96040037B1A9 /* AlipaySDK.bundle */,
+				D07D74501CED96040037B1A9 /* AlipaySDK.framework */,
+				D07D744D1CED95E50037B1A9 /* CoreMotion.framework */,
+				D07D744B1CED95DA0037B1A9 /* CFNetwork.framework */,
+				D07D74481CED95BA0037B1A9 /* CoreText.framework */,
 				644C11901CBA93A500892E2C /* libc++.tbd */,
 				644C118E1CBA92F800892E2C /* libz.1.1.3.tbd */,
 				644C117C1CBA927600892E2C /* CoreGraphics.framework */,
@@ -1288,11 +1363,14 @@
 				CD416DA61CBC9B640097A5E9 /* HomeViewCell.xib in Resources */,
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
+				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
 				644C115C1CBA90A000892E2C /* WeiboSDK.bundle in Resources */,
+				D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */,
 				644C10C81CBA61AC00892E2C /* icon_del.png in Resources */,
 				644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */,
 				CD416D941CBC85B90097A5E9 /* SCNavTabBar.bundle in Resources */,
+				D07D74461CED7E240037B1A9 /* UserInfoListCell.xib in Resources */,
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
@@ -1362,6 +1440,7 @@
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
 				5A105E4E1CE9B2620079BEFE /* WikiPediaCategoriesModel.m in Sources */,
+				D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */,
 				CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */,
 				5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */,
 				5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */,
@@ -1383,6 +1462,7 @@
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				644C11571CBA90A000892E2C /* XMShareWechatUtil.m in Sources */,
 				644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */,
+				D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */,
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */,
 				D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */,
@@ -1400,6 +1480,7 @@
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
 				D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
+				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
@@ -1425,9 +1506,11 @@
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
+				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				CD416D951CBC85B90097A5E9 /* SCNavTabBarController.m in Sources */,
 				D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
+				D07D74451CED7E240037B1A9 /* UserInfoListCell.m in Sources */,
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
 				5A105E511CE9E85C0079BEFE /* TalkGridModel.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
@@ -1460,6 +1543,7 @@
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
+				D07D749F1CEDE03B0037B1A9 /* MyLessonsViewController.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,
 				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
@@ -1589,6 +1673,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/QQSDK",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xjf/classes/utils/PrefixHeader.pch";
 				INFOPLIST_FILE = xjf/Info.plist;
@@ -1617,6 +1702,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/QQSDK",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xjf/classes/utils/PrefixHeader.pch";
 				INFOPLIST_FILE = xjf/Info.plist;

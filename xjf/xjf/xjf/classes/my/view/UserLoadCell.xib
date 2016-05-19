@@ -45,7 +45,7 @@
                             <constraint firstAttribute="height" constant="18" id="fW9-Om-Ghq"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小白小白" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpJ-Sw-g95">
@@ -131,7 +131,7 @@
                             <constraint firstAttribute="height" constant="1" id="YQ7-uc-SEK"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -167,6 +167,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="segment_lie" destination="4GC-Vt-cHA" id="pIm-FO-dBT"/>
+                <outlet property="segment_line_height" destination="YQ7-uc-SEK" id="Fuf-D4-vct"/>
                 <outlet property="user_attention" destination="HVc-Q5-ihc" id="QfF-wY-n1Y"/>
                 <outlet property="user_fans" destination="jea-nh-ieK" id="dDU-ep-ecU"/>
                 <outlet property="user_gold" destination="l7b-bL-J2k" id="Ryq-7Y-n3v"/>

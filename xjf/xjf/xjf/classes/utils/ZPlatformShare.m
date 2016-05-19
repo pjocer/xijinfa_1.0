@@ -8,9 +8,12 @@
 
 #import "ZPlatformShare.h"
 #import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WeiboSDK.h"
 #import "xjfConfigure.h"
+#import "MyLessonsViewController.h"
+#import "XJFAccountManager.h"
 @interface ZPlatformShare()
 {
     
@@ -33,7 +36,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-       
+    
     }
     return self;
 }
@@ -42,11 +45,7 @@
 }
 + (void)initPlatformData
 {
-    
    [WXApi registerApp:APP_KEY_WEIXIN withDescription:@"Wechat"];
-//   BOOL wb=  [WeiboSDK registerApp:APP_KEY_WEIBO];
-//  DLog(@"--WXApi--%d-----WeiboSDK-%d",wx,wb);
-    
 }
 -(BOOL)handleOpenURL:(NSURL *)url
 {
@@ -64,7 +63,57 @@
         return [[XMShareWechatUtil sharedInstance] handleOpenURL:url];
         
     }
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            BOOL isSuccess = [self parseResult:resultDic];
+            if (isSuccess) {
+                MyLessonsViewController *controller = [[MyLessonsViewController alloc]init];
+                UIViewController *ret = getCurrentDisplayController();;
+                [ret.navigationController pushViewController:controller animated:YES];
+            }
+        }];
+    }
+    
     return NO;
+}
+
+- (BOOL)parseResult:(NSDictionary *)result {
+    NSString *resultSting = result[@"result"];
+    BOOL codeIsOK;
+    BOOL SuccessIsOk;
+    BOOL signIsOK;
+    if ([result[@"resultStatus"] isEqualToString:@"9000"]) {
+        codeIsOK = YES;
+    } else {
+        return NO;
+    }
+    NSArray *resultStringArray =[resultSting componentsSeparatedByString:NSLocalizedString(@"&", nil)];
+    for (NSString *str in resultStringArray)
+    {
+        NSString *newstring = nil;
+        newstring = [str stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        NSArray *strArray = [newstring componentsSeparatedByString:NSLocalizedString(@"=", nil)];
+        for (int i = 0 ; i < [strArray count] ; i++)
+        {
+            NSString *st = [strArray objectAtIndex:i];
+            if ([st isEqualToString:@"success"])
+            {
+                if ([[strArray objectAtIndex:1] isEqualToString:@"true"]) {
+                    SuccessIsOk = YES;
+                }else {
+                    return NO;
+                }
+            }
+            if ([st isEqualToString:@"sign"]) {
+                if ([strArray objectAtIndex:1]!=nil) {
+                    signIsOK = YES;
+                }else {
+                    return NO;
+                }
+            }
+        }
+    }
+    return YES;
 }
 
 //分享

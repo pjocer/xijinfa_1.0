@@ -219,7 +219,7 @@ NSString *const Subscribe = @"SubscribeViewController";
     _headView.backgroundColor = [UIColor whiteColor];
 
     UIImageView *iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(8, 15 + (HEADHEIGHT - 20 - 20) / 2, 35, 35)];
-    iconImage.image = [UIImage imageNamed:@"Logo"];
+    iconImage.image = [UIImage imageNamed:@"logo"];
     [_headView addSubview:iconImage];
 
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImage.frame) + 8, 21 + (HEADHEIGHT - 20 - 20) / 2, self.view.frame.size.width / 2, 20)];

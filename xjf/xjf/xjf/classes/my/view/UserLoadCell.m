@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *user_gold;
 @property (weak, nonatomic) IBOutlet UILabel *user_fans;
 @property (weak, nonatomic) IBOutlet UILabel *user_attention;
+@property (weak, nonatomic) IBOutlet UILabel *segment_lie;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *segment_line_height;
 
 @end
 
@@ -27,6 +29,7 @@
     self.vip_level.text = @"";
     self.user_icon.layer.cornerRadius = 75/2.0;
     self.user_icon.layer.masksToBounds = YES;
+    self.segment_line_height.constant = 0.3f;
     // Initialization code
 }
 
@@ -37,12 +40,11 @@
 }
 
 -(void)setModel:(UserProfileModel *)model {
-    NSLog(@"%@",model);
     self.username.text = model.result.nickname;
     [self.user_icon sd_setImageWithURL:[NSURL URLWithString:model.result.avatar] placeholderImage:[UIImage imageNamed:@"user_unload"]];
-    self.user_gold.text = model.result.coin_balance;
-    self.user_fans.text = model.result.followings;
-    self.user_attention.text = model.result.followers;
+    self.user_gold.text = model.result.coin_balance?:@"0";
+    self.user_fans.text = model.result.followings?:@"0";
+    self.user_attention.text = model.result.followers?:@"0";
 }
 
 @end

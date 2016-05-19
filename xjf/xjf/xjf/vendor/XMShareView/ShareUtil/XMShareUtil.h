@@ -36,7 +36,7 @@ typedef void (^authFail)(NSDictionary * message,NSError *error);
 @property (nonatomic, strong) NSString *shareImage;
 
 -(void)openURL:(NSString*)url;
-+(BOOL)isInstalled;
+//+(BOOL)isInstalled;
 -(void)Auth:(NSString*)scope Success:(authSuccess)success Fail:(authFail)fail;
 -(BOOL)handleOpenURL:(NSURL *)url;
 -(void)logout;

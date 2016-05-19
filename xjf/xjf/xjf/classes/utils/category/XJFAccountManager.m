@@ -42,7 +42,7 @@ static AccountInfoModel *account_info_model;
 
 void getAccountInfo(void) {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:user_info RequestMethod:GET];
-    NSString *access_token = account_final_model.result.credential.access_token;
+    NSString *access_token = account_final_model.result.credential.bearer;
     [request setValue:[NSString stringWithFormat:@"Bearer %@", access_token] forHTTPHeaderField:@"Authorization"];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         account_info_model = [[AccountInfoModel alloc] initWithData:responseData error:nil];
@@ -126,7 +126,7 @@ AccountInfoModel *_Nullable getCurrentUserInfo(void) {
 #pragma  mark - Get User Access Token
 
 NSString *_Nullable getUserAccessToken(void) {
-    return account_final_model.result.credential.access_token;
+    return account_final_model.result.credential.bearer;
 }
 
 

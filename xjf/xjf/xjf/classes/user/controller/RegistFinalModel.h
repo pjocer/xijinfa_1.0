@@ -17,7 +17,8 @@
 @end
 
 @interface ResultCredentialModel : JSONModel
-@property (nonatomic, copy)NSString *access_token;
+@property (nonatomic, copy)NSString *bearer;
+@property (nonatomic, copy)NSString *expired_at;
 @end
 
 @interface RegistFinalResultModel : JSONModel

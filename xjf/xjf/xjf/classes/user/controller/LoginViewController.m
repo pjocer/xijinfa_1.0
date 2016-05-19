@@ -192,23 +192,18 @@
     UIButton *qq = [UIButton buttonWithType:UIButtonTypeCustom];
     qq.tag = 4;
     qq.frame = [XMShareWechatUtil isInstalled]?CGRectMake(qq_x, y, 50, 50):center;
-    [qq setBackgroundImage:[UIImage imageNamed:@"QQ"] forState:UIControlStateNormal];
+    qq.hidden = ![XMShareQQUtil isInstalled];
+    [qq setBackgroundImage:[UIImage imageNamed:@"login_qq"] forState:UIControlStateNormal];
     [qq addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:qq];
     
     UIButton *wx = [UIButton buttonWithType:UIButtonTypeCustom];
     wx.tag = 5;
+    wx.hidden = ![XMShareWechatUtil isInstalled];
     wx.frame = [XMShareQQUtil isInstalled]?CGRectMake(wechat_x, y, 50, 50):center;
-    [wx setBackgroundImage:[UIImage imageNamed:@"Wechat"] forState:UIControlStateNormal];
+    [wx setBackgroundImage:[UIImage imageNamed:@"login_wechat"] forState:UIControlStateNormal];
     [wx addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wx];
-    if (![XMShareQQUtil isInstalled]) {
-        qq.hidden = YES;
-    }
-    if (![XMShareWechatUtil isInstalled]) {
-        wx.hidden = YES;
-    }
-    NSLog(@"%@",NSStringFromCGRect(wx.frame));
 }
 
 - (void)registAction:(UIBarButtonItem *)item {
@@ -314,7 +309,7 @@
             } else {
                 [[ZToastManager ShardInstance] showtoast:model.errMsg];
             }
-        }                  failedBlock:^(NSError *_Nullable error) {
+        }failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"登录失败"];
         }];
     }

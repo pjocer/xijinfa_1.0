@@ -11,6 +11,7 @@
 #import <TencentOpenApiSDK/TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "ZPlatformShare.h"
+#import "XJPay.h"
 @interface AppDelegate () <WXApiDelegate>
 
 @end
@@ -18,14 +19,13 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     [ZPlatformShare initPlatformData];
+    [[XJPay defaultPay] buyTradeImmediately:@"51246" by:Alipay];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     RootViewController *root = [[RootViewController alloc] init];
     self.window.rootViewController = root;
     [self.window makeKeyAndVisible];
-
     return YES;
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

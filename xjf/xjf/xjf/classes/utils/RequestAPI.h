@@ -34,6 +34,9 @@ static APIName *commit_register = @"/api/auth/register";
 //获取用户信息API
 static APIName *user_info = @"/api/user/profile";
 
+//购买API
+static APIName *buy_trade = @"/api/order";
+
 #pragma mark- Hunter_Wang
 
 

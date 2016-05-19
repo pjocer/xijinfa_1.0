@@ -8,6 +8,7 @@
 
 #import "MyViewController.h"
 #import "myConfigure.h"
+#import "UserInfoViewController.h"
 
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
@@ -98,9 +99,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
-        LoginViewController *login = [LoginViewController new];
-        login.delegate = self;
-        [self.navigationController pushViewController:login animated:YES];
+        if (self.model != nil) {
+            UserInfoViewController *userinfo = [[UserInfoViewController alloc]init];
+            [self.navigationController pushViewController:userinfo animated:YES];
+        } else {
+            LoginViewController *login = [LoginViewController new];
+            login.delegate = self;
+            [self.navigationController pushViewController:login animated:YES];
+        }
     }
 }
 
