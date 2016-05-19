@@ -25,5 +25,5 @@
 - (void)shareToWeixinTimeline;
 
 + (instancetype)sharedInstance;
-
++ (BOOL)isInstalled;
 @end

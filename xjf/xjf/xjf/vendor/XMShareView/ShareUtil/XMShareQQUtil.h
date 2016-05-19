@@ -36,5 +36,5 @@ typedef NS_ENUM(NSInteger, SHARE_QQ_TYPE){
 - (void)shareToQzone;
 
 + (instancetype)sharedInstance;
-
++ (BOOL)isInstalled;
 @end

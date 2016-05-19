@@ -187,28 +187,28 @@
     CGFloat qq_x = SCREENWITH / 2 - 62.5;
     CGFloat y = CGRectGetMaxY(self.txtCode.frame) + 100;
     CGFloat wechat_x = SCREENWITH / 2 + 12.5;
-
-    BOOL hadInstalledQQ = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]];
+    CGRect center = CGRectMake(SCREENWITH/2-25, y, 50, 50);
+    
     UIButton *qq = [UIButton buttonWithType:UIButtonTypeCustom];
     qq.tag = 4;
-    qq.frame = CGRectMake(qq_x, y, 50, 50);
+    qq.frame = [XMShareWechatUtil isInstalled]?CGRectMake(qq_x, y, 50, 50):center;
     [qq setBackgroundImage:[UIImage imageNamed:@"QQ"] forState:UIControlStateNormal];
     [qq addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:qq];
-
-    BOOL hadInstalledWeixin = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]];
+    
     UIButton *wx = [UIButton buttonWithType:UIButtonTypeCustom];
     wx.tag = 5;
-    wx.frame = CGRectMake(wechat_x, y, 50, 50);
+    wx.frame = [XMShareQQUtil isInstalled]?CGRectMake(wechat_x, y, 50, 50):center;
     [wx setBackgroundImage:[UIImage imageNamed:@"Wechat"] forState:UIControlStateNormal];
     [wx addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wx];
-    if (!hadInstalledQQ) {
+    if (![XMShareQQUtil isInstalled]) {
         qq.hidden = YES;
     }
-    if (!hadInstalledWeixin) {
+    if (![XMShareWechatUtil isInstalled]) {
         wx.hidden = YES;
     }
+    NSLog(@"%@",NSStringFromCGRect(wx.frame));
 }
 
 - (void)registAction:(UIBarButtonItem *)item {
