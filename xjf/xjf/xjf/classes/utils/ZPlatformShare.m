@@ -13,7 +13,10 @@
 #import "WeiboSDK.h"
 #import "xjfConfigure.h"
 #import "MyLessonsViewController.h"
-#import "XJFAccountManager.h"
+#import "XJMarket.h"
+
+
+
 @interface ZPlatformShare()
 {
     
@@ -67,9 +70,9 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             BOOL isSuccess = [self parseResult:resultDic];
             if (isSuccess) {
-                MyLessonsViewController *controller = [[MyLessonsViewController alloc]init];
-                UIViewController *ret = getCurrentDisplayController();;
-                [ret.navigationController pushViewController:controller animated:YES];
+                SendNotification(PayLessonsSuccess,nil);
+            } else {
+                NSLog(@"支付失败 type:2");
             }
         }];
     }

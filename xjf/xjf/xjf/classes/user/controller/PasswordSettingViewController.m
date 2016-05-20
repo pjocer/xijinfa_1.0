@@ -9,7 +9,6 @@
 #import "PasswordSettingViewController.h"
 #import "XjfRequest.h"
 #import "RegistFinalModel.h"
-#import "XJFAccountManager.h"
 #import "XJAccountManager.h"
 
 @interface PasswordSettingViewController () <UITextFieldDelegate>

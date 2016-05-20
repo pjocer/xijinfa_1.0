@@ -11,3 +11,6 @@ static NotificationName *loginSuccess = @"loginSuccess";
 
 //用户信息改变
 static NotificationName *UserInfoDidChangedNotification = @"UserInfoDidChangedNotification";
+
+//购买课程成功
+static NotificationName *PayLessonsSuccess = @"PayLessonsSuccess";

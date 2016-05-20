@@ -7,6 +7,7 @@
 //
 
 #import "MyLessonsViewController.h"
+#import "XJMarket.h"
 
 @interface MyLessonsViewController ()
 
@@ -21,8 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor = BackgroundColor;
+    NSArray *array = [[XJMarket sharedMarket] myLessonsFor:MY_LESSONS_XUETANG];
+    NSLog(@"%@",array);
 }
 
 - (void)didReceiveMemoryWarning {

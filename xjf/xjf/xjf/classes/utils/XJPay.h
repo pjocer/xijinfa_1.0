@@ -7,18 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef enum : NSUInteger {
-    Alipay,
-    WechatPay,
-} PayStyle;
+#import "XJMarket.h"
 
 @interface XJPay : NSObject
 
-+ (instancetype)defaultPay;
+@property (nonatomic, copy, nullable)dispatch_block_t success;
 
-- (instancetype)init NS_UNAVAILABLE;
+@property (nonatomic, copy, nullable)dispatch_block_t failed;
 
-- (void)buyTradeImmediately:(nonnull NSString *)trade_id by:(PayStyle)style;
+- (void)buyTradeImmediately:(nonnull NSString *)trade_id by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
 
 @end

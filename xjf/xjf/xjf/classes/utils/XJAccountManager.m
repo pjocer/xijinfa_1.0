@@ -96,4 +96,43 @@
     [self logout];
     _alertView = nil;
 }
+#pragma mark - Current Display Controller
+
+UIWindow *getCurrentWindow(UIWindow *window) {
+    if (window.windowLevel != UIWindowLevelNormal) {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for (UIWindow *tmpWin in windows) {
+            if (tmpWin.windowLevel == UIWindowLevelNormal) {
+                return tmpWin;
+            }
+        }
+    }
+    return window;
+}
+
+UIViewController *getAvailableViewController(UIViewController *viewController) {
+    UIViewController *result;
+    if ([viewController presentedViewController]) {
+        UIViewController *controller = viewController.presentedViewController;
+        result = getAvailableViewController(controller);
+    } else if ([viewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *nvc = (UINavigationController *) viewController;
+        UIViewController *controller = nvc.topViewController;
+        result = getAvailableViewController(controller);
+    } else if ([viewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tab = (UITabBarController *) viewController;
+        UIViewController *controller = tab.selectedViewController;
+        result = getAvailableViewController(controller);
+    } else {
+        result = viewController;
+    }
+    return result;
+}
+
+UIViewController *_Nullable getCurrentDisplayController(void) {
+    UIWindow *window = getCurrentWindow([[UIApplication sharedApplication] keyWindow]);
+    UIViewController *controller = window.rootViewController;
+    UIViewController *vc = getAvailableViewController(controller);
+    return vc;
+}
 @end

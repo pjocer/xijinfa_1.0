@@ -13,6 +13,7 @@
 #import "XMShareQQUtil.h"
 #import "XMShareWechatUtil.h"
 #import "XMShareWeiboUtil.h"
+
 @interface ZPlatformShare : NSObject
 + (instancetype)sharedInstance;
 + (void)initPlatformData;

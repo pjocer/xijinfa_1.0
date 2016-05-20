@@ -139,24 +139,10 @@
 
 @implementation XJPay
 
-+(instancetype)defaultPay {
-    static XJPay *pay = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        pay = [[XJPay alloc] initSingle];
-    });
-    return pay;
-}
 
-- (instancetype)initSingle {
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
-
-- (void)buyTradeImmediately:(nonnull NSString *)trade_id by:(PayStyle)style; {
+- (void)buyTradeImmediately:(nonnull NSString *)trade_id by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed{
+    self.success = success;
+    self.failed = failed;
     XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
     NSString *access_token = [[XJAccountManager defaultManager] accessToken];
     NSString *authorization = [NSString stringWithFormat:@"Bearer %@",access_token];
@@ -169,13 +155,19 @@
         [self handleData:responseData];
         [self produceOrder:style];
     } failedBlock:^(NSError * _Nullable error) {
-        
+        if (self.failed) self.failed();
     }];
 }
 
 - (void)produceOrder:(PayStyle)style {
     if (style == Alipay) {
-        [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.yiban.iphone.mainApp" callback:nil];
+        [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.yiban.iphone.mainApp" callback:^(NSDictionary *resultDic) {
+            if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
+                if (self.success) self.success();
+            } else {
+                if (self.failed) self.failed();
+            }
+        }];
     }else {
         NSLog(@"微信支付");
     }

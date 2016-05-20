@@ -9,7 +9,8 @@
 #import "XjfRequest.h"
 #import <AFNetworking/AFNetworking.h>
 #import <JSONModel/JSONModel.h>
-#import "XJFAccountManager.h"
+#import "XJAccountManager.h"
+
 
 static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
 
@@ -79,7 +80,7 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
     [_manager.requestSerializer setValue:@"Accept" forHTTPHeaderField:@"application/json"];
     [_manager.requestSerializer setValue:@"Content-Type" forHTTPHeaderField:@"application/json"];
     ReceivedNotification(self, UserInfoDidChangedNotification, ^(NSNotification *notification) {
-        [_manager.requestSerializer setValue:getUserAccessToken() forHTTPHeaderField:@"Authorization"];
+        [_manager.requestSerializer setValue:[[XJAccountManager defaultManager] accessToken] forHTTPHeaderField:@"Authorization"];
     });
 }
 -(void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)filed {

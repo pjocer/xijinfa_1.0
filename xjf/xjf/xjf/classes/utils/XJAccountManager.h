@@ -17,6 +17,8 @@
 #define KEY_ACCOUNT_TYPE @"account_type"
 #define KEY_CURRENT_USER_NAME @"current_user_name"
 
+FOUNDATION_EXTERN UIViewController * getCurrentDisplayController(void);
+
 typedef enum : NSUInteger {
     NormalAccount,
     VIPAccount,

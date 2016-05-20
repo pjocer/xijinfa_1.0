@@ -132,7 +132,6 @@
 		D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */; };
 		D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2631CEAF85C00873D10 /* StringUtil.m */; };
 		D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2661CEAF87800873D10 /* NSDate+Convenience.m */; };
-		D053D26A1CEB159F00873D10 /* XJFAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2691CEB159F00873D10 /* XJFAccountManager.m */; };
 		D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -140,6 +139,7 @@
 		D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E691CE42B25003BF1F3 /* PasswordSettingViewController.m */; };
 		D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */; };
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
+		D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A81ED1CEEA0E8002C1297 /* XJMarket.m */; };
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
@@ -429,8 +429,6 @@
 		D053D2631CEAF85C00873D10 /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtil.m; sourceTree = "<group>"; };
 		D053D2651CEAF87800873D10 /* NSDate+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Convenience.h"; sourceTree = "<group>"; };
 		D053D2661CEAF87800873D10 /* NSDate+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Convenience.m"; sourceTree = "<group>"; };
-		D053D2681CEB159F00873D10 /* XJFAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XJFAccountManager.h; path = category/XJFAccountManager.h; sourceTree = "<group>"; };
-		D053D2691CEB159F00873D10 /* XJFAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XJFAccountManager.m; path = category/XJFAccountManager.m; sourceTree = "<group>"; };
 		D05843A31CDC5F7C00B1363C /* ZFPlayerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerSingleton.h; sourceTree = "<group>"; };
 		D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerSingleton.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -444,6 +442,8 @@
 		D0698E7E1CE45059003BF1F3 /* RequestAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestAPI.h; sourceTree = "<group>"; };
 		D0698E7F1CE45AED003BF1F3 /* NotificationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtil.h; sourceTree = "<group>"; };
 		D0698E801CE45AED003BF1F3 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationUtil.m; sourceTree = "<group>"; };
+		D06A81EC1CEEA0E8002C1297 /* XJMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJMarket.h; sourceTree = "<group>"; };
+		D06A81ED1CEEA0E8002C1297 /* XJMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMarket.m; sourceTree = "<group>"; };
 		D073E8131CE9D66C00AED895 /* RegistFinalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistFinalModel.h; path = xjf/classes/user/controller/RegistFinalModel.h; sourceTree = SOURCE_ROOT; };
 		D073E8141CE9D66C00AED895 /* RegistFinalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistFinalModel.m; path = xjf/classes/user/controller/RegistFinalModel.m; sourceTree = SOURCE_ROOT; };
 		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationSet.h; sourceTree = "<group>"; };
@@ -1284,8 +1284,6 @@
 				D073E8141CE9D66C00AED895 /* RegistFinalModel.m */,
 				D049BA501CEC047600CD5359 /* UserProfileModel.h */,
 				D049BA511CEC047600CD5359 /* UserProfileModel.m */,
-				D053D2681CEB159F00873D10 /* XJFAccountManager.h */,
-				D053D2691CEB159F00873D10 /* XJFAccountManager.m */,
 				D049BA4D1CEC041600CD5359 /* XJAccountManager.h */,
 				D049BA4E1CEC041600CD5359 /* XJAccountManager.m */,
 			);
@@ -1295,6 +1293,8 @@
 		D07D74541CED9E640037B1A9 /* XJPay */ = {
 			isa = PBXGroup;
 			children = (
+				D06A81EC1CEEA0E8002C1297 /* XJMarket.h */,
+				D06A81ED1CEEA0E8002C1297 /* XJMarket.m */,
 				D07D74551CED9EAC0037B1A9 /* XJPay.h */,
 				D07D74561CED9EAC0037B1A9 /* XJPay.m */,
 				D07D74581CEDA4CC0037B1A9 /* Order.h */,
@@ -1469,7 +1469,6 @@
 				D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
-				5A105E4E1CE9B2620079BEFE /* WikiPediaCategoriesModel.m in Sources */,
 				D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */,
 				CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */,
 				5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */,
@@ -1484,6 +1483,7 @@
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				CD416D9B1CBC8C9D0097A5E9 /* MenuHrizontal.m in Sources */,
 				5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */,
+				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
 				644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */,
 				644C115F1CBA90A000892E2C /* XMShareView.m in Sources */,
@@ -1534,7 +1534,6 @@
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,
 				644C10F61CBA7F0B00892E2C /* TopicCell.m in Sources */,
-				D053D26A1CEB159F00873D10 /* XJFAccountManager.m in Sources */,
 				CD1CCC301CB3793B002FC0C9 /* SubscribeBaseViewController.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,

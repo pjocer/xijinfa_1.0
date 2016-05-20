@@ -16,9 +16,7 @@
 @property (nonatomic, strong) NSString *department;
 @property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *icon_id;
-
 @property (nonatomic, strong) NSString *id_;
-
 @property (nonatomic, strong) NSString *image_id;
 @property (nonatomic, strong) NSString *is_album;
 @property (nonatomic, strong) NSString *keywords;
@@ -36,14 +34,11 @@
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *updated_at;
 @property (nonatomic, strong) NSString *user_id;
-
 ///分辨率
 @property (nonatomic, strong) NSString *resolution;
 ///URL
 @property (nonatomic, strong) NSString *url;
-
 @property (nonatomic, strong) NSString *video_id;
-
 @property (nonatomic, strong) NSString *view_;
 
 @end
