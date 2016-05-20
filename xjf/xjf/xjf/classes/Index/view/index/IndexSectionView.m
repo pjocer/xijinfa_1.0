@@ -30,6 +30,13 @@
         _moreLabel.font = FONT12;
         _moreLabel.text=@"更多";
         [self addSubview:_moreLabel];
+        
+        self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
+        self.bottomView.backgroundColor = BackgroundColor;
+        [self addSubview:self.bottomView];
+        self.bottomView.hidden = YES;
+        
+        
     }
     return self;
 }

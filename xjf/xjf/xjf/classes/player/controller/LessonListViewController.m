@@ -75,7 +75,7 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    if (iPhone5) {
+    if (iPhone5 || iPhone4) {
         self.tableView.rowHeight = 100;
     }else{
         self.tableView.rowHeight = 120;

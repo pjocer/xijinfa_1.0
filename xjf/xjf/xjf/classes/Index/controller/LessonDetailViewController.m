@@ -67,10 +67,16 @@
 {
     LessonDetailTitleView *lessonDetailTitleView = [[LessonDetailTitleView alloc] initWithFrame:CGRectNull];
     [self.view addSubview:lessonDetailTitleView];
+    CGFloat lessonDetailTitleViewHeight;
+    if (iPhone5 || iPhone4) {
+        lessonDetailTitleViewHeight = 100;
+    }else{
+        lessonDetailTitleViewHeight = 120;
+    }
     [lessonDetailTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.view);
-        make.height.mas_equalTo(100);
+        make.height.mas_equalTo(lessonDetailTitleViewHeight);
     }];
     
     lessonDetailTitleView.model = self.model;

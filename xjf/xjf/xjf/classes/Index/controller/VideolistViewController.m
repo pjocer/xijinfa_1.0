@@ -70,7 +70,7 @@ static NSString *videListCell_id = @"videListCell_id";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    if (iPhone5) {
+    if (iPhone5 || iPhone4) {
         self.tableView.rowHeight = 100;
     } else {
         self.tableView.rowHeight = 120;
@@ -90,6 +90,7 @@ static NSString *videListCell_id = @"videListCell_id";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:videListCell_id];
     cell.model = self.dataSource[indexPath.row];
+    cell.viedoDetail.hidden = NO;
     return cell;
 }
 

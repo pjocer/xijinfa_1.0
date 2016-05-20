@@ -15,7 +15,10 @@
 ///提交订单视图
 @property (nonatomic, strong) SubmitOrdersView *submitOrdersView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
+///析金学堂数据数组
+@property (nonatomic, strong) NSMutableArray *dataSourceLesson;
+///从业培训数据数组
+@property (nonatomic, strong) NSMutableArray *dataSourceTraining;
 @end
 
 @implementation ShoppingCartViewController
@@ -27,6 +30,8 @@ static CGFloat submitOrdersViewHeight = 50;
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"购物车";
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction:)];
+    self.navigationItem.rightBarButtonItem = right;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -98,22 +103,25 @@ static CGFloat submitOrdersViewHeight = 50;
 #pragma mark TabelViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 2;
 }
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return self.dataSource.count;
-    return 3;
+    if (section == 0) {
+    return self.dataSourceLesson.count;
+    }
+    return self.dataSourceTraining.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ShoppingCarlessonListCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = self.dataSource[indexPath.row];
+//    cell.model = self.dataSource[indexPath.row];
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
     cell.oldPrice.hidden = NO;
+    cell.selectedLabel.hidden = NO;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -125,9 +133,57 @@ static CGFloat submitOrdersViewHeight = 50;
     IndexSectionView *tableHeaderView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
     tableHeaderView.titleLabel.text = @"xxx";
     tableHeaderView.moreLabel.text = @"";
+    tableHeaderView.bottomView.hidden = NO;
     return tableHeaderView;
 }
-
+#pragma mark CellDelete
+#pragma mark rightAction事件
+- (void)rightAction:(UIBarButtonItem *)sender
+{
+    if ([sender.title isEqualToString:@"编辑"]) {
+        sender.title = @"完成";
+        [_tableView setEditing:YES animated:YES];
+    }else{
+        sender.title = @"编辑";
+        [_tableView setEditing:NO animated:YES];
+    }
+}
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        //删除
+//        
+//        if (self.dataSourceTraining.count == 1 || self.dataSourceLesson.count == 1) {
+//            //删除数据
+//            if (self.dataSourceTraining.count == 1) {
+//                [self.dataSourceTraining removeObject:self.dataSourceTraining[indexPath.row]];
+//            }
+//            if (self.dataSourceLesson.count == 1) {
+//                [self.dataSourceLesson removeObject:self.dataSourceLesson[indexPath.row]];
+//            }
+//            
+//            //删除UI
+//            [_tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationTop];
+//            
+//            
+//        }else{
+//            
+//            //删除数据
+//            [array removeObjectAtIndex:indexPath.row];
+//            
+//            //删除UI
+//            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+//        } 
+//    }
+}
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

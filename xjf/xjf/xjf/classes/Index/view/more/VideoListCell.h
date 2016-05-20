@@ -19,4 +19,8 @@
 @property (nonatomic, strong) UILabel *price;
 ///之前前个
 @property (nonatomic, strong) UILabel *oldPrice;
+///视频详情
+@property (nonatomic, strong) UILabel *viedoDetail;
+
+@property (nonatomic, strong) UILabel *selectedLabel;
 @end

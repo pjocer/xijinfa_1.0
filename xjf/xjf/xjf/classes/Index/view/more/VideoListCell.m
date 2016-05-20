@@ -15,8 +15,6 @@
 @property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
 @property (nonatomic, strong) UILabel *videoTitle;
-///视频详情
-@property (nonatomic, strong) UILabel *viedoDetail;
 
 @end
 
@@ -56,10 +54,11 @@
         self.videoTitle.font = FONT15;
         [self.videoTitle mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoImage.mas_right).with.offset(10);
-            make.right.mas_equalTo(self.contentView).with.offset(-20);
+            make.right.mas_equalTo(self.contentView).with.offset(-10);
             make.top.equalTo(self.videoImage);
             make.height.mas_equalTo(15);
         }];
+        
         
         //viedoDetail
         self.viedoDetail = [[UILabel alloc] init];
@@ -70,8 +69,23 @@
         [self.viedoDetail mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.videoTitle);
             make.top.equalTo(self.videoTitle.mas_bottom);
-            make.right.mas_equalTo(self.contentView).with.offset(-20);
+            make.right.mas_equalTo(self.contentView).with.offset(-10);
             make.height.mas_equalTo(15);
+        }];
+        self.viedoDetail.hidden = YES;
+        
+        //teacherName
+        self.teacherName = [[UILabel alloc] init];
+        [self.contentView addSubview:self.teacherName];
+        self.teacherName.textColor = AssistColor
+        self.teacherName.text = @"主讲: xxxx";
+        self.teacherName.font = FONT12;
+        self.teacherName.hidden = YES;
+        [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.videoTitle);
+            make.top.mas_equalTo(self.viedoDetail.mas_bottom).with.offset(3);
+            make.right.equalTo(self.contentView).with.offset(-10);
+            make.height.mas_equalTo(14);
         }];
         
         //lessonCount
@@ -83,52 +97,55 @@
         self.lessonCount.hidden = YES;
         [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.bottom.mas_equalTo(self.videoImage);
-            make.right.equalTo(self.contentView).with.offset(-100);
+            make.top.mas_equalTo(self.teacherName.mas_bottom);
+            make.right.equalTo(self.contentView).with.offset(-10);
             make.height.mas_equalTo(14);
         }];
         
-        //teacherName
-        self.teacherName = [[UILabel alloc] init];
-        [self.contentView addSubview:self.teacherName];
-        self.teacherName.textColor = AssistColor
-        self.teacherName.text = @"主讲: xxxx";
-        self.teacherName.font = FONT12;
-        self.teacherName.hidden = YES;
-        [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.videoTitle);
-            make.bottom.mas_equalTo(self.lessonCount.mas_top).with.offset(-3);
-            make.right.equalTo(self.contentView).with.offset(-100);
-            make.height.mas_equalTo(14);
-        }];
+
         
         //price
         self.price = [[UILabel alloc] init];
         [self.contentView addSubview:self.price];
         self.price.textColor = [UIColor redColor];
-        self.price.text = @"￥000";
+        self.price.text = @"￥0000";
         self.price.font = FONT15;
         self.price.hidden = YES;
         self.price.textAlignment = NSTextAlignmentLeft;
         [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.lessonCount);
-            make.right.equalTo(self.contentView).with.offset(-45);
-            make.size.mas_equalTo(CGSizeMake(45, 18));
+            make.left.mas_equalTo(self.videoTitle);
+            make.bottom.mas_equalTo(self.videoImage);
+            make.width.mas_equalTo(52);
+            make.height.mas_equalTo(14);
         }];
         
         //oldPrice
         self.oldPrice = [[UILabel alloc] init];
         [self.contentView addSubview:self.oldPrice];
         self.oldPrice.textColor = AssistColor
-        self.oldPrice.text = @"￥000";
+        self.oldPrice.text = @"￥0000";
         self.oldPrice.font = FONT12;
         self.oldPrice.hidden = YES;
         self.oldPrice.textAlignment = NSTextAlignmentLeft;
         [self.oldPrice mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.lessonCount);
-            make.right.equalTo(self.contentView).with.offset(-10);
-            make.size.mas_equalTo(CGSizeMake(35, 14));
+            make.left.equalTo(self.price.mas_right);
+            make.bottom.equalTo(self.price);
+            make.size.mas_equalTo(CGSizeMake(45, 14));
         }];
+        
+        //selectedLabel;
+        self.selectedLabel = [[UILabel alloc] init];
+        [self.contentView addSubview:self.selectedLabel];
+        [self.selectedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).with.offset(20);
+            make.size.mas_equalTo(CGSizeMake(14, 14));
+        }];
+        self.selectedLabel.layer.borderWidth = 1;
+        self.selectedLabel.layer.masksToBounds = YES;
+        self.selectedLabel.layer.cornerRadius = 7;
+        self.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+        self.selectedLabel.hidden = YES;
     }
     return self;
 }
@@ -142,24 +159,55 @@
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
    
-    if (![[NSString stringWithFormat:@"%@",model.price] isEqualToString:@"免费"]) {
-         CGFloat tempPrice = [model.price floatValue];
-        self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
-    }
+//    if (![[NSString stringWithFormat:@"%@",model.price] isEqualToString:@"免费"]) {
+//         CGFloat tempPrice = [model.price floatValue];
+//        self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
+//    }
     
 }
 
 
-//- (void)layoutSubviews
-//{
-//    [super layoutSubviews];
-//    //separator
-//    [self.separator mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.left.right.equalTo(self.contentView);
-//        make.bottom.mas_equalTo(self.contentView).with.offset(-1); 
-//    }];
-//    
-//}
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (self.selectedLabel.hidden == NO) {
+        
+        CGFloat videoImageH;
+        if (iPhone4 || iPhone5) {
+            videoImageH = 130.0;
+        }
+        else{
+            videoImageH = 155.0;
+        }
+        //videoImage
+        [self.videoImage mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self.contentView);
+            make.left.equalTo(self.selectedLabel.mas_right).with.offset(20);
+            make.width.mas_equalTo(videoImageH);
+            make.height.mas_equalTo(videoImageH * 0.56);
+        }];
+    }
+    
+
+    if (self.viedoDetail.hidden) {
+        //teacherName
+        [self.teacherName mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.videoTitle);
+            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(3);
+            make.right.equalTo(self.contentView).with.offset(-10);
+            make.height.mas_equalTo(14);
+        }];
+        
+        //lessonCount
+        [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.videoTitle);
+            make.top.mas_equalTo(self.teacherName.mas_bottom);
+            make.right.equalTo(self.contentView).with.offset(-10);
+            make.height.mas_equalTo(14);
+        }];
+    }
+    
+}
 
 
 @end
