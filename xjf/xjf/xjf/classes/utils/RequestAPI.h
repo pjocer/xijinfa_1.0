@@ -34,6 +34,9 @@ static APIName *commit_register = @"/api/auth/register";
 //获取用户信息API
 static APIName *user_info = @"/api/user/profile";
 
+//验证用户有效性
+static APIName *verify_user = @"/api/auth/verify-bearer";
+
 //购买API
 static APIName *buy_trade = @"/api/order";
 

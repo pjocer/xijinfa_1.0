@@ -165,6 +165,7 @@
             if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
                 if (self.success) self.success();
             } else {
+                NSLog(@"%@",resultDic[@"memo"]);
                 if (self.failed) self.failed();
             }
         }];

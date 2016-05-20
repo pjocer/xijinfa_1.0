@@ -31,8 +31,15 @@ typedef enum : NSUInteger {
 
 - (void)buyTradeImmediately:(nonnull TalkGridModel *)trade_model by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
 
-- (nullable NSArray *)shoppingCartFor:(nullable NSString *)key;
+- (nullable NSArray <TalkGridModel*>*)shoppingCartFor:(nullable NSString *)key;
 
-- (nullable NSArray *)myLessonsFor:(nullable NSString *)key;
+- (nullable NSArray <TalkGridModel*>*)myLessonsFor:(nullable NSString *)key;
 
+- (nullable NSString *)pathForShoppingCart;
+
+- (nullable NSString *)pathForMyLessons;
+
+- (BOOL)createFileAtPath:(nullable NSString *)path;
+
+- (void)addLessons:(nullable NSArray <TalkGridModel*>*)lessons key:(nullable NSString *)key;
 @end

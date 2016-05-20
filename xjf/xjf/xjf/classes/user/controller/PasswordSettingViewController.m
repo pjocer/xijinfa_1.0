@@ -67,7 +67,6 @@
         [[ZToastManager ShardInstance]hideprogress];
         RegistFinalModel *model = [[RegistFinalModel alloc]initWithData:responseData error:nil];
         if (model.errCode == 0) {
-            SendNotification(loginSuccess, model);
             XJAccountManager *manager = [XJAccountManager defaultManager];
             [manager setAccuontInfo:[model toDictionary]];
             [self.navigationController popToRootViewControllerAnimated:YES];

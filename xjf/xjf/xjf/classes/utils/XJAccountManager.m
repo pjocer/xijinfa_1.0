@@ -8,9 +8,10 @@
 
 #import "XJAccountManager.h"
 #import "RegistFinalModel.h"
+#import "LoginViewController.h"
+#import "XJMarket.h"
 
 @interface XJAccountManager ()
-@property(nonatomic, strong) UIAlertView *alertView;
 @property(nonatomic, strong) RegistFinalModel *accountFinalModel;
 @end
 
@@ -28,18 +29,41 @@
 - (instancetype)initSingle {
     self = [super init];
     if (self) {
+        [XJMarket sharedMarket];
         _accountFinalModel = [[RegistFinalModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:ACCOUNT_INFO] error:nil];
         _user_model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
         _account_type = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] == nil ? NormalAccount : [[[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] intValue];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenInvalid:) name:TOKEN_INVALID object:nil];
-        @weakify(self)
-        ReceivedNotification(self, loginSuccess, ^(NSNotification *notification) {
-            @strongify(self);
-            self.accountFinalModel = notification.object;
-            [self getAccountInfo];
-        });
     }
     return self;
+}
+
+-(BOOL)verifyValid {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        XjfRequest *request = [[XjfRequest alloc]initWithAPIName:verify_user RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+            RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
+            if (model.errCode == 0) {
+                NSLog(@"当前AccessToken有效");
+            } else {
+                UIViewController *controller = getCurrentDisplayController();
+                NSString *content = model.errMsg?:@"登录信息已失效，请重新登录";
+                [AlertUtils alertWithTarget:controller title:@"提示" content:content confirmTitle:@"确定" cancelTitle:@"取消" cancelBlock:^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self logout];
+                    });
+                } confirmBlock:^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self logout];
+                        LoginViewController *vc = [[LoginViewController alloc]init];
+                        [controller.navigationController pushViewController:vc animated:YES];
+                    });
+                }];
+            }
+        } failedBlock:^(NSError * _Nullable error) {
+            NSLog(@"验证用户信息是否有效失败");
+        }];
+    });
+    return NO;
 }
 
 - (void)setAccuontInfo:(NSDictionary *)info {
@@ -69,33 +93,19 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:ACCOUNT_ACCESS_TOKEN];
 }
 
+//后期加上，清理缓存
 - (void)logout {
-    NSLog(@"登出");
+    self.user_model = nil;
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCESS_TOKEN_WEIXIN];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:OPEN_ID_WEIXIN];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCESS_TOKEN_QQ];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:OPEN_ID_QQ];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCOUNT_INFO];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCOUNT_ACCESS_TOKEN];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_INFO];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)tokenInvalid:(NSNotification *)notification {
-    void (^showAlertBlock)(void) = ^(void) {
-        if (self->_alertView) return;
-        NSString *message = (NSString *) notification.object;
-        self->_alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [self->_alertView show];
-    };
-
-    if ([NSThread isMainThread]) {
-        showAlertBlock();
-    } else {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            showAlertBlock();
-        });
-    }
-}
-
-#pragma UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self logout];
-    _alertView = nil;
-}
 #pragma mark - Current Display Controller
 
 UIWindow *getCurrentWindow(UIWindow *window) {

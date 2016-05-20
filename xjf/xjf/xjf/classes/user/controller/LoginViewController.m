@@ -287,6 +287,7 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"wechat", @"type", nil];
         request = [[XjfRequest alloc] initWithAPIName:third_login RequestMethod:POST];
         request.requestParams = params;
+        NSLog(@"%@",params);
     } else if (typev == 3) {
         [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"nickname"]] replaceNullString] forKey:@"nick_name"];
         [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"figureurl_qq_2"]] replaceNullString] forKey:@"user_face"];
@@ -362,7 +363,6 @@
         if ([api isEqualToString:local_login]) {
             RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
             if (model.errCode == 0) {
-                SendNotification(loginSuccess, model);
                 XJAccountManager *manager = [XJAccountManager defaultManager];
                 [manager setAccuontInfo:[model toDictionary]];
                 [self.navigationController popToRootViewControllerAnimated:YES];

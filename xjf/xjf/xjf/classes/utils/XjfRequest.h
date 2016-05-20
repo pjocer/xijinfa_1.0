@@ -23,7 +23,7 @@ typedef void(^FailedBlock)(NSError * _Nullable error);
 
 @interface XjfRequest : NSObject
 
-@property (nonatomic, strong, nullable) NSMutableDictionary *requestHeaders;
+@property (nonatomic, strong, nullable) NSDictionary *requestHeaders;
 
 @property (nonatomic, assign, readonly) RequestMethod requestMethod;
 

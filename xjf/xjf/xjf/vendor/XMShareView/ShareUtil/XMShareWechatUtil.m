@@ -36,9 +36,7 @@
 
 - (BOOL)handleOpenURL:(NSURL *)url {
     if ([[url absoluteString] hasPrefix:@"wx"]) {
-
         return [WXApi handleOpenURL:url delegate:self];
-
     }
     return NO;
 }

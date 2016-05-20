@@ -12,6 +12,7 @@
 #import "WXApi.h"
 #import "ZPlatformShare.h"
 #import "XJMarket.h"
+#import "XJAccountManager.h"
 @interface AppDelegate () <WXApiDelegate>
 
 @end
@@ -19,12 +20,13 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [ZPlatformShare initPlatformData];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     RootViewController *root = [[RootViewController alloc] init];
     self.window.rootViewController = root;
     [self.window makeKeyAndVisible];
+    [ZPlatformShare initPlatformData];
+    [[XJAccountManager defaultManager] verifyValid];
     return YES;
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

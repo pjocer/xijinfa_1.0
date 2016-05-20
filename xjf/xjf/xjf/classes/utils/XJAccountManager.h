@@ -30,6 +30,8 @@ typedef enum : NSUInteger {
 
 + (instancetype)defaultManager;
 
+- (BOOL)verifyValid;
+
 - (NSString *)accessToken;
 
 - (void)setAccuontInfo:(NSDictionary *)info;

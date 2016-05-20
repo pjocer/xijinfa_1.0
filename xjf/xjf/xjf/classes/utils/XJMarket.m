@@ -10,6 +10,7 @@
 #import "XJPay.h"
 #import "XJAccountManager.h"
 #import "MyLessonsViewController.h"
+
 @interface XJMarket ()
 @property (nonatomic, strong) NSMutableDictionary *shopping_cart;
 @property (nonatomic, strong) NSMutableDictionary *my_lessons;
@@ -33,25 +34,28 @@
 - (instancetype)_init {
     self = [super init];
     if (self) {
-        _shopping_class = [NSMutableArray array];
-        _shopping_training = [NSMutableArray array];
-        _my_lessons_class = [NSMutableArray array];
-        _my_lessons_training = [NSMutableArray array];
-        _my_lessons = [NSMutableDictionary dictionaryWithObjectsAndKeys:_my_lessons_class,MY_LESSONS_XUETANG,_my_lessons_training,MY_LESSONS_PEIXUN, nil];
-        _shopping_cart = [NSMutableDictionary dictionaryWithObjectsAndKeys:_shopping_class,XJ_XUETANG_SHOP,_shopping_training,XJ_CONGYE_PEIXUN_SHOP, nil];
-        [self createFileAtPath:[self pathForShoppingCart]];
-        [_shopping_cart writeToFile:[self pathForShoppingCart] atomically:YES];
-        [self createFileAtPath:[self pathForMyLessons]];
-        [_my_lessons writeToFile:[self pathForMyLessons] atomically:YES];
+        [self createPlistFile];
     }
     return self;
+}
+- (void)createPlistFile {
+    _shopping_class = [NSMutableArray array];
+    _shopping_training = [NSMutableArray array];
+    _my_lessons_class = [NSMutableArray array];
+    _my_lessons_training = [NSMutableArray array];
+    _my_lessons = [NSMutableDictionary dictionaryWithObjectsAndKeys:_my_lessons_class,MY_LESSONS_XUETANG,_my_lessons_training,MY_LESSONS_PEIXUN, nil];
+    _shopping_cart = [NSMutableDictionary dictionaryWithObjectsAndKeys:_shopping_class,XJ_XUETANG_SHOP,_shopping_training,XJ_CONGYE_PEIXUN_SHOP, nil];
+    [self createFileAtPath:[self pathForShoppingCart]];
+    [_shopping_cart writeToFile:[self pathForShoppingCart] atomically:YES];
+    [self createFileAtPath:[self pathForMyLessons]];
+    [_my_lessons writeToFile:[self pathForMyLessons] atomically:YES];
 }
 - (void)buyTradeImmediately:(nonnull TalkGridModel *)trade_model by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc]init];
     [pay buyTradeImmediately:trade_model.id_ by:style success:^{
         NSLog(@"支付成功 type:1");
     } failed:^{
-        NSLog(@"支付失败 type:1");
+        NSLog(@"支付失败 type:1 id:%@",trade_model.id_);
     }];
     ReceivedNotification(self, PayLessonsSuccess, ^(NSNotification *notification) {
         if ([trade_model.department isEqualToString:@"dept3"]) {
@@ -66,11 +70,16 @@
 }
 
 - (void)addLessons:(NSArray <TalkGridModel*>*)lessons key:(NSString *)key {
-    NSMutableArray *classes = [NSMutableArray arrayWithArray:[self myLessonsFor:key]];
-    [classes addObjectsFromArray:lessons];
-    NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForMyLessons]] mutableCopy];
-    [dic setObject:classes forKey:key];
-    [dic writeToFile:[self pathForMyLessons] atomically:YES];
+//    NSMutableArray *classes = [NSMutableArray arrayWithArray:[self myLessonsFor:key]];
+//    for (TalkGridModel *model in lessons) {
+//        NSDictionary *dic = [model ]
+//    }
+//    [classes addObjectsFromArray:lessons];
+//    NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForMyLessons]] mutableCopy];
+//    [dic setObject:classes forKey:key];
+//    BOOL ss = [[NSFileManager defaultManager] removeItemAtPath:[self pathForMyLessons] error:nil];
+//    BOOL sss = [[NSFileManager defaultManager] createFileAtPath:[self pathForMyLessons] contents:nil attributes:nil];
+//    BOOL s = [dic writeToFile:[self pathForMyLessons] atomically:YES];
 }
 
 - (void)addGoods:(NSArray <TalkGridModel*>*)goods key:(NSString *)key {
@@ -80,14 +89,12 @@
     [dic setObject:goodsList forKey:key];
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
-
--(NSArray *)myLessonsFor:(NSString *)key {
+-(NSArray<TalkGridModel *> *)myLessonsFor:(NSString *)key {
     NSString *path = [self pathForMyLessons];
     NSDictionary *lessons = [NSDictionary dictionaryWithContentsOfFile:path];
     return [lessons objectForKey:key];
 }
-
--(NSArray *)shoppingCartFor:(NSString *)key {
+-(NSArray<TalkGridModel *> *)shoppingCartFor:(NSString *)key {
     NSString *path = [self pathForShoppingCart];
     NSDictionary *shoppcart = [NSDictionary dictionaryWithContentsOfFile:path];
     return [shoppcart objectForKey:key];
@@ -108,8 +115,10 @@
 }
 
 - (BOOL)createFileAtPath:(NSString *)path {
-    NSFileManager *fileManeger = [NSFileManager defaultManager];
-    return [fileManeger createFileAtPath:path contents:nil attributes:nil];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        return [[NSFileManager defaultManager] createFileAtPath:[self pathForMyLessons] contents:nil attributes:nil];
+    }
+    return YES;
 }
 
 @end

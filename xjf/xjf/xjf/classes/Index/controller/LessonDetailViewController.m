@@ -10,6 +10,7 @@
 
 #import "LessonDetailTitleView.h"
 #import "ShoppingCartViewController.h"
+#import "XJMarket.h"
 
 @interface LessonDetailViewController ()
 ///加入购物车按钮
@@ -121,7 +122,7 @@
 #pragma mark nowPay
 - (void)nowPay:(UIButton *)sender
 {
-    
+    [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
 }
 
 @end
