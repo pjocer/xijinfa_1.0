@@ -11,6 +11,7 @@
 #import "WikiPediaCategoriesModel.h"
 #import "TalkGridModel.h"
 #import "BannerModel.h"
+#import "WikiMoreViewController.h"
 
 @interface WikipediaViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate, WikiFirstSectionCellDelegate>
 
@@ -222,7 +223,9 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 ///wikiFirstSectionCell Action
 - (void)wikiFirstSectionCell:(WikiFirstSectionCell *)cell DidSelectedItemAtIndex:(NSInteger)index WithOtherObject:(id)object {
     if (index == 7) {
-
+        WikiMoreViewController *wikiMoreViewController = [WikiMoreViewController new];
+        [self.navigationController pushViewController:wikiMoreViewController animated:YES];
+        wikiMoreViewController.dataArray = cell.dataArray;
     }
     else {
         WikiPediaCategoriesDataModel *model = cell.tempArray[index];

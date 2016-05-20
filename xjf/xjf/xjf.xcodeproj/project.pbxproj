@@ -29,6 +29,10 @@
 		5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E9F1CEDC34B0079BEFE /* LessonDetailTitleView.m */; };
 		5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */; };
 		5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EA51CEDCE2D0079BEFE /* SubmitOrdersView.m */; };
+		5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EA81CEF15B40079BEFE /* WikiMoreViewController.m */; };
+		5A105EAC1CEF17AC0079BEFE /* WikiMoreClassificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EAB1CEF17AC0079BEFE /* WikiMoreClassificationCell.m */; };
+		5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EAF1CEF215A0079BEFE /* LessonDetailLessonListViewController.m */; };
+		5A105EB31CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EB21CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m */; };
 		5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */; };
 		5A240DF81CE33E49003B7971 /* WikiBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DF71CE33E49003B7971 /* WikiBannerView.m */; };
 		5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */; };
@@ -200,14 +204,22 @@
 		5A105E961CED91040079BEFE /* TalkGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkGridModel.m; sourceTree = "<group>"; };
 		5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiPediaCategoriesModel.m; sourceTree = "<group>"; };
 		5A105E991CED91ED0079BEFE /* WikiPediaCategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiPediaCategoriesModel.h; sourceTree = "<group>"; };
-		5A105E9B1CEDBADE0079BEFE /* LessonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailViewController.h; sourceTree = "<group>"; };
-		5A105E9C1CEDBADE0079BEFE /* LessonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailViewController.m; sourceTree = "<group>"; };
+		5A105E9B1CEDBADE0079BEFE /* LessonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonDetailViewController.h; path = xjf/classes/Index/controller/LessonDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		5A105E9C1CEDBADE0079BEFE /* LessonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonDetailViewController.m; path = xjf/classes/Index/controller/LessonDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		5A105E9E1CEDC34B0079BEFE /* LessonDetailTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailTitleView.h; sourceTree = "<group>"; };
 		5A105E9F1CEDC34B0079BEFE /* LessonDetailTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailTitleView.m; sourceTree = "<group>"; };
 		5A105EA11CEDCD000079BEFE /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 		5A105EA41CEDCE2D0079BEFE /* SubmitOrdersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitOrdersView.h; sourceTree = "<group>"; };
 		5A105EA51CEDCE2D0079BEFE /* SubmitOrdersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitOrdersView.m; sourceTree = "<group>"; };
+		5A105EA71CEF15B40079BEFE /* WikiMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiMoreViewController.h; sourceTree = "<group>"; };
+		5A105EA81CEF15B40079BEFE /* WikiMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiMoreViewController.m; sourceTree = "<group>"; };
+		5A105EAA1CEF17AC0079BEFE /* WikiMoreClassificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiMoreClassificationCell.h; sourceTree = "<group>"; };
+		5A105EAB1CEF17AC0079BEFE /* WikiMoreClassificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiMoreClassificationCell.m; sourceTree = "<group>"; };
+		5A105EAE1CEF215A0079BEFE /* LessonDetailLessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailLessonListViewController.h; sourceTree = "<group>"; };
+		5A105EAF1CEF215A0079BEFE /* LessonDetailLessonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailLessonListViewController.m; sourceTree = "<group>"; };
+		5A105EB11CEF21770079BEFE /* LessonDetailTecherDescribeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailTecherDescribeViewController.h; sourceTree = "<group>"; };
+		5A105EB21CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailTecherDescribeViewController.m; sourceTree = "<group>"; };
 		5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaViewController.h; sourceTree = "<group>"; };
 		5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikipediaViewController.m; sourceTree = "<group>"; };
 		5A240DF61CE33E49003B7971 /* WikiBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiBannerView.h; sourceTree = "<group>"; };
@@ -565,6 +577,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5A105EAD1CEF21230079BEFE /* LessonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5A105E9B1CEDBADE0079BEFE /* LessonDetailViewController.h */,
+				5A105E9C1CEDBADE0079BEFE /* LessonDetailViewController.m */,
+				5A105EAE1CEF215A0079BEFE /* LessonDetailLessonListViewController.h */,
+				5A105EAF1CEF215A0079BEFE /* LessonDetailLessonListViewController.m */,
+				5A105EB11CEF21770079BEFE /* LessonDetailTecherDescribeViewController.h */,
+				5A105EB21CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m */,
+			);
+			path = LessonDetail;
+			sourceTree = "<group>";
+		};
 		5A240DF51CE33DD2003B7971 /* Wikipedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +601,8 @@
 				5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */,
 				5A240DFF1CE34377003B7971 /* WikiTalkGridViewCell.h */,
 				5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */,
+				5A105EAA1CEF17AC0079BEFE /* WikiMoreClassificationCell.h */,
+				5A105EAB1CEF17AC0079BEFE /* WikiMoreClassificationCell.m */,
 			);
 			path = Wikipedia;
 			sourceTree = "<group>";
@@ -824,18 +851,19 @@
 				CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */,
 				5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */,
 				5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */,
+				5A105EA71CEF15B40079BEFE /* WikiMoreViewController.h */,
+				5A105EA81CEF15B40079BEFE /* WikiMoreViewController.m */,
 				5A105E551CEB17450079BEFE /* LessonViewController.h */,
 				5A105E561CEB17450079BEFE /* LessonViewController.m */,
 				5A441C521CE5E000000CF748 /* VideolistViewController.h */,
 				5A441C531CE5E001000CF748 /* VideolistViewController.m */,
 				5A105E7C1CED5A4E0079BEFE /* LessonListViewController.h */,
 				5A105E7D1CED5A4E0079BEFE /* LessonListViewController.m */,
-				5A105E9B1CEDBADE0079BEFE /* LessonDetailViewController.h */,
-				5A105E9C1CEDBADE0079BEFE /* LessonDetailViewController.m */,
 				5A105E5F1CEB30C30079BEFE /* TeacherListViewController.h */,
 				5A105E601CEB30C30079BEFE /* TeacherListViewController.m */,
 				5A105EA11CEDCD000079BEFE /* ShoppingCartViewController.h */,
 				5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */,
+				5A105EAD1CEF21230079BEFE /* LessonDetail */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1462,6 +1490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A105EAC1CEF17AC0079BEFE /* WikiMoreClassificationCell.m in Sources */,
 				5A105E741CEC149A0079BEFE /* LessonPlayerVideoBottomView.m in Sources */,
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
@@ -1484,6 +1513,7 @@
 				CD416D9B1CBC8C9D0097A5E9 /* MenuHrizontal.m in Sources */,
 				5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
+				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
 				644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */,
 				644C115F1CBA90A000892E2C /* XMShareView.m in Sources */,
@@ -1516,6 +1546,7 @@
 				D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
+				5A105EB31CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
 				5A105E921CED880D0079BEFE /* BannerModel.m in Sources */,
@@ -1541,6 +1572,7 @@
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
+				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
 				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				CD416D951CBC85B90097A5E9 /* SCNavTabBarController.m in Sources */,

@@ -52,7 +52,7 @@
     [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
         make.left.equalTo(self.contentView).with.offset(10);
-        make.size.mas_equalTo(CGSizeMake(55, 55));
+        make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     
     //titleLable

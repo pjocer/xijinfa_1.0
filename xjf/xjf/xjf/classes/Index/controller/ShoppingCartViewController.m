@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSMutableArray *dataSourceLesson;
 ///从业培训数据数组
 @property (nonatomic, strong) NSMutableArray *dataSourceTraining;
+
+//@property (nonatomic, strong) NSMutableArray *selectedIndexArray;
+
 @end
 
 @implementation ShoppingCartViewController
@@ -30,8 +33,9 @@ static CGFloat submitOrdersViewHeight = 50;
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"购物车";
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction:)];
-    self.navigationItem.rightBarButtonItem = right;
+//    self.selectedIndexArray = [NSMutableArray array];
+//    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction:)];
+//    self.navigationItem.rightBarButtonItem = right;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -42,6 +46,8 @@ static CGFloat submitOrdersViewHeight = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    self.dataSourceTraining = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4", nil];
+    self.dataSourceLesson = [NSMutableArray arrayWithObjects:@"11",@"22",@"33",@"44", nil];
 }
 
 
@@ -62,15 +68,59 @@ static CGFloat submitOrdersViewHeight = 50;
     }];
     [self.submitOrdersView.selectedButton addTarget:self action:@selector(selectedButtonAction:) forControlEvents:UIControlEventTouchUpInside];
      [self.submitOrdersView.submitOrdersButton addTarget:self action:@selector(submitOrdersButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-//    @property (nonatomic, strong) UILabel *selectedLabel;
-//    @property (nonatomic, strong) UIButton *selectedButton;
-//    @property (nonatomic, strong) UIButton *submitOrdersButton;
-//    @property (nonatomic, strong) UILabel *price;
 }
 #pragma mark 全选
 - (void)selectedButtonAction:(UIButton *)sender
 {
-    
+    if ([sender.titleLabel.text isEqualToString:@"全选"]) {
+        [sender setTitle:@"取消" forState:UIControlStateNormal];
+        self.submitOrdersView.selectedLabel.backgroundColor = [UIColor redColor];
+        self.submitOrdersView.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
+        
+//        [self.selectedIndexArray removeAllObjects];
+//        NSIndexPath *indexpath;
+//        for (int i = 0; i < self.dataSourceLesson.count; i ++) {
+//            indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+//            [self.selectedIndexArray addObject:indexpath];
+//             VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+//            cell.selectedLabel.backgroundColor = [UIColor redColor];
+//            cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
+//        }
+//        
+//        for (int i = 0; i < self.dataSourceTraining.count; i ++) {
+//            indexpath = [NSIndexPath indexPathForRow:i inSection:1];
+//            [self.selectedIndexArray addObject:indexpath];
+//            VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+//            cell.selectedLabel.backgroundColor = [UIColor redColor];
+//            cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
+//        }
+        
+    }
+    else if ([sender.titleLabel.text isEqualToString:@"取消"]) {
+        [sender setTitle:@"全选" forState:UIControlStateNormal];
+        self.submitOrdersView.selectedLabel.backgroundColor = [UIColor whiteColor];
+        self.submitOrdersView.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+
+//        [self.selectedIndexArray removeAllObjects];
+//        NSIndexPath *indexpath;
+//        for (int i = 0; i < self.dataSourceLesson.count; i ++) {
+//            indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+//            [self.selectedIndexArray removeObject:indexpath];
+//            VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+//            cell.selectedLabel.backgroundColor = [UIColor whiteColor];
+//            cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+//        }
+//        
+//        for (int i = 0; i < self.dataSourceTraining.count; i ++) {
+//            indexpath = [NSIndexPath indexPathForRow:i inSection:1];
+//             [self.selectedIndexArray removeObject:indexpath];
+//            VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+//            cell.selectedLabel.backgroundColor = [UIColor whiteColor];
+//            cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+//        }
+        
+        
+    }
 }
 #pragma mark 提交订单
 - (void)submitOrdersButtonAction:(UIButton *)sender
@@ -87,6 +137,7 @@ static CGFloat submitOrdersViewHeight = 50;
             make.top.left.right.equalTo(self.view);
             make.bottom.equalTo(self.view).with.offset(-submitOrdersViewHeight);
         }];
+//        self.tableView.allowsMultipleSelection = YES;
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -115,42 +166,72 @@ static CGFloat submitOrdersViewHeight = 50;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ShoppingCarlessonListCell_id];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    cell.model = self.dataSource[indexPath.row];
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
     cell.oldPrice.hidden = NO;
     cell.selectedLabel.hidden = NO;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+//    if ([self.selectedIndexArray containsObject:indexPath]) {
+//        cell.selectedLabel.backgroundColor = [UIColor redColor];
+//        cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
+//    } else {
+//        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
+//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+//    }
+//    
+
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (self.dataSourceTraining.count == 0 && section == 1) {
+        return 0;
+    }
+    if (self.dataSourceLesson.count == 0 && section == 0) {
+        return 0;
+    }
+    if (self.dataSourceLesson.count == 0 && self.dataSourceTraining.count == 0) {
+        return 0;
+    }
     return 35;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     IndexSectionView *tableHeaderView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-    tableHeaderView.titleLabel.text = @"xxx";
+    if (section == 0) {
+       tableHeaderView.titleLabel.text = @"析金学堂";
+    }
+    else if (section == 1) {
+       tableHeaderView.titleLabel.text = @"从业培训";
+    }
+
     tableHeaderView.moreLabel.text = @"";
     tableHeaderView.bottomView.hidden = NO;
+
     return tableHeaderView;
 }
 #pragma mark CellDelete
 #pragma mark rightAction事件
-- (void)rightAction:(UIBarButtonItem *)sender
-{
-    if ([sender.title isEqualToString:@"编辑"]) {
-        sender.title = @"完成";
-        [_tableView setEditing:YES animated:YES];
-    }else{
-        sender.title = @"编辑";
-        [_tableView setEditing:NO animated:YES];
-    }
-}
+//- (void)rightAction:(UIBarButtonItem *)sender
+//{
+//    if ([sender.title isEqualToString:@"编辑"]) {
+//        sender.title = @"完成";
+//        [_tableView setEditing:YES animated:YES];
+//    }else{
+//        sender.title = @"编辑";
+//        [_tableView setEditing:NO animated:YES];
+//    }
+//}
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
+}
+- (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -158,37 +239,39 @@ static CGFloat submitOrdersViewHeight = 50;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        //删除
-//        
-//        if (self.dataSourceTraining.count == 1 || self.dataSourceLesson.count == 1) {
-//            //删除数据
-//            if (self.dataSourceTraining.count == 1) {
-//                [self.dataSourceTraining removeObject:self.dataSourceTraining[indexPath.row]];
-//            }
-//            if (self.dataSourceLesson.count == 1) {
-//                [self.dataSourceLesson removeObject:self.dataSourceLesson[indexPath.row]];
-//            }
-//            
-//            //删除UI
-//            [_tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationTop];
-//            
-//            
-//        }else{
-//            
-//            //删除数据
-//            [array removeObjectAtIndex:indexPath.row];
-//            
-//            //删除UI
-//            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-//        } 
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        if (indexPath.section == 0) {
+            [self.dataSourceLesson removeObjectAtIndex:indexPath.row];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        }
+        if (indexPath.section == 1) {
+            [self.dataSourceTraining removeObjectAtIndex:indexPath.row];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        }
+    }
+//    VideoListCell *cell = (VideoListCell*)[tableView cellForRowAtIndexPath:indexPath];
+//    if ([self.selectedIndexArray containsObject:indexPath]) {
+//        [self.selectedIndexArray removeObject:indexPath];
+//        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
+//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
 //    }
 }
+
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    VideoListCell *cell = (VideoListCell*)[tableView cellForRowAtIndexPath:indexPath];
+//    if ([self.selectedIndexArray containsObject:indexPath]) {
+//        [self.selectedIndexArray removeObject:indexPath];
+//        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
+//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+//    } else {
+//        cell.selectedLabel.backgroundColor = [UIColor redColor];
+//        cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
+//        [self.selectedIndexArray addObject:indexPath];
+//    }
     
 }
-
 
 @end
