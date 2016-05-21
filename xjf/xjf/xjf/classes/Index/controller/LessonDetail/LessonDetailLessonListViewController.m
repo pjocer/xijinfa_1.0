@@ -7,31 +7,85 @@
 //
 
 #import "LessonDetailLessonListViewController.h"
+#import "LessonDetailLessonListCell.h"
+#import "LessonDetailNoPayHeaderView.h"
+#import "LessonDetailHaveToPayHeaderView.h"
+@interface LessonDetailLessonListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
-@interface LessonDetailLessonListViewController ()
+@property (nonatomic, assign) BOOL isPay;
 
 @end
 
 @implementation LessonDetailLessonListViewController
-
+static NSString *LessonDetailLessonListCell_id = @"LessonDetailLessonListCell_id";
+static CGFloat offset = 60;
+static CGFloat rowHeight = 35;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = BackgroundColor
+    
+    self.isPay = YES;
+
+    [self initTabelView];
+}
+#pragma mark- initTabelView
+- (void)initTabelView
+{
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view).with.offset(- offset);
+    }];
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.tableView.rowHeight = rowHeight;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    
+    [self.tableView registerClass:[LessonDetailLessonListCell class] forCellReuseIdentifier:LessonDetailLessonListCell_id];
+   
+    //tableHeaderView
+    if (_isPay) {
+        self.tableView.tableHeaderView = [[LessonDetailHaveToPayHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight * 2 + 1)];
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.tableView.tableHeaderView = [[LessonDetailNoPayHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight)];
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    }
+
+}
+#pragma mark TabelViewDataSource
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LessonDetailLessonListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonDetailLessonListCell_id];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.row % 2) {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+    else {
+       cell.backgroundColor = BackgroundColor;
+    }
+    if (!_isPay) {
+        cell.studyImage.hidden = YES;
+    }
+    
+    return cell;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"点击LessonListCell : %ld",indexPath.row);
 }
-*/
 
 @end

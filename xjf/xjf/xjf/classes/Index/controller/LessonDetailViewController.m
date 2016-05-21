@@ -23,8 +23,8 @@
 ///立刻购买按钮
 @property (nonatomic, strong) UIButton *nowPay;
 
-@property (nonatomic, weak) UIScrollView *titleScrollView;
-@property (nonatomic, weak) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIScrollView *titleScrollView;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 /// 选中按钮
 @property (nonatomic, weak) UIButton *selTitleButton;
 ///展示按钮下View
@@ -37,6 +37,7 @@
 
 static CGFloat  titleH = 35;
 static CGFloat  selViewH = 3;
+static CGFloat  BottomPayButtonH = 50;
 
 - (NSMutableArray *)buttons
 {
@@ -84,20 +85,19 @@ static CGFloat  selViewH = 3;
 - (void)initMainUI
 {
     [self setLessonDetailTitleView];
-    [self setAddShoppingCartButtonAndNowPayButton];
     
-    //
     [self setupTitleScrollView];//创建小scrollview
-//    [self setupContentScrollView];//创建大scrollview
-//    //
-//    [self addChildViewController];//添加子控制器
-//    [self setupTitle];//根据子视图个数创建小scrollview的按钮
+    [self setupContentScrollView];//创建大scrollview
+    [self addChildViewController];//添加子控制器
+    [self setupTitle];//根据子视图个数创建小scrollview的按钮
     
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.contentScrollView.contentSize = CGSizeMake(self.childViewControllers.count * SCREENWITH, 0);
-//    self.contentScrollView.pagingEnabled = YES;
-//    self.contentScrollView.showsHorizontalScrollIndicator = NO;
-//    self.contentScrollView.delegate = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.contentScrollView.contentSize = CGSizeMake(self.childViewControllers.count * SCREENWITH, 0);
+    self.contentScrollView.pagingEnabled = YES;
+    self.contentScrollView.showsHorizontalScrollIndicator = NO;
+    self.contentScrollView.delegate = self;
+    
+    [self setAddShoppingCartButtonAndNowPayButton];
 }
 
 #pragma mark -- setLessonDetailTitleView--
@@ -111,12 +111,7 @@ static CGFloat  selViewH = 3;
     }else{
         lessonDetailTitleViewHeight = 120;
     }
-    [self.lessonDetailTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view);
-        make.height.mas_equalTo(lessonDetailTitleViewHeight);
-    }];
-    
+    self.lessonDetailTitleView.frame = CGRectMake(0, 0, SCREENWITH, lessonDetailTitleViewHeight);
     self.lessonDetailTitleView.model = self.model;
 }
 
@@ -127,28 +122,20 @@ static CGFloat  selViewH = 3;
 {
     self.addShoppingCart = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:self.addShoppingCart];
+    self.addShoppingCart.frame = CGRectMake(0, self.view.frame.size.height - BottomPayButtonH - HEADHEIGHT, self.view.frame.size.width / 2, BottomPayButtonH);
     self.addShoppingCart.backgroundColor = [UIColor orangeColor];
     [self.addShoppingCart setTitle:@"加入购物车" forState:UIControlStateNormal];
     self.addShoppingCart.tintColor = [UIColor whiteColor];
     self.addShoppingCart.titleLabel.font = FONT15;
-    [self.addShoppingCart mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.equalTo(self.view);
-        make.width.equalTo(self.view).multipliedBy(0.5);
-        make.height.mas_equalTo(50);
-    }];
     [self.addShoppingCart addTarget:self action:@selector(addShoppingCart:) forControlEvents:UIControlEventTouchUpInside];
     
     self.nowPay = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:self.nowPay];
+    self.nowPay.frame = CGRectMake(CGRectGetMaxX(self.addShoppingCart.frame), self.view.frame.size.height - BottomPayButtonH - HEADHEIGHT, self.view.frame.size.width / 2, BottomPayButtonH);
     self.nowPay.backgroundColor = [UIColor redColor];
     [self.nowPay setTitle:@"立刻购买" forState:UIControlStateNormal];
     self.nowPay.tintColor = [UIColor whiteColor];
     self.nowPay.titleLabel.font = FONT15;
-    [self.nowPay mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.bottom.equalTo(self.view);
-        make.width.equalTo(self.view).multipliedBy(0.5);
-        make.height.mas_equalTo(50);
-    }];
     [self.nowPay addTarget:self action:@selector(nowPay:) forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark addShoppingCart
@@ -165,24 +152,18 @@ static CGFloat  selViewH = 3;
 #pragma mark - 设置头部标题栏
 - (void)setupTitleScrollView
 {
-    CGRect rect = CGRectMake(0, CGRectGetMaxY(self.self.lessonDetailTitleView.frame) + 1, SCREENWITH, titleH);
-    
-    UIScrollView *titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
-    titleScrollView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:titleScrollView];
-    
-    self.titleScrollView = titleScrollView;
+    CGRect rect = CGRectMake(0, CGRectGetMaxY(self.lessonDetailTitleView.frame) + 1, SCREENWITH, titleH);
+    self.titleScrollView = [[UIScrollView alloc] initWithFrame: rect];
+    self.titleScrollView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.titleScrollView];
 }
 #pragma mark - 设置内容
 - (void)setupContentScrollView
 {
     CGFloat y = CGRectGetMaxY(self.titleScrollView.frame);
-    CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH);
-    
-    UIScrollView *contentScrollView = [[UIScrollView alloc] initWithFrame:rect];
-    [self.view addSubview:contentScrollView];
-    
-    self.contentScrollView = contentScrollView;
+    CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH - BottomPayButtonH);
+    self.contentScrollView = [[UIScrollView alloc] initWithFrame:rect];
+    [self.view addSubview:self.contentScrollView];
     self.contentScrollView.bounces = NO;
 }
 #pragma mark - 添加子控制器
@@ -195,10 +176,9 @@ static CGFloat  selViewH = 3;
     LessonPlayerLessonDescribeViewController *vc1 = [[LessonPlayerLessonDescribeViewController alloc] init];
     vc1.title = @"课程介绍";
     [self addChildViewController:vc1];
-    
     LessonDetailTecherDescribeViewController *vc2 = [[LessonDetailTecherDescribeViewController alloc] init];
     vc2.title = @"讲师介绍";
-    [self addChildViewController:vc2];  
+    [self addChildViewController:vc2];
 }
 #pragma mark - 设置标题
 - (void)setupTitle
@@ -271,10 +251,8 @@ static CGFloat  selViewH = 3;
     if (vc.view.superview) {
         return;
     }
-    vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - self.contentScrollView.frame.origin.y);
-    
+    vc.view.frame = CGRectMake(x, 0, SCREENWITH,self.contentScrollView.frame.size.height);
     [self.contentScrollView addSubview:vc.view];
-    
 }
 - (void)setupTitleCenter:(UIButton *)btn
 {
