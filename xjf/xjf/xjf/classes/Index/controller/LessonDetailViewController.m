@@ -15,6 +15,7 @@
 #import "LessonPlayerLessonDescribeViewController.h"
 #import "LessonDetailLessonListViewController.h"
 #import "LessonDetailTecherDescribeViewController.h"
+#import "MyLessonsViewController.h"
 
 @interface LessonDetailViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
@@ -146,7 +147,14 @@ static CGFloat  BottomPayButtonH = 50;
 #pragma mark nowPay
 - (void)nowPay:(UIButton *)sender
 {
-    [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
+    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:Alipay success:^{
+        MyLessonsViewController *lesson = [[MyLessonsViewController alloc]init];
+        [self.navigationController pushViewController:lesson animated:YES];
+    } failed:^{
+        [AlertUtils alertWithTarget:self title:@"提示" content:@"支付失败" confirmBlock:^{
+            
+        }];
+    }];
 }
 
 #pragma mark - 设置头部标题栏

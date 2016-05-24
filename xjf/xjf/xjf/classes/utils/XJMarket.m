@@ -52,10 +52,12 @@
 }
 - (void)buyTradeImmediately:(nonnull TalkGridModel *)trade_model by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc]init];
+    
     [pay buyTradeImmediately:trade_model.id_ by:style success:^{
         NSLog(@"支付成功 type:1");
     } failed:^{
         NSLog(@"支付失败 type:1 id:%@",trade_model.id_);
+        if (failed) failed();
     }];
     ReceivedNotification(self, PayLessonsSuccess, ^(NSNotification *notification) {
         if ([trade_model.department isEqualToString:@"dept3"]) {
@@ -63,23 +65,20 @@
         }else {
             [self addLessons:@[trade_model] key:MY_LESSONS_PEIXUN];
         }
-        UIViewController *controller = getCurrentDisplayController();
-        MyLessonsViewController *lesson = [[MyLessonsViewController alloc]init];
-        [controller.navigationController pushViewController:lesson animated:YES];
+        if (success) success();
     });
 }
 
 - (void)addLessons:(NSArray <TalkGridModel*>*)lessons key:(NSString *)key {
-//    NSMutableArray *classes = [NSMutableArray arrayWithArray:[self myLessonsFor:key]];
-//    for (TalkGridModel *model in lessons) {
-//        NSDictionary *dic = [model ]
-//    }
-//    [classes addObjectsFromArray:lessons];
-//    NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForMyLessons]] mutableCopy];
-//    [dic setObject:classes forKey:key];
-//    BOOL ss = [[NSFileManager defaultManager] removeItemAtPath:[self pathForMyLessons] error:nil];
-//    BOOL sss = [[NSFileManager defaultManager] createFileAtPath:[self pathForMyLessons] contents:nil attributes:nil];
-//    BOOL s = [dic writeToFile:[self pathForMyLessons] atomically:YES];
+    
+    NSMutableArray *classes = [NSMutableArray arrayWithArray:[self myLessonsFor:key]];
+    for (TalkGridModel *model in lessons) {
+        NSDictionary *dic = [model toDictionary];
+        [classes addObject:dic];
+    }
+    NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForMyLessons]] mutableCopy];
+    [dic setObject:classes forKey:key];
+    [dic writeToFile:[self pathForMyLessons] atomically:YES];
 }
 
 - (void)addGoods:(NSArray <TalkGridModel*>*)goods key:(NSString *)key {
