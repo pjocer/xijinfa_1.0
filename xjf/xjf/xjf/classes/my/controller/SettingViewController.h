@@ -2,7 +2,7 @@
 //  SettingViewController.h
 //  xjf
 //
-//  Created by liuchengbin on 16/4/10.
+//  Created by PerryJ on 16/5/24.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 

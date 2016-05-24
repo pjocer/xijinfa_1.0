@@ -10,6 +10,7 @@
 #import "RegistFinalModel.h"
 #import "LoginViewController.h"
 #import "XJMarket.h"
+#import "ZPlatformShare.h"
 
 @interface XJAccountManager ()
 @property(nonatomic, strong) RegistFinalModel *accountFinalModel;
@@ -38,26 +39,22 @@
 }
 
 -(BOOL)verifyValid {
+    @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        @strongify(self);
         XjfRequest *request = [[XjfRequest alloc]initWithAPIName:verify_user RequestMethod:GET];
         [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
             RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
-            if (model.errCode == 0) {
+            NSLog(@"%@",request.requestHeaders);
+            if (model && model.errCode == 0) {
                 NSLog(@"当前AccessToken有效");
             } else {
                 UIViewController *controller = getCurrentDisplayController();
                 NSString *content = model.errMsg?:@"登录信息已失效，请重新登录";
-                [AlertUtils alertWithTarget:controller title:@"提示" content:content confirmTitle:@"确定" cancelTitle:@"取消" cancelBlock:^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self logout];
-                    });
-                } confirmBlock:^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self logout];
-                        LoginViewController *vc = [[LoginViewController alloc]init];
-                        [controller.navigationController pushViewController:vc animated:YES];
-                    });
-                }];
+                [[ZToastManager ShardInstance] showtoast:content];
+                [self logout];
+                LoginViewController *vc = [[LoginViewController alloc]init];
+                [controller.navigationController pushViewController:vc animated:YES];
             }
         } failedBlock:^(NSError * _Nullable error) {
             NSLog(@"验证用户信息是否有效失败");
@@ -76,8 +73,6 @@
 
 - (void)getAccountInfo {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:user_info RequestMethod:GET];
-    NSString *access_token = self.accountFinalModel.result.credential.bearer;
-    [request setValue:[NSString stringWithFormat:@"Bearer %@", access_token] forHTTPHeaderField:@"Authorization"];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         _user_model = [[UserProfileModel alloc] initWithData:responseData error:nil];
         NSDictionary *_user_info = [_user_model toDictionary];
@@ -96,6 +91,7 @@
 //后期加上，清理缓存
 - (void)logout {
     self.user_model = nil;
+    [ZPlatformShare logout];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCESS_TOKEN_WEIXIN];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:OPEN_ID_WEIXIN];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCESS_TOKEN_QQ];

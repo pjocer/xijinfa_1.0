@@ -10,8 +10,6 @@
 
 @interface UserLoadCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *user_icon;
-@property (weak, nonatomic) IBOutlet UIImageView *vip_tie;
-@property (weak, nonatomic) IBOutlet UILabel *vip_level;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UIImageView *vip_mark;
 @property (weak, nonatomic) IBOutlet UILabel *user_gold;
@@ -26,7 +24,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.vip_level.text = @"";
     self.user_icon.layer.cornerRadius = 75/2.0;
     self.user_icon.layer.masksToBounds = YES;
     self.segment_line_height.constant = 0.3f;

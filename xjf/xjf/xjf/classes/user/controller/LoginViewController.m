@@ -278,7 +278,11 @@
     XjfRequest *request = nil;
     int typev = [type intValue];
     if (typev == 1) {
-        dict = [NSMutableDictionary dictionaryWithDictionary:message];
+        NSString *accessToken = [message objectForKey:@"access_token"];
+        NSString *openid = [message objectForKey:@"openid"];
+        dict = [NSMutableDictionary dictionary];
+        [dict setObject:accessToken forKey:@"access_token"];
+        [dict setObject:openid forKey:@"openid"];
         NSMutableDictionary *param = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"qq", @"type", nil];
         request = [[XjfRequest alloc] initWithAPIName:third_login RequestMethod:POST];
         request.requestParams = param;
@@ -287,7 +291,6 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"wechat", @"type", nil];
         request = [[XjfRequest alloc] initWithAPIName:third_login RequestMethod:POST];
         request.requestParams = params;
-        NSLog(@"%@",params);
     } else if (typev == 3) {
         [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"nickname"]] replaceNullString] forKey:@"nick_name"];
         [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"figureurl_qq_2"]] replaceNullString] forKey:@"user_face"];
@@ -303,7 +306,6 @@
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
             if (model.errCode == 0) {
-                SendNotification(loginSuccess, model);
                 XJAccountManager *manager = [XJAccountManager defaultManager];
                 [manager setAccuontInfo:[model toDictionary]];
                 [self.navigationController popToRootViewControllerAnimated:YES];

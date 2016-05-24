@@ -52,7 +52,6 @@
 }
 - (void)buyTradeImmediately:(nonnull TalkGridModel *)trade_model by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc]init];
-    
     [pay buyTradeImmediately:trade_model.id_ by:style success:^{
         NSLog(@"支付成功 type:1");
     } failed:^{

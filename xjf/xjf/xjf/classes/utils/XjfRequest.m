@@ -80,9 +80,11 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
 
 - (void)configureRequestHeaders {
     _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [_manager.requestSerializer setValue:[[XJAccountManager defaultManager] accessToken] forHTTPHeaderField:@"Authorization"];
+    _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        NSString *access_token = [NSString stringWithFormat:@"Bearer %@", [[XJAccountManager defaultManager] accessToken]];
+        [_manager.requestSerializer setValue:access_token forHTTPHeaderField:@"Authorization"];
+    }
     ReceivedNotification(self, UserInfoDidChangedNotification, ^(NSNotification *notification) {
         [_manager.requestSerializer setValue:[[XJAccountManager defaultManager] accessToken] forHTTPHeaderField:@"Authorization"];
     });

@@ -189,6 +189,8 @@
 
 }
 
+-(void)logout {
+}
 
 + (instancetype)sharedInstance {
 

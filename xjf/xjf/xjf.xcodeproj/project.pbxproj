@@ -64,7 +64,6 @@
 		644C10F61CBA7F0B00892E2C /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10F51CBA7F0B00892E2C /* TopicCell.m */; };
 		644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10FD1CBA80BC00892E2C /* NSString+Extensions.m */; };
 		644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11001CBA81BF00892E2C /* UILabel+StringFrame.m */; };
-		644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11101CBA89FD00892E2C /* SettingViewController.m */; };
 		644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11201CBA8C4700892E2C /* LoginViewController.m */; };
 		644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11261CBA8DAA00892E2C /* UserThirdLogin.m */; };
 		644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11291CBA907A00892E2C /* ZToastManager.m */; };
@@ -168,6 +167,10 @@
 		D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D74561CED9EAC0037B1A9 /* XJPay.m */; };
 		D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D74591CEDA4CC0037B1A9 /* Order.m */; };
 		D07D749F1CEDE03B0037B1A9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D749E1CEDE03B0037B1A9 /* MyLessonsViewController.m */; };
+		D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D083C8EB1CF44A7B0028DE8A /* SettingViewController.m */; };
+		D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */; };
+		D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D083C8F01CF450630028DE8A /* SettingRowOneCell.m */; };
+		D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */; };
 		D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534981CE1AE1F00F0047B /* UIView+Addtion.m */; };
 		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
 		D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */; };
@@ -289,8 +292,6 @@
 		644C10FD1CBA80BC00892E2C /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		644C10FF1CBA81BF00892E2C /* UILabel+StringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+StringFrame.h"; sourceTree = "<group>"; };
 		644C11001CBA81BF00892E2C /* UILabel+StringFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+StringFrame.m"; sourceTree = "<group>"; };
-		644C110F1CBA89FD00892E2C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		644C11101CBA89FD00892E2C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		644C11121CBA8A1300892E2C /* myConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myConfigure.h; sourceTree = "<group>"; };
 		644C11191CBA8B9F00892E2C /* UserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
 		644C111F1CBA8C4700892E2C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -500,6 +501,12 @@
 		D07D74591CEDA4CC0037B1A9 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		D07D749D1CEDE03B0037B1A9 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
 		D07D749E1CEDE03B0037B1A9 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
+		D083C8EA1CF44A7B0028DE8A /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		D083C8EB1CF44A7B0028DE8A /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		D083C8EF1CF450630028DE8A /* SettingRowOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingRowOneCell.h; sourceTree = "<group>"; };
+		D083C8F01CF450630028DE8A /* SettingRowOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingRowOneCell.m; sourceTree = "<group>"; };
+		D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingRowOneCell.xib; sourceTree = "<group>"; };
 		D08534971CE1AE1F00F0047B /* UIView+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addtion.h"; sourceTree = "<group>"; };
 		D08534981CE1AE1F00F0047B /* UIView+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addtion.m"; sourceTree = "<group>"; };
 		D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnLoadCell.h; sourceTree = "<group>"; };
@@ -939,8 +946,9 @@
 				CD1CCBFD1CB35A2D002FC0C9 /* MyViewController.m */,
 				CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */,
 				CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */,
-				644C110F1CBA89FD00892E2C /* SettingViewController.h */,
-				644C11101CBA89FD00892E2C /* SettingViewController.m */,
+				D083C8EA1CF44A7B0028DE8A /* SettingViewController.h */,
+				D083C8EB1CF44A7B0028DE8A /* SettingViewController.m */,
+				D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */,
 				D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */,
 				D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */,
 			);
@@ -971,6 +979,9 @@
 				D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */,
 				D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */,
 				D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */,
+				D083C8EF1CF450630028DE8A /* SettingRowOneCell.h */,
+				D083C8F01CF450630028DE8A /* SettingRowOneCell.m */,
+				D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1458,6 +1469,7 @@
 			files = (
 				D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */,
 				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
+				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
 				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
 				644C115A1CBA90A000892E2C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CD416DA61CBC9B640097A5E9 /* HomeViewCell.xib in Resources */,
@@ -1474,6 +1486,7 @@
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
+				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1631,7 +1644,6 @@
 				644C11561CBA90A000892E2C /* XMShareUtil.m in Sources */,
 				5A240E041CE426A3003B7971 /* PlayerPageDescribeHeaderView.m in Sources */,
 				CD416D971CBC85B90097A5E9 /* SCPopView.m in Sources */,
-				644C11111CBA89FD00892E2C /* SettingViewController.m in Sources */,
 				D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */,
 				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
@@ -1647,6 +1659,7 @@
 				644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */,
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
+				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
 				5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */,
 				5A105E9A1CED91ED0079BEFE /* WikiPediaCategoriesModel.m in Sources */,
 				CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */,
@@ -1657,6 +1670,7 @@
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
+				D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */,
 				5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */,
 				D07D749F1CEDE03B0037B1A9 /* MyLessonsViewController.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
