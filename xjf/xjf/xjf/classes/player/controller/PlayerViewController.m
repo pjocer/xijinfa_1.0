@@ -27,6 +27,7 @@
 @property (nonatomic, retain) UIView *keyBoardView; /**< 键盘背景图 */
 @property (nonatomic, retain) UIView *keyBoardAppearView; /**< 键盘出现，屏幕背景图 */
 @property (nonatomic, retain) UITextField *textField; /**< 键盘 */
+@property (nonatomic, strong) UIButton *sendMsgButton;/**< 发表评论内容按钮 */
 
 ///评论api
 @property (nonatomic, strong) NSString *api;
@@ -239,16 +240,27 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     [self.keyBoardAppearView addGestureRecognizer:tap];
     
     
-    self.keyBoardView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 40)];
-    self.keyBoardView.backgroundColor = [UIColor lightGrayColor];
+    self.keyBoardView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
+    self.keyBoardView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.keyBoardView];
     
-    self.textField = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 250) / 2,5,250,30)];
-    self.textField.backgroundColor = [UIColor whiteColor];
-    self.textField.placeholder = @"请输入";
+    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(10,10,SCREENWITH - 70,30)];
+    self.textField.backgroundColor =BackgroundColor
+    self.textField.layer.masksToBounds = YES;
+    self.textField.layer.cornerRadius = 4;
+    self.textField.placeholder = @" 回复新内容";
+    [self.textField setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
     [self.keyBoardView addSubview:self.textField];
     self.textField.delegate = self;
     
+    self.sendMsgButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.keyBoardView addSubview:self.sendMsgButton];
+    [self.sendMsgButton setTitle:@"发送" forState:UIControlStateNormal];
+    self.sendMsgButton.titleLabel.font = FONT15;
+    self.sendMsgButton.frame = CGRectMake(0, 0, 30, 19);
+    self.sendMsgButton.center = CGPointMake(CGRectGetMaxX(self.textField.frame) + 30, self.textField.center.y);
+    self.sendMsgButton.tintColor = [UIColor blackColor];
+    [self.sendMsgButton addTarget:self action:@selector(sendCommentMsg:) forControlEvents:UIControlEventTouchUpInside];
     
     //UIKeyboardWillShow
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardwillAppear:) name:UIKeyboardWillShowNotification object:nil];
@@ -308,7 +320,12 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             describeHeaderView.title.text = self.talkGridModel.title;
             
            [describeHeaderView.rightButton addTarget:self action:@selector(describeHeaderViewRightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-           [describeHeaderView.downLoadButton addTarget:self action:@selector(describeHeaderViewdownLoadButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+            if (_isShowVideDescrible == NO) {
+                [describeHeaderView.rightButton setImage:[[UIImage imageNamed:@"iconMore"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            } else if (_isShowVideDescrible == YES) {
+                [describeHeaderView.rightButton setImage:[[UIImage imageNamed:@"iconLess"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }
+//           [describeHeaderView.downLoadButton addTarget:self action:@selector(describeHeaderViewdownLoadButtonAction:) forControlEvents:UIControlEventTouchUpInside];
            [describeHeaderView.shareButton addTarget:self action:@selector(describeHeaderViewshareButtonAction:) forControlEvents:UIControlEventTouchUpInside];
            [describeHeaderView.collectionButton addTarget:self action:@selector(describeHeaderViewcollectionButtonAction:) forControlEvents:UIControlEventTouchUpInside];
             return describeHeaderView;
@@ -330,6 +347,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         if (indexPath.section == 0) {
             
             PlayerPageDescribeFooterView *describeFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PlayerVC_Describe_FooterId forIndexPath:indexPath];
+            [describeFooterView.thumbUpButton addTarget:self action:@selector(thumbUpAction:) forControlEvents:UIControlEventTouchUpInside];
             return describeFooterView;
         }
         else if (indexPath.section == 2) {
@@ -418,15 +436,14 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 #pragma mark- 右按钮展示视频描述详情
 - (void)describeHeaderViewRightButtonAction:(UIButton *)sender
 {
-    NSLog(@"右按钮展示视频描述详情");
     _isShowVideDescrible = !_isShowVideDescrible;
     [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
-#pragma mark 视频下载
-- (void)describeHeaderViewdownLoadButtonAction:(UIButton *)sender
-{
-    NSLog(@"视频下载");
-}
+//#pragma mark 视频下载
+//- (void)describeHeaderViewdownLoadButtonAction:(UIButton *)sender
+//{
+//    NSLog(@"视频下载");
+//}
 
 #pragma mark 视频分享
 - (void)describeHeaderViewshareButtonAction:(UIButton *)sender
@@ -449,6 +466,17 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     NSLog(@"评论");
     [self.textField becomeFirstResponder];
+}
+//发表评论
+- (void)sendCommentMsg:(UIButton *)sender
+{
+    [self.textField resignFirstResponder];
+}
+
+#pragma mark 点赞
+- (void)thumbUpAction:(UIButton *)sender
+{
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

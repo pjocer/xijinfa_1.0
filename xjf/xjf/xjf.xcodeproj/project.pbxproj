@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F861CF4272B00D7EEEB /* PayView.m */; };
+		5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C3F881CF4279200D7EEEB /* PayView.xib */; };
+		5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */; };
 		5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E531CEAE3B00079BEFE /* CommentsModel.m */; };
 		5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E561CEB17450079BEFE /* LessonViewController.m */; };
 		5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */; };
@@ -172,6 +175,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A0C3F851CF4272B00D7EEEB /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayView.h; sourceTree = "<group>"; };
+		5A0C3F861CF4272B00D7EEEB /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayView.m; sourceTree = "<group>"; };
+		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayView.xib; sourceTree = "<group>"; };
+		5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailListModel.h; sourceTree = "<group>"; };
+		5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailListModel.m; sourceTree = "<group>"; };
 		5A105E521CEAE3B00079BEFE /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsModel.h; path = xjf/classes/player/controller/CommentsModel.h; sourceTree = SOURCE_ROOT; };
 		5A105E531CEAE3B00079BEFE /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsModel.m; path = xjf/classes/player/controller/CommentsModel.m; sourceTree = SOURCE_ROOT; };
 		5A105E551CEB17450079BEFE /* LessonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonViewController.h; sourceTree = "<group>"; };
@@ -534,6 +542,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5A0C3F841CF4270C00D7EEEB /* PayView */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C3F851CF4272B00D7EEEB /* PayView.h */,
+				5A0C3F861CF4272B00D7EEEB /* PayView.m */,
+				5A0C3F881CF4279200D7EEEB /* PayView.xib */,
+			);
+			path = PayView;
+			sourceTree = "<group>";
+		};
 		5A105E581CEB1A9F0079BEFE /* Lesson */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +611,8 @@
 				5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */,
 				5A105E951CED91040079BEFE /* TalkGridModel.h */,
 				5A105E961CED91040079BEFE /* TalkGridModel.m */,
+				5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */,
+				5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -891,6 +911,7 @@
 		CD1CCBF91CB35A2D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C3F841CF4270C00D7EEEB /* PayView */,
 				5A105E581CEB1A9F0079BEFE /* Lesson */,
 				5A240DF51CE33DD2003B7971 /* Wikipedia */,
 				CD144EEF1CBB732900A0636D /* index */,
@@ -1436,6 +1457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */,
+				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
 				644C115A1CBA90A000892E2C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CD416DA61CBC9B640097A5E9 /* HomeViewCell.xib in Resources */,
@@ -1515,6 +1537,7 @@
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
+				5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */,
 				D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
@@ -1613,6 +1636,7 @@
 				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				CD416D9E1CBC95330097A5E9 /* ScrollPageView.m in Sources */,
+				5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */,
 				5A105EB91CF004870079BEFE /* LessonDetailNoPayHeaderView.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
 				5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */,

@@ -17,6 +17,10 @@
 #import "LessonDetailTecherDescribeViewController.h"
 #import "MyLessonsViewController.h"
 
+#import "PayView.h"
+
+#import "LessonDetailListModel.h"
+
 @interface LessonDetailViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
 ///加入购物车按钮
@@ -32,6 +36,16 @@
 @property (nonatomic, strong) UIView *selView;
 @property (nonatomic, strong) UIView *selBackGroundView;
 @property (nonatomic, strong) NSMutableArray *buttons;
+///支付视图
+@property (nonatomic, strong) PayView *payView;
+@property (nonatomic, strong) UIView *payingBackGroudView;
+
+///课程列表数据
+@property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
+
+@property (nonatomic, strong) LessonDetailLessonListViewController *lessonDetailLessonListViewController;
+@property (nonatomic, strong) LessonPlayerLessonDescribeViewController *lessonPlayerLessonDescribeViewController;
+@property (nonatomic, strong) LessonDetailTecherDescribeViewController *lessonDetailTecherDescribeViewController;
 @end
 
 @implementation LessonDetailViewController
@@ -39,6 +53,7 @@
 static CGFloat  titleH = 35;
 static CGFloat  selViewH = 3;
 static CGFloat  BottomPayButtonH = 50;
+static CGFloat  payViewH = 285;
 
 - (NSMutableArray *)buttons
 {
@@ -60,13 +75,28 @@ static CGFloat  BottomPayButtonH = 50;
     self.tabBarController.tabBar.hidden = NO;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    coursesProjectLessonDetailList = [NSString stringWithFormat:@"%@%@",coursesProjectLessonDetailList,self.model.id_];
+    [self requestLessonListData:coursesProjectLessonDetailList method:GET];
     [self initMainUI];
-    
 }
 
+- (void)requestLessonListData:(APIName *)api method:(RequestMethod)method
+{
+    __weak typeof(self) wSelf = self;
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
+        [[ZToastManager ShardInstance] hideprogress];
+        sSelf.lessonDetailListModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
+    }   failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
 
 #pragma mark - setNavigationBar
 - (void)setNavigationBar
@@ -99,6 +129,20 @@ static CGFloat  BottomPayButtonH = 50;
     self.contentScrollView.delegate = self;
     
     [self setAddShoppingCartButtonAndNowPayButton];
+    
+    //PayView
+    self.payingBackGroudView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.payingBackGroudView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:self.payingBackGroudView];
+    self.payingBackGroudView.hidden = YES;
+    self.payingBackGroudView.alpha = 0.2;
+    
+    self.payView = [[NSBundle mainBundle] loadNibNamed:@"PayView" owner:self options:nil].firstObject;
+    self.payView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, payViewH);
+    [self.view addSubview:self.payView];
+    [self.payView.aliPay addTarget:self action:@selector(aliPay:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payView.WeixinPay addTarget:self action:@selector(WeixinPay:) forControlEvents:UIControlEventTouchUpInside];
+    [self.payView.cancel addTarget:self action:@selector(payViewCancel:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark -- setLessonDetailTitleView--
@@ -142,7 +186,10 @@ static CGFloat  BottomPayButtonH = 50;
 #pragma mark addShoppingCart
 - (void)addShoppingCart:(UIButton *)sender
 {
-
+    [UIView animateWithDuration:0.5 animations:^{
+        self.payView.frame = CGRectMake(0, self.view.bounds.size.height - payViewH, self.view.bounds.size.width, payViewH);
+    }];
+    self.payingBackGroudView.hidden = NO;
 }
 #pragma mark nowPay
 - (void)nowPay:(UIButton *)sender
@@ -156,6 +203,25 @@ static CGFloat  BottomPayButtonH = 50;
         }];
     }];
 }
+#pragma mark - aliPay
+- (void)aliPay:(UIButton *)sender
+{
+    NSLog(@"支付宝支付");
+}
+#pragma mark - WeixinPay
+- (void)WeixinPay:(UIButton *)sender
+{
+    NSLog(@"微信支付");
+}
+#pragma mark - payViewCancel
+- (void)payViewCancel:(UIButton *)sender
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.payView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, payViewH);
+    }];
+    self.payingBackGroudView.hidden = YES;
+}
+
 
 #pragma mark - 设置头部标题栏
 - (void)setupTitleScrollView
@@ -177,16 +243,21 @@ static CGFloat  BottomPayButtonH = 50;
 #pragma mark - 添加子控制器
 - (void)addChildViewController
 {
-    LessonDetailLessonListViewController *vc = [[LessonDetailLessonListViewController alloc] init];
-    vc.title = @"目录";
-    [self addChildViewController:vc];
+    self.lessonDetailLessonListViewController = [[LessonDetailLessonListViewController alloc] init];
+    self.lessonDetailLessonListViewController.title = @"目录";
+    [self addChildViewController:self.lessonDetailLessonListViewController];
     
-    LessonPlayerLessonDescribeViewController *vc1 = [[LessonPlayerLessonDescribeViewController alloc] init];
-    vc1.title = @"课程介绍";
-    [self addChildViewController:vc1];
-    LessonDetailTecherDescribeViewController *vc2 = [[LessonDetailTecherDescribeViewController alloc] init];
-    vc2.title = @"讲师介绍";
-    [self addChildViewController:vc2];
+    self.lessonPlayerLessonDescribeViewController = [[LessonPlayerLessonDescribeViewController alloc] init];
+    self.lessonPlayerLessonDescribeViewController.title = @"课程介绍";
+    [self addChildViewController:self.lessonPlayerLessonDescribeViewController];
+    __weak LessonDetailViewController *tempSelf = self;
+    self.lessonPlayerLessonDescribeViewController.block = ^void (NSString *str) {
+        tempSelf.lessonPlayerLessonDescribeViewController.textView.text = tempSelf.model.content;
+    };
+    
+    self.lessonDetailTecherDescribeViewController = [[LessonDetailTecherDescribeViewController alloc] init];
+    self.lessonDetailTecherDescribeViewController.title = @"讲师介绍";
+    [self addChildViewController:self.lessonDetailTecherDescribeViewController];
 }
 #pragma mark - 设置标题
 - (void)setupTitle
@@ -294,7 +365,7 @@ static CGFloat  BottomPayButtonH = 50;
 // 只要滚动UIScrollView就会调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+
 }
 
 

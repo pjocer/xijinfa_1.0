@@ -85,7 +85,8 @@ static APIName *projectList = @"/api/projects3";
 #pragma mark 析金学堂-视频列表--按专题筛选
 static APIName *coursesProject = @"/api/courses3/?project_id=";
 
-
+#pragma mark 析金学堂-视频详情--视频列表
+static APIName *coursesProjectLessonDetailList = @"/api/courses3/";
 
 
 

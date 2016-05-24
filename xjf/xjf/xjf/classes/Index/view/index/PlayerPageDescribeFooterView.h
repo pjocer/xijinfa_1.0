@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PlayerPageDescribeFooterView : UICollectionReusableView
-
+@property (nonatomic, strong) UIButton *thumbUpButton;
 @end

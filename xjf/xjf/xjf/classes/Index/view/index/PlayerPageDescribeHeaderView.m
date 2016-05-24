@@ -30,7 +30,8 @@
         
         self.collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.collectionButton];
-        self.collectionButton.backgroundColor = [UIColor redColor];
+//        self.collectionButton.backgroundColor = BackgroundColor
+        [self.collectionButton setImage:[[UIImage imageNamed:@"iconFavorites"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [self.collectionButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.topBackGroundView);
             make.right.equalTo(self).with.offset(-10);
@@ -39,21 +40,22 @@
         
         self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.shareButton];
-        self.shareButton.backgroundColor = [UIColor redColor];
+//        self.shareButton.backgroundColor = BackgroundColor
+        [self.shareButton setImage:[[UIImage imageNamed:@"iconShare"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [self.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.topBackGroundView);
             make.right.equalTo(self.collectionButton.mas_left).with.offset(-10);
             make.size.mas_equalTo(self.collectionButton);
         }];
         
-        self.downLoadButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [self addSubview:self.downLoadButton];
-        self.downLoadButton.backgroundColor = [UIColor redColor];
-        [self.downLoadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(self.topBackGroundView);
-            make.right.equalTo(self.shareButton.mas_left).with.offset(-10);
-            make.size.mas_equalTo(self.collectionButton);
-        }];
+//        self.downLoadButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//        [self addSubview:self.downLoadButton];
+//        self.downLoadButton.backgroundColor = [UIColor redColor];
+//        [self.downLoadButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.centerY.mas_equalTo(self.topBackGroundView);
+//            make.right.equalTo(self.shareButton.mas_left).with.offset(-10);
+//            make.size.mas_equalTo(self.collectionButton);
+//        }];
         
         //Bottom control
         self.bottomBackGroundView = [[UIView alloc] init];
@@ -76,7 +78,7 @@
         
         self.rightButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.rightButton];
-        self.rightButton.backgroundColor = [UIColor redColor];
+//        [self.rightButton setImage:[[UIImage imageNamed:@"iconLess"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.title);
             make.right.equalTo(self).with.offset(-10);
