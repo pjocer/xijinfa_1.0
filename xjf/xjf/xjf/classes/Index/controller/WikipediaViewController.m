@@ -83,15 +83,6 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
         __strong typeof(self) sSelf = wSelf;
-
-//        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-//        sSelf.talkGridDataArray = [NSMutableArray array];
-//        for (NSDictionary *dic in result[@"result"][@"data"]) {
-//            TalkGridModel *model = [[TalkGridModel alloc] init];
-//            [model setValuesForKeysWithDictionary:dic];
-//            [sSelf.talkGridDataArray addObject:model];
-//            [self.collectionView reloadData];
-//        }
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
         [sSelf.collectionView reloadData];
 
@@ -176,19 +167,12 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
         else if (indexPath.section == 1) {
             WikiSectionHeaderView *wikiSectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:wikiSectionHeaderView_HeaderId forIndexPath:indexPath];
             wikiSectionHeaderView.moreLabel.hidden = YES;
-//            UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
-//            [wikiSectionHeaderView addGestureRecognizer:singleRecognizer];
             return wikiSectionHeaderView;
         }
 
     }
     return nil;
 }
-
-//- (void)handleSingleTapFrom
-//{
-//   [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
-//}
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index {
     NSLog(@"点击..... %ld", index);
 }
@@ -206,8 +190,6 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     return CGSizeZero;
 
 }
-
-/** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.section == 0) {
@@ -217,7 +199,6 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
         PlayerViewController *player = [[PlayerViewController alloc] init];
         TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
         player.talkGridModel = model;
-        NSLog(@"--------------%@", model.id_);
         [self.navigationController pushViewController:player animated:YES];
     }
 

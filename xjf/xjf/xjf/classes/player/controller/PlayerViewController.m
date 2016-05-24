@@ -79,6 +79,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             if (self.commentsModel.errCode == 0) {
                 [[ZToastManager ShardInstance] hideprogress];
                 self.commentsModel = [[CommentsAllDataList alloc]initWithData:responseData error:nil];
+
                 [self.collectionView reloadData];
             }else
                 {[[ZToastManager ShardInstance] hideprogress];
@@ -195,9 +196,8 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)initCollectionView
 {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
-//    _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);//针对分区 
-    _layout.minimumLineSpacing = 0.0;   //最小列间距默认10
-    _layout.minimumInteritemSpacing = 0.0;//左右间隔
+    _layout.minimumLineSpacing = 0.0;
+    _layout.minimumInteritemSpacing = 0.0;
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectNull collectionViewLayout:_layout];
     [self.view addSubview:self.collectionView];
@@ -212,7 +212,6 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    //注册
     [self.collectionView registerClass:[PlayerPageDescribeCell class] forCellWithReuseIdentifier:PlayerVC_Describe_Cell_Id];
     [self.collectionView registerClass:[WikiTalkGridViewCell class] forCellWithReuseIdentifier:PlayerVC_TalkGrid_Cell_Id];
     [self.collectionView registerClass:[PlayerPageCommentsCell class] forCellWithReuseIdentifier:PlayerVC_Comments_Cell_Id];
