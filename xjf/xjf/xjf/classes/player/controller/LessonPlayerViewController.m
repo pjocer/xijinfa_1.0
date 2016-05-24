@@ -55,13 +55,10 @@ static CGFloat  selViewH = 3;
 {
     [self initPlayerView];
     [self setVideoBottomView];
-//
-    [self setupTitleScrollView];//创建小scrollview
-    [self setupContentScrollView];//创建大scrollview
-//
-    [self addChildViewController];//添加子控制器
-    [self setupTitle];//根据子视图个数创建小scrollview的按钮
-
+    [self setupTitleScrollView];
+    [self setupContentScrollView];
+    [self addChildViewController];
+    [self setupTitle];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.contentScrollView.contentSize = CGSizeMake(self.childViewControllers.count * SCREENWITH, 0);
     self.contentScrollView.pagingEnabled = YES;

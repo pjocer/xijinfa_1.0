@@ -47,7 +47,7 @@
         
         //userImage
         self.userImage = [[UIImageView alloc] init];
-        self.userImage.backgroundColor = [UIColor redColor];
+        self.userImage.backgroundColor = BackgroundColor
         self.userImage.layer.masksToBounds = YES;
         self.userImage.layer.cornerRadius = 20;
         [self addSubview:self.userImage];

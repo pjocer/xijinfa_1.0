@@ -159,10 +159,10 @@
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
    
-    if (![[NSString stringWithFormat:@"%@",model.price] isEqualToString:@"免费"]) {
+//    if (![[NSString stringWithFormat:@"%@",model.price] isEqualToString:@"免费"]) {
          CGFloat tempPrice = [model.price floatValue];
         self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
-    }
+//    }
     
 }
 

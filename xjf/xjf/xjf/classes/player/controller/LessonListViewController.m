@@ -14,6 +14,7 @@
 @interface LessonListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
 @end
 
 @implementation LessonListViewController
@@ -53,15 +54,15 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
         
         __strong typeof (self)sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
-        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-        for (NSDictionary *dic in result[@"result"][@"data"]) {
-            TalkGridModel *model = [[TalkGridModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
-            [sSelf.dataSource addObject:model];
-            [self.tableView reloadData];
-        }
-        
-        NSLog(@"%@",sSelf.dataSource);
+//        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+//        for (NSDictionary *dic in result[@"result"][@"data"]) {
+//            TalkGridModel *model = [[TalkGridModel alloc] init];
+//            [model setValuesForKeysWithDictionary:dic];
+//            [sSelf.dataSource addObject:model];
+//            [self.tableView reloadData];
+//        }
+        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+        [sSelf.tableView reloadData];
     } failedBlock:^(NSError * _Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance]showtoast:@"网络连接失败"];
@@ -89,13 +90,13 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataSource.count;
+    return self.tablkListModel.result.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:lessonListCell_id];
-    cell.model = self.dataSource[indexPath.row];
+    cell.model = self.tablkListModel.result.data[indexPath.row];
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
@@ -111,7 +112,7 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 //    player.talkGridModel = model;
 //    [self.navigationController pushViewController:player animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-    lessonDetailViewController.model = self.dataSource[indexPath.row];
+    lessonDetailViewController.model = self.tablkListModel.result.data[indexPath.row];
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
     
 }

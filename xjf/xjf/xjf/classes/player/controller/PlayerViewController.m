@@ -164,7 +164,8 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     
     //    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
     //    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
-    self.playUrl = self.talkGridModel.url;
+    TalkGridVideo *gridVideomodel = self.talkGridModel.video.firstObject;
+    self.playUrl =  gridVideomodel.url;
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
         [_playerView resetPlayer];

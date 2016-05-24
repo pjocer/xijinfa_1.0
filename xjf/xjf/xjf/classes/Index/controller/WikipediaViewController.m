@@ -22,6 +22,7 @@
 @property(nonatomic, strong) BannerModel *bannermodel;
 @property(nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
 @property(nonatomic, strong) NSMutableArray *talkGridDataArray;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
 @end
 
 @implementation WikipediaViewController
@@ -83,14 +84,16 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 
         __strong typeof(self) sSelf = wSelf;
 
-        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-        sSelf.talkGridDataArray = [NSMutableArray array];
-        for (NSDictionary *dic in result[@"result"][@"data"]) {
-            TalkGridModel *model = [[TalkGridModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
-            [sSelf.talkGridDataArray addObject:model];
-            [self.collectionView reloadData];
-        }
+//        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+//        sSelf.talkGridDataArray = [NSMutableArray array];
+//        for (NSDictionary *dic in result[@"result"][@"data"]) {
+//            TalkGridModel *model = [[TalkGridModel alloc] init];
+//            [model setValuesForKeysWithDictionary:dic];
+//            [sSelf.talkGridDataArray addObject:model];
+//            [self.collectionView reloadData];
+//        }
+        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+        [sSelf.collectionView reloadData];
 
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -143,8 +146,8 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     if (section == 0) {
         return 1;
     }
-    else if (section == 1 && self.talkGridDataArray.count != 0) {
-        return self.talkGridDataArray.count;
+    else if (section == 1 && self.tablkListModel.result.data.count != 0) {
+        return self.tablkListModel.result.data.count;
     }
     return 0;
 }
@@ -156,7 +159,7 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
         return cell;
     }
     WikiTalkGridViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:talkGridViewCell_Id forIndexPath:indexPath];
-    cell.model = self.talkGridDataArray[indexPath.row];
+    cell.model = self.tablkListModel.result.data[indexPath.row];
     return cell;
 }
 
@@ -212,7 +215,7 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     }
     else if (indexPath.section == 1) {
         PlayerViewController *player = [[PlayerViewController alloc] init];
-        TalkGridModel *model = self.talkGridDataArray[indexPath.row];
+        TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
         player.talkGridModel = model;
         NSLog(@"--------------%@", model.id_);
         [self.navigationController pushViewController:player animated:YES];

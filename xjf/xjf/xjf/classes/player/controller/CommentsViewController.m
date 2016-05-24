@@ -9,10 +9,8 @@
 #import "CommentsViewController.h"
 #import "playerConfigure.h"
 @interface CommentsViewController ()<UITableViewDelegate,UITableViewDataSource>
-
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-
 @end
 
 @implementation CommentsViewController
