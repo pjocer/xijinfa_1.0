@@ -32,4 +32,14 @@
             cancelTitle:(NSString *)cancelTitle
             cancelBlock:(dispatch_block_t)cancelBlock
            confirmBlock:(dispatch_block_t)confirmBlock;
+
++ (void)alertWithTarget:(UIViewController *)target
+                  title:(NSString *)title
+                okTitle:(NSString *)okTitle
+             otherTitle:(NSString *)otherTitle
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+                message:(NSString *)message
+            cancelBlock:(dispatch_block_t)cancelBlock
+                okBlock:(dispatch_block_t)okBlock
+             otherBlock:(dispatch_block_t)otherBlock;
 @end

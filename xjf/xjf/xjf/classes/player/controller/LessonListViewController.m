@@ -54,13 +54,6 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
         
         __strong typeof (self)sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
-//        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-//        for (NSDictionary *dic in result[@"result"][@"data"]) {
-//            TalkGridModel *model = [[TalkGridModel alloc] init];
-//            [model setValuesForKeysWithDictionary:dic];
-//            [sSelf.dataSource addObject:model];
-//            [self.tableView reloadData];
-//        }
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
         [sSelf.tableView reloadData];
     } failedBlock:^(NSError * _Nullable error) {
@@ -107,17 +100,9 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    LessonPlayerViewController *player = [[LessonPlayerViewController alloc] init];
-//    TalkGridModel *model = self.dataSource[indexPath.row];
-//    player.talkGridModel = model;
-//    [self.navigationController pushViewController:player animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.tablkListModel.result.data[indexPath.row];
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
-    
 }
-
-
-
 
 @end

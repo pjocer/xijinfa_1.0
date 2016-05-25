@@ -13,7 +13,9 @@
 #import "LessonListViewController.h"
 #import "ProjectListByModel.h"
 #import "XJAccountManager.h"
-
+#import "AlertUtils.h"
+#import "LoginViewController.h"
+#import "RegistViewController.h"
 @interface LessonViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate>
 
 @property(nonatomic, strong) UICollectionView *collectionView;
@@ -211,23 +213,30 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
     
     if ([[XJAccountManager defaultManager] accessToken] == nil || [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         
-        NSLog(@"注册登录");
+       [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能" okTitle:@"登录" otherTitle:@"注册" cancelButtonTitle:@"取消" message:@"参与话题讨论\n\n播放记录云同步\n\n更多金融专业课程" cancelBlock:^{
+           NSLog(@"取消");
+       } okBlock:^{
+           LoginViewController *loginPage = [LoginViewController new];
+           [self.navigationController pushViewController:loginPage animated:YES];
+       } otherBlock:^{
+           RegistViewController *registPage = [RegistViewController new];
+            registPage.title_item = @"注册";
+           [self.navigationController pushViewController:registPage animated:YES];
+       }];
+        
+    }else{
+            if (indexPath.section == 0) {
+                LessonListViewController *lessonListViewController = [LessonListViewController new];
+                ProjectListByModel *model = self.coursesProjectListDataArray[indexPath.row];;
+                lessonListViewController.LessonListTitle = model.title;
+                lessonListViewController.ID = model.ID;
+                [self.navigationController pushViewController:lessonListViewController animated:YES];
+            }
+            else if (indexPath.section == 1) {
+        //         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        //        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+            }
     }
-    
-    
-    if (indexPath.section == 0) {
-        LessonListViewController *lessonListViewController = [LessonListViewController new];
-        ProjectListByModel *model = self.coursesProjectListDataArray[indexPath.row];;
-        lessonListViewController.LessonListTitle = model.title;
-        lessonListViewController.ID = model.ID;
-
-        [self.navigationController pushViewController:lessonListViewController animated:YES];
-    }
-    else if (indexPath.section == 1) {
-//         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
-//        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
-    }
-
 }
 
 #pragma mark FlowLayoutDelegate

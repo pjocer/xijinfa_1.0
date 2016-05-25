@@ -89,4 +89,42 @@
         
         [target presentViewController:alertController animated:YES completion:nil];
 }
+
++ (void)alertWithTarget:(UIViewController *)target
+                  title:(NSString *)title
+                okTitle:(NSString *)okTitle
+             otherTitle:(NSString *)otherTitle
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+                message:(NSString *)message
+            cancelBlock:(dispatch_block_t)cancelBlock
+                okBlock:(dispatch_block_t)okBlock
+             otherBlock:(dispatch_block_t)otherBlock
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        if (cancelBlock) {
+            cancelBlock();
+        }
+    }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (okBlock) {
+            okBlock();
+        }
+    }];
+    
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (otherBlock) {
+            otherBlock();
+        }
+    }];
+    
+    // Add the actions.
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    [alertController addAction:otherAction];
+    
+    [target presentViewController:alertController animated:YES completion:nil];
+}
 @end
