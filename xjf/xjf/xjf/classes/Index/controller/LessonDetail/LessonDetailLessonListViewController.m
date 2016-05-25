@@ -23,14 +23,22 @@ static NSString *LessonDetailLessonListCell_id = @"LessonDetailLessonListCell_id
 static CGFloat offset = 60;
 static CGFloat rowHeight = 35;
 
+//- (void)dealloc
+//{
+//    if (self.ID.length != 0) {
+//       self.ID = nil;
+//    }
+//    
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor
     self.isPay = YES;
     [self initTabelView];
     
-    coursesProjectLessonDetailList = [NSString stringWithFormat:@"%@%@",coursesProjectLessonDetailList,self.ID];
-    [self requestLessonListData:coursesProjectLessonDetailList method:GET];
+      NSString *api = [NSString stringWithFormat:@"%@%@",coursesProjectLessonDetailList,self.ID];
+    [self requestLessonListData:api method:GET];
 }
 
 - (void)requestLessonListData:(APIName *)api method:(RequestMethod)method
