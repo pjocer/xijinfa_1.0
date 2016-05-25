@@ -176,6 +176,9 @@
     [[XMShareWeiboUtil sharedInstance] logout];
 }
 -(void)weiChatPay:(NSString *)data success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
+    if (![WXApi isWXAppInstalled]) {
+        if (failed) failed();
+    }
     self.success = success;
     self.failed = failed;
     PaymentData *data_payment = [[PaymentData alloc]initWithString:data usingEncoding:NSUTF8StringEncoding error:nil];

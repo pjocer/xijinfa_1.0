@@ -209,7 +209,10 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-//    [[XJAccountManager defaultManager] accessToken]
+    if ([[XJAccountManager defaultManager] accessToken] == nil || [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        
+        NSLog(@"注册登录");
+    }
     
     
     if (indexPath.section == 0) {
