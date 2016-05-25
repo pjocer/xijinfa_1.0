@@ -39,13 +39,13 @@
 }
 
 -(BOOL)verifyValid {
+    if ([self accessToken] == nil) return YES;
     @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         @strongify(self);
         XjfRequest *request = [[XjfRequest alloc]initWithAPIName:verify_user RequestMethod:GET];
         [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
             RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
-            NSLog(@"%@",request.requestHeaders);
             if (model && model.errCode == 0) {
                 NSLog(@"当前AccessToken有效");
             } else {

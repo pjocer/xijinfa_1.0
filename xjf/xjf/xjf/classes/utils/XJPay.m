@@ -154,8 +154,11 @@
     @weakify(self)
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         @strongify(self)
-        [self handleData:responseData];
-        [self produceOrder:style];
+        if ([self handleData:responseData]) {
+          [self produceOrder:style];
+        }else {
+           if (self.failed) self.failed();
+        }
     } failedBlock:^(NSError * _Nullable error) {
         if (self.failed) self.failed();
     }];
@@ -176,18 +179,22 @@
     }
 }
 
-- (void)handleData:(NSData *)data {
+- (BOOL)handleData:(NSData *)data {
     self.order = [[Order alloc]initWithData:data error:nil];
     NSMutableArray *payments = self.order.result.payment;
     if (payments) {
-        for (Payment *payment in payments) {
-            if ([payment.channel isEqualToString:@"alipay"]) {
-                self.payment_alipay = payment;
-            }else {
-                self.payment_wechat = payment;
+        if (payments) {
+            for (Payment *payment in payments) {
+                if ([payment.channel isEqualToString:@"alipay"]) {
+                    self.payment_alipay = payment;
+                }else {
+                    self.payment_wechat = payment;
+                }
             }
         }
+        return YES;
     }
+    return NO;
 }
 
 @end
