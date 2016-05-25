@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LessonDetailListModel.h"
 @interface LessonDetailLessonListCell : UITableViewCell
 @property (nonatomic, strong) UIImageView *studyImage;
+@property (nonatomic, strong) LessonDetailListLessonsModel *model;
 @end

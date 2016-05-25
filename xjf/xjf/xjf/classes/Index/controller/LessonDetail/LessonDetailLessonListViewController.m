@@ -22,14 +22,37 @@
 static NSString *LessonDetailLessonListCell_id = @"LessonDetailLessonListCell_id";
 static CGFloat offset = 60;
 static CGFloat rowHeight = 35;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor
-    
     self.isPay = YES;
-
     [self initTabelView];
+    
+    coursesProjectLessonDetailList = [NSString stringWithFormat:@"%@%@",coursesProjectLessonDetailList,self.ID];
+    [self requestLessonListData:coursesProjectLessonDetailList method:GET];
 }
+
+- (void)requestLessonListData:(APIName *)api method:(RequestMethod)method
+{
+    
+    
+    __weak typeof(self) wSelf = self;
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
+        [[ZToastManager ShardInstance] hideprogress];
+        
+        sSelf.lessonDetailListModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
+//        [sSelf.tableView reloadData];
+    }   failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
+
 #pragma mark- initTabelView
 - (void)initTabelView
 {
@@ -63,7 +86,7 @@ static CGFloat rowHeight = 35;
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.lessonDetailListModel.result.lessons.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

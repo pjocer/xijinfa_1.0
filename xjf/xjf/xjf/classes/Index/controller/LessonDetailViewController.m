@@ -19,8 +19,6 @@
 
 #import "PayView.h"
 
-#import "LessonDetailListModel.h"
-
 @interface LessonDetailViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
 ///加入购物车按钮
@@ -39,9 +37,6 @@
 ///支付视图
 @property (nonatomic, strong) PayView *payView;
 @property (nonatomic, strong) UIView *payingBackGroudView;
-
-///课程列表数据
-@property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
 
 @property (nonatomic, strong) LessonDetailLessonListViewController *lessonDetailLessonListViewController;
 @property (nonatomic, strong) LessonPlayerLessonDescribeViewController *lessonPlayerLessonDescribeViewController;
@@ -77,25 +72,7 @@ static CGFloat  payViewH = 285;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    coursesProjectLessonDetailList = [NSString stringWithFormat:@"%@%@",coursesProjectLessonDetailList,self.model.id_];
-    [self requestLessonListData:coursesProjectLessonDetailList method:GET];
     [self initMainUI];
-}
-
-- (void)requestLessonListData:(APIName *)api method:(RequestMethod)method
-{
-    __weak typeof(self) wSelf = self;
-    [[ZToastManager ShardInstance] showprogress];
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
-        sSelf.lessonDetailListModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
-    }   failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
 }
 
 #pragma mark - setNavigationBar
@@ -246,11 +223,13 @@ static CGFloat  payViewH = 285;
     self.lessonDetailLessonListViewController = [[LessonDetailLessonListViewController alloc] init];
     self.lessonDetailLessonListViewController.title = @"目录";
     [self addChildViewController:self.lessonDetailLessonListViewController];
+    self.lessonDetailLessonListViewController.ID = self.model.id_;
+    
     
     self.lessonPlayerLessonDescribeViewController = [[LessonPlayerLessonDescribeViewController alloc] init];
     self.lessonPlayerLessonDescribeViewController.title = @"课程介绍";
+     __weak LessonDetailViewController *tempSelf = self;
     [self addChildViewController:self.lessonPlayerLessonDescribeViewController];
-    __weak LessonDetailViewController *tempSelf = self;
     self.lessonPlayerLessonDescribeViewController.block = ^void (NSString *str) {
         tempSelf.lessonPlayerLessonDescribeViewController.textView.text = tempSelf.model.content;
     };
@@ -303,6 +282,7 @@ static CGFloat  payViewH = 285;
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
+    
 }
 // 按钮点击
 - (void)chick:(UIButton *)btn

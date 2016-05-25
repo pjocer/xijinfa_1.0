@@ -12,6 +12,7 @@
 #import "LessonPlayerViewController.h"
 #import "LessonListViewController.h"
 #import "ProjectListByModel.h"
+#import "XJAccountManager.h"
 
 @interface LessonViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate>
 
@@ -207,6 +208,10 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+//    [[XJAccountManager defaultManager] accessToken]
+    
+    
     if (indexPath.section == 0) {
         LessonListViewController *lessonListViewController = [LessonListViewController new];
         ProjectListByModel *model = self.coursesProjectListDataArray[indexPath.row];;

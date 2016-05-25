@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LessonDetailListModel.h"
 @interface LessonDetailLessonListViewController : UIViewController
-
+@property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
+@property (nonatomic, strong) NSString *ID;
 @end

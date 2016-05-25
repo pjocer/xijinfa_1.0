@@ -72,4 +72,21 @@ static CGFloat StudyImageH = 20;
     }
 }
 
+
+- (void)setModel:(LessonDetailListLessonsModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
 @end
