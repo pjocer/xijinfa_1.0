@@ -79,7 +79,7 @@ static CGFloat StudyImageH = 20;
         _model = model;
     }
     
-    
+    self.title.text = model.title;
     
 }
 

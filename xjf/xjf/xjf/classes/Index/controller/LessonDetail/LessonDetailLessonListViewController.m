@@ -46,7 +46,7 @@ static CGFloat rowHeight = 35;
         [[ZToastManager ShardInstance] hideprogress];
         
         sSelf.lessonDetailListModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
-//        [sSelf.tableView reloadData];
+        [sSelf.tableView reloadData];
     }   failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -102,7 +102,7 @@ static CGFloat rowHeight = 35;
     if (!_isPay) {
         cell.studyImage.hidden = YES;
     }
-    
+    cell.model = self.lessonDetailListModel.result.lessons[indexPath.row];
     return cell;
 }
 #pragma mark Delegate
