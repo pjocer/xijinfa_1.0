@@ -163,32 +163,52 @@ static CGFloat  payViewH = 285;
 #pragma mark addShoppingCart
 - (void)addShoppingCart:(UIButton *)sender
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.payView.frame = CGRectMake(0, self.view.bounds.size.height - payViewH, self.view.bounds.size.width, payViewH);
-    }];
-    self.payingBackGroudView.hidden = NO;
+    
 }
 #pragma mark nowPay
 - (void)nowPay:(UIButton *)sender
 {
-    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:Alipay success:^{
-        MyLessonsViewController *lesson = [[MyLessonsViewController alloc]init];
-        [self.navigationController pushViewController:lesson animated:YES];
-    } failed:^{
-        [AlertUtils alertWithTarget:self title:@"提示" content:@"支付失败" confirmBlock:^{
-            
-        }];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.payView.frame = CGRectMake(0, self.view.bounds.size.height - payViewH, self.view.bounds.size.width, payViewH);
     }];
+    self.payingBackGroudView.hidden = NO;
+    
 }
 #pragma mark - aliPay
 - (void)aliPay:(UIButton *)sender
 {
-    NSLog(@"支付宝支付");
+    [[ZToastManager ShardInstance] showprogress];
+    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:Alipay success:^{
+        [[ZToastManager ShardInstance] hideprogress];
+        if ([self.model.department isEqualToString:@"dept3"]) {
+            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
+        }else {
+            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_PEIXUN];
+        }
+        MyLessonsViewController *lesson = [[MyLessonsViewController alloc]init];
+        [self.navigationController pushViewController:lesson animated:YES];
+    } failed:^{
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+    }];
 }
 #pragma mark - WeixinPay
 - (void)WeixinPay:(UIButton *)sender
 {
-    NSLog(@"微信支付");
+    [[ZToastManager ShardInstance] showprogress];
+    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:WechatPay success:^{
+        [[ZToastManager ShardInstance] hideprogress];
+        if ([self.model.department isEqualToString:@"dept3"]) {
+            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
+        }else {
+            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_PEIXUN];
+        }
+        MyLessonsViewController *lesson = [[MyLessonsViewController alloc]init];
+        [self.navigationController pushViewController:lesson animated:YES];
+    } failed:^{
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+    }];
 }
 #pragma mark - payViewCancel
 - (void)payViewCancel:(UIButton *)sender

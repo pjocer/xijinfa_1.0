@@ -10,6 +10,8 @@
 #import "XJAccountManager.h"
 #import "Order.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
+#import "ZPlatformShare.h"
 
 
 @interface Product : NSObject
@@ -170,18 +172,20 @@
             }
         }];
     }else {
-        NSLog(@"微信支付");
+        [[ZPlatformShare sharedInstance] weiChatPay:self.payment_wechat.data success:self.success failed:self.failed];
     }
 }
 
 - (void)handleData:(NSData *)data {
     self.order = [[Order alloc]initWithData:data error:nil];
     NSMutableArray *payments = self.order.result.payment;
-    for (Payment *payment in payments) {
-        if ([payment.channel isEqualToString:@"alipay"]) {
-            self.payment_alipay = payment;
-        }else {
-            self.payment_wechat = payment;
+    if (payments) {
+        for (Payment *payment in payments) {
+            if ([payment.channel isEqualToString:@"alipay"]) {
+                self.payment_alipay = payment;
+            }else {
+                self.payment_wechat = payment;
+            }
         }
     }
 }

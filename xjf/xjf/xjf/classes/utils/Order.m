@@ -8,6 +8,12 @@
 
 #import "Order.h"
 
+@implementation PaymentData
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
 @implementation Payment
 +(BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;

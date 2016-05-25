@@ -15,6 +15,8 @@
 #import "XMShareWeiboUtil.h"
 
 @interface ZPlatformShare : NSObject
+@property (nonatomic, copy) dispatch_block_t success;
+@property (nonatomic, copy) dispatch_block_t failed;
 + (instancetype)sharedInstance;
 + (void)initPlatformData;
 -(BOOL)handleOpenURL:(NSURL *)url;
@@ -25,5 +27,5 @@
 + (void)wxLoginWithSuccess:(void(^)(NSDictionary *message))success failure:(void(^)(NSDictionary *message, NSError *error))failure;
 + (void)wbLoginWithSuccess:(void(^)(NSDictionary *message))success failure:(void(^)(NSDictionary *message, NSError *error))failure;
 + (void)logout;
-+ (NSString *)WeiChatPay;
+- (void)weiChatPay:(NSString *)data success:(dispatch_block_t)success failed:(dispatch_block_t)failed;
 @end
