@@ -16,7 +16,7 @@
 ///老师详情
 @property (nonatomic, strong) UILabel *teacherDetail;
 ///关注按钮
-@property (nonatomic, strong) UIButton *focusButton;
+//@property (nonatomic, strong) UIButton *focusButton;
 @property (nonatomic, strong) UIView *bottomView;
 @end
 
@@ -30,8 +30,8 @@
         
         CGFloat teacherImageH = 55;
         CGFloat userNameW = 60;
-        CGFloat FocusButtonW = 90;
-        CGFloat FocusButtonH = 33;
+//        CGFloat FocusButtonW = 90;
+//        CGFloat FocusButtonH = 33;
         //teacherImage
         self.teacherImage = [[UIImageView alloc] init];
         self.teacherImage.backgroundColor = BackgroundColor
@@ -56,20 +56,20 @@
             make.width.mas_equalTo(userNameW);
         }];
         
-        //FocusButton
-        self.focusButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [self.contentView addSubview:self.focusButton];
-        self.focusButton.backgroundColor = BlueColor;
-        self.focusButton.tintColor = [UIColor whiteColor];
-        self.focusButton.titleLabel.font = FONT15;
-        self.focusButton.layer.masksToBounds = YES;
-        self.focusButton.layer.cornerRadius = 4;
-        [self.focusButton setTitle:@"关注" forState:UIControlStateNormal];
-        [self.focusButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self);
-            make.right.equalTo(self.contentView).with.offset(-10);
-            make.size.mas_equalTo(CGSizeMake(FocusButtonW, FocusButtonH));
-        }];
+//        //FocusButton
+//        self.focusButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//        [self.contentView addSubview:self.focusButton];
+//        self.focusButton.backgroundColor = BlueColor;
+//        self.focusButton.tintColor = [UIColor whiteColor];
+//        self.focusButton.titleLabel.font = FONT15;
+//        self.focusButton.layer.masksToBounds = YES;
+//        self.focusButton.layer.cornerRadius = 4;
+//        [self.focusButton setTitle:@"关注" forState:UIControlStateNormal];
+//        [self.focusButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.centerY.equalTo(self);
+//            make.right.equalTo(self.contentView).with.offset(-10);
+//            make.size.mas_equalTo(CGSizeMake(FocusButtonW, FocusButtonH));
+//        }];
         
         //teacherDetail
         self.teacherDetail = [[UILabel alloc] init];
@@ -82,7 +82,7 @@
             make.top.equalTo(self.teacherName.mas_bottom);
             make.left.equalTo(self.teacherName);
             make.height.equalTo(self.teacherName);
-            make.right.equalTo(self.focusButton.mas_left).with.offset(-10);
+            make.right.equalTo(self.contentView).with.offset(-10);
         }];
 
         self.bottomView = [[UIView alloc] init];

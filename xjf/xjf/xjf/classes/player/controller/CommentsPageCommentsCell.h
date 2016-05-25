@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CommentsModel.h"
 @interface CommentsPageCommentsCell : UITableViewCell
-
+@property (nonatomic, strong) CommentsModel *commentsModel;
 @end

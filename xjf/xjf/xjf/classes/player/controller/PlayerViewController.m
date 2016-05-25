@@ -52,7 +52,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.isShowVideDescrible = YES; //默认展示视频详情
+        self.isShowVideDescrible = NO; //默认不展示视频详情
     }
     return self;
 }
@@ -459,7 +459,9 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 #pragma mark 查看全部评论
 - (void)CommentsFooterViewlookCommentsButton:(UIButton *)sender
 {
-    [self.navigationController pushViewController:[CommentsViewController new] animated:YES];
+    CommentsViewController *allComents = [CommentsViewController new];
+    allComents.commentsModel = self.commentsModel;
+    [self.navigationController pushViewController:allComents animated:YES];
 }
 #pragma mark 评论
 - (void)comments:(UIButton *)sender

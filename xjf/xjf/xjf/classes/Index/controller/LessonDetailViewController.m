@@ -163,7 +163,7 @@ static CGFloat  payViewH = 285;
 #pragma mark addShoppingCart
 - (void)addShoppingCart:(UIButton *)sender
 {
-    
+
 }
 #pragma mark nowPay
 - (void)nowPay:(UIButton *)sender

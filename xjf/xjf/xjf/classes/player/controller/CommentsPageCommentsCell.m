@@ -22,7 +22,7 @@
 ///评论内容
 @property (nonatomic, strong) UILabel *commentsText;
 
-
+@property (nonatomic, assign) CGRect tempRect;
 @end
 
 @implementation CommentsPageCommentsCell
@@ -98,17 +98,44 @@
         //commentsText
         self.commentsText = [[UILabel alloc] init];
         [self.contentView addSubview:self.commentsText];
-        self.commentsText.font = FONT15;
+        self.commentsText.font = FONT12;
+        self.commentsText.textColor = AssistColor;
         self.commentsText.text = @"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         self.commentsText.numberOfLines = 0;
-        [self.commentsText mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.userImage.mas_bottom);
-            make.left.equalTo(self.userName);
-            make.right.equalTo(self).with.offset(-10);
-            make.bottom.equalTo(self);
-        }];
+//        [self.commentsText mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(self.userImage.mas_bottom);
+//            make.left.equalTo(self.userName);
+//            make.right.equalTo(self).with.offset(-10);
+//            make.bottom.equalTo(self);
+//        }];
     }
     return self;
+}
+
+- (void)setCommentsModel:(CommentsModel *)commentsModel
+{
+    
+    if (commentsModel) {
+        _commentsModel = commentsModel;
+    }
+    [self.userImage sd_setImageWithURL:[NSURL URLWithString:commentsModel.user_avatar]];
+    self.userName.text = commentsModel.user_nickname;
+    self.commentsText.text = commentsModel.content;
+    
+    self.tempRect = [StringUtil calculateLabelRect:commentsModel.content width:SCREENWITH - 70 fontsize:12];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    //
+    //    self.commentsText.frame = CGRectMake(self.userDetail.frame.origin.x, CGRectGetMaxY(self.userDetail.frame), SCREENWITH - 70, 30);
+    [self.commentsText mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.userImage.mas_bottom).with.offset(10);
+        make.left.equalTo(self.userName);
+        make.right.equalTo(self).with.offset(-10);
+        make.height.mas_equalTo(self.tempRect.size.height);
+    }];
 }
 
 

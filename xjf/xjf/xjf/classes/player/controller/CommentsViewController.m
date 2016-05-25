@@ -42,8 +42,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    
-    self.tableView.rowHeight = 100;
+
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
     
@@ -52,16 +51,24 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.commentsModel.result.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CommentsPageCommentsCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CommentsCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.commentsModel = self.commentsModel.result.data[indexPath.row];
     
     return cell;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommentsModel *model = self.commentsModel.result.data[indexPath.row];
+    CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:12];
+    return tempRect.size.height + 70;
+}
+
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
