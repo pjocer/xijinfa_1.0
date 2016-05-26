@@ -81,7 +81,10 @@
 
 - (void)addGoods:(NSArray <TalkGridModel*>*)goods key:(NSString *)key {
     NSMutableArray *goodsList = [NSMutableArray arrayWithArray:[self shoppingCartFor:key]];
-    [goodsList addObjectsFromArray:goods];
+    for (TalkGridModel *model in goods) {
+        NSDictionary *dic = [model toDictionary];
+        [goodsList addObject:dic];
+    }
     NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForShoppingCart]] mutableCopy];
     [dic setObject:goodsList forKey:key];
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];

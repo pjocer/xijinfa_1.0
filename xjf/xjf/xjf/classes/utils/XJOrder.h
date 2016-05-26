@@ -8,7 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "TalkGridModel.h"
+
+typedef NS_OPTIONS(NSUInteger, OrderStatus) {
+    OrderStatusSuccess,
+    OrderStatusCancel,
+    OrderStatusUndetermined
+} NS_ENUM_AVAILABLE_IOS(8_0);
+
 @interface XJOrder : NSObject
+
+@property (nonatomic, assign) OrderStatus status;
 
 @property (nonatomic, strong) NSMutableArray <TalkGridModel *>*goods;
 
