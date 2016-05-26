@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TalkGridModel.h"
+#import "XJOrder.h"
 
 //获取购物车析金学堂内容
 #define XJ_XUETANG_SHOP @"xijin_xuetang"
@@ -29,7 +30,9 @@ typedef enum : NSUInteger {
 
 -(nonnull instancetype)init NS_UNAVAILABLE;
 
-- (void)buyTradeImmediately:(nonnull TalkGridModel *)trade_model by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
+- (nonnull XJOrder *)createOrderWith:(nullable NSArray <TalkGridModel *>*)goods;
+
+- (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
 
 - (nullable NSArray <TalkGridModel*>*)shoppingCartFor:(nullable NSString *)key;
 
@@ -42,4 +45,5 @@ typedef enum : NSUInteger {
 - (BOOL)createFileAtPath:(nullable NSString *)path;
 
 - (void)addLessons:(nullable NSArray <TalkGridModel*>*)lessons key:(nullable NSString *)key;
+
 @end

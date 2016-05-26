@@ -143,6 +143,7 @@
 		D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2631CEAF85C00873D10 /* StringUtil.m */; };
 		D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2661CEAF87800873D10 /* NSDate+Convenience.m */; };
 		D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */; };
+		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
 		D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E651CE41A4D003BF1F3 /* RegistViewController.xib */; };
@@ -464,6 +465,8 @@
 		D053D2661CEAF87800873D10 /* NSDate+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Convenience.m"; sourceTree = "<group>"; };
 		D05843A31CDC5F7C00B1363C /* ZFPlayerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerSingleton.h; sourceTree = "<group>"; };
 		D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerSingleton.m; sourceTree = "<group>"; };
+		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
+		D05985211CF6BD8300BF2A30 /* XJOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJOrder.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
 		D065BFE31CE5751800D11804 /* ImageCodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCodeModel.m; path = xjf/classes/utils/ImageCodeModel.m; sourceTree = SOURCE_ROOT; };
 		D0698E631CE41A4D003BF1F3 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
@@ -1375,6 +1378,8 @@
 			children = (
 				D06A81EC1CEEA0E8002C1297 /* XJMarket.h */,
 				D06A81ED1CEEA0E8002C1297 /* XJMarket.m */,
+				D05985201CF6BD8300BF2A30 /* XJOrder.h */,
+				D05985211CF6BD8300BF2A30 /* XJOrder.m */,
 				D07D74551CED9EAC0037B1A9 /* XJPay.h */,
 				D07D74561CED9EAC0037B1A9 /* XJPay.m */,
 				D07D74581CEDA4CC0037B1A9 /* Order.h */,
@@ -1582,6 +1587,7 @@
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				644C11571CBA90A000892E2C /* XMShareWechatUtil.m in Sources */,
 				644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */,
+				D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */,
 				D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */,
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */,

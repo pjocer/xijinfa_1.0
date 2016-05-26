@@ -51,9 +51,18 @@
     [self createFileAtPath:[self pathForMyLessons]];
     [_my_lessons writeToFile:[self pathForMyLessons] atomically:YES];
 }
-- (void)buyTradeImmediately:(nonnull TalkGridModel *)trade_model by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
+
+-(XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods {
+    return [[XJOrder alloc] initWith:goods];
+}
+
+- (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc]init];
-    [pay buyTradeImmediately:trade_model.id_ by:style success:success failed:failed];
+    NSMutableArray *trades = [NSMutableArray array];
+    for (TalkGridModel *model in order.goods) {
+        [trades addObject:model.id_];
+    }
+    [pay buyTradeImmediately:trades by:style success:success failed:failed];
     ReceivedNotification(self, PayLessonsSuccess, ^(NSNotification *notification) {
         if (success) success();
     });

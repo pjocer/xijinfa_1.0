@@ -142,7 +142,7 @@
 @implementation XJPay
 
 
-- (void)buyTradeImmediately:(nonnull NSString *)trade_id by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed{
+-(void)buyTradeImmediately:(NSArray<NSString *> *)trade_id by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     self.success = success;
     self.failed = failed;
     XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
@@ -155,9 +155,9 @@
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         @strongify(self)
         if ([self handleData:responseData]) {
-          [self produceOrder:style];
+            [self produceOrder:style];
         }else {
-           if (self.failed) self.failed();
+            if (self.failed) self.failed();
         }
     } failedBlock:^(NSError * _Nullable error) {
         if (self.failed) self.failed();

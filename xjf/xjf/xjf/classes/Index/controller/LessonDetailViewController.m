@@ -168,6 +168,7 @@ static CGFloat  payViewH = 285;
 #pragma mark nowPay
 - (void)nowPay:(UIButton *)sender
 {
+    XJOrder *order = [[XJMarket sharedMarket] createOrderWith:@[self.model]];
     [UIView animateWithDuration:0.5 animations:^{
         self.payView.frame = CGRectMake(0, self.view.bounds.size.height - payViewH, self.view.bounds.size.width, payViewH);
     }];
