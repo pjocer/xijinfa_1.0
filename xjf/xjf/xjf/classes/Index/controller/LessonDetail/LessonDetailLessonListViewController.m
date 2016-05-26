@@ -13,9 +13,6 @@
 @interface LessonDetailLessonListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-
-@property (nonatomic, assign) BOOL isPay;
-
 @end
 
 @implementation LessonDetailLessonListViewController
@@ -34,7 +31,6 @@ static CGFloat rowHeight = 35;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor
-    self.isPay = YES;
     [self initTabelView];
     
       NSString *api = [NSString stringWithFormat:@"%@%@",coursesProjectLessonDetailList,self.ID];

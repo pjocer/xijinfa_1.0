@@ -28,10 +28,12 @@
 @property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *id_;
 @property (nonatomic, strong) NSString *is_album;
+///关键字
 @property (nonatomic, strong) NSString *keywords;
+///原价
+@property (nonatomic, strong) NSString *original_price;
 @property (nonatomic, strong) NSString *lessons_count;
 @property (nonatomic, strong) NSString *lessons_duration;
-@property (nonatomic, strong) NSString *original_price;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *purchased;
 @property (nonatomic, strong) NSString *sorting;
@@ -43,9 +45,24 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *updated_at;
+///(已登录用户)是否已收藏
+@property (nonatomic, assign) BOOL user_favored;
 @property (nonatomic, strong) NSString *user_id;
-@property (nonatomic, strong) NSString *video_id;
-@property (nonatomic, strong) NSString *view_;
+///(已登录用户)是否已点赞
+@property (nonatomic, assign) BOOL user_liked;
+///(已登录用户)是否已付费(含购买订阅但不含免费)
+@property (nonatomic, assign) BOOL user_paid;
+///(已登录用户)是否已购买
+@property (nonatomic, assign) BOOL user_purchased;
+///(已登录用户)是否已订阅
+@property (nonatomic, assign) BOOL user_subscribed;
+///(已登录用户)播放历史, 秒
+@property (nonatomic, strong) NSString *user_played;
+///视频时长
+@property (nonatomic, strong) NSString *video_duration;
+///视频播放次数
+@property (nonatomic, strong) NSString *video_view;
+@property (nonatomic, strong) NSString *view;
 @property (nonatomic, strong) NSArray<TalkGridVideo, ConvertOnDemand>*video;
 @end
 

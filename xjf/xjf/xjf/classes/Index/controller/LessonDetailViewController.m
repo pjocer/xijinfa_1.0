@@ -25,6 +25,8 @@
 @property (nonatomic, strong) UIButton *addShoppingCart;
 ///立刻购买按钮
 @property (nonatomic, strong) UIButton *nowPay;
+///继续学习按钮
+@property (nonatomic, strong) UIButton *studing;
 
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
@@ -159,6 +161,26 @@ static CGFloat  payViewH = 285;
     self.nowPay.tintColor = [UIColor whiteColor];
     self.nowPay.titleLabel.font = FONT15;
     [self.nowPay addTarget:self action:@selector(nowPay:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.studing = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.view addSubview:self.studing];
+    self.studing.frame = CGRectMake(0, self.view.frame.size.height - BottomPayButtonH - HEADHEIGHT, self.view.frame.size.width, BottomPayButtonH);
+    self.studing.backgroundColor = BlueColor;
+    [self.studing setTitle:@"继续学习" forState:UIControlStateNormal];
+    self.studing.tintColor = [UIColor whiteColor];
+    self.studing.titleLabel.font = FONT15;
+    [self.studing addTarget:self action:@selector(studing:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if (self.model.user_purchased) {
+        self.nowPay.hidden = YES;
+        self.addShoppingCart.hidden = YES;
+        self.studing.hidden = NO;
+    }else
+    {
+        self.nowPay.hidden = NO;
+        self.addShoppingCart.hidden = NO;
+        self.studing.hidden = YES;
+    }
 }
 #pragma mark addShoppingCart
 - (void)addShoppingCart:(UIButton *)sender
@@ -175,29 +197,28 @@ static CGFloat  payViewH = 285;
     self.payingBackGroudView.hidden = NO;
     
 }
+
+#pragma mark - studing
+- (void)studing:(UIButton *)sender
+{
+    
+}
+
 #pragma mark - aliPay
 - (void)aliPay:(UIButton *)sender
 {
-    [[ZToastManager ShardInstance] showprogress];
-    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:Alipay success:^{
-        [[ZToastManager ShardInstance] hideprogress];
-        if ([self.model.department isEqualToString:@"dept3"]) {
-            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
-        }else {
-            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_PEIXUN];
-        }
-        MyLessonsViewController *lesson = [[MyLessonsViewController alloc]init];
-        [self.navigationController pushViewController:lesson animated:YES];
-    } failed:^{
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-    }];
+    [self payByPayStyle:Alipay];
 }
 #pragma mark - WeixinPay
 - (void)WeixinPay:(UIButton *)sender
 {
+    [self payByPayStyle:WechatPay];
+}
+
+- (void)payByPayStyle:(PayStyle)stayle
+{
     [[ZToastManager ShardInstance] showprogress];
-    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:WechatPay success:^{
+    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:stayle success:^{
         [[ZToastManager ShardInstance] hideprogress];
         if ([self.model.department isEqualToString:@"dept3"]) {
             [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
@@ -211,6 +232,7 @@ static CGFloat  payViewH = 285;
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
     }];
 }
+
 #pragma mark - payViewCancel
 - (void)payViewCancel:(UIButton *)sender
 {
@@ -245,7 +267,7 @@ static CGFloat  payViewH = 285;
     self.lessonDetailLessonListViewController.title = @"目录";
     [self addChildViewController:self.lessonDetailLessonListViewController];
     self.lessonDetailLessonListViewController.ID = self.model.id_;
-    
+    self.lessonDetailLessonListViewController.isPay = self.model.user_purchased;
     
     self.lessonPlayerLessonDescribeViewController = [[LessonPlayerLessonDescribeViewController alloc] init];
     self.lessonPlayerLessonDescribeViewController.title = @"课程介绍";

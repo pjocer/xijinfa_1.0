@@ -10,6 +10,8 @@
 		5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F861CF4272B00D7EEEB /* PayView.m */; };
 		5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C3F881CF4279200D7EEEB /* PayView.xib */; };
 		5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */; };
+		5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */; };
+		5A0C3F9C1CF69C0400D7EEEB /* MyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */; };
 		5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E531CEAE3B00079BEFE /* CommentsModel.m */; };
 		5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E561CEB17450079BEFE /* LessonViewController.m */; };
 		5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */; };
@@ -172,6 +174,10 @@
 		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayView.xib; sourceTree = "<group>"; };
 		5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailListModel.h; sourceTree = "<group>"; };
 		5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailListModel.m; sourceTree = "<group>"; };
+		5A0C3F921CF6940F00D7EEEB /* MyMoneyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoneyHeaderView.h; sourceTree = "<group>"; };
+		5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyHeaderView.m; sourceTree = "<group>"; };
+		5A0C3F991CF69C0400D7EEEB /* MyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoneyViewController.h; sourceTree = "<group>"; };
+		5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyViewController.m; sourceTree = "<group>"; };
 		5A105E521CEAE3B00079BEFE /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsModel.h; path = xjf/classes/player/controller/CommentsModel.h; sourceTree = SOURCE_ROOT; };
 		5A105E531CEAE3B00079BEFE /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsModel.m; path = xjf/classes/player/controller/CommentsModel.m; sourceTree = SOURCE_ROOT; };
 		5A105E551CEB17450079BEFE /* LessonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonViewController.h; sourceTree = "<group>"; };
@@ -525,6 +531,24 @@
 				5A0C3F881CF4279200D7EEEB /* PayView.xib */,
 			);
 			path = PayView;
+			sourceTree = "<group>";
+		};
+		5A0C3F8D1CF6939E00D7EEEB /* Mymoney */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C3F991CF69C0400D7EEEB /* MyMoneyViewController.h */,
+				5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */,
+			);
+			path = Mymoney;
+			sourceTree = "<group>";
+		};
+		5A0C3F911CF693E900D7EEEB /* MyMoneyView */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C3F921CF6940F00D7EEEB /* MyMoneyHeaderView.h */,
+				5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */,
+			);
+			path = MyMoneyView;
 			sourceTree = "<group>";
 		};
 		5A105E581CEB1A9F0079BEFE /* Lesson */ = {
@@ -925,6 +949,7 @@
 				D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */,
 				D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */,
 				D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */,
+				5A0C3F8D1CF6939E00D7EEEB /* Mymoney */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -956,6 +981,7 @@
 				D083C8EF1CF450630028DE8A /* SettingRowOneCell.h */,
 				D083C8F01CF450630028DE8A /* SettingRowOneCell.m */,
 				D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */,
+				5A0C3F911CF693E900D7EEEB /* MyMoneyView */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1530,8 +1556,10 @@
 				D07D74451CED7E240037B1A9 /* UserInfoListCell.m in Sources */,
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
+				5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				5A105E781CEC31F80079BEFE /* LessonListCell.m in Sources */,
+				5A0C3F9C1CF69C0400D7EEEB /* MyMoneyViewController.m in Sources */,
 				644C11561CBA90A000892E2C /* XMShareUtil.m in Sources */,
 				5A240E041CE426A3003B7971 /* PlayerPageDescribeHeaderView.m in Sources */,
 				D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */,

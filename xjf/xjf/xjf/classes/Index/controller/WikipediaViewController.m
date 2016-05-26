@@ -63,12 +63,21 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
         __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
-        for (BannerResultModel *model in sSelf.bannermodel.result.data) {
-            [self.dataArrayByBanner addObject:model.thumbnail];
-        }
-        [sSelf.collectionView reloadData];
 
-    }                  failedBlock:^(NSError *_Nullable error) {
+        if (sSelf.bannermodel.errCode == 0) {
+            for (BannerResultModel *model in sSelf.bannermodel.result.data) {
+            [sSelf.dataArrayByBanner addObject:model.thumbnail];
+            }
+            [sSelf.collectionView reloadData];
+
+        }else
+        {
+            [[ZToastManager ShardInstance]showtoast:self.bannermodel.errMsg];
+        }
+        
+        
+        
+    }   failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];

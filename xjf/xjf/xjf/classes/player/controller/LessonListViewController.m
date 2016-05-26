@@ -90,10 +90,6 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:lessonListCell_id];
     cell.model = self.tablkListModel.result.data[indexPath.row];
-    cell.teacherName.hidden = NO;
-    cell.lessonCount.hidden = NO;
-    cell.price.hidden = NO;
-    cell.oldPrice.hidden = NO;
     return cell;
 }
 #pragma mark Delegate

@@ -11,4 +11,5 @@
 @interface LessonDetailLessonListViewController : UIViewController
 @property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
 @property (nonatomic, strong) NSString *ID;
+@property (nonatomic, assign) BOOL isPay;
 @end

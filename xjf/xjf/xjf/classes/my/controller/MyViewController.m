@@ -9,7 +9,7 @@
 #import "MyViewController.h"
 #import "myConfigure.h"
 #import "UserInfoViewController.h"
-
+#import "MyMoneyViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -130,6 +130,14 @@
 
 - (void)componentDidSelected:(NSUInteger)index {
     NSLog(@"%lu", index);
+    
+    if (index == 6) {
+        MyMoneyViewController *myMoneyPage = [MyMoneyViewController new];
+        [self.navigationController pushViewController:myMoneyPage animated:YES];
+    }
+    
+    
+    
     switch (index) {
         case 0:
 

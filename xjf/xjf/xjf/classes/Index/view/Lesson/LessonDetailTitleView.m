@@ -121,11 +121,16 @@
     [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.videoTitle.text = model.title;
     
-    if (![[NSString stringWithFormat:@"%@",model.price] isEqualToString:@"免费"]) {
-        CGFloat tempPrice = [model.price floatValue];
-        self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
-    }
+    CGFloat tempPrice = [model.price floatValue];
+    self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
     
+    if (self.model.user_purchased) {
+        self.price.hidden = YES;
+        self.oldPrice.hidden = YES;
+    }else{
+        self.price.hidden = NO;
+        self.oldPrice.hidden = NO;
+    }
 }
 
 

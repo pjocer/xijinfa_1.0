@@ -159,10 +159,12 @@
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
    
-//    if (![[NSString stringWithFormat:@"%@",model.price] isEqualToString:@"免费"]) {
-         CGFloat tempPrice = [model.price floatValue];
+    CGFloat tempPrice = [model.price floatValue];
+    if (tempPrice == -1) {
+         self.price.text = @"免费";
+    }else {
         self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
-//    }
+    }
     
 }
 
@@ -170,6 +172,23 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    if (self.model.user_purchased) {
+        self.teacherName.hidden = NO;
+        self.lessonCount.hidden = NO;
+        self.price.hidden = YES;
+        self.oldPrice.hidden = YES;
+    }else{
+        self.teacherName.hidden = NO;
+        self.lessonCount.hidden = NO;
+        self.price.hidden = NO;
+        self.oldPrice.hidden = NO;
+    }
+    
+    if ([self.price.text isEqualToString:@"免费"]) {
+        self.oldPrice.hidden = YES;
+    }
+    
     if (self.selectedLabel.hidden == NO) {
         
         CGFloat videoImageH;
