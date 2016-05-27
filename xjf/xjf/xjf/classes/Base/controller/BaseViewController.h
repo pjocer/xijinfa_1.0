@@ -21,11 +21,7 @@ FOUNDATION_EXTERN NSString *const Subscribe;
 
 @interface BaseViewController : UIViewController
 
-@property(nonatomic, assign) BOOL isIndex;
-
-- (BOOL)isLogin;
-
-- (UIView *)footerView:(NSString *)msg;
+@property (nonatomic, copy) NSString *nav_title;
 
 - (void)extendheadViewFor:(NSString *)name;
 

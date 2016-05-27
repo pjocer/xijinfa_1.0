@@ -26,9 +26,9 @@ PODS:
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
   - RTLabel (1.0.1)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
   - TencentOpenApiSDK (2.9.5):
     - TencentOpenApiSDK/Basic (= 2.9.5)
   - TencentOpenApiSDK/Basic (2.9.5)
@@ -59,7 +59,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RTLabel: 6005d07fef57b101097c4271f804daae3110cbca
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   TencentOpenApiSDK: a0d7716edd6eb438d65828168e8e5137301b436d
   WeiboSDK: acb067053668102cf07d01aa7604350162c2e466
   XRCarouselView: 9d59a0b06fe29b27492c1ddf095b290163339a53

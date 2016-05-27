@@ -30,6 +30,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor
     self.model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
+    self.nav_title = @"我的";
     [self extendheadViewFor:My];
     [self initMainUI];
     @weakify(self)
@@ -47,7 +48,7 @@
 
 //main UI
 - (void)initMainUI {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT - HEADHEIGHT - 40) style:UITableViewStylePlain];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 40) style:UITableViewStylePlain];
     _tableview.dataSource = self;
     _tableview.delegate = self;
     _tableview.showsVerticalScrollIndicator = NO;
@@ -58,7 +59,6 @@
     [_tableview registerNib:[UINib nibWithNibName:@"UserUnLoadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserUnLoadCell"];
     [_tableview registerNib:[UINib nibWithNibName:@"UserLoadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserLoadCell"];
     [_tableview registerClass:[UserComponentCell class] forCellReuseIdentifier:@"UserComponentCell"];
-//    _tableview.tableFooterView = [self footerView:@""];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 

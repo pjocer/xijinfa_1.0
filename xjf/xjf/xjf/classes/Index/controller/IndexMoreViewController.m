@@ -47,7 +47,6 @@
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableview];
-    _tableview.tableFooterView = [self footerView:@""];
 }
 
 //tableview

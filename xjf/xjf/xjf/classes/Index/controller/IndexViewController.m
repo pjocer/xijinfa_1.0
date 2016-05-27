@@ -33,14 +33,13 @@
 
 -(void)initMainUI
 {
-    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, HEADHEIGHT, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-45) style:UITableViewStyleGrouped];
+    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-45) style:UITableViewStyleGrouped];
     _tableview.dataSource=self;
     _tableview.delegate=self;
     _tableview.showsVerticalScrollIndicator = NO;
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableview];
-    _tableview.tableFooterView = [self footerView:@""];
 }
 
 //tableview

@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.isIndex = YES;
     [self extendheadViewFor:Topic];
 //    [self initMainUI];
 }
