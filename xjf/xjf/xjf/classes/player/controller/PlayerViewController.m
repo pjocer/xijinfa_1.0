@@ -472,7 +472,9 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 //发表评论
 - (void)sendCommentMsg:(UIButton *)sender
 {
-//    [self requestCommentsData:<#(APIName *)#> method:<#(RequestMethod)#>]
+    
+//    self.api = [NSString stringWithFormat:@"%@%@/%@",talkGridcomments,self.talkGridModel.id_,self.textField.text];
+//    [self requestCommentsData:self.api method:POST];
     [self.textField resignFirstResponder];
 }
 
