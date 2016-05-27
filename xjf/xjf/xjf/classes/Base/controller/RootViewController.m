@@ -10,7 +10,6 @@
 #import "IndexViewController.h"
 #import "TopicViewController.h"
 #import "VipViewController.h"
-#import "SubscribeViewController.h"
 #import "MyViewController.h"
 #import "PlayerViewController.h"
 #import "LessonPlayerViewController.h"
@@ -58,11 +57,6 @@
                              title:@"会员"
                          imageName:@"tab_vip"
                  selectedImageName:@"tab_vip_selected"];
-
-//    SubscribeViewController *vc4 = [[SubscribeViewController alloc] init];
-//    [self setupChildViewController:vc4 title:@"订阅"
-//                         imageName:@"tabbar_discover"
-//                 selectedImageName:@"tabbar_discover_selected"];
 
     MyViewController *vc5 = [[MyViewController alloc] init];
     [self setupChildViewController:vc5

@@ -7,7 +7,3 @@
 //
 
 #import "IndexConfigure.h"
-#import "SCNavTabBarController.h"
-#import "MenuHrizontal.h"
-#import "ScrollPageView.h"
-#import "HomeView.h"

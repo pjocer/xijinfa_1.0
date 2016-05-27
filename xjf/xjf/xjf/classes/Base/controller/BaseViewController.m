@@ -108,14 +108,6 @@ NSString *const Subscribe = @"SubscribeViewController";
         [hisButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView addSubview:hisButton];
         
-//        UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        downButton.frame = CGRectMake(SCREENWITH -40, 20+(HEADHEIGHT-20-25)/2, 30, 30);
-//        downButton.tag =11;
-//        downButton.hidden=NO;
-//        [downButton setImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
-//        [downButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.headView  addSubview:downButton];
-        
         UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
         searchButton.frame = CGRectMake(SCREENWITH -90, 20+(HEADHEIGHT-20-25)/2, 30, 30);
         searchButton.tag =12;
@@ -123,9 +115,6 @@ NSString *const Subscribe = @"SubscribeViewController";
         [searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
         [searchButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.headView addSubview:searchButton];
-
-    } else if ([name isEqualToString:Subscribe]) {
-        _titleLabel.text = @"订阅";
 
     } else if ([name isEqualToString:Topic]) {
         _titleLabel.text = @"话题";
@@ -248,11 +237,6 @@ NSString *const Subscribe = @"SubscribeViewController";
     [footerview addSubview:footLabel];
     return footerview;
 }
-
-//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    [super touchesBegan:touches withEvent:event];
-//    [self.view endEditing:YES];
-//}
 
 - (BOOL)isLogin {
     return NO;
