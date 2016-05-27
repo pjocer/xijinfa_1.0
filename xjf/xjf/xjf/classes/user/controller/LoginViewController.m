@@ -64,14 +64,8 @@
 }
 
 - (void)setNavigationBar {
-    UIColor *normalColor = NormalColor;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : normalColor, NSFontAttributeName : [UIFont systemFontOfSize:16]};
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registAction:)];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : normalColor, NSFontAttributeName : [UIFont systemFontOfSize:16]} forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = item;
-    UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
-    self.view.userInteractionEnabled = YES;
-    [self.view addGestureRecognizer:singleRecognizer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -387,40 +381,5 @@
     }];
 
 }
-
-#pragma mark - UserDelegate
-
-- (void)userRegistOK:(id)userInfo {
-
-}
-
-- (void)userRegistFail {
-
-}
-//-(void)parserResultObject:(id)resultObject
-//{
-//    if (resultObject==nil) {
-//        return;
-//    }
-//    if (resultObject && [resultObject isKindOfClass:[NSDictionary class]]) {
-//        {
-//            [[ZToastManager ShardInstance] showtoast:[resultObject objectForKey:@"msg"]];
-//            int code =[[resultObject objectForKey:@"code"] intValue];
-//            if (code==1)
-//            {
-//                [[ZShare sharedInstance] initUserInfo:resultObject];
-//                if (_delegate&&[_delegate respondsToSelector:@selector(userLoginOK:)]) {
-//                    [_delegate userLoginOK:[ZShare sharedInstance].userInfo];
-//                }
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateLoveList" object:nil];
-//                
-//            }else if (code==2)
-//            {
-//                UserThirdLogin *viewController = [UserThirdLogin newWithDelegate:_delegate userinfo:resultObject];
-//                [self.navigationController pushViewController:viewController animated:YES];
-//            }
-//        }
-//    }
-//}
 
 @end

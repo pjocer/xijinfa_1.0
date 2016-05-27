@@ -21,7 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self extendheadViewFor:Topic];
-//    [self initMainUI];
+    self.nav_title = @"话题";
 }
 
 - (void)didReceiveMemoryWarning {

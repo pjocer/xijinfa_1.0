@@ -112,20 +112,6 @@
     }
 }
 
-#pragma UserDelegate
-
-- (void)userLoginOK:(id)userinfo {
-
-}
-
-- (void)userLoginFail {
-
-}
-
-- (void)userDidCancel {
-
-}
-
 #pragma UserComponentDelegate
 
 - (void)componentDidSelected:(NSUInteger)index {
