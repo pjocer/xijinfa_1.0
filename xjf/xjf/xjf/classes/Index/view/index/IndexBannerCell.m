@@ -8,11 +8,9 @@
 
 #import "IndexBannerCell.h"
 #import "XRCarouselView.h"
+#import "BannerModel.h"
 @interface IndexBannerCell()<XRCarouselViewDelegate>
-{
-    
-}
-
+@property (nonatomic, strong) BannerModel *bannermodel;
 @property (nonatomic, strong) XRCarouselView *carouselView;
 @end
 
@@ -36,18 +34,11 @@
         _carouselView.delegate = self;
         //设置每张图片的停留时间
         _carouselView.time = 5;
-        //用block处理图片点击
-//        _carouselView.imageClickBlock = ^(NSInteger index) {
-//            NSLog(@"第%ld张图片被点击", index);
-//        };
-
-        //设置分页控件的图片
-//        [_carouselView setPageImage:[UIImage imageNamed:@"other"] andCurrentImage:[UIImage imageNamed:@"current"]];
         
         //设置分页控件的frame
         _carouselView.pagePosition = PositionBottomCenter;
         [self addSubview:_carouselView];
-        
+         [self requestBannerData:appHomeCarousel method:GET];
 
     }
     return self;
@@ -90,4 +81,29 @@
         self.actionBlock(BEventType_Unknow,nil,self.carouselView,nil,self.indexPath);
     }
 }
+
+
+- (void)requestBannerData:(APIName *)api method:(RequestMethod)method {
+    __weak typeof(self) wSelf = self;
+    NSMutableArray *tempArray = [NSMutableArray array];
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    
+    //bannermodel
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        
+        __strong typeof(self) sSelf = wSelf;
+        [[ZToastManager ShardInstance] hideprogress];
+        sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+        for (BannerResultModel *model in sSelf.bannermodel.result.data) {
+            [tempArray addObject:model.thumbnail];
+        }
+        sSelf.carouselView.imageArray = tempArray;
+    }   failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+    
+}
+
 @end

@@ -472,6 +472,7 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 //发表评论
 - (void)sendCommentMsg:(UIButton *)sender
 {
+//    [self requestCommentsData:<#(APIName *)#> method:<#(RequestMethod)#>]
     [self.textField resignFirstResponder];
 }
 
@@ -483,7 +484,6 @@ static NSString * PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self requestCommentsData:self.api method:POST];
     [self.textField resignFirstResponder];
     return YES;
 }
