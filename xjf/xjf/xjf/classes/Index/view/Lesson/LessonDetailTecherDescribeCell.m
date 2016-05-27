@@ -10,24 +10,23 @@
 
 @interface LessonDetailTecherDescribeCell ()
 ///老师头像
-@property (nonatomic, strong) UIImageView *teacherImage;
+@property(nonatomic, strong) UIImageView *teacherImage;
 ///老师名字
-@property (nonatomic, strong) UILabel *teacherName;
+@property(nonatomic, strong) UILabel *teacherName;
 ///老师详情
-@property (nonatomic, strong) UILabel *teacherDetail;
+@property(nonatomic, strong) UILabel *teacherDetail;
 ///关注按钮
 //@property (nonatomic, strong) UIButton *focusButton;
-@property (nonatomic, strong) UIView *bottomView;
+@property(nonatomic, strong) UIView *bottomView;
 @end
 
 
 @implementation LessonDetailTecherDescribeCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+
         CGFloat teacherImageH = 55;
         CGFloat userNameW = 60;
 //        CGFloat FocusButtonW = 90;
@@ -43,7 +42,7 @@
             make.centerY.equalTo(self.contentView);
             make.size.mas_offset(CGSizeMake(teacherImageH, teacherImageH));
         }];
-        
+
         //teacherName
         self.teacherName = [[UILabel alloc] init];
         [self.contentView addSubview:self.teacherName];
@@ -55,7 +54,7 @@
             make.height.mas_equalTo(self.teacherImage).multipliedBy(0.5);
             make.width.mas_equalTo(userNameW);
         }];
-        
+
 //        //FocusButton
 //        self.focusButton = [UIButton buttonWithType:UIButtonTypeSystem];
 //        [self.contentView addSubview:self.focusButton];
@@ -70,7 +69,7 @@
 //            make.right.equalTo(self.contentView).with.offset(-10);
 //            make.size.mas_equalTo(CGSizeMake(FocusButtonW, FocusButtonH));
 //        }];
-        
+
         //teacherDetail
         self.teacherDetail = [[UILabel alloc] init];
         [self.contentView addSubview:self.teacherDetail];

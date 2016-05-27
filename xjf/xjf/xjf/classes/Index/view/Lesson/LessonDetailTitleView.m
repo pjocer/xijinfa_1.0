@@ -11,28 +11,27 @@
 
 @interface LessonDetailTitleView ()
 ///视频图片
-@property (nonatomic, strong) UIImageView *videoImage;
+@property(nonatomic, strong) UIImageView *videoImage;
 ///视频标题
-@property (nonatomic, strong) UILabel *videoTitle;
+@property(nonatomic, strong) UILabel *videoTitle;
 ///主讲老师
-@property (nonatomic, strong) UILabel *teacherName;
+@property(nonatomic, strong) UILabel *teacherName;
 ///课时
-@property (nonatomic, strong) UILabel *lessonCount;
+@property(nonatomic, strong) UILabel *lessonCount;
 ///现在价格
-@property (nonatomic, strong) UILabel *price;
+@property(nonatomic, strong) UILabel *price;
 ///之前前个
-@property (nonatomic, strong) UILabel *oldPrice;
+@property(nonatomic, strong) UILabel *oldPrice;
 @end
 
 
 @implementation LessonDetailTitleView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        
+
         //videoImage
         self.videoImage = [[UIImageView alloc] init];
         [self addSubview:self.videoImage];
@@ -40,10 +39,10 @@
         [self.videoImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(self).with.offset(10);
             make.width.mas_equalTo((SCREENWITH / 2) - 20);
-            make.height.equalTo(self.videoImage.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
-            
+            make.height.equalTo(self.videoImage.mas_width).multipliedBy(9.0f / 16.0f).with.priority(750);
+
         }];
-        
+
         //videoTitle
         self.videoTitle = [[UILabel alloc] init];
         [self addSubview:self.videoTitle];
@@ -56,7 +55,7 @@
             make.top.equalTo(self.videoImage);
             make.height.mas_equalTo(15);
         }];
-        
+
         //teacherName
         self.teacherName = [[UILabel alloc] init];
         [self addSubview:self.teacherName];
@@ -69,7 +68,7 @@
             make.right.equalTo(self).with.offset(-100);
             make.height.mas_equalTo(14);
         }];
-        
+
         //lessonCount
         self.lessonCount = [[UILabel alloc] init];
         [self addSubview:self.lessonCount];
@@ -82,9 +81,9 @@
             make.right.equalTo(self).with.offset(-100);
             make.height.mas_equalTo(14);
         }];
-        
-        
-        
+
+
+
         //price
         self.price = [[UILabel alloc] init];
         [self addSubview:self.price];
@@ -113,21 +112,21 @@
     }
     return self;
 }
-- (void)setModel:(TalkGridModel *)model
-{
+
+- (void)setModel:(TalkGridModel *)model {
     if (model) {
         _model = model;
     }
     [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.videoTitle.text = model.title;
-    
+
     CGFloat tempPrice = [model.price floatValue];
-    self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
-    
+    self.price.text = [NSString stringWithFormat:@"￥%.2lf", tempPrice / 100];
+
     if (self.model.user_purchased) {
         self.price.hidden = YES;
         self.oldPrice.hidden = YES;
-    }else{
+    } else {
         self.price.hidden = NO;
         self.oldPrice.hidden = NO;
     }

@@ -9,7 +9,9 @@
 #import "TeacherListViewController.h"
 #import "IndexConfigure.h"
 
-@interface TeacherListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface TeacherListViewController () <UICollectionViewDataSource,
+        UICollectionViewDelegate,
+        UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *layout;
 @end
@@ -42,7 +44,8 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
     _layout.minimumLineSpacing = 1.0;   //最小列间距默认10
     _layout.minimumInteritemSpacing = 0.0;//左右间隔
 
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
+    self.collectionView = [[UICollectionView alloc]
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
 
@@ -58,8 +61,10 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
     return 20;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    TearcherIndexCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:teacherListCell_Id forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    TearcherIndexCell *cell =
+            [collectionView dequeueReusableCellWithReuseIdentifier:teacherListCell_Id forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
@@ -67,7 +72,9 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
 #pragma mark FlowLayoutDelegate
 
 /** 每个分区item的大小 */
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake((SCREENWITH - 3) / 3, 150);
 }
 

@@ -9,14 +9,13 @@
 #import "LessonDetailNoPayHeaderView.h"
 
 @interface LessonDetailNoPayHeaderView ()
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UILabel *lessonCount;
+@property(nonatomic, strong) UILabel *title;
+@property(nonatomic, strong) UILabel *lessonCount;
 @end
 
 @implementation LessonDetailNoPayHeaderView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.title = [[UILabel alloc] init];
@@ -30,7 +29,7 @@
             make.width.equalTo(self).multipliedBy(0.5);
         }];
         self.title.text = @"股票基础课程";
-        
+
         self.lessonCount = [[UILabel alloc] init];
         [self addSubview:self.lessonCount];
         self.lessonCount.font = FONT12;

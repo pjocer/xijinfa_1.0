@@ -50,10 +50,10 @@ static NSString *videListCell_id = @"videListCell_id";
         __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-        
+
         [sSelf.tableView reloadData];
 
-    } failedBlock:^(NSError *_Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
@@ -61,7 +61,8 @@ static NSString *videListCell_id = @"videListCell_id";
 #pragma mark- initTabelView
 
 - (void)initTabelView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 64) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 64) style:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

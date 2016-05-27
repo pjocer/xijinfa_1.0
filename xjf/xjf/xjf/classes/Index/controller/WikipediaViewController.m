@@ -13,7 +13,11 @@
 #import "BannerModel.h"
 #import "WikiMoreViewController.h"
 
-@interface WikipediaViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate, WikiFirstSectionCellDelegate>
+@interface WikipediaViewController () <UICollectionViewDataSource,
+        UICollectionViewDelegate,
+        UICollectionViewDelegateFlowLayout,
+        XRCarouselViewDelegate,
+        WikiFirstSectionCellDelegate>
 
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *layout;
@@ -22,7 +26,7 @@
 @property(nonatomic, strong) BannerModel *bannermodel;
 @property(nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
 @property(nonatomic, strong) NSMutableArray *talkGridDataArray;
-@property (nonatomic, strong) TablkListModel *tablkListModel;
+@property(nonatomic, strong) TablkListModel *tablkListModel;
 @end
 
 @implementation WikipediaViewController
@@ -63,11 +67,11 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
         __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
-            for (BannerResultModel *model in sSelf.bannermodel.result.data) {
+        for (BannerResultModel *model in sSelf.bannermodel.result.data) {
             [sSelf.dataArrayByBanner addObject:model.thumbnail];
-            }
-            [sSelf.collectionView reloadData];
-    }   failedBlock:^(NSError *_Nullable error) {
+        }
+        [sSelf.collectionView reloadData];
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
@@ -94,7 +98,11 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 
 - (void)setNavigation {
     self.navigationItem.title = @"金融百科";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonItemAction:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+            initWithImage:[UIImage imageNamed:@"search"]
+                    style:UIBarButtonItemStylePlain
+                   target:self
+                   action:@selector(rightBarButtonItemAction:)];
 
 }
 
@@ -111,7 +119,8 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     _layout.minimumLineSpacing = 0.0;   //最小列间距默认10
     _layout.minimumInteritemSpacing = 0.0;//左右间隔
 
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
+    self.collectionView = [[UICollectionView alloc]
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
 
@@ -123,8 +132,12 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     [self.collectionView registerClass:[WikiTalkGridViewCell class] forCellWithReuseIdentifier:talkGridViewCell_Id];
 
     //注册header
-    [self.collectionView registerClass:[WikiBannerView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:wikiBannerView_HeaderId];
-    [self.collectionView registerClass:[WikiSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:wikiSectionHeaderView_HeaderId];
+    [self.collectionView registerClass:[WikiBannerView class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:wikiBannerView_HeaderId];
+    [self.collectionView registerClass:[WikiSectionHeaderView class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:wikiSectionHeaderView_HeaderId];
 
 }
 
@@ -142,29 +155,37 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     return 0;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        WikiFirstSectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:firstSectionCell_Id forIndexPath:indexPath];
+        WikiFirstSectionCell *cell =
+                [collectionView dequeueReusableCellWithReuseIdentifier:firstSectionCell_Id forIndexPath:indexPath];
         cell.delegate = self;
         return cell;
     }
-    WikiTalkGridViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:talkGridViewCell_Id forIndexPath:indexPath];
+    WikiTalkGridViewCell *cell =
+            [collectionView dequeueReusableCellWithReuseIdentifier:talkGridViewCell_Id forIndexPath:indexPath];
     cell.model = self.tablkListModel.result.data[indexPath.row];
     return cell;
 }
 
 /** 头视图 */
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
         if (indexPath.section == 0) {
-            WikiBannerView *wikiBannerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:wikiBannerView_HeaderId forIndexPath:indexPath];
+            WikiBannerView *wikiBannerView =
+                    [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                       withReuseIdentifier:wikiBannerView_HeaderId forIndexPath:indexPath];
             wikiBannerView.carouselView.delegate = self;
             wikiBannerView.carouselView.imageArray = self.dataArrayByBanner;
 
             return wikiBannerView;
         }
         else if (indexPath.section == 1) {
-            WikiSectionHeaderView *wikiSectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:wikiSectionHeaderView_HeaderId forIndexPath:indexPath];
+            WikiSectionHeaderView *wikiSectionHeaderView =
+                    [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                       withReuseIdentifier:wikiSectionHeaderView_HeaderId forIndexPath:indexPath];
             wikiSectionHeaderView.moreLabel.hidden = YES;
             return wikiSectionHeaderView;
         }
@@ -172,12 +193,14 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     }
     return nil;
 }
+
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index {
     NSLog(@"点击..... %ld", index);
 }
 
 /** Header大小 */
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+- (CGSize)       collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForHeaderInSection:(NSInteger)section {
 
     if (section == 0) {
         return CGSizeMake(SCREENWITH, 175);
@@ -189,6 +212,7 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     return CGSizeZero;
 
 }
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.section == 0) {
@@ -204,7 +228,8 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 }
 
 ///wikiFirstSectionCell Action
-- (void)wikiFirstSectionCell:(WikiFirstSectionCell *)cell DidSelectedItemAtIndex:(NSInteger)index WithOtherObject:(id)object {
+- (void)wikiFirstSectionCell:(WikiFirstSectionCell *)cell DidSelectedItemAtIndex:(NSInteger)index
+             WithOtherObject:(id)object {
     if (index == 7) {
         WikiMoreViewController *wikiMoreViewController = [WikiMoreViewController new];
         [self.navigationController pushViewController:wikiMoreViewController animated:YES];
@@ -226,7 +251,8 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 #pragma mark FlowLayoutDelegate
 
 /** 每个分区item的大小 */
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         _layout.minimumLineSpacing = 0;
         return CGSizeMake(SCREENWITH, 80);

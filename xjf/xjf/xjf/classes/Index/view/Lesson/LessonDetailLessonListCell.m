@@ -9,15 +9,14 @@
 #import "LessonDetailLessonListCell.h"
 
 @interface LessonDetailLessonListCell ()
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UILabel *lessonCount;
+@property(nonatomic, strong) UILabel *title;
+@property(nonatomic, strong) UILabel *lessonCount;
 @end
 
 @implementation LessonDetailLessonListCell
 static CGFloat StudyImageH = 20;
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.title = [[UILabel alloc] init];
@@ -31,7 +30,7 @@ static CGFloat StudyImageH = 20;
             make.width.equalTo(self).multipliedBy(0.5);
         }];
         self.title.text = @"股票基础课程 第x课";
-        
+
         self.studyImage = [[UIImageView alloc] init];
         [self addSubview:self.studyImage];
         self.studyImage.layer.masksToBounds = YES;
@@ -42,7 +41,7 @@ static CGFloat StudyImageH = 20;
             make.centerY.equalTo(self);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
-        
+
         self.lessonCount = [[UILabel alloc] init];
         [self addSubview:self.lessonCount];
         self.lessonCount.font = FONT12;
@@ -58,10 +57,9 @@ static CGFloat StudyImageH = 20;
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     if (self.studyImage.hidden) {
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self).with.offset(-10);
@@ -73,20 +71,14 @@ static CGFloat StudyImageH = 20;
 }
 
 
-- (void)setModel:(LessonDetailListLessonsModel *)model
-{
+- (void)setModel:(LessonDetailListLessonsModel *)model {
     if (model) {
         _model = model;
     }
-    
+
     self.title.text = model.title;
-    
+
 }
-
-
-
-
-
 
 
 @end

@@ -10,11 +10,10 @@
 
 @implementation WikiMoreClassificationCell
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
+
         self.titleLabel = [[UILabel alloc] initWithFrame:self.contentView.bounds];
         [self.contentView addSubview:self.titleLabel];
         self.titleLabel.font = FONT12;
@@ -29,8 +28,7 @@
     return self;
 }
 
-- (void)setModel:(WikiPediaCategoriesDataModel *)model
-{
+- (void)setModel:(WikiPediaCategoriesDataModel *)model {
     if (model) {
         _model = model;
     }

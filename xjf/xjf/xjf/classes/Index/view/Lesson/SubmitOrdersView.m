@@ -9,17 +9,16 @@
 #import "SubmitOrdersView.h"
 
 @interface SubmitOrdersView ()
-@property (nonatomic, strong) UILabel *aCombinedLabel;
+@property(nonatomic, strong) UILabel *aCombinedLabel;
 @end
 
 @implementation SubmitOrdersView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        
+
         //selectedLabel;
         self.selectedLabel = [[UILabel alloc] init];
         [self addSubview:self.selectedLabel];
@@ -32,7 +31,7 @@
         self.selectedLabel.layer.masksToBounds = YES;
         self.selectedLabel.layer.cornerRadius = 7;
         self.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-        
+
         //selectedButton;
         self.selectedButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.selectedButton];
@@ -56,7 +55,7 @@
         [self.submitOrdersButton setTitle:@"提交订单" forState:UIControlStateNormal];
         self.submitOrdersButton.titleLabel.font = FONT15;
         self.submitOrdersButton.tintColor = [UIColor blackColor];
-        
+
         //price;
         self.price = [[UILabel alloc] init];
         [self addSubview:self.price];
@@ -68,7 +67,7 @@
         self.price.textColor = [UIColor redColor];
         self.price.text = @"￥000";
         self.price.font = FONT15;
-        
+
         //aCombinedLabel
         self.aCombinedLabel = [[UILabel alloc] init];
         [self addSubview:self.aCombinedLabel];
@@ -79,7 +78,7 @@
         }];
         self.aCombinedLabel.text = @"合计:";
         self.aCombinedLabel.font = FONT15;
-        
+
     }
     return self;
 }

@@ -10,17 +10,17 @@
 
 
 @interface LessonDetailHaveToPayHeaderView ()
-@property (nonatomic, strong) UIImageView *noStudyImage;
-@property (nonatomic, strong) UILabel *noStudyLabel;
-@property (nonatomic, strong) UIImageView *studingImage;
-@property (nonatomic, strong) UILabel *studingLabel;
-@property (nonatomic, strong) UIImageView *studedImage;
-@property (nonatomic, strong) UILabel *studedLabel;
+@property(nonatomic, strong) UIImageView *noStudyImage;
+@property(nonatomic, strong) UILabel *noStudyLabel;
+@property(nonatomic, strong) UIImageView *studingImage;
+@property(nonatomic, strong) UILabel *studingLabel;
+@property(nonatomic, strong) UIImageView *studedImage;
+@property(nonatomic, strong) UILabel *studedLabel;
 ///修饰图
-@property (nonatomic, strong) UIView *modifiedView;
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UILabel *lessonCount;
-@property (nonatomic, strong) UILabel *progress;
+@property(nonatomic, strong) UIView *modifiedView;
+@property(nonatomic, strong) UILabel *title;
+@property(nonatomic, strong) UILabel *lessonCount;
+@property(nonatomic, strong) UILabel *progress;
 @end
 
 @implementation LessonDetailHaveToPayHeaderView
@@ -28,11 +28,11 @@
 CGFloat StudyImageH = 20;
 CGFloat StudyLabelW = 40;
 CGFloat StudyLabelH = 14;
-- (instancetype)initWithFrame:(CGRect)frame
-{
+
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
+
         self.noStudyImage = [[UIImageView alloc] init];
         [self addSubview:self.noStudyImage];
         self.noStudyImage.layer.masksToBounds = YES;
@@ -43,7 +43,7 @@ CGFloat StudyLabelH = 14;
             make.centerY.equalTo(self).multipliedBy(0.5);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
-        
+
         self.noStudyLabel = [[UILabel alloc] init];
         [self addSubview:self.noStudyLabel];
         self.noStudyLabel.font = FONT12;
@@ -54,7 +54,7 @@ CGFloat StudyLabelH = 14;
             make.centerY.equalTo(self.noStudyImage);
             make.size.mas_equalTo(CGSizeMake(StudyLabelW, StudyLabelH));
         }];
-        
+
         self.studingImage = [[UIImageView alloc] init];
         [self addSubview:self.studingImage];
         self.studingImage.layer.masksToBounds = YES;
@@ -65,7 +65,7 @@ CGFloat StudyLabelH = 14;
             make.centerY.equalTo(self).multipliedBy(0.5);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
-        
+
         self.studingLabel = [[UILabel alloc] init];
         [self addSubview:self.studingLabel];
         self.studingLabel.font = FONT12;
@@ -76,7 +76,7 @@ CGFloat StudyLabelH = 14;
             make.centerY.equalTo(self.noStudyImage);
             make.size.mas_equalTo(CGSizeMake(StudyLabelW, StudyLabelH));
         }];
-        
+
         self.studedLabel = [[UILabel alloc] init];
         [self addSubview:self.studedLabel];
         self.studedLabel.font = FONT12;
@@ -87,7 +87,7 @@ CGFloat StudyLabelH = 14;
             make.centerY.equalTo(self.noStudyImage);
             make.size.mas_equalTo(CGSizeMake(StudyLabelW, StudyLabelH));
         }];
-        
+
         self.studedImage = [[UIImageView alloc] init];
         [self addSubview:self.studedImage];
         self.studedImage.layer.masksToBounds = YES;
@@ -98,8 +98,8 @@ CGFloat StudyLabelH = 14;
             make.centerY.equalTo(self).multipliedBy(0.5);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
-        
-        
+
+
         //modifiedView
         self.modifiedView = [[UIView alloc] init];
         self.modifiedView.backgroundColor = BackgroundColor;
@@ -121,7 +121,7 @@ CGFloat StudyLabelH = 14;
             make.width.equalTo(self).multipliedBy(0.5);
         }];
         self.title.text = @"股票基础课程";
-        
+
         self.progress = [[UILabel alloc] init];
         [self addSubview:self.progress];
         self.progress.font = FONT12;
@@ -134,7 +134,7 @@ CGFloat StudyLabelH = 14;
             make.width.mas_equalTo(24);
         }];
         self.progress.text = @"进度";
-        
+
         self.lessonCount = [[UILabel alloc] init];
         [self addSubview:self.lessonCount];
         self.lessonCount.font = FONT12;
@@ -147,14 +147,13 @@ CGFloat StudyLabelH = 14;
             make.width.mas_equalTo(45);
         }];
         self.lessonCount.text = @"课时";
-        
+
 
     }
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 }
 
