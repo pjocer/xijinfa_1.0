@@ -107,14 +107,13 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-
-            if (self.commentsModel.errCode == 0) {
-                self.commentsModel = [[CommentsAllDataList alloc] initWithData:responseData error:nil];
+                self.commentsModel = [[CommentsAllDataList alloc]
+                                      initWithData:responseData error:nil];
+            
+            NSLog(@"----%@",self.commentsModel);
+            
+            
                 [self.collectionView reloadData];
-            } else {
-                [[ZToastManager ShardInstance] showtoast:self.commentsModel.errMsg];
-            }
-
 
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -514,11 +513,14 @@ referenceSizeForFooterInSection:(NSInteger)section {
     [self.textField becomeFirstResponder];
 }
 
-//发表评论
+#pragma mark 发表评论
 - (void)sendCommentMsg:(UIButton *)sender {
 
-//    self.api = [NSString stringWithFormat:@"%@%@/%@",talkGridcomments,self.talkGridModel.id_,self.textField.text];
-//    [self requestCommentsData:self.api method:POST];
+    self.api = [NSString stringWithFormat:@"%@%@/%@",talkGridcomments,self.talkGridModel.id_,self.textField.text];
+    
+//    self.api = [self.api stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [self requestCommentsData:self.api method:POST];
     [self.textField resignFirstResponder];
 }
 

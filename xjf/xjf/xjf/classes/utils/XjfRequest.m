@@ -38,6 +38,7 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
     switch (self.requestMethod) {
         case POST:
         {
+            
             [_manager POST:self.api_name parameters:self.requestParams progress:^(NSProgress * _Nonnull uploadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

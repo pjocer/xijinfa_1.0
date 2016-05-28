@@ -7,10 +7,11 @@
 //
 
 #import "ShoppingCartViewController.h"
-
 #import "SubmitOrdersView.h"
 #import "VideoListCell.h"
 #import "IndexSectionView.h"
+#import "OrderDetaiViewController.h"
+
 @interface ShoppingCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 ///提交订单视图
 @property (nonatomic, strong) SubmitOrdersView *submitOrdersView;
@@ -125,7 +126,8 @@ static CGFloat submitOrdersViewHeight = 50;
 #pragma mark 提交订单
 - (void)submitOrdersButtonAction:(UIButton *)sender
 {
-    
+    OrderDetaiViewController *oderDetaiPage = [OrderDetaiViewController new];
+    [self.navigationController pushViewController:oderDetaiPage animated:YES];
 }
 
 #pragma mark --setTableView--

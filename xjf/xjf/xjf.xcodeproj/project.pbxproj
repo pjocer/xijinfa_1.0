@@ -58,6 +58,12 @@
 		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
 		5A441C5D1CE5FC32000CF748 /* CommentsPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C5C1CE5FC32000CF748 /* CommentsPageCommentsCell.m */; };
+		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
+		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
+		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
+		5AF7C2DC1CF96D53007CC71C /* OrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2DB1CF96D53007CC71C /* OrderFooterView.m */; };
+		5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */; };
+		5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
@@ -272,6 +278,18 @@
 		5A441C5C1CE5FC32000CF748 /* CommentsPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsPageCommentsCell.m; path = xjf/classes/player/controller/CommentsPageCommentsCell.m; sourceTree = SOURCE_ROOT; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
+		5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailBaseViewController.m; sourceTree = "<group>"; };
+		5AF7C2D41CF94694007CC71C /* OrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetaiViewController.h; sourceTree = "<group>"; };
+		5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetaiViewController.m; sourceTree = "<group>"; };
+		5AF7C2D71CF96D13007CC71C /* OrderHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderHeaderView.h; sourceTree = "<group>"; };
+		5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderHeaderView.m; sourceTree = "<group>"; };
+		5AF7C2DA1CF96D53007CC71C /* OrderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFooterView.h; sourceTree = "<group>"; };
+		5AF7C2DB1CF96D53007CC71C /* OrderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFooterView.m; sourceTree = "<group>"; };
+		5AF7C2DD1CF98B07007CC71C /* MyOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderViewController.h; sourceTree = "<group>"; };
+		5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
+		5AF7C2E01CF98F25007CC71C /* MyOrderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderFooterView.h; sourceTree = "<group>"; };
+		5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderFooterView.m; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
 		644C10C21CBA61AC00892E2C /* icon_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del.png; sourceTree = "<group>"; };
@@ -644,6 +662,50 @@
 				5A105EAB1CEF17AC0079BEFE /* WikiMoreClassificationCell.m */,
 			);
 			path = Wikipedia;
+			sourceTree = "<group>";
+		};
+		5AF7C2CD1CF945F6007CC71C /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				5AF7C2CE1CF945F6007CC71C /* Controller */,
+				5AF7C2CF1CF945F6007CC71C /* Model */,
+				5AF7C2D01CF945F6007CC71C /* View */,
+			);
+			name = Order;
+			path = classes/Order;
+			sourceTree = "<group>";
+		};
+		5AF7C2CE1CF945F6007CC71C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */,
+				5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */,
+				5AF7C2D41CF94694007CC71C /* OrderDetaiViewController.h */,
+				5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */,
+				5AF7C2DD1CF98B07007CC71C /* MyOrderViewController.h */,
+				5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5AF7C2CF1CF945F6007CC71C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5AF7C2D01CF945F6007CC71C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5AF7C2D71CF96D13007CC71C /* OrderHeaderView.h */,
+				5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */,
+				5AF7C2DA1CF96D53007CC71C /* OrderFooterView.h */,
+				5AF7C2DB1CF96D53007CC71C /* OrderFooterView.m */,
+				5AF7C2E01CF98F25007CC71C /* MyOrderFooterView.h */,
+				5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		644C10C01CBA61AC00892E2C /* UzysGridView */ = {
@@ -1209,6 +1271,7 @@
 		CDF57AC21C9F825D00049AF0 /* xjf */ = {
 			isa = PBXGroup;
 			children = (
+				5AF7C2CD1CF945F6007CC71C /* Order */,
 				644C11151CBA8B4B00892E2C /* User */,
 				CD1CCC4A1CB39B3D002FC0C9 /* Player */,
 				CD1CCC171CB36386002FC0C9 /* Base */,
@@ -1481,10 +1544,13 @@
 				CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */,
 				5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */,
 				5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */,
+				5AF7C2DC1CF96D53007CC71C /* OrderFooterView.m in Sources */,
 				5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */,
 				D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */,
 				644C116A1CBA90FF00892E2C /* LPPopup.m in Sources */,
+				5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */,
 				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
+				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
 				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
@@ -1526,6 +1592,7 @@
 				5A105EB31CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
+				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A105E921CED880D0079BEFE /* BannerModel.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
@@ -1577,6 +1644,7 @@
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
+				5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */,
 				5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */,
 				5A105E9A1CED91ED0079BEFE /* WikiPediaCategoriesModel.m in Sources */,
 				CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */,
@@ -1597,6 +1665,7 @@
 				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,
 				CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */,
+				5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,17 +7,14 @@
 //
 
 #import "LessonDetailViewController.h"
-
 #import "LessonDetailTitleView.h"
 #import "ShoppingCartViewController.h"
 #import "XJMarket.h"
-
 #import "LessonPlayerLessonDescribeViewController.h"
 #import "LessonDetailLessonListViewController.h"
 #import "LessonDetailTecherDescribeViewController.h"
 #import "MyLessonsViewController.h"
-
-#import "PayView.h"
+#import "OrderDetaiViewController.h"
 
 @interface LessonDetailViewController () <UIScrollViewDelegate>
 @property(nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
@@ -36,9 +33,7 @@
 @property(nonatomic, strong) UIView *selView;
 @property(nonatomic, strong) UIView *selBackGroundView;
 @property(nonatomic, strong) NSMutableArray *buttons;
-///支付视图
-@property(nonatomic, strong) PayView *payView;
-@property(nonatomic, strong) UIView *payingBackGroudView;
+
 
 @property(nonatomic, strong) LessonDetailLessonListViewController *lessonDetailLessonListViewController;
 @property(nonatomic, strong) LessonPlayerLessonDescribeViewController *lessonPlayerLessonDescribeViewController;
@@ -108,20 +103,6 @@ static CGFloat payViewH = 285;
     self.contentScrollView.delegate = self;
 
     [self setAddShoppingCartButtonAndNowPayButton];
-
-    //PayView
-    self.payingBackGroudView = [[UIView alloc] initWithFrame:self.view.bounds];
-    self.payingBackGroudView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:self.payingBackGroudView];
-    self.payingBackGroudView.hidden = YES;
-    self.payingBackGroudView.alpha = 0.2;
-
-    self.payView = [[NSBundle mainBundle] loadNibNamed:@"PayView" owner:self options:nil].firstObject;
-    self.payView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, payViewH);
-    [self.view addSubview:self.payView];
-    [self.payView.aliPay addTarget:self action:@selector(aliPay:) forControlEvents:UIControlEventTouchUpInside];
-    [self.payView.WeixinPay addTarget:self action:@selector(WeixinPay:) forControlEvents:UIControlEventTouchUpInside];
-    [self.payView.cancel addTarget:self action:@selector(payViewCancel:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark -- setLessonDetailTitleView--
@@ -200,12 +181,8 @@ static CGFloat payViewH = 285;
 #pragma mark nowPay
 
 - (void)nowPay:(UIButton *)sender {
-    XJOrder *order = [[XJMarket sharedMarket] createOrderWith:@[self.model]];
-    [UIView animateWithDuration:0.5 animations:^{
-     self.payView.frame = CGRectMake(0, self.view.bounds.size.height - payViewH, self.view.bounds.size.width, payViewH);
-    }];
-    self.payingBackGroudView.hidden = NO;
-
+    OrderDetaiViewController *orderDetailPage = [OrderDetaiViewController new];
+    [self.navigationController pushViewController:orderDetailPage animated:YES];
 }
 
 #pragma mark - studing
@@ -213,45 +190,6 @@ static CGFloat payViewH = 285;
 - (void)studing:(UIButton *)sender {
 
 }
-
-#pragma mark - aliPay
-
-- (void)aliPay:(UIButton *)sender {
-    [self payByPayStyle:Alipay];
-}
-
-#pragma mark - WeixinPay
-
-- (void)WeixinPay:(UIButton *)sender {
-    [self payByPayStyle:WechatPay];
-}
-
-- (void)payByPayStyle:(PayStyle)stayle {
-    [[ZToastManager ShardInstance] showprogress];
-    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:stayle success:^{
-        [[ZToastManager ShardInstance] hideprogress];
-        if ([self.model.department isEqualToString:@"dept3"]) {
-            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
-        } else {
-            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_PEIXUN];
-        }
-        MyLessonsViewController *lesson = [[MyLessonsViewController alloc] init];
-        [self.navigationController pushViewController:lesson animated:YES];
-    }                                     failed:^{
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-    }];
-}
-
-#pragma mark - payViewCancel
-
-- (void)payViewCancel:(UIButton *)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.payView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, payViewH);
-    }];
-    self.payingBackGroudView.hidden = YES;
-}
-
 
 #pragma mark - 设置头部标题栏
 

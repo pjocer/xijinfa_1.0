@@ -10,6 +10,7 @@
 #import "myConfigure.h"
 #import "UserInfoViewController.h"
 #import "MyMoneyViewController.h"
+#import "ShoppingCartViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -121,9 +122,11 @@
         MyMoneyViewController *myMoneyPage = [MyMoneyViewController new];
         [self.navigationController pushViewController:myMoneyPage animated:YES];
     }
-    
-    
-    
+    if (index == 7) {
+        ShoppingCartViewController *shoppingCartPage = [ShoppingCartViewController new];
+        [self.navigationController pushViewController:shoppingCartPage animated:YES];
+    }
+
     switch (index) {
         case 0:
 
@@ -147,7 +150,7 @@
 
             break;
         case 7:
-
+            
             break;
         case 8:
 

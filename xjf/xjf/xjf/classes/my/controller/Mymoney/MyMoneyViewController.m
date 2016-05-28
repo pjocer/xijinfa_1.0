@@ -8,6 +8,7 @@
 
 #import "MyMoneyViewController.h"
 #import "MyMoneyHeaderView.h"
+#import "MyOrderViewController.h"
 @interface MyMoneyViewController ()
 
 @end
@@ -16,10 +17,20 @@
 
 static CGFloat MyMoneyHeaderViewH = 155;
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.title = @"我的钱包";
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-    self.navigationItem.title = @"我的钱包";
     MyMoneyHeaderView *headerView = [[MyMoneyHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, MyMoneyHeaderViewH)];
     [self.view addSubview:headerView];
     UITapGestureRecognizer *LookOrder = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(LookOrder:)];
@@ -29,7 +40,8 @@ static CGFloat MyMoneyHeaderViewH = 155;
 
 - (void)LookOrder:(UITapGestureRecognizer *)sender
 {
-    
+    MyOrderViewController *myOrderPage = [MyOrderViewController new];
+    [self.navigationController pushViewController:myOrderPage animated:YES];
 }
 
 

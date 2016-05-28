@@ -35,7 +35,7 @@
 
 -(void)initMainUI
 {
-    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-45) style:UITableViewStyleGrouped];
+    _tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-64) style:UITableViewStyleGrouped];
     _tableview.dataSource=self;
     _tableview.delegate=self;
     _tableview.showsVerticalScrollIndicator = NO;

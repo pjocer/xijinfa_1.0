@@ -52,7 +52,8 @@
         [self.contentView addSubview:appView];
         WikiPediaCategoriesDataModel *model = self.tempArray[i];
         if (i == self.tempArray.count - 1) {
-            [appView setTitle:@"更多..." forState:UIControlStateNormal];
+//            [appView setTitle:@"更多..." forState:UIControlStateNormal];
+            [appView setImage:[UIImage imageNamed:@"wikimore"] forState:UIControlStateNormal];
         }
         else {
             [appView setTitle:model.name forState:UIControlStateNormal];
