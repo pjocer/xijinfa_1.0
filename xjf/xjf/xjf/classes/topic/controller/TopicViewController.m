@@ -102,6 +102,7 @@
     NSInteger offSet = (button.tag - 200)*70;
     [UIView animateWithDuration:0.3 animations:^{
         _bottom.frame = CGRectMake(_all.center.x-25+offSet, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
+        [_scrollView scrollRectToVisible:CGRectMake(SCREENWITH*(button.tag-200), _scrollView.frame.origin.y, SCREENWITH, _scrollView.frame.size.width) animated:YES];
     } completion:^(BOOL finished) {
         
     } ];
@@ -109,8 +110,6 @@
 #pragma ScrollView Delegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger offSet = scrollView.contentOffset.x/SCREENWITH*70;
-    NSLog(@"%@",NSStringFromCGRect(_bottom.frame));
-    NSLog(@"%f",_all.center.x-25+offSet);
     [UIView animateWithDuration:0.3 animations:^{
         _bottom.frame = CGRectMake(_all.center.x-25+offSet, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
     } completion:^(BOOL finished) {
@@ -121,14 +120,16 @@
     CGFloat offSet = scrollView.contentOffset.x;
     CGFloat percent = offSet/SCREENWITH;
     UIButton *button = nil;
-    if (percent>1.0 && percent<2.0) {
+    if (percent>0.5 && percent<=1.5) {
         button = _q_a;
-    }else if (percent<1.0) {
+        percent-=1;
+    }else if (percent<=0.5) {
         button = _all;
-    }else {
+    }else if (percent>1.5 && percent<=2.5){
         button = _diss;
+        percent-=2;
     }
-    _bottom.frame = CGRectMake(button.center.x-25+30*percent, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
+    _bottom.frame = CGRectMake(button.center.x-25+70*percent, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
