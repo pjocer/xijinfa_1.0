@@ -42,4 +42,10 @@ typedef enum : NSUInteger {
 
 - (void)addGoods:(nullable NSArray <TalkGridModel*>*)goods key:(nonnull NSString *)key;
 
+- (void)deleteLessons:(nullable NSArray <TalkGridModel*>*)lessons key:(nonnull NSString *)key;
+
+- (void)deleteGoods:(nullable NSArray <TalkGridModel*>*)lessons key:(nonnull NSString *)key;
+
+- (BOOL)isAlreadyExists:(nonnull TalkGridModel *)goods key:(nonnull NSString *)key;
+
 @end
