@@ -42,7 +42,7 @@ static APIName *buy_trade = @"/api/order";
 
 //话题
 static APIName *topic_all = @"/api/topic/";
-static APIName *topic_qa = @"/api/topic/?type=qa";
+static APIName *topic_qa = @"/api/topic/?type=QA";
 static APIName *topic_discuss = @"/api/topic/?type=discuss";
 
 #pragma mark- Hunter_Wang

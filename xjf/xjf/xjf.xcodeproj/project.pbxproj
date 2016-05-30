@@ -147,6 +147,8 @@
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
 		D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A81ED1CEEA0E8002C1297 /* XJMarket.m */; };
 		D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF6E1CFBF089002D3FAF /* TopicModel.m */; };
+		D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */; };
+		D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */; };
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
@@ -469,6 +471,9 @@
 		D06A81ED1CEEA0E8002C1297 /* XJMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMarket.m; sourceTree = "<group>"; };
 		D073CF6D1CFBF089002D3FAF /* TopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicModel.h; path = xjf/classes/topic/TopicModel.h; sourceTree = SOURCE_ROOT; };
 		D073CF6E1CFBF089002D3FAF /* TopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicModel.m; path = xjf/classes/topic/TopicModel.m; sourceTree = SOURCE_ROOT; };
+		D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicBaseCellTableViewCell.h; path = xjf/classes/topic/TopicBaseCellTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicBaseCellTableViewCell.m; path = xjf/classes/topic/TopicBaseCellTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicBaseCellTableViewCell.xib; path = xjf/classes/topic/TopicBaseCellTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		D073E8131CE9D66C00AED895 /* RegistFinalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistFinalModel.h; path = xjf/classes/user/controller/RegistFinalModel.h; sourceTree = SOURCE_ROOT; };
 		D073E8141CE9D66C00AED895 /* RegistFinalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistFinalModel.m; path = xjf/classes/user/controller/RegistFinalModel.m; sourceTree = SOURCE_ROOT; };
 		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationSet.h; path = ../NotificationSet.h; sourceTree = "<group>"; };
@@ -1083,6 +1088,9 @@
 		CD1CCC0B1CB35A2D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */,
+				D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */,
+				D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1278,9 +1286,9 @@
 				CD1CCBF41CB35A2D002FC0C9 /* Index */,
 				CD1CCBFA1CB35A2D002FC0C9 /* Mine */,
 				CD1CCC061CB35A2D002FC0C9 /* Topic */,
+				CD1CCC3A1CB37B89002FC0C9 /* Utils */,
 				CD1CCC0C1CB35A2D002FC0C9 /* Vip */,
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
-				CD1CCC3A1CB37B89002FC0C9 /* Utils */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
 			);
@@ -1463,6 +1471,7 @@
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
 				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
+				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
 				644C115C1CBA90A000892E2C /* WeiboSDK.bundle in Resources */,
 				D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */,
@@ -1551,6 +1560,7 @@
 				5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */,
 				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
+				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
 				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,

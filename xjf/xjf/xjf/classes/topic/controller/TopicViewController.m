@@ -8,8 +8,14 @@
 
 #import "TopicViewController.h"
 #import "TopicConfigure.h"
+#import <MJRefresh/MJRefresh.h>
+#import "XjfRequest.h"
+#import "TopicModel.h"
+#import "TopicBaseCellTableViewCell.h"
+#import "StringUtil.h"
+#import "ZToastManager.h"
 
-@interface TopicViewController () <UIScrollViewDelegate>
+@interface TopicViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UIView *header;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UILabel *bottom;
@@ -17,41 +23,137 @@
 @property (nonatomic, strong) UIButton *all;
 @property (nonatomic, strong) UIButton *diss;
 @property (nonatomic, assign) NSInteger offSet;
+@property (nonatomic, strong) TopicModel *model_all;
+@property (nonatomic, strong) TopicModel *model_qa;
+@property (nonatomic, strong) TopicModel *model_discuss;
+@property (nonatomic, strong) NSMutableArray *allDataSource;
+@property (nonatomic, strong) NSMutableArray *disscussDataSource;
+@property (nonatomic, strong) NSMutableArray *qaDataSource;
+@property (nonatomic, strong) UITableView *tableView_all;
+@property (nonatomic, strong) UITableView *tableview_qa;
+@property (nonatomic, strong) UITableView *tableView_discuss;
 @end
 
 @implementation TopicViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     [self extendheadViewFor:Topic];
-    self.nav_title = @"话题";
     [self initMainUI];
+    [self initData];
+}
+
+- (void)initData {
+    [self reqeustData:topic_all method:GET tableView:_tableView_all];
+    [self reqeustData:topic_qa method:GET tableView:_tableview_qa];
+    [self reqeustData:topic_discuss method:GET tableView:_tableView_discuss];
+}
+
+- (void)reqeustData:(APIName *)api method:(RequestMethod)method tableView:(UITableView *)tableView{
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        [[ZToastManager ShardInstance] hideprogress];
+        TopicModel *model = [[TopicModel alloc] initWithData:responseData error:nil];
+        if ([api rangeOfString:@"QA"].location != NSNotFound) {
+            _model_qa = model;
+            [_qaDataSource addObjectsFromArray:_model_qa.result.data];
+            [_tableview_qa reloadData];
+        }else if ([api rangeOfString:@"discuss"].location != NSNotFound) {
+            _model_discuss = model;
+            [_disscussDataSource addObjectsFromArray:_model_discuss.result.data];
+            [_tableView_discuss reloadData];
+        }else {
+            _model_all = model;
+            [_allDataSource addObjectsFromArray:_model_all.result.data];
+            [_tableView_all reloadData];
+        }
+        [tableView.mj_footer isRefreshing]?[tableView.mj_footer endRefreshing]:nil;
+        [tableView.mj_header isRefreshing]?[tableView.mj_header endRefreshing]:nil;
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"请求数据失败"];
+        [tableView.mj_footer isRefreshing]?[tableView.mj_footer endRefreshing]:nil;
+        [tableView.mj_header isRefreshing]?[tableView.mj_header endRefreshing]:nil;
+    }];
 }
 
 - (void)initMainUI {
+    self.nav_title = @"话题";
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.header];
+    [self.scrollView addSubview:self.tableView_all];
+    [self.scrollView addSubview:self.tableview_qa];
+    [self.scrollView addSubview:self.tableView_discuss];
     [self.view addSubview:self.scrollView];
+}
+
+- (UITableView *)tableView_all {
+    if (!_tableView_all) {
+        _allDataSource = [NSMutableArray array];
+        _tableView_all = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
+        [_tableView_all registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
+        _tableView_all.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [_allDataSource removeAllObjects];
+            [self reqeustData:topic_all method:GET tableView:_tableView_all];
+        }];
+        _tableView_all.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            
+            [self reqeustData:_model_all.result.next_page_url method:GET tableView:_tableView_all];
+        }];
+        _tableView_all.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView_all.delegate = self;
+        _tableView_all.dataSource = self;
+    }
+    return _tableView_all;
+}
+
+-(UITableView *)tableview_qa {
+    if (!_tableview_qa) {
+        _qaDataSource = [NSMutableArray array];
+        _tableview_qa = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
+        [_tableview_qa registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
+        _tableview_qa.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [_qaDataSource removeAllObjects];
+            [self reqeustData:topic_qa method:GET tableView:_tableview_qa];
+        }];
+        _tableview_qa.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            [self reqeustData:_model_qa.result.next_page_url method:GET tableView:_tableview_qa];
+        }];
+        _tableview_qa.delegate = self;
+        _tableview_qa.dataSource = self;
+        _tableview_qa.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _tableview_qa;
+}
+
+-(UITableView *)tableView_discuss {
+    if (!_tableView_discuss) {
+        _disscussDataSource = [NSMutableArray array];
+        _tableView_discuss = [[UITableView alloc] initWithFrame:CGRectMake(2*SCREENWITH, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
+        [_tableView_discuss registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
+        _tableView_discuss.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [_disscussDataSource removeAllObjects];
+            [self reqeustData:topic_discuss method:GET tableView:_tableView_discuss];
+        }];
+        _tableView_discuss.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            [self reqeustData:_model_discuss.result.next_page_url method:GET tableView:_tableView_discuss];
+        }];
+        _tableView_discuss.delegate = self;
+        _tableView_discuss.dataSource = self;
+        _tableView_discuss.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _tableView_discuss;
 }
 
 -(UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.header.frame), SCREENWITH, SCREENHEIGHT-35-HEADHEIGHT-kTabBarH)];
         _scrollView.contentSize = CGSizeMake(3*SCREENWITH, CGRectGetHeight(_scrollView.bounds));
-        _scrollView.showsHorizontalScrollIndicator = YES;
+        _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.pagingEnabled = YES;
-        _scrollView.showsVerticalScrollIndicator = YES;
+        _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.delegate = self;
-        UITableView *a = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
-        
-        a.backgroundColor = [UIColor redColor];
-        [_scrollView addSubview:a];
-        UITableView *b = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
-        b.backgroundColor = [UIColor greenColor];
-        [_scrollView addSubview:b];
-        UITableView *c = [[UITableView alloc] initWithFrame:CGRectMake(2*SCREENWITH, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
-        c.backgroundColor = [UIColor blueColor];
-        [_scrollView addSubview:c];
     }
     return _scrollView;
 }
@@ -100,37 +202,79 @@
     return _header;
 }
 - (void)headerClicked:(UIButton *)button {
-    NSInteger offSet = (button.tag - 200)*70;
-    [UIView animateWithDuration:0.3 animations:^{
-        _bottom.frame = CGRectMake(_all.center.x-25+offSet, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
-        [_scrollView scrollRectToVisible:CGRectMake(SCREENWITH*(button.tag-200), _scrollView.frame.origin.y, SCREENWITH, _scrollView.frame.size.width) animated:YES];
-    } completion:^(BOOL finished) {
-        
-    } ];
+    [_scrollView setContentOffset:CGPointMake(SCREENWITH*(button.tag-200), 0) animated:YES];
+}
+
+#pragma TableView Delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == _tableView_all) {
+        return _allDataSource.count;
+    }else if (tableView == _tableview_qa) {
+        return _qaDataSource.count;
+    }else if (tableView == _tableView_discuss) {
+        return _disscussDataSource.count;
+    }
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TopicBaseCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopicBaseCellTableViewCell" forIndexPath:indexPath];
+    TopicDataModel *model = nil;
+    if (tableView == _tableView_all) {
+        model = _allDataSource[indexPath.row];
+    }else if (tableView == _tableview_qa) {
+        model = _qaDataSource[indexPath.row];
+    }else if (tableView == _tableView_discuss) {
+        model = _disscussDataSource[indexPath.row];
+    }
+    cell.model = model;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TopicDataModel *model = nil;
+    if (tableView == _tableView_all) {
+        model = _allDataSource[indexPath.row];
+    }else if (tableView == _tableview_qa) {
+        model = _qaDataSource[indexPath.row];
+    }else if (tableView == _tableView_discuss) {
+        model = _disscussDataSource[indexPath.row];
+    }
+    CGFloat height = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
+    if (model.categories.count>0) {
+        return height+140;
+    }else {
+        return height+116;
+    }
+    return height+116;
 }
 #pragma ScrollView Delegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSInteger offSet = scrollView.contentOffset.x/SCREENWITH*70;
-    [UIView animateWithDuration:0.3 animations:^{
-        _bottom.frame = CGRectMake(_all.center.x-25+offSet, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
-    } completion:^(BOOL finished) {
-        
-    } ];
+    if (scrollView == self.scrollView) {
+        NSInteger offSet = scrollView.contentOffset.x/SCREENWITH*70;
+        [UIView animateWithDuration:0.3 animations:^{
+            _bottom.frame = CGRectMake(_all.center.x-25+offSet, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
+        } completion:^(BOOL finished) {
+            
+        } ];
+    }
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offSet = scrollView.contentOffset.x;
-    CGFloat percent = offSet/SCREENWITH;
-    UIButton *button = nil;
-    if (percent>0.5 && percent<=1.5) {
-        button = _q_a;
-        percent-=1;
-    }else if (percent<=0.5) {
-        button = _all;
-    }else if (percent>1.5 && percent<=2.5){
-        button = _diss;
-        percent-=2;
+    if (scrollView == self.scrollView) {
+        CGFloat offSet = scrollView.contentOffset.x;
+        CGFloat percent = offSet/SCREENWITH;
+        UIButton *button = nil;
+        if (percent>0.5 && percent<=1.5) {
+            button = _q_a;
+            percent-=1;
+        }else if (percent<=0.5) {
+            button = _all;
+        }else if (percent>1.5 && percent<=2.5){
+            button = _diss;
+            percent-=2;
+        }
+        _bottom.frame = CGRectMake(button.center.x-25+70*percent, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
     }
-    _bottom.frame = CGRectMake(button.center.x-25+70*percent, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

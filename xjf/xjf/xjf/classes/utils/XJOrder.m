@@ -13,7 +13,10 @@
 -(instancetype)initWith:(NSArray<TalkGridModel *> *)goods {
     self = [super init];
     if (self) {
-        _goods = [NSMutableArray arrayWithArray:goods];
+        _goods = [NSMutableArray array];
+        for (TalkGridModel *model in goods) {
+            [_goods addObject:model];
+        }
     }
     return self;
 }

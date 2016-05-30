@@ -8,6 +8,41 @@
 
 #import "TopicModel.h"
 
-@implementation TopicModel
+@implementation CategoryLabel
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
++(JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"description":@"desc"}];
+}
+@end
 
+@implementation TopictMembershipModel
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+@implementation TopicUserModel
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+@implementation TopicDataModel
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+@implementation TopicResultModel
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+@implementation TopicModel
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
 @end

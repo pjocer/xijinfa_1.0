@@ -28,7 +28,11 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
         _requestMethod = method;
         _requestParams = [NSMutableDictionary dictionary];
         _requestHeaders = [NSMutableDictionary dictionary];
-        _api_name = [NSString stringWithFormat:@"%@%@",defaultAPIHost,apiName];
+        if ([apiName rangeOfString:defaultAPIHost].location != NSNotFound) {
+            _api_name = apiName;
+        }else {
+            _api_name = [NSString stringWithFormat:@"%@%@",defaultAPIHost,apiName];
+        }
         _manager = [AFHTTPSessionManager manager];
         [self configureRequestHeaders];
     }
