@@ -64,6 +64,7 @@
 		5AF7C2DC1CF96D53007CC71C /* OrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2DB1CF96D53007CC71C /* OrderFooterView.m */; };
 		5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */; };
 		5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */; };
+		5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E41CFC31AE007CC71C /* OrderModel.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
@@ -292,6 +293,8 @@
 		5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
 		5AF7C2E01CF98F25007CC71C /* MyOrderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderFooterView.h; sourceTree = "<group>"; };
 		5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderFooterView.m; sourceTree = "<group>"; };
+		5AF7C2E31CFC31AE007CC71C /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		5AF7C2E41CFC31AE007CC71C /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
 		644C10C21CBA61AC00892E2C /* icon_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del.png; sourceTree = "<group>"; };
@@ -696,6 +699,8 @@
 		5AF7C2CF1CF945F6007CC71C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5AF7C2E31CFC31AE007CC71C /* OrderModel.h */,
+				5AF7C2E41CFC31AE007CC71C /* OrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1573,6 +1578,7 @@
 				5A105E7B1CEC59270079BEFE /* LessonRecommendedHeaderView.m in Sources */,
 				5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */,
 				5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */,
+				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
 				5A240E131CE427A3003B7971 /* PlayerPageDescribeCell.m in Sources */,
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,

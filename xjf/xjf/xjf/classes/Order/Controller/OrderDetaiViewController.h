@@ -9,5 +9,5 @@
 #import "OrderDetailBaseViewController.h"
 
 @interface OrderDetaiViewController : OrderDetailBaseViewController
-
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end

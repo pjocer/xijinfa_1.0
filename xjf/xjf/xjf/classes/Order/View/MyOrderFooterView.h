@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OrderModel.h"
 @class MyOrderFooterView;
 
 @protocol MyOrderFootrtViewDelegate <NSObject>
@@ -23,7 +23,6 @@
 @property (nonatomic, strong) UIView *PayUnSuccesView;
 @property (nonatomic, strong) UIButton *cancelOrder;
 @property (nonatomic, strong) UIButton *goPay;
-@property (nonatomic, assign) BOOL isPaySucces;
-@property (nonatomic, assign) BOOL isOrderCancel;
 @property (nonatomic, assign) id<MyOrderFootrtViewDelegate>delegate;
+@property (nonatomic, strong) OrderDataModel *model;
 @end

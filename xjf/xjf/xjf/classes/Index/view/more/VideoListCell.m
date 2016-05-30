@@ -155,6 +155,8 @@
     if (model) {
         _model = model;
     }
+    
+    
     [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;

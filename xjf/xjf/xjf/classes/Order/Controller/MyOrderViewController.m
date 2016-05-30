@@ -12,15 +12,16 @@
 #import "VideoListCell.h"
 #import "OrderHeaderView.h"
 #import "MyOrderFooterView.h"
-
+#import "OrderDetaiViewController.h"
+#import "OrderModel.h"
 @interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource, MyOrderFootrtViewDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) PayView *payView;
 @property(nonatomic, strong) UIView *payingBackGroudView;
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) MyOrderFooterView *orderfooterView;
-@property(nonatomic, assign) BOOL isOrderSucces;
-@property(nonatomic, assign) BOOL isOrderCancel;
+
+@property (nonatomic, strong) OrderModel *orderModel;
 @end
 
 @implementation MyOrderViewController
@@ -33,13 +34,41 @@ static CGFloat tableFooter_orderSucceslH = 100;
 static NSString *LessonMyOrderCell_id = @"LessonMyOrderCell_id";
 static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.title = @"我的订单";
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的订单";
-    self.isOrderCancel = NO;
-    self.isOrderSucces = NO;
     [self initMainUI];
+    [self requestAllOrderData:queryAllOrder method:GET];
 }
+#pragma mark -requestData
+- (void)requestAllOrderData:(APIName *)api method:(RequestMethod)method {
+    __weak typeof(self) wSelf = self;
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    [[ZToastManager ShardInstance] showprogress];
+    
+    //TalkGridData
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        [[ZToastManager ShardInstance] hideprogress];
+        __strong typeof(self) sSelf = wSelf;
+        sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
+        [sSelf.tableView reloadData];
+        
+    }                  failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
+
 
 #pragma mark - initMainUI
 
@@ -76,19 +105,19 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 #pragma mark TabelViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.orderModel.result.data.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 2;
-    }
-    return 3;
+
+    OrderDataModel *orderDataModel = self.orderModel.result.data[section];
+    return orderDataModel.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonMyOrderCell_id];
-    //    cell.model = self.dataSource[indexPath.row];
+    OrderDataModel *orderDataModel = self.orderModel.result.data[indexPath.section];
+    cell.model = orderDataModel.items[indexPath.row];
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
@@ -105,7 +134,8 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
 
-    if (!_isOrderSucces && !_isOrderCancel) {
+    OrderDataModel *model = self.orderModel.result.data[section];
+    if (model.status == 1) {
         return tableFooter_orderSucceslH;
     }
     return tableFooter_NormalH;
@@ -113,23 +143,13 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     self.orderheaderView = [[OrderHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
+    self.orderheaderView.model = self.orderModel.result.data[section];
     return self.orderheaderView;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     self.orderfooterView = [[MyOrderFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
-    self.orderfooterView.isPaySucces = _isOrderSucces;
-    self.orderfooterView.isOrderCancel = _isOrderCancel;
-    if (_isOrderSucces) {
-        self.orderfooterView.orderStatus.text = @"订单已完成";
-    }
-    else if (!_isOrderSucces) {
-        self.orderfooterView.orderStatus.text = @"订单待支付";
-    }
-    if (_isOrderCancel) {
-        self.orderfooterView.orderStatus.text = @"订单已取消";
-    }
-
+    self.orderfooterView.model = self.orderModel.result.data[section];
     self.orderfooterView.delegate = self;
     return self.orderfooterView;
 }
@@ -146,22 +166,10 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         self.payingBackGroudView.hidden = NO;
     }
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
-        self.orderfooterView.orderDescription.hidden = YES;
-        self.orderfooterView.orderStatus.text = @"订单已取消";
-        _isOrderCancel = YES;
-        orderFooterView.isOrderCancel = YES;
-        [self.tableView reloadData];
     }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-    if (_isOrderCancel == YES) {
-        self.orderfooterView.orderDescription.hidden = YES;
-        self.orderfooterView.orderStatus.text = @"订单已取消";
-    }
-    if (_isOrderSucces == YES) {
-        self.orderfooterView.orderStatus.text = @"订单已完成";
-    }
 
 }
 
@@ -194,6 +202,13 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
                   forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark tableViewDidSelected
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OrderDetaiViewController *orderDetail = [OrderDetaiViewController new];
+    [self.navigationController pushViewController:orderDetail animated:YES];
+}
+
 #pragma mark - aliPay
 
 - (void)aliPay:(UIButton *)sender {
@@ -207,20 +222,21 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 }
 
 - (void)payByPayStyle:(PayStyle)stayle {
-    //    [[ZToastManager ShardInstance] showprogress];
-    //    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:stayle success:^{
-    //        [[ZToastManager ShardInstance] hideprogress];
-    //        if ([self.model.department isEqualToString:@"dept3"]) {
-    //            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
-    //        } else {
-    //            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_PEIXUN];
-    //        }
-    //        MyLessonsViewController *lesson = [[MyLessonsViewController alloc] init];
-    //        [self.navigationController pushViewController:lesson animated:YES];
-    //    }                                     failed:^{
-    //        [[ZToastManager ShardInstance] hideprogress];
-    //        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-    //    }];
+
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (TalkGridModel *c in self.orderfooterView.model.items) {
+        [tempArray addObject:c];
+    }
+    XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
+    [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+        self.tabBarController.selectedIndex = 3;
+        self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+    }                                     failed:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+        MyOrderViewController *myOrderPage = [MyOrderViewController new];
+        [self.navigationController pushViewController:myOrderPage animated:YES];
+    }];
 }
 
 #pragma mark - payViewCancel
@@ -233,9 +249,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
                 payViewH);
     }];
     self.payingBackGroudView.hidden = YES;
-
-    self.isOrderSucces = YES;
-    [self.tableView reloadData];
 }
 
 @end

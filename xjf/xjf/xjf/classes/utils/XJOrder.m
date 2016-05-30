@@ -22,6 +22,7 @@
 }
 
 -(void)orderCancel {
+    
     self.goods = nil;
 }
 

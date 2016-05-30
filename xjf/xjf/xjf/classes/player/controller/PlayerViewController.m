@@ -13,7 +13,9 @@
 #import "ZFPlayerSingleton.h"
 #import "playerConfigure.h"
 #import "CommentsModel.h"
-
+#import "XJAccountManager.h"
+#import "LoginViewController.h"
+#import "RegistViewController.h"
 @interface PlayerViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
@@ -102,18 +104,16 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:self.textField.text forKey:@"comments"];
-        [dic setValue:self.talkGridModel.id_ forKey:@"ID"];
         request.requestParams = dic;
+        
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
                 self.commentsModel = [[CommentsAllDataList alloc]
                                       initWithData:responseData error:nil];
-            
-            NSLog(@"----%@",self.commentsModel);
-            
-            
-                [self.collectionView reloadData];
+            NSDictionary *dicc = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+            NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil]);
+            //                [self.collectionView reloadData];
 
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -509,14 +509,34 @@ referenceSizeForFooterInSection:(NSInteger)section {
 #pragma mark 评论
 
 - (void)comments:(UIButton *)sender {
-    NSLog(@"评论");
-    [self.textField becomeFirstResponder];
+        if ([[XJAccountManager defaultManager] accessToken] == nil ||
+                [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+    
+            [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"
+                                okTitle:@"登录"
+                             otherTitle:@"注册"
+                      cancelButtonTitle:@"取消"
+                                message:@"参与话题讨论\n\n播放记录云同步\n\n更多金融专业课程"
+                            cancelBlock:^{
+                                NSLog(@"取消");
+                            } okBlock:^{
+                        LoginViewController *loginPage = [LoginViewController new];
+                        [self.navigationController pushViewController:loginPage animated:YES];
+                    }        otherBlock:^{
+                        RegistViewController *registPage = [RegistViewController new];
+                        registPage.title_item = @"注册";
+                        [self.navigationController pushViewController:registPage animated:YES];
+                    }];
+    
+        } else {
+            [self.textField becomeFirstResponder];
+        }
 }
 
 #pragma mark 发表评论
 - (void)sendCommentMsg:(UIButton *)sender {
 
-    self.api = [NSString stringWithFormat:@"%@%@/%@",talkGridcomments,self.talkGridModel.id_,self.textField.text];
+    self.api = [NSString stringWithFormat:@"%@%@/comments",talkGridcomments,self.talkGridModel.id_];
     
 //    self.api = [self.api stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     

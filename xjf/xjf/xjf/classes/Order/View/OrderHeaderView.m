@@ -55,4 +55,13 @@
     return self;
 }
 
+- (void)setModel:(OrderDataModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    self.orderNumber.text = [NSString stringWithFormat:@"订单编号: %@",model.id];
+    self.orderDate.text = [NSString stringWithFormat:@"%@",model.created_at];
+}
+
 @end

@@ -13,6 +13,8 @@
 #import "OrderHeaderView.h"
 #import "OrderFooterView.h"
 #import "MyViewController.h"
+#import "AlertUtils.h"
+#import "MyOrderViewController.h"
 
 @interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
@@ -36,9 +38,22 @@ static CGFloat tableFooter_orderSucceslH = 80;
 static NSString *LessonOrderCell_id = @"LessonOrderCell_id";
 static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.title = @"订单详情";
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"订单详情";
+    
     self.isOrderCancel = NO;
     self.isOrderSucces = NO;
     [self initMainUI];
@@ -84,10 +99,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 2;
-    }
-    return 3;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -98,7 +110,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     cell.price.hidden = NO;
     cell.oldPrice.hidden = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    cell.model = self.dataSource[indexPath.row];
     return cell;
 }
 
@@ -233,20 +245,17 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 - (void)payByPayStyle:(PayStyle)stayle {
-//    [[ZToastManager ShardInstance] showprogress];
-//    [[XJMarket sharedMarket] buyTradeImmediately:self.model by:stayle success:^{
-//        [[ZToastManager ShardInstance] hideprogress];
-//        if ([self.model.department isEqualToString:@"dept3"]) {
-//            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_XUETANG];
-//        } else {
-//            [[XJMarket sharedMarket] addLessons:@[self.model] key:MY_LESSONS_PEIXUN];
-//        }
-//        MyLessonsViewController *lesson = [[MyLessonsViewController alloc] init];
-//        [self.navigationController pushViewController:lesson animated:YES];
-//    }                                     failed:^{
-//        [[ZToastManager ShardInstance] hideprogress];
-//        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-//    }];
+
+    XJOrder *order = [[XJMarket sharedMarket] createOrderWith:self.dataSource];
+    [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+        self.tabBarController.selectedIndex = 3;
+        self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+    }                                     failed:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+        MyOrderViewController *myOrderPage = [MyOrderViewController new];
+        [self.navigationController pushViewController:myOrderPage animated:YES];
+    }];
 }
 
 #pragma mark - payViewCancel
@@ -265,6 +274,13 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     self.cancel.hidden = YES;
     self.orderfooterView.orderStatus.text = @"订单已成功";
     [self.tableView reloadData];
+//    MyViewController *myPage = [MyViewController new];
+//    [self.navigationController pushViewController:myPage animated:YES];
+//    NSLog(@"%@",self.navigationController.viewControllers);
+//    self.tabBarController.selectedIndex = 3;
+//    self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+//    NSLog(@"%@",self.navigationController.viewControllers);
+   
     
 }
 

@@ -182,7 +182,10 @@ static CGFloat payViewH = 285;
 
 - (void)nowPay:(UIButton *)sender {
     OrderDetaiViewController *orderDetailPage = [OrderDetaiViewController new];
+    orderDetailPage.dataSource = @[self.model].mutableCopy;
     [self.navigationController pushViewController:orderDetailPage animated:YES];
+   
+    
 }
 
 #pragma mark - studing

@@ -93,9 +93,9 @@ static APIName *coursesProject = @"/api/courses3/?project_id=";
 #pragma mark 析金学堂-视频详情--视频列表
 static APIName *coursesProjectLessonDetailList = @"/api/courses3/";
 
-
-
-
+#pragma mark-- 订单 -----------------------------
+#pragma mark 查询所有订单
+static APIName *queryAllOrder = @"/api/order";
 
 
 

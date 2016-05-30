@@ -83,7 +83,7 @@
 
 @interface TablkListModel : JSONModel
 
-@property(nonatomic, strong) NSString *errCode;
+@property(nonatomic, assign) int errCode;
 @property(nonatomic, strong) NSString *errMsg;
 @property(nonatomic, strong) TablkResultModel *result;
 
