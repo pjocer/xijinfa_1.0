@@ -10,13 +10,13 @@
 
 @interface AlertUtils : NSObject
 
-//默认的alertview
+///默认的alertview
 + (void)alertWithTarget:(UIViewController *)target
                   title:(NSString *)title
                 content:(NSString *)content
            confirmBlock:(dispatch_block_t)comfirmBlock;
 
-//可改变alertview cancel 和 conform title
+///可改变alertview cancel 和 conform title
 + (void)alertWithTarget:(UIViewController *)target
                   title:(NSString *)title
                 content:(NSString *)content
@@ -24,7 +24,7 @@
             cancelTitle:(NSString *)cancelTitle
            confirmBlock:(dispatch_block_t)comfirmBlock;
 
-//可实现cancel 和 conform block
+///可实现cancel 和 conform block
 + (void)alertWithTarget:(UIViewController *)target
                   title:(NSString *)title
                 content:(NSString *)content

@@ -12,6 +12,7 @@
 #import "VideoListCell.h"
 #import "OrderHeaderView.h"
 #import "OrderFooterView.h"
+#import "MyViewController.h"
 
 @interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
@@ -182,13 +183,18 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 #pragma mark cancel
 
 - (void)cancel:(UIButton *)sender {
-    if (!_isOrderSucces) {
-        self.nowPay.hidden = YES;
-        self.cancel.hidden = YES;
-        self.orderfooterView.orderDescription.hidden = YES;
-        self.orderfooterView.orderStatus.text = @"订单已取消";
-        _isOrderCancel = YES;
-    }
+    [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
+        if (!_isOrderSucces) {
+            self.nowPay.hidden = YES;
+            self.cancel.hidden = YES;
+            self.orderfooterView.orderDescription.hidden = YES;
+            self.orderfooterView.orderStatus.text = @"订单已取消";
+            _isOrderCancel = YES;
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+           [self.navigationController popViewControllerAnimated:YES];
+        });
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
@@ -259,6 +265,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     self.cancel.hidden = YES;
     self.orderfooterView.orderStatus.text = @"订单已成功";
     [self.tableView reloadData];
+    
 }
 
 
