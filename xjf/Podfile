@@ -18,6 +18,7 @@ pod 'WeiboSDK', '~> 3.1.3'
 pod 'TencentOpenApiSDK', '~> 2.9.5'
 pod 'JSONModel','~> 1.2.0'
 pod 'ReactiveCocoa', '~> 2.5'
+pod 'MJRefresh','~> 3.1.0'
 end
 
 # pod can't find: Menu, XMShareView

@@ -146,6 +146,7 @@
 		D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */; };
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
 		D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A81ED1CEEA0E8002C1297 /* XJMarket.m */; };
+		D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF6E1CFBF089002D3FAF /* TopicModel.m */; };
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
@@ -466,6 +467,8 @@
 		D0698E801CE45AED003BF1F3 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationUtil.m; path = ../NotificationUtil.m; sourceTree = "<group>"; };
 		D06A81EC1CEEA0E8002C1297 /* XJMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJMarket.h; sourceTree = "<group>"; };
 		D06A81ED1CEEA0E8002C1297 /* XJMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMarket.m; sourceTree = "<group>"; };
+		D073CF6D1CFBF089002D3FAF /* TopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicModel.h; path = xjf/classes/topic/TopicModel.h; sourceTree = SOURCE_ROOT; };
+		D073CF6E1CFBF089002D3FAF /* TopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicModel.m; path = xjf/classes/topic/TopicModel.m; sourceTree = SOURCE_ROOT; };
 		D073E8131CE9D66C00AED895 /* RegistFinalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistFinalModel.h; path = xjf/classes/user/controller/RegistFinalModel.h; sourceTree = SOURCE_ROOT; };
 		D073E8141CE9D66C00AED895 /* RegistFinalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistFinalModel.m; path = xjf/classes/user/controller/RegistFinalModel.m; sourceTree = SOURCE_ROOT; };
 		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationSet.h; path = ../NotificationSet.h; sourceTree = "<group>"; };
@@ -1071,6 +1074,8 @@
 		CD1CCC0A1CB35A2D002FC0C9 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D073CF6D1CFBF089002D3FAF /* TopicModel.h */,
+				D073CF6E1CFBF089002D3FAF /* TopicModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1606,6 +1611,7 @@
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
+				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,

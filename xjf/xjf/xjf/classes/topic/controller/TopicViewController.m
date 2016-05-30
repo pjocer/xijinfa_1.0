@@ -43,6 +43,7 @@
         _scrollView.showsVerticalScrollIndicator = YES;
         _scrollView.delegate = self;
         UITableView *a = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
+        
         a.backgroundColor = [UIColor redColor];
         [_scrollView addSubview:a];
         UITableView *b = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
