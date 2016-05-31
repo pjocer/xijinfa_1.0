@@ -56,11 +56,11 @@
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         [[ZToastManager ShardInstance] hideprogress];
         TopicModel *model = [[TopicModel alloc] initWithData:responseData error:nil];
-        if ([api rangeOfString:@"QA"].location != NSNotFound) {
+        if (tableView == self.tableview_qa) {
             _model_qa = model;
             [_qaDataSource addObjectsFromArray:_model_qa.result.data];
             [_tableview_qa reloadData];
-        }else if ([api rangeOfString:@"discuss"].location != NSNotFound) {
+        }else if (tableView == self.tableView_discuss) {
             _model_discuss = model;
             [_disscussDataSource addObjectsFromArray:_model_discuss.result.data];
             [_tableView_discuss reloadData];

@@ -66,8 +66,17 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
                 if (failedBlock) failedBlock(error);
             }];
         }
-            
             break;
+        case PUT:
+        {
+            [_manager PUT:self.api_name parameters:self.requestParams success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                [self formmatSessionDataTask:response data:responseObject];
+                if (successBlock) successBlock(responseObject);
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (failedBlock) failedBlock(error);
+            }];
+        }
         default:
             break;
     }

@@ -26,12 +26,6 @@
 }
 @end
 
-@implementation TopicDetailReply
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
-@end
-
 @implementation TopicDetailUser
 +(BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;

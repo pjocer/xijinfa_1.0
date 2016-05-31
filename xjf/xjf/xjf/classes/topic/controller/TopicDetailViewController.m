@@ -22,6 +22,7 @@
     [super viewDidLoad];
     [self initMainUI];
     [self requestData:[topic_all stringByAppendingString:self.topic_id] method:GET];
+    [self requestData:[NSString stringWithFormat:@"%@/%@/reply",topic_all,self.topic_id] method:GET];
 }
 
 - (void)requestData:(APIName *)api method:(RequestMethod)method {
@@ -53,13 +54,9 @@
     return _tableView;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _model.result.replies.count+1;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,6 +73,11 @@
         return height+116;
     }
     return height+116;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 /*
 #pragma mark - Navigation

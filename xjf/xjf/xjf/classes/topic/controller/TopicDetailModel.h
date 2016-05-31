@@ -8,10 +8,6 @@
 
 #import <JSONModel/JSONModel.h>
 
-@protocol TopicDetailReply
-
-@end
-
 @protocol TopicCategoryLabel
 
 @end
@@ -39,24 +35,6 @@
 @property (nonatomic, copy) NSString *end_time;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *type;
-@end
-
-@interface TopicDetailReply : JSONModel
-@property (nonatomic, copy) NSString *id;
-@property (nonatomic, copy) NSString *topic_id;
-@property (nonatomic, copy) NSString *user_id;
-@property (nonatomic, copy) NSString *reply_id;
-@property (nonatomic, copy) NSString *type;
-@property (nonatomic, copy) NSString *to_user_id;
-@property (nonatomic, copy) NSString *content;
-@property (nonatomic, copy) NSString *status;
-@property (nonatomic, copy) NSString *client;
-@property (nonatomic, copy) NSString *created_at;
-@property (nonatomic, copy) NSString *updated_at;
-@property (nonatomic, copy) NSString *reply_count;
-@property (nonatomic, copy) NSString *like_count;
-@property (nonatomic, copy) NSString *is_favorite;
-@property (nonatomic, copy) NSString *is_like;
 @end
 
 
@@ -100,7 +78,6 @@
 @property (nonatomic, copy) NSString *updated_at;
 @property (nonatomic, copy) NSString *user_id;
 @property (nonatomic, strong) TopicDetailUser *user;
-@property (nonatomic, strong) NSMutableArray <TopicDetailReply>*replies;
 @property (nonatomic, strong) NSMutableArray <TopicCategoryLabel>*categories;
 @end
 

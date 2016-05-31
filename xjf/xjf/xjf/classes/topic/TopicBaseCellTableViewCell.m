@@ -149,10 +149,13 @@
 }
 
 - (IBAction)category_1stAction:(UIButton *)sender {
+    
 }
 - (IBAction)category_2ndAction:(UIButton *)sender {
+    
 }
 - (IBAction)category_3rdAction:(UIButton *)sender {
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

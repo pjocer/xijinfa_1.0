@@ -14,7 +14,9 @@ typedef NSString APIName;
 
 typedef NS_OPTIONS(short, RequestMethod) {
     GET = 0,
-    POST
+    POST,
+    PUT,
+    DELETE
 };
 
 typedef void(^SuccessBlock)( NSData * _Nullable responseData);
