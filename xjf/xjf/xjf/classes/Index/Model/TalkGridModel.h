@@ -64,7 +64,8 @@
 ///视频播放次数
 @property(nonatomic, strong) NSString *video_view;
 @property(nonatomic, strong) NSString *view;
-@property(nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video;
+@property(nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video_player;
+@property(nonatomic, assign) BOOL isSelected;
 @end
 
 

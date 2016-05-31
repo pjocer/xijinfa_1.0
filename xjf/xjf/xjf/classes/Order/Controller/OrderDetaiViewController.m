@@ -15,6 +15,7 @@
 #import "MyViewController.h"
 #import "AlertUtils.h"
 #import "MyOrderViewController.h"
+#import "XJAccountManager.h"
 
 @interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
@@ -24,6 +25,7 @@
 @property(nonatomic, strong) UIView *payingBackGroudView;
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) OrderFooterView *orderfooterView;
+@property (nonatomic, strong) NSDictionary *requestParams;
 @end
 
 @implementation OrderDetaiViewController
@@ -51,11 +53,8 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (self.xjOrder) {
-        self.orderDataModel = self.xjOrder.order
-    }
     [self initMainUI];
-    
+    NSLog(@"xxxxxxxxxxxx %ld",self.dataSource.count);
     if (self.dataSource.count == 0 || self.dataSource == nil) {
         if (self.orderDataModel.status != 1) {
             self.nowPay.hidden = YES;
@@ -104,6 +103,9 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.dataSource.count != 0) {
+        return self.dataSource.count;
+    }
     return self.orderDataModel.items.count;
 }
 
@@ -112,9 +114,13 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
-    cell.oldPrice.hidden = NO;
+    cell.oldPrice.hidden = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = self.orderDataModel.items[indexPath.row];
+    if (self.dataSource.count != 0) {
+        cell.model = self.dataSource[indexPath.row];
+    } else {
+        cell.model = self.orderDataModel.items[indexPath.row];
+    }
     return cell;
 }
 
@@ -139,6 +145,21 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     self.orderfooterView = [[OrderFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
     self.orderfooterView.model = self.orderDataModel;
+    CGFloat temp = 0;
+    if (self.dataSource.count != 0) {
+        for (TalkGridModel *model in self.dataSource) {
+            temp += model.price.floatValue;
+        }
+          self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.dataSource.count,temp/100];
+    }else {
+        for (TalkGridModel *model in self.orderfooterView.model.items) {
+            temp += model.price.floatValue;
+        }
+        self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.orderfooterView.model.items.count,temp/100];
+    }
+    
+    
+    
     return self.orderfooterView;
 }
 
@@ -201,7 +222,11 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 - (void)cancel:(UIButton *)sender {
     [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
-
+        if (self.dataSource.count == 0) {
+            MyOrderViewController *tempVC = self.navigationController.viewControllers[self.navigationController.viewControllers.count-2];
+            tempVC.requestParams = @{@"status":[NSString stringWithFormat:@"2"]};
+            [tempVC requestAllOrderData:[NSString stringWithFormat:@"/api/order/%@",self.orderDataModel.id] method:PUT];
+        }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
            [self.navigationController popViewControllerAnimated:YES];
         });
@@ -237,16 +262,28 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 - (void)payByPayStyle:(PayStyle)stayle {
-
-    XJOrder *order = [[XJMarket sharedMarket] createOrderWith:self.dataSource];
+     NSArray *tempArray = [NSArray array];
+    if (self.dataSource.count != 0) {
+        tempArray = self.dataSource;
+    } else {
+        tempArray = self.orderDataModel.items;
+    }
+   
+     XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
     [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        self.tabBarController.selectedIndex = 3;
-        self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+        if (self.dataSource.count != 0 ) {
+            self.tabBarController.selectedIndex = 3;
+            self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+        }
+
     }                                     failed:^{
+
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-        MyOrderViewController *myOrderPage = [MyOrderViewController new];
-        [self.navigationController pushViewController:myOrderPage animated:YES];
+        if (self.dataSource.count != 0) {
+            MyOrderViewController *myOrderPage = [MyOrderViewController new];
+            [self.navigationController pushViewController:myOrderPage animated:YES];
+        }
     }];
 }
 

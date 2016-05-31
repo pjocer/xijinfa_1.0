@@ -101,6 +101,11 @@
     //    "status": 0, // 订单状态 1待支付，2取消订单，4订单冲突（已支付） 9支付成功
     if (model.status == 9) {
         self.orderStatus.text = @"订单已完成";
+        if ([model.billing_channel isEqualToString:@"alipay"]) {
+            self.payStyleName.text = @"支付宝";
+        }else if ([model.billing_channel isEqualToString:@"wechat"]) {
+           self.payStyleName.text = @"微信";
+        }
     }
     else if (model.status == 1) {
         self.orderStatus.text = @"订单待支付";

@@ -77,45 +77,34 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 #pragma mark requestData
 
 - (void)requestCommentsData:(APIName *)api method:(RequestMethod)method {
+    
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     //GET
-    if (method == 0) {
+    if (method == GET) {
         @weakify(self)
-        [[ZToastManager ShardInstance] showprogress];
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-            if (self.commentsModel.errCode == 0) {
                 [[ZToastManager ShardInstance] hideprogress];
                 self.commentsModel = [[CommentsAllDataList alloc] initWithData:responseData error:nil];
-
                 [self.collectionView reloadData];
-            } else {
-                [[ZToastManager ShardInstance] hideprogress];
-                [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-            }
-
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
     }
         //POST
-    else if (method == 1) {
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    else if (method == POST) {
+
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        [dic setValue:self.textField.text forKey:@"comments"];
+        [dic setValue:self.textField.text forKey:@"content"];
+        [dic setValue:self.talkGridModel.id_ forKey:@"ID"];
         request.requestParams = dic;
         
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-                self.commentsModel = [[CommentsAllDataList alloc]
-                                      initWithData:responseData error:nil];
-            NSDictionary *dicc = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-            NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil]);
-            //                [self.collectionView reloadData];
-
-        }                  failedBlock:^(NSError *_Nullable error) {
+            [self requestCommentsData:self.api method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
 
@@ -171,7 +160,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
     //    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
     //    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
-    TalkGridVideo *gridVideomodel = self.talkGridModel.video.firstObject;
+    TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
     self.playUrl = gridVideomodel.url;
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
@@ -536,11 +525,10 @@ referenceSizeForFooterInSection:(NSInteger)section {
 #pragma mark 发表评论
 - (void)sendCommentMsg:(UIButton *)sender {
 
-    self.api = [NSString stringWithFormat:@"%@%@/comments",talkGridcomments,self.talkGridModel.id_];
+    NSString *tempApi = [NSString stringWithFormat:@"%@%@/comments",talkGridcomments,self.talkGridModel.id_];
     
-//    self.api = [self.api stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    [self requestCommentsData:self.api method:POST];
+    [self requestCommentsData:tempApi method:POST];
     [self.textField resignFirstResponder];
 }
 

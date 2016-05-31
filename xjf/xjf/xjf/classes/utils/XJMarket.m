@@ -74,8 +74,6 @@
         for (TalkGridModel *good in classes) {
             if ([good.id_ isEqualToString:goods.id_]) {
                 return YES;
-            }else {
-                return NO;
             }
         }
     }else if ([key isEqualToString:MY_LESSONS_PEIXUN] || [key isEqualToString:MY_LESSONS_XUETANG]) {
@@ -83,8 +81,6 @@
         for (TalkGridModel *good in classes) {
             if ([good.id_ isEqualToString:goods.id_]) {
                 return YES;
-            }else {
-                return NO;
             }
         }
     }
@@ -93,17 +89,22 @@
 
 -(void)deleteGoodsFrom:(NSString *)key goods:(NSArray<TalkGridModel *> *)goods {
     NSMutableArray *goodsList = [NSMutableArray arrayWithArray:[self shoppingCartFor:key]];
+    NSMutableArray *array = [goodsList mutableCopy];
     for (int i = 0; i < goods.count; i++) {
         TalkGridModel *good = goods[i];
         for (TalkGridModel *model in goodsList) {
             if ([good.id_ isEqualToString:model.id_]) {
-                [goodsList removeObject:model];
+                [array removeObject:model];
                 break;
             }
         }
     }
+    NSMutableArray *goodlist = [NSMutableArray array];
+    for (TalkGridModel *model in array) {
+        [goodlist addObject:[model toDictionary]];
+    }
     NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForShoppingCart]] mutableCopy];
-    [dic setObject:goodsList forKey:key];
+    [dic setObject:goodlist forKey:key];
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
 
@@ -118,33 +119,46 @@
             }
         }
     }
+    NSMutableArray *goodlist = [NSMutableArray array];
+    for (TalkGridModel *model in goodsList) {
+        [goodlist addObject:[model toDictionary]];
+    }
     NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForShoppingCart]] mutableCopy];
-    [dic setObject:goodsList forKey:key];
+    [dic setObject:goodlist forKey:key];
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
 
 - (void)addLessons:(NSArray <TalkGridModel*>*)lessons key:(NSString *)key {
     NSMutableArray *classes = [NSMutableArray arrayWithArray:[self myLessonsFor:key]];
+    NSMutableArray *class = [NSMutableArray new];
+    for (TalkGridModel *model in classes) {
+        [class addObject:[model toDictionary]];
+    }
     for (TalkGridModel *model in lessons) {
         NSDictionary *dic = [model toDictionary];
-        [classes addObject:dic];
+        [class addObject:dic];
     }
     NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForMyLessons]] mutableCopy];
-    [dic setObject:classes forKey:key];
+    [dic setObject:class forKey:key];
     [dic writeToFile:[self pathForMyLessons] atomically:YES];
 }
 
 - (void)addGoods:(NSArray <TalkGridModel*>*)goods key:(NSString *)key {
     NSMutableArray *goodsList = [NSMutableArray arrayWithArray:[self shoppingCartFor:key]];
+    NSMutableArray *goodlist = [NSMutableArray new];
+    for (TalkGridModel *model in goodsList) {
+        NSDictionary *dic = [model toDictionary];
+        [goodlist addObject:dic];
+    }
     for (TalkGridModel *model in goods) {
         NSDictionary *dic = [model toDictionary];
-        [goodsList addObject:dic];
+        [goodlist addObject:dic];
     }
     NSMutableDictionary *dic = [[NSMutableDictionary dictionaryWithContentsOfFile:[self pathForShoppingCart]] mutableCopy];
-    [dic setObject:goodsList forKey:key];
+    [dic setObject:goodlist forKey:key];
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
--(NSArray<TalkGridModel *> *)myLessonsFor:(NSString *)key {
+-(NSMutableArray<TalkGridModel *> *)myLessonsFor:(NSString *)key {
     NSString *path = [self pathForMyLessons];
     NSDictionary *lessons = [NSDictionary dictionaryWithContentsOfFile:path];
     NSMutableArray *array = [NSMutableArray array];

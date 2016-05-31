@@ -22,7 +22,6 @@
 @property(nonatomic, strong) MyOrderFooterView *orderfooterView;
 
 @property (nonatomic, strong) OrderModel *orderModel;
-@property (nonatomic, strong) NSDictionary *requestParams;
 @end
 
 @implementation MyOrderViewController
@@ -132,7 +131,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
-    cell.oldPrice.hidden = NO;
+    cell.oldPrice.hidden = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
@@ -162,6 +161,11 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     self.orderfooterView = [[MyOrderFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
     self.orderfooterView.model = self.orderModel.result.data[section];
     self.orderfooterView.delegate = self;
+    CGFloat temp = 0;
+    for (TalkGridModel *model in self.orderfooterView.model.items) {
+        temp += model.price.floatValue;
+    }
+    self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.orderfooterView.model.items.count,temp/100];
     return self.orderfooterView;
 }
 
@@ -178,7 +182,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     }
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
         [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
-            NSLog(@"%@",[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id]);
             self.requestParams = @{@"status":[NSString stringWithFormat:@"2"]};
             [self requestAllOrderData:[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id] method:PUT];
         }];
@@ -251,8 +254,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
     }                                     failed:^{
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-        MyOrderViewController *myOrderPage = [MyOrderViewController new];
-        [self.navigationController pushViewController:myOrderPage animated:YES];
     }];
 }
 

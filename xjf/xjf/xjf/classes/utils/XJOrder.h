@@ -15,7 +15,13 @@ typedef NS_OPTIONS(NSUInteger, OrderStatus) {
     OrderStatusUndetermined
 } NS_ENUM_AVAILABLE_IOS(8_0);
 
+@protocol OrderInfoDidChangedDelegate <NSObject>
+- (void)orderInfoDidChanged:(Order *)order;
+@end
+
 @interface XJOrder : NSObject
+
+@property (nonatomic, weak) id <OrderInfoDidChangedDelegate>delegate;
 
 @property (nonatomic, assign) OrderStatus status;
 

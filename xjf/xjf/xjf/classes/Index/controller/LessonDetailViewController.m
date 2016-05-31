@@ -38,6 +38,8 @@
 @property(nonatomic, strong) LessonDetailLessonListViewController *lessonDetailLessonListViewController;
 @property(nonatomic, strong) LessonPlayerLessonDescribeViewController *lessonPlayerLessonDescribeViewController;
 @property(nonatomic, strong) LessonDetailTecherDescribeViewController *lessonDetailTecherDescribeViewController;
+
+@property (nonatomic, strong) UILabel *goodsCount;
 @end
 
 @implementation LessonDetailViewController
@@ -74,14 +76,29 @@ static CGFloat payViewH = 285;
 
 - (void)setNavigationBar {
     self.navigationItem.title = @"课程详情";
-    UIBarButtonItem *shoppingCart = [[UIBarButtonItem alloc]
-            initWithImage:[UIImage imageNamed:@"shoppingCart"]
-                    style:UIBarButtonItemStylePlain target:self action:@selector(shoppingCartAction:)];
-    self.navigationItem.rightBarButtonItem = shoppingCart;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 50, 44);
+    [button setImage:[UIImage imageNamed:@"shoppingCart"] forState:UIControlStateNormal];
+    UIBarButtonItem *barbutton2 = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barbutton2;
+    [button addTarget:self action:@selector(shoppingCartAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.goodsCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
+    self.goodsCount.backgroundColor = [UIColor redColor];
+    self.goodsCount.layer.masksToBounds = YES;
+    self.goodsCount.layer.cornerRadius = 11.f;
+    self.goodsCount.textAlignment = NSTextAlignmentCenter;
+    [button addSubview:self.goodsCount];
+    if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
+        self.goodsCount.hidden = NO;
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+    } else {
+        self.goodsCount.hidden = YES;
+    }
 }
 
 ///购物车事件
-- (void)shoppingCartAction:(UIBarButtonItem *)sender {
+- (void)shoppingCartAction:(UIButton *)sender {
     ShoppingCartViewController *shoppingCartViewController = [ShoppingCartViewController new];
     [self.navigationController pushViewController:shoppingCartViewController animated:YES];
 }
@@ -175,14 +192,24 @@ static CGFloat payViewH = 285;
 #pragma mark addShoppingCart
 
 - (void)addShoppingCart:(UIButton *)sender {
-
+    if ([[XJMarket sharedMarket] isAlreadyExists:self.model key:XJ_XUETANG_SHOP]) {
+         [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
+    } else {
+         [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
+        [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_XUETANG_SHOP];
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+        if (self.goodsCount.hidden == YES) {
+               self.goodsCount.hidden = NO;
+        }
+    }
+    
 }
 
 #pragma mark nowPay
 
 - (void)nowPay:(UIButton *)sender {
     OrderDetaiViewController *orderDetailPage = [OrderDetaiViewController new];
-    orderDetailPage.dataSource = @[self.model].mutableCopy;
+    orderDetailPage.dataSource = [NSMutableArray arrayWithObject:self.model];
     [self.navigationController pushViewController:orderDetailPage animated:YES];
    
     
@@ -295,7 +322,9 @@ static CGFloat payViewH = 285;
 
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
-    self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame) + 1);
+    [UIView animateWithDuration:0.3 animations:^{
+      self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame) + 1);
+    }];
 }
 
 - (void)setUpOneChildViewController:(NSUInteger)i {
