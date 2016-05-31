@@ -92,8 +92,6 @@
                 self.cellHeight = height + 30 + 28 + 36;
             }
             [self.contentView addSubview:button];
-//            [self.contentView setNeedsLayout];
-//            [self.contentView layoutIfNeeded];
             length = 10*(i+1)+width+length;
         }
     }else {
