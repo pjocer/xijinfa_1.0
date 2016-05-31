@@ -138,6 +138,9 @@
 		D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */; };
 		D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2631CEAF85C00873D10 /* StringUtil.m */; };
 		D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2661CEAF87800873D10 /* NSDate+Convenience.m */; };
+		D055EEA11CFD30CE004DDD7E /* TopicCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */; };
+		D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D055EEA61CFD375F004DDD7E /* CommentDetailHeader.m */; };
+		D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055EEA71CFD375F004DDD7E /* CommentDetailHeader.xib */; };
 		D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
@@ -457,6 +460,11 @@
 		D053D2631CEAF85C00873D10 /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringUtil.m; path = ../StringUtil.m; sourceTree = "<group>"; };
 		D053D2651CEAF87800873D10 /* NSDate+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Convenience.h"; path = "../NSDate+Convenience.h"; sourceTree = "<group>"; };
 		D053D2661CEAF87800873D10 /* NSDate+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Convenience.m"; path = "../NSDate+Convenience.m"; sourceTree = "<group>"; };
+		D055EE9F1CFD30CE004DDD7E /* TopicCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicCommentList.h; path = xjf/classes/topic/controller/TopicCommentList.h; sourceTree = SOURCE_ROOT; };
+		D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicCommentList.m; path = xjf/classes/topic/controller/TopicCommentList.m; sourceTree = SOURCE_ROOT; };
+		D055EEA51CFD375F004DDD7E /* CommentDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailHeader.h; path = xjf/classes/topic/CommentDetailHeader.h; sourceTree = SOURCE_ROOT; };
+		D055EEA61CFD375F004DDD7E /* CommentDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailHeader.m; path = xjf/classes/topic/CommentDetailHeader.m; sourceTree = SOURCE_ROOT; };
+		D055EEA71CFD375F004DDD7E /* CommentDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentDetailHeader.xib; path = xjf/classes/topic/CommentDetailHeader.xib; sourceTree = SOURCE_ROOT; };
 		D05843A31CDC5F7C00B1363C /* ZFPlayerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerSingleton.h; sourceTree = "<group>"; };
 		D05843A41CDC5F7C00B1363C /* ZFPlayerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerSingleton.m; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
@@ -1096,6 +1104,8 @@
 				D073CF6E1CFBF089002D3FAF /* TopicModel.m */,
 				D073CF781CFC62E1002D3FAF /* TopicDetailModel.h */,
 				D073CF791CFC62E1002D3FAF /* TopicDetailModel.m */,
+				D055EE9F1CFD30CE004DDD7E /* TopicCommentList.h */,
+				D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1106,6 +1116,9 @@
 				D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */,
 				D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */,
 				D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */,
+				D055EEA51CFD375F004DDD7E /* CommentDetailHeader.h */,
+				D055EEA61CFD375F004DDD7E /* CommentDetailHeader.m */,
+				D055EEA71CFD375F004DDD7E /* CommentDetailHeader.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1497,6 +1510,7 @@
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
 				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
+				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1598,6 +1612,7 @@
 				D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */,
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */,
+				D055EEA11CFD30CE004DDD7E /* TopicCommentList.m in Sources */,
 				D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */,
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */,
@@ -1677,6 +1692,7 @@
 				CD1CCC5F1CB39CE1002FC0C9 /* SearchViewController.m in Sources */,
 				5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */,
 				D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */,
+				D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */,
 				CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */,
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,

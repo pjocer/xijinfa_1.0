@@ -21,9 +21,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *right_constrain;
 @property (weak, nonatomic) IBOutlet UIView *comment;
 @property (weak, nonatomic) IBOutlet UIView *praise;
-@property (weak, nonatomic) IBOutlet UIButton *category_1st;
-@property (weak, nonatomic) IBOutlet UIButton *category_2nd;
-@property (weak, nonatomic) IBOutlet UIButton *category_3rd;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *praiseLabel;
 @end
@@ -66,96 +63,47 @@
         _extension.backgroundColor = [UIColor xjfStringToColor:@"#3FA9F5"];
         _extension.text = @"问答";
     }
+    [self heightByModel:model];
+    
+}
+
+- (CGFloat)heightByModel:(TopicDataModel *)model {
+    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
+    CGFloat height = 10+40+10+contentHeight;
     if (model.categories.count > 0) {
+        float length = 10;
         for (int i = 0; i < model.categories.count; i++) {
-            CategoryLabel *label = model.categories[i];
-            if (i == 0) {
-                [_category_1st setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
-            }else if (i == 1) {
-                [_category_2nd setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
-            }else if (i == 2) {
-                [_category_3rd setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
+            TopicCategoryLabel *label = model.categories[i];
+            NSString *buttonTitle = [NSString stringWithFormat:@"#%@#",label.name];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button setTitle:buttonTitle forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor xjfStringToColor:@"#0061B0"] forState:UIControlStateNormal];
+            button.titleLabel.font = FONT12;
+            button.tag = 350+i;
+            [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            CGRect frame = [StringUtil calculateLabelRect:buttonTitle height:14 fontSize:12];
+            CGFloat width = frame.size.width;
+            if (length+10+width <= SCREENWITH) {
+                button.frame = CGRectMake(length, contentHeight+70, width, 14);
+                self.cellHeight = height + 34 + 36;
             }else {
-                NSLog(@"好多Label");
+                length = 10;
+                button.frame = CGRectMake(length, contentHeight+94, width, 14);
+                self.cellHeight = height + 30 + 28 + 36;
             }
-        }
-        if (model.categories.count == 1) {
-            _category_2nd.hidden = YES;
-            _category_3rd.hidden = YES;
-            _category_1st.hidden = NO;
-        }else if (model.categories.count == 2) {
-            _category_3rd.hidden = YES;
-            _category_1st.hidden = NO;
-            _category_2nd.hidden = NO;
-        }else if (model.categories.count == 3) {
-            _category_1st.hidden = NO;
-            _category_2nd.hidden = NO;
-            _category_3rd.hidden = NO;
+            [self.contentView addSubview:button];
+//            [self.contentView setNeedsLayout];
+//            [self.contentView layoutIfNeeded];
+            length = 10*(i+1)+width+length;
         }
     }else {
-        _category_3rd.hidden = YES;
-        _category_2nd.hidden = YES;
-        _category_1st.hidden = YES;
+        self.cellHeight = height+10+36;
     }
+    return self.cellHeight;
 }
 
--(void)setDetail:(TopicDetailModel *)detail {
-    _detail = detail;
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:_detail.result.user.avatar]];
-    _nickname.text = _detail.result.user.nickname;
-    _identity.text = @"";
-    _update_at.text = _detail.result.user.updated_at;
-    _content.text = _detail.result.content;
-    _commentLabel.text = _detail.result.reply_count;
-    _praiseLabel.text = _detail.result.like_count;
-    if (![_detail.result.type isEqualToString:@"QA"]) {
-        _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
-        _extension.text = @"讨论";
-    }else {
-        _extension.backgroundColor = [UIColor xjfStringToColor:@"#3FA9F5"];
-        _extension.text = @"问答";
-    }
-    if (_detail.result.categories.count > 0) {
-        for (int i = 0; i < _detail.result.categories.count; i++) {
-            TopicCategoryLabel *label = _detail.result.categories[i];
-            if (i == 0) {
-                [_category_1st setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
-            }else if (i == 1) {
-                [_category_2nd setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
-            }else if (i == 2) {
-                [_category_3rd setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
-            }else {
-                NSLog(@"好多Label");
-            }
-        }
-        if (_detail.result.categories.count == 1) {
-            _category_2nd.hidden = YES;
-            _category_3rd.hidden = YES;
-            _category_1st.hidden = NO;
-        }else if (_detail.result.categories.count == 2) {
-            _category_3rd.hidden = YES;
-            _category_1st.hidden = NO;
-            _category_2nd.hidden = NO;
-        }else if (_detail.result.categories.count == 3) {
-            _category_1st.hidden = NO;
-            _category_2nd.hidden = NO;
-            _category_3rd.hidden = NO;
-        }
-    }else {
-        _category_3rd.hidden = YES;
-        _category_2nd.hidden = YES;
-        _category_1st.hidden = YES;
-    }
-}
-
-- (IBAction)category_1stAction:(UIButton *)sender {
-    
-}
-- (IBAction)category_2ndAction:(UIButton *)sender {
-    
-}
-- (IBAction)category_3rdAction:(UIButton *)sender {
-    
+- (void)buttonClicked:(UIButton *)button {
+    NSLog(@"%ld",button.tag);
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

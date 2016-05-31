@@ -12,5 +12,5 @@
 
 @interface TopicBaseCellTableViewCell : UITableViewCell
 @property (nonatomic, strong) TopicDataModel *model;
-@property (nonatomic, strong) TopicDetailModel *detail;
+@property (nonatomic, assign) CGFloat cellHeight;
 @end

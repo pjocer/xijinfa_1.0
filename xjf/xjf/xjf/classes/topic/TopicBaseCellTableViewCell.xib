@@ -151,45 +151,6 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUs-fu-G0j">
-                        <rect key="frame" x="10" y="124" width="64" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14" id="klU-WD-icG"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="#析金小白#">
-                            <color key="titleColor" red="0.2470588235" green="0.66274509800000003" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="category_1stAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FQx-Ks-p2W"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ej-Kg-j8U">
-                        <rect key="frame" x="154" y="124" width="64" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14" id="iNn-5v-h4i"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="#析金小白#">
-                            <color key="titleColor" red="0.2470588235" green="0.66274509800000003" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="category_3rdAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a5x-JB-0zv"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWz-N3-dqi">
-                        <rect key="frame" x="82" y="124" width="64" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14" id="OZ0-Sk-r46"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="#析金小白#">
-                            <color key="titleColor" red="0.2470588235" green="0.66274509800000003" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="category_2ndAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TSy-bh-0Yd"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="zrr-mg-kv4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="023-kw-dXl"/>
@@ -206,19 +167,14 @@
                     <constraint firstItem="eJ8-Mu-g3g" firstAttribute="top" secondItem="7C2-Ab-WoG" secondAttribute="bottom" constant="35" id="I6t-BE-hEF"/>
                     <constraint firstAttribute="trailingMargin" secondItem="h5i-ka-5eb" secondAttribute="trailing" constant="-8" id="I91-BX-lmh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eJ8-Mu-g3g" secondAttribute="trailing" constant="-8" id="Kcl-zP-3G3"/>
-                    <constraint firstItem="9ej-Kg-j8U" firstAttribute="leading" secondItem="NWz-N3-dqi" secondAttribute="trailing" constant="8" id="Nvx-Az-P2f"/>
                     <constraint firstItem="7C2-Ab-WoG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="OlG-Jh-QgG"/>
                     <constraint firstItem="mgj-bs-L8c" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="-2" id="QeY-Wm-nBH"/>
-                    <constraint firstItem="cUs-fu-G0j" firstAttribute="top" secondItem="VBs-4v-Lae" secondAttribute="bottom" constant="10" id="S4N-zG-oli"/>
                     <constraint firstItem="PRS-4b-Ndw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="SQz-g1-qpY"/>
                     <constraint firstAttribute="trailingMargin" secondItem="bxA-St-TU0" secondAttribute="trailing" constant="2" id="TYO-TU-kM0"/>
                     <constraint firstItem="ZiZ-WL-dv9" firstAttribute="top" secondItem="7C2-Ab-WoG" secondAttribute="bottom" id="Vpz-ia-jI2"/>
-                    <constraint firstItem="NWz-N3-dqi" firstAttribute="top" secondItem="VBs-4v-Lae" secondAttribute="bottom" constant="10" id="WhR-ww-7NS"/>
                     <constraint firstItem="ZiZ-WL-dv9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="WmX-6b-dBI"/>
                     <constraint firstItem="o7W-2T-NL1" firstAttribute="leading" secondItem="PRS-4b-Ndw" secondAttribute="trailing" constant="10" id="YTN-SV-Y4k"/>
                     <constraint firstItem="zrr-mg-kv4" firstAttribute="leading" secondItem="o7W-2T-NL1" secondAttribute="trailing" constant="10" id="Ysj-XB-iNZ"/>
-                    <constraint firstItem="9ej-Kg-j8U" firstAttribute="top" secondItem="VBs-4v-Lae" secondAttribute="bottom" constant="10" id="b1F-Jd-g7R"/>
-                    <constraint firstItem="NWz-N3-dqi" firstAttribute="leading" secondItem="cUs-fu-G0j" secondAttribute="trailing" constant="8" id="bLN-44-oPD"/>
                     <constraint firstItem="h5i-ka-5eb" firstAttribute="leading" secondItem="mgj-bs-L8c" secondAttribute="trailing" id="dpy-KW-zeJ"/>
                     <constraint firstItem="mgj-bs-L8c" firstAttribute="leading" secondItem="ZiZ-WL-dv9" secondAttribute="trailing" id="eR7-j7-GXY"/>
                     <constraint firstItem="ZiZ-WL-dv9" firstAttribute="width" secondItem="h5i-ka-5eb" secondAttribute="width" id="fBC-BI-i9U"/>
@@ -227,14 +183,10 @@
                     <constraint firstItem="tMO-OM-XFV" firstAttribute="leading" secondItem="PRS-4b-Ndw" secondAttribute="trailing" constant="10" id="n7u-E4-B0o"/>
                     <constraint firstItem="VBs-4v-Lae" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="rqz-Vp-3gc"/>
                     <constraint firstItem="eJ8-Mu-g3g" firstAttribute="top" secondItem="ZiZ-WL-dv9" secondAttribute="bottom" id="sl7-AB-Ppf"/>
-                    <constraint firstItem="cUs-fu-G0j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="wpH-Cf-q5q"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatar" destination="PRS-4b-Ndw" id="rK6-K8-ZwE"/>
-                <outlet property="category_1st" destination="cUs-fu-G0j" id="7Ub-kc-Kn0"/>
-                <outlet property="category_2nd" destination="NWz-N3-dqi" id="RXm-89-vfo"/>
-                <outlet property="category_3rd" destination="9ej-Kg-j8U" id="Vgy-Y7-P9L"/>
                 <outlet property="comment" destination="ZiZ-WL-dv9" id="vaa-Xu-gZj"/>
                 <outlet property="commentLabel" destination="8aV-sT-L0h" id="HOh-XK-2UE"/>
                 <outlet property="content" destination="VBs-4v-Lae" id="mTQ-Id-eV8"/>

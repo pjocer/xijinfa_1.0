@@ -7,13 +7,17 @@
 //
 
 #import "TopicDetailViewController.h"
-#import "TopicBaseCellTableViewCell.h"
 #import "XjfRequest.h"
 #import "TopicDetailModel.h"
+#import "TopicCommentList.h"
+#import "CommentDetailHeader.h"
+#import "ZToastManager.h"
 
 @interface TopicDetailViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) TopicDetailModel *model;
+@property (nonatomic, strong) TopicCommentList *commentList;
+@property (nonatomic, strong) CommentDetailHeader *header;
 @end
 
 @implementation TopicDetailViewController
@@ -21,20 +25,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    [self initData];
+}
+
+- (void)initData {
     [self requestData:[topic_all stringByAppendingString:self.topic_id] method:GET];
-    [self requestData:[NSString stringWithFormat:@"%@/%@/reply",topic_all,self.topic_id] method:GET];
+    [self requestData:[NSString stringWithFormat:@"%@%@/reply",topic_all,self.topic_id] method:GET];
 }
 
 - (void)requestData:(APIName *)api method:(RequestMethod)method {
+    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        _model = [[TopicDetailModel alloc] initWithData:responseData error:nil];
-        NSLog(@"%@",_model);
-        if ([_model.errCode isEqualToString:@"0"]) {
-            [self.tableView reloadData];
+        if ([api isEqualToString:[topic_all stringByAppendingString:self.topic_id]]) {
+            _model = [[TopicDetailModel alloc] initWithData:responseData error:nil];
+            if ([_model.errCode isEqualToString:@"0"]) {
+                [self.tableView reloadData];
+            }else {
+                [[ZToastManager ShardInstance] showtoast:@"网络异常"];
+            }
+        }else if ([api isEqualToString:[NSString stringWithFormat:@"%@%@/reply",topic_all,self.topic_id]]) {
+            _commentList = [[TopicCommentList alloc] initWithData:responseData error:nil];
+            if ([_model.errCode isEqualToString:@"0"]) {
+                NSLog(@"%@",_commentList);
+                [self.tableView reloadData];
+            }else {
+                [[ZToastManager ShardInstance] showtoast:@"网络异常"];
+            }
         }
+        [[ZToastManager ShardInstance] hideprogress];
     } failedBlock:^(NSError * _Nullable error) {
-        
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
     }];
 }
 
@@ -46,7 +68,8 @@
 -(UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT-kTabBarH) style:UITableViewStylePlain];
-        [_tableView registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
+        [_tableView registerNib:[UINib nibWithNibName:@"CommentDetailHeader" bundle:nil] forCellReuseIdentifier:@"CommentDetailHeader"];
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -56,23 +79,25 @@
 
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 1+_commentList.result.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TopicBaseCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopicBaseCellTableViewCell" forIndexPath:indexPath];
-    cell.detail = _model;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    if (indexPath.row == 0) {
+        _header = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
+        _header.model = _model;
+        _header.selectionStyle = UITableViewCellSelectionStyleNone;
+        return _header;
+    }else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        return cell;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = [StringUtil calculateLabelHeight:_model.result.content width:SCREENWITH-20 fontsize:15];
-    if (_model.result.categories.count>0) {
-        return height+140;
-    }else {
-        return height+116;
+    if (indexPath.row == 0) {
+        return _header.cellHeight;
     }
-    return height+116;
+    return 50;
 }
 
 - (void)didReceiveMemoryWarning {
