@@ -22,6 +22,7 @@
 @property(nonatomic, strong) MyOrderFooterView *orderfooterView;
 
 @property (nonatomic, strong) OrderModel *orderModel;
+@property (nonatomic, strong) NSDictionary *requestParams;
 @end
 
 @implementation MyOrderViewController
@@ -56,17 +57,34 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [[ZToastManager ShardInstance] showprogress];
-    
-    //TalkGridData
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [[ZToastManager ShardInstance] hideprogress];
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
-        [sSelf.tableView reloadData];
-        
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
+    if (method == GET) {
+        //TalkGridData
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            [[ZToastManager ShardInstance] hideprogress];
+            __strong typeof(self) sSelf = wSelf;
+            sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
+            [sSelf.tableView reloadData];
+            
+        }                  failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+    } else if (method == POST) {
+        request.requestParams = self.requestParams.mutableCopy;
+   
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            NSDictionary *dicc = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+            NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil]);
+            
+            [[ZToastManager ShardInstance] hideprogress];
+            __strong typeof(self) sSelf = wSelf;
+            sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
+            [sSelf.tableView reloadData];
+            
+        }                  failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+    }
+
 }
 
 
@@ -166,6 +184,11 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         self.payingBackGroudView.hidden = NO;
     }
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
+        [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
+            NSLog(@"%@",[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id]);
+            self.requestParams = @{@"status":[NSString stringWithFormat:@"%d",orderFooterView.model.status]};
+            [self requestAllOrderData:[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id] method:POST];
+        }];
     }
 }
 

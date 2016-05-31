@@ -96,6 +96,7 @@ static APIName *coursesProjectLessonDetailList = @"/api/courses3/";
 #pragma mark-- 订单 -----------------------------
 #pragma mark 查询所有订单
 static APIName *queryAllOrder = @"/api/order";
-
+#pragma mark 取消订单
+static APIName *cancelOrder = @"/api/order/";
 
 
