@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *category_1st;
 @property (weak, nonatomic) IBOutlet UIButton *category_2nd;
 @property (weak, nonatomic) IBOutlet UIButton *category_3rd;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *praiseLabel;
 @end
 
 @implementation TopicBaseCellTableViewCell
@@ -55,6 +57,8 @@
     _identity.text = @"";
     _update_at.text = model.user.updated_at;
     _content.text = model.content;
+    _commentLabel.text = model.reply_count;
+    _praiseLabel.text = model.like_count;
     if (![model.type isEqualToString:@"QA"]) {
         _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
         _extension.text = @"讨论";
@@ -94,6 +98,56 @@
         _category_1st.hidden = YES;
     }
 }
+
+-(void)setDetail:(TopicDetailModel *)detail {
+    _detail = detail;
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:_detail.result.user.avatar]];
+    _nickname.text = _detail.result.user.nickname;
+    _identity.text = @"";
+    _update_at.text = _detail.result.user.updated_at;
+    _content.text = _detail.result.content;
+    _commentLabel.text = _detail.result.reply_count;
+    _praiseLabel.text = _detail.result.like_count;
+    if (![_detail.result.type isEqualToString:@"QA"]) {
+        _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
+        _extension.text = @"讨论";
+    }else {
+        _extension.backgroundColor = [UIColor xjfStringToColor:@"#3FA9F5"];
+        _extension.text = @"问答";
+    }
+    if (_detail.result.categories.count > 0) {
+        for (int i = 0; i < _detail.result.categories.count; i++) {
+            TopicCategoryLabel *label = _detail.result.categories[i];
+            if (i == 0) {
+                [_category_1st setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
+            }else if (i == 1) {
+                [_category_2nd setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
+            }else if (i == 2) {
+                [_category_3rd setTitle:[NSString stringWithFormat:@"#%@#",label.name] forState:UIControlStateNormal];
+            }else {
+                NSLog(@"好多Label");
+            }
+        }
+        if (_detail.result.categories.count == 1) {
+            _category_2nd.hidden = YES;
+            _category_3rd.hidden = YES;
+            _category_1st.hidden = NO;
+        }else if (_detail.result.categories.count == 2) {
+            _category_3rd.hidden = YES;
+            _category_1st.hidden = NO;
+            _category_2nd.hidden = NO;
+        }else if (_detail.result.categories.count == 3) {
+            _category_1st.hidden = NO;
+            _category_2nd.hidden = NO;
+            _category_3rd.hidden = NO;
+        }
+    }else {
+        _category_3rd.hidden = YES;
+        _category_2nd.hidden = YES;
+        _category_1st.hidden = YES;
+    }
+}
+
 - (IBAction)category_1stAction:(UIButton *)sender {
 }
 - (IBAction)category_2ndAction:(UIButton *)sender {

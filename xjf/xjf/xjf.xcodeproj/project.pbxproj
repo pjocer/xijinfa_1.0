@@ -150,6 +150,8 @@
 		D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF6E1CFBF089002D3FAF /* TopicModel.m */; };
 		D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */; };
 		D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */; };
+		D073CF771CFC55CB002D3FAF /* TopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF761CFC55CB002D3FAF /* TopicDetailViewController.m */; };
+		D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF791CFC62E1002D3FAF /* TopicDetailModel.m */; };
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
@@ -477,6 +479,10 @@
 		D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicBaseCellTableViewCell.h; path = xjf/classes/topic/TopicBaseCellTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicBaseCellTableViewCell.m; path = xjf/classes/topic/TopicBaseCellTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicBaseCellTableViewCell.xib; path = xjf/classes/topic/TopicBaseCellTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D073CF751CFC55CB002D3FAF /* TopicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicDetailViewController.h; sourceTree = "<group>"; };
+		D073CF761CFC55CB002D3FAF /* TopicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicDetailViewController.m; sourceTree = "<group>"; };
+		D073CF781CFC62E1002D3FAF /* TopicDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicDetailModel.h; path = xjf/classes/topic/controller/TopicDetailModel.h; sourceTree = SOURCE_ROOT; };
+		D073CF791CFC62E1002D3FAF /* TopicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicDetailModel.m; path = xjf/classes/topic/controller/TopicDetailModel.m; sourceTree = SOURCE_ROOT; };
 		D073E8131CE9D66C00AED895 /* RegistFinalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistFinalModel.h; path = xjf/classes/user/controller/RegistFinalModel.h; sourceTree = SOURCE_ROOT; };
 		D073E8141CE9D66C00AED895 /* RegistFinalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistFinalModel.m; path = xjf/classes/user/controller/RegistFinalModel.m; sourceTree = SOURCE_ROOT; };
 		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationSet.h; path = ../NotificationSet.h; sourceTree = "<group>"; };
@@ -1075,6 +1081,8 @@
 			children = (
 				CD1CCC081CB35A2D002FC0C9 /* TopicViewController.h */,
 				CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */,
+				D073CF751CFC55CB002D3FAF /* TopicDetailViewController.h */,
+				D073CF761CFC55CB002D3FAF /* TopicDetailViewController.m */,
 				CD1CCC311CB37946002FC0C9 /* TopicBaseViewController.h */,
 				CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */,
 			);
@@ -1086,6 +1094,8 @@
 			children = (
 				D073CF6D1CFBF089002D3FAF /* TopicModel.h */,
 				D073CF6E1CFBF089002D3FAF /* TopicModel.m */,
+				D073CF781CFC62E1002D3FAF /* TopicDetailModel.h */,
+				D073CF791CFC62E1002D3FAF /* TopicDetailModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1628,6 +1638,7 @@
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
+				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
@@ -1677,6 +1688,7 @@
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,
 				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
 				644C112D1CBA908200892E2C /* ZPlatformShare.m in Sources */,
+				D073CF771CFC55CB002D3FAF /* TopicDetailViewController.m in Sources */,
 				5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */,
 				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,

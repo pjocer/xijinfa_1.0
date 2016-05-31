@@ -14,6 +14,7 @@
 #import "TopicBaseCellTableViewCell.h"
 #import "StringUtil.h"
 #import "ZToastManager.h"
+#import "TopicDetailViewController.h"
 
 @interface TopicViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UIView *header;
@@ -247,6 +248,20 @@
         return height+116;
     }
     return height+116;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TopicDataModel *model = nil;
+    if (tableView == self.tableView_all) {
+        model = self.model_all.result.data[indexPath.row];
+    }else if (tableView == self.tableview_qa) {
+        model = self.model_qa.result.data[indexPath.row];
+    }else if (tableView == self.tableView_discuss) {
+        model = self.model_discuss.result.data[indexPath.row];
+    }
+    TopicDetailViewController *controller = [[TopicDetailViewController alloc] init];
+    controller.topic_id = model.id;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 #pragma ScrollView Delegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

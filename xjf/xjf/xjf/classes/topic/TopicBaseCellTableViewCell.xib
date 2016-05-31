@@ -236,12 +236,14 @@
                 <outlet property="category_2nd" destination="NWz-N3-dqi" id="RXm-89-vfo"/>
                 <outlet property="category_3rd" destination="9ej-Kg-j8U" id="Vgy-Y7-P9L"/>
                 <outlet property="comment" destination="ZiZ-WL-dv9" id="vaa-Xu-gZj"/>
+                <outlet property="commentLabel" destination="8aV-sT-L0h" id="HOh-XK-2UE"/>
                 <outlet property="content" destination="VBs-4v-Lae" id="mTQ-Id-eV8"/>
                 <outlet property="extension" destination="bxA-St-TU0" id="oSh-Kd-jHc"/>
                 <outlet property="identity" destination="tMO-OM-XFV" id="aul-7D-0Fw"/>
                 <outlet property="left_constrain" destination="j3i-Mq-zPb" id="Ett-9p-NI6"/>
                 <outlet property="nickname" destination="o7W-2T-NL1" id="uDd-Jj-AFS"/>
                 <outlet property="praise" destination="h5i-ka-5eb" id="vNO-G0-dvA"/>
+                <outlet property="praiseLabel" destination="ny0-JY-nwG" id="OUK-QV-f7W"/>
                 <outlet property="right_constrain" destination="sdz-lC-b6A" id="NIR-TK-1Ci"/>
                 <outlet property="segment_line" destination="7C2-Ab-WoG" id="EfK-1Q-IaL"/>
                 <outlet property="update_at" destination="zrr-mg-kv4" id="UYV-Ii-2k1"/>

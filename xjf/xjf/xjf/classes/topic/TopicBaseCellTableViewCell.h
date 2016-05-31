@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TopicModel.h"
+#import "TopicDetailModel.h"
 
 @interface TopicBaseCellTableViewCell : UITableViewCell
 @property (nonatomic, strong) TopicDataModel *model;
+@property (nonatomic, strong) TopicDetailModel *detail;
 @end
