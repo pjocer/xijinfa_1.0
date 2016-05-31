@@ -93,11 +93,31 @@
     }
     return self;
 }
+- (void)setModel:(OrderDataModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    //    "status": 0, // 订单状态 1待支付，2取消订单，4订单冲突（已支付） 9支付成功
+    if (model.status == 9) {
+        self.orderStatus.text = @"订单已完成";
+    }
+    else if (model.status == 1) {
+        self.orderStatus.text = @"订单待支付";
+    }
+    else if (model.status == 2) {
+        self.orderStatus.text = @"订单已取消";
+    }
+    else if (model.status == 4) {
+        self.orderStatus.text = @"订单冲突（已支付)";
+    }
+    
+}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    if (_isPaySucces == YES) {
+    if ([self.orderStatus.text isEqualToString:@"订单已完成"]) {
         [self.PaySuccesView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(self);
             make.height.mas_equalTo(35);

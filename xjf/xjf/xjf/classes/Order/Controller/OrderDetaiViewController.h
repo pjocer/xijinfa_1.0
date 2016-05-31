@@ -7,7 +7,10 @@
 //
 
 #import "OrderDetailBaseViewController.h"
-
+#import "OrderModel.h"
+#import "XJOrder.h"
 @interface OrderDetaiViewController : OrderDetailBaseViewController
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) OrderDataModel *orderDataModel;
+@property (nonatomic, strong) XJOrder *xjOrder;
 @end

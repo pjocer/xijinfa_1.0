@@ -24,8 +24,6 @@
 @property(nonatomic, strong) UIView *payingBackGroudView;
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) OrderFooterView *orderfooterView;
-@property(nonatomic, assign) BOOL isOrderCancel;
-@property(nonatomic, assign) BOOL isOrderSucces;
 @end
 
 @implementation OrderDetaiViewController
@@ -53,10 +51,17 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.isOrderCancel = NO;
-    self.isOrderSucces = NO;
+    if (self.xjOrder) {
+        self.orderDataModel = self.xjOrder.order
+    }
     [self initMainUI];
+    
+    if (self.dataSource.count == 0 || self.dataSource == nil) {
+        if (self.orderDataModel.status != 1) {
+            self.nowPay.hidden = YES;
+            self.cancel.hidden = YES;
+        }
+    }
 }
 
 #pragma mark - initMainUI
@@ -99,18 +104,17 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    return self.orderDataModel.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonOrderCell_id];
-    //    cell.model = self.dataSource[indexPath.row];
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
     cell.oldPrice.hidden = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = self.dataSource[indexPath.row];
+    cell.model = self.orderDataModel.items[indexPath.row];
     return cell;
 }
 
@@ -120,7 +124,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (_isOrderSucces) {
+    if (self.orderDataModel.status == 1) {
         return tableFooter_orderSucceslH;
     }
     return tableFooter_NormalH;
@@ -128,12 +132,13 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     self.orderheaderView = [[OrderHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
+       self.orderheaderView.model = self.orderDataModel;
     return self.orderheaderView;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     self.orderfooterView = [[OrderFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
-    self.orderfooterView.isPaySucces = _isOrderSucces;
+    self.orderfooterView.model = self.orderDataModel;
     return self.orderfooterView;
 }
 
@@ -196,13 +201,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 - (void)cancel:(UIButton *)sender {
     [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
-        if (!_isOrderSucces) {
-            self.nowPay.hidden = YES;
-            self.cancel.hidden = YES;
-            self.orderfooterView.orderDescription.hidden = YES;
-            self.orderfooterView.orderStatus.text = @"订单已取消";
-            _isOrderCancel = YES;
-        }
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
            [self.navigationController popViewControllerAnimated:YES];
         });
@@ -210,13 +209,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-    if (_isOrderCancel == YES) {
-        self.orderfooterView.orderDescription.hidden = YES;
-        self.orderfooterView.orderStatus.text = @"订单已取消";
-    }
-    if (_isOrderSucces == YES) {
-        self.orderfooterView.orderStatus.text = @"订单已成功";
-    }
 
 }
 
@@ -268,20 +260,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
                 payViewH);
     }];
     self.payingBackGroudView.hidden = YES;
-
-    self.isOrderSucces = YES;
-    self.nowPay.hidden = YES;
-    self.cancel.hidden = YES;
-    self.orderfooterView.orderStatus.text = @"订单已成功";
-    [self.tableView reloadData];
-//    MyViewController *myPage = [MyViewController new];
-//    [self.navigationController pushViewController:myPage animated:YES];
-//    NSLog(@"%@",self.navigationController.viewControllers);
-//    self.tabBarController.selectedIndex = 3;
-//    self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
-//    NSLog(@"%@",self.navigationController.viewControllers);
-   
-    
 }
 
 

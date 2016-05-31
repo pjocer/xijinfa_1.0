@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OrderModel.h"
 @interface OrderFooterView : UIView
 @property (nonatomic, strong) UILabel *orderStatus;
 @property (nonatomic, strong) UILabel *orderDescription;
@@ -15,4 +15,5 @@
 @property (nonatomic, strong) UILabel *payStyle;
 @property (nonatomic, strong) UILabel *payStyleName;
 @property (nonatomic, assign) BOOL isPaySucces;
+@property (nonatomic, strong) OrderDataModel *model;
 @end

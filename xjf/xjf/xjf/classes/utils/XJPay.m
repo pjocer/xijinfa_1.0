@@ -141,6 +141,9 @@
 
 @implementation XJPay
 
+- (Order *)getCurrentOrder {
+    return _order;
+}
 
 -(void)buyTradeImmediately:(NSArray<NSString *> *)trade_id by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     self.success = success;

@@ -68,18 +68,11 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
-    } else if (method == POST) {
+    } else if (method == PUT) {
         request.requestParams = self.requestParams.mutableCopy;
    
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            NSDictionary *dicc = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-            NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil]);
-            
-            [[ZToastManager ShardInstance] hideprogress];
-            __strong typeof(self) sSelf = wSelf;
-            sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
-            [sSelf.tableView reloadData];
-            
+            [self requestAllOrderData:queryAllOrder method:GET];
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
@@ -186,8 +179,8 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
         [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
             NSLog(@"%@",[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id]);
-            self.requestParams = @{@"status":[NSString stringWithFormat:@"%d",orderFooterView.model.status]};
-            [self requestAllOrderData:[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id] method:POST];
+            self.requestParams = @{@"status":[NSString stringWithFormat:@"2"]};
+            [self requestAllOrderData:[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id] method:PUT];
         }];
     }
 }
@@ -229,6 +222,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OrderDetaiViewController *orderDetail = [OrderDetaiViewController new];
+    orderDetail.orderDataModel = self.orderModel.result.data[indexPath.section];
     [self.navigationController pushViewController:orderDetail animated:YES];
 }
 

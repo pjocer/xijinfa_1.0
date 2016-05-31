@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XJMarket.h"
-
+@class Order;
 @interface XJPay : NSObject
 
 @property (nonatomic, copy, nullable)dispatch_block_t success;
@@ -16,5 +16,5 @@
 @property (nonatomic, copy, nullable)dispatch_block_t failed;
 
 - (void)buyTradeImmediately:(nonnull NSArray <NSString *>*)trade_id by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
-
+- (nullable Order *)getCurrentOrder;
 @end

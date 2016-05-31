@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TalkGridModel.h"
-
+#import "Order.h"
 typedef NS_OPTIONS(NSUInteger, OrderStatus) {
     OrderStatusSuccess,
     OrderStatusCancel,
@@ -20,6 +20,8 @@ typedef NS_OPTIONS(NSUInteger, OrderStatus) {
 @property (nonatomic, assign) OrderStatus status;
 
 @property (nonatomic, strong) NSMutableArray <TalkGridModel *>*goods;
+
+@property (nonatomic, strong) Order *order;
 
 - (instancetype)initWith:(NSArray <TalkGridModel *> *)goods;
 

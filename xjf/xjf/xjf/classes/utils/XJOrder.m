@@ -7,7 +7,8 @@
 //
 
 #import "XJOrder.h"
-
+#import "XJAccountManager.h"
+#import "ZToastManager.h"
 @implementation XJOrder
 
 -(instancetype)initWith:(NSArray<TalkGridModel *> *)goods {
@@ -17,8 +18,24 @@
         for (TalkGridModel *model in goods) {
             [_goods addObject:model];
         }
+        [self initOrder];
     }
     return self;
+}
+
+- (void)initOrder {
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
+    NSString *access_token = [[XJAccountManager defaultManager] accessToken];
+    NSString *authorization = [NSString stringWithFormat:@"Bearer %@",access_token];
+    [request setValue:authorization forHTTPHeaderField:@"Authorization"];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"items":_goods}];
+    @weakify(self)
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        @strongify(self)
+        self.order = [[Order alloc] initWithData:responseData error:nil];
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+    }];
 }
 
 -(void)orderCancel {
