@@ -65,6 +65,12 @@
 		5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */; };
 		5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */; };
 		5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E41CFC31AE007CC71C /* OrderModel.m */; };
+		5AF7C2E81CFEF097007CC71C /* TeacherListHostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E71CFEF097007CC71C /* TeacherListHostModel.m */; };
+		5AF7C2EC1CFF0292007CC71C /* TeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2EB1CFF0292007CC71C /* TeacherDetailViewController.m */; };
+		5AF7C2F01CFF03F5007CC71C /* TeacherDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2EF1CFF03F5007CC71C /* TeacherDescriptionViewController.m */; };
+		5AF7C2F31CFF040D007CC71C /* TeacherLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2F21CFF040D007CC71C /* TeacherLessonsViewController.m */; };
+		5AF7C2F61CFF0431007CC71C /* TeacherEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2F51CFF0431007CC71C /* TeacherEmployedViewController.m */; };
+		5AF7C2F91CFF049A007CC71C /* TeacherDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2F81CFF049A007CC71C /* TeacherDetailHeaderView.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
@@ -303,6 +309,18 @@
 		5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderFooterView.m; sourceTree = "<group>"; };
 		5AF7C2E31CFC31AE007CC71C /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		5AF7C2E41CFC31AE007CC71C /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		5AF7C2E61CFEF097007CC71C /* TeacherListHostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherListHostModel.h; sourceTree = "<group>"; };
+		5AF7C2E71CFEF097007CC71C /* TeacherListHostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherListHostModel.m; sourceTree = "<group>"; };
+		5AF7C2EA1CFF0292007CC71C /* TeacherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherDetailViewController.h; sourceTree = "<group>"; };
+		5AF7C2EB1CFF0292007CC71C /* TeacherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDetailViewController.m; sourceTree = "<group>"; };
+		5AF7C2EE1CFF03F5007CC71C /* TeacherDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherDescriptionViewController.h; sourceTree = "<group>"; };
+		5AF7C2EF1CFF03F5007CC71C /* TeacherDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDescriptionViewController.m; sourceTree = "<group>"; };
+		5AF7C2F11CFF040D007CC71C /* TeacherLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherLessonsViewController.h; sourceTree = "<group>"; };
+		5AF7C2F21CFF040D007CC71C /* TeacherLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherLessonsViewController.m; sourceTree = "<group>"; };
+		5AF7C2F41CFF0431007CC71C /* TeacherEmployedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherEmployedViewController.h; sourceTree = "<group>"; };
+		5AF7C2F51CFF0431007CC71C /* TeacherEmployedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherEmployedViewController.m; sourceTree = "<group>"; };
+		5AF7C2F71CFF049A007CC71C /* TeacherDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherDetailHeaderView.h; sourceTree = "<group>"; };
+		5AF7C2F81CFF049A007CC71C /* TeacherDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDetailHeaderView.m; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
 		644C10C21CBA61AC00892E2C /* icon_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del.png; sourceTree = "<group>"; };
@@ -660,6 +678,8 @@
 				5A105E961CED91040079BEFE /* TalkGridModel.m */,
 				5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */,
 				5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */,
+				5AF7C2E61CFEF097007CC71C /* TeacherListHostModel.h */,
+				5AF7C2E71CFEF097007CC71C /* TeacherListHostModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -738,6 +758,30 @@
 				5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5AF7C2E91CFF0271007CC71C /* TeacherDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5AF7C2EA1CFF0292007CC71C /* TeacherDetailViewController.h */,
+				5AF7C2EB1CFF0292007CC71C /* TeacherDetailViewController.m */,
+				5AF7C2EE1CFF03F5007CC71C /* TeacherDescriptionViewController.h */,
+				5AF7C2EF1CFF03F5007CC71C /* TeacherDescriptionViewController.m */,
+				5AF7C2F11CFF040D007CC71C /* TeacherLessonsViewController.h */,
+				5AF7C2F21CFF040D007CC71C /* TeacherLessonsViewController.m */,
+				5AF7C2F41CFF0431007CC71C /* TeacherEmployedViewController.h */,
+				5AF7C2F51CFF0431007CC71C /* TeacherEmployedViewController.m */,
+			);
+			path = TeacherDetail;
+			sourceTree = "<group>";
+		};
+		5AF7C2ED1CFF02A6007CC71C /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				5AF7C2F71CFF049A007CC71C /* TeacherDetailHeaderView.h */,
+				5AF7C2F81CFF049A007CC71C /* TeacherDetailHeaderView.m */,
+			);
+			path = Teacher;
 			sourceTree = "<group>";
 		};
 		644C10C01CBA61AC00892E2C /* UzysGridView */ = {
@@ -1002,6 +1046,7 @@
 				5A105E601CEB30C30079BEFE /* TeacherListViewController.m */,
 				5A105EA11CEDCD000079BEFE /* ShoppingCartViewController.h */,
 				5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */,
+				5AF7C2E91CFF0271007CC71C /* TeacherDetail */,
 				5A105EAD1CEF21230079BEFE /* LessonDetail */,
 			);
 			path = controller;
@@ -1010,6 +1055,7 @@
 		CD1CCBF91CB35A2D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5AF7C2ED1CFF02A6007CC71C /* Teacher */,
 				5A0C3F841CF4270C00D7EEEB /* PayView */,
 				5A105E581CEB1A9F0079BEFE /* Lesson */,
 				5A240DF51CE33DD2003B7971 /* Wikipedia */,
@@ -1594,6 +1640,7 @@
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
 				D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */,
+				5AF7C2F01CFF03F5007CC71C /* TeacherDescriptionViewController.m in Sources */,
 				CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */,
 				5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */,
 				5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */,
@@ -1612,6 +1659,7 @@
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
+				5AF7C2F31CFF040D007CC71C /* TeacherLessonsViewController.m in Sources */,
 				644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */,
 				644C115F1CBA90A000892E2C /* XMShareView.m in Sources */,
 				5A105E7B1CEC59270079BEFE /* LessonRecommendedHeaderView.m in Sources */,
@@ -1651,6 +1699,7 @@
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A105E921CED880D0079BEFE /* BannerModel.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
+				5AF7C2F61CFF0431007CC71C /* TeacherEmployedViewController.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
 				CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */,
 				CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */,
@@ -1690,6 +1739,7 @@
 				D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */,
 				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
+				5AF7C2E81CFEF097007CC71C /* TeacherListHostModel.m in Sources */,
 				5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */,
 				5A105EB91CF004870079BEFE /* LessonDetailNoPayHeaderView.m in Sources */,
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
@@ -1719,11 +1769,13 @@
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,
 				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
+				5AF7C2F91CFF049A007CC71C /* TeacherDetailHeaderView.m in Sources */,
 				644C112D1CBA908200892E2C /* ZPlatformShare.m in Sources */,
 				D073CF771CFC55CB002D3FAF /* TopicDetailViewController.m in Sources */,
 				5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */,
 				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,
+				5AF7C2EC1CFF0292007CC71C /* TeacherDetailViewController.m in Sources */,
 				CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */,
 				5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */,
 			);

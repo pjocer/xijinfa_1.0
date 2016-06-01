@@ -7,7 +7,8 @@
 //
 
 #import "UzysGridViewCell.h"
-
+#import "TeacherListHostModel.h"
 @interface TeacherGridViewCell : UzysGridViewCell
 @property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, strong) TeacherListData *model;
 @end

@@ -16,7 +16,8 @@
 #import "AlertUtils.h"
 #import "LoginViewController.h"
 #import "RegistViewController.h"
-
+#import "TeacherListHostModel.h"
+#import "TeacherDetailViewController.h"
 @interface LessonViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate>
 
@@ -27,7 +28,7 @@
 @property(nonatomic, strong) BannerModel *bannermodel;
 ///视频专题列表数据
 @property(nonatomic, strong) NSMutableArray *coursesProjectListDataArray;
-
+@property(nonatomic, strong) TeacherListHostModel *teacherListHostModel;
 @end
 
 static NSString *lessonBannerView_HeaderId = @"lessonBannerView_HeaderId";
@@ -54,6 +55,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
     [self initCollectionView];
     [self requestBannerData:appDeptCarousel3 method:GET];
     [self requesProjectListDat:projectList method:GET];
+    [self requestTeacherData:teacherListHot method:GET];
 }
 
 #pragma mark requestData
@@ -73,8 +75,8 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
         for (BannerResultModel *model in sSelf.bannermodel.result.data) {
             [self.dataArrayByBanner addObject:model.thumbnail];
         }
+     
         [sSelf.collectionView reloadData];
-
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -94,14 +96,29 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
             ProjectListByModel *model = [[ProjectListByModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [sSelf.coursesProjectListDataArray addObject:model];
-            [self.collectionView reloadData];
         }
+         [sSelf.collectionView reloadData];
 
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
 
+- (void)requestTeacherData:(APIName *)api method:(RequestMethod)method{
+    __weak typeof(self) wSelf = self;
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    
+    //TeacherListHostModel
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
+        sSelf.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
+        [sSelf.collectionView reloadData];
+        
+    }                  failedBlock:^(NSError *_Nullable error) {
+         [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
 
 #pragma mark -- Navigation
 
@@ -175,6 +192,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
     TearcherIndexCell *cell = [collectionView
             dequeueReusableCellWithReuseIdentifier:teacherCell_Id forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
+    cell.model = self.teacherListHostModel.result.data[indexPath.row];
     return cell;
 }
 
@@ -206,7 +224,9 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 }
 
 - (void)handleSingleTapFrom {
-    [self.navigationController pushViewController:[TeacherListViewController new] animated:YES];
+    TeacherListViewController *teacherListViewController = [TeacherListViewController new];
+    teacherListViewController.hostModel = self.teacherListHostModel;
+    [self.navigationController pushViewController:teacherListViewController animated:YES];
 }
 
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index {
@@ -258,10 +278,10 @@ referenceSizeForHeaderInSection:(NSInteger)section {
             lessonListViewController.ID = model.ID;
             [self.navigationController pushViewController:lessonListViewController animated:YES];
         }
-//        else if (indexPath.section == 1) {
-//            //         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
-//            //        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
-//        }
+        else if (indexPath.section == 1) {
+            TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+            [self.navigationController pushViewController:teacherDetailViewController animated:YES];
+        }
     }
 }
 

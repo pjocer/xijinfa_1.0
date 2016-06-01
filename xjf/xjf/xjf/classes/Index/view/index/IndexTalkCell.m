@@ -10,11 +10,9 @@
 #import "IndexSectionView.h"
 #import "UzysGridView.h"
 #import "TalkGridViewCell.h"
-
+#import "TalkGridModel.h"
 @interface IndexTalkCell()<UzysGridViewDelegate,UzysGridViewDataSource>
-{
-    
-}
+@property (nonatomic,strong)TablkListModel *tablkListModel;
 @property(nonatomic,strong)IndexSectionView *sectionView;
 @property(nonatomic,strong)UzysGridView *gridView;
 @end
@@ -70,7 +68,7 @@
     self.key =key;
     self.data =model;
     self.indexPath =indexPath;
-    NSDictionary *dict =(NSDictionary*)model;
+    self.tablkListModel =(TablkListModel*)model;
     [_gridView reloadData];
     
 }
@@ -78,7 +76,7 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     
-    NSDictionary *dict =(NSDictionary*)model;
+//    NSDictionary *dict =(NSDictionary*)model;
     if (iPhone4 || iPhone5)
     {
         return 320;
@@ -97,6 +95,7 @@
 {
     TalkGridViewCell *cell = [[TalkGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
+    cell.model = self.tablkListModel.result.data[index];
     return cell;
 }
 -(void)handleSingleTapFrom

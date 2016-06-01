@@ -7,8 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import "TalkGridModel.h"
 @interface LessonListViewController : BaseViewController
 @property (nonatomic, strong) NSString *ID;
 @property (nonatomic, strong) NSString *LessonListTitle;
+@property(nonatomic, strong) TablkListModel *tablkListModel;
+@property(nonatomic, strong) NSMutableArray *dataSource;
 @end

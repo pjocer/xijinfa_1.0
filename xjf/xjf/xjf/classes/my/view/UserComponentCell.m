@@ -8,12 +8,13 @@
 
 #import "UserComponentCell.h"
 #import "UzysGridView.h"
-
+#import "XJMarket.h"
 @interface UserComponent : UzysGridViewCell
 @property(nonatomic, strong) UIImage *image;
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, strong) UIImageView *icon;
 @property(nonatomic, strong) UILabel *titleLabel;
+@property(nonatomic, strong) UILabel *goodsCount;
 @end
 
 @implementation UserComponent
@@ -30,6 +31,15 @@
         self.titleLabel.textAlignment = 1;
         self.titleLabel.font = FONT12;
 
+        
+        self.goodsCount = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.goodsCount.backgroundColor = [UIColor redColor];
+        self.goodsCount.layer.masksToBounds = YES;
+        self.goodsCount.layer.cornerRadius = 11.f;
+        self.goodsCount.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.goodsCount];
+        self.goodsCount.hidden = YES;
+        
     }
     return self;
 }
@@ -59,6 +69,8 @@
     CGPoint center_titleLabel = CGPointMake(x_titleLabel, y_titleLabel);
     _titleLabel.frame = CGRectMake(0, 0, 80, 13);
     _titleLabel.center = center_titleLabel;
+    
+    self.goodsCount.frame = CGRectMake(0, 0, 22, 22);
 }
 @end
 
@@ -126,7 +138,21 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
+        
     // Configure the view for the selected state
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+//    if ([component.title isEqualToString:@"购物车"]) {
+//        
+//        if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
+//            component.goodsCount.hidden = NO;
+//            component.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+//        }
+//    }
 }
 
 @end

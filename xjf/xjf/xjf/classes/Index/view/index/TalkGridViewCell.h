@@ -7,7 +7,8 @@
 //
 
 #import "UzysGridViewCell.h"
-
+#import "TalkGridModel.h"
 @interface TalkGridViewCell : UzysGridViewCell
 @property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, strong) TalkGridModel *model;
 @end

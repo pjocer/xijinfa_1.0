@@ -10,11 +10,9 @@
 #import "IndexSectionView.h"
 #import "UzysGridView.h"
 #import "TeacherGridViewCell.h"
-
+#import "TeacherListHostModel.h"
 @interface IndexTeacherCell()<UzysGridViewDelegate,UzysGridViewDataSource>
-{
-    
-}
+@property(nonatomic,strong)TeacherListHostModel *teacherListHostModel;
 @property(nonatomic,strong)IndexSectionView *sectionView;
 @property(nonatomic,strong)UzysGridView *gridView;
 @end
@@ -66,14 +64,14 @@
     self.key =key;
     self.data =model;
     self.indexPath =indexPath;
-    NSDictionary *dict =(NSDictionary*)model;
+    self.teacherListHostModel =(TeacherListHostModel*)model;
     [_gridView reloadData];
     
 }
 /// 返回Cell高度
 + (CGFloat)returnCellHeight:(id)model
 {
-    NSDictionary *dict =(NSDictionary*)model;
+//    NSDictionary *dict =(NSDictionary*)model;
     return 170;
     
 }
@@ -84,6 +82,7 @@
 {
     TeacherGridViewCell *cell = [[TeacherGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
+    cell.model = self.teacherListHostModel.result.data[index];
     return cell;
 }
 -(void)handleSingleTapFrom

@@ -77,4 +77,14 @@
 
 }
 
+- (void)setModel:(TeacherListData *)model
+{
+    if (model) {
+        _model = model;
+    }
+    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.teacherName.text = model.title;
+    self.teacherDetail.text = model.summary;
+}
+
 @end

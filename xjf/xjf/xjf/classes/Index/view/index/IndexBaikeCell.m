@@ -10,11 +10,9 @@
 #import "IndexSectionView.h"
 #import "UzysGridView.h"
 #import "BaikeGridViewCell.h"
-
+#import "TalkGridModel.h"
 @interface IndexBaikeCell()<UzysGridViewDelegate,UzysGridViewDataSource>
-{
-    
-}
+@property(nonatomic,strong)TablkListModel *talkGridModel;
 @property(nonatomic,strong)IndexSectionView *sectionView;
 @property(nonatomic,strong)UzysGridView *gridView;
 @end
@@ -32,7 +30,7 @@
     {
     
         //
-        UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
+        UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(indexHandleSingleTapFrom)];
         _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
         _sectionView.titleLabel.text=@" 析金学堂";
         _sectionView.userInteractionEnabled =YES;
@@ -70,7 +68,7 @@
     self.key =key;
     self.data =model;
     self.indexPath =indexPath;
-    NSDictionary *dict =(NSDictionary*)model;
+    self.talkGridModel =(TablkListModel*)model;
     [_gridView reloadData];
     
 }
@@ -78,7 +76,11 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     NSDictionary *dict =(NSDictionary*)model;
-    return 240;
+    if (iPhone5 || iPhone4) {
+        return 240;
+    }
+    
+    return 280;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {
@@ -88,12 +90,13 @@
 {
     BaikeGridViewCell *cell = [[BaikeGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
+    cell.model = self.talkGridModel.result.data[index];
     return cell;
 }
--(void)handleSingleTapFrom
+-(void)indexHandleSingleTapFrom
 {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_More,nil,self.data,nil,self.indexPath);
+        self.actionBlock(BEventType_More,nil,self.talkGridModel,nil,self.indexPath);
     }
 }
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index

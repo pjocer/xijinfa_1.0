@@ -9,7 +9,6 @@
 #import "WikipediaViewController.h"
 #import "IndexConfigure.h"
 #import "WikiPediaCategoriesModel.h"
-#import "TalkGridModel.h"
 #import "BannerModel.h"
 #import "WikiMoreViewController.h"
 
@@ -26,7 +25,7 @@
 @property(nonatomic, strong) BannerModel *bannermodel;
 @property(nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
 @property(nonatomic, strong) NSMutableArray *talkGridDataArray;
-@property(nonatomic, strong) TablkListModel *tablkListModel;
+
 @end
 
 @implementation WikipediaViewController
@@ -50,7 +49,7 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
     [super viewDidLoad];
     [self initCollectionView];
     [self requestBannerData:appDeptCarousel2 method:GET];
-    [self requestCategoriesTalkGridData:talkGrid method:GET];
+//    [self requestCategoriesTalkGridData:talkGrid method:GET];
 }
 
 #pragma mark requestData
@@ -78,21 +77,21 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 
 }
 
-- (void)requestCategoriesTalkGridData:(APIName *)api method:(RequestMethod)method {
-    __weak typeof(self) wSelf = self;
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-
-    //TalkGridData
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-        [sSelf.collectionView reloadData];
-
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
-}
+//- (void)requestCategoriesTalkGridData:(APIName *)api method:(RequestMethod)method {
+//    __weak typeof(self) wSelf = self;
+//    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+//
+//    //TalkGridData
+//    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+//
+//        __strong typeof(self) sSelf = wSelf;
+//        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+//        [sSelf.collectionView reloadData];
+//
+//    }                  failedBlock:^(NSError *_Nullable error) {
+//        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+//    }];
+//}
 
 #pragma mark -- Navigation
 

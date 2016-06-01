@@ -93,6 +93,7 @@
         cell.backgroundColor = BackgroundColor;
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         return cell;
     }
     return nil;

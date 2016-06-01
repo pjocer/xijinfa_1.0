@@ -10,11 +10,18 @@
 #import "IndexConfigure.h"
 #import "VideolistViewController.h"
 #import "PlayerViewController.h"
+#import "TalkGridModel.h"
+#import "LessonListViewController.h"
+#import "LessonDetailViewController.h"
+#import "TeacherListHostModel.h"
+#import "TeacherDetailViewController.h"
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray *sectionsArray;
-
+@property(nonatomic,strong)TablkListModel *tablkListModel;
+@property(nonatomic,strong)TablkListModel *tablkListModel_Lesson;
+@property(nonatomic,strong)TeacherListHostModel *teacherListHostModel;
 @end
 
 @implementation IndexViewController
@@ -28,10 +35,60 @@
     //
     [self extendheadViewFor:Index];
     [self initMainUI];
- 
+    
+    [self requestCategoriesTalkGridData:talkGrid method:GET];
+    [self requestLessonListApi:coursesProjectLessonDetailList method:GET];
+    [self requestTeacherListData:teacherListHot method:GET];
 }
 
+- (void)requestCategoriesTalkGridData:(APIName *)talkGridApi
+                               method:(RequestMethod)method {
 
+        __weak typeof(self) wSelf = self;
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:talkGridApi RequestMethod:method];
+        //TalkGridData
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            __strong typeof(self) sSelf = wSelf;
+            sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+            [sSelf.tableview reloadData];
+        }                  failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+}
+- (void)requestLessonListApi:(APIName *)lessonListApi
+                method:(RequestMethod)method
+{
+    __weak typeof(self) wSelf = self;
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:lessonListApi RequestMethod:method];
+    
+    //tablkListModel_Lesson
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
+        sSelf.tablkListModel_Lesson = [[TablkListModel alloc] initWithData:responseData error:nil];
+        [sSelf.tableview reloadData];
+    }                  failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+ 
+}
+- (void)requestTeacherListData:(APIName *)teacherApi
+             method:(RequestMethod)method
+{
+      [[ZToastManager ShardInstance] showprogress];
+    __weak typeof(self) wSelf = self;
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:teacherApi RequestMethod:method];
+    
+    //tablkListModel_Lesson
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
+        sSelf.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
+        [sSelf.tableview reloadData];
+        [[ZToastManager ShardInstance] hideprogress];
+    }                  failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
 
 -(void)initMainUI
 {
@@ -141,7 +198,7 @@
                 [wSelf cellAction:t views:v obj:obj key:key indexPath:indexPath];
             }];
         }
-        [cell showInfo:nil key:sectionTitle indexPath:indexPath];
+        [cell showInfo:self.tablkListModel key:sectionTitle indexPath:indexPath];
         return cell;
     }
     else if ([sectionTitle isEqualToString:@"baikecell"])
@@ -156,7 +213,7 @@
                 [wSelf cellAction:t views:v obj:obj key:key indexPath:indexPath];
             }];
         }
-        [cell showInfo:nil key:sectionTitle indexPath:indexPath];
+        [cell showInfo:self.tablkListModel_Lesson key:sectionTitle indexPath:indexPath];
         return cell;
     }
     else if ([sectionTitle isEqualToString:@"teachercell"])
@@ -171,7 +228,7 @@
                 [wSelf cellAction:t views:v obj:obj key:key indexPath:indexPath];
             }];
         }
-        [cell showInfo:nil key:sectionTitle indexPath:indexPath];
+        [cell showInfo:self.teacherListHostModel key:sectionTitle indexPath:indexPath];
         return cell;
     }
     else if ([sectionTitle isEqualToString:@"coursecell"])
@@ -212,7 +269,9 @@
             else if (indexPath.section == 1) {
                 
                 if ([key isEqualToString:@"0"]) {
-                    [self.navigationController pushViewController:[WikipediaViewController new] animated:YES];
+                    WikipediaViewController *wikiPage = [WikipediaViewController new];
+                    wikiPage.tablkListModel = self.tablkListModel;
+                    [self.navigationController pushViewController:wikiPage animated:YES];
                 }else if ([key isEqualToString:@"1"]){
                     [self.navigationController pushViewController:[LessonViewController new] animated:YES];
                 }else if ([key isEqualToString:@"2"]){
@@ -224,13 +283,21 @@
             }
             else if (indexPath.section == 2){
                 //金融百科
-                [self.navigationController pushViewController:[PlayerViewController new] animated:YES];
+                PlayerViewController *playerPage = [PlayerViewController new];
+                TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
+                playerPage.talkGridModel = model;
+                [self.navigationController pushViewController:playerPage animated:YES];
             }
             else if (indexPath.section == 3){
                 //析金学堂
+                LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+                lessonDetailViewController.model = self.tablkListModel_Lesson.result.data[indexPath.row];
+                [self.navigationController pushViewController:lessonDetailViewController animated:YES];
             }
             else if (indexPath.section == 4){
                 //人气讲师
+                TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+                [self.navigationController pushViewController:teacherDetailViewController animated:YES];
             }
             else if (indexPath.section == 5){
                 //从业培训
@@ -241,10 +308,16 @@
         {
             if (indexPath.section == 2) {
                 //金融百科更多
-                [self.navigationController pushViewController:[VideolistViewController new] animated:YES];
+                VideolistViewController *videolListPage = [VideolistViewController new];
+                videolListPage.title = @"金融百科更多";
+                [self.navigationController pushViewController:videolListPage animated:YES];
             }
             else if (indexPath.section == 3){
                 //析金学堂更多
+
+                 LessonListViewController *lessonlListPage = [[LessonListViewController alloc] init];
+                lessonlListPage.LessonListTitle = @"析金学堂更多";
+                [self.navigationController pushViewController:lessonlListPage animated:YES];
             }
 //            
 //            IndexMoreViewController *more = [[IndexMoreViewController alloc] init];

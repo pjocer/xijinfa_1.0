@@ -68,11 +68,17 @@
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
+    NSLog(@"----- %lf",self.frame.size.height);
     //titleImage
     [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.mas_equalTo(self).with.offset(10);
+//        make.bottom.mas_equalTo(self).with.offset(-10);
+//        make.height.mas_equalTo(tempHeight);
+//        make.width.equalTo(self.titleImage.mas_height).multipliedBy(16.0f/9.0f).with.priority(750);
         make.top.left.mas_equalTo(self).with.offset(10);
-        make.bottom.mas_equalTo(self).with.offset(-10);
-        make.width.equalTo(self.titleImage.mas_height).multipliedBy(16.0f/9.0f).with.priority(750);
+        make.bottom.equalTo(self).with.offset(-10);
+        make.width.mas_equalTo((SCREENWITH / 2) - 20);
+ 
     }];
 
     //titleLable
@@ -100,5 +106,15 @@
     
 }
 
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+   
+    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.titleLable.text = model.title;
+  
+}
 
 @end

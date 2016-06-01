@@ -8,7 +8,7 @@
 
 #import "TeacherListViewController.h"
 #import "IndexConfigure.h"
-
+#import "TeacherDetailViewController.h"
 @interface TeacherListViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout>
@@ -58,7 +58,7 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return 20;
+    return self.hostModel.result.data.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -66,6 +66,7 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
     TearcherIndexCell *cell =
             [collectionView dequeueReusableCellWithReuseIdentifier:teacherListCell_Id forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
+    cell.model = self.hostModel.result.data[indexPath.row];
     return cell;
 }
 
@@ -81,7 +82,8 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+    [self.navigationController pushViewController:teacherDetailViewController animated:YES];
 
 }
 @end
