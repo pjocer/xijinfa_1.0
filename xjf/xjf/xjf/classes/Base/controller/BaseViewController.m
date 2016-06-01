@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "IndexConfigure.h"
 #import "myConfigure.h"
+#import "NewTopicViewController.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -43,31 +44,51 @@ NSString *const Subscribe = @"SubscribeViewController";
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     self.view.backgroundColor = BackgroundColor;
 }
+
 -(void)extendheadViewFor:(NSString *)name {
     if ([name isEqualToString:My]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"notification"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 9;
-        
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 13;
         self.navigationItem.rightBarButtonItems = @[item,item2];
     } else if ([name isEqualToString:Index]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 10;
-        
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 12;
         self.navigationItem.rightBarButtonItems = @[item,item2];
     } else if ([name isEqualToString:Topic]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pulish"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 14;
-        
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 15;
         self.navigationItem.rightBarButtonItems = @[item,item2];
     } else if ([name isEqualToString:Vip]) {
         
     }
+    [self initLeftItemWith:name];
+}
+
+- (void)initLeftItemWith:(NSString *)name {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 63, 24)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+    imageView.image = [UIImage imageNamed:@"nav_left"];
+    [view addSubview:imageView];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(29, 0, 34, 24)];
+    if ([name isEqualToString:My]) {
+        title.text = @"我的";
+    }else if ([name isEqualToString:Index]) {
+        title.text = @"首页";
+    }else if ([name isEqualToString:Topic]) {
+        title.text = @"话题";
+    }else if ([name isEqualToString:Vip]){
+        title.text = @"会员";
+    }
+    title.font = FONT(17);
+    [view addSubview:title];
+    UIBarButtonItem *item_left = [[UIBarButtonItem alloc] initWithCustomView:view];
+    self.navigationItem.leftBarButtonItem = item_left;
 }
 
 - (void)headerClickEvent:(id)sender {
@@ -115,8 +136,15 @@ NSString *const Subscribe = @"SubscribeViewController";
         }
         case 14://发表
         {
-
-
+            NewTopicStyle style = NewTopicDefaultStyle;
+            if (self.topicTag == 1) {
+                style = NewTopicQAStyle;
+            }else if (self.topicTag == 2) {
+                style = NewTopicDiscussStyle;
+            }
+            NewTopicViewController *controller = [[NewTopicViewController alloc] initWithStyle:style];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
         }
             break;
         case 15://搜索

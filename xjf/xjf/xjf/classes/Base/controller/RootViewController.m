@@ -79,7 +79,7 @@
 
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:childVc];
     // 1.设置控制器的属性
-    childVc.title = title;
+//    childVc.title = title;
     // 3.添加tabbar内部的按钮
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:title
                                                        image:[UIImage imageNamed:imageName]

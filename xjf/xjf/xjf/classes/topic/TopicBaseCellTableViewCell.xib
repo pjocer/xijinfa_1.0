@@ -63,7 +63,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="股票是股份公司发行的所有权凭证，是股份公司为筹集资金而发行给各个股东作为持股凭证并借以取得股息和红利的一种有价证券。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBs-4v-Lae">
                         <rect key="frame" x="10" y="60" width="300" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJ8-Mu-g3g">
@@ -117,7 +117,7 @@
                     <view tag="301" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5i-ka-5eb">
                         <rect key="frame" x="161" y="156" width="159" height="35"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconLike" translatesAutoresizingMaskIntoConstraints="NO" id="Do1-I7-FKk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconLike" highlightedImage="iconLikeOn" translatesAutoresizingMaskIntoConstraints="NO" id="Do1-I7-FKk">
                                 <rect key="frame" x="67" y="10" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="7TN-FJ-9co"/>
@@ -195,6 +195,7 @@
                 <outlet property="left_constrain" destination="j3i-Mq-zPb" id="Ett-9p-NI6"/>
                 <outlet property="nickname" destination="o7W-2T-NL1" id="uDd-Jj-AFS"/>
                 <outlet property="praise" destination="h5i-ka-5eb" id="vNO-G0-dvA"/>
+                <outlet property="praiseImageView" destination="Do1-I7-FKk" id="cK5-Jw-EM8"/>
                 <outlet property="praiseLabel" destination="ny0-JY-nwG" id="OUK-QV-f7W"/>
                 <outlet property="right_constrain" destination="sdz-lC-b6A" id="NIR-TK-1Ci"/>
                 <outlet property="segment_line" destination="7C2-Ab-WoG" id="EfK-1Q-IaL"/>
@@ -206,5 +207,6 @@
     <resources>
         <image name="comment" width="15" height="16"/>
         <image name="iconLike" width="15" height="15"/>
+        <image name="iconLikeOn" width="15" height="16"/>
     </resources>
 </document>

@@ -9,6 +9,9 @@
 #import "TopicBaseCellTableViewCell.h"
 #import <UIImageView+WebCache.h>
 #import "StringUtil.h"
+#import "XjfRequest.h"
+#import "XJAccountManager.h"
+#import "ZToastManager.h"
 @interface TopicBaseCellTableViewCell () 
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *identity;
@@ -23,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIView *praise;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *praiseLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *praiseImageView;
 @end
 
 @implementation TopicBaseCellTableViewCell
@@ -42,9 +46,57 @@
     // Initialization code
 }
 - (void)commentClicked:(UITapGestureRecognizer *)gesture {
-    
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        
+    }else {
+        [[ZToastManager ShardInstance] showtoast:@"请先登录"];
+    }
 }
 - (void)praise_Clicked:(UITapGestureRecognizer *)gesture {
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        [[ZToastManager ShardInstance] showprogress];
+        if (!_praiseImageView.isHighlighted) {
+            XjfRequest *request = [[XjfRequest alloc] initWithAPIName:praise RequestMethod:POST];
+            request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":@"topic",@"id":self.model.id}];
+            [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+                if ([dic[@"errCode"] integerValue] == 0) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSInteger count = [_praiseLabel.text integerValue];
+                        _praiseLabel.text = [NSString stringWithFormat:@"%ld",count+1];
+                        _praiseImageView.highlighted = !_praiseImageView.isHighlighted;
+                    });
+                }else {
+                    [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+                }
+                [[ZToastManager ShardInstance] hideprogress];
+            } failedBlock:^(NSError * _Nullable error) {
+                [[ZToastManager ShardInstance] showtoast:@"网络异常"];
+                [[ZToastManager ShardInstance] hideprogress];
+            }];
+        }else {
+            XjfRequest *request = [[XjfRequest alloc] initWithAPIName:praise RequestMethod:DELETE];
+            request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":@"topic",@"id":self.model.id}];
+            [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+                if ([dic[@"errCode"] integerValue] == 0) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSInteger count = [_praiseLabel.text integerValue];
+                        _praiseLabel.text = [NSString stringWithFormat:@"%ld",count-1];
+                        _praiseImageView.highlighted = !_praiseImageView.isHighlighted;
+                    });
+                }else {
+                    [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+                }
+                [[ZToastManager ShardInstance] hideprogress];
+            } failedBlock:^(NSError * _Nullable error) {
+                [[ZToastManager ShardInstance] showtoast:@"网络异常"];
+                [[ZToastManager ShardInstance] hideprogress];
+            }];
+        }
+    }else {
+        [[ZToastManager ShardInstance] showtoast:@"请先登录"];
+    }
 
 }
 -(void)setModel:(TopicDataModel *)model {
@@ -56,7 +108,8 @@
     _content.text = model.content;
     _commentLabel.text = model.reply_count;
     _praiseLabel.text = model.like_count;
-    if (![model.type isEqualToString:@"QA"]) {
+    _praiseImageView.highlighted = model.is_like;
+    if (![model.type isEqualToString:@"qa"]) {
         _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
         _extension.text = @"讨论";
     }else {

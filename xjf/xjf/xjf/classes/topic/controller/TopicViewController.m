@@ -37,11 +37,17 @@
 
 @implementation TopicViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_tableview_qa.mj_header beginRefreshing];
+    [_tableView_all.mj_header beginRefreshing];
+    [_tableView_discuss.mj_header beginRefreshing];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self extendheadViewFor:Topic];
     [self initMainUI];
-    [self initData];
 }
 
 - (void)initData {
@@ -88,7 +94,6 @@
 }
 
 - (void)initMainUI {
-    self.nav_title = @"话题";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.header];
     [self.scrollView addSubview:self.tableView_all];
@@ -210,6 +215,7 @@
     return _header;
 }
 - (void)headerClicked:(UIButton *)button {
+    self.topicTag = button.tag - 200;
     [_scrollView setContentOffset:CGPointMake(SCREENWITH*(button.tag-200), 0) animated:YES];
 }
 - (CGFloat)cellHeightByModel:(TopicDataModel *)model {
@@ -297,6 +303,7 @@
             
         } ];
     }
+    self.topicTag = scrollView.contentOffset.x/SCREENWITH;
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.scrollView) {

@@ -31,7 +31,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor
     self.model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
-    self.nav_title = @"我的";
     [self extendheadViewFor:My];
     [self initMainUI];
     @weakify(self)

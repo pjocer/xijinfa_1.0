@@ -52,33 +52,43 @@
     }
     CGFloat contentHeight = [StringUtil calculateLabelHeight:model.result.content width:SCREENWITH-20 fontsize:15];
     CGFloat height = 10+40+10+contentHeight;
+    
     if (model.result.categories.count > 0) {
-        float length = 10;
-        for (int i = 0; i < model.result.categories.count; i++) {
-            TopicCategoryLabel *label = model.result.categories[i];
-            NSString *buttonTitle = [NSString stringWithFormat:@"#%@#",label.name];
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setTitle:buttonTitle forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor xjfStringToColor:@"#0061B0"] forState:UIControlStateNormal];
-            button.titleLabel.font = FONT12;
-            button.tag = 400+i;
-            [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-            CGRect frame = [StringUtil calculateLabelRect:buttonTitle height:14 fontSize:12];
-            CGFloat width = frame.size.width;
-            if (length+10+width <= SCREENWITH) {
-                button.frame = CGRectMake(length, contentHeight+70, width, 14);
-                self.cellHeight = height + 34 + 10;
-            }else {
-                length = 10;
-                button.frame = CGRectMake(length, contentHeight+94, width, 14);
-                self.cellHeight = height + 30 + 28 + 10;
+        if (self.contentView.subviews.count == 7) {
+            float length = 10;
+            for (int i = 0; i < model.result.categories.count; i++) {
+                TopicCategoryLabel *label = model.result.categories[i];
+                NSString *buttonTitle = [NSString stringWithFormat:@"#%@#",label.name];
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                [button setTitle:buttonTitle forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor xjfStringToColor:@"#0061B0"] forState:UIControlStateNormal];
+                button.titleLabel.font = FONT12;
+                button.tag = 400+i;
+                [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+                CGRect frame = [StringUtil calculateLabelRect:buttonTitle height:14 fontSize:12];
+                CGFloat width = frame.size.width;
+                if (length+10+width <= SCREENWITH) {
+                    button.frame = CGRectMake(length, contentHeight+70, width, 14);
+                    self.cellHeight = height + 34 + 10;
+                }else {
+                    length = 10;
+                    button.frame = CGRectMake(length, contentHeight+94, width, 14);
+                    self.cellHeight = height + 30 + 28 + 10;
+                }
+                [self.contentView addSubview:button];
+                [self.contentView setNeedsLayout];
+                [self.contentView layoutIfNeeded];
+                length = 10*(i+1)+width+length;
             }
-            [self.contentView addSubview:button];
-            [self.contentView setNeedsLayout];
-            [self.contentView layoutIfNeeded];
-            length = 10*(i+1)+width+length;
         }
     }else {
+        if (self.contentView.subviews.count != 7) {
+            for (UIView *view in self.contentView.subviews) {
+                if (view.tag>=400) {
+                    [view removeFromSuperview];
+                }
+            }
+        }
         self.cellHeight = height+10+10;
     }
 }

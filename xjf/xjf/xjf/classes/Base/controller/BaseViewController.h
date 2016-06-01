@@ -21,6 +21,8 @@ FOUNDATION_EXTERN NSString *const Subscribe;
 
 @interface BaseViewController : UIViewController
 
+@property (nonatomic, assign) NSUInteger topicTag;
+
 @property (nonatomic, copy) NSString *nav_title;
 
 - (void)extendheadViewFor:(NSString *)name;

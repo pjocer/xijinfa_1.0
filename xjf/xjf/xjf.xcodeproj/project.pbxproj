@@ -136,6 +136,9 @@
 		D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA511CEC047600CD5359 /* UserProfileModel.m */; };
 		D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA541CEC0D3400CD5359 /* UserLoadCell.m */; };
 		D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */; };
+		D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E461CFE76F1008386CE /* CommentListCell.m */; };
+		D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F5E471CFE76F1008386CE /* CommentListCell.xib */; };
+		D04F5E4C1CFEB6EB008386CE /* NewTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */; };
 		D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2631CEAF85C00873D10 /* StringUtil.m */; };
 		D053D2671CEAF87800873D10 /* NSDate+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = D053D2661CEAF87800873D10 /* NSDate+Convenience.m */; };
 		D055EEA11CFD30CE004DDD7E /* TopicCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */; };
@@ -456,6 +459,11 @@
 		D049BA531CEC0D3400CD5359 /* UserLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoadCell.h; sourceTree = "<group>"; };
 		D049BA541CEC0D3400CD5359 /* UserLoadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoadCell.m; sourceTree = "<group>"; };
 		D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserLoadCell.xib; sourceTree = "<group>"; };
+		D04F5E451CFE76F1008386CE /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentListCell.h; path = xjf/classes/topic/CommentListCell.h; sourceTree = SOURCE_ROOT; };
+		D04F5E461CFE76F1008386CE /* CommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentListCell.m; path = xjf/classes/topic/CommentListCell.m; sourceTree = SOURCE_ROOT; };
+		D04F5E471CFE76F1008386CE /* CommentListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentListCell.xib; path = xjf/classes/topic/CommentListCell.xib; sourceTree = SOURCE_ROOT; };
+		D04F5E4A1CFEB6EB008386CE /* NewTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTopicViewController.h; sourceTree = "<group>"; };
+		D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTopicViewController.m; sourceTree = "<group>"; };
 		D053D2621CEAF85C00873D10 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringUtil.h; path = ../StringUtil.h; sourceTree = "<group>"; };
 		D053D2631CEAF85C00873D10 /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringUtil.m; path = ../StringUtil.m; sourceTree = "<group>"; };
 		D053D2651CEAF87800873D10 /* NSDate+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Convenience.h"; path = "../NSDate+Convenience.h"; sourceTree = "<group>"; };
@@ -1091,6 +1099,8 @@
 				CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */,
 				D073CF751CFC55CB002D3FAF /* TopicDetailViewController.h */,
 				D073CF761CFC55CB002D3FAF /* TopicDetailViewController.m */,
+				D04F5E4A1CFEB6EB008386CE /* NewTopicViewController.h */,
+				D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */,
 				CD1CCC311CB37946002FC0C9 /* TopicBaseViewController.h */,
 				CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */,
 			);
@@ -1119,6 +1129,9 @@
 				D055EEA51CFD375F004DDD7E /* CommentDetailHeader.h */,
 				D055EEA61CFD375F004DDD7E /* CommentDetailHeader.m */,
 				D055EEA71CFD375F004DDD7E /* CommentDetailHeader.xib */,
+				D04F5E451CFE76F1008386CE /* CommentListCell.h */,
+				D04F5E461CFE76F1008386CE /* CommentListCell.m */,
+				D04F5E471CFE76F1008386CE /* CommentListCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1495,6 +1508,7 @@
 				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
 				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
+				D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */,
 				644C115A1CBA90A000892E2C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
@@ -1570,6 +1584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A105EAC1CEF17AC0079BEFE /* WikiMoreClassificationCell.m in Sources */,
+				D04F5E4C1CFEB6EB008386CE /* NewTopicViewController.m in Sources */,
 				5A105E741CEC149A0079BEFE /* LessonPlayerVideoBottomView.m in Sources */,
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
@@ -1648,6 +1663,7 @@
 				5A105E971CED91040079BEFE /* TalkGridModel.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,
+				D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,

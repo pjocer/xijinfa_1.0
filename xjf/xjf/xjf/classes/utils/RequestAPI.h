@@ -45,6 +45,8 @@ static APIName *topic_all = @"/api/topic/";
 static APIName *topic_qa = @"/api/topic/?type=QA";
 static APIName *topic_discuss = @"/api/topic/?type=discuss";
 
+//点赞 (取消点赞)
+static APIName *praise = @"/api/like";
 #pragma mark- Hunter_Wang
 
 
