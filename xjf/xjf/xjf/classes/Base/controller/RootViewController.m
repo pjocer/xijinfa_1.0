@@ -13,14 +13,14 @@
 #import "MyViewController.h"
 #import "PlayerViewController.h"
 #import "LessonPlayerViewController.h"
+
 @interface RootViewController ()
 
 @end
 
 @implementation RootViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.selectedIndex = 0;
@@ -28,8 +28,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // 初始化所有的子控制器
     [self setupAllChildViewControllers];
@@ -85,15 +84,17 @@
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:title
                                                        image:[UIImage imageNamed:imageName]
                                                selectedImage:[UIImage imageNamed:selectedImageName]];
+    item.titlePositionAdjustment = UIOffsetMake(0, -4.5f);
     nav.tabBarItem = item;
     [self addChildViewController:nav];
 }
 
 // viewcontroller支持哪些转屏方向
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 
     UINavigationController *nav = self.viewControllers[self.selectedIndex];
-    if ([nav.topViewController isKindOfClass:[PlayerViewController class]] || [nav.topViewController isKindOfClass:[LessonPlayerViewController class]]) {
+    if ([nav.topViewController isKindOfClass:[PlayerViewController class]]
+            || [nav.topViewController isKindOfClass:[LessonPlayerViewController class]]) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }
     return UIInterfaceOrientationMaskPortrait;
