@@ -11,6 +11,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ZToastManager.h"
 #import "XjfRequest.h"
+#import "NewSharpViewController.h"
 
 @interface NewTopicViewController ()
 @property (nonatomic, strong)UIButton *checkout;
@@ -29,6 +30,11 @@
         _style = style;
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self resetNavBar];
 }
 
 - (void)viewDidLoad {
@@ -185,7 +191,8 @@
     }
 }
 - (void)newTopic:(UIButton *)button {
-    NSLog(@"新话题");
+    NewSharpViewController *controller = [[NewSharpViewController alloc] init];
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
 }
 - (void)cancleClicked:(UIBarButtonItem *)item {
     [self checkoutHidden];
