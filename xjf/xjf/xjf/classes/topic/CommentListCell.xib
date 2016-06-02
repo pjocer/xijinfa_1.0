@@ -113,6 +113,7 @@
                 <outlet property="content" destination="sIO-tZ-dAB" id="D1E-tA-9gX"/>
                 <outlet property="invest_category" destination="J08-Ru-5c7" id="7sj-8Y-vqT"/>
                 <outlet property="like_count" destination="Bhm-vz-kH6" id="7KN-If-aFu"/>
+                <outlet property="like_image" destination="4wx-kl-I0L" id="b6R-NM-N34"/>
                 <outlet property="nickname" destination="rPv-ZW-ctn" id="ZIb-Em-rT0"/>
                 <outlet property="time" destination="Zbk-D4-L5C" id="KZT-je-FDa"/>
             </connections>

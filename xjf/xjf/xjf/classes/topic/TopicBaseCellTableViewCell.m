@@ -12,6 +12,7 @@
 #import "XjfRequest.h"
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
+#import "NewCommentViewController.h"
 @interface TopicBaseCellTableViewCell () 
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *identity;
@@ -47,7 +48,11 @@
 }
 - (void)commentClicked:(UITapGestureRecognizer *)gesture {
     if ([[XJAccountManager defaultManager] accessToken]) {
-        
+        NewCommentViewController *controler = [[NewCommentViewController alloc] init];
+        controler.topic_id = self.model.id;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controler];
+        UIViewController *vc = getCurrentDisplayController();
+        [vc.navigationController presentViewController:nav animated:YES completion:nil];
     }else {
         [[ZToastManager ShardInstance] showtoast:@"请先登录"];
     }
@@ -108,7 +113,7 @@
     _content.text = model.content;
     _commentLabel.text = model.reply_count;
     _praiseLabel.text = model.like_count;
-    _praiseImageView.highlighted = model.is_like;
+    _praiseImageView.highlighted = model.user_liked;
     if (![model.type isEqualToString:@"qa"]) {
         _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
         _extension.text = @"讨论";
@@ -147,8 +152,38 @@
                 [self.contentView addSubview:button];
                 length = 10*(i+1)+width+length;
             }
+        }else {
+            for (UIView *view in self.contentView.subviews) {
+                if (view.tag>=350) {
+                    [view removeFromSuperview];
+                }
+            }
+            float length = 10;
+            for (int i = 0; i < model.categories.count; i++) {
+                TopicCategoryLabel *label = model.categories[i];
+                NSString *buttonTitle = [NSString stringWithFormat:@"#%@#",label.name];
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                [button setTitle:buttonTitle forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor xjfStringToColor:@"#0061B0"] forState:UIControlStateNormal];
+                button.titleLabel.font = FONT12;
+                button.tag = 350+i;
+                [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+                CGRect frame = [StringUtil calculateLabelRect:buttonTitle height:14 fontSize:12];
+                CGFloat width = frame.size.width;
+                if (length+10+width <= SCREENWITH) {
+                    button.frame = CGRectMake(length, contentHeight+70, width, 14);
+                    self.cellHeight = height + 34 + 36;
+                }else {
+                    length = 10;
+                    button.frame = CGRectMake(length, contentHeight+94, width, 14);
+                    self.cellHeight = height + 30 + 28 + 36;
+                }
+                [self.contentView addSubview:button];
+                length = 10*(i+1)+width+length;
+            }
         }
     }else {
+        self.cellHeight = height+10+36;
         if (self.contentView.subviews.count != 11) {
             for (UIView *view in self.contentView.subviews) {
                 if (view.tag>=350) {
@@ -156,7 +191,6 @@
                 }
             }
         }
-        self.cellHeight = height+10+36;
     }
     return self.cellHeight;
 }

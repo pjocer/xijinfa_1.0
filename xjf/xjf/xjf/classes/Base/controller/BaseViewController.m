@@ -10,6 +10,8 @@
 #import "IndexConfigure.h"
 #import "myConfigure.h"
 #import "NewTopicViewController.h"
+#import "XJAccountManager.h"
+#import "ZToastManager.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -136,6 +138,10 @@ NSString *const Subscribe = @"SubscribeViewController";
         }
         case 14://发表
         {
+            if (![[XJAccountManager defaultManager] accessToken]) {
+                [[ZToastManager ShardInstance] showtoast:@"请先登录"];
+                return;
+            }
             NewTopicStyle style = NewTopicDefaultStyle;
             if (self.topicTag == 1) {
                 style = NewTopicQAStyle;

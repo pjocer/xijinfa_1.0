@@ -16,6 +16,7 @@
 #import "CommentListCell.h"
 #import "StringUtil.h"
 #import "XJAccountManager.h"
+#import "NewCommentViewController.h"
 @interface TopicDetailViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) TopicDetailModel *model;
@@ -31,6 +32,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [_tableView.mj_header beginRefreshing];
     if (!self.tabBarController.tabBar.isHidden) {
         self.tabBarController.tabBar.hidden = YES;
         [self.view addSubview:self.footer];
@@ -73,9 +75,7 @@
         if ([api isEqualToString:[topic_all stringByAppendingString:self.topic_id]]) {
             _model = [[TopicDetailModel alloc] initWithData:responseData error:nil];
             if ([_model.errCode isEqualToString:@"0"]) {
-                if (_model.result.is_like) {
-                    [self resetLikeButton];
-                }
+                [self resetLikeButton:_model.result.user_liked];
                 [self.tableView reloadData];
             }else {
                 [[ZToastManager ShardInstance] showtoast:_model.errMsg];
@@ -83,7 +83,7 @@
         }else if ([api isEqualToString:praise]) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
             if ([dic[@"errCode"] integerValue] == 0) {
-                [self resetLikeButton];
+                [self resetLikeButton:method==DELETE?NO:YES];
             }else {
                 [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
             }
@@ -111,7 +111,15 @@
 }
 
 - (void)commentClicked:(UIButton *)button {
-    NSLog(@"评论");
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        NewCommentViewController *controler = [[NewCommentViewController alloc] init];
+        controler.topic_id = self.topic_id;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controler];
+        [self.navigationController presentViewController:nav animated:YES completion:nil];
+    }else {
+        [[ZToastManager ShardInstance] showtoast:@"请先登录"];
+    }
+    
 }
 - (void)lickClicked:(UIButton *)button {
     if ([[XJAccountManager defaultManager] accessToken]) {
@@ -121,15 +129,18 @@
     }
 }
 
-- (void)resetLikeButton {
+- (void)resetLikeButton:(BOOL)like {
+    if (_like_imageView.highlighted == like) {
+        return;
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
-        _like_imageView.highlighted = !_like_imageView.isHighlighted;
+        _like_imageView.highlighted = like;
         CGPoint center = _like_imageView.center;
-        center.x  = _like_imageView.highlighted?(center.x-20):(center.x+20);
+        center.x  = like?(center.x-20):(center.x+20);
         _like_imageView.center = center;
-        _like_count.text = _like_imageView.highlighted?@"取消点赞":@"点赞";
+        _like_count.text = like?@"取消点赞":@"点赞";
         CGPoint labelCenter = _like_count.center;
-        labelCenter.x =_like_imageView.highlighted?(labelCenter.x-20):(labelCenter.x+20);;
+        labelCenter.x =like?(labelCenter.x-20):(labelCenter.x+20);;
         _like_count.center = labelCenter;
     });
 }
@@ -166,6 +177,9 @@
         _like_count.text = @"点赞";
         _like_count.userInteractionEnabled = YES;
         _like_count.font = FONT12;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(lickClicked:)];
+        [_like_count addGestureRecognizer:tap];
+        [_like_imageView addGestureRecognizer:tap];
         [like addSubview:_like_count];
         [like addTarget:self action:@selector(lickClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_footer addSubview:like];

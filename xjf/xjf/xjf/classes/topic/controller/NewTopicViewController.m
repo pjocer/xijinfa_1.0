@@ -8,7 +8,9 @@
 
 #import "NewTopicViewController.h"
 #import "NotificationUtil.h"
-
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "ZToastManager.h"
+#import "XjfRequest.h"
 
 @interface NewTopicViewController ()
 @property (nonatomic, strong)UIButton *checkout;
@@ -32,12 +34,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    [self obeserValues];
+}
+
+- (void)obeserValues {
     ReceivedNotification(self, UIKeyboardDidChangeFrameNotification, ^(NSNotification *notification) {
         NSValue *value = [notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-        CGFloat y = value.CGRectValue.origin.y-130;
+        CGFloat y = value.CGRectValue.origin.y-114;
         _bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
-        _placeholder.hidden = YES;
     });
+    [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
+        if (![x isEqualToString:@""])_placeholder.hidden = YES;
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineSpacing = 3;
+        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle};
+        _textView.attributedText = [[NSAttributedString alloc] initWithString:_textView.text attributes:attributes];
+    }];
 }
 
 - (void)initMainUI {
@@ -47,16 +59,21 @@
 }
 -(UITextView *)textView {
     if (!_textView) {
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH-20, SCREENHEIGHT-50-HEADHEIGHT)];
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-20, SCREENHEIGHT-50-HEADHEIGHT-258)];
         _textView.backgroundColor = [UIColor clearColor];
+        _textView.font = FONT15;
+        _textView.textColor = NormalColor;
+        [_textView becomeFirstResponder];
         [_textView addSubview:self.placeholder];
     }
     return _textView;
 }
 -(UILabel *)placeholder {
     if (!_placeholder) {
-        _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH-20, 21)];
+        _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH-20, 21)];
         _placeholder.text = @"谈谈你的想法吧~";
+        _placeholder.textColor = AssistColor;
+        _placeholder.font = FONT15;
     }
     return _placeholder;
 }
@@ -73,10 +90,8 @@
 -(UIButton *)topic_new {
     if (!_topic_new) {
         _topic_new = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_topic_new setTitle:@"#" forState:UIControlStateNormal];
-        _topic_new.frame = CGRectMake(SCREENWITH-50, 5, 40, 40);
-        [_topic_new setTitleColor:[UIColor xjfStringToColor:@"#9a9a9a"] forState:UIControlStateNormal];
-        _topic_new.titleLabel.font = FONT(39);
+        [_topic_new setBackgroundImage:[UIImage imageNamed:@"new_topic"] forState:UIControlStateNormal];
+        _topic_new.frame = CGRectMake(SCREENWITH-32, 14, 22, 22);
         [_topic_new addTarget:self action:@selector(newTopic:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _topic_new;
@@ -87,6 +102,7 @@
         _checkout = [UIButton buttonWithType:UIButtonTypeCustom];
         _checkout.backgroundColor = [UIColor whiteColor];
         _checkout.layer.cornerRadius = 5;
+        _checkout.titleLabel.font = FONT(17);
         [_checkout setTitle:_style==NewTopicQAStyle?@"新讨论":@"新问答" forState:UIControlStateNormal];
         [_checkout setTitleColor:[UIColor xjfStringToColor:@"#444444"] forState:UIControlStateNormal];
         _checkout.frame = CGRectMake(SCREENWITH/2-50, -50, 100, 50);
@@ -109,6 +125,8 @@
 }
 
 - (void)initNavBar {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [self setNeedsStatusBarAppearanceUpdate];
     UIBarButtonItem *cancel_item = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancleClicked:)];
     UIBarButtonItem *send_item = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(sendClicked:)];
     cancel_item.tintColor = [UIColor whiteColor];
@@ -128,7 +146,7 @@
 }
 
 - (void)resetNavBar {
-    self.navigationController.navigationBar.barTintColor = _style==NewTopicQAStyle?[UIColor blueColor]:[UIColor orangeColor];
+    self.navigationController.navigationBar.barTintColor = _style==NewTopicQAStyle?[UIColor xjfStringToColor:@"#3fa9f5"]:[UIColor xjfStringToColor:@"#f7931e"];
     [_titleView_button setTitle:_style==NewTopicQAStyle?@"新问答":@"新讨论" forState:UIControlStateNormal];
 }
 - (void)checkoutShow {
@@ -169,10 +187,35 @@
 }
 - (void)cancleClicked:(UIBarButtonItem *)item {
     [self checkoutHidden];
+    [_textView resignFirstResponder];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)sendClicked:(UIBarButtonItem *)item {
-    
+    if (_textView.text.length>140) {
+        [[ZToastManager ShardInstance] showtoast:@"内容长度超出了140字"];
+        return;
+    }
+    if (_textView.text.length == 0) {
+        [[ZToastManager ShardInstance] showtoast:@"内容不能为空"];
+        return;
+    }
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":_style==NewTopicQAStyle?@"qa":@"discuss",@"content":_textView.text}];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+        if ([dic[@"errCode"] integerValue] == 0) {
+            [[ZToastManager ShardInstance] showtoast:@"发表成功"];
+            [_textView resignFirstResponder];
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+        }
+        [[ZToastManager ShardInstance] hideprogress];
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
+        [[ZToastManager ShardInstance] hideprogress];
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

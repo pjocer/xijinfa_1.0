@@ -159,6 +159,8 @@
 		D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */; };
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
 		D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A81ED1CEEA0E8002C1297 /* XJMarket.m */; };
+		D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D140E1CFFE0960018F41B /* NewCommentViewController.m */; };
+		D06D14121D000BB10018F41B /* NewSharpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D14111D000BB10018F41B /* NewSharpViewController.m */; };
 		D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF6E1CFBF089002D3FAF /* TopicModel.m */; };
 		D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */; };
 		D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */; };
@@ -508,6 +510,10 @@
 		D0698E801CE45AED003BF1F3 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationUtil.m; path = ../NotificationUtil.m; sourceTree = "<group>"; };
 		D06A81EC1CEEA0E8002C1297 /* XJMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJMarket.h; sourceTree = "<group>"; };
 		D06A81ED1CEEA0E8002C1297 /* XJMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMarket.m; sourceTree = "<group>"; };
+		D06D140D1CFFE0960018F41B /* NewCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCommentViewController.h; sourceTree = "<group>"; };
+		D06D140E1CFFE0960018F41B /* NewCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentViewController.m; sourceTree = "<group>"; };
+		D06D14101D000BB10018F41B /* NewSharpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSharpViewController.h; sourceTree = "<group>"; };
+		D06D14111D000BB10018F41B /* NewSharpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSharpViewController.m; sourceTree = "<group>"; };
 		D073CF6D1CFBF089002D3FAF /* TopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicModel.h; path = xjf/classes/topic/TopicModel.h; sourceTree = SOURCE_ROOT; };
 		D073CF6E1CFBF089002D3FAF /* TopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicModel.m; path = xjf/classes/topic/TopicModel.m; sourceTree = SOURCE_ROOT; };
 		D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicBaseCellTableViewCell.h; path = xjf/classes/topic/TopicBaseCellTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -1147,6 +1153,10 @@
 				D073CF761CFC55CB002D3FAF /* TopicDetailViewController.m */,
 				D04F5E4A1CFEB6EB008386CE /* NewTopicViewController.h */,
 				D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */,
+				D06D140D1CFFE0960018F41B /* NewCommentViewController.h */,
+				D06D140E1CFFE0960018F41B /* NewCommentViewController.m */,
+				D06D14101D000BB10018F41B /* NewSharpViewController.h */,
+				D06D14111D000BB10018F41B /* NewSharpViewController.m */,
 				CD1CCC311CB37946002FC0C9 /* TopicBaseViewController.h */,
 				CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */,
 			);
@@ -1689,6 +1699,7 @@
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
 				CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */,
 				5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */,
+				D06D14121D000BB10018F41B /* NewSharpViewController.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
 				D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
@@ -1696,6 +1707,7 @@
 				5A105EB31CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
+				D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */,
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A105E921CED880D0079BEFE /* BannerModel.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,

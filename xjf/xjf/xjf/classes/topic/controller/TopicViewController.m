@@ -271,11 +271,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     TopicDataModel *model = nil;
     if (tableView == _tableView_all) {
-        model = _allDataSource[indexPath.row];
+        if (_allDataSource.count>0 && _allDataSource!=nil) model = _allDataSource[indexPath.row];
     }else if (tableView == _tableview_qa) {
-        model = _qaDataSource[indexPath.row];
+        if (_qaDataSource.count>0 && _qaDataSource!=nil) model = _allDataSource[indexPath.row];
     }else if (tableView == _tableView_discuss) {
-        model = _disscussDataSource[indexPath.row];
+        if (_disscussDataSource.count>0 && _disscussDataSource!=nil) model = _disscussDataSource[indexPath.row];
     }
     return [self cellHeightByModel:model];
 }

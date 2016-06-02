@@ -50,8 +50,8 @@
 @property (nonatomic, copy) NSString *updated_at;
 @property (nonatomic, copy) NSString *reply_count;
 @property (nonatomic, copy) NSString *like_count;
-@property (nonatomic, copy) NSString *is_favorite;
-@property (nonatomic, copy) NSString *is_like;
+@property (nonatomic, assign) BOOL user_favorite;
+@property (nonatomic, assign) BOOL user_liked;
 @property (nonatomic, strong) CommentUserData *user;
 @end
 
