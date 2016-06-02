@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "TeacherListHostModel.h"
 @interface TeacherDetailViewController : BaseViewController
-
+@property (nonatomic, strong) TeacherListData *teacherListDataModel;
 @end

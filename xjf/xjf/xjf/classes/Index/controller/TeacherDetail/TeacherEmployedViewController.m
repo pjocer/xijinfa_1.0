@@ -7,31 +7,60 @@
 //
 
 #import "TeacherEmployedViewController.h"
-
-@interface TeacherEmployedViewController ()
+#import "VideoListCell.h"
+#import "LessonDetailViewController.h"
+@interface TeacherEmployedViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
 @implementation TeacherEmployedViewController
-
+static NSString *TeacherEmployedCell_id = @"TeacherLessonsCell_id";
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initTabelView];
+}
+#pragma mark- initTabelView
+
+- (void)initTabelView {
+    self.tableView = [[UITableView alloc]
+                      initWithFrame:CGRectNull style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view).with.offset(-20);
+    }];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    if (iPhone5 || iPhone4) {
+        self.tableView.rowHeight = 100;
+    } else {
+        self.tableView.rowHeight = 120;
+    }
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    
+    [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:TeacherEmployedCell_id];
+}
+#pragma mark TabelViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSource.count;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:TeacherEmployedCell_id];
+    cell.model = self.dataSource[indexPath.row];
+    return cell;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark Delegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+    lessonDetailViewController.model = self.dataSource[indexPath.row];
+    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
-*/
 
 @end

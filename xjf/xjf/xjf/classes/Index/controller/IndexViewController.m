@@ -282,21 +282,23 @@
                 
             }
             else if (indexPath.section == 2){
-                //金融百科
+                //析金百科
                 PlayerViewController *playerPage = [PlayerViewController new];
-                TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
+                TalkGridModel *model = (TalkGridModel *)obj;
                 playerPage.talkGridModel = model;
+                playerPage.talkGridListModel = self.tablkListModel;
                 [self.navigationController pushViewController:playerPage animated:YES];
             }
             else if (indexPath.section == 3){
                 //析金学堂
                 LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-                lessonDetailViewController.model = self.tablkListModel_Lesson.result.data[indexPath.row];
+                lessonDetailViewController.model = (TalkGridModel *)obj;
                 [self.navigationController pushViewController:lessonDetailViewController animated:YES];
             }
             else if (indexPath.section == 4){
-                //人气讲师
+                //析金讲师
                 TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+                teacherDetailViewController.teacherListDataModel = (TeacherListData *)obj;
                 [self.navigationController pushViewController:teacherDetailViewController animated:YES];
             }
             else if (indexPath.section == 5){
@@ -307,9 +309,9 @@
         case BEventType_More:
         {
             if (indexPath.section == 2) {
-                //金融百科更多
+                //析金百科更多
                 VideolistViewController *videolListPage = [VideolistViewController new];
-                videolListPage.title = @"金融百科更多";
+                videolListPage.title = @"析金百科更多";
                 [self.navigationController pushViewController:videolListPage animated:YES];
             }
             else if (indexPath.section == 3){

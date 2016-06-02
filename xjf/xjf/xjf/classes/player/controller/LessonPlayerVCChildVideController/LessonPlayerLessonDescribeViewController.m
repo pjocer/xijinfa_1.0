@@ -34,7 +34,6 @@
     self.textView.textColor = AssistColor
     self.textView.font = [UIFont fontWithName:@"Arial" size:12.0];
 //    self.textView.delegate = self;//设置它的委托方法
-
     self.textView.scrollEnabled = YES;
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.editable = NO;

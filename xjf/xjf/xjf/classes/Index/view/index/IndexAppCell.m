@@ -28,7 +28,7 @@
     if (self)
     {
         if (!self.dataTitle || !self.dataImage) {
-            self.dataTitle = @[@"金融百科",@"析金学堂",@"从业培训",@"金融资讯"];
+            self.dataTitle = @[@"析金百科",@"析金学堂",@"析金从业",@"金融资讯"];
             self.dataImage = @[@"home_wiki",@"home_lesson",@"home_traning",@"home_news"];
         }
         self.backgroundColor = [UIColor whiteColor];
@@ -70,7 +70,7 @@
 + (CGFloat)returnCellHeight:(id)model
 {
     NSDictionary *dict =(NSDictionary*)model;
-    return 100;
+    return 95;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {

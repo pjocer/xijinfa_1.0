@@ -103,4 +103,8 @@ static APIName *cancelOrder = @"/api/order/";
 
 #pragma mark-- 老师 -----------------------------
 #pragma mark 老师列表-热门
+static APIName *teacherApi = @"/api/gurus3/";
 static APIName *teacherListHot = @"/api/gurus3/hot";
+
+#pragma mark-- 收藏 -----------------------------
+static APIName *favorite = @"/api/favorite";

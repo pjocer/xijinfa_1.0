@@ -10,4 +10,5 @@
 
 @interface TeacherDescriptionViewController : BaseViewController
 @property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, strong) NSString *tempContent;
 @end

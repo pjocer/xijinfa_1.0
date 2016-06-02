@@ -71,6 +71,8 @@
 		5AF7C2F31CFF040D007CC71C /* TeacherLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2F21CFF040D007CC71C /* TeacherLessonsViewController.m */; };
 		5AF7C2F61CFF0431007CC71C /* TeacherEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2F51CFF0431007CC71C /* TeacherEmployedViewController.m */; };
 		5AF7C2F91CFF049A007CC71C /* TeacherDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2F81CFF049A007CC71C /* TeacherDetailHeaderView.m */; };
+		5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2FB1CFFD9F7007CC71C /* TeacherDetailModel.m */; };
+		5AF7C2FF1CFFFF59007CC71C /* MyTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2FE1CFFFF59007CC71C /* MyTeacherViewController.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C10C81CBA61AC00892E2C /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C21CBA61AC00892E2C /* icon_del.png */; };
 		644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 644C10C31CBA61AC00892E2C /* icon_del_h.png */; };
@@ -323,6 +325,10 @@
 		5AF7C2F51CFF0431007CC71C /* TeacherEmployedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherEmployedViewController.m; sourceTree = "<group>"; };
 		5AF7C2F71CFF049A007CC71C /* TeacherDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherDetailHeaderView.h; sourceTree = "<group>"; };
 		5AF7C2F81CFF049A007CC71C /* TeacherDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDetailHeaderView.m; sourceTree = "<group>"; };
+		5AF7C2FA1CFFD9F7007CC71C /* TeacherDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherDetailModel.h; sourceTree = "<group>"; };
+		5AF7C2FB1CFFD9F7007CC71C /* TeacherDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDetailModel.m; sourceTree = "<group>"; };
+		5AF7C2FD1CFFFF59007CC71C /* MyTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTeacherViewController.h; sourceTree = "<group>"; };
+		5AF7C2FE1CFFFF59007CC71C /* MyTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTeacherViewController.m; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
 		644C10C21CBA61AC00892E2C /* icon_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del.png; sourceTree = "<group>"; };
@@ -686,6 +692,8 @@
 				5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */,
 				5AF7C2E61CFEF097007CC71C /* TeacherListHostModel.h */,
 				5AF7C2E71CFEF097007CC71C /* TeacherListHostModel.m */,
+				5AF7C2FA1CFFD9F7007CC71C /* TeacherDetailModel.h */,
+				5AF7C2FB1CFFD9F7007CC71C /* TeacherDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1090,6 +1098,8 @@
 				CD1CCBFD1CB35A2D002FC0C9 /* MyViewController.m */,
 				CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */,
 				CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */,
+				5AF7C2FD1CFFFF59007CC71C /* MyTeacherViewController.h */,
+				5AF7C2FE1CFFFF59007CC71C /* MyTeacherViewController.m */,
 				D083C8EA1CF44A7B0028DE8A /* SettingViewController.h */,
 				D083C8EB1CF44A7B0028DE8A /* SettingViewController.m */,
 				D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */,
@@ -1657,6 +1667,7 @@
 				5AF7C2DC1CF96D53007CC71C /* OrderFooterView.m in Sources */,
 				5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */,
 				D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */,
+				5AF7C2FF1CFFFF59007CC71C /* MyTeacherViewController.m in Sources */,
 				644C116A1CBA90FF00892E2C /* LPPopup.m in Sources */,
 				5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */,
 				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
@@ -1730,6 +1741,7 @@
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
+				5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,

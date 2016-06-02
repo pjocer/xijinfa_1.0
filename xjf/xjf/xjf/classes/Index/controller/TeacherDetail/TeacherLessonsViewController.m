@@ -8,9 +8,8 @@
 
 #import "TeacherLessonsViewController.h"
 #import "VideoListCell.h"
+#import "LessonDetailViewController.h"
 @interface TeacherLessonsViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation TeacherLessonsViewController
@@ -46,13 +45,12 @@ static NSString *TeacherLessonsCell_id = @"TeacherLessonsCell_id";
 #pragma mark TabelViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.dataSource.count;
-    return 10;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:TeacherLessonsCell_id];
-//    cell.model = self.dataSource[indexPath.row];
+    cell.model = self.dataSource[indexPath.row];
     return cell;
 }
 
@@ -60,6 +58,9 @@ static NSString *TeacherLessonsCell_id = @"TeacherLessonsCell_id";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+    lessonDetailViewController.model = self.dataSource[indexPath.row];
+    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 
 

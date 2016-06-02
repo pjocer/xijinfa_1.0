@@ -30,7 +30,7 @@
     {
         //
         _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-        _sectionView.titleLabel.text=@" 人气讲师";
+        _sectionView.titleLabel.text=@" 析金讲师";
         _sectionView.moreLabel.text =@"";
         _sectionView.userInteractionEnabled =NO;
         [self addSubview:_sectionView];
@@ -94,7 +94,7 @@
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
 {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_Unknow,nil,self.data,nil,self.indexPath);
+        self.actionBlock(BEventType_Unknow,nil,self.teacherListHostModel.result.data[index],nil,self.indexPath);
     }
 }
 

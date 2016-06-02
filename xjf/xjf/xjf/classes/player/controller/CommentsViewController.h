@@ -9,6 +9,5 @@
 #import "BaseViewController.h"
 #import "CommentsModel.h"
 @interface CommentsViewController : BaseViewController
-///评论数据
-@property (nonatomic, strong) CommentsAllDataList *commentsModel;
+@property (nonatomic, strong) NSString *ID;
 @end

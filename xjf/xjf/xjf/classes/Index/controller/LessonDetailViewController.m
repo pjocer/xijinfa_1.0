@@ -77,7 +77,7 @@ static CGFloat payViewH = 285;
 - (void)setNavigationBar {
     self.navigationItem.title = @"课程详情";
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 50, 44);
+    button.frame = CGRectMake(0, 0, 44, 44);
     [button setImage:[UIImage imageNamed:@"shoppingCart"] forState:UIControlStateNormal];
     UIBarButtonItem *barbutton2 = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = barbutton2;

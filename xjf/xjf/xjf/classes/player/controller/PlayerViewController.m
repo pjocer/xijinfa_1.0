@@ -36,9 +36,6 @@
 @property(nonatomic, retain) UITextField *textField;
 /**< 键盘 */
 @property(nonatomic, strong) UIButton *sendMsgButton;/**< 发表评论内容按钮 */
-
-///评论api
-@property(nonatomic, strong) NSString *api;
 ///评论数据
 @property(nonatomic, strong) CommentsAllDataList *commentsModel;
 
@@ -67,10 +64,8 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-    self.api = [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_];
 
-
-    [self requestCommentsData:self.api method:GET];
+    [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
 
 }
 
@@ -103,7 +98,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-            [self requestCommentsData:self.api method:GET];
+              [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
         }failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
@@ -296,7 +291,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
     }
     else if (section == 1) {
-        return 4;
+        return self.talkGridListModel.result.data.count;
     }
     return self.commentsModel.result.data.count;
 }
@@ -312,6 +307,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     else if (indexPath.section == 1) {
         WikiTalkGridViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlayerVC_TalkGrid_Cell_Id
                                                                                forIndexPath:indexPath];
+        cell.model = self.talkGridListModel.result.data[indexPath.row];
         return cell;
     }
     PlayerPageCommentsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlayerVC_Comments_Cell_Id
@@ -331,7 +327,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             PlayerPageDescribeHeaderView *describeHeaderView =
                     [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                        withReuseIdentifier:PlayerVC_Describe_HeaderId forIndexPath:indexPath];
-            describeHeaderView.title.text = self.talkGridModel.title;
+            describeHeaderView.model = self.talkGridModel;
 
             [describeHeaderView.rightButton addTarget:self action:@selector(describeHeaderViewRightButtonAction:)
                                      forControlEvents:UIControlEventTouchUpInside];
@@ -425,9 +421,14 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    NSLog(@"didSelectItemAtIndexPath section:%ld  row:%ld", indexPath.section, indexPath.row);
-
+    if (indexPath.section == 1) {
+        self.talkGridModel = self.talkGridListModel.result.data[indexPath.row];
+        [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
+        [_playerView pause];
+        TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
+        self.playUrl = gridVideomodel.url;
+        _playerView.videoURL = [NSURL URLWithString:self.playUrl];
+    }
 }
 
 #pragma mark FlowLayoutDelegate
@@ -491,7 +492,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 - (void)CommentsFooterViewlookCommentsButton:(UIButton *)sender {
     CommentsViewController *allComents = [CommentsViewController new];
-    allComents.commentsModel = self.commentsModel;
+    allComents.ID = self.self.talkGridModel.id_;
     [self.navigationController pushViewController:allComents animated:YES];
 }
 
@@ -524,10 +525,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 #pragma mark 发表评论
 - (void)sendCommentMsg:(UIButton *)sender {
-
     NSString *tempApi = [NSString stringWithFormat:@"%@%@/comments",talkGridcomments,self.talkGridModel.id_];
-    
-    
     [self requestCommentsData:tempApi method:POST];
     [self.textField resignFirstResponder];
 }

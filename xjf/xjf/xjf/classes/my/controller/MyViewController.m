@@ -11,6 +11,7 @@
 #import "UserInfoViewController.h"
 #import "MyMoneyViewController.h"
 #import "ShoppingCartViewController.h"
+#import "MyTeacherViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -117,6 +118,10 @@
 
 - (void)componentDidSelected:(NSUInteger)index {
     NSLog(@"%lu", index);
+    if (index == 1) {
+        MyTeacherViewController *myTeacherViewController = [MyTeacherViewController new];
+        [self.navigationController pushViewController:myTeacherViewController animated:YES];
+    }
     
     if (index == 6) {
         MyMoneyViewController *myMoneyPage = [MyMoneyViewController new];

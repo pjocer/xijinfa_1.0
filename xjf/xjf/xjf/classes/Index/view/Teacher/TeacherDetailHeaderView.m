@@ -15,8 +15,6 @@
 @property(nonatomic, strong) UILabel *teacherName;
 ///老师详情
 @property(nonatomic, strong) UILabel *teacherDetail;
-///关注按钮
-@property (nonatomic, strong) UIButton *focusButton;
 @property(nonatomic, strong) UIView *bottomView;
 @end
 
@@ -78,11 +76,12 @@
         self.teacherDetail.textColor = AssistColor;
         self.teacherDetail.text = @"超级大师xxxxxxxxxxxxxxx";
         self.teacherDetail.textAlignment = NSTextAlignmentLeft;
+        self.teacherDetail.numberOfLines = 2;
         [self.teacherDetail mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.teacherName.mas_bottom);
             make.left.equalTo(self.teacherName);
-            make.height.equalTo(self.teacherName);
-            make.right.equalTo(self).with.offset(-10);
+            make.height.equalTo(self.teacherName).multipliedBy(1.3);
+            make.right.equalTo(self.focusButton.mas_left).with.offset(-10);
         }];
         
         self.bottomView = [[UIView alloc] init];
@@ -95,4 +94,25 @@
     }
     return self;
 }
+
+- (void)setModel:(TeacherListData *)model
+{
+    if (model) {
+        _model = model;
+    }
+    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.teacherName.text = model.title;
+    self.teacherDetail.text = model.summary;
+    
+//    if (model.user_favored) {
+//        [self.focusButton setTitle:@"已关注" forState:UIControlStateNormal];
+//        self.focusButton.backgroundColor = BackgroundColor;
+//        self.focusButton.tintColor = AssistColor;
+//    }else {
+//        [self.focusButton setTitle:@"关注" forState:UIControlStateNormal];
+//        self.focusButton.backgroundColor = BlueColor;
+//        self.focusButton.tintColor = [UIColor whiteColor];
+//    }
+}
+
 @end

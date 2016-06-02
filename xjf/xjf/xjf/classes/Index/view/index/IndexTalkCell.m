@@ -32,7 +32,7 @@
         //
         UITapGestureRecognizer* singleRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
         _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-        _sectionView.titleLabel.text=@" 金融百科";
+        _sectionView.titleLabel.text=@" 析金百科";
         _sectionView.userInteractionEnabled =YES;
         [_sectionView addGestureRecognizer:singleRecognizer];
         singleRecognizer=nil;
@@ -108,7 +108,7 @@
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
 {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_Unknow,nil,self.data,nil,self.indexPath);
+        self.actionBlock(BEventType_Unknow,nil,self.tablkListModel.result.data[index],nil,self.indexPath);
     }
 }
 

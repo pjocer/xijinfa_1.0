@@ -20,7 +20,7 @@ static NSString *WikiMoreCell_Id = @"WikiMoreCell_Id";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"金融百科更多";
+    self.navigationItem.title = @"析金百科更多";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

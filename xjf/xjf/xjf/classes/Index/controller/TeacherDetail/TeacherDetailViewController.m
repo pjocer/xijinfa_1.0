@@ -11,6 +11,8 @@
 #import "TeacherLessonsViewController.h"
 #import "TeacherEmployedViewController.h"
 #import "TeacherDetailHeaderView.h"
+#import "TeacherDetailModel.h"
+#import "TalkGridModel.h"
 @interface TeacherDetailViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) TeacherDetailHeaderView *teacherDetailHeaderView;
 @property (nonatomic, strong) UIScrollView *titleScrollView;
@@ -18,9 +20,12 @@
 @property (nonatomic, strong) TeacherDescriptionViewController *teacherDescriptionViewController;
 @property (nonatomic, strong) TeacherLessonsViewController *teacherLessonsViewController;
 @property (nonatomic, strong) TeacherEmployedViewController *teacherEmployedViewController;
-@property(nonatomic, strong) NSMutableArray *buttons;
-@property(nonatomic, strong) UIView *selBackGroundView;
-@property(nonatomic, strong) UIView *selView;
+@property (nonatomic, strong) NSMutableArray *buttons;
+@property (nonatomic, strong) UIView *selBackGroundView;
+@property (nonatomic, strong) UIView *selView;
+@property (nonatomic, strong) TeacherDetailModel *teacherDetailModel;
+@property (nonatomic, strong) NSMutableArray *dataSourcerDep3_Lesson;
+@property (nonatomic, strong) NSMutableArray *dataSourcerDep4_Employed;
 @end
 
 @implementation TeacherDetailViewController
@@ -52,7 +57,69 @@ static CGFloat BottomPayButtonH = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    [self requestLessonListData:[NSString stringWithFormat:@"%@%@",teacherApi,self.teacherListDataModel.id] method:GET];
 }
+
+- (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
+    
+    if (method == GET) {
+        self.dataSourcerDep4_Employed = [NSMutableArray array];
+        self.dataSourcerDep3_Lesson = [NSMutableArray array];
+        __weak typeof(self) wSelf = self;
+        [[ZToastManager ShardInstance] showprogress];
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+        
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            __strong typeof(self) sSelf = wSelf;
+            
+            sSelf.teacherDetailModel = [[TeacherDetailModel alloc] initWithData:responseData error:nil];
+            for (TalkGridModel *model in sSelf.teacherDetailModel.result.courses) {
+                if ([model.department isEqualToString:@"dept3"]) {
+                    [sSelf.dataSourcerDep3_Lesson addObject:model];
+                } else if ([model.department isEqualToString:@"dept4"]) {
+                    [sSelf.dataSourcerDep4_Employed addObject:model];
+                }
+            }
+            sSelf.teacherLessonsViewController.dataSource = sSelf.dataSourcerDep3_Lesson;
+            [sSelf.teacherLessonsViewController.tableView reloadData];
+            sSelf.teacherEmployedViewController.dataSource = sSelf.dataSourcerDep4_Employed;
+            [sSelf.teacherEmployedViewController.tableView reloadData];
+            if (sSelf.teacherDetailModel.result.user_favored) {
+                [self.teacherDetailHeaderView.focusButton setTitle:@"已关注" forState:UIControlStateNormal];
+                self.teacherDetailHeaderView.focusButton.backgroundColor = BackgroundColor;
+                self.teacherDetailHeaderView.focusButton.tintColor = AssistColor;
+            }else {
+                [self.teacherDetailHeaderView.focusButton setTitle:@"关注" forState:UIControlStateNormal];
+                self.teacherDetailHeaderView.focusButton.backgroundColor = BlueColor;
+                self.teacherDetailHeaderView.focusButton.tintColor = [UIColor whiteColor];
+            }
+            [[ZToastManager ShardInstance] hideprogress];
+        }                  failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] hideprogress];
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+    }
+    if (method == POST) {
+        [self PostOrDeleteRequestData:api Method:POST];
+    }
+    if (method == DELETE) {
+        [self PostOrDeleteRequestData:api Method:DELETE];
+    }
+    
+}
+- (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method
+{
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%d",self.teacherDetailModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.teacherDetailModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.teacherDetailModel.result.department]}];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        [self requestLessonListData:[NSString stringWithFormat:@"%@%@",teacherApi,self.teacherListDataModel.id] method:GET];
+        
+    }                  failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
+
 
 #pragma mark - initMainUI
 
@@ -83,7 +150,25 @@ static CGFloat BottomPayButtonH = 50;
         teacherDetailHeaderViewHeight = 120;
     }
     self.teacherDetailHeaderView.frame = CGRectMake(0, 0, SCREENWITH, teacherDetailHeaderViewHeight);
-//    self.teacherDetailHeaderView.model = self.model;
+    self.teacherDetailHeaderView.model = self.teacherListDataModel;
+    
+    [self.teacherDetailHeaderView.focusButton addTarget:self action:@selector(focusAction:) forControlEvents:UIControlEventTouchUpInside];
+
+}
+- (void)focusAction:(UIButton *)sender
+{
+    if (!self.teacherDetailModel.result.user_favored) {
+        [sender setTitle:@"已关注" forState:UIControlStateNormal];
+        sender.backgroundColor = BackgroundColor;
+        sender.tintColor = AssistColor;
+        
+        [self requestLessonListData:favorite method:POST];
+    } else if (self.teacherDetailModel.result.user_favored) {
+        [sender setTitle:@"关注" forState:UIControlStateNormal];
+        sender.backgroundColor = BlueColor;
+        sender.tintColor = [UIColor whiteColor];
+        [self requestLessonListData:favorite method:DELETE];
+    }
 }
 
 #pragma mark - 设置头部标题栏
@@ -111,6 +196,7 @@ static CGFloat BottomPayButtonH = 50;
     self.teacherDescriptionViewController = [[TeacherDescriptionViewController alloc] init];
     self.teacherDescriptionViewController.title = @"讲师简介";
     [self addChildViewController:self.teacherDescriptionViewController];
+    self.teacherDescriptionViewController.tempContent = self.teacherListDataModel.content;
     
     self.teacherLessonsViewController = [[TeacherLessonsViewController alloc] init];
     self.teacherLessonsViewController.title = @"析金学堂";

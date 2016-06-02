@@ -103,4 +103,14 @@
     return self;
 }
 
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    self.title.text = model.title;
+    
+    self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次  类型: %@",model.video_view,model.type];
+}
+
 @end

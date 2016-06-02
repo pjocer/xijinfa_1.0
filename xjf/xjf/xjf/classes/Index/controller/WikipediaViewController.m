@@ -96,7 +96,7 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 #pragma mark -- Navigation
 
 - (void)setNavigation {
-    self.navigationItem.title = @"金融百科";
+    self.navigationItem.title = @"析金百科";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
             initWithImage:[UIImage imageNamed:@"search"]
                     style:UIBarButtonItemStylePlain
@@ -221,6 +221,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         PlayerViewController *player = [[PlayerViewController alloc] init];
         TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
         player.talkGridModel = model;
+        player.talkGridListModel = self.tablkListModel;
         [self.navigationController pushViewController:player animated:YES];
     }
 

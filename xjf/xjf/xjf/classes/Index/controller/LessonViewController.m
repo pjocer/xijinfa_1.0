@@ -225,7 +225,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 - (void)handleSingleTapFrom {
     TeacherListViewController *teacherListViewController = [TeacherListViewController new];
-    teacherListViewController.hostModel = self.teacherListHostModel;
+//    teacherListViewController.hostModel = self.teacherListHostModel;
     [self.navigationController pushViewController:teacherListViewController animated:YES];
 }
 
@@ -280,6 +280,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         }
         else if (indexPath.section == 1) {
             TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+            teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
             [self.navigationController pushViewController:teacherDetailViewController animated:YES];
         }
     }

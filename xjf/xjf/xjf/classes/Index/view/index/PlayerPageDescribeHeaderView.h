@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TalkGridModel.h"
 @interface PlayerPageDescribeHeaderView : UICollectionReusableView
 
 ///下载
@@ -22,4 +22,5 @@
 @property (nonatomic, strong) UILabel *titleDetail;
 ///展示描述视频按钮
 @property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) TalkGridModel *model;
 @end

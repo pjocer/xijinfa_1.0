@@ -125,6 +125,7 @@ static NSString *videListCell_id = @"videListCell_id";
     PlayerViewController *player = [[PlayerViewController alloc] init];
     TalkGridModel *model = self.dataSource[indexPath.row];
     player.talkGridModel = model;
+    player.talkGridListModel = self.tablkListModel;
     [self.navigationController pushViewController:player animated:YES];
 }
 

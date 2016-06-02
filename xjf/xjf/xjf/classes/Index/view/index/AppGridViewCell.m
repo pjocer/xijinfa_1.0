@@ -32,8 +32,9 @@
         //titleLable
         self.titleLable = [[UILabel alloc] init];
         [self addSubview:self.titleLable];
-        self.titleLable.textColor = [UIColor xjfStringToColor:@"#444444"];
-        self.titleLable.font = FONT15;
+        self.titleLable.textColor = NormalColor;
+        BackgroundColor
+        self.titleLable.font = FONT13;
         self.titleLable.text = @"XXXXX";
         self.titleLable.textAlignment = NSTextAlignmentCenter;
 
@@ -55,7 +56,7 @@
     //titleLable
     [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.mas_centerX);
-        make.top.mas_equalTo(self.imageTag.mas_bottom).with.offset(15);
+        make.top.mas_equalTo(self.imageTag.mas_bottom).with.offset(5);
         make.size.mas_equalTo(CGSizeMake(self.frame.size.width, 15));
     }];
 

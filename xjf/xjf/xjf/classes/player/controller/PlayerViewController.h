@@ -10,4 +10,5 @@
 @interface PlayerViewController : PlayerBaseViewController
 @property (nonatomic, retain) TalkGridModel *talkGridModel;
 @property (nonatomic, strong) NSString *playUrl;
+@property (nonatomic, strong) TablkListModel *talkGridListModel;
 @end
