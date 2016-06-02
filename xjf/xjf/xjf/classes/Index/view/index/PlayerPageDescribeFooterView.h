@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TalkGridModel.h"
 @interface PlayerPageDescribeFooterView : UICollectionReusableView
 @property (nonatomic, strong) UIButton *thumbUpButton;
+@property (nonatomic, strong) TalkGridModel *model;
 @end

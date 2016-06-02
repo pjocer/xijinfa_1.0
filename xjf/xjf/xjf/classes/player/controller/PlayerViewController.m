@@ -533,7 +533,8 @@ referenceSizeForFooterInSection:(NSInteger)section {
 #pragma mark 点赞
 
 - (void)thumbUpAction:(UIButton *)sender {
-
+    [sender setImage:[[UIImage imageNamed:@"iconLike"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    [sender setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

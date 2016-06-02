@@ -50,5 +50,19 @@
     return self;
 }
 
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    
+    self.thumbUpLabel.text = ;
+    if (model.user_liked) {
+        [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    }else {
+        [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLike"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    }
+
+}
 
 @end
