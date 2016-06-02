@@ -44,11 +44,9 @@
         _bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
     });
     [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
-        if (![x isEqualToString:@""])_placeholder.hidden = YES;
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineSpacing = 3;
-        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle};
-        _textView.attributedText = [[NSAttributedString alloc] initWithString:_textView.text attributes:attributes];
+        if (![x isEqualToString:@""]) {
+            _placeholder.hidden = YES;
+        }
     }];
 }
 
@@ -62,6 +60,10 @@
         _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-20, SCREENHEIGHT-50-HEADHEIGHT-258)];
         _textView.backgroundColor = [UIColor clearColor];
         _textView.font = FONT15;
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineSpacing = 3;
+        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle};
+        _textView.typingAttributes = attributes;
         _textView.textColor = NormalColor;
         [_textView becomeFirstResponder];
         [_textView addSubview:self.placeholder];

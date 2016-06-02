@@ -112,6 +112,7 @@ NSString *const Subscribe = @"SubscribeViewController";
         {
 
         }
+            break;
         case 10://历史
         {
             PlayerHistoryViewController *history = [[PlayerHistoryViewController alloc] init];
@@ -136,6 +137,7 @@ NSString *const Subscribe = @"SubscribeViewController";
             SettingViewController *download = [[SettingViewController alloc] init];
             [self.navigationController pushViewController:download animated:YES];
         }
+            break;
         case 14://发表
         {
             if (![[XJAccountManager defaultManager] accessToken]) {

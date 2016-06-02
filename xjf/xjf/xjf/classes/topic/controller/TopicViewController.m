@@ -61,6 +61,7 @@
         [self hiddenMJRefresh:tableView];
         return ;
     }
+    
     [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
@@ -108,7 +109,9 @@
         _tableView_all = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
         [_tableView_all registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _tableView_all.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [_allDataSource removeAllObjects];
+            if (_allDataSource.count>0) {
+               [_allDataSource removeAllObjects];
+            }
             [self reqeustData:topic_all method:GET tableView:_tableView_all];
         }];
         _tableView_all.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -127,7 +130,9 @@
         _tableview_qa = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
         [_tableview_qa registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _tableview_qa.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [_qaDataSource removeAllObjects];
+            if (_qaDataSource.count>0) {
+                [_qaDataSource removeAllObjects];
+            }
             [self reqeustData:topic_qa method:GET tableView:_tableview_qa];
         }];
         _tableview_qa.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -146,7 +151,9 @@
         _tableView_discuss = [[UITableView alloc] initWithFrame:CGRectMake(2*SCREENWITH, 0, SCREENWITH, CGRectGetHeight(_scrollView.bounds)) style:UITableViewStylePlain];
         [_tableView_discuss registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _tableView_discuss.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [_disscussDataSource removeAllObjects];
+            if (_disscussDataSource.count > 0) {
+                [_disscussDataSource removeAllObjects];
+            }
             [self reqeustData:topic_discuss method:GET tableView:_tableView_discuss];
         }];
         _tableView_discuss.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -258,11 +265,17 @@
     TopicBaseCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopicBaseCellTableViewCell" forIndexPath:indexPath];
     TopicDataModel *model = nil;
     if (tableView == _tableView_all) {
-        model = _allDataSource[indexPath.row];
+        if (_allDataSource.count>0 && _allDataSource!=nil) {
+            model = [_allDataSource objectAtIndex:indexPath.row];
+        }
     }else if (tableView == _tableview_qa) {
-        model = _qaDataSource[indexPath.row];
+        if (_qaDataSource.count>0 && _qaDataSource!=nil) {
+            model = [_qaDataSource objectAtIndex:indexPath.row];
+        }
     }else if (tableView == _tableView_discuss) {
-        model = _disscussDataSource[indexPath.row];
+        if (_disscussDataSource.count>0 && _disscussDataSource!=nil) {
+            model = [_disscussDataSource objectAtIndex:indexPath.row];
+        }
     }
     cell.model = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -271,23 +284,35 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     TopicDataModel *model = nil;
     if (tableView == _tableView_all) {
-        if (_allDataSource.count>0 && _allDataSource!=nil) model = _allDataSource[indexPath.row];
+        if (_allDataSource.count>0 && _allDataSource!=nil) {
+            model = [_allDataSource objectAtIndex:indexPath.row];
+        }
     }else if (tableView == _tableview_qa) {
-        if (_qaDataSource.count>0 && _qaDataSource!=nil) model = _allDataSource[indexPath.row];
+        if (_qaDataSource.count>0 && _qaDataSource!=nil) {
+            model = [_qaDataSource objectAtIndex:indexPath.row];
+        }
     }else if (tableView == _tableView_discuss) {
-        if (_disscussDataSource.count>0 && _disscussDataSource!=nil) model = _disscussDataSource[indexPath.row];
+        if (_disscussDataSource.count>0 && _disscussDataSource!=nil) {
+            model = [_disscussDataSource objectAtIndex:indexPath.row];
+        }
     }
     return [self cellHeightByModel:model];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TopicDataModel *model = nil;
-    if (tableView == self.tableView_all) {
-        model = self.model_all.result.data[indexPath.row];
-    }else if (tableView == self.tableview_qa) {
-        model = self.model_qa.result.data[indexPath.row];
-    }else if (tableView == self.tableView_discuss) {
-        model = self.model_discuss.result.data[indexPath.row];
+    if (tableView == _tableView_all) {
+        if (_allDataSource.count>0 && _allDataSource!=nil) {
+            model = [_allDataSource objectAtIndex:indexPath.row];
+        }
+    }else if (tableView == _tableview_qa) {
+        if (_qaDataSource.count>0 && _qaDataSource!=nil) {
+            model = [_qaDataSource objectAtIndex:indexPath.row];
+        }
+    }else if (tableView == _tableView_discuss) {
+        if (_disscussDataSource.count>0 && _disscussDataSource!=nil) {
+            model = [_disscussDataSource objectAtIndex:indexPath.row];
+        }
     }
     TopicDetailViewController *controller = [[TopicDetailViewController alloc] init];
     controller.topic_id = model.id;

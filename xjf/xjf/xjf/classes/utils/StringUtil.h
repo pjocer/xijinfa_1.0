@@ -28,24 +28,6 @@
 + (CGRect)calculateLabelRect:(NSString *)content width:(float)width fontsize:(float)fontsize;
 + (CGRect)calculateLabelRect:(NSString *)content size:(CGSize)size font:(UIFont *)font;
 + (CGRect)calculateLabelRect:(NSString *)content height:(float)height fontSize:(float)fontsize;
-+ (NSString *)getDateText:(NSString *)startDate andEnd:(NSString *)endDate;
-+ (NSString *)formatDateWithoutMinutes:(NSString *)date;
-+ (NSString *)getDateStringComponentDate:(NSString *)dateString;
-+ (NSString *)getDateStringComponentTime:(NSString *)dateString;
-+ (NSString *)formatMinutesString:(NSString *)startDate andEnd:(NSString *)endDate;
-+ (NSString *)formatDateString:(NSString *)dateString;
-+ (NSString *)getMonthFromString:(NSString *)dateString;
-+ (NSString *)getDayTimeString:(NSString *)string;
-+ (NSString *)deformatDateString:(NSString *)dateString;
-+ (NSString *)formatHomeMoneyString:(double)price;
-+ (NSString *)formatMoneyString:(double)price maximumFractionDigits:(int)maximumFractionDigits needSeperator:(BOOL)needSeperator;
-//格式化百分比
-+ (NSString *)formatFloatValueToPercentValue:(double)price maximumFractionDigits:(int)maximumFractionDigits;
-
-+ (NSString *)formatDecimalData:(double)data withDecimalCount:(NSInteger)count needSeperator:(BOOL)needSeperator;
-+ (BOOL)isEmpty:(NSString *)string;
-+ (BOOL)isValidatePhone:(NSString *)phoneNum;
-
-+ (NSString *)stringFromSelectDate:(NSDate *)date;
++(NSString *) compareCurrentTime:(NSString *) compareDate;
 
 @end

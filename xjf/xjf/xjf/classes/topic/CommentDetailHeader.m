@@ -42,6 +42,7 @@
     _content.text = model.result.content;
     _nickname.text = model.result.user.nickname;
     _invest_category.text = model.result.user.invest_category;
+    _time.text = [StringUtil compareCurrentTime:model.result.created_at];
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.result.user.avatar]];
     if (![model.result.type isEqualToString:@"QA"]) {
         _comment_category.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
