@@ -56,7 +56,7 @@
         _model = model;
     }
     
-    self.thumbUpLabel.text = ;
+//    self.thumbUpLabel.text = ;
     if (model.user_liked) {
         [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     }else {

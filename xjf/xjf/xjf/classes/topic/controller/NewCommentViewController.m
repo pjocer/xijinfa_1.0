@@ -75,7 +75,6 @@
         [[ZToastManager ShardInstance] showtoast:@"内容不能为空"];
         return;
     }
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@/reply",topic_all,self.topic_id] RequestMethod:POST];
     request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"content":_textView.text}];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
@@ -87,9 +86,7 @@
         }else {
             [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
         }
-        [[ZToastManager ShardInstance] hideprogress];
     } failedBlock:^(NSError * _Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
     }];
     

@@ -11,6 +11,7 @@
 #import "XJPay.h"
 #import "XJAccountManager.h"
 #import "MyLessonsViewController.h"
+#import "StringUtil.h"
 
 @interface XJMarket ()
 @property (nonatomic, strong) NSMutableDictionary *shopping_cart;
@@ -50,6 +51,9 @@
     [_shopping_cart writeToFile:[self pathForShoppingCart] atomically:YES];
     [self createFileAtPath:[self pathForMyLessons]];
     [_my_lessons writeToFile:[self pathForMyLessons] atomically:YES];
+    [self createFileAtPath:[self pathForLabels]];
+    NSMutableArray *array = [NSMutableArray array];
+    [array writeToFile:[self pathForLabels] atomically:YES];
 }
 
 -(XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods {
@@ -158,6 +162,20 @@
     [dic setObject:goodlist forKey:key];
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
+
+-(void)addLabels:(NSString *)label {
+    NSMutableArray *array = [[NSMutableArray arrayWithContentsOfFile:[self pathForLabels]] mutableCopy];
+    if (![array containsObject:label]) {
+        [array insertObject:label atIndex:0];
+        if (array.count > 10) {
+            [array removeObjectAtIndex:10];
+        }
+        [array writeToFile:[self pathForLabels] atomically:YES];
+    }
+}
+-(NSMutableArray<NSString *> *)recentlyUsedLabels {
+    return [NSMutableArray arrayWithContentsOfFile:[self pathForLabels]];
+}
 -(NSMutableArray<TalkGridModel *> *)myLessonsFor:(NSString *)key {
     NSString *path = [self pathForMyLessons];
     NSDictionary *lessons = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -179,6 +197,13 @@
     return array;
 }
 
+- (NSString *)pathForLabels {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *labelPath = [path stringByAppendingPathComponent:@"label.plist"];
+    return labelPath;
+}
+
 - (NSString *)pathForShoppingCart {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
@@ -194,10 +219,7 @@
 }
 
 - (BOOL)createFileAtPath:(NSString *)path {
-    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        return [[NSFileManager defaultManager] createFileAtPath:[self pathForMyLessons] contents:nil attributes:nil];
-    }
-    return YES;
+    return [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
 }
 
 @end

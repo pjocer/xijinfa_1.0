@@ -66,7 +66,6 @@
         [self hiddenMJRefresh:_tableView];
         return;
     }
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     if ([api isEqualToString:praise]) {
         request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":@"topic",@"id":_model.result.id}];
@@ -97,10 +96,8 @@
             }
         }
         [self hiddenMJRefresh:_tableView];
-        [[ZToastManager ShardInstance] hideprogress];
     } failedBlock:^(NSError * _Nullable error) {
         [self hiddenMJRefresh:_tableView];
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
     }];
 }

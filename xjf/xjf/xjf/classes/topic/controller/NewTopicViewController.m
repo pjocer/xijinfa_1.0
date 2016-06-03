@@ -13,13 +13,14 @@
 #import "XjfRequest.h"
 #import "NewSharpViewController.h"
 
-@interface NewTopicViewController ()
+@interface NewTopicViewController () <NewSharpAddSuccessed>
 @property (nonatomic, strong)UIButton *checkout;
 @property (nonatomic, strong)UIButton *titleView_button;
 @property (nonatomic, strong)UIButton *topic_new;
 @property (nonatomic, strong)UIView *bottom;
 @property (nonatomic, strong)UITextView *textView;
 @property (nonatomic, strong)UILabel *placeholder;
+@property (nonatomic, strong)NSMutableArray *labels;
 @end
 
 @implementation NewTopicViewController
@@ -31,7 +32,11 @@
     }
     return self;
 }
-
+-(void)viewWillDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [self setNeedsStatusBarAppearanceUpdate];
+    [super viewWillDisappear:animated];
+}
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self resetNavBar];
@@ -44,15 +49,23 @@
 }
 
 - (void)obeserValues {
-    ReceivedNotification(self, UIKeyboardDidChangeFrameNotification, ^(NSNotification *notification) {
+    ReceivedNotification(self, UIKeyboardWillChangeFrameNotification, ^(NSNotification *notification) {
         NSValue *value = [notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
         CGFloat y = value.CGRectValue.origin.y-114;
-        _bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
+        [UIView animateWithDuration:[[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+            _bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
+        }];
     });
     [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
         if (![x isEqualToString:@""]) {
             _placeholder.hidden = YES;
         }
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:x];
+        for (NSString *label in self.labels) {
+            NSRange range = [_textView.text rangeOfString:label];
+            [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
+        }
+        _textView.attributedText = string;
     }];
 }
 
@@ -192,6 +205,7 @@
 }
 - (void)newTopic:(UIButton *)button {
     NewSharpViewController *controller = [[NewSharpViewController alloc] init];
+    controller.delegate = self;
     [self.navigationController presentViewController:controller animated:YES completion:nil];
 }
 - (void)cancleClicked:(UIBarButtonItem *)item {
@@ -208,9 +222,14 @@
         [[ZToastManager ShardInstance] showtoast:@"内容不能为空"];
         return;
     }
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":_style==NewTopicQAStyle?@"qa":@"discuss",@"content":_textView.text}];
+    NSString *content = _textView.text;
+    if (self.labels) {
+        for (NSString *label in self.labels) {
+           content = [content stringByAppendingString:label];
+        }
+    }
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":_style==NewTopicQAStyle?@"qa":@"discuss",@"content":content}];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
         if ([dic[@"errCode"] integerValue] == 0) {
@@ -220,11 +239,29 @@
         }else {
             [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
         }
-        [[ZToastManager ShardInstance] hideprogress];
     } failedBlock:^(NSError * _Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
-        [[ZToastManager ShardInstance] hideprogress];
     }];
+}
+-(void)newSharpAddSuccessed:(NSString *)label {
+    if (self.labels == nil) {
+        self.labels = [NSMutableArray array];
+    }
+    if ([self.labels containsObject:[NSString stringWithFormat:@" #%@# ",label]]) {
+        [[ZToastManager ShardInstance] showtoast:@"请不要重复添加"];
+    }else {
+        [[ZToastManager ShardInstance] showtoast:@"添加标签成功"];
+        [self.labels addObject:[NSString stringWithFormat:@" #%@# ",label]];
+        _placeholder.hidden = YES;
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ #%@# ",_textView.text,label]];
+        NSRange range = NSMakeRange(_textView.text.length, label.length+3);
+        [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
+        for (NSString *x in self.labels) {
+            NSRange range = [_textView.text rangeOfString:x];
+            [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
+        }
+        _textView.attributedText = [[NSAttributedString alloc] initWithAttributedString:string];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -8,6 +8,12 @@
 
 #import "TopicBaseViewController.h"
 
-@interface NewSharpViewController : TopicBaseViewController
+@protocol NewSharpAddSuccessed <NSObject>
 
+- (void)newSharpAddSuccessed:(NSString *)label;
+
+@end
+
+@interface NewSharpViewController : TopicBaseViewController
+@property (nonatomic, strong) id <NewSharpAddSuccessed>delegate;
 @end

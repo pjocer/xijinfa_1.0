@@ -62,10 +62,8 @@
         return ;
     }
     
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        [[ZToastManager ShardInstance] hideprogress];
         TopicModel *model = [[TopicModel alloc] initWithData:responseData error:nil];
         if (tableView == self.tableview_qa) {
             _model_qa = model;
@@ -84,7 +82,6 @@
         
     } failedBlock:^(NSError * _Nullable error) {
         [self hiddenMJRefresh:tableView];
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"请求数据失败"];
     }];
 }

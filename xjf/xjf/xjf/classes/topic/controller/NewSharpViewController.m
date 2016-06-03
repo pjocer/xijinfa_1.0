@@ -8,14 +8,17 @@
 
 #import "NewSharpViewController.h"
 #import "XjfRequest.h"
+#import "ZToastManager.h"
+#import "XJMarket.h"
 
-@interface NewSharpViewController ()
+@interface NewSharpViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *textFiled;
 @end
 
 @implementation NewSharpViewController
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.textFiled becomeFirstResponder];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 - (void)viewDidLoad {
@@ -41,21 +44,50 @@
     recently.text = @"最近使用";
     [self.view addSubview:recently];
     
-    
-    
+    CGFloat all = 0;
+    CGFloat alll = 0;
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGFloat tap = 10;
+    NSArray *labels = [[XJMarket sharedMarket] recentlyUsedLabels];
+    for (int i = 0; i < labels.count; i++) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        NSString *title = [NSString stringWithFormat:@"#%@#",labels[i]];
+        CGSize size = [title sizeWithFont:FONT12 constrainedToSize:CGSizeMake(SCREENWITH, 14) lineBreakMode:1];
+        all = all + tap + size.width;
+        if (all <= SCREENWITH) {
+            x = all - size.width;
+            y = 74+18+10;
+            button.frame = CGRectMake(x, y, size.width, 14);
+        }else if (all <= SCREENWITH*2 && all>SCREENWITH) {
+            alll = alll + tap + size.width;
+            if (alll <= SCREENWITH) {
+                x = alll - size.width;
+                y = 74+18+10+24;
+                button.frame = CGRectMake(x, y, size.width, 14);
+            }else {
+                return;
+            }
+        }
+        [button setTitle:title forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor xjfStringToColor:@"#0061B0"] forState:UIControlStateNormal];
+        button.titleLabel.font = FONT12;
+        button.tag = 480+i;
+        [button addTarget:self action:@selector(labelClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
+}
+- (void)labelClicked:(UIButton *)button {
+    NSArray *labels = [[XJMarket sharedMarket] recentlyUsedLabels];
+    _textFiled.text = [labels objectAtIndex:button.tag-480];
 }
 - (void)sendAction:(UIBarButtonItem *)item {
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":self.topicTag==1?@"qa":@"discuss",@"content":_textFiled.text}];
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-        
-    } failedBlock:^(NSError * _Nullable error) {
-        
-    }];
+    [self.textFiled resignFirstResponder];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(UITextField *)textFiled {
     if (!_textFiled) {
+        [_textFiled becomeFirstResponder];
         _textFiled = [[UITextField alloc] initWithFrame:CGRectMake(10,kStatusBarH+5, SCREENWITH-60, 30)];
         _textFiled.placeholder = @"# 输入话题";
         _textFiled.borderStyle = UITextBorderStyleRoundedRect;
@@ -68,7 +100,29 @@
     }
     return _textFiled;
 }
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField.text.length>9) {
+        [[ZToastManager ShardInstance] showtoast:@"话题内容太长"];
+        return NO;
+    }
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":self.topicTag==1?@"qa":@"discuss",@"content":_textFiled.text}];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+        if ([dic[@"errCode"] integerValue] == 0) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(newSharpAddSuccessed:)]) {
+                [self.delegate newSharpAddSuccessed:_textFiled.text];
+            }
+            [[XJMarket sharedMarket] addLabels:_textFiled.text];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+    return YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

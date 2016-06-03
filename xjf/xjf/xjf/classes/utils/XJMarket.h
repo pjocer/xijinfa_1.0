@@ -38,11 +38,16 @@ typedef enum : NSUInteger {
 
 - (nullable NSMutableArray <TalkGridModel*>*)myLessonsFor:(nullable NSString *)key;
 
+- (nullable NSMutableArray <NSString *>*)recentlyUsedLabels;
+
+- (void)addLabels:(nonnull NSString *)label;
+
 - (void)addLessons:(nullable NSArray <TalkGridModel*>*)lessons key:(nonnull NSString *)key;
 
 - (void)addGoods:(nullable NSArray <TalkGridModel*>*)goods key:(nonnull NSString *)key;
 
 -(void)deleteGoodsFrom:(nonnull NSString *)key goods:(nonnull NSArray<TalkGridModel *> *)goods;
+
 -(void)deleteLessons:(nonnull NSArray<TalkGridModel *> *)lessons key:(nonnull NSString *)key;
 
 - (BOOL)isAlreadyExists:(nonnull TalkGridModel *)goods key:(nonnull NSString *)key;
