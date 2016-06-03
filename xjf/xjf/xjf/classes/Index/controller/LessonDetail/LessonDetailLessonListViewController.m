@@ -85,13 +85,30 @@ static CGFloat rowHeight = 50;
     if ([model.type isEqualToString:@"dir"]) {
         TalkGridModel *tempModel = model.children[indexPath.row];
         cell.talkGridModel = tempModel;
-        NSLog(@" ---  %@   --- %@",cell.talkGridModel.title,cell.talkGridModel.package);
+        
+        //是否免费试看
+        if ([cell.talkGridModel.package containsObject:@"visitor"]) {
+            cell.freeVideoLogo.hidden = NO;
+        }else {
+            cell.freeVideoLogo.hidden = YES;
+        }
+        //是否收藏
+        if (cell.talkGridModel.user_favored) {
+            cell.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
+        }
     } else if ([model.type isEqualToString:@"lesson"]) {
         cell.lessonDetailListModel = model;
-        NSLog(@" ---  %@   --- %@",cell.lessonDetailListModel.title,cell.lessonDetailListModel.package);
+        //是否免费试看
+        if ([cell.lessonDetailListModel.package containsObject:@"visitor"]) {
+            cell.freeVideoLogo.hidden = NO;
+        }else {
+            cell.freeVideoLogo.hidden = YES;
+        }
+        //是否收藏
+        if (cell.lessonDetailListModel.user_favored) {
+            cell.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
+        }
     }
-
-    
     return cell;
 }
 
@@ -127,13 +144,22 @@ static CGFloat rowHeight = 50;
    
     if ([model.type isEqualToString:@"dir"]) {
         TalkGridModel *tempModel = model.children[indexPath.row];
-        NSLog(@"%@",tempModel.id_);
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lessonDetailListModel = self.lessonDetailListModel;
+        lessonPlayerViewController.lesssonID = tempModel.id_;
+//        TalkGridVideo *gridVideomodel = tempModel.video_player.firstObject;
+//        lessonPlayerViewController.playUrl =  gridVideomodel.url;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+        NSLog(@"%@ -- %@",tempModel.id_,tempModel.video_player);
     } else if ([model.type isEqualToString:@"lesson"]) {
-        NSLog(@"%@",model.id);
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lessonDetailListModel = self.lessonDetailListModel;
+        lessonPlayerViewController.lesssonID = model.id;
+//        TalkGridVideo *gridVideomodel = model.video_player.firstObject;
+//        lessonPlayerViewController.playUrl =  gridVideomodel.url;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+        NSLog(@"%@--- %@",model.id,model.video_player);
     }
-
-    LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
-    [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
 }
 
 @end

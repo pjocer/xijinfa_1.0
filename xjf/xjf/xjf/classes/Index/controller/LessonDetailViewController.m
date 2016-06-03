@@ -71,6 +71,7 @@ static CGFloat payViewH = 285;
     
     NSString *api = [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.model.id_];
     [self requestLessonListData:api method:GET];
+    
 }
 
 

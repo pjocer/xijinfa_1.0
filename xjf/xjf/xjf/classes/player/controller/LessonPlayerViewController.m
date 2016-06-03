@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ZFPlayer.h"
 #import "playerConfigure.h"
-
+#import "LessonDetailLessonListViewController.h"
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
@@ -82,7 +82,7 @@ static CGFloat selViewH = 3;
     }];
 
 
-    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
+//    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
         [_playerView resetPlayer];
@@ -178,6 +178,7 @@ static CGFloat selViewH = 3;
 #pragma mark - 添加子控制器
 
 - (void)addChildViewController {
+//    #import "LessonDetailLessonListViewController.h" //一样的
     LessonPlayerLessonListViewController *vc = [[LessonPlayerLessonListViewController alloc] init];
     vc.title = @"目录";
     [self addChildViewController:vc];

@@ -14,4 +14,6 @@
 @property (nonatomic, strong) LessonDetailListLessonsModel *lessonDetailListModel;
 @property (nonatomic, strong) TalkGridModel *talkGridModel;
 @property (nonatomic, strong) UILabel *title;
+@property(nonatomic, strong) UILabel *freeVideoLogo;
+@property(nonatomic, strong) UIImageView *favorites;
 @end

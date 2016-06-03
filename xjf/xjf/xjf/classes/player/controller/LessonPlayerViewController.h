@@ -7,7 +7,9 @@
 //
 
 #import "PlayerBaseViewController.h"
-
+#import "LessonDetailListModel.h"
 @interface LessonPlayerViewController : PlayerBaseViewController
 @property (nonatomic, strong) NSString *playUrl;
+@property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
+@property (nonatomic, strong) NSString *lesssonID;
 @end

@@ -10,8 +10,6 @@
 
 @interface LessonDetailLessonListCell ()
 @property(nonatomic, strong) UILabel *lessonCount;
-@property(nonatomic, strong) UIImageView *favorites;
-@property(nonatomic, strong) UILabel *freeVideoLogo;
 @end
 
 @implementation LessonDetailLessonListCell
@@ -96,16 +94,7 @@ static CGFloat StudyImageH = 20;
             make.width.mas_equalTo(45);
         }];
     }
-    //是否免费试看
-    if ([self.lessonDetailListModel.package containsObject:@"visitor"] || [self.talkGridModel.package containsObject:@"visitor"]) {
-        self.freeVideoLogo.hidden = NO;
-    }else {
-        self.freeVideoLogo.hidden = YES;
-    }
-//    //是否收藏
-//    if (self.talkGridModel.user_favored || self.talkGridModel.user_favored) {
-//        self.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
-//    }
+
 }
 
 
