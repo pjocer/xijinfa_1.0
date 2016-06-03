@@ -75,7 +75,6 @@
 }
 
 - (CGFloat)cellHeightByModel:(TopicDataModel *)model {
-    //
     CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
     CGFloat height = 10+40+10+contentHeight + 10;
     CGFloat all = 0;
@@ -105,7 +104,7 @@
                 button.frame = CGRectMake(x, y, size.width, 14);
                 return height + 30 + 28 + 36;
             }else {
-                return height + 36;
+                return height + 36+10;
             }
         }
     }
