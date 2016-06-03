@@ -115,7 +115,7 @@
         [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
             make.bottom.mas_equalTo(self.videoImage);
-            make.width.mas_equalTo(52);
+            make.width.mas_equalTo(72);
             make.height.mas_equalTo(14);
         }];
         
@@ -184,6 +184,7 @@
         self.teacherName.hidden = NO;
         self.lessonCount.hidden = NO;
         self.price.hidden = NO;
+        self.oldPrice.hidden = NO;
     }
     
     if ([self.price.text isEqualToString:@"免费"]) {

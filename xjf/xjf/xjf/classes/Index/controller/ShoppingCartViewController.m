@@ -21,9 +21,6 @@
 @property (nonatomic, strong) NSMutableArray *dataSourceLesson;
 ///从业培训数据数组
 @property (nonatomic, strong) NSMutableArray *dataSourceTraining;
-
-//@property (nonatomic, strong) NSMutableArray *selectedIndexArray;
-
 @end
 
 @implementation ShoppingCartViewController
@@ -35,9 +32,6 @@ static CGFloat submitOrdersViewHeight = 50;
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"购物车";
-//    self.selectedIndexArray = [NSMutableArray array];
-//    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction:)];
-//    self.navigationItem.rightBarButtonItem = right;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -84,24 +78,7 @@ static CGFloat submitOrdersViewHeight = 50;
         [sender setTitle:@"取消" forState:UIControlStateNormal];
         self.submitOrdersView.selectedLabel.backgroundColor = [UIColor redColor];
         self.submitOrdersView.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
-        
-//        [self.selectedIndexArray removeAllObjects];
-//        NSIndexPath *indexpath;
-//        for (int i = 0; i < self.dataSourceLesson.count; i ++) {
-//            indexpath = [NSIndexPath indexPathForRow:i inSection:0];
-//            [self.selectedIndexArray addObject:indexpath];
-//             VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
-//            cell.selectedLabel.backgroundColor = [UIColor redColor];
-//            cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
-//        }
-//        
-//        for (int i = 0; i < self.dataSourceTraining.count; i ++) {
-//            indexpath = [NSIndexPath indexPathForRow:i inSection:1];
-//            [self.selectedIndexArray addObject:indexpath];
-//            VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
-//            cell.selectedLabel.backgroundColor = [UIColor redColor];
-//            cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
-//        }
+
         if (self.dataSourceLesson.count != 0) {
             for (TalkGridModel *model in self.dataSourceLesson) {
                 model.isSelected = YES;
@@ -120,24 +97,6 @@ static CGFloat submitOrdersViewHeight = 50;
         [sender setTitle:@"全选" forState:UIControlStateNormal];
         self.submitOrdersView.selectedLabel.backgroundColor = [UIColor whiteColor];
         self.submitOrdersView.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-
-//        [self.selectedIndexArray removeAllObjects];
-//        NSIndexPath *indexpath;
-//        for (int i = 0; i < self.dataSourceLesson.count; i ++) {
-//            indexpath = [NSIndexPath indexPathForRow:i inSection:0];
-//            [self.selectedIndexArray removeObject:indexpath];
-//            VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
-//            cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-//            cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-//        }
-//        
-//        for (int i = 0; i < self.dataSourceTraining.count; i ++) {
-//            indexpath = [NSIndexPath indexPathForRow:i inSection:1];
-//             [self.selectedIndexArray removeObject:indexpath];
-//            VideoListCell *cell = (VideoListCell*)[self.tableView cellForRowAtIndexPath:indexpath];
-//            cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-//            cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-//        }
         
         if (self.dataSourceLesson.count != 0) {
             for (TalkGridModel *model in self.dataSourceLesson) {
@@ -191,7 +150,7 @@ static CGFloat submitOrdersViewHeight = 50;
             make.top.left.right.equalTo(self.view);
             make.bottom.equalTo(self.view).with.offset(-submitOrdersViewHeight);
         }];
-//        self.tableView.allowsMultipleSelection = YES;
+
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -232,15 +191,7 @@ static CGFloat submitOrdersViewHeight = 50;
     }else if (indexPath.section == 1) {
         cell.model = self.dataSourceTraining[indexPath.row];
     }
-    
-//    if ([self.selectedIndexArray containsObject:indexPath]) {
-//        cell.selectedLabel.backgroundColor = [UIColor redColor];
-//        cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
-//    } else {
-//        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-//    }
-//    
+
     if (!cell.model.isSelected) {
         cell.selectedLabel.backgroundColor = [UIColor whiteColor];
         cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
@@ -280,16 +231,6 @@ static CGFloat submitOrdersViewHeight = 50;
 }
 #pragma mark CellDelete
 #pragma mark rightAction事件
-//- (void)rightAction:(UIBarButtonItem *)sender
-//{
-//    if ([sender.title isEqualToString:@"编辑"]) {
-//        sender.title = @"完成";
-//        [_tableView setEditing:YES animated:YES];
-//    }else{
-//        sender.title = @"编辑";
-//        [_tableView setEditing:NO animated:YES];
-//    }
-//}
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -318,27 +259,11 @@ static CGFloat submitOrdersViewHeight = 50;
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
         }
     }
-//    VideoListCell *cell = (VideoListCell*)[tableView cellForRowAtIndexPath:indexPath];
-//    if ([self.selectedIndexArray containsObject:indexPath]) {
-//        [self.selectedIndexArray removeObject:indexPath];
-//        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-//    }
 }
 
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    VideoListCell *cell = (VideoListCell*)[tableView cellForRowAtIndexPath:indexPath];
-//    if ([self.selectedIndexArray containsObject:indexPath]) {
-//        [self.selectedIndexArray removeObject:indexPath];
-//        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-//    } else {
-//        cell.selectedLabel.backgroundColor = [UIColor redColor];
-//        cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
-//        [self.selectedIndexArray addObject:indexPath];
-//    }
         VideoListCell *cell = (VideoListCell*)[tableView cellForRowAtIndexPath:indexPath];
      TalkGridModel *model = self.dataSourceLesson[indexPath.row];
     if (model.isSelected) {

@@ -54,7 +54,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-    NSLog(@"xxxxxxxxxxxx %ld",self.dataSource.count);
     if (self.dataSource.count == 0 || self.dataSource == nil) {
         if (self.orderDataModel.status != 1) {
             self.nowPay.hidden = YES;
@@ -269,22 +268,29 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
         tempArray = self.orderDataModel.items;
     }
    
-     XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
-    [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
-        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        if (self.dataSource.count != 0 ) {
-            self.tabBarController.selectedIndex = 3;
-            self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
-        }
-
-    }                                     failed:^{
-
-        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-        if (self.dataSource.count != 0) {
-            MyOrderViewController *myOrderPage = [MyOrderViewController new];
-            [self.navigationController pushViewController:myOrderPage animated:YES];
-        }
-    }];
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
+    } else {
+        XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
+        [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
+            [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+            if (self.dataSource.count > 1) {
+                [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSource];
+            }
+            if (self.dataSource.count != 0 ) {
+                self.tabBarController.selectedIndex = 3;
+                self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+            }
+        } failed:^{
+            
+            [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+            if (self.dataSource.count != 0) {
+                MyOrderViewController *myOrderPage = [MyOrderViewController new];
+                [self.navigationController pushViewController:myOrderPage animated:YES];
+            }
+        }];
+    }
 }
 
 #pragma mark - payViewCancel

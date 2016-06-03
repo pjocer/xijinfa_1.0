@@ -14,6 +14,7 @@
 #import "MyOrderFooterView.h"
 #import "OrderDetaiViewController.h"
 #import "OrderModel.h"
+#import "XJAccountManager.h"
 @interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource, MyOrderFootrtViewDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) PayView *payView;
@@ -247,14 +248,20 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     for (TalkGridModel *c in self.orderfooterView.model.items) {
         [tempArray addObject:c];
     }
-    XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
-    [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
-        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        self.tabBarController.selectedIndex = 3;
-        self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
-    }                                     failed:^{
-        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-    }];
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
+    }{
+        XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
+        [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
+            [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+            self.tabBarController.selectedIndex = 3;
+            self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+        }                                     failed:^{
+            [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+        }];
+    }
+
 }
 
 #pragma mark - payViewCancel

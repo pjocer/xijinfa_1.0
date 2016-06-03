@@ -8,6 +8,7 @@
 
 #import "PlayerPageCommentsHeaderView.h"
 #import "IndexSectionView.h"
+#import "XJAccountManager.h"
 @interface PlayerPageCommentsHeaderView ()
 
 @property (nonatomic, strong) UIView *backGroundView;
@@ -56,6 +57,11 @@
             make.left.equalTo(self).with.offset(10);
             make.size.mas_offset(CGSizeMake(40, 40));
         }];
+        if ([[XJAccountManager defaultManager] accessToken] != nil || [[XJAccountManager defaultManager] accessToken].length > 0) {
+            [self.userImage sd_setImageWithURL:[NSURL URLWithString:[XJAccountManager defaultManager].user_model.result.avatar]];
+        }else {
+            self.userImage.image = [UIImage imageNamed:@"user_unload"];
+        }
         
         //commentsButton
         self.commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
