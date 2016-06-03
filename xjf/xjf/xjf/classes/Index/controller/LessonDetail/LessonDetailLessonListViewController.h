@@ -10,6 +10,6 @@
 #import "LessonDetailListModel.h"
 @interface LessonDetailLessonListViewController : UIViewController
 @property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
-@property (nonatomic, strong) NSString *ID;
 @property (nonatomic, assign) BOOL isPay;
+@property(nonatomic, strong) UITableView *tableView;
 @end

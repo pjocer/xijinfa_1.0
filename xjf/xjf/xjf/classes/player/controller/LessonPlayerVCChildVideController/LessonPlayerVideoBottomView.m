@@ -23,7 +23,7 @@
         [self.collection mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.right.equalTo(self).with.offset(-10);
-            make.size.mas_equalTo(CGSizeMake(22, 22));
+            make.size.mas_equalTo(CGSizeMake(16, 16));
         }];
         
         //download
@@ -34,7 +34,7 @@
         [self.download mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.right.equalTo(self.collection.mas_left).with.offset(-10);
-            make.size.mas_equalTo(CGSizeMake(22, 22));
+            make.size.mas_equalTo(CGSizeMake(16, 16));
         }];
         
         //collectionLogo

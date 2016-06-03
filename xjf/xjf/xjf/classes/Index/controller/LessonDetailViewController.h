@@ -11,5 +11,4 @@
 #import "TalkGridModel.h"
 @interface LessonDetailViewController : BaseViewController
 @property (nonatomic, strong) TalkGridModel *model;
-
 @end

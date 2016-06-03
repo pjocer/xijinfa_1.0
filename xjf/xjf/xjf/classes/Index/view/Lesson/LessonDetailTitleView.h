@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TalkGridModel.h"
+#import "LessonDetailListModel.h"
 @interface LessonDetailTitleView : UIView
-@property (nonatomic, strong) TalkGridModel *model;
+@property (nonatomic, strong) LessonDetailListModel *model;
 
 @end

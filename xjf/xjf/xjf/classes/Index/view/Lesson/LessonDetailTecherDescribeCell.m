@@ -94,4 +94,24 @@
     }
     return self;
 }
+- (void)setModel:(TeacherListData *)model
+{
+    if (model) {
+        _model = model;
+    }
+    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.teacherName.text = model.title;
+    self.teacherDetail.text = model.summary;
+    
+    //    if (model.user_favored) {
+    //        [self.focusButton setTitle:@"已关注" forState:UIControlStateNormal];
+    //        self.focusButton.backgroundColor = BackgroundColor;
+    //        self.focusButton.tintColor = AssistColor;
+    //    }else {
+    //        [self.focusButton setTitle:@"关注" forState:UIControlStateNormal];
+    //        self.focusButton.backgroundColor = BlueColor;
+    //        self.focusButton.tintColor = [UIColor whiteColor];
+    //    }
+}
+
 @end

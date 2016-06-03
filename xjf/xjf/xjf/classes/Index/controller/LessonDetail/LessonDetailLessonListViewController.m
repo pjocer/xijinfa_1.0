@@ -10,53 +10,21 @@
 #import "LessonDetailLessonListCell.h"
 #import "LessonDetailNoPayHeaderView.h"
 #import "LessonDetailHaveToPayHeaderView.h"
-
+#import "IndexSectionView.h"
+#import "LessonPlayerViewController.h"
 @interface LessonDetailLessonListViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation LessonDetailLessonListViewController
 static NSString *LessonDetailLessonListCell_id = @"LessonDetailLessonListCell_id";
 static CGFloat offset = 60;
-static CGFloat rowHeight = 35;
-
-//- (void)dealloc
-//{
-//    if (self.ID.length != 0) {
-//       self.ID = nil;
-//    }
-//    
-//}
+static CGFloat rowHeight = 50;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = BackgroundColor
+    self.view.backgroundColor = BackgroundColor;
     [self initTabelView];
-
-    NSString *api = [NSString stringWithFormat:@"%@%@", coursesProjectLessonDetailList, self.ID];
-    [self requestLessonListData:api method:GET];
 }
-
-- (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
-
-
-    __weak typeof(self) wSelf = self;
-    [[ZToastManager ShardInstance] showprogress];
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
-
-        sSelf.lessonDetailListModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
-        [sSelf.tableView reloadData];
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
-}
-
 #pragma mark- initTabelView
 
 - (void)initTabelView {
@@ -67,12 +35,12 @@ static CGFloat rowHeight = 35;
         make.bottom.equalTo(self.view).with.offset(-offset);
     }];
 
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
     self.tableView.rowHeight = rowHeight;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
 
     [self.tableView registerClass:[LessonDetailLessonListCell class]
@@ -93,30 +61,79 @@ static CGFloat rowHeight = 35;
 
 #pragma mark TabelViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return self.lessonDetailListModel.result.lessons.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[section];
+    if ([model.type isEqualToString:@"dir"]) {
+        return model.children.count;
+    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LessonDetailLessonListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonDetailLessonListCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (indexPath.row % 2) {
-        cell.backgroundColor = [UIColor whiteColor];
-    }
-    else {
-        cell.backgroundColor = BackgroundColor;
-    }
+
+    cell.backgroundColor = [UIColor clearColor];
     if (!_isPay) {
         cell.studyImage.hidden = YES;
     }
-    cell.model = self.lessonDetailListModel.result.lessons[indexPath.row];
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[indexPath.section];
+    if ([model.type isEqualToString:@"dir"]) {
+        TalkGridModel *tempModel = model.children[indexPath.row];
+        cell.talkGridModel = tempModel;
+        NSLog(@" ---  %@   --- %@",cell.talkGridModel.title,cell.talkGridModel.package);
+    } else if ([model.type isEqualToString:@"lesson"]) {
+        cell.lessonDetailListModel = model;
+        NSLog(@" ---  %@   --- %@",cell.lessonDetailListModel.title,cell.lessonDetailListModel.package);
+    }
+
+    
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[section];
+    if ([model.type isEqualToString:@"dir"]) {
+        return 35;
+    }
+    return 0;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[section];
+    if ([model.type isEqualToString:@"dir"]) {
+        IndexSectionView *sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
+//        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
+//        [sectionView addSubview:bottomView];
+//        bottomView.backgroundColor = BackgroundColor;
+        sectionView.moreLabel.hidden = YES;
+        sectionView.titleLabel.text = model.title;
+        return sectionView;
+    }
+    return nil;
+}
+
 
 #pragma mark Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"点击LessonListCell : %ld", indexPath.row);
+
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[indexPath.section];
+   
+    if ([model.type isEqualToString:@"dir"]) {
+        TalkGridModel *tempModel = model.children[indexPath.row];
+        NSLog(@"%@",tempModel.id_);
+    } else if ([model.type isEqualToString:@"lesson"]) {
+        NSLog(@"%@",model.id);
+    }
+
+    LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+    [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
 }
 
 @end

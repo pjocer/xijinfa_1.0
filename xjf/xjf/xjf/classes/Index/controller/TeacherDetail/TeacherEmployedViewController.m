@@ -51,8 +51,7 @@ static NSString *TeacherEmployedCell_id = @"TeacherLessonsCell_id";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:TeacherEmployedCell_id];
     cell.model = self.dataSource[indexPath.row];
-    NSLog(@"---- %@",cell.model.price);
-    NSLog(@"----------- %@",cell.model.thumbnail);
+    cell.oldPrice.hidden = NO;
     return cell;
 }
 

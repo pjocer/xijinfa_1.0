@@ -235,7 +235,6 @@ static CGFloat BottomPayButtonH = 50;
         if (i == 0) {
             [self chick:btn];
         }
-        
     }
     self.titleScrollView.contentSize = CGSizeMake(count * w, 0);
     self.titleScrollView.showsHorizontalScrollIndicator = NO;
@@ -244,12 +243,10 @@ static CGFloat BottomPayButtonH = 50;
                               initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH, selViewH)];
     self.selBackGroundView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.selBackGroundView];
-    
     //
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
-    
 }
 // 按钮点击
 - (void)chick:(UIButton *)btn {
@@ -260,7 +257,6 @@ static CGFloat BottomPayButtonH = 50;
     
     [self setUpOneChildViewController:i];
     self.contentScrollView.contentOffset = CGPointMake(x, 0);
-    
 }
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
@@ -270,7 +266,6 @@ static CGFloat BottomPayButtonH = 50;
 }
 - (void)setUpOneChildViewController:(NSUInteger)i {
     CGFloat x = i * SCREENWITH;
-    
     UIViewController *vc = self.childViewControllers[i];
     
     if (vc.view.superview) {
@@ -281,21 +276,14 @@ static CGFloat BottomPayButtonH = 50;
 }
 - (void)setupTitleCenter:(UIButton *)btn {
     CGFloat offset = btn.center.x - SCREENWITH * 0.5;
-    //    NSLog(@"center.x:%lf   offset:%lf",btn.center.x,offset);
-    
     if (offset < 0) {
         offset = 0;
     }
-    
     CGFloat maxOffset = self.titleScrollView.contentSize.width - SCREENWITH;
-    //    NSLog(@"maxOffset:%lf",maxOffset);
     if (offset > maxOffset) {
         offset = maxOffset;
     }
-    
     [self.titleScrollView setContentOffset:CGPointMake(offset, 0) animated:YES];
-    
-    
 }
 #pragma mark - UIScrollViewDelegate
 

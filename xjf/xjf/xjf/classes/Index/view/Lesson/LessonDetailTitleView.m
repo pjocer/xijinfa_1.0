@@ -113,17 +113,18 @@
     return self;
 }
 
-- (void)setModel:(TalkGridModel *)model {
+- (void)setModel:(LessonDetailListModel *)model {
     if (model) {
         _model = model;
     }
-    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
-    self.videoTitle.text = model.title;
+    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.result.thumbnail]];
+    self.videoTitle.text = model.result.title;
 
-    CGFloat tempPrice = [model.price floatValue];
+    CGFloat tempPrice = [model.result.price floatValue];
     self.price.text = [NSString stringWithFormat:@"￥%.2lf", tempPrice / 100];
-
-    if (self.model.user_purchased) {
+    self.oldPrice.text = [NSString stringWithFormat:@"￥%.2lf", [model.result.original_price floatValue] / 100];
+    self.lessonCount.text = [NSString stringWithFormat:@"课时: %@",model.result.lessons_count];
+    if (self.model.result.user_purchased) {
         self.price.hidden = YES;
         self.oldPrice.hidden = YES;
     } else {

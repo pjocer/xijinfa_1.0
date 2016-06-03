@@ -166,7 +166,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     _playerView = [ZFPlayerView sharedPlayerView];
     _playerView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_playerView];
-
     [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(20);
         make.left.right.equalTo(self.view);
@@ -179,8 +178,9 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
+    
+    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-
 }
 
 #pragma mark CollectionView

@@ -51,6 +51,7 @@ static NSString *TeacherLessonsCell_id = @"TeacherLessonsCell_id";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:TeacherLessonsCell_id];
     cell.model = self.dataSource[indexPath.row];
+    cell.oldPrice.hidden = NO;
     return cell;
 }
 

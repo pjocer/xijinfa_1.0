@@ -37,7 +37,7 @@ CGFloat StudyLabelH = 14;
         [self addSubview:self.noStudyImage];
         self.noStudyImage.layer.masksToBounds = YES;
         self.noStudyImage.layer.cornerRadius = StudyImageH / 2;
-        self.noStudyImage.backgroundColor = BackgroundColor;
+        self.noStudyImage.image = [UIImage imageNamed:@"study"];
         [self.noStudyImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).with.offset(10);
             make.centerY.equalTo(self).multipliedBy(0.5);
@@ -59,7 +59,7 @@ CGFloat StudyLabelH = 14;
         [self addSubview:self.studingImage];
         self.studingImage.layer.masksToBounds = YES;
         self.studingImage.layer.cornerRadius = StudyImageH / 2;
-        self.studingImage.backgroundColor = BackgroundColor;
+        self.studingImage.image = [UIImage imageNamed:@"studing"];
         [self.studingImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.mas_centerX).with.offset(-10);
             make.centerY.equalTo(self).multipliedBy(0.5);
@@ -92,7 +92,7 @@ CGFloat StudyLabelH = 14;
         [self addSubview:self.studedImage];
         self.studedImage.layer.masksToBounds = YES;
         self.studedImage.layer.cornerRadius = StudyImageH / 2;
-        self.studedImage.backgroundColor = BackgroundColor;
+        self.studedImage.image = [UIImage imageNamed:@"studyed"];
         [self.studedImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.studedLabel.mas_left).with.offset(-10);
             make.centerY.equalTo(self).multipliedBy(0.5);

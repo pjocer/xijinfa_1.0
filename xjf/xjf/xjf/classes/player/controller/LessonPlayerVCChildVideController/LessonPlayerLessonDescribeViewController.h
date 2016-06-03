@@ -10,5 +10,5 @@
 
 @interface LessonPlayerLessonDescribeViewController : UIViewController
 @property (nonatomic, retain) UITextView *textView;
-@property (nonatomic, copy) void (^block)(NSString *str);
+@property (nonatomic, strong) NSString *contentText;;
 @end

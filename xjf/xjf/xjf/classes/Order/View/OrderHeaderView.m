@@ -28,9 +28,8 @@
         [self.orderNumber mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.left.equalTo(self).with.offset(padding);
-            make.size.mas_equalTo(CGSizeMake(labelW, labelH));
+            make.size.mas_equalTo(CGSizeMake(labelW + 20, labelH));
         }];
-
         self.orderDate = [[UILabel alloc] init];
         [self addSubview:self.orderDate];
         self.orderDate.font = FONT12;
@@ -40,7 +39,7 @@
         [self.orderDate mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.right.equalTo(self).with.offset(-padding);
-            make.size.mas_equalTo(CGSizeMake(labelW, labelH));
+            make.size.mas_equalTo(CGSizeMake(labelW - 20, labelH));
         }];
 
         UIView *bottomView = [[UIView alloc] init];

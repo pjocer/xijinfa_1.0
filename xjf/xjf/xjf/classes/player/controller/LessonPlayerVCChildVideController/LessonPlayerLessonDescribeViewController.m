@@ -37,9 +37,7 @@
     self.textView.scrollEnabled = YES;
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.editable = NO;
-    if (self.block) {
-        self.block(@"");
-    }
+    self.textView.text = self.contentText;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(10);

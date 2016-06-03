@@ -8,9 +8,9 @@
 
 #import "LessonDetailTecherDescribeViewController.h"
 #import "LessonDetailTecherDescribeCell.h"
+#import "TeacherDetailViewController.h"
 @interface LessonDetailTecherDescribeViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
+
 @end
 
 @implementation LessonDetailTecherDescribeViewController
@@ -48,20 +48,22 @@ static CGFloat rowHeight = 100;
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataSourceModel.result.gurus.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LessonDetailTecherDescribeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonDetailTecherDescribeCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    cell.model = self.dataSourceModel.result.gurus[indexPath.row];
     return cell;
 }
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点击LessonDetailTecherDescribeCell : %ld",indexPath.row);
+    TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+    teacherDetailViewController.teacherListDataModel = self.dataSourceModel.result.gurus[indexPath.row];
+    [self.navigationController pushViewController:teacherDetailViewController animated:YES];
 }
 
 @end

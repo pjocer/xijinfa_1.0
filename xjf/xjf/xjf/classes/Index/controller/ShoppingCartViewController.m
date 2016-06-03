@@ -182,7 +182,7 @@ static CGFloat submitOrdersViewHeight = 50;
     cell.teacherName.hidden = NO;
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
-    cell.oldPrice.hidden = NO;
+    cell.oldPrice.hidden = YES;
     cell.selectedLabel.hidden = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 

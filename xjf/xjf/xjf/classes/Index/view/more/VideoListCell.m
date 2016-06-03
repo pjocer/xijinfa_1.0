@@ -184,7 +184,6 @@
         self.teacherName.hidden = NO;
         self.lessonCount.hidden = NO;
         self.price.hidden = NO;
-        self.oldPrice.hidden = NO;
     }
     
     if ([self.price.text isEqualToString:@"免费"]) {

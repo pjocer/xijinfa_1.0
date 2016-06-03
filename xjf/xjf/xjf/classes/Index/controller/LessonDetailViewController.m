@@ -15,7 +15,7 @@
 #import "LessonDetailTecherDescribeViewController.h"
 #import "MyLessonsViewController.h"
 #import "OrderDetaiViewController.h"
-
+#import "LessonDetailListModel.h"
 @interface LessonDetailViewController () <UIScrollViewDelegate>
 @property(nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
 ///加入购物车按钮
@@ -33,17 +33,15 @@
 @property(nonatomic, strong) UIView *selView;
 @property(nonatomic, strong) UIView *selBackGroundView;
 @property(nonatomic, strong) NSMutableArray *buttons;
-
-
 @property(nonatomic, strong) LessonDetailLessonListViewController *lessonDetailLessonListViewController;
 @property(nonatomic, strong) LessonPlayerLessonDescribeViewController *lessonPlayerLessonDescribeViewController;
 @property(nonatomic, strong) LessonDetailTecherDescribeViewController *lessonDetailTecherDescribeViewController;
-
-@property (nonatomic, strong) UILabel *goodsCount;
+@property(nonatomic, strong) UILabel *goodsCount;
+@property(nonatomic, strong) LessonDetailListModel *dataSourceModel;
 @end
 
-@implementation LessonDetailViewController
 
+@implementation LessonDetailViewController
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
 static CGFloat BottomPayButtonH = 50;
@@ -70,7 +68,34 @@ static CGFloat payViewH = 285;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    
+    NSString *api = [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.model.id_];
+    [self requestLessonListData:api method:GET];
 }
+
+
+
+- (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
+    __weak typeof(self) wSelf = self;
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
+        sSelf.dataSourceModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
+        sSelf.lessonDetailTitleView.model = self.dataSourceModel;
+        sSelf.lessonPlayerLessonDescribeViewController.contentText = self.dataSourceModel.result.content;
+        sSelf.lessonDetailLessonListViewController.lessonDetailListModel = self.dataSourceModel;
+        [sSelf.lessonDetailLessonListViewController.tableView reloadData];
+        sSelf.lessonDetailTecherDescribeViewController.dataSourceModel = self.dataSourceModel;
+        [sSelf.lessonDetailTecherDescribeViewController.tableView reloadData];
+        [[ZToastManager ShardInstance] hideprogress];
+    }                  failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
+
 
 #pragma mark - setNavigationBar
 
@@ -83,12 +108,18 @@ static CGFloat payViewH = 285;
     self.navigationItem.rightBarButtonItem = barbutton2;
     [button addTarget:self action:@selector(shoppingCartAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.goodsCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
+    self.goodsCount = [[UILabel alloc] initWithFrame:CGRectNull];
+    [button addSubview:self.goodsCount];
+    [self.goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.equalTo(button);
+        make.size.mas_equalTo(CGSizeMake(20, 20));
+    }];
     self.goodsCount.backgroundColor = [UIColor redColor];
     self.goodsCount.layer.masksToBounds = YES;
-    self.goodsCount.layer.cornerRadius = 11.f;
+    self.goodsCount.layer.cornerRadius = 10.f;
+    self.goodsCount.textColor = [UIColor whiteColor];
+    self.goodsCount.font = FONT15;
     self.goodsCount.textAlignment = NSTextAlignmentCenter;
-    [button addSubview:self.goodsCount];
     if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
         self.goodsCount.hidden = NO;
         self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
@@ -134,7 +165,6 @@ static CGFloat payViewH = 285;
         lessonDetailTitleViewHeight = 120;
     }
     self.lessonDetailTitleView.frame = CGRectMake(0, 0, SCREENWITH, lessonDetailTitleViewHeight);
-    self.lessonDetailTitleView.model = self.model;
 }
 
 
@@ -202,7 +232,6 @@ static CGFloat payViewH = 285;
                self.goodsCount.hidden = NO;
         }
     }
-    
 }
 
 #pragma mark nowPay
@@ -211,8 +240,6 @@ static CGFloat payViewH = 285;
     OrderDetaiViewController *orderDetailPage = [OrderDetaiViewController new];
     orderDetailPage.dataSource = [NSMutableArray arrayWithObject:self.model];
     [self.navigationController pushViewController:orderDetailPage animated:YES];
-   
-    
 }
 
 #pragma mark - studing
@@ -246,16 +273,11 @@ static CGFloat payViewH = 285;
     self.lessonDetailLessonListViewController = [[LessonDetailLessonListViewController alloc] init];
     self.lessonDetailLessonListViewController.title = @"目录";
     [self addChildViewController:self.lessonDetailLessonListViewController];
-    self.lessonDetailLessonListViewController.ID = self.model.id_;
     self.lessonDetailLessonListViewController.isPay = self.model.user_purchased;
 
     self.lessonPlayerLessonDescribeViewController = [[LessonPlayerLessonDescribeViewController alloc] init];
     self.lessonPlayerLessonDescribeViewController.title = @"课程介绍";
-    __weak LessonDetailViewController *tempSelf = self;
     [self addChildViewController:self.lessonPlayerLessonDescribeViewController];
-    self.lessonPlayerLessonDescribeViewController.block = ^void(NSString *str) {
-        tempSelf.lessonPlayerLessonDescribeViewController.textView.text = tempSelf.model.content;
-    };
 
     self.lessonDetailTecherDescribeViewController = [[LessonDetailTecherDescribeViewController alloc] init];
     self.lessonDetailTecherDescribeViewController.title = @"讲师介绍";
@@ -291,7 +313,6 @@ static CGFloat payViewH = 285;
         if (i == 0) {
             [self chick:btn];
         }
-
     }
     self.titleScrollView.contentSize = CGSizeMake(count * w, 0);
     self.titleScrollView.showsHorizontalScrollIndicator = NO;
@@ -300,12 +321,10 @@ static CGFloat payViewH = 285;
             initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH, selViewH)];
     self.selBackGroundView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.selBackGroundView];
-
     //
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
-
 }
 
 // 按钮点击
@@ -317,7 +336,6 @@ static CGFloat payViewH = 285;
 
     [self setUpOneChildViewController:i];
     self.contentScrollView.contentOffset = CGPointMake(x, 0);
-
 }
 
 // 选中按钮
@@ -354,7 +372,6 @@ static CGFloat payViewH = 285;
     }
 
     [self.titleScrollView setContentOffset:CGPointMake(offset, 0) animated:YES];
-
 
 }
 
