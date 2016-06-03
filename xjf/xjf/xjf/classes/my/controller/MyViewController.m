@@ -12,6 +12,7 @@
 #import "MyMoneyViewController.h"
 #import "ShoppingCartViewController.h"
 #import "MyTeacherViewController.h"
+#import "MyTopicViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -54,8 +55,6 @@
     _tableview.delegate = self;
     _tableview.showsVerticalScrollIndicator = NO;
     _tableview.backgroundColor = [UIColor clearColor];
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 1)];
-    self.tableview.tableHeaderView = header;
     [self.view addSubview:_tableview];
     [_tableview registerNib:[UINib nibWithNibName:@"UserUnLoadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserUnLoadCell"];
     [_tableview registerNib:[UINib nibWithNibName:@"UserLoadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserLoadCell"];
@@ -118,53 +117,65 @@
 
 - (void)componentDidSelected:(NSUInteger)index {
     NSLog(@"%lu", index);
-    if (index == 1) {
-        MyTeacherViewController *myTeacherViewController = [MyTeacherViewController new];
-        [self.navigationController pushViewController:myTeacherViewController animated:YES];
-    }
-    
-    if (index == 6) {
-        MyMoneyViewController *myMoneyPage = [MyMoneyViewController new];
-        [self.navigationController pushViewController:myMoneyPage animated:YES];
-    }
-    if (index == 7) {
-        ShoppingCartViewController *shoppingCartPage = [ShoppingCartViewController new];
-        [self.navigationController pushViewController:shoppingCartPage animated:YES];
-    }
-
     switch (index) {
         case 0:
-
+        {
+            
+        }
             break;
         case 1:
-
+        {
+            MyTeacherViewController *myTeacherViewController = [MyTeacherViewController new];
+            [self.navigationController pushViewController:myTeacherViewController animated:YES];
+        }
             break;
         case 2:
-
+        {
+            MyTopicViewController *controler = [[MyTopicViewController alloc] init];
+            [self.navigationController pushViewController:controler animated:YES];
+        }
             break;
         case 3:
-
+        {
+            
+        }
             break;
         case 4:
-
+        {
+            
+        }
             break;
         case 5:
-
+        {
+            
+        }
             break;
         case 6:
-
+        {
+            MyMoneyViewController *myMoneyPage = [MyMoneyViewController new];
+            [self.navigationController pushViewController:myMoneyPage animated:YES];
+        }
             break;
         case 7:
-            
+        {
+            ShoppingCartViewController *shoppingCartPage = [ShoppingCartViewController new];
+            [self.navigationController pushViewController:shoppingCartPage animated:YES];
+        }
             break;
         case 8:
-
+        {
+            
+        }
             break;
         case 9:
-
+        {
+            
+        }
             break;
         case 10:
-
+        {
+            
+        }
             break;
         default:
             break;

@@ -223,28 +223,41 @@
     [_scrollView setContentOffset:CGPointMake(SCREENWITH*(button.tag-200), 0) animated:YES];
 }
 - (CGFloat)cellHeightByModel:(TopicDataModel *)model {
+    //
     CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
-    CGFloat height = 10+40+10+contentHeight;
-    CGFloat cellHeight = 0.0;
-    if (model.categories.count > 0) {
-        float length = 10;
-        for (int i = 0; i < model.categories.count; i++) {
-            TopicCategoryLabel *label = model.categories[i];
-            NSString *buttonTitle = [NSString stringWithFormat:@"#%@#",label.name];
-            CGRect frame = [StringUtil calculateLabelRect:buttonTitle height:14 fontSize:12];
-            CGFloat width = frame.size.width;
-            if (length+10+width <= SCREENWITH) {
-                cellHeight = height + 34 + 36;
-            }else {
-                length = 10;
-                cellHeight = height + 30 + 28 + 36;
-            }
-            length = 10*(i+1)+width+length;
-        }
-    }else {
-        cellHeight = height+10+36;
+    CGFloat height = 10+40+10+contentHeight + 10;
+    CGFloat all = 0;
+    CGFloat alll = 0;
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGFloat tap = 10;
+    NSMutableArray *labels = [NSMutableArray array];
+    for (CategoryLabel *label in model.categories) {
+        [labels addObject:label.name];
     }
-    return cellHeight+10;
+    for (int i = 0; i < labels.count; i++) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        NSString *title = [NSString stringWithFormat:@"#%@#",labels[i]];
+        CGSize size = [title sizeWithFont:FONT12 constrainedToSize:CGSizeMake(SCREENWITH, 14) lineBreakMode:1];
+        all = all + tap + size.width;
+        if (all <= SCREENWITH) {
+            x = all - size.width;
+            y = contentHeight+70;
+            button.frame = CGRectMake(x, y, size.width, 14);
+            return height + 34 + 36;
+        }else if (all <= SCREENWITH*2 && all>SCREENWITH) {
+            alll = alll + tap + size.width;
+            if (alll <= SCREENWITH) {
+                x = alll - size.width;
+                y = contentHeight+94;
+                button.frame = CGRectMake(x, y, size.width, 14);
+                return height + 30 + 28 + 36;
+            }else {
+                return height + 36;
+            }
+        }
+    }
+    return height+36+10;
 }
 #pragma TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

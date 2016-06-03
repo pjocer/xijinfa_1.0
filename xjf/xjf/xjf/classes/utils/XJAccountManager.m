@@ -57,7 +57,7 @@
                 [controller.navigationController pushViewController:vc animated:YES];
             }
         } failedBlock:^(NSError * _Nullable error) {
-            NSLog(@"验证用户信息是否有效失败");
+            [[ZToastManager ShardInstance] showtoast:@"验证用户信息失败"];
         }];
     });
     return NO;
