@@ -73,11 +73,12 @@ static CGFloat StudyImageH = 20;
         self.lessonCount.font = FONT12;
         self.lessonCount.textAlignment = NSTextAlignmentLeft;
         [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.studyImage.mas_left).with.offset(-30);
+            make.right.equalTo(self.studyImage.mas_left).with.offset(-15);
             make.centerY.equalTo(self);
             make.height.mas_equalTo(14);
             make.width.mas_equalTo(45);
         }];
+        self.lessonCount.textColor = AssistColor;
         self.lessonCount.text = @"00:00";
     }
     return self;

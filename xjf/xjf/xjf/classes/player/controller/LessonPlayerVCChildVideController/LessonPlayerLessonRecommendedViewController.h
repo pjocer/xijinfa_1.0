@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LessonPlayerLessonRecommendedViewController : UIViewController
-
+@property (nonatomic, strong) NSString *ID;
 @end

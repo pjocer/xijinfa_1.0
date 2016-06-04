@@ -82,7 +82,7 @@
 @property(nonatomic, strong) NSString *created_at;
 @property(nonatomic, strong) NSString *department;
 @property(nonatomic, strong) NSString *icon;
-@property(nonatomic, strong) NSString *id_;
+@property(nonatomic, strong) NSString *id;
 @property(nonatomic, strong) NSString *is_album;
 ///关键字
 @property(nonatomic, strong) NSString *keywords;

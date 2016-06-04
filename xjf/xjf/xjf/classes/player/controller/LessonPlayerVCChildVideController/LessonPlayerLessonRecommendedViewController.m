@@ -10,15 +10,20 @@
 #import "CommentsPageCommentsCell.h"
 #import "LessonRecommendedHeaderView.h"
 #import "LessonPlayerViewController.h"
+#import "XJAccountManager.h"
+#import "LoginViewController.h"
+#import "RegistViewController.h"
+#import "CommentsModel.h"
+#import <MJRefresh.h>
 @interface LessonPlayerLessonRecommendedViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-
 @property (nonatomic, retain) UIView *keyBoardView; /**< 键盘背景图 */
 @property (nonatomic, retain) UIView *keyBoardAppearView; /**< 键盘出现，屏幕背景图 */
 @property (nonatomic, retain) UITextField *textField; /**< 键盘 */
-
 @property (nonatomic, strong) LessonRecommendedHeaderView *tableHeaderView;
+@property (nonatomic, strong) UIButton *sendMsgButton;
+@property(nonatomic, strong) CommentsAllDataList *commentsModel;
 @end
 
 
@@ -27,16 +32,76 @@ static NSString *LessonRecommendedCell_id = @"LessonRecommendedCell_id";
 static NSString *LessonRecommendedHeader_id = @"LessonRecommendedHeader_id";
 static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.dataSource = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor
     [self initTabelView];
     [self initTextField];
-  
+    [self requestCommentsData:[NSString stringWithFormat:@"%@/%@/comments", coursesProjectLessonDetailList, self.ID] method:GET];
     
 }
 
+#pragma mark requestData
 
+- (void)requestCommentsData:(APIName *)api method:(RequestMethod)method {
+    
+    [[ZToastManager ShardInstance] showprogress];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    //GET
+    if (method == GET) {
+        @weakify(self)
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.commentsModel = [[CommentsAllDataList alloc] initWithData:responseData error:nil];
+            [self.dataSource addObjectsFromArray:self.commentsModel.result.data];
+            [self.tableView reloadData];
+            [self.tableView.mj_footer isRefreshing]?[self.tableView.mj_footer endRefreshing]:nil;
+            [[ZToastManager ShardInstance] hideprogress];
+        }                  failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] hideprogress];
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+            [self.tableView.mj_footer isRefreshing]?[self.tableView.mj_footer endRefreshing]:nil;
+        }];
+    }
+    //POST
+    else if (method == POST) {
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setValue:self.textField.text forKey:@"content"];
+        [dic setValue:self.ID forKey:@"ID"];
+        request.requestParams = dic;
+        
+        @weakify(self)
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            [self requestCommentsData:[NSString stringWithFormat:@"%@/%@/comments", coursesProjectLessonDetailList, self.ID] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+        
+    }
+    
+    
+}
+
+- (void)loadMoreData
+{
+    if (self.commentsModel.result.next_page_url != nil) {
+        [self requestCommentsData:self.commentsModel.result.next_page_url method:GET];
+    } else if (self.commentsModel.result.current_page == self.commentsModel.result.last_page)
+    {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }
+}
 
 #pragma mark- initTabelView
 - (void)initTabelView
@@ -59,16 +124,22 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView registerClass:[CommentsPageCommentsCell class] forCellReuseIdentifier:LessonRecommendedCell_id];
+    
+    if (!self.tableView.mj_footer) {
+        //mj_footer
+        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    }
 }
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataSource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CommentsPageCommentsCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonRecommendedCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.commentsModel = self.dataSource[indexPath.row];
     return cell;
 }
 
@@ -96,26 +167,38 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 /**键盘 */
 - (void)initTextField
 {
-    
     self.keyBoardAppearView = [[UIView alloc] initWithFrame:self.view.bounds];
     self.keyBoardAppearView.backgroundColor = [UIColor blackColor];
     self.keyBoardAppearView.alpha = 0.2;
     [[UIApplication sharedApplication].keyWindow addSubview:self.keyBoardAppearView];
     self.keyBoardAppearView.hidden = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardresignFirstResponder:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(keyBoardresignFirstResponder:)];
     [self.keyBoardAppearView addGestureRecognizer:tap];
-
     
-    self.keyBoardView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 40)];
-    self.keyBoardView.backgroundColor = [UIColor lightGrayColor];
+    
+    self.keyBoardView = [[UIView alloc]
+                         initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
+    self.keyBoardView.backgroundColor = [UIColor whiteColor];
     [[UIApplication sharedApplication].keyWindow addSubview:self.keyBoardView];
     
-    self.textField = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 250) / 2,5,250,30)];
-    self.textField.backgroundColor = [UIColor whiteColor];
-    self.textField.placeholder = @"请输入";
+    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH - 70, 30)];
+    self.textField.backgroundColor = BackgroundColor
+    self.textField.layer.masksToBounds = YES;
+    self.textField.layer.cornerRadius = 4;
+    self.textField.placeholder = @" 回复新内容";
+    [self.textField setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
     [self.keyBoardView addSubview:self.textField];
     self.textField.delegate = self;
     
+    self.sendMsgButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.keyBoardView addSubview:self.sendMsgButton];
+    [self.sendMsgButton setTitle:@"发送" forState:UIControlStateNormal];
+    self.sendMsgButton.titleLabel.font = FONT15;
+    self.sendMsgButton.frame = CGRectMake(0, 0, 30, 19);
+    self.sendMsgButton.center = CGPointMake(CGRectGetMaxX(self.textField.frame) + 30, self.textField.center.y);
+    self.sendMsgButton.tintColor = [UIColor blackColor];
+    [self.sendMsgButton addTarget:self action:@selector(sendCommentMsg:) forControlEvents:UIControlEventTouchUpInside];
     
     //UIKeyboardWillShow
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardwillAppear:) name:UIKeyboardWillShowNotification object:nil];
@@ -126,17 +209,42 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 #pragma mark 评论
 - (void)comments:(UIButton *)sender
 {
-    NSLog(@"评论");
-    [self.textField becomeFirstResponder];
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        
+        [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"
+                            okTitle:@"登录"
+                         otherTitle:@"注册"
+                  cancelButtonTitle:@"取消"
+                            message:@"参与话题讨论\n\n播放记录云同步\n\n更多金融专业课程"
+                        cancelBlock:^{
+                            NSLog(@"取消");
+                        } okBlock:^{
+                            LoginViewController *loginPage = [LoginViewController new];
+                            [self.navigationController pushViewController:loginPage animated:YES];
+                        }        otherBlock:^{
+                            RegistViewController *registPage = [RegistViewController new];
+                            registPage.title_item = @"注册";
+                            [self.navigationController pushViewController:registPage animated:YES];
+                        }];
+        
+    } else {
+        [self.textField becomeFirstResponder];
+    }
+}
+
+#pragma mark 发表评论
+- (void)sendCommentMsg:(UIButton *)sender {
+  [self requestCommentsData:[NSString stringWithFormat:@"%@/%@/comments", coursesProjectLessonDetailList, self.ID] method:POST];
+    [self.textField resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-//    [self requestCommentsData:self.api method:POST];
+    //    [self requestCommentsData:self.api method:POST];
     [self.textField resignFirstResponder];
     return YES;
 }
-
 
 #pragma mark- KeyboardAction
 /** UIKeyboardWillHide */

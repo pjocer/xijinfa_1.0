@@ -49,13 +49,14 @@ static CGFloat rowHeight = 50;
     //tableHeaderView
     if (_isPay) {
         self.tableView.tableHeaderView = [[LessonDetailHaveToPayHeaderView alloc]
-                initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight * 2 + 1)];
-        self.tableView.backgroundColor = [UIColor whiteColor];
-    } else {
-        self.tableView.tableHeaderView = [[LessonDetailNoPayHeaderView alloc]
-                initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight)];
+                initWithFrame:CGRectMake(0, 0, SCREENWITH, 36)];
         self.tableView.backgroundColor = [UIColor whiteColor];
     }
+//    else {
+//        self.tableView.tableHeaderView = [[LessonDetailNoPayHeaderView alloc]
+//                initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight)];
+//        self.tableView.backgroundColor = [UIColor whiteColor];
+//    }
 
 }
 
@@ -125,10 +126,11 @@ static CGFloat rowHeight = 50;
     LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[section];
     if ([model.type isEqualToString:@"dir"]) {
         IndexSectionView *sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-//        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
-//        [sectionView addSubview:bottomView];
-//        bottomView.backgroundColor = BackgroundColor;
+        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
+        [sectionView addSubview:bottomView];
+        bottomView.backgroundColor = BackgroundColor;
         sectionView.moreLabel.hidden = YES;
+        [sectionView.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:15]];
         sectionView.titleLabel.text = model.title;
         return sectionView;
     }
@@ -146,19 +148,23 @@ static CGFloat rowHeight = 50;
         TalkGridModel *tempModel = model.children[indexPath.row];
         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
         lessonPlayerViewController.lessonDetailListModel = self.lessonDetailListModel;
-        lessonPlayerViewController.lesssonID = tempModel.id_;
-//        TalkGridVideo *gridVideomodel = tempModel.video_player.firstObject;
-//        lessonPlayerViewController.playUrl =  gridVideomodel.url;
+        lessonPlayerViewController.lesssonID = self.lessonDetailListModel.result.id;
+        
+        if (tempModel.video_player.count != 0) {
+            TalkGridVideo *gridVideomodel = tempModel.video_player.firstObject;
+            lessonPlayerViewController.playUrl =  gridVideomodel.url;
+        }
         [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
-        NSLog(@"%@ -- %@",tempModel.id_,tempModel.video_player);
     } else if ([model.type isEqualToString:@"lesson"]) {
         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
         lessonPlayerViewController.lessonDetailListModel = self.lessonDetailListModel;
-        lessonPlayerViewController.lesssonID = model.id;
-//        TalkGridVideo *gridVideomodel = model.video_player.firstObject;
-//        lessonPlayerViewController.playUrl =  gridVideomodel.url;
+        lessonPlayerViewController.lesssonID = self.lessonDetailListModel.result.id;
+        
+        if (model.video_player.count != 0) {
+        TalkGridVideo *gridVideomodel = model.video_player.firstObject;
+        lessonPlayerViewController.playUrl =  gridVideomodel.url;
+        }
         [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
-        NSLog(@"%@--- %@",model.id,model.video_player);
     }
 }
 

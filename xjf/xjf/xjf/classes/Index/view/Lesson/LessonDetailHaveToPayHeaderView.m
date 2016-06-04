@@ -40,7 +40,7 @@ CGFloat StudyLabelH = 14;
         self.noStudyImage.image = [UIImage imageNamed:@"study"];
         [self.noStudyImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).with.offset(10);
-            make.centerY.equalTo(self).multipliedBy(0.5);
+            make.centerY.equalTo(self);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
 
@@ -62,7 +62,7 @@ CGFloat StudyLabelH = 14;
         self.studingImage.image = [UIImage imageNamed:@"studing"];
         [self.studingImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.mas_centerX).with.offset(-10);
-            make.centerY.equalTo(self).multipliedBy(0.5);
+            make.centerY.equalTo(self);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
 
@@ -95,7 +95,7 @@ CGFloat StudyLabelH = 14;
         self.studedImage.image = [UIImage imageNamed:@"studyed"];
         [self.studedImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.studedLabel.mas_left).with.offset(-10);
-            make.centerY.equalTo(self).multipliedBy(0.5);
+            make.centerY.equalTo(self);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
 
@@ -107,46 +107,46 @@ CGFloat StudyLabelH = 14;
         [self.modifiedView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self);
             make.height.mas_equalTo(1);
-            make.centerY.equalTo(self);
+            make.bottom.equalTo(self);
         }];
-        //////////////////////////////////////////
-        self.title = [[UILabel alloc] init];
-        [self addSubview:self.title];
-        self.title.font = FONT15;
-        self.title.textAlignment = NSTextAlignmentLeft;
-        [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).with.offset(10);
-            make.centerY.equalTo(self).multipliedBy(1.5);
-            make.height.mas_equalTo(18);
-            make.width.equalTo(self).multipliedBy(0.5);
-        }];
-        self.title.text = @"股票基础课程";
+//        //////////////////////////////////////////
+//        self.title = [[UILabel alloc] init];
+//        [self addSubview:self.title];
+//        self.title.font = FONT15;
+//        self.title.textAlignment = NSTextAlignmentLeft;
+//        [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self).with.offset(10);
+//            make.centerY.equalTo(self).multipliedBy(1.5);
+//            make.height.mas_equalTo(18);
+//            make.width.equalTo(self).multipliedBy(0.5);
+//        }];
+//        self.title.text = @"股票基础课程";
 
-        self.progress = [[UILabel alloc] init];
-        [self addSubview:self.progress];
-        self.progress.font = FONT12;
-        self.progress.textColor = AssistColor;
-        self.progress.textAlignment = NSTextAlignmentLeft;
-        [self.progress mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self).with.offset(-10);
-            make.centerY.equalTo(self).multipliedBy(1.5);
-            make.height.mas_equalTo(14);
-            make.width.mas_equalTo(24);
-        }];
-        self.progress.text = @"进度";
-
-        self.lessonCount = [[UILabel alloc] init];
-        [self addSubview:self.lessonCount];
-        self.lessonCount.font = FONT12;
-        self.lessonCount.textColor = AssistColor;
-        self.lessonCount.textAlignment = NSTextAlignmentCenter;
-        [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.progress.mas_left).with.offset(-30);
-            make.centerY.equalTo(self).multipliedBy(1.5);
-            make.height.mas_equalTo(14);
-            make.width.mas_equalTo(45);
-        }];
-        self.lessonCount.text = @"课时";
+//        self.progress = [[UILabel alloc] init];
+//        [self addSubview:self.progress];
+//        self.progress.font = FONT12;
+//        self.progress.textColor = AssistColor;
+//        self.progress.textAlignment = NSTextAlignmentLeft;
+//        [self.progress mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(self).with.offset(-10);
+//            make.centerY.equalTo(self).multipliedBy(1.5);
+//            make.height.mas_equalTo(14);
+//            make.width.mas_equalTo(24);
+//        }];
+//        self.progress.text = @"进度";
+//
+//        self.lessonCount = [[UILabel alloc] init];
+//        [self addSubview:self.lessonCount];
+//        self.lessonCount.font = FONT12;
+//        self.lessonCount.textColor = AssistColor;
+//        self.lessonCount.textAlignment = NSTextAlignmentCenter;
+//        [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(self.progress.mas_left).with.offset(-30);
+//            make.centerY.equalTo(self).multipliedBy(1.5);
+//            make.height.mas_equalTo(14);
+//            make.width.mas_equalTo(45);
+//        }];
+//        self.lessonCount.text = @"课时";
 
 
     }

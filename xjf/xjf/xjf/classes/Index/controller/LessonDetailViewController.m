@@ -43,7 +43,7 @@
 
 @implementation LessonDetailViewController
 static CGFloat titleH = 35;
-static CGFloat selViewH = 3;
+static CGFloat selViewH = 2;
 static CGFloat BottomPayButtonH = 50;
 static CGFloat payViewH = 285;
 
@@ -323,7 +323,7 @@ static CGFloat payViewH = 285;
     self.selBackGroundView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.selBackGroundView];
     //
-    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), w, selViewH)];
+    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame) - 2, w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
 }
@@ -342,7 +342,7 @@ static CGFloat payViewH = 285;
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
     [UIView animateWithDuration:0.3 animations:^{
-      self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame) + 1);
+      self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame) - 1);
     }];
 }
 
@@ -386,7 +386,12 @@ static CGFloat payViewH = 285;
 
 // 只要滚动UIScrollView就会调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-
+    NSInteger offSet = scrollView.contentOffset.x/SCREENWITH*70;
+    [UIView animateWithDuration:0.3 animations:^{
+//        _bottom.frame = CGRectMake(_all.center.x-25+offSet, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
+    } completion:^(BOOL finished) {
+        
+    } ];
 }
 
 

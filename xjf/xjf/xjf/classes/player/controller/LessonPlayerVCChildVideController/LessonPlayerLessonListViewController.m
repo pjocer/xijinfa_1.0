@@ -7,19 +7,24 @@
 //
 
 #import "LessonPlayerLessonListViewController.h"
-#import "LessonListCell.h"
+#import "LessonDetailLessonListCell.h"
+#import "LessonDetailNoPayHeaderView.h"
+#import "LessonDetailHaveToPayHeaderView.h"
+#import "IndexSectionView.h"
+#import "LessonPlayerViewController.h"
 @interface LessonPlayerLessonListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation LessonPlayerLessonListViewController
 static NSString *LessonListCell_id = @"LessonListCell_id";
-
+static CGFloat offset = 60;
+static CGFloat rowHeight = 50;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
+    self.isPay = self.lessonDetailListModel.result.user_purchased;
     [self initTabelView];
 }
 
@@ -31,39 +36,109 @@ static NSString *LessonListCell_id = @"LessonListCell_id";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(self.view);
-        
+        make.top.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
     }];
-
-    self.tableView.backgroundColor = [UIColor clearColor];
+    
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.tableView.rowHeight = 50;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.rowHeight = rowHeight;
+    //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
     
-    [self.tableView registerClass:[LessonListCell class] forCellReuseIdentifier:LessonListCell_id];
+    [self.tableView registerClass:[LessonDetailLessonListCell class]
+           forCellReuseIdentifier:LessonListCell_id];
+    
+    //tableHeaderView
+    if (_isPay) {
+        self.tableView.tableHeaderView = [[LessonDetailHaveToPayHeaderView alloc]
+                                          initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight * 2 + 1)];
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.tableView.tableHeaderView = [[LessonDetailNoPayHeaderView alloc]
+                                          initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight)];
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    }
 }
 #pragma mark TabelViewDataSource
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return self.lessonDetailListModel.result.lessons.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[section];
+    if ([model.type isEqualToString:@"dir"]) {
+        return model.children.count;
+    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LessonListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonListCell_id];
+    LessonDetailLessonListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonListCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (indexPath.row % 2) {
-        cell.backgroundColor = BackgroundColor;
+    
+    cell.backgroundColor = [UIColor clearColor];
+    if (!_isPay) {
+        cell.studyImage.hidden = YES;
     }
-    else {
-        cell.backgroundColor = [UIColor whiteColor];
-    }
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[indexPath.section];
+    if ([model.type isEqualToString:@"dir"]) {
+        TalkGridModel *tempModel = model.children[indexPath.row];
+        cell.talkGridModel = tempModel;
         
+        //是否免费试看
+        if ([cell.talkGridModel.package containsObject:@"visitor"]) {
+            cell.freeVideoLogo.hidden = NO;
+        }else {
+            cell.freeVideoLogo.hidden = YES;
+        }
+        //是否收藏
+        if (cell.talkGridModel.user_favored) {
+            cell.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
+        }
+    } else if ([model.type isEqualToString:@"lesson"]) {
+        cell.lessonDetailListModel = model;
+        //是否免费试看
+        if ([cell.lessonDetailListModel.package containsObject:@"visitor"]) {
+            cell.freeVideoLogo.hidden = NO;
+        }else {
+            cell.freeVideoLogo.hidden = YES;
+        }
+        //是否收藏
+        if (cell.lessonDetailListModel.user_favored) {
+            cell.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
+        }
+    }
+    return cell;
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[section];
+    if ([model.type isEqualToString:@"dir"]) {
+        return 35;
+    }
+    return 0;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    LessonDetailListLessonsModel *model = self.lessonDetailListModel.result.lessons[section];
+    if ([model.type isEqualToString:@"dir"]) {
+        IndexSectionView *sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
+        //        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
+        //        [sectionView addSubview:bottomView];
+        //        bottomView.backgroundColor = BackgroundColor;
+        sectionView.moreLabel.hidden = YES;
+        sectionView.titleLabel.text = model.title;
+        return sectionView;
+    }
+    return nil;
+}
+
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

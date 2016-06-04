@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LessonDetailListModel.h"
 @interface LessonPlayerLessonListViewController : UIViewController
-
+@property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
+@property (nonatomic, assign) BOOL isPay;
 @end

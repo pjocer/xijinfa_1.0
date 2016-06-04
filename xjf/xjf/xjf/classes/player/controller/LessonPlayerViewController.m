@@ -180,10 +180,12 @@ static CGFloat selViewH = 3;
 - (void)addChildViewController {
 //    #import "LessonDetailLessonListViewController.h" //一样的
     LessonPlayerLessonListViewController *vc = [[LessonPlayerLessonListViewController alloc] init];
+    vc.lessonDetailListModel = self.lessonDetailListModel;
     vc.title = @"目录";
     [self addChildViewController:vc];
 
     LessonPlayerLessonDescribeViewController *vc1 = [[LessonPlayerLessonDescribeViewController alloc] init];
+    vc1.contentText = self.lessonDetailListModel.result.content;
     vc1.title = @"课程介绍";
     [self addChildViewController:vc1];
 
@@ -193,6 +195,7 @@ static CGFloat selViewH = 3;
 
     LessonPlayerLessonRecommendedViewController *vc3 = [[LessonPlayerLessonRecommendedViewController alloc] init];
     vc3.title = @"评论";
+    vc3.ID = self.lesssonID;
     [self addChildViewController:vc3];
 
 }
