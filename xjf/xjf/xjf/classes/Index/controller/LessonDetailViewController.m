@@ -43,7 +43,7 @@
 
 @implementation LessonDetailViewController
 static CGFloat titleH = 35;
-static CGFloat selViewH = 2;
+static CGFloat selViewH = 3;
 static CGFloat BottomPayButtonH = 50;
 static CGFloat payViewH = 285;
 
@@ -250,7 +250,6 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 设置头部标题栏
-
 - (void)setupTitleScrollView {
     CGRect rect = CGRectMake(0, CGRectGetMaxY(self.lessonDetailTitleView.frame) + 1, SCREENWITH, titleH);
     self.titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
@@ -259,7 +258,6 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 设置内容
-
 - (void)setupContentScrollView {
     CGFloat y = CGRectGetMaxY(self.titleScrollView.frame);
     CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH - BottomPayButtonH);
@@ -269,7 +267,6 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 添加子控制器
-
 - (void)addChildViewController {
     self.lessonDetailLessonListViewController = [[LessonDetailLessonListViewController alloc] init];
     self.lessonDetailLessonListViewController.title = @"目录";
@@ -286,17 +283,13 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 设置标题
-
 - (void)setupTitle {
     NSUInteger count = self.childViewControllers.count;
-
     CGFloat x = 0;
     CGFloat w = SCREENWITH / count;
     CGFloat h = titleH;
-
     for (int i = 0; i < count; i++) {
         UIViewController *vc = self.childViewControllers[i];
-
         x = i * w;
         CGRect rect = CGRectMake(x, 0, w, h);
         UIButton *btn = [[UIButton alloc] initWithFrame:rect];
@@ -323,7 +316,7 @@ static CGFloat payViewH = 285;
     self.selBackGroundView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.selBackGroundView];
     //
-    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame) - 2, w, selViewH)];
+    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
 }
@@ -331,10 +324,8 @@ static CGFloat payViewH = 285;
 // 按钮点击
 - (void)chick:(UIButton *)btn {
     [self selTitleBtn:btn];
-
     NSUInteger i = btn.tag;
     CGFloat x = i * SCREENWITH;
-
     [self setUpOneChildViewController:i];
     self.contentScrollView.contentOffset = CGPointMake(x, 0);
 }
@@ -342,7 +333,7 @@ static CGFloat payViewH = 285;
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
     [UIView animateWithDuration:0.3 animations:^{
-      self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame) - 1);
+      self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame));
     }];
 }
 
@@ -386,12 +377,7 @@ static CGFloat payViewH = 285;
 
 // 只要滚动UIScrollView就会调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSInteger offSet = scrollView.contentOffset.x/SCREENWITH*70;
-    [UIView animateWithDuration:0.3 animations:^{
-//        _bottom.frame = CGRectMake(_all.center.x-25+offSet, CGRectGetMaxY(_q_a.frame)+4, 50, 3);
-    } completion:^(BOOL finished) {
-        
-    } ];
+
 }
 
 

@@ -88,7 +88,7 @@
         self.price = [[UILabel alloc] init];
         [self addSubview:self.price];
         self.price.textColor = [UIColor redColor];
-        self.price.text = @"￥0000";
+//        self.price.text = @"￥0000";
         self.price.font = FONT15;
         self.price.textAlignment = NSTextAlignmentLeft;
         [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,7 +101,7 @@
         self.oldPrice = [[UILabel alloc] init];
         [self addSubview:self.oldPrice];
         self.oldPrice.textColor = AssistColor
-        self.oldPrice.text = @"￥0000";
+//        self.oldPrice.text = @"￥0000";
         self.oldPrice.font = FONT12;
         self.oldPrice.textAlignment = NSTextAlignmentLeft;
         [self.oldPrice mas_makeConstraints:^(MASConstraintMaker *make) {

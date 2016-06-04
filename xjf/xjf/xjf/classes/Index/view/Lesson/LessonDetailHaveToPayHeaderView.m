@@ -24,10 +24,9 @@
 @end
 
 @implementation LessonDetailHaveToPayHeaderView
-
-CGFloat StudyImageH = 20;
-CGFloat StudyLabelW = 40;
-CGFloat StudyLabelH = 14;
+static CGFloat StudyImageH = 20;
+static CGFloat StudyLabelW = 40;
+static CGFloat StudyLabelH = 14;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

@@ -107,7 +107,7 @@ static CGFloat selViewH = 3;
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-
+    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.lessonDetailListModel.result.thumbnail]]];
 }
 
 #pragma mark 横竖屏状态
@@ -261,7 +261,9 @@ static CGFloat selViewH = 3;
 
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
-    self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame) + 1);
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame));
+    }];
 }
 
 - (void)setUpOneChildViewController:(NSUInteger)i {

@@ -83,7 +83,7 @@
         self.teacherName.hidden = YES;
         [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.top.mas_equalTo(self.viedoDetail.mas_bottom).with.offset(3);
+            make.top.mas_equalTo(self.viedoDetail.mas_bottom).with.offset(7);
             make.right.equalTo(self.contentView).with.offset(-10);
             make.height.mas_equalTo(14);
         }];
@@ -97,7 +97,7 @@
         self.lessonCount.hidden = YES;
         [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.top.mas_equalTo(self.teacherName.mas_bottom);
+            make.top.mas_equalTo(self.teacherName.mas_bottom).with.offset(3);
             make.right.equalTo(self.contentView).with.offset(-10);
             make.height.mas_equalTo(14);
         }];
@@ -160,7 +160,7 @@
     [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
-   
+    self.lessonCount.text = [NSString stringWithFormat:@"课时: %@",model.lessons_count];
     CGFloat tempPrice = [model.price floatValue];
     if (tempPrice == -1) {
          self.price.text = @"免费";

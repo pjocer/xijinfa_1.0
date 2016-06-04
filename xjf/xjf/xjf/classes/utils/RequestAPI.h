@@ -115,3 +115,7 @@ static APIName *teacherListHot = @"/api/gurus3/hot";
 
 #pragma mark-- 收藏 -----------------------------
 static APIName *favorite = @"/api/favorite";
+
+#pragma mark-- My
+#pragma mark 我的课程
+static APIName *myLessonsApi = @"/api/user/courses";

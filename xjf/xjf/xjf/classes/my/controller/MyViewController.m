@@ -13,6 +13,8 @@
 #import "ShoppingCartViewController.h"
 #import "MyTeacherViewController.h"
 #import "MyTopicViewController.h"
+#import "MyLessonsViewController.h"
+#import "MyFavoredsViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -148,7 +150,8 @@
     switch (index) {
         case 0:
         {
-            
+            MyLessonsViewController *myLessonsViewController = [MyLessonsViewController new];
+            [self.navigationController pushViewController:myLessonsViewController animated:YES];
         }
             break;
         case 1:
@@ -175,7 +178,8 @@
             break;
         case 5:
         {
-            
+            MyFavoredsViewController *myFavoredsViewController = [[MyFavoredsViewController alloc] init];
+            [self.navigationController pushViewController:myFavoredsViewController animated:YES];
         }
             break;
         case 6:
