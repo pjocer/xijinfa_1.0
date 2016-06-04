@@ -9,13 +9,25 @@
 #import "PlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "ZFPlayer.h"
+
 #import "ZFPlayerSingleton.h"
 #import "playerConfigure.h"
 #import "CommentsModel.h"
 #import "XJAccountManager.h"
 #import "LoginViewController.h"
 #import "RegistViewController.h"
+#import <objc/runtime.h>
+@implementation ZFPlayerView (LoadingImageUrl)
+
+-(void)setXjfloading_image:(UIImage *)xjfloading_image {
+    self.layer.contents = (id)xjfloading_image.CGImage;
+    objc_setAssociatedObject(self, @selector(xjfloading_image), xjfloading_image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+-(UIImage *)xjfloading_image {
+    return objc_getAssociatedObject(self, @selector(xjfloading_image));
+}
+@end
+
 @interface PlayerViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
@@ -179,8 +191,9 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
     
-    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
+    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
+    
 }
 
 #pragma mark CollectionView
