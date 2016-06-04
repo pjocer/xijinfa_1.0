@@ -39,15 +39,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [_tableview_qa.mj_header beginRefreshing];
-    [_tableView_all.mj_header beginRefreshing];
-    [_tableView_discuss.mj_header beginRefreshing];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self extendheadViewFor:Topic];
     [self initMainUI];
+    [_tableview_qa.mj_header beginRefreshing];
+    [_tableView_all.mj_header beginRefreshing];
+    [_tableView_discuss.mj_header beginRefreshing];
 }
 
 - (void)initData {
@@ -61,7 +61,6 @@
         [self hiddenMJRefresh:tableView];
         return ;
     }
-    
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         TopicModel *model = [[TopicModel alloc] initWithData:responseData error:nil];
@@ -79,7 +78,6 @@
             [_tableView_all reloadData];
         }
         [self hiddenMJRefresh:tableView];
-        
     } failedBlock:^(NSError * _Nullable error) {
         [self hiddenMJRefresh:tableView];
         [[ZToastManager ShardInstance] showtoast:@"请求数据失败"];
@@ -328,7 +326,7 @@
     controller.topic_id = model.id;
     [self.navigationController pushViewController:controller animated:YES];
 }
-#pragma ScrollView Delegate
+#pragma mark - ScrollView Delegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (scrollView == self.scrollView) {
         NSInteger offSet = scrollView.contentOffset.x/SCREENWITH*70;

@@ -12,6 +12,7 @@
 #import "XjfRequest.h"
 #import "ZToastManager.h"
 #import "StringUtil.h"
+#import "TaViewController.h"
 @interface CommentListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
@@ -29,9 +30,17 @@
     [super awakeFromNib];
     _avatar.layer.cornerRadius = 20;
     _avatar.layer.masksToBounds = YES;
+    UITapGestureRecognizer *avatar_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarClicked:)];
+    [_avatar addGestureRecognizer:avatar_tap];
     // Initialization code
 }
-
+- (void)avatarClicked:(UITapGestureRecognizer *)gesture {
+    UIViewController *controller = getCurrentDisplayController();
+    TaViewController *ta = [[TaViewController alloc] init];
+    ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.data.user.nickname];
+    ta.model = self.data.user;
+    [controller.navigationController pushViewController:ta animated:YES];
+}
 -(void)setData:(CommentData *)data {
     _data = data;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:data.user.avatar]];

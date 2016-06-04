@@ -13,6 +13,7 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 #import "NewCommentViewController.h"
+#import "TaViewController.h"
 @interface TopicBaseCellTableViewCell () 
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *identity;
@@ -40,11 +41,19 @@
     self.extension.layer.masksToBounds = YES;
     _left_constrain.constant = SCREENWITH/4-18.5;
     _right_constrain.constant = SCREENWITH/4-18.5;
+    UITapGestureRecognizer *avatar_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarClicked:)];
+    [_avatar addGestureRecognizer:avatar_tap];
     UITapGestureRecognizer *comment_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentClicked:)];
     [_comment addGestureRecognizer:comment_tap];
     UITapGestureRecognizer *praise_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(praise_Clicked:)];
     [_praise addGestureRecognizer:praise_tap];
-    // Initialization code
+}
+- (void)avatarClicked:(UITapGestureRecognizer *)gesture {
+    UIViewController *controller = getCurrentDisplayController();
+    TaViewController *ta = [[TaViewController alloc] init];
+    ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.user.nickname];
+    ta.model = self.model.user;
+    [controller.navigationController pushViewController:ta animated:YES];
 }
 - (void)commentClicked:(UITapGestureRecognizer *)gesture {
     if ([[XJAccountManager defaultManager] accessToken]) {

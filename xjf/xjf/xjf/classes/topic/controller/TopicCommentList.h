@@ -12,6 +12,16 @@
 
 @end
 
+@protocol CommentMembership
+
+@end
+
+@interface CommentMembership : JSONModel
+@property (nonatomic, copy) NSString *end_time;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *type;
+@end
+
 @interface CommentUserData : JSONModel
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *nickname;
@@ -34,6 +44,8 @@
 @property (nonatomic, copy) NSString *coin_balance;
 @property (nonatomic, copy) NSString *credit_balance;
 @property (nonatomic, copy) NSString *level;
+@property (nonatomic, strong) NSMutableArray <CommentMembership>*membership;
+
 @end
 
 @interface CommentData : JSONModel

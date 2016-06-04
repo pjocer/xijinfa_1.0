@@ -185,7 +185,6 @@
 }
 
 -(UITableView *)tableView {
-    
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
@@ -221,8 +220,10 @@
         return _header;
     }else {
         CommentListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentListCell" forIndexPath:indexPath];
-        CommentData *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
-        cell.data = data;
+        if (_commentList.result.data) {
+            CommentData *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
+            cell.data = data;
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }

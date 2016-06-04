@@ -140,8 +140,15 @@
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
 		CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
+		D01201C01D02D705000AEF43 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D01201BF1D02D705000AEF43 /* UserInfoModel.m */; };
 		D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D11D0181E0000888D4 /* MyTopicViewController.m */; };
 		D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */; };
+		D0259ADD1D02B72600283F29 /* TaBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259ADC1D02B72600283F29 /* TaBaseViewController.m */; };
+		D0259AE31D02B76700283F29 /* TaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259AE21D02B76700283F29 /* TaViewController.m */; };
+		D0259AE71D02B85900283F29 /* TaBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259AE51D02B85900283F29 /* TaBaseCell.m */; };
+		D0259AE81D02B85900283F29 /* TaBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AE61D02B85900283F29 /* TaBaseCell.xib */; };
+		D0259AEC1D02C10000283F29 /* TaBaseCellFoot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */; };
+		D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */; };
 		D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA4E1CEC041600CD5359 /* XJAccountManager.m */; };
 		D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA511CEC047600CD5359 /* UserProfileModel.m */; };
 		D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA541CEC0D3400CD5359 /* UserLoadCell.m */; };
@@ -480,10 +487,22 @@
 		CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF57AD21C9F825D00049AF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D01201BE1D02D705000AEF43 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		D01201BF1D02D705000AEF43 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		D01F77D01D0181E0000888D4 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
 		D01F77D11D0181E0000888D4 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
 		D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
 		D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
+		D0259ADB1D02B72600283F29 /* TaBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseViewController.h; sourceTree = "<group>"; };
+		D0259ADC1D02B72600283F29 /* TaBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseViewController.m; sourceTree = "<group>"; };
+		D0259AE11D02B76700283F29 /* TaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaViewController.h; sourceTree = "<group>"; };
+		D0259AE21D02B76700283F29 /* TaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaViewController.m; sourceTree = "<group>"; };
+		D0259AE41D02B85900283F29 /* TaBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCell.h; sourceTree = "<group>"; };
+		D0259AE51D02B85900283F29 /* TaBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCell.m; sourceTree = "<group>"; };
+		D0259AE61D02B85900283F29 /* TaBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCell.xib; sourceTree = "<group>"; };
+		D0259AE91D02C10000283F29 /* TaBaseCellFoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCellFoot.h; sourceTree = "<group>"; };
+		D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCellFoot.m; sourceTree = "<group>"; };
+		D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCellFoot.xib; sourceTree = "<group>"; };
 		D049BA4D1CEC041600CD5359 /* XJAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJAccountManager.h; sourceTree = "<group>"; };
 		D049BA4E1CEC041600CD5359 /* XJAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAccountManager.m; sourceTree = "<group>"; };
 		D049BA501CEC047600CD5359 /* UserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModel.h; sourceTree = "<group>"; };
@@ -1405,6 +1424,7 @@
 				CD1CCC061CB35A2D002FC0C9 /* Topic */,
 				CD1CCC3A1CB37B89002FC0C9 /* Utils */,
 				CD1CCC0C1CB35A2D002FC0C9 /* Vip */,
+				D0259ADA1D02B6DF00283F29 /* Ta */,
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
@@ -1434,6 +1454,50 @@
 			);
 			name = ThirdUtils;
 			path = ../../vendor;
+			sourceTree = "<group>";
+		};
+		D0259ADA1D02B6DF00283F29 /* Ta */ = {
+			isa = PBXGroup;
+			children = (
+				D0259AE01D02B74A00283F29 /* View */,
+				D0259ADF1D02B74500283F29 /* Model */,
+				D0259ADE1D02B73D00283F29 /* Controller */,
+			);
+			name = Ta;
+			path = classes/vip;
+			sourceTree = "<group>";
+		};
+		D0259ADE1D02B73D00283F29 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0259AE11D02B76700283F29 /* TaViewController.h */,
+				D0259AE21D02B76700283F29 /* TaViewController.m */,
+				D0259ADB1D02B72600283F29 /* TaBaseViewController.h */,
+				D0259ADC1D02B72600283F29 /* TaBaseViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D0259ADF1D02B74500283F29 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D01201BE1D02D705000AEF43 /* UserInfoModel.h */,
+				D01201BF1D02D705000AEF43 /* UserInfoModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D0259AE01D02B74A00283F29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0259AE41D02B85900283F29 /* TaBaseCell.h */,
+				D0259AE51D02B85900283F29 /* TaBaseCell.m */,
+				D0259AE61D02B85900283F29 /* TaBaseCell.xib */,
+				D0259AE91D02C10000283F29 /* TaBaseCellFoot.h */,
+				D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */,
+				D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		D05985231CF6D76500BF2A30 /* Notification */ = {
@@ -1581,6 +1645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */,
+				D0259AE81D02B85900283F29 /* TaBaseCell.xib in Resources */,
 				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
 				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
@@ -1589,6 +1654,7 @@
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
 				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
+				D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
 				644C115C1CBA90A000892E2C /* WeiboSDK.bundle in Resources */,
@@ -1665,6 +1731,7 @@
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
+				D01201C01D02D705000AEF43 /* UserInfoModel.m in Sources */,
 				5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */,
 				D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
@@ -1690,6 +1757,7 @@
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
+				D0259AEC1D02C10000283F29 /* TaBaseCellFoot.m in Sources */,
 				5AF7C2F31CFF040D007CC71C /* TeacherLessonsViewController.m in Sources */,
 				644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */,
 				644C115F1CBA90A000892E2C /* XMShareView.m in Sources */,
@@ -1726,6 +1794,7 @@
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
 				5A105EB31CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m in Sources */,
+				D0259AE31D02B76700283F29 /* TaViewController.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
 				D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */,
@@ -1787,6 +1856,7 @@
 				644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */,
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
+				D0259ADD1D02B72600283F29 /* TaBaseViewController.m in Sources */,
 				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
 				5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */,
 				5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */,
@@ -1800,6 +1870,7 @@
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
 				D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */,
+				D0259AE71D02B85900283F29 /* TaBaseCell.m in Sources */,
 				5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */,
 				D07D749F1CEDE03B0037B1A9 /* MyLessonsViewController.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,

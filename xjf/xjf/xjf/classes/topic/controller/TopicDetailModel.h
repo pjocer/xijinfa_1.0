@@ -12,6 +12,10 @@
 
 @end
 
+@protocol TopiceMembership
+
+@end
+
 @interface DetailPivot : JSONModel
 @property (nonatomic, copy) NSString *classification_id;
 @property (nonatomic, copy) NSString *category_id;
@@ -61,7 +65,7 @@
 @property (nonatomic, copy) NSString *sex;
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString *updated_at;
-@property (nonatomic, strong) TopiceMembership *membership;
+@property (nonatomic, strong) NSMutableArray <TopiceMembership>*membership;
 @end
 
 @interface TopicDetailResult : JSONModel

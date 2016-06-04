@@ -9,6 +9,8 @@
 #import "CommentDetailHeader.h"
 #import <UIImageView+WebCache.h>
 #import "StringUtil.h"
+#import "XJAccountManager.h"
+#import "TaViewController.h"
 @interface CommentDetailHeader ()
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *invest_category;
@@ -27,11 +29,20 @@
     _cellHeight = 0;
     _avatar.layer.cornerRadius = 20;
     _avatar.layer.masksToBounds = YES;
+    UITapGestureRecognizer *avatar_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarClicked:)];
+    [_avatar addGestureRecognizer:avatar_tap];
     _comment_category.layer.cornerRadius = 5;
     _comment_category.layer.masksToBounds = YES;
     // Initialization code
 }
 
+- (void)avatarClicked:(UITapGestureRecognizer *)gesture {
+    UIViewController *controller = getCurrentDisplayController();
+    TaViewController *ta = [[TaViewController alloc] init];
+    ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.result.user.nickname];
+    ta.model = self.model.result.user;
+    [controller.navigationController pushViewController:ta animated:YES];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

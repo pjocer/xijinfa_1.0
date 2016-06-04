@@ -8,6 +8,12 @@
 
 #import "TopicCommentList.h"
 
+@implementation CommentMembership
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
 @implementation CommentUserData
 +(BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
