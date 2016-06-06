@@ -40,15 +40,21 @@ typedef enum : NSUInteger {
 
 - (nullable NSMutableArray <NSString *>*)recentlyUsedLabels;
 
+- (nullable NSMutableArray <NSString *>*)recentlySearched;
+
+- (void)addSearch:(nonnull NSString *)search;
+
 - (void)addLabels:(nonnull NSString *)label;
 
 - (void)addLessons:(nullable NSArray <TalkGridModel*>*)lessons key:(nonnull NSString *)key;
 
 - (void)addGoods:(nullable NSArray <TalkGridModel*>*)goods key:(nonnull NSString *)key;
 
--(void)deleteGoodsFrom:(nonnull NSString *)key goods:(nonnull NSArray<TalkGridModel *> *)goods;
+- (void)deleteGoodsFrom:(nonnull NSString *)key goods:(nonnull NSArray<TalkGridModel *> *)goods;
 
--(void)deleteLessons:(nonnull NSArray<TalkGridModel *> *)lessons key:(nonnull NSString *)key;
+- (void)deleteLessons:(nonnull NSArray<TalkGridModel *> *)lessons key:(nonnull NSString *)key;
+
+-  (void)clearRecentlySearched;
 
 - (BOOL)isAlreadyExists:(nonnull TalkGridModel *)goods key:(nonnull NSString *)key;
 

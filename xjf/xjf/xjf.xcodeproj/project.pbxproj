@@ -183,7 +183,10 @@
 		D07575281D0513D500F8360F /* FansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07575261D0513D500F8360F /* FansCell.xib */; };
 		D075752B1D05160700F8360F /* Fans_FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D075752A1D05160700F8360F /* Fans_FocusViewController.m */; };
 		D075752E1D05178400F8360F /* FansFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = D075752D1D05178400F8360F /* FansFocus.m */; };
-		D07575361D056A0D00F8360F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07575341D056A0D00F8360F /* SearchViewController.m */; };
+		D075753A1D056E8100F8360F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07575391D056E8100F8360F /* SearchViewController.m */; };
+		D075753D1D05825300F8360F /* SearchSectionOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D075753C1D05825300F8360F /* SearchSectionOne.m */; };
+		D07575411D0593F300F8360F /* SearchSectionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = D075753F1D0593F300F8360F /* SearchSectionTwo.m */; };
+		D07575421D0593F300F8360F /* SearchSectionTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07575401D0593F300F8360F /* SearchSectionTwo.xib */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
 		D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */; };
 		D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */; };
@@ -571,8 +574,13 @@
 		D075752A1D05160700F8360F /* Fans_FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fans_FocusViewController.m; sourceTree = "<group>"; };
 		D075752C1D05178400F8360F /* FansFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansFocus.h; sourceTree = "<group>"; };
 		D075752D1D05178400F8360F /* FansFocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansFocus.m; sourceTree = "<group>"; };
-		D07575331D056A0D00F8360F /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		D07575341D056A0D00F8360F /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		D07575381D056E8100F8360F /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		D07575391D056E8100F8360F /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		D075753B1D05825300F8360F /* SearchSectionOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSectionOne.h; sourceTree = "<group>"; };
+		D075753C1D05825300F8360F /* SearchSectionOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSectionOne.m; sourceTree = "<group>"; };
+		D075753E1D0593F300F8360F /* SearchSectionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSectionTwo.h; sourceTree = "<group>"; };
+		D075753F1D0593F300F8360F /* SearchSectionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSectionTwo.m; sourceTree = "<group>"; };
+		D07575401D0593F300F8360F /* SearchSectionTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSectionTwo.xib; sourceTree = "<group>"; };
 		D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -1568,8 +1576,8 @@
 		D07575301D05696800F8360F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D07575331D056A0D00F8360F /* SearchViewController.h */,
-				D07575341D056A0D00F8360F /* SearchViewController.m */,
+				D07575381D056E8100F8360F /* SearchViewController.h */,
+				D07575391D056E8100F8360F /* SearchViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1577,6 +1585,11 @@
 		D07575311D05697200F8360F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D075753B1D05825300F8360F /* SearchSectionOne.h */,
+				D075753C1D05825300F8360F /* SearchSectionOne.m */,
+				D075753E1D0593F300F8360F /* SearchSectionTwo.h */,
+				D075753F1D0593F300F8360F /* SearchSectionTwo.m */,
+				D07575401D0593F300F8360F /* SearchSectionTwo.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1716,6 +1729,7 @@
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
 				644C115C1CBA90A000892E2C /* WeiboSDK.bundle in Resources */,
 				D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */,
+				D07575421D0593F300F8360F /* SearchSectionTwo.xib in Resources */,
 				644C10C81CBA61AC00892E2C /* icon_del.png in Resources */,
 				644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */,
 				D07D74461CED7E240037B1A9 /* UserInfoListCell.xib in Resources */,
@@ -1840,6 +1854,7 @@
 				5A240E0D1CE4275B003B7971 /* PlayerPageCommentsHeaderView.m in Sources */,
 				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
 				5A441C5D1CE5FC32000CF748 /* CommentsPageCommentsCell.m in Sources */,
+				D07575411D0593F300F8360F /* SearchSectionTwo.m in Sources */,
 				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
 				D07575271D0513D500F8360F /* FansCell.m in Sources */,
 				5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */,
@@ -1891,6 +1906,7 @@
 				D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				D07D74451CED7E240037B1A9 /* UserInfoListCell.m in Sources */,
+				D075753D1D05825300F8360F /* SearchSectionOne.m in Sources */,
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
 				5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */,
@@ -1916,7 +1932,7 @@
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				D0259ADD1D02B72600283F29 /* TaBaseViewController.m in Sources */,
-				D07575361D056A0D00F8360F /* SearchViewController.m in Sources */,
+				D075753A1D056E8100F8360F /* SearchViewController.m in Sources */,
 				D07575231D050F7A00F8360F /* TaTopicViewController.m in Sources */,
 				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
 				5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */,

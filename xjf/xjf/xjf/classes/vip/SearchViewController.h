@@ -6,8 +6,8 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface SearchViewController : UISearchController
+@interface SearchViewController : BaseViewController
 
 @end

@@ -72,7 +72,7 @@
 
 @interface TablkResultModel : JSONModel
 @property(nonatomic, assign) int current_page;
-@property(nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *data;
+@property(nonatomic, strong) NSArray <TalkGridModel> *data;
 @property(nonatomic, strong) NSString *from;
 @property(nonatomic, assign) int last_page;
 @property(nonatomic, strong) NSString *next_page_url;

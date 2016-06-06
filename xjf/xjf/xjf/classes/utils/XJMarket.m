@@ -52,8 +52,10 @@
     [self createFileAtPath:[self pathForMyLessons]];
     [_my_lessons writeToFile:[self pathForMyLessons] atomically:YES];
     [self createFileAtPath:[self pathForLabels]];
+    [self createFileAtPath:[self pathForSearched]];
     NSMutableArray *array = [NSMutableArray array];
     [array writeToFile:[self pathForLabels] atomically:YES];
+    [array writeToFile:[self pathForSearched] atomically:YES];
 }
 
 -(XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods {
@@ -89,6 +91,11 @@
         }
     }
     return NO;
+}
+
+-(void)clearRecentlySearched {
+    NSArray *array = [NSArray array];
+    [array writeToFile:[self pathForSearched] atomically:YES];
 }
 
 -(void)deleteGoodsFrom:(NSString *)key goods:(NSArray<TalkGridModel *> *)goods {
@@ -163,6 +170,17 @@
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
 
+-(void)addSearch:(NSString *)search {
+    NSMutableArray *array = [[NSMutableArray arrayWithContentsOfFile:[self pathForSearched]] mutableCopy];
+    if (![array containsObject:search]) {
+        [array insertObject:search atIndex:0];
+        if (array.count > 10) {
+            [array removeObjectAtIndex:10];
+        }
+        [array writeToFile:[self pathForSearched] atomically:YES];
+    }
+}
+
 -(void)addLabels:(NSString *)label {
     NSMutableArray *array = [[NSMutableArray arrayWithContentsOfFile:[self pathForLabels]] mutableCopy];
     if (![array containsObject:label]) {
@@ -175,6 +193,9 @@
 }
 -(NSMutableArray<NSString *> *)recentlyUsedLabels {
     return [NSMutableArray arrayWithContentsOfFile:[self pathForLabels]];
+}
+-(NSMutableArray<NSString *> *)recentlySearched {
+    return [NSMutableArray arrayWithContentsOfFile:[self pathForSearched]];
 }
 -(NSMutableArray<TalkGridModel *> *)myLessonsFor:(NSString *)key {
     NSString *path = [self pathForMyLessons];
@@ -195,6 +216,13 @@
         [array addObject:model];
     }
     return array;
+}
+
+- (NSString *)pathForSearched {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *searchPath = [path stringByAppendingPathComponent:@"search.plist"];
+    return searchPath;
 }
 
 - (NSString *)pathForLabels {
