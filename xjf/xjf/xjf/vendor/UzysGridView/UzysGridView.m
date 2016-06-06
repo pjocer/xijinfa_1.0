@@ -116,23 +116,18 @@
 //                                    [self editableAnimation];
                     }];
         }
-    }
-    else {
 
+    } else {
         for (UzysGridViewCell *cell in _cellInfo) {
             cell.ButtonDelete.transform = CGAffineTransformIdentity;
-
         }
     }
-
-
 }
 
 - (void)CellRearrange:(NSInteger)moveIndex with:(NSInteger)targetIndex {
 
     if (moveIndex == targetIndex || targetIndex == -1)
         return;
-
 
     NSUInteger numCols = self.numberOfColumns;
     NSUInteger numRows = self.numberOfRows;
@@ -142,7 +137,6 @@
     if (isLandscape) {
         numCols = self.numberOfRows;
         numRows = self.numberOfColumns;
-
     }
 
     CGRect gridBounds = self.scrollView.bounds;
@@ -156,8 +150,7 @@
     [_cellInfo removeObjectAtIndex:moveIndex];
     if (targetIndex == [_cellInfo count] + 1) {
         [_cellInfo addObject:movingcell];
-    }
-    else {
+    } else {
         [_cellInfo insertObject:movingcell atIndex:targetIndex];
     }
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(gridView:moveAtIndex:toIndex:)]) {
@@ -179,31 +172,37 @@
             if ([colPosX count] == numCols && [rowPosY count] == numRows) {
                 NSNumber *rowPos = [rowPosY objectAtIndex:row];
                 NSNumber *col = [colPosX objectAtIndex:(i % numCols)];
-                origin = CGPointMake((page * gridBounds.size.width) + ([col intValue]),
+                origin = CGPointMake(
+                        (page * gridBounds.size.width) + ([col intValue]),
                         [rowPos intValue]);
-                contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cell.cellInitFrame.size.width, (NSUInteger) cell.cellInitFrame.size.height);
+                contractFrame = CGRectMake(
+                        (NSUInteger) origin.x,
+                        (NSUInteger) origin.y,
+                        (NSUInteger) cell.cellInitFrame.size.width,
+                        (NSUInteger) cell.cellInitFrame.size.height);
                 [UIView beginAnimations:@"Move" context:nil];
                 [UIView setAnimationDuration:0.5];
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                 cell.frame = contractFrame;
                 [UIView commitAnimations];
-            }
-            else {
 
-                origin = CGPointMake((page * gridBounds.size.width) + ((i % numCols) * cellBounds.size.width),
+            } else {
+                origin = CGPointMake(
+                        (page * gridBounds.size.width) + ((i % numCols) * cellBounds.size.width),
                         (row * cellBounds.size.height));
-                contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cellBounds.size.width, (NSUInteger) cellBounds.size.height);
+                contractFrame = CGRectMake(
+                        (NSUInteger) origin.x,
+                        (NSUInteger) origin.y,
+                        (NSUInteger) cellBounds.size.width,
+                        (NSUInteger) cellBounds.size.height);
                 [UIView beginAnimations:@"Move" context:nil];
                 [UIView setAnimationDuration:0.5];
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                 cell.frame = CGRectInset(contractFrame, self.cellMargin, self.cellMargin);
                 [UIView commitAnimations];
             }
-
         }
     }
-
-
 }
 
 
@@ -216,12 +215,10 @@
     if (isLandscape) {
         numCols = self.numberOfRows;
         numRows = self.numberOfColumns;
-
     }
 
     CGRect gridBounds = self.scrollView.bounds;
     CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float) numCols, gridBounds.size.height / (float) numRows);
-
 
     NSUInteger setIndex = cell.index;
     NSUInteger page = (NSUInteger) ((float) (setIndex) / cellsPerPage);
@@ -232,27 +229,35 @@
     if ([colPosX count] == numCols && [rowPosY count] == numRows) {
         NSNumber *rowPos = [rowPosY objectAtIndex:row];
         NSNumber *col = [colPosX objectAtIndex:(setIndex % numCols)];
-        origin = CGPointMake((page * gridBounds.size.width) + ([col intValue]),
+        origin = CGPointMake(
+                (page * gridBounds.size.width) + ([col intValue]),
                 [rowPos intValue]);
-        contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cell.cellInitFrame.size.width, (NSUInteger) cell.cellInitFrame.size.height);
+        contractFrame = CGRectMake(
+                (NSUInteger) origin.x,
+                (NSUInteger) origin.y,
+                (NSUInteger) cell.cellInitFrame.size.width,
+                (NSUInteger) cell.cellInitFrame.size.height);
         [UIView beginAnimations:@"Move" context:nil];
         [UIView setAnimationDuration:0.2];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         cell.frame = contractFrame;
         [UIView commitAnimations];
-    }
-    else {
-        origin = CGPointMake((page * gridBounds.size.width) + (((setIndex) % numCols) * cellBounds.size.width),
+
+    } else {
+        origin = CGPointMake(
+                (page * gridBounds.size.width) + (((setIndex) % numCols) * cellBounds.size.width),
                 (row * cellBounds.size.height));
-        contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cellBounds.size.width, (NSUInteger) cellBounds.size.height);
+        contractFrame = CGRectMake(
+                (NSUInteger) origin.x,
+                (NSUInteger) origin.y,
+                (NSUInteger) cellBounds.size.width,
+                (NSUInteger) cellBounds.size.height);
         [UIView beginAnimations:@"Move" context:nil];
         [UIView setAnimationDuration:0.2];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         cell.frame = CGRectInset(contractFrame, self.cellMargin, self.cellMargin);
         [UIView commitAnimations];
     }
-
-
 }
 
 - (NSInteger)CellCollisionDetection:(UzysGridViewCell *)cell {
@@ -281,32 +286,24 @@
     }
 
     if ([collisionCells count] == 1) {
-
-
         coll = [collisionCells objectAtIndex:0];
 
         if (coll.center.x < cell.center.x) {
             if (coll.index + 1 == numOfCell) {
                 retInd = coll.index;
-            }
-            else {
+            } else {
                 retInd = coll.index + 1;
             }
             NSLog(@"Collide index:%d right", retInd);
-        }
-        else {
+        } else {
             retInd = coll.index;
             NSLog(@"Collide index:%d left", retInd);
-
         }
-
-
     }
 
     [self CellRearrange:cell.index with:retInd];
     return retInd;
 }
-
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -327,9 +324,6 @@
         self.cellMargin = cellMargins;
         [self createLayout:YES];
         [self InitVariable];
-        
-        
-
     }
     return self;
 }
@@ -341,7 +335,6 @@
     _cellInfo = nil;
     colPosX = nil;
     rowPosY = nil;
-
 }
 
 
@@ -352,11 +345,9 @@
     if (isVariable == NO) {
         self.numberOfRows = 3;
         self.numberOfColumns = 2;
-
     }
     //self.cellMargin =40;
     _currentPageIndex = 0;
-
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.contentMode = UIViewContentModeRedraw;
@@ -376,9 +367,6 @@
     [self addSubview:_scrollView];
 
     //  [self reloadData];
-
-
-
 }
 
 - (void)layoutSubviews {
@@ -394,7 +382,6 @@
     // Drawing code
     [self LoadTotalView];
     [self editableAnimation];
-
 }
 
 - (void)reloadData {
@@ -413,7 +400,6 @@
         if (isLandscape) {
             numCols = self.numberOfRows;
             numRows = self.numberOfColumns;
-
         }
 
         CGRect gridBounds = self.scrollView.bounds;
@@ -423,7 +409,6 @@
         CGSize contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
 
         [_scrollView setContentSize:contentSize];
-
 
         for (UIView *v in self.scrollView.subviews) {
             [v removeFromSuperview];
@@ -443,37 +428,40 @@
             if ([colPosX count] == numCols && [rowPosY count] == numRows) {
                 NSNumber *rowPos = [rowPosY objectAtIndex:row];
                 NSNumber *col = [colPosX objectAtIndex:(i % numCols)];
-                origin = CGPointMake((page * gridBounds.size.width) + ([col intValue]),
+                origin = CGPointMake(
+                        (page * gridBounds.size.width) + ([col intValue]),
                         [rowPos intValue]);
-                contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cell.cellInitFrame.size.width, (NSUInteger) cell.cellInitFrame.size.height);
+                contractFrame = CGRectMake(
+                        (NSUInteger) origin.x,
+                        (NSUInteger) origin.y,
+                        (NSUInteger) cell.cellInitFrame.size.width,
+                        (NSUInteger) cell.cellInitFrame.size.height);
                 cell.frame = contractFrame;
-            }
-            else {
-                origin = CGPointMake((page * gridBounds.size.width) + ((i % numCols) * cellBounds.size.width),
+
+            } else {
+                origin = CGPointMake(
+                        (page * gridBounds.size.width) + ((i % numCols) * cellBounds.size.width),
                         (row * cellBounds.size.height));
-                contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cellBounds.size.width, (NSUInteger) cellBounds.size.height);
+                contractFrame = CGRectMake(
+                        (NSUInteger) origin.x,
+                        (NSUInteger) origin.y,
+                        (NSUInteger) cellBounds.size.width,
+                        (NSUInteger) cellBounds.size.height);
                 cell.frame = CGRectInset(contractFrame, self.cellMargin, self.cellMargin);
             }
-
 
             if (self.editable == YES) {
                 [cell setEdit:YES];
 //                [cell.ButtonDelete setHidden:NO];
-
-            }
-            else {
+            } else {
                 [cell setEdit:NO];
 //                [cell.ButtonDelete setHidden:YES];
             }
             [_scrollView addSubview:cell];
-
             [_cellInfo addObject:cell];
         }
-
         [self MovePage:self.currentPageIndex animated:NO];
-
     }
-
 }
 
 // ----------------------------------------------------------------------------------
@@ -492,7 +480,6 @@
     if (isLandscape) {
         numCols = self.numberOfRows;
         numRows = self.numberOfColumns;
-
     }
 
     CGRect gridBounds = self.scrollView.bounds;
@@ -502,7 +489,6 @@
     [UIView animateWithDuration:0.4 animations:^(void) {
         [_scrollView setContentSize:contentSize];
     }];
-
 
     for (NSUInteger i = index; i < [_cellInfo count]; i++) {
         UzysGridViewCell *cell = [_cellInfo objectAtIndex:i];
@@ -515,31 +501,37 @@
         if ([colPosX count] == numCols && [rowPosY count] == numRows) {
             NSNumber *rowPos = [rowPosY objectAtIndex:row];
             NSNumber *col = [colPosX objectAtIndex:(i % numCols)];
-            origin = CGPointMake((page * gridBounds.size.width) + ([col intValue]),
+            origin = CGPointMake(
+                    (page * gridBounds.size.width) + ([col intValue]),
                     [rowPos intValue]);
-            contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cell.cellInitFrame.size.width, (NSUInteger) cell.cellInitFrame.size.height);
+            contractFrame = CGRectMake(
+                    (NSUInteger) origin.x,
+                    (NSUInteger) origin.y,
+                    (NSUInteger) cell.cellInitFrame.size.width,
+                    (NSUInteger) cell.cellInitFrame.size.height);
             [UIView beginAnimations:@"Move" context:nil];
             [UIView setAnimationDuration:0.2];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             cell.frame = contractFrame;
             [UIView commitAnimations];
-        }
-        else {
-            origin = CGPointMake((page * gridBounds.size.width) + ((i % numCols) * cellBounds.size.width),
+
+        } else {
+            origin = CGPointMake(
+                    (page * gridBounds.size.width) + ((i % numCols) * cellBounds.size.width),
                     (row * cellBounds.size.height));
-            contractFrame = CGRectMake((NSUInteger) origin.x, (NSUInteger) origin.y, (NSUInteger) cellBounds.size.width, (NSUInteger) cellBounds.size.height);
+            contractFrame = CGRectMake(
+                    (NSUInteger) origin.x,
+                    (NSUInteger) origin.y,
+                    (NSUInteger) cellBounds.size.width,
+                    (NSUInteger) cellBounds.size.height);
             [UIView beginAnimations:@"Move" context:nil];
             [UIView setAnimationDuration:0.2];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             cell.frame = CGRectInset(contractFrame, self.cellMargin, self.cellMargin);
             [UIView commitAnimations];
         }
-
-
     }
-
 }
-
 
 - (void)updateCurrentPageIndex {
 //    CGFloat pageWidth = _scrollView.frame.size.width;
@@ -559,9 +551,7 @@
             [self.delegate gridView:self changedPageIndex:curPage];
         }
     }
-
     prevPage = curPage;
-
 }
 
 - (void)MovePage:(NSInteger)index animated:(BOOL)animate {
