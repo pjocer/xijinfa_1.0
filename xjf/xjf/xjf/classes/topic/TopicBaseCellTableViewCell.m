@@ -49,11 +49,13 @@
     [_praise addGestureRecognizer:praise_tap];
 }
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
-    UIViewController *controller = getCurrentDisplayController();
-    TaViewController *ta = [[TaViewController alloc] init];
-    ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.user.nickname];
-    ta.model = self.model.user;
-    [controller.navigationController pushViewController:ta animated:YES];
+    if (![[[XJAccountManager defaultManager] user_id] isEqualToString:self.model.user_id]) {
+        UIViewController *controller = getCurrentDisplayController();
+        TaViewController *ta = [[TaViewController alloc] init];
+        ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.user.nickname];
+        ta.model = self.model.user;
+        [controller.navigationController pushViewController:ta animated:YES];
+    }
 }
 - (void)commentClicked:(UITapGestureRecognizer *)gesture {
     if ([[XJAccountManager defaultManager] accessToken]) {

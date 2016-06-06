@@ -1,63 +1,50 @@
 //
-//  MyTopicViewController.m
+//  TaTopicViewController.m
 //  xjf
 //
-//  Created by PerryJ on 16/6/3.
+//  Created by PerryJ on 16/6/6.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "MyTopicViewController.h"
+#import "TaTopicViewController.h"
 #import "TopicBaseCellTableViewCell.h"
 #import "TopicModel.h"
-#import "XJAccountManager.h"
 #import "XjfRequest.h"
 #import "ZToastManager.h"
 #import <MJRefresh/MJRefresh.h>
 #import "TopicDetailViewController.h"
-@interface MyTopicViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface TaTopicViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) TopicModel *model;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, copy) NSString *user_id;
+@property (nonatomic, copy) NSString *nickname;
 @end
 
-@implementation MyTopicViewController
+#define USER_TOPIC_API [NSString stringWithFormat:@"/api/user/%@/topic",self.user_id]
 
-#define USER_ID [[[[XJAccountManager defaultManager] user_model] result] id]
-#define USER_TOPIC_API [NSString stringWithFormat:@"/api/user/%@/topic",USER_ID]
-
+@implementation TaTopicViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
 }
+-(instancetype)initWithID:(NSString *)userId nickname:(NSString *)nickname {
+    self = [super init];
+    if (self) {
+        _user_id = userId;
+        _nickname = nickname;
+    }
+    return self;
+}
 - (void)initMainUI {
-    self.nav_title = @"我的话题";
+    self.nav_title = [NSString stringWithFormat:@"%@的话题",self.nickname];
     self.dataSource = [NSMutableArray array];
     [self requestData:USER_TOPIC_API Method:GET];
     [self.view addSubview:self.tableView];
 }
-- (void)requestData:(APIName *)api Method:(RequestMethod)method {
-    if (api == nil) {
-        [self hiddenMJRefresh:self.tableView];
-        return;
-    }
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        _model = [[TopicModel alloc] initWithData:responseData error:nil];
-        if ([_model.errCode isEqualToString:@"0"]) {
-            [self.dataSource addObjectsFromArray:_model.result.data];
-            [self.tableView reloadData];
-        }else {
-            [[ZToastManager ShardInstance] showtoast:_model.errMsg];
-        }
-        [self hiddenMJRefresh:self.tableView];
-    } failedBlock:^(NSError * _Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-        [self hiddenMJRefresh:self.tableView];
-    }];
-}
 -(UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -73,7 +60,6 @@
     }
     return _tableView;
 }
-
 - (CGFloat)cellHeightByModel:(TopicDataModel *)model {
     CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
     CGFloat height = 10+40+10+contentHeight + 10;
@@ -110,6 +96,26 @@
     }
     return height+36+10;
 }
+- (void)requestData:(APIName *)api Method:(RequestMethod)method {
+    if (api == nil) {
+        [self hiddenMJRefresh:self.tableView];
+        return;
+    }
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        _model = [[TopicModel alloc] initWithData:responseData error:nil];
+        if ([_model.errCode isEqualToString:@"0"]) {
+            [self.dataSource addObjectsFromArray:_model.result.data];
+            [self.tableView reloadData];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:_model.errMsg];
+        }
+        [self hiddenMJRefresh:self.tableView];
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        [self hiddenMJRefresh:self.tableView];
+    }];
+}
 - (void)hiddenMJRefresh:(UITableView *)tableView {
     [tableView.mj_footer isRefreshing]?[tableView.mj_footer endRefreshing]:nil;
     [tableView.mj_header isRefreshing]?[tableView.mj_header endRefreshing]:nil;
@@ -139,7 +145,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.dataSource.count>0) {
         TopicDataModel *model = [self.dataSource objectAtIndex:indexPath.row];
-        return [self cellHeightByModel:model];
+        if (model.categories.count>0) {
+            return [self cellHeightByModel:model];
+        }else {
+            CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
+            CGFloat height = 10+40+10+contentHeight + 10;
+            return height + 46;
+        }
     }
     return 0;
 }

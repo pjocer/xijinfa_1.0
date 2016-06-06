@@ -8,14 +8,13 @@
 
 #import <JSONModel/JSONModel.h>
 
-@interface UserInfoResultAccountModel : JSONModel
-@property(nonatomic, copy) NSString *available;
-@property(nonatomic, copy) NSString *balance;
-@property(nonatomic, copy) NSString *created_at;
-@property(nonatomic, copy) NSString *freeze;
-@property(nonatomic, copy) NSString *id;
-@property(nonatomic, copy) NSString *updated_at;
-@property(nonatomic, copy) NSString *user_id;
+@protocol UserProfileMembership <NSObject>
+@end
+
+@interface UserProfileMembership : JSONModel
+@property (nonatomic, copy) NSString *end_time;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *type;
 @end
 
 @interface UserInfoResultModel : JSONModel
@@ -24,6 +23,7 @@
 @property(nonatomic, copy) NSString *city;
 @property(nonatomic, copy) NSString *coin_balance;
 @property(nonatomic, copy) NSString *created_at;
+@property(nonatomic, copy) NSString *account_balance;
 @property(nonatomic, copy) NSString *credit_balance;
 @property(nonatomic, copy) NSString *deleted_at;
 @property(nonatomic, copy) NSString *email;
@@ -43,7 +43,7 @@
 @property(nonatomic, copy) NSString *sex;
 @property(nonatomic, copy) NSString *status;
 @property(nonatomic, copy) NSString *updated_at;
-@property(nonatomic, strong) UserInfoResultAccountModel *account;
+@property(nonatomic, strong)NSMutableArray <UserProfileMembership>*membership;
 @end
 
 @interface UserProfileModel : JSONModel

@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) UIView *footer;
 @property (nonatomic, strong) UIImageView *like_imageView;
-@property (nonatomic, strong) UILabel *like_count;
+@property (nonatomic, strong) UIButton *like_count;
 @end
 
 @implementation TopicDetailViewController
@@ -135,7 +135,7 @@
         CGPoint center = _like_imageView.center;
         center.x  = like?(center.x-20):(center.x+20);
         _like_imageView.center = center;
-        _like_count.text = like?@"取消点赞":@"点赞";
+        [_like_count setTitle:like?@"取消点赞":@"点赞" forState:UIControlStateNormal];
         CGPoint labelCenter = _like_count.center;
         labelCenter.x =like?(labelCenter.x-20):(labelCenter.x+20);;
         _like_count.center = labelCenter;
@@ -169,13 +169,15 @@
         _like_imageView.highlightedImage = [UIImage imageNamed:@"iconLikeOn"];
         _like_imageView.userInteractionEnabled =YES;
         [like addSubview:_like_imageView];
-        _like_count = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWITH/4+2.5, 17, SCREENWITH/4, 14)];
-        _like_count.textColor = AssistColor;
-        _like_count.text = @"点赞";
-        _like_count.userInteractionEnabled = YES;
-        _like_count.font = FONT12;
+        _like_count = [UIButton buttonWithType:UIButtonTypeCustom];
+        _like_count.frame = CGRectMake(SCREENWITH/4+2.5, 17, SCREENWITH/4, 14);
+        UIColor *color = AssistColor;
+        [_like_count setTitleColor:color forState:UIControlStateNormal];
+        [_like_count setTitle:@"点赞" forState:UIControlStateNormal];
+        _like_count.titleLabel.font = FONT12;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(lickClicked:)];
-        [_like_count addGestureRecognizer:tap];
+        [_like_count addTarget:self action:@selector(lickClicked:) forControlEvents:UIControlEventTouchUpInside];
+        _like_count.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_like_imageView addGestureRecognizer:tap];
         [like addSubview:_like_count];
         [like addTarget:self action:@selector(lickClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -220,7 +222,7 @@
         return _header;
     }else {
         CommentListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentListCell" forIndexPath:indexPath];
-        if (_commentList.result.data) {
+        if (_commentList.result.data && _commentList.result.data.count>0) {
             CommentData *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
             cell.data = data;
         }
@@ -231,9 +233,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return _header.cellHeight;
-    }else {
-        CommentData *data = [_dataSource objectAtIndex:indexPath.row-1];
+    }else if (_commentList.result.data && _commentList.result.data.count>0) {
+        CommentData *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
         return [StringUtil calculateLabelHeight:data.content width:SCREENWITH-20 fontsize:15]+71;
+    }else {
+        return 0;
     }
 }
 

@@ -34,6 +34,8 @@ typedef enum : NSUInteger {
 
 - (NSString *)accessToken;
 
+- (NSString *)user_id;
+
 - (void)setAccuontInfo:(NSDictionary *)info;
 
 - (instancetype)init NS_UNAVAILABLE;

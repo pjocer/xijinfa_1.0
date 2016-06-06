@@ -47,6 +47,13 @@ static APIName *topic_discuss = @"/api/topic/?type=discuss";
 
 //点赞 (取消点赞)
 static APIName *praise = @"/api/like";
+
+//关注
+static APIName *focus_on = @"/api/friendship/follow";
+//取消关注
+static APIName *focus_off = @"/api/friendship/unfollow";
+//是否已经关注
+static APIName *focusOrNot = @"/api/friendship/check";
 #pragma mark- Hunter_Wang
 
 

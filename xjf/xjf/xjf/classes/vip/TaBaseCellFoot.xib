@@ -72,7 +72,7 @@
                 <outlet property="comment" destination="4hU-6O-rY5" id="cDv-cb-B8f"/>
                 <outlet property="topic" destination="EsE-xN-UHO" id="W5a-NF-OYi"/>
             </connections>
-            <point key="canvasLocation" x="435" y="224"/>
+            <point key="canvasLocation" x="530" y="232"/>
         </tableViewCell>
     </objects>
     <resources>

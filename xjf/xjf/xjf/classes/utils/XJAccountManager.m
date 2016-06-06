@@ -84,6 +84,10 @@
     }];
 }
 
+-(NSString *)user_id {
+    return self.user_model.result.id;
+}
+
 - (NSString *)accessToken {
     return [[NSUserDefaults standardUserDefaults] objectForKey:ACCOUNT_ACCESS_TOKEN];
 }

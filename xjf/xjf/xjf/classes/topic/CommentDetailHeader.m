@@ -37,11 +37,13 @@
 }
 
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
-    UIViewController *controller = getCurrentDisplayController();
-    TaViewController *ta = [[TaViewController alloc] init];
-    ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.result.user.nickname];
-    ta.model = self.model.result.user;
-    [controller.navigationController pushViewController:ta animated:YES];
+    if (![[[XJAccountManager defaultManager] user_id] isEqualToString:self.model.result.user.id]) {
+        UIViewController *controller = getCurrentDisplayController();
+        TaViewController *ta = [[TaViewController alloc] init];
+        ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.result.user.nickname];
+        ta.model = self.model.result.user;
+        [controller.navigationController pushViewController:ta animated:YES];
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

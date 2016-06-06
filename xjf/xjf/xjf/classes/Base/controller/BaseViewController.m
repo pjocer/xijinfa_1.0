@@ -49,11 +49,9 @@ NSString *const Subscribe = @"SubscribeViewController";
 
 -(void)extendheadViewFor:(NSString *)name {
     if ([name isEqualToString:My]) {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"notification"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
-        item.tag = 9;
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 13;
-        self.navigationItem.rightBarButtonItems = @[item,item2];
+        self.navigationItem.rightBarButtonItem = item2;
     } else if ([name isEqualToString:Index]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 10;
@@ -106,11 +104,6 @@ NSString *const Subscribe = @"SubscribeViewController";
             } else {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
-        }
-            break;
-        case 9://通知
-        {
-
         }
             break;
         case 10://历史

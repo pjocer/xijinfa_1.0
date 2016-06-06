@@ -7,6 +7,9 @@
 //
 
 #import "TaBaseCellFoot.h"
+#import "XJAccountManager.h"
+#import "TaTopicViewController.h"
+#import "UserInfoModel.h"
 
 @interface TaBaseCellFoot ()
 @property (weak, nonatomic) IBOutlet UILabel *topic;
@@ -25,8 +28,17 @@
 - (void)commentClicked:(UIGestureRecognizer *)gesture {
     NSLog(@"comment");
 }
+-(void)setModel:(JSONModel *)model {
+    UserInfoModel *userInfo = (UserInfoModel *)model;
+    _model = userInfo;
+    _topic.text = [NSString stringWithFormat:@"%@的话题",userInfo.nickname];
+    _comment.text = [NSString stringWithFormat:@"%@的回答",userInfo.nickname];
+}
 - (void)topicClicked:(UIGestureRecognizer *)gesture {
-    NSLog(@"topic");
+    UserInfoModel *user_info = (UserInfoModel *)self.model;
+    UIViewController *controller = getCurrentDisplayController();
+    TaTopicViewController *ta_topic = [[TaTopicViewController alloc] initWithID:user_info.id nickname:user_info.nickname];
+    [controller.navigationController pushViewController:ta_topic animated:YES];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

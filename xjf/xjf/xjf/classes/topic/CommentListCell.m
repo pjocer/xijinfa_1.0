@@ -35,11 +35,13 @@
     // Initialization code
 }
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
-    UIViewController *controller = getCurrentDisplayController();
-    TaViewController *ta = [[TaViewController alloc] init];
-    ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.data.user.nickname];
-    ta.model = self.data.user;
-    [controller.navigationController pushViewController:ta animated:YES];
+    if (![self.data.user.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
+        UIViewController *controller = getCurrentDisplayController();
+        TaViewController *ta = [[TaViewController alloc] init];
+        ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.data.user.nickname];
+        ta.model = self.data.user;
+        [controller.navigationController pushViewController:ta animated:YES];
+    }
 }
 -(void)setData:(CommentData *)data {
     _data = data;

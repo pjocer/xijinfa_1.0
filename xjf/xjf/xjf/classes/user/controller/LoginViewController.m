@@ -285,16 +285,6 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"wechat", @"type", nil];
         request = [[XjfRequest alloc] initWithAPIName:third_login RequestMethod:POST];
         request.requestParams = params;
-    } else if (typev == 3) {
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"nickname"]] replaceNullString] forKey:@"nick_name"];
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"figureurl_qq_2"]] replaceNullString] forKey:@"user_face"];
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"openId"]] replaceNullString] forKey:@"third_id"];
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"accessToken"]] replaceNullString] forKey:@"accessToken"];
-    } else if (typev == 4) {
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"nick_name"]] replaceNullString] forKey:@"nick_name"];
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"user_face"]] replaceNullString] forKey:@"user_face"];
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"openId"]] replaceNullString] forKey:@"third_id"];
-        [dict setValue:[[NSString stringWithFormat:@"%@", [message objectForKey:@"accessToken"]] replaceNullString] forKey:@"accessToken"];
     }
     if (request) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
