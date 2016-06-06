@@ -1,8 +1,8 @@
- //
+//
 //  SearchViewController.m
 //  xjf
 //
-//  Created by yiban on 16/4/5.
+//  Created by PerryJ on 16/6/6.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
@@ -16,8 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {

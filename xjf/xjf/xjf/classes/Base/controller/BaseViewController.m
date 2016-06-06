@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "IndexConfigure.h"
 #import "myConfigure.h"
+#import "SearchViewController.h"
 #import "NewTopicViewController.h"
 #import "XJAccountManager.h"
 #import "ZToastManager.h"

@@ -59,7 +59,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="股票是股份公司发行的所有权凭证，是股份公司为筹集资金而发行给各个股东作为持股凭证并借以取得股息和红利的一种有价证券。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIO-tZ-dAB">
-                        <rect key="frame" x="10" y="60" width="300" height="54"/>
+                        <rect key="frame" x="60" y="60" width="250" height="72"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -104,7 +104,7 @@
                     <constraint firstItem="4wx-kl-I0L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="mwA-Lp-Cb2"/>
                     <constraint firstItem="Bhm-vz-kH6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="q6e-8c-Id7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Nju-KF-TJI" secondAttribute="bottom" constant="-8" id="r4W-mN-doA"/>
-                    <constraint firstItem="sIO-tZ-dAB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="vIR-wM-BPv"/>
+                    <constraint firstItem="sIO-tZ-dAB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="52" id="vIR-wM-BPv"/>
                     <constraint firstItem="Bhm-vz-kH6" firstAttribute="leading" secondItem="4wx-kl-I0L" secondAttribute="trailing" constant="8" id="vzo-aV-wc0"/>
                 </constraints>
             </tableViewCellContentView>

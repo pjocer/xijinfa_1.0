@@ -18,6 +18,8 @@
 }
 @property(nonatomic, strong) UserProfileModel *model;
 @property(nonatomic, strong) UITableView *tableview;
+@property(nonatomic, strong) UIButton *footer;
+@property(nonatomic, strong) UIView *foot_background;
 @end
 
 @implementation MyViewController
@@ -31,14 +33,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = BackgroundColor
     self.model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
     [self extendheadViewFor:My];
     [self initMainUI];
+    [self resetTableViewFooter];
     @weakify(self)
     ReceivedNotification(self, UserInfoDidChangedNotification, ^(NSNotification *notification) {
         @strongify(self)
         self.model = notification.object;
+        [self resetTableViewFooter];
         [self.tableview reloadData];
     });
 }
@@ -50,7 +53,7 @@
 
 //main UI
 - (void)initMainUI {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 40) style:UITableViewStylePlain];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH-HEADHEIGHT) style:UITableViewStylePlain];
     _tableview.dataSource = self;
     _tableview.delegate = self;
     _tableview.showsVerticalScrollIndicator = NO;
@@ -62,6 +65,31 @@
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+- (void)resetTableViewFooter {
+    if (self.model.result.membership) {
+        _tableview.tableFooterView = self.foot_background;
+    }
+}
+
+-(UIView *)foot_background {
+    if (!_foot_background) {
+        _foot_background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 60)];
+        _foot_background.backgroundColor = [UIColor clearColor];
+        _footer = [UIButton buttonWithType:UIButtonTypeCustom];
+        _footer.frame = CGRectMake(10, 10, SCREENWITH-20, 50);
+        _footer.layer.cornerRadius = 5;
+        _footer.layer.masksToBounds = YES;
+        _footer.backgroundColor = [UIColor xjfStringToColor:@"#e60012"];
+        [_footer setTitle:@"开通会员" forState:UIControlStateNormal];
+        [_footer setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_footer addTarget:self action:@selector(dredgeVIP) forControlEvents:UIControlEventTouchUpInside];
+        [_foot_background addSubview:_footer];
+    }
+    return _foot_background;
+}
+- (void)dredgeVIP{
+    NSLog(@"开通VIP");
+}
 #pragma mark - TableView Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

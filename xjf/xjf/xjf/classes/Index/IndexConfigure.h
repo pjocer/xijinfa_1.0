@@ -6,7 +6,6 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "SearchViewController.h"
 #import "IndexMoreViewController.h"
 #import "IndexBannerCell.h"
 #import "IndexAppCell.h"
