@@ -122,7 +122,6 @@ NSString *const Subscribe = @"SubscribeViewController";
         case 12://搜索 #import "SearchViewController.h"
         {
             SearchViewController *download = [[SearchViewController alloc] init];
-            download.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:download animated:YES];
         }
             break;
@@ -153,7 +152,6 @@ NSString *const Subscribe = @"SubscribeViewController";
         case 15://搜索
         {
             SearchViewController *download = [[SearchViewController alloc] init];
-            download.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:download animated:YES];
         }
             break;
