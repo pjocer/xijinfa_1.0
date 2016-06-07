@@ -180,6 +180,9 @@
 		D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A81ED1CEEA0E8002C1297 /* XJMarket.m */; };
 		D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D140E1CFFE0960018F41B /* NewCommentViewController.m */; };
 		D06D14121D000BB10018F41B /* NewSharpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D14111D000BB10018F41B /* NewSharpViewController.m */; };
+		D07166511D06658000A08B58 /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07166501D06658000A08B58 /* SearchResultController.m */; };
+		D07166551D06B56D00A08B58 /* BaikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07166531D06B56D00A08B58 /* BaikeCell.m */; };
+		D07166561D06B56D00A08B58 /* BaikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07166541D06B56D00A08B58 /* BaikeCell.xib */; };
 		D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF6E1CFBF089002D3FAF /* TopicModel.m */; };
 		D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */; };
 		D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */; };
@@ -577,6 +580,11 @@
 		D06D140E1CFFE0960018F41B /* NewCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentViewController.m; sourceTree = "<group>"; };
 		D06D14101D000BB10018F41B /* NewSharpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSharpViewController.h; sourceTree = "<group>"; };
 		D06D14111D000BB10018F41B /* NewSharpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSharpViewController.m; sourceTree = "<group>"; };
+		D071664F1D06658000A08B58 /* SearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultController.h; sourceTree = "<group>"; };
+		D07166501D06658000A08B58 /* SearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultController.m; sourceTree = "<group>"; };
+		D07166521D06B56D00A08B58 /* BaikeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaikeCell.h; sourceTree = "<group>"; };
+		D07166531D06B56D00A08B58 /* BaikeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaikeCell.m; sourceTree = "<group>"; };
+		D07166541D06B56D00A08B58 /* BaikeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaikeCell.xib; sourceTree = "<group>"; };
 		D073CF6D1CFBF089002D3FAF /* TopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicModel.h; path = xjf/classes/topic/TopicModel.h; sourceTree = SOURCE_ROOT; };
 		D073CF6E1CFBF089002D3FAF /* TopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicModel.m; path = xjf/classes/topic/TopicModel.m; sourceTree = SOURCE_ROOT; };
 		D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicBaseCellTableViewCell.h; path = xjf/classes/topic/TopicBaseCellTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -1642,6 +1650,8 @@
 			children = (
 				D07575381D056E8100F8360F /* SearchViewController.h */,
 				D07575391D056E8100F8360F /* SearchViewController.m */,
+				D071664F1D06658000A08B58 /* SearchResultController.h */,
+				D07166501D06658000A08B58 /* SearchResultController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1654,6 +1664,9 @@
 				D075753E1D0593F300F8360F /* SearchSectionTwo.h */,
 				D075753F1D0593F300F8360F /* SearchSectionTwo.m */,
 				D07575401D0593F300F8360F /* SearchSectionTwo.xib */,
+				D07166521D06B56D00A08B58 /* BaikeCell.h */,
+				D07166531D06B56D00A08B58 /* BaikeCell.m */,
+				D07166541D06B56D00A08B58 /* BaikeCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1789,6 +1802,7 @@
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
 				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
 				D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */,
+				D07166561D06B56D00A08B58 /* BaikeCell.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
 				644C115C1CBA90A000892E2C /* WeiboSDK.bundle in Resources */,
@@ -1901,6 +1915,7 @@
 				5A105E7B1CEC59270079BEFE /* LessonRecommendedHeaderView.m in Sources */,
 				5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */,
 				5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */,
+				D07166511D06658000A08B58 /* SearchResultController.m in Sources */,
 				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
@@ -1965,6 +1980,7 @@
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
+				D07166551D06B56D00A08B58 /* BaikeCell.m in Sources */,
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
 				5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,

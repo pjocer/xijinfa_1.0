@@ -95,7 +95,9 @@
 {
     TalkGridViewCell *cell = [[TalkGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
-    cell.model = self.tablkListModel.result.data[index];
+    if (self.tablkListModel.result.data && self.tablkListModel.result.data.count>0) {
+        cell.model = self.tablkListModel.result.data[index];
+    }
     return cell;
 }
 -(void)handleSingleTapFrom

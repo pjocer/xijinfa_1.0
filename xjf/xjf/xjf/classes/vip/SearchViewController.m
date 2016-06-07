@@ -13,6 +13,7 @@
 #import "XjfRequest.h"
 #import "ZToastManager.h"
 #import "SearchSectionTwo.h"
+#import "SearchResultController.h"
 @interface SearchViewController () <UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *tableView;
@@ -36,6 +37,7 @@
     [super loadView];
     UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 64)];
     searchView.backgroundColor = [UIColor whiteColor];
+    [searchView addShadow];
     [searchView addSubview:self.searchBar];
     UIButton *cancel = [UIButton buttonWithType:UIButtonTypeSystem];
     cancel.frame = CGRectMake(SCREENWITH-40, 27, 30, 30);
@@ -146,15 +148,26 @@
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
+- (void)handleResult{
+    SearchResultController *result = [[SearchResultController alloc] init];
+    UIView *resultView = result.view;
+    resultView.frame = CGRectMake(0, 64, SCREENWITH, SCREENHEIGHT-64);
+    [self.view addSubview:resultView];
+    NSLog(@"%ld",result.current);
+}
 #pragma mark - SearchBar Delegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     if ([searchBar.text replaceNullString] != nil) {
+        [searchBar resignFirstResponder];
         [[XJMarket sharedMarket] addSearch:searchBar.text];
+        [self.tableView removeFromSuperview];
+        [self handleResult];
     }
 }
 #pragma mark - Action
 - (void)deleteRencentlySearch {
     [[XJMarket sharedMarket] clearRecentlySearched];
+    [self.tableView reloadData];
 }
 - (void)cancelSearchAction{
     [_searchBar resignFirstResponder];

@@ -12,6 +12,11 @@
 @implementation SearchSectionOne
 
 - (void)initSubViews {
+    for (UIButton *button in self.contentView.subviews) {
+        if (button) {
+            [button removeFromSuperview];
+        }
+    }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     CGFloat all = 0;
     CGFloat alll = 0;
@@ -23,23 +28,23 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.layer.borderColor = [[UIColor xjfStringToColor:@"#9a9a9a"] CGColor];
         button.layer.borderWidth = 1;
-        button.layer.cornerRadius = 5;
+        button.layer.cornerRadius = 33/2.0;
         button.layer.masksToBounds = YES;
         NSString *title = [NSString stringWithFormat:@"%@",results[i]];
-        CGSize size = [title sizeWithFont:FONT15 constrainedToSize:CGSizeMake(SCREENWITH, 18) lineBreakMode:1];
+        CGSize size = [title sizeWithFont:FONT15 constrainedToSize:CGSizeMake(SCREENWITH, 33) lineBreakMode:1];
         all = all + tap + size.width+20;
         if (all <= SCREENWITH) {
             x = all - size.width-20;
             y = 10;
-            button.frame = CGRectMake(x, y, size.width+20, 18);
-            self.cellHeight = 39;
+            button.frame = CGRectMake(x, y, size.width+20, 33);
+            self.cellHeight = 15+39;
         }else if (all <= SCREENWITH*2 && all>SCREENWITH) {
-            alll = alll + tap + size.width;
+            alll = alll + tap + size.width+20 ;
             if (alll <= SCREENWITH) {
                 x = alll - size.width-20;
-                y = 38;
-                button.frame = CGRectMake(x, y, size.width+20, 18);
-                self.cellHeight = 67;
+                y = 53;
+                button.frame = CGRectMake(x, y, size.width+20, 33);
+                self.cellHeight = 15+67;
             }else {
                 return;
             }

@@ -175,7 +175,7 @@
     if (![array containsObject:search]) {
         [array insertObject:search atIndex:0];
         if (array.count > 10) {
-            [array removeObjectAtIndex:10];
+            [array removeLastObject];
         }
         [array writeToFile:[self pathForSearched] atomically:YES];
     }
