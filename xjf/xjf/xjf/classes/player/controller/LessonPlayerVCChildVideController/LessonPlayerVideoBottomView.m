@@ -9,6 +9,8 @@
 #import "LessonPlayerVideoBottomView.h"
 
 @implementation LessonPlayerVideoBottomView
+static NSInteger collectionTag = 101;
+static NSInteger downloadTag = 102;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -19,23 +21,27 @@
         self.collection = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.collection];
         self.collection.tintColor = [UIColor xjfStringToColor:@"#greyishBrown"];
-        [self.collection setImage:[UIImage imageNamed:@"user_faovrite"] forState:UIControlStateNormal];
+        [self.collection setImage:[UIImage imageNamed:@"iconFavorites"] forState:UIControlStateNormal];
         [self.collection mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.right.equalTo(self).with.offset(-10);
             make.size.mas_equalTo(CGSizeMake(16, 16));
         }];
+        [self.collection addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        self.collection.tag = collectionTag;
         
-        //download
+        //share
         self.download = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.download];
         self.download.tintColor = [UIColor xjfStringToColor:@"#greyishBrown"];
-         [self.download setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+        [self.download setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
         [self.download mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
-            make.right.equalTo(self.collection.mas_left).with.offset(-10);
+            make.right.equalTo(self.collection.mas_left).with.offset(-15);
             make.size.mas_equalTo(CGSizeMake(16, 16));
         }];
+        [self.download addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        self.download.tag = downloadTag;
         
         //collectionLogo
         self.collectionLogo = [[UIImageView alloc] init];
@@ -63,6 +69,13 @@
         
     }
     return self;
+}
+
+- (void)click:(UIButton *)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(LessonPlayerVideoBottomView:DidDownloadOrCollectionButton:)]) {
+      [self.delegate LessonPlayerVideoBottomView:self DidDownloadOrCollectionButton:sender];
+    } 
 }
 
 @end

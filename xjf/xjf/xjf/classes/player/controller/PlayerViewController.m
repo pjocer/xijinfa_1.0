@@ -50,7 +50,7 @@
 @property(nonatomic, strong) UIButton *sendMsgButton;/**< 发表评论内容按钮 */
 ///评论数据
 @property(nonatomic, strong) CommentsAllDataList *commentsModel;
-
+@property(nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @end
 
 static NSString *PlayerVC_Describe_HeaderId = @"PlayerVC_Describe_HeaderId";
@@ -76,9 +76,13 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
+    [self handleData];
 
+}
+- (void)handleData
+{
     [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
-
+     [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
 }
 
 #pragma mark requestData
@@ -119,6 +123,46 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
 
 }
+
+- (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
+    
+    if (method == GET) {
+        __weak typeof(self) wSelf = self;
+        [[ZToastManager ShardInstance] showprogress];
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+        
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            __strong typeof(self) sSelf = wSelf;
+            sSelf.tempLessonDetailModel = [[LessonDetailListModel alloc]
+                                           initWithData:responseData error:nil];
+            [self.collectionView reloadData];
+            [[ZToastManager ShardInstance] hideprogress];
+            NSLog(@"哈利路亚  -----   %d",sSelf.tempLessonDetailModel.result.user_favored);
+        }                  failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] hideprogress];
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+    }
+    if (method == POST) {
+        [self PostOrDeleteRequestData:api Method:POST];
+    }
+    if (method == DELETE) {
+        [self PostOrDeleteRequestData:api Method:DELETE];
+    }
+    
+}
+- (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method
+{
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.tempLessonDetailModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.tempLessonDetailModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.tempLessonDetailModel.result.department]}];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
+    }failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
+
 
 
 #pragma mark 横竖屏状态
@@ -357,6 +401,11 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                                      forControlEvents:UIControlEventTouchUpInside];
             [describeHeaderView.collectionButton addTarget:self action:@selector(describeHeaderViewcollectionButtonAction:)
                                           forControlEvents:UIControlEventTouchUpInside];
+            if (self.tempLessonDetailModel.result.user_favored) {
+                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavoritesOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            } else {
+                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavorites"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }
             return describeHeaderView;
         }
         else if (indexPath.section == 1) {
@@ -497,8 +546,12 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 #pragma mark 视频收藏
 
-- (void)describeHeaderViewcollectionButtonAction:(UIButton *)sender {
-    NSLog(@"视频收藏");
+- (void)describeHeaderViewcollectionButtonAction:(UIButton *)sender{
+    if (self.tempLessonDetailModel.result.user_favored) {
+        [self requestLessonListData:favorite method:DELETE];
+    } else if (!self.tempLessonDetailModel.result.user_favored) {
+        [self requestLessonListData:favorite method:POST];
+    }
 }
 
 #pragma mark 查看全部评论

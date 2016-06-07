@@ -94,19 +94,18 @@ static CGFloat StudyImageH = 20;
             make.height.mas_equalTo(14);
             make.width.mas_equalTo(45);
         }];
+    }else {
+        [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.studyImage.mas_left).with.offset(-15);
+            make.centerY.equalTo(self);
+            make.height.mas_equalTo(14);
+            make.width.mas_equalTo(45);
+        }];
     }
 
 }
 
 
-- (void)setLessonDetailListModel:(LessonDetailListLessonsModel *)lessonDetailListModel
-{
-    if (lessonDetailListModel) {
-        _lessonDetailListModel = lessonDetailListModel;
-    }
-    self.title.text = lessonDetailListModel.title;
-    //    self.lessonCount.text = [NSString stringWithFormat:@"%.2lf",model.video_duration / 60];
-}
 - (void)setTalkGridModel:(TalkGridModel *)talkGridModel
 {
     if (talkGridModel) {

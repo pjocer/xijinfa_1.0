@@ -1,62 +1,33 @@
 //
-//  MyLessonsViewController.m
+//  MyLessonsSchoolViewController.m
 //  xjf
 //
-//  Created by Hunter_wang on 16/6/4.
+//  Created by Hunter_wang on 16/6/6.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "MyLessonsViewController.h"
+#import "MyLessonsSchoolViewController.h"
 #import "VideoListCell.h"
 #import "MyLessonsTableFooterView.h"
 #import "TalkGridModel.h"
 #import "LessonDetailViewController.h"
-@interface MyLessonsViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) TablkListModel *tablkListModel;
+@interface MyLessonsSchoolViewController ()<UITableViewDelegate, UITableViewDataSource>
+
 @end
 
-@implementation MyLessonsViewController
-static NSString *MyLessonsCell_id = @"MyLessonsCell_id";
+
+@implementation MyLessonsSchoolViewController
+static NSString *MyLessonsSchool_id = @"MyLessonsSchool_id";
 static CGFloat tableFooterH = 35;
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"我的课程";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTabelView];
-    [self requesData:myLessonsApi method:GET];
-}
-#pragma mark requestData
-
-- (void)requesData:(APIName *)api method:(RequestMethod)method {
-    __weak typeof(self) wSelf = self;
-    [[ZToastManager ShardInstance] showprogress];
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-        [sSelf.tableView reloadData];
-        [[ZToastManager ShardInstance] hideprogress];
-        
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
 }
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 64) style:UITableViewStyleGrouped];
+                      initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 100) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -69,7 +40,7 @@ static CGFloat tableFooterH = 35;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
     
-    [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyLessonsCell_id];
+    [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyLessonsSchool_id];
 }
 
 #pragma mark TabelViewDataSource
@@ -80,12 +51,12 @@ static CGFloat tableFooterH = 35;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.tablkListModel.result.data.count;
+    return self.dataSorce.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyLessonsCell_id];
-    cell.model = self.tablkListModel.result.data[indexPath.section];
+    VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyLessonsSchool_id];
+    cell.model = self.dataSorce[indexPath.section];
     cell.viedoDetail.hidden = NO;
     cell.price.hidden = YES;
     return cell;
@@ -114,9 +85,8 @@ static CGFloat tableFooterH = 35;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-    lessonDetailViewController.model = self.tablkListModel.result.data[indexPath.section];
+    lessonDetailViewController.model = self.dataSorce[indexPath.section];
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
-
 
 @end

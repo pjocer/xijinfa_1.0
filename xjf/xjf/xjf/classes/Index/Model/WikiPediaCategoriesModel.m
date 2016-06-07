@@ -9,83 +9,25 @@
 #import "WikiPediaCategoriesModel.h"
 
 @implementation WikiPediaCategoriesDataModel
-//+(JSONKeyMapper *)keyMapper {
-//    return [[JSONKeyMapper alloc]initWithDictionary:@{@"description":@"des"}];
-//}
-//+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-//    return YES;
-//}
-- (void)setValue:(id)value forKey:(NSString *)key
++(BOOL)propertyIsOptional:(NSString*)propertyName
 {
-    [super setValue:value forKey:key];
+    return YES;
 }
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"id"]) {
-        self.ID = value;
-    }
-}
-
-
-
-
-
-
 @end
 
 @implementation WikiPediaCategoriesResultModel
-//+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-//    return YES;
-//}
-
-- (void)setValue:(id)value forKey:(NSString *)key
++(BOOL)propertyIsOptional:(NSString*)propertyName
 {
-    [super setValue:value forKey:key];
-
+    return YES;
 }
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"data"]) {
-        self.dataModelArray = [NSMutableArray array];
-        for (NSDictionary *dic in value) {
-            WikiPediaCategoriesDataModel *model = [[WikiPediaCategoriesDataModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
-            [self.dataModelArray addObject:model];
-        }
-    }
-    
-    
-}
-
-
-
-
 
 @end
 
 @implementation WikiPediaCategoriesModel
-//+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-//    return YES;
-//}
-
-- (void)setValue:(id)value forKey:(NSString *)key
++(BOOL)propertyIsOptional:(NSString*)propertyName
 {
-    [super setValue:value forKey:key];
-
-    
+    return YES;
 }
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"result"]) {
-        self.resultModel = [[WikiPediaCategoriesResultModel alloc] init];
-        [self.resultModel setValuesForKeysWithDictionary:value];
-    }
-    
-}
-
 
 @end
 

@@ -68,8 +68,8 @@ static NSString *WikiMoreCell_Id = @"WikiMoreCell_Id";
 {
     WikiPediaCategoriesDataModel *model = self.dataArray[indexPath.row];
     VideolistViewController *videolistViewController = [VideolistViewController new];
-    videolistViewController.ID = model.ID;
-    videolistViewController.title = model.name;
+    videolistViewController.ID = model.id;
+    videolistViewController.title = model.title;
     [self.navigationController pushViewController:videolistViewController animated:YES];
 }
 

@@ -27,7 +27,7 @@
 /**< 广告数据源 */
 @property(nonatomic, strong) BannerModel *bannermodel;
 ///视频专题列表数据
-@property(nonatomic, strong) NSMutableArray *coursesProjectListDataArray;
+@property(nonatomic, strong) ProjectListByModel *projectListByModel;
 @property(nonatomic, strong) TeacherListHostModel *teacherListHostModel;
 @end
 
@@ -86,19 +86,12 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 - (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
-    self.coursesProjectListDataArray = [NSMutableArray array];
+    
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
-        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-        for (NSDictionary *dic in result[@"result"][@"data"]) {
-            ProjectListByModel *model = [[ProjectListByModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
-            [sSelf.coursesProjectListDataArray addObject:model];
-        }
-         [sSelf.collectionView reloadData];
-
+        sSelf.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
+        [sSelf.collectionView reloadData];
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
@@ -171,7 +164,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
-        return self.coursesProjectListDataArray.count;
+        return self.projectListByModel.result.data.count;
     }
     else if (section == 1) {
         return 3;
@@ -185,7 +178,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
         LessonIndexCell *cell = [collectionView
                 dequeueReusableCellWithReuseIdentifier:LessonIndexCell_Id forIndexPath:indexPath];
         cell.backgroundColor = [UIColor whiteColor];
-        cell.model = self.coursesProjectListDataArray[indexPath.row];
+        cell.model = self.projectListByModel.result.data[indexPath.row];
         return cell;
     }
 
@@ -273,9 +266,9 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     } else {
         if (indexPath.section == 0) {
             LessonListViewController *lessonListViewController = [LessonListViewController new];
-            ProjectListByModel *model = self.coursesProjectListDataArray[indexPath.row];;
+            ProjectList *model = self.projectListByModel.result.data[indexPath.row];;
             lessonListViewController.LessonListTitle = model.title;
-            lessonListViewController.ID = model.ID;
+            lessonListViewController.ID = model.id;
             [self.navigationController pushViewController:lessonListViewController animated:YES];
         }
         else if (indexPath.section == 1) {

@@ -240,7 +240,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
         VideolistViewController *videolistViewController = [VideolistViewController new];
         videolistViewController.ID = object;
-        videolistViewController.title = model.name;
+        videolistViewController.title = model.title;
 
         [self.navigationController pushViewController:videolistViewController animated:YES];
     }

@@ -71,7 +71,7 @@
     }];
 }
 
-- (void)setModel:(ProjectListByModel *)model {
+- (void)setModel:(ProjectList *)model {
     if (model) {
         _model = model;
     }

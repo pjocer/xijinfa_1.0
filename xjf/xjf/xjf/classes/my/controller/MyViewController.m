@@ -15,6 +15,7 @@
 #import "MyTopicViewController.h"
 #import "MyLessonsViewController.h"
 #import "MyFavoredsViewController.h"
+#import "MyPlayerHistoryViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -173,7 +174,8 @@
             break;
         case 4:
         {
-            
+            MyPlayerHistoryViewController *myPlayerHistoryViewController = [[MyPlayerHistoryViewController alloc] init];
+            [self.navigationController pushViewController:myPlayerHistoryViewController animated:YES];
         }
             break;
         case 5:

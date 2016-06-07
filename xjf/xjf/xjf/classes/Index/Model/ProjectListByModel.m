@@ -8,20 +8,25 @@
 
 #import "ProjectListByModel.h"
 
+@implementation ProjectList
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+@end
+
+
+@implementation ProjectListResult
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+@end
+
+
 @implementation ProjectListByModel
-
-- (void)setValue:(id)value forKey:(NSString *)key
++(BOOL)propertyIsOptional:(NSString*)propertyName
 {
-    [super setValue:value forKey:key];
+    return YES;
 }
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"id"]) {
-        
-        _ID = value;
-    }
-}
-
-
 @end

@@ -42,7 +42,6 @@
 		5A105EB91CF004870079BEFE /* LessonDetailNoPayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EB81CF004870079BEFE /* LessonDetailNoPayHeaderView.m */; };
 		5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EBB1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m */; };
 		5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EBE1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m */; };
-		5A2071691D02AB9500462D65 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2071681D02AB9500462D65 /* MyLessonsViewController.m */; };
 		5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */; };
 		5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2071751D02BB4500462D65 /* MyFavoredsViewController.m */; };
 		5A20717C1D02BBA000462D65 /* MyFavoredsEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A20717B1D02BBA000462D65 /* MyFavoredsEmployedViewController.m */; };
@@ -63,6 +62,11 @@
 		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
 		5A441C5D1CE5FC32000CF748 /* CommentsPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C5C1CE5FC32000CF748 /* CommentsPageCommentsCell.m */; };
+		5A565A0C1D02D78C00008DA9 /* MyFavoredsWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0B1D02D78C00008DA9 /* MyFavoredsWikiViewController.m */; };
+		5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */; };
+		5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A121D05A8DE00008DA9 /* MyLessonsSchoolViewController.m */; };
+		5A565A161D05A8F300008DA9 /* MyLessonsEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A151D05A8F300008DA9 /* MyLessonsEmployedViewController.m */; };
+		5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -286,8 +290,6 @@
 		5A105EBB1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailHaveToPayHeaderView.m; sourceTree = "<group>"; };
 		5A105EBD1CF02A090079BEFE /* LessonDetailTecherDescribeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailTecherDescribeCell.h; sourceTree = "<group>"; };
 		5A105EBE1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailTecherDescribeCell.m; sourceTree = "<group>"; };
-		5A2071671D02AB9500462D65 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
-		5A2071681D02AB9500462D65 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
 		5A20716A1D02ADBE00462D65 /* MyLessonsTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsTableFooterView.h; sourceTree = "<group>"; };
 		5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsTableFooterView.m; sourceTree = "<group>"; };
 		5A2071741D02BB4500462D65 /* MyFavoredsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavoredsViewController.h; sourceTree = "<group>"; };
@@ -328,6 +330,16 @@
 		5A441C591CE5FB03000CF748 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		5A441C5B1CE5FC32000CF748 /* CommentsPageCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsPageCommentsCell.h; path = xjf/classes/player/controller/CommentsPageCommentsCell.h; sourceTree = SOURCE_ROOT; };
 		5A441C5C1CE5FC32000CF748 /* CommentsPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsPageCommentsCell.m; path = xjf/classes/player/controller/CommentsPageCommentsCell.m; sourceTree = SOURCE_ROOT; };
+		5A565A0A1D02D78C00008DA9 /* MyFavoredsWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavoredsWikiViewController.h; sourceTree = "<group>"; };
+		5A565A0B1D02D78C00008DA9 /* MyFavoredsWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavoredsWikiViewController.m; sourceTree = "<group>"; };
+		5A565A0E1D05A8A100008DA9 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
+		5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
+		5A565A111D05A8DE00008DA9 /* MyLessonsSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsSchoolViewController.h; sourceTree = "<group>"; };
+		5A565A121D05A8DE00008DA9 /* MyLessonsSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsSchoolViewController.m; sourceTree = "<group>"; };
+		5A565A141D05A8F300008DA9 /* MyLessonsEmployedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsEmployedViewController.h; sourceTree = "<group>"; };
+		5A565A151D05A8F300008DA9 /* MyLessonsEmployedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsEmployedViewController.m; sourceTree = "<group>"; };
+		5A565A181D05B12000008DA9 /* MyPlayerHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlayerHistoryViewController.h; sourceTree = "<group>"; };
+		5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlayerHistoryViewController.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -718,8 +730,8 @@
 				5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */,
 				5A105E691CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.h */,
 				5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */,
-				5A105E6C1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.h */,
 				5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */,
+				5A105E6C1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.h */,
 				5A105E6F1CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.h */,
 				5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */,
 			);
@@ -779,6 +791,8 @@
 				5A20717B1D02BBA000462D65 /* MyFavoredsEmployedViewController.m */,
 				5A20717D1D02BBFC00462D65 /* MyFavoredsSchoolViewController.h */,
 				5A20717E1D02BBFC00462D65 /* MyFavoredsSchoolViewController.m */,
+				5A565A0A1D02D78C00008DA9 /* MyFavoredsWikiViewController.h */,
+				5A565A0B1D02D78C00008DA9 /* MyFavoredsWikiViewController.m */,
 			);
 			path = MyFavoreds;
 			sourceTree = "<group>";
@@ -798,6 +812,28 @@
 				5A105EAB1CEF17AC0079BEFE /* WikiMoreClassificationCell.m */,
 			);
 			path = Wikipedia;
+			sourceTree = "<group>";
+		};
+		5A565A0D1D05A8A100008DA9 /* MyLessons */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A0E1D05A8A100008DA9 /* MyLessonsViewController.h */,
+				5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */,
+				5A565A111D05A8DE00008DA9 /* MyLessonsSchoolViewController.h */,
+				5A565A121D05A8DE00008DA9 /* MyLessonsSchoolViewController.m */,
+				5A565A141D05A8F300008DA9 /* MyLessonsEmployedViewController.h */,
+				5A565A151D05A8F300008DA9 /* MyLessonsEmployedViewController.m */,
+			);
+			path = MyLessons;
+			sourceTree = "<group>";
+		};
+		5A565A171D05B10700008DA9 /* MyPlayerHistory */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A181D05B12000008DA9 /* MyPlayerHistoryViewController.h */,
+				5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */,
+			);
+			path = MyPlayerHistory;
 			sourceTree = "<group>";
 		};
 		5AF7C2CD1CF945F6007CC71C /* Order */ = {
@@ -1177,8 +1213,8 @@
 				D01F77D11D0181E0000888D4 /* MyTopicViewController.m */,
 				D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */,
 				D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */,
-				5A2071671D02AB9500462D65 /* MyLessonsViewController.h */,
-				5A2071681D02AB9500462D65 /* MyLessonsViewController.m */,
+				5A565A171D05B10700008DA9 /* MyPlayerHistory */,
+				5A565A0D1D05A8A100008DA9 /* MyLessons */,
 				5A2071701D02BA9800462D65 /* MyFavoreds */,
 				5A0C3F8D1CF6939E00D7EEEB /* Mymoney */,
 			);
@@ -1847,6 +1883,7 @@
 				644C116A1CBA90FF00892E2C /* LPPopup.m in Sources */,
 				5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */,
 				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
+				5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */,
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
@@ -1858,6 +1895,7 @@
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
 				D0259AEC1D02C10000283F29 /* TaBaseCellFoot.m in Sources */,
 				5AF7C2F31CFF040D007CC71C /* TeacherLessonsViewController.m in Sources */,
+				5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */,
 				644C10CB1CBA61AC00892E2C /* UzysGridViewCell.m in Sources */,
 				644C115F1CBA90A000892E2C /* XMShareView.m in Sources */,
 				5A105E7B1CEC59270079BEFE /* LessonRecommendedHeaderView.m in Sources */,
@@ -1870,6 +1908,8 @@
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				644C11571CBA90A000892E2C /* XMShareWechatUtil.m in Sources */,
 				644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */,
+				5A565A161D05A8F300008DA9 /* MyLessonsEmployedViewController.m in Sources */,
+				5A565A0C1D02D78C00008DA9 /* MyFavoredsWikiViewController.m in Sources */,
 				D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */,
 				D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */,
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
@@ -1928,6 +1968,7 @@
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
 				5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
+				5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
@@ -1959,7 +2000,6 @@
 				5A240E161CE427C0003B7971 /* PlayerPageCommentsCell.m in Sources */,
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
 				D08534A21CE1DD1F00F0047B /* UserComponentCell.m in Sources */,
-				5A2071691D02AB9500462D65 /* MyLessonsViewController.m in Sources */,
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
 				644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */,
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,

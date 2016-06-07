@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class LessonPlayerVideoBottomView;
+
+@protocol LessonPlayerVideoBottomViewDelegate <NSObject>
+- (void)LessonPlayerVideoBottomView:(LessonPlayerVideoBottomView *)sender DidDownloadOrCollectionButton:(UIButton *)button;
+@end
+
 @interface LessonPlayerVideoBottomView : UIView
 
 @property (nonatomic, strong) UIButton *download;
 @property (nonatomic, strong) UIButton *collection;
 @property (nonatomic, strong) UIImageView *collectionLogo;
 @property (nonatomic, strong) UILabel *collectionCount;
-
+@property (nonatomic, assign) id<LessonPlayerVideoBottomViewDelegate>delegate;
 @end

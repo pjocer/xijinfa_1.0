@@ -58,6 +58,11 @@ static CGFloat payViewH = 285;
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     [self setNavigationBar];
+    if (self.dataSourceModel != nil) {
+        NSString *api = [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.model.id_];
+        [self requestLessonListData:api method:GET];
+    }
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -90,6 +95,16 @@ static CGFloat payViewH = 285;
         [sSelf.lessonDetailLessonListViewController.tableView reloadData];
         sSelf.lessonDetailTecherDescribeViewController.dataSourceModel = self.dataSourceModel;
         [sSelf.lessonDetailTecherDescribeViewController.tableView reloadData];
+        //是否购买过此课程
+        if (self.dataSourceModel.result.user_purchased) {
+            self.nowPay.hidden = YES;
+            self.addShoppingCart.hidden = YES;
+            self.studing.hidden = NO;
+        } else {
+            self.nowPay.hidden = NO;
+            self.addShoppingCart.hidden = NO;
+            self.studing.hidden = YES;
+        }
         [[ZToastManager ShardInstance] hideprogress];
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
@@ -209,15 +224,6 @@ static CGFloat payViewH = 285;
     self.studing.titleLabel.font = FONT15;
     [self.studing addTarget:self action:@selector(studing:) forControlEvents:UIControlEventTouchUpInside];
 
-    if (self.model.user_purchased) {
-        self.nowPay.hidden = YES;
-        self.addShoppingCart.hidden = YES;
-        self.studing.hidden = NO;
-    } else {
-        self.nowPay.hidden = NO;
-        self.addShoppingCart.hidden = NO;
-        self.studing.hidden = YES;
-    }
 }
 
 #pragma mark addShoppingCart

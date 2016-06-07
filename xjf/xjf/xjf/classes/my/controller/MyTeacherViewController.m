@@ -16,7 +16,7 @@ UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *layout;
 @property(nonatomic, strong) TeacherListHostModel *teacherListHostModel;
-
+@property(nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation MyTeacherViewController
@@ -26,9 +26,6 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"我的老师";
-    if (self.collectionView != nil || self.teacherListHostModel != nil) {
-       [self requestCategoriesTalkGridData:favorite method:GET];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -44,13 +41,19 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
 
 - (void)requestCategoriesTalkGridData:(APIName *)talkGridApi
                                method:(RequestMethod)method {
-    
+    self.dataSource = [NSMutableArray array];
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:talkGridApi RequestMethod:method];
     //TalkGridData
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
         sSelf.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
+        
+        for (TeacherListData *model in self.teacherListHostModel.result.data) {
+            if ([model.type isEqualToString:@"guru"]) {
+                [self.dataSource addObject:model];
+            }
+        }
         [sSelf.collectionView reloadData];
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -78,8 +81,7 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.teacherListHostModel.result.data.count;
-    return 10;
+    return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -87,7 +89,7 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
     TearcherIndexCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:myTeacherListCell_Id forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
-    cell.model = self.teacherListHostModel.result.data[indexPath.row];
+    cell.model = self.dataSource[indexPath.row];
     return cell;
 }
 
@@ -104,7 +106,7 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
-    teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
+    teacherDetailViewController.teacherListDataModel = self.dataSource[indexPath.row];
     [self.navigationController pushViewController:teacherDetailViewController animated:YES];
     
 }

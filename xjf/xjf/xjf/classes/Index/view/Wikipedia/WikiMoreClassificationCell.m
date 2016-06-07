@@ -32,7 +32,7 @@
     if (model) {
         _model = model;
     }
-    self.titleLabel.text = model.name;
+    self.titleLabel.text = model.title;
 }
 
 @end

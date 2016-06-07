@@ -21,7 +21,7 @@
 
 
 @interface TalkGridModel : JSONModel
-
+@property(nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *children;
 @property(nonatomic, strong) NSString *api_href;
 @property(nonatomic, strong) NSString *content;
 @property(nonatomic, strong) NSString *created_at;
@@ -60,6 +60,8 @@
 @property(nonatomic, assign) BOOL user_subscribed;
 ///(已登录用户)播放历史, 秒
 @property(nonatomic, strong) NSString *user_played;
+///是否已经学习
+@property(nonatomic, assign) int user_learned;
 ///视频时长
 @property(nonatomic, strong) NSString *video_duration;
 ///视频播放次数

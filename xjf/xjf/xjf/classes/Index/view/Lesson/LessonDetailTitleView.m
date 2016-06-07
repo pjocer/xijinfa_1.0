@@ -38,8 +38,8 @@
         self.videoImage.backgroundColor = BackgroundColor;
         [self.videoImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(self).with.offset(10);
+            make.bottom.equalTo(self).with.offset(-10);
             make.width.mas_equalTo((SCREENWITH / 2) - 20);
-            make.height.equalTo(self.videoImage.mas_width).multipliedBy(9.0f / 16.0f).with.priority(750);
 
         }];
 

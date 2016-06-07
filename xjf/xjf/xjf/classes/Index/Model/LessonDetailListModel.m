@@ -32,14 +32,6 @@
 @end
 
 
-@implementation LessonDetailListLessonsModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
-@end
-
-
 @implementation LessonDetailListResultModel
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {

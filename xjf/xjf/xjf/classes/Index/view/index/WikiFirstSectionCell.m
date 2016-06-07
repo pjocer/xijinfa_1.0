@@ -56,7 +56,7 @@
             [appView setImage:[UIImage imageNamed:@"wikimore"] forState:UIControlStateNormal];
         }
         else {
-            [appView setTitle:model.name forState:UIControlStateNormal];
+            [appView setTitle:model.title forState:UIControlStateNormal];
         }
 
         appView.tag = i;
@@ -75,7 +75,7 @@
     if (self.delegate && [self.delegate
             respondsToSelector:@selector(wikiFirstSectionCell:DidSelectedItemAtIndex:WithOtherObject:)]) {
         WikiPediaCategoriesDataModel *model = self.tempArray[sender.tag];
-        [self.delegate wikiFirstSectionCell:self DidSelectedItemAtIndex:sender.tag WithOtherObject:model.ID];
+        [self.delegate wikiFirstSectionCell:self DidSelectedItemAtIndex:sender.tag WithOtherObject:model.id];
     }
 }
 
@@ -87,20 +87,18 @@
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
         __strong typeof(self) sSelf = wSelf;
+        sSelf.wikiPediaCategoriesModel = [[WikiPediaCategoriesModel alloc] initWithData:responseData error:nil];
 
-        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-        sSelf.wikiPediaCategoriesModel = [[WikiPediaCategoriesModel alloc] init];
-        [sSelf.wikiPediaCategoriesModel setValuesForKeysWithDictionary:result];
 
         self.tempArray = [NSMutableArray array];
-        if (self.wikiPediaCategoriesModel.resultModel.dataModelArray.count != 0 &&
-                self.wikiPediaCategoriesModel.resultModel.dataModelArray.count > 7) {
+        if (sSelf.wikiPediaCategoriesModel.result.data.count != 0 &&
+                sSelf.wikiPediaCategoriesModel.result.data.count > 7) {
             for (int i = 0; i < 8; i++) {
-                WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.resultModel.dataModelArray[i];
-                [self.tempArray addObject:model];
+                WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.result.data[i];
+                [sSelf.tempArray addObject:model];
             }
         }
-        self.dataArray = self.wikiPediaCategoriesModel.resultModel.dataModelArray;
+        sSelf.dataArray = sSelf.wikiPediaCategoriesModel.result.data;
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];

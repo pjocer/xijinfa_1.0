@@ -95,9 +95,9 @@ static APIName *categoriesVideoList = @"/api/courses2/?category_id=";
 
 #pragma mark-- 内容-析金学堂页面 -----------------------------
 #pragma mark 析金学堂-专题列表
-static APIName *projectList = @"/api/projects3";
+static APIName *projectList = @"/api/categories3";
 #pragma mark 析金学堂-视频列表--按专题筛选
-static APIName *coursesProject = @"/api/courses3/?project_id=";
+static APIName *coursesProject = @"/api/courses3/?category_id=";
 
 #pragma mark 析金学堂-视频详情--视频列表
 static APIName *coursesProjectLessonDetailList = @"/api/courses3";
@@ -115,6 +115,9 @@ static APIName *teacherListHot = @"/api/gurus3/hot";
 
 #pragma mark-- 收藏 -----------------------------
 static APIName *favorite = @"/api/favorite";
+
+#pragma mark-- 用户已学习 ------------------------
+static APIName *user_learnedApi = @"/api/learn";
 
 #pragma mark-- My
 #pragma mark 我的课程

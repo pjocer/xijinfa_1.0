@@ -9,5 +9,6 @@
 #import "MyBaseViewController.h"
 
 @interface MyFavoredsSchoolViewController : MyBaseViewController
-
+@property(nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) NSMutableArray *dataSource;
 @end

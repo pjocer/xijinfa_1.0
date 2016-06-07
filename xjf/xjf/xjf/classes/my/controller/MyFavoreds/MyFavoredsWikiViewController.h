@@ -1,5 +1,5 @@
 //
-//  MyFavoredsEmployedViewController.h
+//  MyFavoredsWikiViewController.h
 //  xjf
 //
 //  Created by Hunter_wang on 16/6/4.
@@ -8,7 +8,7 @@
 
 #import "MyBaseViewController.h"
 
-@interface MyFavoredsEmployedViewController : MyBaseViewController
+@interface MyFavoredsWikiViewController : MyBaseViewController
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSMutableArray *dataSource;
 @end
