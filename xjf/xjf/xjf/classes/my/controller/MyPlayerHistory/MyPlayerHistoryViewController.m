@@ -11,6 +11,7 @@
 #import "VideoListCell.h"
 #import "IndexSectionView.h"
 #import "LessonDetailViewController.h"
+#import "PlayerViewController.h"
 @interface MyPlayerHistoryViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) TablkListModel *tablkListModel;
 @property(nonatomic, strong) UITableView *tableView;
@@ -34,7 +35,7 @@ static CGFloat tableHeaderH = 35;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTabelView];
-    
+    [self requesData:history method:GET];
 }
 
 #pragma mark requestData
@@ -44,7 +45,7 @@ static CGFloat tableHeaderH = 35;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-
+        [sSelf.tableView reloadData];
     }failedBlock:^(NSError *_Nullable error) {
 
     }];
@@ -70,13 +71,12 @@ static CGFloat tableHeaderH = 35;
 #pragma mark TabelViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;;
+    return self.tablkListModel.result.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyPlayerHistoryCell_id];
-//    cell.model = self.dataSource[indexPath.row];
-    cell.oldPrice.hidden = NO;
+    cell.model = self.tablkListModel.result.data[indexPath.row];
     return cell;
 }
 
@@ -101,10 +101,40 @@ static CGFloat tableHeaderH = 35;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-//    lessonDetailViewController.model = self.dataSource[indexPath.row];
-    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+    TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
+    
+    if ([model.type isEqualToString:@"lesson"]) {
+        PlayerViewController *player = [PlayerViewController new];
+        player.talkGridModel = model;
+    } else if ([model.type isEqualToString:@"course"]){
+        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+        lessonDetailViewController.model = model;
+        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+    }
+
 }
 
+/*
+ -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ return YES;
+ }
+ - (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ return @"删除";
+ }
+ - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ return UITableViewCellEditingStyleDelete;
+ }
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ //    if (editingStyle == UITableViewCellEditingStyleDelete){
+ //        [self PostOrDeleteRequestData:favorite Method:DELETE IndexPath:indexPath];
+ //        [self.dataSource removeObjectAtIndex:indexPath.row];
+ //        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+ //    }
+ }
+ */
 
 @end

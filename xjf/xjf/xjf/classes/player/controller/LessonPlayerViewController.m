@@ -48,6 +48,7 @@ static CGFloat selViewH = 3;
     [super viewDidLoad];
     [self initMainUI];
     [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+    [self sendPlayerHistoryToServerData:history method:POST];
     
 }
 
@@ -107,6 +108,18 @@ static CGFloat selViewH = 3;
     }failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
+
+///给服务器发送POST PlayerHistory
+- (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method{
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.department],@"duration":@"0"}];
+    
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        
+    }failedBlock:^(NSError *_Nullable error) {
+        
     }];
 }
 
@@ -344,7 +357,7 @@ static CGFloat selViewH = 3;
     [self.view addSubview:self.selBackGroundView];
 
     //
-    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), w, selViewH)];
+    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
 }
@@ -364,7 +377,7 @@ static CGFloat selViewH = 3;
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
     [UIView animateWithDuration:0.3 animations:^{
-        self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame));
+        self.selView.center = CGPointMake(btn.center.x, self.selBackGroundView.center.y);
     }];
 }
 

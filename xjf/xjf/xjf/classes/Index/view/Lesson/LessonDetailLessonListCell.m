@@ -61,7 +61,7 @@ static CGFloat StudyImageH = 20;
         [self addSubview:self.studyImage];
         self.studyImage.layer.masksToBounds = YES;
         self.studyImage.layer.cornerRadius = StudyImageH / 2;
-        self.studyImage.backgroundColor = BlueColor;
+        self.studyImage.image = [[UIImage imageNamed:@"learend"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [self.studyImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self).with.offset(-10);
             make.centerY.equalTo(self);

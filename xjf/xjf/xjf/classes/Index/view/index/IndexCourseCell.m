@@ -10,10 +10,11 @@
 #import "IndexSectionView.h"
 #import "UzysGridView.h"
 #import "CourseGridViewCell.h"
-
+#import "ProjectListByModel.h"
 @interface IndexCourseCell()<UzysGridViewDelegate,UzysGridViewDataSource>
 @property(nonatomic,strong)IndexSectionView *sectionView;
 @property(nonatomic,strong)UzysGridView *gridView;
+@property(nonatomic,strong)ProjectListByModel *model;
 @end
 
 @implementation IndexCourseCell
@@ -60,32 +61,33 @@
 - (void)showInfo:(id)model key:(id)key indexPath:(NSIndexPath *)indexPath
 {
     self.key =key;
-    self.data =model;
+    self.model =model;
     self.indexPath =indexPath;
-    NSDictionary *dict =(NSDictionary*)model;
+//    NSDictionary *dict =(NSDictionary*)model;
     [_gridView reloadData];
     
 }
 /// 返回Cell高度
 + (CGFloat)returnCellHeight:(id)model
 {
-    NSDictionary *dict =(NSDictionary*)model;
+//    NSDictionary *dict =(NSDictionary*)model;
     return 342;
     
 }
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {
-    return 3;
+    return self.model.result.data.count;
 }
 -(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index
 {
     CourseGridViewCell *cell = [[CourseGridViewCell alloc] initWithFrame:CGRectNull];
+    cell.model = self.model.result.data[index];
     return cell;
 }
 
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
 {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_Unknow,nil,self.data,nil,self.indexPath);
+        self.actionBlock(BEventType_Unknow,nil,self.model.result.data[index],nil,self.indexPath);
     }
 }
 

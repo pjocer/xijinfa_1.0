@@ -1,36 +1,39 @@
 //
-//  MyFavoredsViewController.m
+//  EmployedLessonListViewController.m
 //  xjf
 //
-//  Created by Hunter_wang on 16/6/4.
+//  Created by Hunter_wang on 16/6/7.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "MyFavoredsViewController.h"
-#import "MyFavoredsSchoolViewController.h"
-#import "MyFavoredsEmployedViewController.h"
-#import "MyFavoredsWikiViewController.h"
+#import "EmployedLessonListViewController.h"
+#import "XJMarket.h"
+#import "ShoppingCartViewController.h"
+#import "EmployedBasisViewController.h"
+#import "EmployedLawsViewController.h"
+#import "EmployedGeneralViewController.h"
 #import "TalkGridModel.h"
-@interface MyFavoredsViewController ()<UIScrollViewDelegate>
+@interface EmployedLessonListViewController ()<UIScrollViewDelegate>
+@property (nonatomic, strong) UILabel *goodsCount;
+@property (nonatomic, strong) EmployedBasisViewController *employedBasisViewController;
+@property (nonatomic, strong) EmployedLawsViewController *employedLawsViewController;
+@property (nonatomic, strong) EmployedGeneralViewController *employedGeneralViewController;
+///基础知识数据
+@property (nonatomic, strong) NSMutableArray *dataSource_EmployedBasis;
+///法律法规数据
+@property (nonatomic, strong) NSMutableArray *dataSource_EmployedLaws;
+///全科数据
+@property (nonatomic, strong) NSMutableArray *dataSource_EmployedGeneral;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
-@property (nonatomic, strong) MyFavoredsWikiViewController *myFavoredsWikiViewController;
-@property (nonatomic, strong) MyFavoredsSchoolViewController *myFavoredsSchoolViewController;
-@property (nonatomic, strong) MyFavoredsEmployedViewController *myFavoredsEmployedViewController;
 @property (nonatomic, strong) UIView *selBackGroundView;
 @property (nonatomic, strong) UIView *selView;
-///百科数据
-@property (nonatomic, strong) NSMutableArray *dataSource_MyWikiView;
-///学堂数据
-@property (nonatomic, strong) NSMutableArray *dataSource_MyFavoredsSchoolView;
-///从业数据
-@property (nonatomic, strong) NSMutableArray *dataSource_myFavoredsEmployed;
 @property (nonatomic, strong) TablkListModel *tablkListModel;
 @end
 
 
-@implementation MyFavoredsViewController
+@implementation EmployedLessonListViewController
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
 
@@ -40,10 +43,11 @@ static CGFloat selViewH = 3;
     }
     return _buttons;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"我的收藏";
+    [self setNavigationBar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -54,51 +58,44 @@ static CGFloat selViewH = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-    [self requestCategoriesTalkGridData:favorite method:GET];
-}
-- (void)requestCategoriesTalkGridData:(APIName *)talkGridApi
-                               method:(RequestMethod)method {
-    self.dataSource_MyWikiView = [NSMutableArray array];
-    self.dataSource_myFavoredsEmployed = [NSMutableArray array];
-    self.dataSource_MyFavoredsSchoolView = [NSMutableArray array];
-    __weak typeof(self) wSelf = self;
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:talkGridApi RequestMethod:method];
-    [[ZToastManager ShardInstance] showprogress];
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-        //百科
-        for (TalkGridModel *model in self.tablkListModel.result.data) {
-            if ([model.type isEqualToString:@"course"] && [model.department isEqualToString:@"dept2"]) {
-                [sSelf.dataSource_MyWikiView addObject:model];
-            }
-        }
-        sSelf.myFavoredsWikiViewController.dataSource = self.dataSource_MyWikiView;
-        [sSelf.myFavoredsWikiViewController.tableView reloadData];
-        //学堂
-        for (TalkGridModel *model in self.tablkListModel.result.data) {
-            if ([model.type isEqualToString:@"course"] && [model.department isEqualToString:@"dept3"]) {
-                [sSelf.dataSource_MyFavoredsSchoolView addObject:model];
-            }
-        }
-        sSelf.myFavoredsSchoolViewController.dataSource = self.dataSource_MyFavoredsSchoolView;
-        [sSelf.myFavoredsSchoolViewController.tableView reloadData];
-        //从业
-        for (TalkGridModel *model in self.tablkListModel.result.data) {
-            if ([model.type isEqualToString:@"course"] && [model.department isEqualToString:@"dept4"]) {
-                [sSelf.dataSource_myFavoredsEmployed addObject:model];
-            }
-        }
-        sSelf.myFavoredsEmployedViewController.dataSource = self.dataSource_myFavoredsEmployed;
-        [sSelf.myFavoredsEmployedViewController.tableView reloadData];
-        
-        [[ZToastManager ShardInstance] hideprogress];
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
+    
 }
 
+#pragma mark - setNavigationBar
+- (void)setNavigationBar {
+    self.navigationItem.title = self.employedLessonList;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 44, 44);
+    [button setImage:[UIImage imageNamed:@"shoppingCart"] forState:UIControlStateNormal];
+    UIBarButtonItem *barbutton2 = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barbutton2;
+    [button addTarget:self action:@selector(shoppingCartAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.goodsCount = [[UILabel alloc] initWithFrame:CGRectNull];
+    [button addSubview:self.goodsCount];
+    [self.goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.equalTo(button);
+        make.size.mas_equalTo(CGSizeMake(20, 20));
+    }];
+    self.goodsCount.backgroundColor = [UIColor redColor];
+    self.goodsCount.layer.masksToBounds = YES;
+    self.goodsCount.layer.cornerRadius = 10.f;
+    self.goodsCount.textColor = [UIColor whiteColor];
+    self.goodsCount.font = FONT15;
+    self.goodsCount.textAlignment = NSTextAlignmentCenter;
+    if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
+        self.goodsCount.hidden = NO;
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+    } else {
+        self.goodsCount.hidden = YES;
+    }
+}
+
+///购物车事件
+- (void)shoppingCartAction:(UIButton *)sender {
+    ShoppingCartViewController *shoppingCartViewController = [ShoppingCartViewController new];
+    [self.navigationController pushViewController:shoppingCartViewController animated:YES];
+}
 
 #pragma mark - initMainUI
 - (void)initMainUI {
@@ -106,7 +103,7 @@ static CGFloat selViewH = 3;
     [self setupContentScrollView];//创建大scrollview
     [self addChildViewController];//添加子控制器
     [self setupTitle];//根据子视图个数创建小scrollview的按钮
-
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.contentScrollView.contentSize = CGSizeMake(self.childViewControllers.count * SCREENWITH, 0);
     self.contentScrollView.pagingEnabled = YES;
@@ -129,23 +126,27 @@ static CGFloat selViewH = 3;
     self.contentScrollView = [[UIScrollView alloc] initWithFrame:rect];
     [self.view addSubview:self.contentScrollView];
     self.contentScrollView.bounces = NO;
-    self.contentScrollView.scrollEnabled = NO;
 }
 
 #pragma mark - 添加子控制器
 - (void)addChildViewController {
     
-    self.myFavoredsWikiViewController = [[MyFavoredsWikiViewController alloc] init];
-    self.myFavoredsWikiViewController.title = @"析金百科";
-    [self addChildViewController:self.myFavoredsWikiViewController];
+    self.employedBasisViewController = [[EmployedBasisViewController alloc] init];
+    self.employedBasisViewController.title = @"基础知识";
+    [self addChildViewController:self.employedBasisViewController];
+    self.employedBasisViewController.ID = self.employedBasisID;
     
-    self.myFavoredsSchoolViewController = [[MyFavoredsSchoolViewController alloc] init];
-    self.myFavoredsSchoolViewController.title = @"析金学堂";
-    [self addChildViewController:self.myFavoredsSchoolViewController];
+    self.employedLawsViewController = [[EmployedLawsViewController alloc] init];
+    self.employedLawsViewController.title = @"法律法规";
+    [self addChildViewController:self.employedLawsViewController];
+    self.employedLawsViewController.ID = self.employedLawsID;
     
-    self.myFavoredsEmployedViewController = [[MyFavoredsEmployedViewController alloc] init];
-    self.myFavoredsEmployedViewController.title = @"从业培训";
-    [self addChildViewController:self.myFavoredsEmployedViewController];
+    self.employedGeneralViewController = [[EmployedGeneralViewController alloc] init];
+    self.employedGeneralViewController.title = @"全科";
+    [self addChildViewController:self.employedGeneralViewController];
+    self.employedGeneralViewController.ID = self.employedGeneralID;
+    
+    
 }
 
 #pragma mark - 设置标题
@@ -239,7 +240,6 @@ static CGFloat selViewH = 3;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
 }
-
 
 
 @end

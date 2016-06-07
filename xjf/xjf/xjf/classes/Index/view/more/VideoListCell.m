@@ -15,7 +15,6 @@
 @property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
 @property (nonatomic, strong) UILabel *videoTitle;
-
 @end
 
 @implementation VideoListCell
@@ -163,7 +162,7 @@
     self.lessonCount.text = [NSString stringWithFormat:@"课时: %@",model.lessons_count];
     CGFloat tempPrice = [model.price floatValue];
     if (tempPrice == -1) {
-         self.price.text = @"免费";
+         self.price.text = @"";
     }else {
         self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
     }

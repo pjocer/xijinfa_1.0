@@ -70,67 +70,80 @@ static APIName *user_comment_list = @"/api/user/%@/reply";
 
 
 #pragma mark-- 轮显Banner广告 -----------------------------
-#pragma mark 首页
+/// 首页Banner
 static APIName *appHomeCarousel = @"/api/banner/app-home-carousel";
-
-#pragma mark 边看边谈
+/// 边看边谈Banner
 static APIName *appDeptCarousel1 = @"/api/banner/app-dept1-carousel";
-
-#pragma mark 金融百科
+/// 金融百科Banner
 static APIName *appDeptCarousel2 = @"/api/banner/app-dept2-carousel";
-
-#pragma mark 析金学堂
+/// 析金学堂Banner
 static APIName *appDeptCarousel3 = @"/api/banner/app-dept3-carousel";
-
-#pragma mark 从业培训
+/// 从业培训Banner
 static APIName *appDeptCarousel4 = @"/api/banner/app-dept4-carousel";
 
 
 #pragma mark-- 内容-金融百科页面 -----------------------------
-#pragma mark 内容-金融百科页面-视频
+/// 内容-金融百科页面-视频
 static APIName *talkGrid = @"/api/courses2";
-
-#pragma mark 内容-金融百科-分类列表
+/// 内容-金融百科-分类列表
 static APIName *talkGridCategories = @"/api/categories2";
-
-#pragma mark 内容-金融百科-具体内容
+/// 内容-金融百科-具体内容
 static APIName *talkGridDetailContent = @"/api/courses2/ID";
-
-#pragma mark 内容-金融百科-获取评论
+/// 内容-金融百科-获取评论
 static APIName *talkGridcomments = @"/api/courses2/";
-
-#pragma mark 内容-金融百科-发表评论   POST
+/// 内容-金融百科-发表评论   POST
 static APIName *talkGridSendComments = @"/api/courses2/ID/comments";
-
-#pragma mark 金融百科分类- 视频列表
+/// 金融百科分类- 视频列表
 static APIName *categoriesVideoList = @"/api/courses2/?category_id=";
 
-#pragma mark-- 内容-析金学堂页面 -----------------------------
-#pragma mark 析金学堂-专题列表
-static APIName *projectList = @"/api/categories3";
-#pragma mark 析金学堂-视频列表--按专题筛选
-static APIName *coursesProject = @"/api/courses3/?category_id=";
 
-#pragma mark 析金学堂-视频详情--视频列表
+#pragma mark-- 内容-析金学堂页面 -----------------------------
+/// 析金学堂-专题列表
+static APIName *projectList = @"/api/categories3";
+/// 析金学堂-视频列表--按专题筛选
+static APIName *coursesProject = @"/api/courses3/?category_id=";
+/// 析金学堂-视频详情--视频列表
 static APIName *coursesProjectLessonDetailList = @"/api/courses3";
 
+
+#pragma mark-- 内容-从业培训 -----------------------------
+/// 从业培训-专题列表
+static APIName *Employed = @"/api/categories4";
+/// 从业培训-资讯列表
+static APIName *Articles = @"/api/articles4";
+/// 从业培训-视频列表--按专题筛选
+static APIName *employedCategory = @"/api/courses4/?category_id=";
+
 #pragma mark-- 订单 -----------------------------
-#pragma mark 查询所有订单
+/// 查询所有订单
 static APIName *queryAllOrder = @"/api/order";
-#pragma mark 取消订单
+/// 取消订单
 static APIName *cancelOrder = @"/api/order/";
 
+
 #pragma mark-- 老师 -----------------------------
-#pragma mark 老师列表-热门
+/// 老师列表-热门
 static APIName *teacherApi = @"/api/gurus3/";
 static APIName *teacherListHot = @"/api/gurus3/hot";
 
+
 #pragma mark-- 收藏 -----------------------------
+///收藏
 static APIName *favorite = @"/api/favorite";
 
+
 #pragma mark-- 用户已学习 ------------------------
+///学习
 static APIName *user_learnedApi = @"/api/learn";
 
-#pragma mark-- My
-#pragma mark 我的课程
+
+#pragma mark-- My ------------------------
+/// 我的课程
 static APIName *myLessonsApi = @"/api/user/courses";
+
+
+#pragma mark-- 播放历史 ------------------------
+///播放历史
+static APIName *history = @"/api/history";
+
+

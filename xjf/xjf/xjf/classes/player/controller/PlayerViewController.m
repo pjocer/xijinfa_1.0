@@ -82,7 +82,8 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)handleData
 {
     [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
-     [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
+    [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
+    [self sendPlayerHistoryToServerData:history method:POST];
 }
 
 #pragma mark requestData
@@ -163,6 +164,15 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     }];
 }
 
+- (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method{
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.talkGridModel.id_],@"type":[NSString stringWithFormat:@"%@",self.talkGridModel.type],@"department":[NSString stringWithFormat:@"%@",self.talkGridModel.department],@"duration":@"0"}];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+
+    }failedBlock:^(NSError *_Nullable error) {
+
+    }];
+}
 
 
 #pragma mark 横竖屏状态
@@ -490,6 +500,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
         TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
         self.playUrl = gridVideomodel.url;
         _playerView.videoURL = [NSURL URLWithString:self.playUrl];
+        [self sendPlayerHistoryToServerData:history method:POST];
     }
 }
 

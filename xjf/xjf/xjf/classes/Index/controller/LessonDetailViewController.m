@@ -114,7 +114,6 @@ static CGFloat payViewH = 285;
 
 
 #pragma mark - setNavigationBar
-
 - (void)setNavigationBar {
     self.navigationItem.title = @"课程详情";
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -322,7 +321,7 @@ static CGFloat payViewH = 285;
     self.selBackGroundView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.selBackGroundView];
     //
-    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), w, selViewH)];
+    self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
 }
@@ -339,7 +338,7 @@ static CGFloat payViewH = 285;
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
     [UIView animateWithDuration:0.3 animations:^{
-      self.selView.center = CGPointMake(btn.center.x, CGRectGetMaxY(self.titleScrollView.frame));
+      self.selView.center = CGPointMake(btn.center.x, self.selBackGroundView.center.y);
     }];
 }
 

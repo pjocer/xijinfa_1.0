@@ -15,13 +15,16 @@
 #import "LessonDetailViewController.h"
 #import "TeacherListHostModel.h"
 #import "TeacherDetailViewController.h"
+#import "EmployedViewController.h"
+#import "ProjectListByModel.h"
+#import "EmployedLessonListViewController.h"
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
-
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray *sectionsArray;
 @property(nonatomic,strong)TablkListModel *tablkListModel;
 @property(nonatomic,strong)TablkListModel *tablkListModel_Lesson;
 @property(nonatomic,strong)TeacherListHostModel *teacherListHostModel;
+@property(nonatomic,strong)ProjectListByModel *projectListByModel;
 @end
 
 @implementation IndexViewController
@@ -39,6 +42,7 @@
     [self requestCategoriesTalkGridData:talkGrid method:GET];
     [self requestLessonListApi:coursesProjectLessonDetailList method:GET];
     [self requestTeacherListData:teacherListHot method:GET];
+    [self requesProjectListDat:Employed method:GET];
 }
 
 - (void)requestCategoriesTalkGridData:(APIName *)talkGridApi
@@ -87,6 +91,17 @@
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
+}
+//ProjectListByModel
+- (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
+    __weak typeof(self) wSelf = self;
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
+        sSelf.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
+        [sSelf.tableview reloadData];
+    }failedBlock:^(NSError *_Nullable error) {
     }];
 }
 
@@ -243,7 +258,7 @@
                 [wSelf cellAction:t views:v obj:obj key:key indexPath:indexPath];
             }];
         }
-        [cell showInfo:nil key:sectionTitle indexPath:indexPath];
+        [cell showInfo:self.projectListByModel key:sectionTitle indexPath:indexPath];
         return cell;
     }
     static NSString *CellIdentifier = @"Cell";
@@ -275,7 +290,9 @@
                 }else if ([key isEqualToString:@"1"]){
                     [self.navigationController pushViewController:[LessonViewController new] animated:YES];
                 }else if ([key isEqualToString:@"2"]){
-                        NSLog(@"%@",obj[2]);
+                    //从业培训
+                    EmployedViewController *employedViewController = [[EmployedViewController alloc] init];
+                    [self.navigationController pushViewController:employedViewController animated:YES];
                 }else if ([key isEqualToString:@"3"]){
                         NSLog(@"%@",obj[3]);
                 }
@@ -302,7 +319,23 @@
                 [self.navigationController pushViewController:teacherDetailViewController animated:YES];
             }
             else if (indexPath.section == 5){
-                //从业培训
+//                //从业培训
+                EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
+                ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
+                
+                for (ProjectList *model in tempModel.children) {
+                    if ([model.title isEqualToString:@"基础知识"]) {
+                        employedLessonListViewController.employedBasisID = model.id;
+                    }
+                    else if ([model.title isEqualToString:@"法律法规"]) {
+                        employedLessonListViewController.employedLawsID = model.id;
+                    }
+                    else if ([model.title isEqualToString:@"全科"]) {
+                        employedLessonListViewController.employedGeneralID = model.id;
+                    }
+                } 
+                employedLessonListViewController.employedLessonList = tempModel.title;
+                [self.navigationController pushViewController:employedLessonListViewController animated:YES];
             }
 
             break;

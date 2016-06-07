@@ -135,7 +135,6 @@ static CGFloat submitOrdersViewHeight = 50;
         }
     }
 
-    
     OrderDetaiViewController *oderDetaiPage = [OrderDetaiViewController new];
     oderDetaiPage.dataSource = tempArray;
     [self.navigationController pushViewController:oderDetaiPage animated:YES];

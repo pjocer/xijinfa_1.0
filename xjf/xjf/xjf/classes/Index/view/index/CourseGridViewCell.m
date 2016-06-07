@@ -9,12 +9,10 @@
 #import "CourseGridViewCell.h"
 
 @interface CourseGridViewCell ()
-
 @property (nonatomic, strong) UIImageView *titleImage;
 @property (nonatomic, strong) UILabel *titleLable;
 @property (nonatomic, strong) UILabel *detailLable;
 @property (nonatomic, strong) UILabel *accessoryView;
-
 @end
 
 @implementation CourseGridViewCell
@@ -77,7 +75,7 @@
     
     //titleLable
     [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleImage.mas_right).with.offset(10);
+        make.left.equalTo(self.titleImage.mas_right).with.offset(15);
         make.right.equalTo(self.backgroundView).with.offset(-30);
         make.bottom.mas_equalTo(self.backgroundView.mas_centerY);
         make.height.mas_equalTo(15);
@@ -87,7 +85,7 @@
     [self.detailLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLable);
         make.size.mas_equalTo(self.titleLable);
-        make.top.mas_equalTo(self.titleLable.mas_bottom);
+        make.top.mas_equalTo(self.titleLable.mas_bottom).with.offset(9);
     }];
     
     //accessoryView
@@ -98,6 +96,13 @@
     }];
 }
 
-
+- (void)setModel:(ProjectList *)model {
+    if (model) {
+        _model = model;
+    }
+    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.titleLable.text = model.title;
+    self.detailLable.text = model.summary;
+}
 
 @end
