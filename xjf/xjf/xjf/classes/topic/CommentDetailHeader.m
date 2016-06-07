@@ -37,11 +37,11 @@
 }
 
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
-    if (![[[XJAccountManager defaultManager] user_id] isEqualToString:self.model.result.user.id]) {
+    if (![[[XJAccountManager defaultManager] user_id] isEqualToString:self.model.user.id]) {
         UIViewController *controller = getCurrentDisplayController();
         TaViewController *ta = [[TaViewController alloc] init];
-        ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.result.user.nickname];
-        ta.model = self.model.result.user;
+        ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.user.nickname];
+        ta.model = self.model.user;
         [controller.navigationController pushViewController:ta animated:YES];
     }
 }
@@ -50,24 +50,24 @@
 
     // Configure the view for the selected state
 }
--(void)setModel:(TopicDetailModel *)model {
+-(void)setModel:(TopicDataModel *)model {
     _model = model;
-    _content.text = model.result.content;
-    _nickname.text = model.result.user.nickname;
-    _invest_category.text = model.result.user.invest_category;
-    _time.text = [StringUtil compareCurrentTime:model.result.created_at];
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:model.result.user.avatar]];
-    if (![model.result.type isEqualToString:@"QA"]) {
+    _content.text = model.content;
+    _nickname.text = model.user.nickname;
+    _invest_category.text = model.user.invest_category;
+    _time.text = [StringUtil compareCurrentTime:model.created_at];
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:model.user.avatar]];
+    if (![model.type isEqualToString:@"qa"]) {
         _comment_category.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
         _comment_category.text = @"讨论";
     }else {
         _comment_category.backgroundColor = [UIColor xjfStringToColor:@"#3FA9F5"];
         _comment_category.text = @"问答";
     }
-    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.result.content width:SCREENWITH-20 fontsize:15];
+    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
     CGFloat height = 10+40+10+contentHeight;
     
-    if (model.result.categories.count > 0) {
+    if (model.categories.count > 0) {
         if (self.contentView.subviews.count == 7) {
             CGFloat all = 0;
             CGFloat alll = 0;
@@ -75,7 +75,7 @@
             CGFloat y = 0;
             CGFloat tap = 10;
             NSMutableArray *labels = [NSMutableArray array];
-            for (TopicCategoryLabel *label in model.result.categories) {
+            for (CategoryLabel *label in model.categories) {
                 [labels addObject:label.name];
             }
             for (int i = 0; i < labels.count; i++) {

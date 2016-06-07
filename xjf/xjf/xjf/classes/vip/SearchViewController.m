@@ -14,12 +14,13 @@
 #import "ZToastManager.h"
 #import "SearchSectionTwo.h"
 #import "SearchResultController.h"
-@interface SearchViewController () <UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface SearchViewController () <UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,TableViewRefreshDelegate>
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) SearchSectionOne *cell;
 @property (nonatomic, strong) TablkListModel *model;
+@property (nonatomic, strong) SearchResultController *result;
 @end
 
 @implementation SearchViewController
@@ -49,7 +50,7 @@
     [self.view addSubview:searchView];
     [self.view addSubview:self.tableView];
     self.dataSource = [NSMutableArray array];
-    [self requestData:coursesProjectLessonDetailList Method:GET];
+    [self requestData:coursesProjectLessonDetailList Method:GET type:UnKnownType];
 }
 -(UITableView *)tableView {
     if (!_tableView) {
@@ -134,34 +135,97 @@
     }
     return header;
 }
-- (void)requestData:(APIName *)api Method:(RequestMethod)method {
+- (void)requestData:(APIName *)api Method:(RequestMethod)method type:(ReloadTableType)type{
+    if (api == nil) {
+        [_result hiddenMJRefresh];
+        return;
+    }
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        self.model = [[TablkListModel alloc] initWithData:responseData error:nil];
+        [self handleRequestData:responseData api:api type:type];
+        if (type != UnKnownType) {
+            [_result reloadData];
+            [_result hiddenMJRefresh];
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        [_result hiddenMJRefresh];
+    }];
+}
+- (void)handleRequestData:(NSData * _Nullable)data api:(APIName *)api type:(ReloadTableType)type{
+    if (type == UnKnownType) {
+        self.model = [[TablkListModel alloc] initWithData:data error:nil];
         if (self.model.errCode == 0) {
             [self.dataSource addObjectsFromArray:self.model.result.data];
             [self.tableView reloadData];
         }else {
             [[ZToastManager ShardInstance] showtoast:self.model.errMsg];
         }
-    } failedBlock:^(NSError * _Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
+    }else if (type == EncyclopediaTable) {
+        _result.baike_list = [[TablkListModel alloc] initWithData:data error:nil];
+        if (_result.baike_list.errCode == 0 && _result.baike_list.result.data.count > 0) {
+            [_result.encyDataSource addObjectsFromArray:_result.baike_list.result.data];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:_result.baike_list.errMsg];
+        }
+    }else if (type == LessonsTable) {
+        _result.lesson_list = [[TablkListModel alloc] initWithData:data error:nil];
+        if (_result.lesson_list.errCode == 0 && _result.lesson_list.result.data) {
+            [_result.lessonsDataSource addObjectsFromArray:_result.lesson_list.result.data];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:_result.baike_list.errMsg];
+        }
+    }else if (type == TopicsTable) {
+        _result.topic_list = [[TopicModel alloc] initWithData:data error:nil];
+        if (_result.topic_list.errCode.integerValue == 0 && _result.topic_list.result.data) {
+            [_result.topicsDataSource addObjectsFromArray:_result.topic_list.result.data];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:_result.topic_list.errMsg];
+        }
+    }else if (type == PersonsTable) {
+        _result.person_list = [[FansFocus alloc] initWithData:data error:nil];
+        if (_result.person_list.errCode.integerValue == 0 && _result.person_list.result.data) {
+            [_result.personsDataSource addObjectsFromArray:_result.person_list.result.data];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:_result.person_list.errMsg];
+        }
+    }
 }
-- (void)handleResult{
-    SearchResultController *result = [[SearchResultController alloc] init];
-    UIView *resultView = result.view;
+- (void)initDataResult {
+    [self requestData:[NSString stringWithFormat:@"%@%@",search_baike,self.searchBar.text] Method:GET type:EncyclopediaTable];
+    [self requestData:[NSString stringWithFormat:@"%@%@",search_topic,self.searchBar.text] Method:GET type:TopicsTable];
+    [self requestData:[NSString stringWithFormat:@"%@%@",search_lesson,self.searchBar.text] Method:GET type:LessonsTable];
+    [self requestData:[NSString stringWithFormat:@"%@%@",search_person,self.searchBar.text] Method:GET type:PersonsTable];
+}
+- (void)initResult {
+    [self.tableView removeFromSuperview];
+    self.tableView = nil;
+    _result = [[SearchResultController alloc] init];
+    _result.delegate = self;
+    [self RACHandle];
+    [self initDataResult];
+    UIView *resultView = _result.view;
     resultView.frame = CGRectMake(0, 64, SCREENWITH, SCREENHEIGHT-64);
     [self.view addSubview:resultView];
-    NSLog(@"%ld",result.current);
+}
+- (void)RACHandle {
+    [[self rac_signalForSelector:@selector(tableViewHeaderDidRefresh) fromProtocol:@protocol(TableViewRefreshDelegate)] subscribeNext:^(RACTuple *x) {
+        [self requestData:[NSString stringWithFormat:@"%@%@",_result.api,self.searchBar.text] Method:GET type:_result.type];
+    }];
+    [[self rac_signalForSelector:@selector(tableViewFooterDidRefresh:) fromProtocol:@protocol(TableViewRefreshDelegate)] subscribeNext:^(RACTuple *x) {
+        [self requestData:(NSString *)x.first Method:GET type:_result.type];
+    }];
 }
 #pragma mark - SearchBar Delegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     if ([searchBar.text replaceNullString] != nil) {
+        if (_result == nil) {
+            [self initResult];
+        }else {
+            [self requestData:[NSString stringWithFormat:@"%@%@",_result.api,self.searchBar.text] Method:GET type:_result.type];
+        }
         [searchBar resignFirstResponder];
         [[XJMarket sharedMarket] addSearch:searchBar.text];
-        [self.tableView removeFromSuperview];
-        [self handleResult];
     }
 }
 #pragma mark - Action

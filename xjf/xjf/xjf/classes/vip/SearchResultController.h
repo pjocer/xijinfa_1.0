@@ -7,22 +7,37 @@
 //
 
 #import "BaseViewController.h"
+#import "TopicModel.h"
+#import "FansFocus.h"
+#import "TalkGridModel.h"
 
 typedef enum : NSUInteger {
-    LessonsTable,
+    LessonsTable = 0,
     TopicsTable,
     EncyclopediaTable,
     PersonsTable,
-    AllTable
+    AllTable,
+    UnKnownType
 } ReloadTableType;
 
+@protocol TableViewRefreshDelegate <NSObject>
+@optional
+- (void)tableViewFooterDidRefresh:(NSString *)url;
+- (void)tableViewHeaderDidRefresh;
+@end
+
 @interface SearchResultController : BaseViewController
-@property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UILabel *segmentline;
-@property (nonatomic, assign) NSInteger current;
+@property (nonatomic, weak) id <TableViewRefreshDelegate>delegate;
+@property (nonatomic, strong) TablkListModel *baike_list;
+@property (nonatomic, strong) TablkListModel *lesson_list;
+@property (nonatomic, strong) TopicModel *topic_list;
+@property (nonatomic, strong) FansFocus *person_list;
 @property (nonatomic, strong) NSMutableArray *encyDataSource;
 @property (nonatomic, strong) NSMutableArray *lessonsDataSource;
 @property (nonatomic, strong) NSMutableArray *topicsDataSource;
 @property (nonatomic, strong) NSMutableArray *personsDataSource;
-- (void)reloadDataFor:(ReloadTableType)type;
+@property (nonatomic, copy) APIName *api;//当前Table的搜索API
+@property (nonatomic, assign) ReloadTableType type;
+- (void)reloadData;
+- (void)hiddenMJRefresh;
 @end

@@ -217,7 +217,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         _header = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
-        _header.model = _model;
+        _header.model = _model.result;
         _header.selectionStyle = UITableViewCellSelectionStyleNone;
         return _header;
     }else {

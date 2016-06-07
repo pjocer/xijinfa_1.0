@@ -12,9 +12,11 @@
 #import "UIImageView+WebCache.h"
 #import "CommentDetailHeader.h"
 #import "FansCell.h"
-
+#import <MJRefresh/MJRefresh.h>
 @interface SearchResultController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UIView *header;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UILabel *segmentline;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) NSMutableArray *tableViews;
 @property (nonatomic, strong) UITableView *encyclopedia;
@@ -54,24 +56,20 @@
     self.topicsDataSource = [NSMutableArray array];
     self.lessonsDataSource = [NSMutableArray array];
     self.personsDataSource = [NSMutableArray array];
-}
-- (void)requestData:(APIName *)api method:(RequestMethod)method {
-    
+    _type = EncyclopediaTable;
 }
 - (void)handleRACResult {
-    @weakify(self);
-    RAC(self.segmentline,frame) = [RACObserve(self.scrollView, contentOffset) map:^id(id x) {
-        @strongify(self);
+    RAC(_segmentline,frame) = [RACObserve(_scrollView, contentOffset) map:^id(id x) {
         CGPoint point = [x CGPointValue];
         CGFloat percent = point.x/SCREENWITH;
-        self.current = percent;
+        _api = percent==0?search_baike:(percent==1?search_lesson:(percent==2?search_topic:(percent==3?search_person:search_baike)));
+        _type = percent==0?EncyclopediaTable:(percent==1?LessonsTable:(percent==2?TopicsTable:(percent==3?PersonsTable:EncyclopediaTable)));
         CGRect frame = CGRectMake(SCREENWITH/4*percent, 32, SCREENWITH/4, 3);
         return [NSValue valueWithCGRect:frame];
     }];
     for (UIButton *button in self.buttons) {
         [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *x) {
-            @strongify(self);
-            [self.scrollView setContentOffset:CGPointMake(SCREENWITH*(x.tag-700), 35) animated:YES];
+            [_scrollView setContentOffset:CGPointMake(SCREENWITH*(x.tag-700), 35) animated:YES];
         }];
     }
 }
@@ -122,6 +120,17 @@
         _encyclopedia = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _encyclopedia.delegate = self;
         _encyclopedia.dataSource = self;
+        _encyclopedia.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [_encyDataSource removeAllObjects];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
+                [self.delegate tableViewHeaderDidRefresh];
+            }
+        }];
+        _encyclopedia.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewFooterDidRefresh:)]) {
+                [self.delegate tableViewFooterDidRefresh:_baike_list.result.next_page_url];
+            }
+        }];
         [_encyclopedia registerNib:[UINib nibWithNibName:@"BaikeCell" bundle:nil] forCellReuseIdentifier:@"BaikeCell"];
     }
     return _encyclopedia;
@@ -131,6 +140,17 @@
         _lessons = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _lessons.delegate = self;
         _lessons.dataSource = self;
+        _lessons.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [_lessonsDataSource removeAllObjects];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
+                [self.delegate tableViewHeaderDidRefresh];
+            }
+        }];
+        _lessons.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewFooterDidRefresh:)]) {
+                [self.delegate tableViewFooterDidRefresh:_lesson_list.result.next_page_url];
+            }
+        }];
         [_lessons registerNib:[UINib nibWithNibName:@"SearchSectionTwo" bundle:nil] forCellReuseIdentifier:@"SearchSectionTwo"];
     }
     return _lessons;
@@ -140,6 +160,17 @@
         _topics = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH*2, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _topics.delegate = self;
         _topics.dataSource = self;
+        _topics.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [_topicsDataSource removeAllObjects];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
+                [self.delegate tableViewHeaderDidRefresh];
+            }
+        }];
+        _topics.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewFooterDidRefresh:)]) {
+                [self.delegate tableViewFooterDidRefresh:_topic_list.result.next_page_url];
+            }
+        }];
         [_topics registerNib:[UINib nibWithNibName:@"CommentDetailHeader" bundle:nil] forCellReuseIdentifier:@"CommentDetailHeader"];
     }
     return _topics;
@@ -150,12 +181,23 @@
         _persons = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH*3, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _persons.delegate = self;
         _persons.dataSource = self;
+        _persons.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [_personsDataSource removeAllObjects];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
+                [self.delegate tableViewHeaderDidRefresh];
+            }
+        }];
+        _persons.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewFooterDidRefresh:)]) {
+                [self.delegate tableViewFooterDidRefresh:_person_list.result.next_page_url];
+            }
+        }];
         [_persons registerNib:[UINib nibWithNibName:@"FansCell" bundle:nil] forCellReuseIdentifier:@"FansCell"];
     }
     return _persons;
 }
--(void)reloadDataFor:(ReloadTableType)type {
-    switch (type) {
+-(void)reloadData {
+    switch (_type) {
         case LessonsTable:
         {
             [self.lessons reloadData];
@@ -187,6 +229,43 @@
             break;
     }
 }
+-(void)hiddenMJRefresh {
+    switch (_type) {
+        case LessonsTable:
+        {
+            [self hiddenMJRefresh:self.lessons];
+        }
+            break;
+        case TopicsTable:
+        {
+            [self hiddenMJRefresh:self.topics];
+        }
+            break;
+        case EncyclopediaTable:
+        {
+            [self hiddenMJRefresh:self.encyclopedia];
+        }
+            break;
+        case PersonsTable:
+        {
+            [self hiddenMJRefresh:self.persons];
+        }
+            break;
+        case AllTable:
+        {
+            for (UITableView *tableView in self.tableViews) {
+                [self hiddenMJRefresh:tableView];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+- (void)hiddenMJRefresh:(UITableView *)tableView {
+    [tableView.mj_header endRefreshing];
+    [tableView.mj_footer endRefreshing];
+}
 #pragma TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.encyclopedia) {
@@ -201,19 +280,36 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.encyclopedia) {
+        TalkGridModel *model = self.encyDataSource.count>0?[self.encyDataSource objectAtIndex:indexPath.row]:nil;
         BaikeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaikeCell" forIndexPath:indexPath];
-        [cell.avatar sd_setImageWithURL:[NSURL URLWithString:@""]];
-        cell.title.text = @"A";
-        cell.everWatched.text = @"200人观看过";
+        if (model) {
+            [cell.avatar sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+            cell.title.text = model.title;
+            cell.everWatched.text = [NSString stringWithFormat:@"%@人看过",model.video_view];
+        }
         return cell;
     }else if (tableView == self.topics) {
+        TopicDataModel *model = self.topicsDataSource.count>0?[self.topicsDataSource objectAtIndex:indexPath.row]:nil;
         CommentDetailHeader *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
+        if (model) {
+            cell.model = model;
+        }
         return cell;
     }else if (tableView == self.lessons) {
+        TalkGridModel *model = self.lessonsDataSource.count>0?[self.lessonsDataSource objectAtIndex:indexPath.row]:nil;
         SearchSectionTwo *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchSectionTwo" forIndexPath:indexPath];
+        if (model) {
+            cell.model = model;
+        }
         return cell;
     }else {
+        UserInfoModel *model = self.personsDataSource.count>0?[self.personsDataSource objectAtIndex:indexPath.row]:nil;
         FansCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FansCell" forIndexPath:indexPath];
+        if (model) {
+            [cell.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+            cell.nickname.text = model.nickname;
+            cell.summary.text = model.summary;
+        }
         return cell;
     }
 }

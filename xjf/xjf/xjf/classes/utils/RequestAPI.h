@@ -54,6 +54,15 @@ static APIName *focus_on = @"/api/friendship/follow";
 static APIName *focus_off = @"/api/friendship/unfollow";
 //是否已经关注
 static APIName *focusOrNot = @"/api/friendship/check";
+
+//搜索百科
+static APIName *search_baike = @"/api/search/wikis?s=";
+//搜索课程
+static APIName *search_lesson = @"/api/search/courses?s=";
+//搜索话题
+static APIName *search_topic = @"/api/search/topics?s=";
+//搜索用户
+static APIName *search_person = @"/api/search/users?s=";
 #pragma mark- Hunter_Wang
 
 
