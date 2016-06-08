@@ -75,6 +75,8 @@
 		5A565A341D069F1B00008DA9 /* EmployedBasisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A331D069F1B00008DA9 /* EmployedBasisViewController.m */; };
 		5A565A371D069F5800008DA9 /* EmployedLawsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A361D069F5800008DA9 /* EmployedLawsViewController.m */; };
 		5A565A3A1D069F7200008DA9 /* EmployedGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A391D069F7200008DA9 /* EmployedGeneralViewController.m */; };
+		5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A3E1D07C05A00008DA9 /* VipModel.m */; };
+		5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A411D07C09700008DA9 /* VipHeaderView.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -369,6 +371,10 @@
 		5A565A361D069F5800008DA9 /* EmployedLawsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedLawsViewController.m; sourceTree = "<group>"; };
 		5A565A381D069F7200008DA9 /* EmployedGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedGeneralViewController.h; sourceTree = "<group>"; };
 		5A565A391D069F7200008DA9 /* EmployedGeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedGeneralViewController.m; sourceTree = "<group>"; };
+		5A565A3D1D07C05A00008DA9 /* VipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipModel.h; sourceTree = "<group>"; };
+		5A565A3E1D07C05A00008DA9 /* VipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipModel.m; sourceTree = "<group>"; };
+		5A565A401D07C09700008DA9 /* VipHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipHeaderView.h; sourceTree = "<group>"; };
+		5A565A411D07C09700008DA9 /* VipHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipHeaderView.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -565,7 +571,7 @@
 		D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCellFoot.m; sourceTree = "<group>"; };
 		D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCellFoot.xib; sourceTree = "<group>"; };
 		D049BA4D1CEC041600CD5359 /* XJAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJAccountManager.h; sourceTree = "<group>"; };
-		D049BA4E1CEC041600CD5359 /* XJAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAccountManager.m; sourceTree = "<group>"; };
+		D049BA4E1CEC041600CD5359 /* XJAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAccountManager.m; sourceTree = "<group>"; tabWidth = 4; };
 		D049BA501CEC047600CD5359 /* UserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModel.h; sourceTree = "<group>"; };
 		D049BA511CEC047600CD5359 /* UserProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileModel.m; sourceTree = "<group>"; };
 		D049BA531CEC0D3400CD5359 /* UserLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoadCell.h; sourceTree = "<group>"; };
@@ -901,6 +907,24 @@
 				5A565A2A1D06979500008DA9 /* EmployedViewInformationCell.m */,
 			);
 			path = Employed;
+			sourceTree = "<group>";
+		};
+		5A565A3B1D07C03F00008DA9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A3D1D07C05A00008DA9 /* VipModel.h */,
+				5A565A3E1D07C05A00008DA9 /* VipModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5A565A3C1D07C03F00008DA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A401D07C09700008DA9 /* VipHeaderView.h */,
+				5A565A411D07C09700008DA9 /* VipHeaderView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5AF7C2CD1CF945F6007CC71C /* Order */ = {
@@ -1390,9 +1414,9 @@
 		CD1CCC0C1CB35A2D002FC0C9 /* Vip */ = {
 			isa = PBXGroup;
 			children = (
+				5A565A3B1D07C03F00008DA9 /* Model */,
+				5A565A3C1D07C03F00008DA9 /* View */,
 				CD1CCC0D1CB35A2D002FC0C9 /* controller */,
-				CD1CCC101CB35A2D002FC0C9 /* model */,
-				CD1CCC111CB35A2D002FC0C9 /* view */,
 			);
 			name = Vip;
 			path = classes/vip;
@@ -1407,20 +1431,6 @@
 				CD1CCC351CB37950002FC0C9 /* VipBaseViewController.m */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		CD1CCC101CB35A2D002FC0C9 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		CD1CCC111CB35A2D002FC0C9 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		CD1CCC171CB36386002FC0C9 /* Base */ = {
@@ -1986,6 +1996,7 @@
 				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
+				5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */,
 				5A240E131CE427A3003B7971 /* PlayerPageDescribeCell.m in Sources */,
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				644C11571CBA90A000892E2C /* XMShareWechatUtil.m in Sources */,
@@ -2052,6 +2063,7 @@
 				D07166551D06B56D00A08B58 /* BaikeCell.m in Sources */,
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
 				5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */,
+				5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
 				5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,

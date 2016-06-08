@@ -55,6 +55,16 @@ static NSString *MyFavoredsSchoolCell_id = @"MyFavoredsSchoolCell_id";
     return cell;
 }
 
+#pragma mark Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+    lessonDetailViewController.model = self.dataSource[indexPath.row];
+    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+}
+
+
+/*
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -76,14 +86,6 @@ static NSString *MyFavoredsSchoolCell_id = @"MyFavoredsSchoolCell_id";
     }
 }
 
-#pragma mark Delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-    lessonDetailViewController.model = self.dataSource[indexPath.row];
-    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
-}
-
 - (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method IndexPath:(NSIndexPath *)index
 {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
@@ -94,6 +96,6 @@ static NSString *MyFavoredsSchoolCell_id = @"MyFavoredsSchoolCell_id";
     }failedBlock:^(NSError *_Nullable error) {
     }];
 }
-
+*/
 
 @end

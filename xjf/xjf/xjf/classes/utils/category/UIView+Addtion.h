@@ -11,4 +11,16 @@
 @interface UIView (Addtion)
 - (void)addShadow;
 - (UIView *)addBottomLine;
+/**
+ *  颜色渐变(上下)
+ *
+ *  @param frame       需要绘制View的Frame
+ *  @param topColor    ViewTopColor
+ *  @param bottomColor ViewBottomColor
+ *  @param layer       View的Layer
+ */
+- (void)setBackgroundColorByFrame:(CGRect)frame
+                         TopColor:(UIColor *)topColor
+                      BottomColor:(UIColor *)bottomColor
+                            Layer:(CALayer *)layer;
 @end

@@ -47,6 +47,8 @@
 @property(nonatomic, strong) NSString *type;
 @property(nonatomic, strong) NSString *updated_at;
 @property(nonatomic, strong) NSArray *package;
+///用户在什么时候播放的视频
+@property(nonatomic, strong) NSString *user_played_at;
 ///(已登录用户)是否已收藏
 @property(nonatomic, assign) BOOL user_favored;
 @property(nonatomic, strong) NSString *user_id;

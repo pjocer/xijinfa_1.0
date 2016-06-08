@@ -68,15 +68,20 @@ static CGFloat tableHeaderH = 35;
     
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyPlayerHistoryCell_id];
 }
-#pragma mark TabelViewDataSource
 
+#pragma mark TabelViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return self.tablkListModel.result.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyPlayerHistoryCell_id];
-    cell.model = self.tablkListModel.result.data[indexPath.row];
+    cell.model = self.tablkListModel.result.data[indexPath.section];
     return cell;
 }
 
@@ -92,21 +97,21 @@ static CGFloat tableHeaderH = 35;
     [sectionView addSubview:bottomView];
     bottomView.backgroundColor = BackgroundColor;
     sectionView.moreLabel.hidden = YES;
-//    sectionView.titleLabel.text = model.title;
-    sectionView.titleLabel.text = @"xxxx";
+    TalkGridModel *model = self.tablkListModel.result.data[section];
+    sectionView.titleLabel.text = model.user_played_at;
     return sectionView;
 }
 
 #pragma mark Delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
+    TalkGridModel *model = self.tablkListModel.result.data[indexPath.section];
     
-    if ([model.type isEqualToString:@"lesson"]) {
+    if ([model.department isEqualToString:@"dept2"]) {
         PlayerViewController *player = [PlayerViewController new];
         player.talkGridModel = model;
-    } else if ([model.type isEqualToString:@"course"]){
+        [self.navigationController pushViewController:player animated:YES];
+    } else{
         LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
         lessonDetailViewController.model = model;
         [self.navigationController pushViewController:lessonDetailViewController animated:YES];

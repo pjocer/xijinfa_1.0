@@ -129,7 +129,6 @@ static CGFloat selViewH = 3;
     self.contentScrollView = [[UIScrollView alloc] initWithFrame:rect];
     [self.view addSubview:self.contentScrollView];
     self.contentScrollView.bounces = NO;
-    self.contentScrollView.scrollEnabled = NO;
 }
 
 #pragma mark - 添加子控制器

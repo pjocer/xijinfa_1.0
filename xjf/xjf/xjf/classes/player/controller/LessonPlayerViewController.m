@@ -114,7 +114,7 @@ static CGFloat selViewH = 3;
 ///给服务器发送POST PlayerHistory
 - (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method{
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.department],@"duration":@"0"}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.department],@"duration":@"1"}];
     
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         

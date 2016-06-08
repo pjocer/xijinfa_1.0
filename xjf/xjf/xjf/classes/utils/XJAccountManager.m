@@ -95,6 +95,7 @@
 //后期加上，清理缓存
 - (void)logout {
     self.user_model = nil;
+    SendNotification(UserInfoDidChangedNotification, nil);
     [ZPlatformShare logout];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCESS_TOKEN_WEIXIN];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:OPEN_ID_WEIXIN];

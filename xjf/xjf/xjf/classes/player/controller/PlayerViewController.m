@@ -166,7 +166,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
 - (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method{
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.talkGridModel.id_],@"type":[NSString stringWithFormat:@"%@",self.talkGridModel.type],@"department":[NSString stringWithFormat:@"%@",self.talkGridModel.department],@"duration":@"0"}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.talkGridModel.id_],@"type":[NSString stringWithFormat:@"%@",self.talkGridModel.type],@"department":[NSString stringWithFormat:@"%@",self.talkGridModel.department],@"duration":@"1"}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
     }failedBlock:^(NSError *_Nullable error) {

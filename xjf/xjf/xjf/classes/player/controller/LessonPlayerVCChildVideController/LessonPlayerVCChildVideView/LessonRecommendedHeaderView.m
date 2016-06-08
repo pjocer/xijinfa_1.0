@@ -7,6 +7,7 @@
 //
 
 #import "LessonRecommendedHeaderView.h"
+#import "XJAccountManager.h"
 @interface LessonRecommendedHeaderView ()
 @property (nonatomic, strong) UIView *backGroundView;
 ///用户头像
@@ -60,6 +61,11 @@
             make.height.mas_equalTo(30);
         }];
         
+        if ([[XJAccountManager defaultManager] accessToken] != nil || [[XJAccountManager defaultManager] accessToken].length > 0) {
+            [self.userImage sd_setImageWithURL:[NSURL URLWithString:[XJAccountManager defaultManager].user_model.result.avatar]];
+        }else {
+            self.userImage.image = [UIImage imageNamed:@"user_unload"];
+        }
     }
     return self;
 }
