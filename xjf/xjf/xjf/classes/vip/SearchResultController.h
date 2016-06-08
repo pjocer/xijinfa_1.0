@@ -38,6 +38,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSMutableArray *personsDataSource;
 @property (nonatomic, copy) APIName *api;//当前Table的搜索API
 @property (nonatomic, assign) ReloadTableType type;
-- (void)reloadData;
+- (void)reloadData:(ReloadTableType)type;
+- (void)clearDataSource;
 - (void)hiddenMJRefresh;
 @end

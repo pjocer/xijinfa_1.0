@@ -144,7 +144,6 @@
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         [self handleRequestData:responseData api:api type:type];
         if (type != UnKnownType) {
-            [_result reloadData];
             [_result hiddenMJRefresh];
         }
     } failedBlock:^(NSError * _Nullable error) {
@@ -165,6 +164,7 @@
         _result.baike_list = [[TablkListModel alloc] initWithData:data error:nil];
         if (_result.baike_list.errCode == 0 && _result.baike_list.result.data.count > 0) {
             [_result.encyDataSource addObjectsFromArray:_result.baike_list.result.data];
+            [_result reloadData:EncyclopediaTable];
         }else {
             [[ZToastManager ShardInstance] showtoast:_result.baike_list.errMsg];
         }
@@ -172,6 +172,7 @@
         _result.lesson_list = [[TablkListModel alloc] initWithData:data error:nil];
         if (_result.lesson_list.errCode == 0 && _result.lesson_list.result.data) {
             [_result.lessonsDataSource addObjectsFromArray:_result.lesson_list.result.data];
+            [_result reloadData:LessonsTable];
         }else {
             [[ZToastManager ShardInstance] showtoast:_result.baike_list.errMsg];
         }
@@ -179,6 +180,7 @@
         _result.topic_list = [[TopicModel alloc] initWithData:data error:nil];
         if (_result.topic_list.errCode.integerValue == 0 && _result.topic_list.result.data) {
             [_result.topicsDataSource addObjectsFromArray:_result.topic_list.result.data];
+            [_result reloadData:TopicsTable];
         }else {
             [[ZToastManager ShardInstance] showtoast:_result.topic_list.errMsg];
         }
@@ -186,6 +188,7 @@
         _result.person_list = [[FansFocus alloc] initWithData:data error:nil];
         if (_result.person_list.errCode.integerValue == 0 && _result.person_list.result.data) {
             [_result.personsDataSource addObjectsFromArray:_result.person_list.result.data];
+            [_result reloadData:PersonsTable];
         }else {
             [[ZToastManager ShardInstance] showtoast:_result.person_list.errMsg];
         }
@@ -222,6 +225,7 @@
         if (_result == nil) {
             [self initResult];
         }else {
+            [_result clearDataSource];
             [self requestData:[NSString stringWithFormat:@"%@%@",_result.api,self.searchBar.text] Method:GET type:_result.type];
         }
         [searchBar resignFirstResponder];

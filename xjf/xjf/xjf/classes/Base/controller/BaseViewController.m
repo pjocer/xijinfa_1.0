@@ -33,7 +33,8 @@ NSString *const Subscribe = @"SubscribeViewController";
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationItem.title = @"   ";
+    self.nav_title = @"";
+    
 }
 
 - (void)viewDidLoad {

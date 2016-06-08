@@ -78,9 +78,7 @@
         _header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
         _header.backgroundColor = [UIColor whiteColor];
         [_header addSubview:self.segmentline];
-        UILabel *bottom = [[UILabel alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
-        bottom.backgroundColor = BackgroundColor;
-        [_header addSubview:bottom];
+        [_header addShadow];
         self.buttons = [NSMutableArray arrayWithCapacity:4];
         NSArray *titles = @[@"百科",@"课程",@"话题",@"找人"];
         for (int i = 0; i < 4; i++) {
@@ -120,6 +118,8 @@
         _encyclopedia = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _encyclopedia.delegate = self;
         _encyclopedia.dataSource = self;
+        _encyclopedia.backgroundColor = [UIColor clearColor];
+        _encyclopedia.separatorStyle = UITableViewCellSeparatorStyleNone;
         _encyclopedia.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [_encyDataSource removeAllObjects];
             if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
@@ -140,6 +140,8 @@
         _lessons = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _lessons.delegate = self;
         _lessons.dataSource = self;
+        _lessons.backgroundColor = [UIColor clearColor];
+        _lessons.separatorStyle = UITableViewCellSeparatorStyleNone;
         _lessons.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [_lessonsDataSource removeAllObjects];
             if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
@@ -160,6 +162,8 @@
         _topics = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH*2, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _topics.delegate = self;
         _topics.dataSource = self;
+        _topics.backgroundColor = [UIColor clearColor];
+        _topics.separatorStyle = UITableViewCellSeparatorStyleNone;
         _topics.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [_topicsDataSource removeAllObjects];
             if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
@@ -181,6 +185,8 @@
         _persons = [[UITableView alloc] initWithFrame:CGRectMake(SCREENWITH*3, 0, SCREENWITH, SCREENHEIGHT-35-64) style:UITableViewStylePlain];
         _persons.delegate = self;
         _persons.dataSource = self;
+        _persons.backgroundColor = [UIColor clearColor];
+        _persons.separatorStyle = UITableViewCellSeparatorStyleNone;
         _persons.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [_personsDataSource removeAllObjects];
             if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewHeaderDidRefresh)]) {
@@ -196,8 +202,14 @@
     }
     return _persons;
 }
--(void)reloadData {
-    switch (_type) {
+-(void)clearDataSource {
+    [self.topicsDataSource removeAllObjects];
+    [self.encyDataSource removeAllObjects];
+    [self.personsDataSource removeAllObjects];
+    [self.lessonsDataSource removeAllObjects];
+}
+-(void)reloadData:(ReloadTableType)type {
+    switch (type) {
         case LessonsTable:
         {
             [self.lessons reloadData];
@@ -282,6 +294,7 @@
     if (tableView == self.encyclopedia) {
         TalkGridModel *model = self.encyDataSource.count>0?[self.encyDataSource objectAtIndex:indexPath.row]:nil;
         BaikeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaikeCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (model) {
             [cell.avatar sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
             cell.title.text = model.title;
@@ -291,6 +304,7 @@
     }else if (tableView == self.topics) {
         TopicDataModel *model = self.topicsDataSource.count>0?[self.topicsDataSource objectAtIndex:indexPath.row]:nil;
         CommentDetailHeader *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (model) {
             cell.model = model;
         }
@@ -298,6 +312,7 @@
     }else if (tableView == self.lessons) {
         TalkGridModel *model = self.lessonsDataSource.count>0?[self.lessonsDataSource objectAtIndex:indexPath.row]:nil;
         SearchSectionTwo *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchSectionTwo" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (model) {
             cell.model = model;
         }
@@ -305,6 +320,7 @@
     }else {
         UserInfoModel *model = self.personsDataSource.count>0?[self.personsDataSource objectAtIndex:indexPath.row]:nil;
         FansCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FansCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (model) {
             [cell.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
             cell.nickname.text = model.nickname;
@@ -313,9 +329,11 @@
         return cell;
     }
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.topics) {
-        return 150;
+        TopicDataModel *model = self.topicsDataSource.count>0?[self.topicsDataSource objectAtIndex:indexPath.row]:nil;
+        return model?[self cellHeight:model]:150;
     }else {
         return 101;
     }
@@ -331,6 +349,37 @@
     }else {
         NSLog(@"persons");
     }
+}
+- (CGFloat)cellHeight :(TopicDataModel *)model {
+    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
+    CGFloat height = 10+40+10+contentHeight;
+    if (model.categories.count > 0) {
+            CGFloat all = 0;
+            CGFloat alll = 0;
+            CGFloat tap = 10;
+            NSMutableArray *labels = [NSMutableArray array];
+            for (CategoryLabel *label in model.categories) {
+                [labels addObject:label.name];
+            }
+            for (int i = 0; i < labels.count; i++) {
+                NSString *title = [NSString stringWithFormat:@"#%@#",labels[i]];
+                CGSize size = [title sizeWithFont:FONT12 constrainedToSize:CGSizeMake(SCREENWITH, 14) lineBreakMode:1];
+                all = all + tap + size.width;
+                if (all <= SCREENWITH) {
+                    return height + 44;
+                }else if (all <= SCREENWITH*2 && all>SCREENWITH) {
+                    alll = alll + tap + size.width;
+                    if (alll <= SCREENWITH) {
+                        return height + 68;
+                    }else {
+                        continue;
+                    }
+                }
+            }
+    }else {
+        return height+10+10;
+    }
+    return height+10+10;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -32,6 +32,7 @@
     [super viewWillAppear:animated];
     self.model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
     [self.tableview reloadData];
+    
 }
 
 - (void)viewDidLoad {

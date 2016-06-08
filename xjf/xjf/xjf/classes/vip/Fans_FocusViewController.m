@@ -128,7 +128,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
         cell.nickname.text = model.nickname;
-        cell.summary.text = @"等待API";
+        cell.summary.text = model.summary;
         return cell;
     }
     return nil;
