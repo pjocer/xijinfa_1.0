@@ -16,6 +16,8 @@
 #import "MyLessonsViewController.h"
 #import "MyFavoredsViewController.h"
 #import "MyPlayerHistoryViewController.h"
+#import "MyCommentViewController.h"
+#import "XJAccountManager.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -148,7 +150,6 @@
 #pragma UserComponentDelegate
 
 - (void)componentDidSelected:(NSUInteger)index {
-    NSLog(@"%lu", index);
     switch (index) {
         case 0:
         {
@@ -164,13 +165,14 @@
             break;
         case 2:
         {
-            MyTopicViewController *controler = [[MyTopicViewController alloc] init];
-            [self.navigationController pushViewController:controler animated:YES];
+            MyTopicViewController *controller = [[MyTopicViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
         }
             break;
         case 3:
         {
-            
+            MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *)[[XJAccountManager defaultManager] user_model].result];
+            [self.navigationController pushViewController:controller animated:YES];
         }
             break;
         case 4:

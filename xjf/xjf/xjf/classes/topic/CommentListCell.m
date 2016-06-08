@@ -43,7 +43,7 @@
         [controller.navigationController pushViewController:ta animated:YES];
     }
 }
--(void)setData:(CommentData *)data {
+-(void)setData:(TopicDataModel *)data {
     _data = data;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:data.user.avatar]];
     _nickname.text = data.user.nickname;

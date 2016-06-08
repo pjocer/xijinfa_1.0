@@ -59,9 +59,9 @@
     self.username.text = model.result.nickname;
     [self.user_icon sd_setImageWithURL:[NSURL URLWithString:model.result.avatar] placeholderImage:[UIImage imageNamed:@"user_unload"]];
     self.user_gold.text = model.result.coin_balance?:@"0";
-    self.user_fans.text = model.result.followers?:@"0";
-    self.user_attention.text = model.result.followings?:@"0";
-    _vip_mark.hidden = model.result.membership==nil?YES:NO;
+    self.user_fans.text = model.result.follower?:@"0";
+    self.user_attention.text = model.result.following?:@"0";
+    _vip_mark.hidden = model.result.membership.count==0?YES:NO;
 }
 
 @end

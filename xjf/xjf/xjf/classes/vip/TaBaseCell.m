@@ -36,7 +36,7 @@
     _model = userinfo;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:userinfo.avatar]];
     _nickname.text = userinfo.nickname;
-    _vip_tie.hidden = userinfo.membership==nil?YES:NO;
+    _vip_tie.hidden = (userinfo.membership==nil||userinfo.membership.count==0)?YES:NO;
     _fans_count.text = userinfo.follower?:@"0";
     _focus_count.text = userinfo.following?:@"0";
     _taFans.text = [NSString stringWithFormat:@"%@的粉丝",userinfo.nickname];

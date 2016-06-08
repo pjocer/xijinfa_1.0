@@ -29,6 +29,14 @@
     [super viewDidLoad];
     [self initMainUI];
 }
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
 - (void)initMainUI {
     self.nav_title = @"我的话题";
     self.dataSource = [NSMutableArray array];
@@ -43,7 +51,7 @@
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         _model = [[TopicModel alloc] initWithData:responseData error:nil];
-        if ([_model.errCode isEqualToString:@"0"]) {
+        if (_model.errCode == 0) {
             [self.dataSource addObjectsFromArray:_model.result.data];
             [self.tableView reloadData];
         }else {
@@ -57,7 +65,7 @@
 }
 -(UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

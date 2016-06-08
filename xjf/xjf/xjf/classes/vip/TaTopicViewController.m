@@ -104,7 +104,7 @@
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         _model = [[TopicModel alloc] initWithData:responseData error:nil];
-        if ([_model.errCode isEqualToString:@"0"]) {
+        if (_model.errCode == 0) {
             [self.dataSource addObjectsFromArray:_model.result.data];
             [self.tableView reloadData];
         }else {

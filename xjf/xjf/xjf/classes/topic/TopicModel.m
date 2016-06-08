@@ -17,18 +17,6 @@
 }
 @end
 
-@implementation TopictMembershipModel
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
-@end
-
-@implementation TopicUserModel
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
-@end
-
 @implementation TopicDataModel
 +(BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;

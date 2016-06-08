@@ -201,7 +201,7 @@
                 <outlet property="segment_line" destination="7C2-Ab-WoG" id="EfK-1Q-IaL"/>
                 <outlet property="update_at" destination="zrr-mg-kv4" id="UYV-Ii-2k1"/>
             </connections>
-            <point key="canvasLocation" x="374" y="244"/>
+            <point key="canvasLocation" x="141" y="377"/>
         </tableViewCell>
     </objects>
     <resources>

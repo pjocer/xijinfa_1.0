@@ -161,6 +161,8 @@
 		D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA511CEC047600CD5359 /* UserProfileModel.m */; };
 		D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA541CEC0D3400CD5359 /* UserLoadCell.m */; };
 		D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */; };
+		D04D0C0C1D07EA5D0090D2CD /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04D0C0A1D07EA5D0090D2CD /* CommentCell.m */; };
+		D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04D0C0B1D07EA5D0090D2CD /* CommentCell.xib */; };
 		D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E461CFE76F1008386CE /* CommentListCell.m */; };
 		D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F5E471CFE76F1008386CE /* CommentListCell.xib */; };
 		D04F5E4C1CFEB6EB008386CE /* NewTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */; };
@@ -545,6 +547,9 @@
 		D049BA531CEC0D3400CD5359 /* UserLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoadCell.h; sourceTree = "<group>"; };
 		D049BA541CEC0D3400CD5359 /* UserLoadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoadCell.m; sourceTree = "<group>"; };
 		D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserLoadCell.xib; sourceTree = "<group>"; };
+		D04D0C091D07EA5D0090D2CD /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		D04D0C0A1D07EA5D0090D2CD /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		D04D0C0B1D07EA5D0090D2CD /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		D04F5E451CFE76F1008386CE /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentListCell.h; path = xjf/classes/topic/CommentListCell.h; sourceTree = SOURCE_ROOT; };
 		D04F5E461CFE76F1008386CE /* CommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentListCell.m; path = xjf/classes/topic/CommentListCell.m; sourceTree = SOURCE_ROOT; };
 		D04F5E471CFE76F1008386CE /* CommentListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentListCell.xib; path = xjf/classes/topic/CommentListCell.xib; sourceTree = SOURCE_ROOT; };
@@ -1256,6 +1261,9 @@
 				D083C8EF1CF450630028DE8A /* SettingRowOneCell.h */,
 				D083C8F01CF450630028DE8A /* SettingRowOneCell.m */,
 				D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */,
+				D04D0C091D07EA5D0090D2CD /* CommentCell.h */,
+				D04D0C0A1D07EA5D0090D2CD /* CommentCell.m */,
+				D04D0C0B1D07EA5D0090D2CD /* CommentCell.xib */,
 				5A0C3F911CF693E900D7EEEB /* MyMoneyView */,
 				5A20716A1D02ADBE00462D65 /* MyLessonsTableFooterView.h */,
 				5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */,
@@ -1814,6 +1822,7 @@
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
+				D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */,
 				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
 				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
 			);
@@ -1914,6 +1923,7 @@
 				644C115F1CBA90A000892E2C /* XMShareView.m in Sources */,
 				5A105E7B1CEC59270079BEFE /* LessonRecommendedHeaderView.m in Sources */,
 				5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */,
+				D04D0C0C1D07EA5D0090D2CD /* CommentCell.m in Sources */,
 				5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */,
 				D07166511D06658000A08B58 /* SearchResultController.m in Sources */,
 				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,

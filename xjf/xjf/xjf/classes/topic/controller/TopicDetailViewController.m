@@ -188,7 +188,7 @@
 
 -(UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         [_tableView registerNib:[UINib nibWithNibName:@"CommentDetailHeader" bundle:nil] forCellReuseIdentifier:@"CommentDetailHeader"];
         [_tableView registerNib:[UINib nibWithNibName:@"CommentListCell" bundle:nil] forCellReuseIdentifier:@"CommentListCell"];
@@ -223,7 +223,7 @@
     }else {
         CommentListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentListCell" forIndexPath:indexPath];
         if (_commentList.result.data && _commentList.result.data.count>0) {
-            CommentData *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
+            TopicDataModel *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
             cell.data = data;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -233,9 +233,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return _header.cellHeight;
-    }else if (_commentList.result.data && _commentList.result.data.count>0) {
-        CommentData *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
-        return [StringUtil calculateLabelHeight:data.content width:SCREENWITH-20 fontsize:15]+71;
+    }else if (self.dataSource && self.dataSource.count>0) {
+        TopicDataModel *data = [self.dataSource objectAtIndex:indexPath.row-1];
+        return [StringUtil calculateLabelHeight:data.content width:SCREENWITH-70 fontsize:15]+71;
     }else {
         return 0;
     }

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "TopicCommentList.h"
 @interface CommentListCell : UITableViewCell
-@property (nonatomic, strong) CommentData *data;
+@property (nonatomic, strong) TopicDataModel *data;
 @end

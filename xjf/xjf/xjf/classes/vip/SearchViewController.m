@@ -178,7 +178,7 @@
         }
     }else if (type == TopicsTable) {
         _result.topic_list = [[TopicModel alloc] initWithData:data error:nil];
-        if (_result.topic_list.errCode.integerValue == 0 && _result.topic_list.result.data) {
+        if (_result.topic_list.errCode == 0 && _result.topic_list.result.data) {
             [_result.topicsDataSource addObjectsFromArray:_result.topic_list.result.data];
             [_result reloadData:TopicsTable];
         }else {

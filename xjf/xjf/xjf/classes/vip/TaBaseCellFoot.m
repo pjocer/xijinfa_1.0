@@ -10,6 +10,7 @@
 #import "XJAccountManager.h"
 #import "TaTopicViewController.h"
 #import "UserInfoModel.h"
+#import "MyCommentViewController.h"
 
 @interface TaBaseCellFoot ()
 @property (weak, nonatomic) IBOutlet UILabel *topic;
@@ -27,6 +28,9 @@
 }
 - (void)commentClicked:(UIGestureRecognizer *)gesture {
     NSLog(@"comment");
+    MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *)self.model];
+    UIViewController *vc = getCurrentDisplayController();
+    [vc.navigationController pushViewController:controller animated:YES];
 }
 -(void)setModel:(JSONModel *)model {
     UserInfoModel *userInfo = (UserInfoModel *)model;

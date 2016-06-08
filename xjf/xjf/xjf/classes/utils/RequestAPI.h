@@ -63,6 +63,9 @@ static APIName *search_lesson = @"/api/search/courses?s=";
 static APIName *search_topic = @"/api/search/topics?s=";
 //搜索用户
 static APIName *search_person = @"/api/search/users?s=";
+
+//用户的评论
+static APIName *user_comment_list = @"/api/user/%@/reply";
 #pragma mark- Hunter_Wang
 
 

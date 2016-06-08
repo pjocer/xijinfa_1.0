@@ -7,7 +7,10 @@
 //
 
 #import "MyBaseViewController.h"
+#import "TopicModel.h"
+#import "UserInfoModel.h"
+
 
 @interface MyCommentViewController : MyBaseViewController
-
+- (instancetype)initWith:(UserInfoModel *)user;
 @end
