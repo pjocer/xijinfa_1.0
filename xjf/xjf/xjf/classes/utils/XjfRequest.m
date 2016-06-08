@@ -34,6 +34,7 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
         }else {
             _api_name = [NSString stringWithFormat:@"%@%@",defaultAPIHost,apiName];
         }
+        _api_name = [_api_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         _manager = [AFHTTPSessionManager manager];
         [self configureRequestHeaders];
     }

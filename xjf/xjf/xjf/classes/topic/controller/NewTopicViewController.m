@@ -76,7 +76,7 @@
 }
 -(UITextView *)textView {
     if (!_textView) {
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-20, SCREENHEIGHT-50-HEADHEIGHT-258)];
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-20, SCREENHEIGHT-50-HEADHEIGHT-265)];
         _textView.backgroundColor = [UIColor clearColor];
         _textView.font = FONT15;
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];

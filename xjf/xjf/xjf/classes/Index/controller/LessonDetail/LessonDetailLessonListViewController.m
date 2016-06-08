@@ -106,7 +106,7 @@ static CGFloat rowHeight = 50;
     if (cell.talkGridModel.user_favored) {
         cell.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
     }else {
-        cell.favorites.image = [UIImage imageNamed:@""];
+        cell.favorites.image = nil;
     }
     //是否学习过
     if (cell.talkGridModel.user_learned == 1) {

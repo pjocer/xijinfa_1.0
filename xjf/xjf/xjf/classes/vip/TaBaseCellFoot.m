@@ -27,7 +27,6 @@
     [_topic addGestureRecognizer:topic_tap];
 }
 - (void)commentClicked:(UIGestureRecognizer *)gesture {
-    NSLog(@"comment");
     MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *)self.model];
     UIViewController *vc = getCurrentDisplayController();
     [vc.navigationController pushViewController:controller animated:YES];

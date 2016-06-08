@@ -18,12 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-  
-}
--(void)dealloc
-{
-    
-    DLog(@"%s", __PRETTY_FUNCTION__);
 }
 -(void)viewWillAppear:(BOOL)animated
 {

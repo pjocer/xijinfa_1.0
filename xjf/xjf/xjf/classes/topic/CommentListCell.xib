@@ -117,7 +117,7 @@
                 <outlet property="nickname" destination="rPv-ZW-ctn" id="ZIb-Em-rT0"/>
                 <outlet property="time" destination="Zbk-D4-L5C" id="KZT-je-FDa"/>
             </connections>
-            <point key="canvasLocation" x="353" y="239"/>
+            <point key="canvasLocation" x="232" y="356"/>
         </tableViewCell>
     </objects>
     <resources>
