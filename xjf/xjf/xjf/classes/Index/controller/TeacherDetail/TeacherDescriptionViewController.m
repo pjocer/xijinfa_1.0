@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.textView = [[UITextView alloc] initWithFrame:self.view.frame];
+    self.textView = [[UITextView alloc] init];
     [self.view addSubview: self.textView];
     self.textView.textColor = AssistColor
     self.textView.font = [UIFont fontWithName:@"Arial" size:12.0];

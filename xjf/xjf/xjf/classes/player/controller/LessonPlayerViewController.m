@@ -44,6 +44,12 @@ static CGFloat selViewH = 3;
     return _buttons;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
@@ -228,7 +234,6 @@ static CGFloat selViewH = 3;
 #pragma mark 分享 - 收藏
 - (void)LessonPlayerVideoBottomView:(LessonPlayerVideoBottomView *)sender DidDownloadOrCollectionButton:(UIButton *)button
 {
-    
     //收藏
     if (button.tag == 101) {
         
@@ -272,7 +277,7 @@ static CGFloat selViewH = 3;
 #pragma mark - 添加子控制器
 
 - (void)addChildViewController {
-//    #import "LessonDetailLessonListViewController.h" //一样的
+
     self.lessonPlayerLessonListViewController = [[LessonPlayerLessonListViewController alloc] init];
     self.lessonPlayerLessonListViewController.title = @"目录";
     [self addChildViewController:self.lessonPlayerLessonListViewController];
@@ -285,12 +290,15 @@ static CGFloat selViewH = 3;
         //视频换URL
         [tempSelf.playerView pause];
         if (model.video_player.count > 0) {
-            TalkGridVideo *gridVideomodel = model.video_player.firstObject;
+            [tempSelf.playerView pause];
+            [tempSelf.playerView resetToPlayNewURL];
+            TalkGridVideo *gridVideomodel = tempSelf.playTalkGridModel.video_player.firstObject;
             tempSelf.playUrl = gridVideomodel.url;
             tempSelf.playerView.videoURL = [NSURL URLWithString:tempSelf.playUrl];
+            tempSelf.playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tempSelf.playTalkGridModel.thumbnail]]];
+            [tempSelf.playerView play];
         }
         //视频是否收藏过
-        
         if (tempSelf.playTalkGridModel.user_favored) {
             [tempSelf.videoBottomView.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         } else {

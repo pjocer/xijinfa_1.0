@@ -77,6 +77,7 @@
 		5A565A3A1D069F7200008DA9 /* EmployedGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A391D069F7200008DA9 /* EmployedGeneralViewController.m */; };
 		5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A3E1D07C05A00008DA9 /* VipModel.m */; };
 		5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A411D07C09700008DA9 /* VipHeaderView.m */; };
+		5A565A4B1D0829F500008DA9 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4A1D0829F500008DA9 /* CustomTextField.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -375,6 +376,8 @@
 		5A565A3E1D07C05A00008DA9 /* VipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipModel.m; sourceTree = "<group>"; };
 		5A565A401D07C09700008DA9 /* VipHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipHeaderView.h; sourceTree = "<group>"; };
 		5A565A411D07C09700008DA9 /* VipHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipHeaderView.m; sourceTree = "<group>"; };
+		5A565A491D0829F500008DA9 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		5A565A4A1D0829F500008DA9 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -1005,6 +1008,8 @@
 				644C10C51CBA61AC00892E2C /* UzysGridView.m */,
 				644C10C61CBA61AC00892E2C /* UzysGridViewCell.h */,
 				644C10C71CBA61AC00892E2C /* UzysGridViewCell.m */,
+				5A565A491D0829F500008DA9 /* CustomTextField.h */,
+				5A565A4A1D0829F500008DA9 /* CustomTextField.m */,
 			);
 			path = UzysGridView;
 			sourceTree = "<group>";
@@ -1977,6 +1982,7 @@
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
+				5A565A4B1D0829F500008DA9 /* CustomTextField.m in Sources */,
 				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */,

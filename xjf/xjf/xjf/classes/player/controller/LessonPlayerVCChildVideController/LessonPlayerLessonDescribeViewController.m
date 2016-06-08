@@ -29,7 +29,7 @@
 //        make.height.mas_equalTo(18);
 //    }];
     
-    self.textView = [[UITextView alloc] initWithFrame:self.view.frame];
+    self.textView = [[UITextView alloc] init];
     [self.view addSubview: self.textView];
     self.textView.textColor = AssistColor
     self.textView.font = [UIFont fontWithName:@"Arial" size:12.0];
@@ -38,6 +38,7 @@
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.editable = NO;
     self.textView.text = self.contentText;
+    
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(10);

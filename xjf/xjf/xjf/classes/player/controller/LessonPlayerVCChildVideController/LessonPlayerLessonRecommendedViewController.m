@@ -15,12 +15,13 @@
 #import "RegistViewController.h"
 #import "CommentsModel.h"
 #import <MJRefresh.h>
+#import "CustomTextField.h"
 @interface LessonPlayerLessonRecommendedViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, retain) UIView *keyBoardView; /**< 键盘背景图 */
 @property (nonatomic, retain) UIView *keyBoardAppearView; /**< 键盘出现，屏幕背景图 */
-@property (nonatomic, retain) UITextField *textField; /**< 键盘 */
+@property (nonatomic, retain) CustomTextField *textField; /**< 键盘 */
 @property (nonatomic, strong) LessonRecommendedHeaderView *tableHeaderView;
 @property (nonatomic, strong) UIButton *sendMsgButton;
 @property(nonatomic, strong) CommentsAllDataList *commentsModel;
@@ -83,6 +84,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
+            self.dataSource = [NSMutableArray array];
             [self requestCommentsData:[NSString stringWithFormat:@"%@/%@/comments", coursesProjectLessonDetailList, self.ID] method:GET];
         }failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -182,11 +184,12 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     self.keyBoardView.backgroundColor = [UIColor whiteColor];
     [[UIApplication sharedApplication].keyWindow addSubview:self.keyBoardView];
     
-    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH - 70, 30)];
+    self.textField = [[CustomTextField alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH - 70, 30)];
     self.textField.backgroundColor = BackgroundColor
     self.textField.layer.masksToBounds = YES;
     self.textField.layer.cornerRadius = 4;
-    self.textField.placeholder = @" 回复新内容";
+    self.textField.placeholder = @"回复新内容";
+    
     [self.textField setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
     [self.keyBoardView addSubview:self.textField];
     self.textField.delegate = self;

@@ -13,6 +13,7 @@
 #import "NewTopicViewController.h"
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
+#import "MyPlayerHistoryViewController.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -110,7 +111,7 @@ NSString *const Subscribe = @"SubscribeViewController";
             break;
         case 10://历史
         {
-            PlayerHistoryViewController *history = [[PlayerHistoryViewController alloc] init];
+            MyPlayerHistoryViewController *history = [[MyPlayerHistoryViewController alloc] init];
             [self.navigationController pushViewController:history animated:YES];
         }
             break;

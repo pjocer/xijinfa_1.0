@@ -17,6 +17,7 @@
 #import "LoginViewController.h"
 #import "RegistViewController.h"
 #import <objc/runtime.h>
+#import "CustomTextField.h"
 @implementation ZFPlayerView (LoadingImageUrl)
 
 -(void)setXjfloading_image:(UIImage *)xjfloading_image {
@@ -45,7 +46,7 @@
 /**< 键盘背景图 */
 @property(nonatomic, retain) UIView *keyBoardAppearView;
 /**< 键盘出现，屏幕背景图 */
-@property(nonatomic, retain) UITextField *textField;
+@property(nonatomic, retain) CustomTextField *textField;
 /**< 键盘 */
 @property(nonatomic, strong) UIButton *sendMsgButton;/**< 发表评论内容按钮 */
 ///评论数据
@@ -73,12 +74,19 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
     [self handleData];
 
 }
+
 - (void)handleData
 {
     [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
@@ -87,7 +95,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark requestData
-
 - (void)requestCommentsData:(APIName *)api method:(RequestMethod)method {
     
     [[ZToastManager ShardInstance] showprogress];
@@ -152,6 +159,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     }
     
 }
+
 - (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method
 {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
@@ -176,7 +184,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
 
 #pragma mark 横竖屏状态
-
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration {
     if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
@@ -196,7 +203,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark- mainUI
-
 - (void)initMainUI {
     [self initPlayerView];
     [self initCollectionView];
@@ -204,7 +210,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark PlayerView
-
 - (void)initPlayerView {
     if (_playView) {
         [_playView removeFromSuperview];
@@ -251,7 +256,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark CollectionView
-
 - (void)initCollectionView {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.minimumLineSpacing = 0.0;
@@ -294,7 +298,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark 键盘
-
 /**键盘 */
 - (void)initTextField {
     self.keyBoardAppearView = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -312,11 +315,14 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     self.keyBoardView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.keyBoardView];
 
-    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH - 70, 30)];
+    self.textField = [[CustomTextField alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH - 70, 30)];
     self.textField.backgroundColor = BackgroundColor
     self.textField.layer.masksToBounds = YES;
     self.textField.layer.cornerRadius = 4;
-    self.textField.placeholder = @" 回复新内容";
+    self.textField.placeholder = @"回复新内容";
+
+    
+    
     [self.textField setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
     [self.keyBoardView addSubview:self.textField];
     self.textField.delegate = self;
@@ -340,9 +346,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                                                  name:UIKeyboardWillHideNotification object:nil];
 }
 
-
 #pragma mark- CollectionViewDelegate & DataSource
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 3;
 }
@@ -497,15 +501,18 @@ referenceSizeForFooterInSection:(NSInteger)section {
         self.talkGridModel = self.talkGridListModel.result.data[indexPath.row];
         [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
         [_playerView pause];
+         [_playerView resetToPlayNewURL];
         TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
         self.playUrl = gridVideomodel.url;
         _playerView.videoURL = [NSURL URLWithString:self.playUrl];
+        _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
+        [_playerView play];
+
         [self sendPlayerHistoryToServerData:history method:POST];
     }
 }
 
 #pragma mark FlowLayoutDelegate
-
 /** 每个分区item的大小 */
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -538,7 +545,6 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark- 右按钮展示视频描述详情
-
 - (void)describeHeaderViewRightButtonAction:(UIButton *)sender {
     _isShowVideDescrible = !_isShowVideDescrible;
     [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
@@ -550,13 +556,11 @@ referenceSizeForFooterInSection:(NSInteger)section {
 //}
 
 #pragma mark 视频分享
-
 - (void)describeHeaderViewshareButtonAction:(UIButton *)sender {
     NSLog(@"视频分享");
 }
 
 #pragma mark 视频收藏
-
 - (void)describeHeaderViewcollectionButtonAction:(UIButton *)sender{
     if (self.tempLessonDetailModel.result.user_favored) {
         [self requestLessonListData:favorite method:DELETE];
@@ -566,7 +570,6 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark 查看全部评论
-
 - (void)CommentsFooterViewlookCommentsButton:(UIButton *)sender {
     CommentsViewController *allComents = [CommentsViewController new];
     allComents.ID = self.self.talkGridModel.id_;
@@ -574,7 +577,6 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark 评论
-
 - (void)comments:(UIButton *)sender {
         if ([[XJAccountManager defaultManager] accessToken] == nil ||
                 [[[XJAccountManager defaultManager] accessToken] length] == 0) {
@@ -608,7 +610,6 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark 点赞
-
 - (void)thumbUpAction:(UIButton *)sender {
     [sender setImage:[[UIImage imageNamed:@"iconLike"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     [sender setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
@@ -621,7 +622,6 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 
 #pragma mark- KeyboardAction
-
 /** UIKeyboardWillHide */
 - (void)UIKeyboardWillHide:(NSNotification *)notifation {
     [UIView animateWithDuration:0.25 animations:^{
@@ -652,7 +652,6 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 
 #pragma mark- dealloc
-
 - (void)dealloc {
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
