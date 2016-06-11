@@ -18,6 +18,7 @@
 #import "MyPlayerHistoryViewController.h"
 #import "MyCommentViewController.h"
 #import "XJAccountManager.h"
+#import "VipPayListViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -94,7 +95,8 @@
     return _foot_background;
 }
 - (void)dredgeVIP{
-    NSLog(@"开通VIP");
+    VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
+    [self.navigationController pushViewController:vipPayListViewController animated:YES];
 }
 #pragma mark - TableView Delegate
 

@@ -38,10 +38,8 @@
 @property(strong, nonatomic) ZFPlayerView *playerView;
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-
 ///是否展示视频描述
 @property(nonatomic, assign) BOOL isShowVideDescrible;
-
 @property(nonatomic, retain) UIView *keyBoardView;
 /**< 键盘背景图 */
 @property(nonatomic, retain) UIView *keyBoardAppearView;

@@ -14,6 +14,7 @@
 #import "LessonDetailViewController.h"
 #import "XJAccountManager.h"
 #import "LoginViewController.h"
+#import "VipPayListViewController.h"
 @interface VipViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) TablkListModel *tablkListModel;
 @property (nonatomic, strong) UITableView *tableView;
@@ -142,7 +143,8 @@ static CGFloat tableHeaderH = 200;
 - (void)tableHeaderViewPayAction:(UIButton *)sender
 {
     if ([sender.titleLabel.text isEqualToString:@"开通会员"]) {
-        
+        VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
+        [self.navigationController pushViewController:vipPayListViewController animated:YES];
     }
     else if ([sender.titleLabel.text isEqualToString:@"续费会员"]){
         

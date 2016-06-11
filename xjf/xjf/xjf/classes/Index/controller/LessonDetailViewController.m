@@ -91,6 +91,7 @@ static CGFloat payViewH = 285;
         sSelf.dataSourceModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
         sSelf.lessonDetailTitleView.model = self.dataSourceModel;
         sSelf.lessonPlayerLessonDescribeViewController.contentText = self.dataSourceModel.result.content;
+        self.lessonDetailLessonListViewController.isPay = self.dataSourceModel.result.user_purchased;
         sSelf.lessonDetailLessonListViewController.lessonDetailListModel = self.dataSourceModel;
         [sSelf.lessonDetailLessonListViewController.tableView reloadData];
         sSelf.lessonDetailTecherDescribeViewController.dataSourceModel = self.dataSourceModel;
@@ -276,7 +277,6 @@ static CGFloat payViewH = 285;
     self.lessonDetailLessonListViewController = [[LessonDetailLessonListViewController alloc] init];
     self.lessonDetailLessonListViewController.title = @"目录";
     [self addChildViewController:self.lessonDetailLessonListViewController];
-    self.lessonDetailLessonListViewController.isPay = self.model.user_purchased;
 
     self.lessonPlayerLessonDescribeViewController = [[LessonPlayerLessonDescribeViewController alloc] init];
     self.lessonPlayerLessonDescribeViewController.title = @"课程介绍";

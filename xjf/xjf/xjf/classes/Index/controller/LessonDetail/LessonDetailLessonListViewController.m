@@ -114,6 +114,10 @@ static CGFloat rowHeight = 50;
     }else if(cell.talkGridModel.user_learned == 0){
         cell.studyImage.hidden = YES;
     }
+    //买过此课，免费试看隐藏
+    if (_isPay){
+        cell.freeVideoLogo.hidden = YES;
+    }
 
 }
 

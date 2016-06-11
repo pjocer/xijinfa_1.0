@@ -25,5 +25,26 @@
     return retSize;
 }
 
+- (NSMutableAttributedString *)changeColorWithString:(NSString *)string
+                                               light:(NSString *)light
+                                                Font:(CGFloat)font
+                                               Color:(UIColor*)color
+{
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:string];
+    
+    for (int i = 0; i < attString.length - light.length + 1; i++) {
+        
+        NSRange range =NSMakeRange(i, light.length);
+        
+        if ([[string substringWithRange:range] isEqualToString:light]) {
+            
+            // 添加关键字的特征
+            [attString addAttribute:NSForegroundColorAttributeName value:color range:range];
+            [attString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:font] range:range];
+            
+        }
+    }
+    return attString;
+}
 
 @end

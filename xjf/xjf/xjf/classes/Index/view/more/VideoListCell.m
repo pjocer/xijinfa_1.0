@@ -185,7 +185,7 @@
         self.price.hidden = NO;
     }
     
-    if ([self.price.text isEqualToString:@"免费"]) {
+    if ([self.price.text isEqualToString:@""]) {
         self.oldPrice.hidden = YES;
     }
     

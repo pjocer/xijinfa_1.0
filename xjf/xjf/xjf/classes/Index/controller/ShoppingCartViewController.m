@@ -21,12 +21,12 @@
 @property (nonatomic, strong) NSMutableArray *dataSourceLesson;
 ///从业培训数据数组
 @property (nonatomic, strong) NSMutableArray *dataSourceTraining;
+@property (nonatomic, strong) VideoListCell *videoListCell;
 @end
 
 @implementation ShoppingCartViewController
 static NSString *ShoppingCarlessonListCell_id = @"ShoppingCarlessonListCell_id";
 static CGFloat submitOrdersViewHeight = 50;
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -42,7 +42,6 @@ static CGFloat submitOrdersViewHeight = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-
     
     self.dataSourceTraining = [NSMutableArray array];
     self.dataSourceLesson = [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] mutableCopy];
@@ -69,7 +68,6 @@ static CGFloat submitOrdersViewHeight = 50;
     if ([[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] mutableCopy]count] == 0 && [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP]count] == 0) {
         self.submitOrdersView.hidden = YES;
     }
-    
 }
 #pragma mark 全选
 - (void)selectedButtonAction:(UIButton *)sender
@@ -78,26 +76,29 @@ static CGFloat submitOrdersViewHeight = 50;
         [sender setTitle:@"取消" forState:UIControlStateNormal];
         self.submitOrdersView.selectedLabel.backgroundColor = [UIColor redColor];
         self.submitOrdersView.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
-
+        tempPrcie = 0;
         if (self.dataSourceLesson.count != 0) {
             for (TalkGridModel *model in self.dataSourceLesson) {
                 model.isSelected = YES;
+                tempPrcie += model.price.floatValue;
             }
             [self.tableView reloadData];
         }
         if (self.dataSourceTraining.count != 0) {
             for (TalkGridModel *model in self.dataSourceTraining) {
                 model.isSelected = YES;
+                tempPrcie += model.price.floatValue;
             }
             [self.tableView reloadData];
         }
-  
+        
+        self.submitOrdersView.price.text = [NSString stringWithFormat:@"%.2lf",tempPrcie / 100];
     }
     else if ([sender.titleLabel.text isEqualToString:@"取消"]) {
         [sender setTitle:@"全选" forState:UIControlStateNormal];
         self.submitOrdersView.selectedLabel.backgroundColor = [UIColor whiteColor];
         self.submitOrdersView.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-        
+
         if (self.dataSourceLesson.count != 0) {
             for (TalkGridModel *model in self.dataSourceLesson) {
                 model.isSelected = NO;
@@ -111,6 +112,9 @@ static CGFloat submitOrdersViewHeight = 50;
             }
             [self.tableView reloadData];
         }
+        
+        tempPrcie = 0;
+        self.submitOrdersView.price.text = [NSString stringWithFormat:@"%.2lf",tempPrcie / 100];
     }
     
 
@@ -168,6 +172,7 @@ static CGFloat submitOrdersViewHeight = 50;
 {
     return 2;
 }
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
@@ -175,31 +180,34 @@ static CGFloat submitOrdersViewHeight = 50;
     }
     return self.dataSourceTraining.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ShoppingCarlessonListCell_id];
-    cell.teacherName.hidden = NO;
-    cell.lessonCount.hidden = NO;
-    cell.price.hidden = NO;
-    cell.oldPrice.hidden = YES;
-    cell.selectedLabel.hidden = NO;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.videoListCell = [self.tableView dequeueReusableCellWithIdentifier:ShoppingCarlessonListCell_id];
+    self.videoListCell.teacherName.hidden = NO;
+    self.videoListCell.lessonCount.hidden = NO;
+    self.videoListCell.price.hidden = NO;
+    self.videoListCell.oldPrice.hidden = YES;
+    self.videoListCell.selectedLabel.hidden = NO;
+    self.videoListCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     if (indexPath.section == 0) {
-        cell.model = self.dataSourceLesson[indexPath.row];
+        self.videoListCell.model = self.dataSourceLesson[indexPath.row];
     }else if (indexPath.section == 1) {
-        cell.model = self.dataSourceTraining[indexPath.row];
+        self.videoListCell.model = self.dataSourceTraining[indexPath.row];
     }
 
-    if (!cell.model.isSelected) {
-        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+    if (!self.videoListCell.model.isSelected) {
+        self.videoListCell.selectedLabel.backgroundColor = [UIColor whiteColor];
+        self.videoListCell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
     } else {
-        cell.selectedLabel.backgroundColor = [UIColor redColor];
-        cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
+        self.videoListCell.selectedLabel.backgroundColor = [UIColor redColor];
+        self.videoListCell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
     }
-    return cell;
+    
+    return self.videoListCell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (self.dataSourceTraining.count == 0 && section == 1) {
@@ -213,6 +221,7 @@ static CGFloat submitOrdersViewHeight = 50;
     }
     return 35;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     IndexSectionView *tableHeaderView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
@@ -228,26 +237,35 @@ static CGFloat submitOrdersViewHeight = 50;
 
     return tableHeaderView;
 }
+
 #pragma mark CellDelete
 #pragma mark rightAction事件
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
 }
+
 - (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return @"删除";
 }
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
 }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         if (indexPath.section == 0) {
             TalkGridModel *model = self.dataSourceLesson[indexPath.row];
+            if (model.isSelected) {
+                tempPrcie -= model.price.floatValue;
+                self.submitOrdersView.price.text = [NSString stringWithFormat:@"%.2lf",tempPrcie / 100];
+            }
+            
             [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:@[model]];
             
             [self.dataSourceLesson removeObjectAtIndex:indexPath.row];
@@ -260,6 +278,7 @@ static CGFloat submitOrdersViewHeight = 50;
     }
 }
 
+static CGFloat tempPrcie = 0;
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -269,11 +288,14 @@ static CGFloat submitOrdersViewHeight = 50;
         cell.selectedLabel.backgroundColor = [UIColor whiteColor];
         cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
         model.isSelected = !model.isSelected;
+        tempPrcie -= model.price.floatValue;
     } else {
         cell.selectedLabel.backgroundColor = [UIColor redColor];
         cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
         model.isSelected = !model.isSelected;
+        tempPrcie += model.price.floatValue;
     }
+    self.submitOrdersView.price.text = [NSString stringWithFormat:@"%.2lf",tempPrcie / 100];
 }
 
 @end

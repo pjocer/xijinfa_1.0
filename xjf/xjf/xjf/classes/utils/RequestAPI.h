@@ -146,4 +146,6 @@ static APIName *myLessonsApi = @"/api/user/courses";
 ///播放历史
 static APIName *history = @"/api/history";
 
-
+#pragma mark-- Vip ------------------------
+///会员 会员报价列表
+static APIName *vipPriceList = @"/api/membership/rates";

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) MyLessonsSchoolViewController *myLessonsSchoolViewController;
 @property (nonatomic, strong) MyLessonsEmployedViewController *myLessonsEmployedViewController;
 @property (nonatomic, strong) NSMutableArray *dataSource_MyLessonsSchoolView;
+@property (nonatomic, strong) NSMutableArray *dataSource_myLessonsEmployed;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
@@ -53,19 +54,30 @@ static CGFloat selViewH = 3;
 #pragma mark requestData
 - (void)requesData:(APIName *)api method:(RequestMethod)method {
     self.dataSource_MyLessonsSchoolView = [NSMutableArray array];
-    __weak typeof(self) wSelf = self;
+    self.dataSource_myLessonsEmployed = [NSMutableArray array];
+    @weakify(self)
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-//        //从业数据
-//        for (TalkGridModel *tempmodel in sSelf.tablkListModel.result.data) {
-//            if ([tempmodel.type isEqualToString:@"course"]) {
-//                [sSelf.dataSource_MyLessonsSchoolView addObjectsFromArray:tempmodel];
-//            }
-//        }
-//        sSelf.myLessonsSchoolViewController.dataSorce = self.dataSource_MyLessonsSchoolView;
-//        [sSelf.myLessonsSchoolViewController.tableView reloadData];
+        @strongify(self)
+        self.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+        
+        //学堂数据
+        for (TalkGridModel *tempmodel in self.tablkListModel.result.data) {
+            if ([tempmodel.department isEqualToString:@"dept3"]) {
+                [self.dataSource_MyLessonsSchoolView addObject:tempmodel];
+            }
+        }
+        self.myLessonsSchoolViewController.dataSorce = self.dataSource_MyLessonsSchoolView;
+        [self.myLessonsSchoolViewController.tableView reloadData];
+        
+        //从业数据
+        for (TalkGridModel *tempmodel in self.tablkListModel.result.data) {
+            if ([tempmodel.department isEqualToString:@"dept4"]) {
+                [self.dataSource_myLessonsEmployed addObject:tempmodel];
+            }
+        }
+        self.myLessonsEmployedViewController.dataSorce = self.dataSource_myLessonsEmployed;
+        [self.myLessonsEmployedViewController.tableView reloadData];
         
     }failedBlock:^(NSError *_Nullable error) {
 

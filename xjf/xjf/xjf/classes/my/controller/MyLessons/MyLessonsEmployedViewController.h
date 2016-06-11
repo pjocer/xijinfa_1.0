@@ -9,5 +9,6 @@
 #import "MyBaseViewController.h"
 
 @interface MyLessonsEmployedViewController : MyBaseViewController
-
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSorce;
 @end

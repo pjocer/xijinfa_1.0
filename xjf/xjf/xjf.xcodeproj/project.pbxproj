@@ -78,6 +78,9 @@
 		5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A3E1D07C05A00008DA9 /* VipModel.m */; };
 		5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A411D07C09700008DA9 /* VipHeaderView.m */; };
 		5A565A4B1D0829F500008DA9 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4A1D0829F500008DA9 /* CustomTextField.m */; };
+		5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */; };
+		5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */; };
+		5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -378,6 +381,12 @@
 		5A565A411D07C09700008DA9 /* VipHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipHeaderView.m; sourceTree = "<group>"; };
 		5A565A491D0829F500008DA9 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		5A565A4A1D0829F500008DA9 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		5A565A4C1D0BAC8E00008DA9 /* VipPayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListViewController.h; sourceTree = "<group>"; };
+		5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListViewController.m; sourceTree = "<group>"; };
+		5A565A4F1D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListPagePrivilegeCell.h; sourceTree = "<group>"; };
+		5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListPagePrivilegeCell.m; sourceTree = "<group>"; };
+		5A565A521D0BAF5500008DA9 /* VipPayListPageChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListPageChoiceCell.h; sourceTree = "<group>"; };
+		5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListPageChoiceCell.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -926,6 +935,10 @@
 			children = (
 				5A565A401D07C09700008DA9 /* VipHeaderView.h */,
 				5A565A411D07C09700008DA9 /* VipHeaderView.m */,
+				5A565A4F1D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.h */,
+				5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */,
+				5A565A521D0BAF5500008DA9 /* VipPayListPageChoiceCell.h */,
+				5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1434,6 +1447,8 @@
 				CD1CCC0F1CB35A2D002FC0C9 /* VipViewController.m */,
 				CD1CCC341CB37950002FC0C9 /* VipBaseViewController.h */,
 				CD1CCC351CB37950002FC0C9 /* VipBaseViewController.m */,
+				5A565A4C1D0BAC8E00008DA9 /* VipPayListViewController.h */,
+				5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2041,6 +2056,7 @@
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
 				D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */,
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
+				5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */,
 				5A105E921CED880D0079BEFE /* BannerModel.m in Sources */,
 				5A20717C1D02BBA000462D65 /* MyFavoredsEmployedViewController.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
@@ -2079,6 +2095,7 @@
 				5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */,
 				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
 				D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */,
+				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				D08534991CE1AE1F00F0047B /* UIView+Addtion.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
@@ -2086,6 +2103,7 @@
 				D075753D1D05825300F8360F /* SearchSectionOne.m in Sources */,
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
+				5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */,
 				5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				5A105E781CEC31F80079BEFE /* LessonListCell.m in Sources */,

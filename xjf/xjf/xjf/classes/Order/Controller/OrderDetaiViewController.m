@@ -34,9 +34,9 @@ static CGFloat payViewH = 285;
 static CGFloat tableHeader_NormalH = 35;
 static CGFloat tableFooter_NormalH = 45;
 static CGFloat tableFooter_orderSucceslH = 80;
-
 static NSString *LessonOrderCell_id = @"LessonOrderCell_id";
 static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -49,7 +49,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     self.tabBarController.tabBar.hidden = NO;
 
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -164,7 +163,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 
 #pragma mark --nowPayOrCancel--
-
 - (void)nowPayOrCancel {
     self.cancel = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:self.cancel];
@@ -218,7 +216,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 #pragma mark cancel
-
 - (void)cancel:(UIButton *)sender {
     [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
         if (self.dataSource.count == 0) {
@@ -237,7 +234,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 #pragma mark nowPay
-
 - (void)nowPay:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.payView.frame = CGRectMake(0,
@@ -249,13 +245,11 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 #pragma mark - aliPay
-
 - (void)aliPay:(UIButton *)sender {
     [self payByPayStyle:Alipay];
 }
 
 #pragma mark - WeixinPay
-
 - (void)WeixinPay:(UIButton *)sender {
     [self payByPayStyle:WechatPay];
 }
@@ -294,7 +288,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 #pragma mark - payViewCancel
-
 - (void)payViewCancel:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.payView.frame = CGRectMake(0,

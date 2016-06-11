@@ -111,7 +111,7 @@ static CGFloat rowHeight = 50;
     if (cell.talkGridModel.user_favored) {
         cell.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
     }else {
-        cell.favorites.image = [UIImage imageNamed:@""];
+        cell.favorites.image = nil;
     }
     //是否是正在观看的课程
     if ([cell.talkGridModel.id_ isEqualToString:self.selectedModel.id_]) {
@@ -124,6 +124,10 @@ static CGFloat rowHeight = 50;
         cell.studyImage.hidden = NO;
     }else if(cell.talkGridModel.user_learned == 0){
         cell.studyImage.hidden = YES;
+    }
+    //买过此课，免费试看隐藏
+    if (_isPay){
+        cell.freeVideoLogo.hidden = YES;
     }
 }
 
@@ -160,34 +164,17 @@ static CGFloat rowHeight = 50;
     } else if ([model.type isEqualToString:@"lesson"]) {
         self.selectedModel = model;
     }
-    
-//    //代理执行换视频
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(lessonPlayerLessonListViewController:TableDidSelectedAction:)]) {
-//        [self.delegate lessonPlayerLessonListViewController:self TableDidSelectedAction:model];
-//    }
     //Block回掉换视频
     if (self.actionWithDidSelectedBlock) {
         self.actionWithDidSelectedBlock(self.selectedModel);
     }
-//    //给服务器发送用户已学习消息
-//    if (_isPay) {
-////        [self sendUserLearendMessage:user_learnedApi Method:POST ByModel:model];
-//            //代理执行换视频
-//            if (self.delegate && [self.delegate respondsToSelector:@selector(lessonPlayerLessonListViewController:TableDidSelectedAction:)]) {
-//                [self.delegate lessonPlayerLessonListViewController:self TableDidSelectedAction:model];
-//            }
-//    }
+   //给服务器发送用户已学习消息
+    if (_isPay) {
+            //代理执行换视频
+            if (self.delegate && [self.delegate respondsToSelector:@selector(lessonPlayerLessonListViewController:TableDidSelectedAction:)]) {
+                [self.delegate lessonPlayerLessonListViewController:self TableDidSelectedAction:self.selectedModel];
+            }
+    }
     [self.tableView reloadData];
 }
-//- (void)sendUserLearendMessage:(APIName *)api Method:(RequestMethod)method ByModel:(TalkGridModel *)model
-//{
-//    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-//    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",model.id_],@"type":[NSString stringWithFormat:@"%@",model.type],@"department":[NSString stringWithFormat:@"%@",model.department],@"status":@"1"}];
-//    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-//        
-//    }failedBlock:^(NSError *_Nullable error) {
-//        
-//    }];
-//}
-
 @end
