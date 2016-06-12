@@ -7,8 +7,6 @@
 //
 #import "ZFPlayerSingleton.h"
 #import "PlayerViewController.h"
-#import "PlayerHistoryViewController.h"
-#import "PlayerDownLoadViewController.h"
 
 //cellAndFooterAndHeaderByPlayerPage
 #import "PlayerPageDescribeHeaderView.h"
