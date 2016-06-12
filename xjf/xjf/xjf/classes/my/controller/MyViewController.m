@@ -19,6 +19,7 @@
 #import "MyCommentViewController.h"
 #import "XJAccountManager.h"
 #import "VipPayListViewController.h"
+#import "RegistViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -152,6 +153,18 @@
 #pragma UserComponentDelegate
 
 - (void)componentDidSelected:(NSUInteger)index {
+    
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [self LoginPrompt];
+    } {
+        [self pushAction:index];
+    }
+
+}
+
+- (void)pushAction:(NSUInteger)index
+{
     switch (index) {
         case 0:
         {

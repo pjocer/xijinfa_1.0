@@ -13,6 +13,7 @@
 #import "TeacherDetailHeaderView.h"
 #import "TeacherDetailModel.h"
 #import "TalkGridModel.h"
+#import "XJAccountManager.h"
 @interface TeacherDetailViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) TeacherDetailHeaderView *teacherDetailHeaderView;
 @property (nonatomic, strong) UIScrollView *titleScrollView;
@@ -138,8 +139,8 @@ static CGFloat BottomPayButtonH = 50;
     self.contentScrollView.delegate = self;
 
 }
-#pragma mark -- setLessonDetailTitleView--
 
+#pragma mark -- setLessonDetailTitleView--
 - (void)setTeacherDetailHeaderView {
     self.teacherDetailHeaderView = [[TeacherDetailHeaderView alloc] initWithFrame:CGRectNull];
     [self.view addSubview:self.teacherDetailHeaderView];
@@ -155,20 +156,28 @@ static CGFloat BottomPayButtonH = 50;
     [self.teacherDetailHeaderView.focusButton addTarget:self action:@selector(focusAction:) forControlEvents:UIControlEventTouchUpInside];
 
 }
+
+#pragma mark focusAction
 - (void)focusAction:(UIButton *)sender
 {
-    if (!self.teacherDetailModel.result.user_favored) {
-        [sender setTitle:@"已关注" forState:UIControlStateNormal];
-        sender.backgroundColor = BackgroundColor;
-        sender.tintColor = AssistColor;
-        
-        [self requestLessonListData:favorite method:POST];
-    } else if (self.teacherDetailModel.result.user_favored) {
-        [sender setTitle:@"关注" forState:UIControlStateNormal];
-        sender.backgroundColor = BlueColor;
-        sender.tintColor = [UIColor whiteColor];
-        [self requestLessonListData:favorite method:DELETE];
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [self LoginPrompt];
+    } else {
+        if (!self.teacherDetailModel.result.user_favored) {
+            [sender setTitle:@"已关注" forState:UIControlStateNormal];
+            sender.backgroundColor = BackgroundColor;
+            sender.tintColor = AssistColor;
+            
+            [self requestLessonListData:favorite method:POST];
+        } else if (self.teacherDetailModel.result.user_favored) {
+            [sender setTitle:@"关注" forState:UIControlStateNormal];
+            sender.backgroundColor = BlueColor;
+            sender.tintColor = [UIColor whiteColor];
+            [self requestLessonListData:favorite method:DELETE];
+        }
     }
+
 }
 
 #pragma mark - 设置头部标题栏

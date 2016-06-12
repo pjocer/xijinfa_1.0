@@ -14,7 +14,7 @@
 #import "PlayerViewController.h"
 @interface MyPlayerHistoryViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) TablkListModel *tablkListModel;
-@property(nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation MyPlayerHistoryViewController
@@ -40,12 +40,12 @@ static CGFloat tableHeaderH = 35;
 
 #pragma mark requestData
 - (void)requesData:(APIName *)api method:(RequestMethod)method {
-    __weak typeof(self) wSelf = self;
+    @weakify(self)
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-        [sSelf.tableView reloadData];
+        @strongify(self)
+        self.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+        [self.tableView reloadData];
     }failedBlock:^(NSError *_Nullable error) {
 
     }];

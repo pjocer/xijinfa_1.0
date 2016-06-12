@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface LessonPlayerLessonRecommendedViewController : UIViewController
+@interface LessonPlayerLessonRecommendedViewController : BaseViewController
 @property (nonatomic, strong) NSString *ID;
 @end

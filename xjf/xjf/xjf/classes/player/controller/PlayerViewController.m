@@ -14,8 +14,6 @@
 #import "playerConfigure.h"
 #import "CommentsModel.h"
 #import "XJAccountManager.h"
-#import "LoginViewController.h"
-#import "RegistViewController.h"
 #import <objc/runtime.h>
 #import "CustomTextField.h"
 @implementation ZFPlayerView (LoadingImageUrl)
@@ -551,10 +549,16 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 #pragma mark 视频收藏
 - (void)describeHeaderViewcollectionButtonAction:(UIButton *)sender{
-    if (self.tempLessonDetailModel.result.user_favored) {
-        [self requestLessonListData:favorite method:DELETE];
-    } else if (!self.tempLessonDetailModel.result.user_favored) {
-        [self requestLessonListData:favorite method:POST];
+    
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [self LoginPrompt];
+    } else {
+        if (self.tempLessonDetailModel.result.user_favored) {
+            [self requestLessonListData:favorite method:DELETE];
+        } else if (!self.tempLessonDetailModel.result.user_favored) {
+            [self requestLessonListData:favorite method:POST];
+        }
     }
 }
 
@@ -569,23 +573,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 - (void)comments:(UIButton *)sender {
         if ([[XJAccountManager defaultManager] accessToken] == nil ||
                 [[[XJAccountManager defaultManager] accessToken] length] == 0) {
-    
-            [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"
-                                okTitle:@"登录"
-                             otherTitle:@"注册"
-                      cancelButtonTitle:@"取消"
-                                message:@"参与话题讨论\n\n播放记录云同步\n\n更多金融专业课程"
-                            cancelBlock:^{
-                                NSLog(@"取消");
-                            } okBlock:^{
-                        LoginViewController *loginPage = [LoginViewController new];
-                        [self.navigationController pushViewController:loginPage animated:YES];
-                    }        otherBlock:^{
-                        RegistViewController *registPage = [RegistViewController new];
-                        registPage.title_item = @"注册";
-                        [self.navigationController pushViewController:registPage animated:YES];
-                    }];
-    
+            [self LoginPrompt];
         } else {
             [self.textField becomeFirstResponder];
         }

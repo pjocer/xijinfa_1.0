@@ -85,8 +85,7 @@ static NSString *EmployedGeneralCell_id = @"EmployedGeneralCell_id";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:EmployedGeneralCell_id];
     cell.model = self.dataSource[indexPath.row];
-    cell.viedoDetail.hidden = NO;
-    cell.price.hidden = YES;
+    cell.viedoDetail.hidden = YES;
     return cell;
 }
 

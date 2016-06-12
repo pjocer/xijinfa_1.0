@@ -11,6 +11,7 @@
 #import "ZFPlayer.h"
 #import "playerConfigure.h"
 #import "LessonDetailLessonListViewController.h"
+#import "XJAccountManager.h"
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
@@ -234,19 +235,25 @@ static CGFloat selViewH = 3;
 #pragma mark 分享 - 收藏
 - (void)LessonPlayerVideoBottomView:(LessonPlayerVideoBottomView *)sender DidDownloadOrCollectionButton:(UIButton *)button
 {
-    //收藏
-    if (button.tag == 101) {
-        
-        if (self.playTalkGridModel.user_favored) {
-            [self requestLessonListData:favorite method:DELETE];
-        } else if (!self.playTalkGridModel.user_favored) {
-            [self requestLessonListData:favorite method:POST];
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [self LoginPrompt];
+    } {
+        //收藏
+        if (button.tag == 101) {
+            
+            if (self.playTalkGridModel.user_favored) {
+                [self requestLessonListData:favorite method:DELETE];
+            } else if (!self.playTalkGridModel.user_favored) {
+                [self requestLessonListData:favorite method:POST];
+            }
+        }
+        //分享
+        else if (button.tag == 102){
+            NSLog(@"分享");
         }
     }
-    //分享
-    else if (button.tag == 102){
-        NSLog(@"分享");
-    }
+
 }
 
 #pragma mark - 设置头部标题栏

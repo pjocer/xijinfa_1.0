@@ -14,7 +14,7 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 #import "MyPlayerHistoryViewController.h"
-
+#import "RegistViewController.h"
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
 NSString *const Topic = @"TopicViewController";
@@ -165,4 +165,23 @@ NSString *const Subscribe = @"SubscribeViewController";
     _nav_title = nav_title;
     self.navigationItem.title = nav_title;
 }
+
+- (void)LoginPrompt{
+    [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"
+                        okTitle:@"登录"
+                     otherTitle:@"注册"
+              cancelButtonTitle:@"取消"
+                        message:@"参与话题讨论\n\n播放记录云同步\n\n更多金融专业课程"
+                    cancelBlock:^{
+                        NSLog(@"取消");
+                    } okBlock:^{
+                        LoginViewController *loginPage = [LoginViewController new];
+                        [self.navigationController pushViewController:loginPage animated:YES];
+                    }        otherBlock:^{
+                        RegistViewController *registPage = [RegistViewController new];
+                        registPage.title_item = @"注册";
+                        [self.navigationController pushViewController:registPage animated:YES];
+                    }];
+}
+
 @end
