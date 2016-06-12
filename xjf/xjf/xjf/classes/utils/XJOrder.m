@@ -49,6 +49,8 @@
             if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)])  {
                 [self.delegate orderInfoDidChanged:self.order];
             }
+        }else {
+            [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
         }
     } failedBlock:^(NSError * _Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
@@ -68,6 +70,8 @@
             if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)])  {
                 [self.delegate orderInfoDidChanged:self.order];
             }
+        }else {
+            [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
         }
     } failedBlock:^(NSError * _Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];

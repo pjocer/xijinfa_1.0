@@ -15,6 +15,5 @@
 
 @property (nonatomic, copy, nullable)dispatch_block_t failed;
 
-- (void)buyTradeImmediately:(nonnull NSArray <NSString *>*)trade_id by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
-- (nullable Order *)getCurrentOrder;
+- (void)buyTradeImmediately:(nonnull NSArray <Payment *>*)payment by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
 @end

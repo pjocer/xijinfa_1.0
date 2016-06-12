@@ -65,11 +65,7 @@
 }
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc]init];
-    NSMutableArray *trades = [NSMutableArray array];
-    for (TalkGridModel *model in order.goods) {
-        [trades addObject:model.id_];
-    }
-    [pay buyTradeImmediately:trades by:style success:success failed:failed];
+    [pay buyTradeImmediately:order.order.result.payment by:style success:success failed:failed];
     ReceivedNotification(self, PayLessonsSuccess, ^(NSNotification *notification) {
         if (success) success();
     });

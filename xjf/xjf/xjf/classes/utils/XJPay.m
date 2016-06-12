@@ -136,37 +136,16 @@
 @interface XJPay ()
 @property (nonatomic, strong) Payment *payment_alipay;
 @property (nonatomic, strong) Payment *payment_wechat;
-@property (nonatomic, strong) Order *order;
 @end
 
 @implementation XJPay
-
-- (Order *)getCurrentOrder {
-    return _order;
-}
-
--(void)buyTradeImmediately:(NSArray<NSString *> *)trade_id by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
+-(void)buyTradeImmediately:(NSArray<Payment *> *)payment by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     self.success = success;
     self.failed = failed;
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
-    NSString *access_token = [[XJAccountManager defaultManager] accessToken];
-    NSString *authorization = [NSString stringWithFormat:@"Bearer %@",access_token];
-    [request setValue:authorization forHTTPHeaderField:@"Authorization"];
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:trade_id,@"items", nil];
-    request.requestParams = params;
-    @weakify(self)
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        @strongify(self)
-        if ([self handleData:responseData]) {
-            [self produceOrder:style];
-        }else {
-            if (self.failed) self.failed();
-        }
-    } failedBlock:^(NSError * _Nullable error) {
-        if (self.failed) self.failed();
-    }];
+    if ([self handleData:payment]) {
+        [self produceOrder:style];
+    }
 }
-
 - (void)produceOrder:(PayStyle)style {
     if (style == Alipay) {
         [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.yiban.iphone.mainApp" callback:^(NSDictionary *resultDic) {
@@ -182,17 +161,13 @@
     }
 }
 
-- (BOOL)handleData:(NSData *)data {
-    self.order = [[Order alloc]initWithData:data error:nil];
-    NSMutableArray *payments = self.order.result.payment;
-    if (payments) {
-        if (payments) {
-            for (Payment *payment in payments) {
-                if ([payment.channel isEqualToString:@"alipay"]) {
-                    self.payment_alipay = payment;
-                }else {
-                    self.payment_wechat = payment;
-                }
+- (BOOL)handleData:(NSArray *)data {
+    if (data) {
+        for (Payment *payment in data) {
+            if ([payment.channel isEqualToString:@"alipay"]) {
+                self.payment_alipay = payment;
+            }else {
+                self.payment_wechat = payment;
             }
         }
         return YES;
