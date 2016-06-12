@@ -30,6 +30,8 @@ typedef enum : NSUInteger {
 
 -(nonnull instancetype)init NS_UNAVAILABLE;
 
+- (nonnull XJOrder *)createVipOrderWith:(nonnull NSDictionary *)params;
+
 - (nonnull XJOrder *)createOrderWith:(nullable NSArray <TalkGridModel *>*)goods;
 
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;

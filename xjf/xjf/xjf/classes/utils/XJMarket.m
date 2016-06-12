@@ -57,11 +57,12 @@
     [array writeToFile:[self pathForLabels] atomically:YES];
     [array writeToFile:[self pathForSearched] atomically:YES];
 }
-
+-(XJOrder *)createVipOrderWith:(NSDictionary *)params {
+    return [[XJOrder alloc] initWithParams:params];
+}
 -(XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods {
     return [[XJOrder alloc] initWith:goods];
 }
-
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc]init];
     NSMutableArray *trades = [NSMutableArray array];

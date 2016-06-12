@@ -31,6 +31,8 @@ typedef NS_OPTIONS(NSUInteger, OrderStatus) {
 
 - (instancetype)initWith:(NSArray <TalkGridModel *> *)goods;
 
+- (instancetype)initWithParams:(NSDictionary *)params;
+
 - (NSArray <TalkGridModel *>*)getClassGoods;
 
 - (NSArray <TalkGridModel *>*)getTrainGoods;

@@ -25,11 +25,35 @@
             [_goods addObject:model];
             [_trades addObject:model.id_];
         }
-        [self initOrder];
+        [self performSelectorOnMainThread:@selector(initOrder) withObject:nil waitUntilDone:YES];
     }
     return self;
 }
-
+-(instancetype)initWithParams:(NSDictionary *)params {
+    if (self == [super init]) {
+        [self performSelectorOnMainThread:@selector(initVipOrder:) withObject:params waitUntilDone:YES];
+    }
+    return self;
+}
+- (void)initVipOrder:(NSDictionary *)params {
+    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
+    NSString *access_token = [[XJAccountManager defaultManager] accessToken];
+    NSString *authorization = [NSString stringWithFormat:@"Bearer %@",access_token];
+    [request setValue:authorization forHTTPHeaderField:@"Authorization"];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:params];
+    @weakify(self)
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        @strongify(self)
+        self.order = [[Order alloc] initWithData:responseData error:nil];
+        if (self.order.errCode.integerValue == 0) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)])  {
+                [self.delegate orderInfoDidChanged:self.order];
+            }
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+    }];
+}
 - (void)initOrder {
     XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
     NSString *access_token = [[XJAccountManager defaultManager] accessToken];
@@ -51,7 +75,6 @@
 }
 
 -(void)orderCancel {
-    
     self.goods = nil;
 }
 

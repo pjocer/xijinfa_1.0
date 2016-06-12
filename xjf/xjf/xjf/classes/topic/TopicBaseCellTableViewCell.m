@@ -125,6 +125,7 @@
     _commentLabel.text = model.reply_count;
     _praiseLabel.text = model.like_count;
     _praiseImageView.highlighted = model.user_liked;
+    NSLog(@"%@",model.type);
     if (![model.type isEqualToString:@"qa"]) {
         _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
         _extension.text = @"讨论";

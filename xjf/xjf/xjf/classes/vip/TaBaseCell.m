@@ -39,8 +39,8 @@
     _vip_tie.hidden = (userinfo.membership==nil||userinfo.membership.count==0)?YES:NO;
     _fans_count.text = userinfo.follower?:@"0";
     _focus_count.text = userinfo.following?:@"0";
-    _taFans.text = [NSString stringWithFormat:@"%@的粉丝",userinfo.nickname];
-    _taFocus.text = [NSString stringWithFormat:@"%@关注的人",userinfo.nickname];
+    _taFans.text = @"粉丝";
+    _taFocus.text = @"关注";
     UITapGestureRecognizer *fans_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fansClicked:)];
     [_fans_background addGestureRecognizer:fans_tap];
     UITapGestureRecognizer *following_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followClicked:)];
