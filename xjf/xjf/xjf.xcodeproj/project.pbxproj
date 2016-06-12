@@ -155,8 +155,6 @@
 		CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */; };
 		CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC4C1CB39B3D002FC0C9 /* PlayerBaseViewController.m */; };
 		CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC4E1CB39B3D002FC0C9 /* PlayerViewController.m */; };
-		CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC551CB39B93002FC0C9 /* PlayerHistoryViewController.m */; };
-		CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC581CB39BAB002FC0C9 /* PlayerDownLoadViewController.m */; };
 		CDF57AC51C9F825D00049AF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF57AC41C9F825D00049AF0 /* main.m */; };
 		CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF57AC71C9F825D00049AF0 /* AppDelegate.m */; };
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
@@ -553,10 +551,6 @@
 		CD1CCC4D1CB39B3D002FC0C9 /* PlayerBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC4E1CB39B3D002FC0C9 /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		CD1CCC4F1CB39B3D002FC0C9 /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
-		CD1CCC541CB39B93002FC0C9 /* PlayerHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerHistoryViewController.h; sourceTree = "<group>"; };
-		CD1CCC551CB39B93002FC0C9 /* PlayerHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerHistoryViewController.m; sourceTree = "<group>"; };
-		CD1CCC571CB39BAB002FC0C9 /* PlayerDownLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerDownLoadViewController.h; sourceTree = "<group>"; };
-		CD1CCC581CB39BAB002FC0C9 /* PlayerDownLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerDownLoadViewController.m; sourceTree = "<group>"; };
 		CD1CCC5A1CB39BE4002FC0C9 /* playerConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerConfigure.h; sourceTree = "<group>"; };
 		CDF57AC01C9F825D00049AF0 /* xjf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xjf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF57AC41C9F825D00049AF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1530,10 +1524,6 @@
 				CD1CCC4D1CB39B3D002FC0C9 /* PlayerBaseViewController.h */,
 				CD1CCC4E1CB39B3D002FC0C9 /* PlayerViewController.m */,
 				CD1CCC4F1CB39B3D002FC0C9 /* PlayerViewController.h */,
-				CD1CCC541CB39B93002FC0C9 /* PlayerHistoryViewController.h */,
-				CD1CCC551CB39B93002FC0C9 /* PlayerHistoryViewController.m */,
-				CD1CCC571CB39BAB002FC0C9 /* PlayerDownLoadViewController.h */,
-				CD1CCC581CB39BAB002FC0C9 /* PlayerDownLoadViewController.m */,
 				5A441C581CE5FB03000CF748 /* CommentsViewController.h */,
 				5A441C591CE5FB03000CF748 /* CommentsViewController.m */,
 				5A105E621CEBFDA30079BEFE /* LessonPlayerViewController.h */,
@@ -2065,7 +2055,6 @@
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
 				CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */,
 				5A20717F1D02BBFC00462D65 /* MyFavoredsSchoolViewController.m in Sources */,
-				CD1CCC561CB39B93002FC0C9 /* PlayerHistoryViewController.m in Sources */,
 				644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */,
 				CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */,
 				5A240DF81CE33E49003B7971 /* WikiBannerView.m in Sources */,
@@ -2140,7 +2129,6 @@
 				5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */,
 				D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */,
 				D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */,
-				CD1CCC591CB39BAB002FC0C9 /* PlayerDownLoadViewController.m in Sources */,
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,

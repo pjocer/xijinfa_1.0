@@ -33,22 +33,16 @@
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
         UITextFieldDelegate>
-
 @property(nonatomic, strong) UIView *playView;
 @property(strong, nonatomic) ZFPlayerView *playerView;
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-///是否展示视频描述
-@property(nonatomic, assign) BOOL isShowVideDescrible;
-@property(nonatomic, retain) UIView *keyBoardView;
-/**< 键盘背景图 */
-@property(nonatomic, retain) UIView *keyBoardAppearView;
-/**< 键盘出现，屏幕背景图 */
-@property(nonatomic, retain) CustomTextField *textField;
-/**< 键盘 */
+@property(nonatomic, assign) BOOL isShowVideDescrible;/**< 是否展示视频描述 */
+@property(nonatomic, retain) UIView *keyBoardView;/**< 键盘背景图 */
+@property(nonatomic, retain) UIView *keyBoardAppearView;/**< 键盘出现，屏幕背景图 */
+@property(nonatomic, retain) CustomTextField *textField;/**< 键盘 */
 @property(nonatomic, strong) UIButton *sendMsgButton;/**< 发表评论内容按钮 */
-///评论数据
-@property(nonatomic, strong) CommentsAllDataList *commentsModel;
+@property(nonatomic, strong) CommentsAllDataList *commentsModel;/**< 评论数据 */
 @property(nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @end
 
@@ -57,10 +51,10 @@ static NSString *PlayerVC_Describe_FooterId = @"PlayerVC_Describe_FooterId";
 static NSString *PlayerVC_Recommended_HeaderId = @"PlayerVC_Recommended_HeaderId";
 static NSString *PlayerVC_Comments_HeaderId = @"PlayerVC_Comments_HeaderId";
 static NSString *PlayerVC_Comments_FooterId = @"PlayerVC_Comments_FooterId";
-
 static NSString *PlayerVC_Describe_Cell_Id = @"PlayerVC_Describe_Cell_Id";
 static NSString *PlayerVC_TalkGrid_Cell_Id = @"PlayerVC_TalkGrid_Cell_Id";
 static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
+
 
 @implementation PlayerViewController
 
@@ -307,7 +301,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             initWithTarget:self action:@selector(keyBoardresignFirstResponder:)];
     [self.keyBoardAppearView addGestureRecognizer:tap];
 
-
     self.keyBoardView = [[UIView alloc]
             initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
     self.keyBoardView.backgroundColor = [UIColor whiteColor];
@@ -319,8 +312,6 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     self.textField.layer.cornerRadius = 4;
     self.textField.placeholder = @"回复新内容";
 
-    
-    
     [self.textField setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
     [self.keyBoardView addSubview:self.textField];
     self.textField.delegate = self;

@@ -50,9 +50,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 }
 
 
-
 #pragma mark requestData
-
 - (void)requestCommentsData:(APIName *)api method:(RequestMethod)method {
     
     [[ZToastManager ShardInstance] showprogress];
@@ -83,7 +81,6 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
     }
 }
 
-
 #pragma mark- initTabelView
 - (void)initTabelView
 {
@@ -102,6 +99,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     }
 }
+
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -116,6 +114,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
     
     return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CommentsModel *model = self.dataSource[indexPath.row];
