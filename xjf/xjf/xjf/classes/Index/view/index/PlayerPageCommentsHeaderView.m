@@ -72,7 +72,8 @@
         [self.commentsButton setTintColor:[UIColor xjfStringToColor:@"#9a9a9a"]];
         self.commentsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.commentsButton.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);
-        
+        self.commentsButton.layer.masksToBounds = YES;
+        self.commentsButton.layer.cornerRadius = 5;
         [self.commentsButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.userImage);
             make.left.equalTo(self.userImage.mas_right).with.offset(10);

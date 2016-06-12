@@ -81,6 +81,7 @@
 		5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */; };
 		5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */; };
 		5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */; };
+		5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -385,6 +386,8 @@
 		5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListPagePrivilegeCell.m; sourceTree = "<group>"; };
 		5A565A521D0BAF5500008DA9 /* VipPayListPageChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListPageChoiceCell.h; sourceTree = "<group>"; };
 		5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListPageChoiceCell.m; sourceTree = "<group>"; };
+		5A565A551D0D70A200008DA9 /* BannerWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerWebViewViewController.h; sourceTree = "<group>"; };
+		5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWebViewViewController.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -1267,6 +1270,8 @@
 				5A105E601CEB30C30079BEFE /* TeacherListViewController.m */,
 				5A105EA11CEDCD000079BEFE /* ShoppingCartViewController.h */,
 				5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */,
+				5A565A551D0D70A200008DA9 /* BannerWebViewViewController.h */,
+				5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */,
 				5A565A1B1D066B0900008DA9 /* Employed */,
 				5AF7C2E91CFF0271007CC71C /* TeacherDetail */,
 				5A105EAD1CEF21230079BEFE /* LessonDetail */,
@@ -2141,6 +2146,7 @@
 				5AF7C2F91CFF049A007CC71C /* TeacherDetailHeaderView.m in Sources */,
 				644C112D1CBA908200892E2C /* ZPlatformShare.m in Sources */,
 				D073CF771CFC55CB002D3FAF /* TopicDetailViewController.m in Sources */,
+				5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */,
 				5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */,
 				5A565A371D069F5800008DA9 /* EmployedLawsViewController.m in Sources */,
 				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,

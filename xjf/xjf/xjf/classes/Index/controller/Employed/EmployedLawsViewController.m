@@ -85,6 +85,8 @@ static NSString *EmployedLawsCell_id = @"EmployedLawsCell_id";
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:EmployedLawsCell_id];
     cell.model = self.dataSource[indexPath.row];
     cell.viedoDetail.hidden = YES;
+    cell.teacherName.hidden = NO;
+    cell.lessonCount.hidden = NO;
     return cell;
 }
 

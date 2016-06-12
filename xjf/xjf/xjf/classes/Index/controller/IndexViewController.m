@@ -18,6 +18,7 @@
 #import "EmployedViewController.h"
 #import "ProjectListByModel.h"
 #import "EmployedLessonListViewController.h"
+#import "BannerWebViewViewController.h"
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray *sectionsArray;
@@ -279,6 +280,8 @@
                 XRCarouselView *carouselView = obj;
                 carouselView.imageClickBlock = ^(NSInteger index) {
                     NSLog(@"第%ld张图片被点击", index);
+                    BannerWebViewViewController *bannerWebViewViewController = [BannerWebViewViewController new];
+                    [self.navigationController pushViewController:bannerWebViewViewController animated:YES];
                 };
             }
             else if (indexPath.section == 1) {

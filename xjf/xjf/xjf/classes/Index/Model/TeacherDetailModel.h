@@ -20,6 +20,12 @@
 ///(已登录用户)是否已点赞
 @property(nonatomic, assign) BOOL user_liked;
 @property(nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *courses;
+@property(nonatomic, strong) NSString *content;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *subtitle;
+@property(nonatomic, strong) NSString *summary;
+@property(nonatomic, strong) NSString *thumbnail;
+@property(nonatomic, strong) NSString *guru_avatar;
 @end
 
 

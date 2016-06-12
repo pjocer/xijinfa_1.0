@@ -164,13 +164,18 @@ static CGFloat rowHeight = 50;
     } else if ([model.type isEqualToString:@"lesson"]) {
         self.selectedModel = model;
     }
-    //Block回掉换视频
-    if (self.actionWithDidSelectedBlock) {
-        self.actionWithDidSelectedBlock(self.selectedModel);
+    
+    if (!_isPay && ![self.selectedModel.package containsObject:@"visitor"]) {
+        [[ZToastManager ShardInstance] showtoast:@"只有购买后才可以观看哦"];
+    }else {
+        //Block回掉换视频
+        if (self.actionWithDidSelectedBlock) {
+            self.actionWithDidSelectedBlock(self.selectedModel);
+        }
     }
+
    //给服务器发送用户已学习消息
     if (_isPay) {
-            //代理执行换视频
             if (self.delegate && [self.delegate respondsToSelector:@selector(lessonPlayerLessonListViewController:TableDidSelectedAction:)]) {
                 [self.delegate lessonPlayerLessonListViewController:self TableDidSelectedAction:self.selectedModel];
             }

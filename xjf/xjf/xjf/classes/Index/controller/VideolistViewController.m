@@ -59,7 +59,6 @@ static NSString *videListCell_id = @"videListCell_id";
 }
 
 #pragma mark requestData
-
 - (void)requesData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     [[ZToastManager ShardInstance] showprogress];
@@ -114,6 +113,8 @@ static NSString *videListCell_id = @"videListCell_id";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:videListCell_id];
     cell.model = self.dataSource[indexPath.row];
+    cell.teacherName.hidden = YES;
+    cell.lessonCount.hidden = YES;
     return cell;
 }
 

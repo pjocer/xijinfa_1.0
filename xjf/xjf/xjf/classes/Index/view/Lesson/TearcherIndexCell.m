@@ -82,7 +82,7 @@
     if (model) {
         _model = model;
     }
-    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.guru_avatar]];
     self.teacherName.text = model.title;
     self.teacherDetail.text = model.summary;
 }

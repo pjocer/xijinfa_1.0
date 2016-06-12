@@ -36,7 +36,7 @@
 #define kStartY   0
 
     CGFloat marginX = (self.contentView.bounds.size.width - kColCount * kAppViewW) / (kColCount + 1);
-    CGFloat marginY = 5;
+    CGFloat marginY = 7;
 
     for (int i = 0; i < self.tempArray.count; i++) {
 

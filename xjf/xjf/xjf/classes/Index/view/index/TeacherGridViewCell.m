@@ -66,26 +66,27 @@
 
     //teacherImage
     [self.teacherImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.backgroundView.mas_centerY);
+        make.top.mas_equalTo(28);
         make.centerX.mas_equalTo(self.backgroundView);
         make.size.mas_equalTo(CGSizeMake(55, 55));
-    }];
-    
-    //teacherDetail
-    [self.teacherDetail mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.teacherImage);
-        make.bottom.mas_equalTo(self.backgroundView).with.offset(-10);
-        make.width.mas_equalTo(self.backgroundView);
-        make.height.mas_equalTo(15);
     }];
     
     //teacherName
     [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.teacherImage);
-        make.bottom.mas_equalTo(self.teacherDetail).with.offset(-10);
+        make.top.equalTo(self.teacherImage.mas_bottom).with.offset(10);
         make.width.mas_equalTo(self.backgroundView);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(18);
     }];
+    
+    //teacherDetail
+    [self.teacherDetail mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.teacherImage);
+        make.top.equalTo(self.teacherName.mas_bottom).with.offset(10);
+        make.width.mas_equalTo(self.backgroundView);
+        make.height.mas_equalTo(18);
+    }];
+
     
 }
 
@@ -94,7 +95,7 @@
     if (model) {
         _model = model;
     }
-    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.guru_avatar]];
     self.teacherName.text = model.title;
     self.teacherDetail.text = model.summary;
 }

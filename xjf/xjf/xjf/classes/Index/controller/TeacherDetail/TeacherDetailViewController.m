@@ -74,6 +74,8 @@ static CGFloat BottomPayButtonH = 50;
             __strong typeof(self) sSelf = wSelf;
             
             sSelf.teacherDetailModel = [[TeacherDetailModel alloc] initWithData:responseData error:nil];
+            self.teacherDescriptionViewController.textView.text = self.teacherDetailModel.result.content;
+            
             for (TalkGridModel *model in sSelf.teacherDetailModel.result.courses) {
                 if ([model.department isEqualToString:@"dept3"]) {
                     [sSelf.dataSourcerDep3_Lesson addObject:model];
@@ -205,7 +207,6 @@ static CGFloat BottomPayButtonH = 50;
     self.teacherDescriptionViewController = [[TeacherDescriptionViewController alloc] init];
     self.teacherDescriptionViewController.title = @"讲师简介";
     [self addChildViewController:self.teacherDescriptionViewController];
-    self.teacherDescriptionViewController.tempContent = self.teacherListDataModel.content;
     
     self.teacherLessonsViewController = [[TeacherLessonsViewController alloc] init];
     self.teacherLessonsViewController.title = @"析金学堂";

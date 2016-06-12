@@ -120,6 +120,8 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:lessonListCell_id];
     cell.model = self.dataSource[indexPath.row];
     cell.oldPrice.hidden = NO;
+    cell.teacherName.hidden = NO;
+    cell.lessonCount.hidden = NO;
     return cell;
 }
 

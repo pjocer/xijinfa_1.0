@@ -14,6 +14,24 @@
 @protocol TalkGridVideo
 @end
 
+@protocol taxonomy_gurus
+@end
+
+@interface taxonomy_gurus : JSONModel
+@property (nonatomic, assign) int id;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *summary;
+@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *thumbnail;
+@property (nonatomic, strong) NSString *guru_avatar;
+@property (nonatomic, strong) NSString *comments_count;
+@property (nonatomic, strong) NSString *user_played;
+@property (nonatomic, strong) NSString *user_played_at;
+@property (nonatomic, strong) NSString *user_favored;
+@property (nonatomic, strong) NSString *user_liked;
+@end
+
 @interface TalkGridVideo : JSONModel
 @property(nonatomic, strong) NSString *resolution;
 @property(nonatomic, strong) NSString *url;
@@ -70,6 +88,7 @@
 @property(nonatomic, strong) NSString *video_view;
 @property(nonatomic, strong) NSString *view;
 @property(nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video_player;
+@property(nonatomic, strong) NSArray <taxonomy_gurus> *taxonomy_gurus;
 @property(nonatomic, assign) BOOL isSelected;
 @end
 

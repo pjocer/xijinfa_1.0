@@ -151,12 +151,19 @@ static CGFloat rowHeight = 50;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[indexPath.section];
-   
     if ([model.type isEqualToString:@"dir"]) {
         TalkGridModel *tempModel = model.children[indexPath.row];
-        [self cellPuchAction:tempModel];
+        if (!_isPay && ![tempModel.package containsObject:@"visitor"]) {
+            [[ZToastManager ShardInstance] showtoast:@"只有购买后才可以观看哦"];
+        }else {
+           [self cellPuchAction:tempModel];
+        }
     } else if ([model.type isEqualToString:@"lesson"]) {
-        [self cellPuchAction:model];
+        if (!_isPay && ![model.package containsObject:@"visitor"]) {
+            [[ZToastManager ShardInstance] showtoast:@"只有购买后才可以观看哦"];
+        }else {
+            [self cellPuchAction:model];
+        }
     }
 }
 

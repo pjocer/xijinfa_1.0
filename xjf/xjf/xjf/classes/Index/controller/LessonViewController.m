@@ -243,24 +243,23 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    if ([[XJAccountManager defaultManager] accessToken] == nil ||
-            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
-            [self LoginPrompt];
-    } else {
         if (indexPath.section == 0) {
-            LessonListViewController *lessonListViewController = [LessonListViewController new];
-            ProjectList *model = self.projectListByModel.result.data[indexPath.row];;
-            lessonListViewController.LessonListTitle = model.title;
-            lessonListViewController.ID = model.id;
-            [self.navigationController pushViewController:lessonListViewController animated:YES];
+            if ([[XJAccountManager defaultManager] accessToken] == nil ||
+                [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+                [self LoginPrompt];
+            } else {
+                LessonListViewController *lessonListViewController = [LessonListViewController new];
+                ProjectList *model = self.projectListByModel.result.data[indexPath.row];;
+                lessonListViewController.LessonListTitle = model.title;
+                lessonListViewController.ID = model.id;
+                [self.navigationController pushViewController:lessonListViewController animated:YES];
+            }
         }
         else if (indexPath.section == 1) {
             TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
             teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
             [self.navigationController pushViewController:teacherDetailViewController animated:YES];
         }
-    }
 }
 
 #pragma mark FlowLayoutDelegate
@@ -278,8 +277,13 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         }
 
     } else {
-        _layout.minimumLineSpacing = 1;
-        return CGSizeMake((SCREENWITH - 3) / 3, 150);
+        if (iPhone5 || iPhone4) {
+            _layout.minimumLineSpacing = 1;
+            return CGSizeMake((SCREENWITH - 3) / 3, 140);
+        } else {
+            _layout.minimumLineSpacing = 1;
+            return CGSizeMake((SCREENWITH - 3) / 3, 160);
+        }
     }
 }
 

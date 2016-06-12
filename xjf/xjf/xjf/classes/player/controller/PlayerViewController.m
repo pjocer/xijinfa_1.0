@@ -527,8 +527,8 @@ referenceSizeForFooterInSection:(NSInteger)section {
         return CGSizeMake((SCREENWITH - 2) / 2, height);
     }
     CommentsModel *model = self.commentsModel.result.data[indexPath.row];
-    CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:12];
-    return CGSizeMake(SCREENWITH, tempRect.size.height + 70);
+    CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:15];
+    return CGSizeMake(SCREENWITH, tempRect.size.height + 60);
 }
 
 #pragma mark- 右按钮展示视频描述详情

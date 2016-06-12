@@ -86,6 +86,8 @@ static NSString *EmployedGeneralCell_id = @"EmployedGeneralCell_id";
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:EmployedGeneralCell_id];
     cell.model = self.dataSource[indexPath.row];
     cell.viedoDetail.hidden = YES;
+    cell.teacherName.hidden = NO;
+    cell.lessonCount.hidden = NO;
     return cell;
 }
 

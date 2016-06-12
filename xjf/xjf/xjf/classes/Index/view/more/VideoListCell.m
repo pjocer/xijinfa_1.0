@@ -77,7 +77,6 @@
         self.teacherName = [[UILabel alloc] init];
         [self.contentView addSubview:self.teacherName];
         self.teacherName.textColor = AssistColor
-        self.teacherName.text = @"主讲: xxxx";
         self.teacherName.font = FONT12;
         self.teacherName.hidden = YES;
         [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,7 +90,6 @@
         self.lessonCount = [[UILabel alloc] init];
         [self.contentView addSubview:self.lessonCount];
         self.lessonCount.textColor = AssistColor
-        self.lessonCount.text = @"课时: xxxx";
         self.lessonCount.font = FONT12;
         self.lessonCount.hidden = YES;
         [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -160,6 +158,10 @@
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
     self.lessonCount.text = [NSString stringWithFormat:@"课时: %@",model.lessons_count];
+    if (model.taxonomy_gurus.count != 0 && model.taxonomy_gurus) {
+        taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
+        self.teacherName.text = [NSString stringWithFormat:@"主讲: %@",gurus.title];
+    }
     CGFloat tempPrice = [model.price floatValue];
     if (tempPrice == -1) {
          self.price.text = @"";
@@ -175,13 +177,9 @@
     [super layoutSubviews];
     
     if (self.model.user_purchased) {
-        self.teacherName.hidden = NO;
-        self.lessonCount.hidden = NO;
         self.price.hidden = YES;
         self.oldPrice.hidden = YES;
     }else{
-        self.teacherName.hidden = NO;
-        self.lessonCount.hidden = NO;
         self.price.hidden = NO;
     }
     
@@ -226,6 +224,14 @@
         }];
     }
     
+    if (self.teacherName.text.length == 0 || self.teacherName.text == nil) {
+        [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.videoTitle);
+            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(3);
+            make.right.equalTo(self.contentView).with.offset(-10);
+            make.height.mas_equalTo(14);
+        }];
+    }
 }
 
 

@@ -72,12 +72,17 @@
 + (CGFloat)returnCellHeight:(id)model
 {
 //    NSDictionary *dict =(NSDictionary*)model;
-    return 170;
+    if (iPhone5 || iPhone4) {
+      return 180;
+    }
+    return 200;
     
 }
+
 -(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {
     return 3;
 }
+
 -(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index
 {
     TeacherGridViewCell *cell = [[TeacherGridViewCell alloc] initWithFrame:CGRectNull];
@@ -85,12 +90,14 @@
     cell.model = self.teacherListHostModel.result.data[index];
     return cell;
 }
+
 -(void)handleSingleTapFrom
 {
     if (self.actionBlock) {
         self.actionBlock(BEventType_More,nil,self.data,nil,self.indexPath);
     }
 }
+
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
 {
     if (self.actionBlock) {

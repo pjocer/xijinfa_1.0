@@ -171,6 +171,7 @@ static CGFloat selViewH = 3;
         [_playerView resetPlayer];
         [_playerView removeFromSuperview];
         _playerView = nil;
+        
     }
 
     _playerView = [ZFPlayerView sharedPlayerView];

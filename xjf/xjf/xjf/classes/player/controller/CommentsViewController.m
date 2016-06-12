@@ -118,8 +118,8 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CommentsModel *model = self.dataSource[indexPath.row];
-    CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:12];
-    return tempRect.size.height + 70;
+    CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:15];
+    return tempRect.size.height + 60;
 }
 
 #pragma mark Delegate

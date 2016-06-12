@@ -32,7 +32,7 @@
 @interface LessonDetailListResultModel : JSONModel
 
 @property(nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *lessons_menu;
-@property(nonatomic, strong) NSArray <TeacherListData, ConvertOnDemand> *gurus;
+@property(nonatomic, strong) NSArray <TeacherListData, ConvertOnDemand> *taxonomy_gurus;
 @property(nonatomic, strong) NSString *api_href;
 @property(nonatomic, strong) NSString *content;
 @property(nonatomic, strong) NSString *created_at;

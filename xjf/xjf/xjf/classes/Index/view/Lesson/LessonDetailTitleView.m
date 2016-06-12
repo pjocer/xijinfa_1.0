@@ -124,6 +124,10 @@
     self.price.text = [NSString stringWithFormat:@"￥%.2lf", tempPrice / 100];
     self.oldPrice.text = [NSString stringWithFormat:@"￥%.2lf", [model.result.original_price floatValue] / 100];
     self.lessonCount.text = [NSString stringWithFormat:@"课时: %@",model.result.lessons_count];
+    if (model.result.taxonomy_gurus.count != 0 && model.result.taxonomy_gurus) {
+        TeacherListData *gurus = model.result.taxonomy_gurus.firstObject;
+        self.teacherName.text = [NSString stringWithFormat:@"主讲: %@",gurus.title];
+    }
     if (self.model.result.user_purchased) {
         self.price.hidden = YES;
         self.oldPrice.hidden = YES;

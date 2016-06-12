@@ -75,7 +75,6 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     }
     //POST
     else if (method == POST) {
-        
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:self.textField.text forKey:@"content"];
         [dic setValue:self.ID forKey:@"ID"];
@@ -89,10 +88,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
         }failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
-        
     }
-    
-    
 }
 
 - (void)loadMoreData
@@ -117,12 +113,6 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    if (iPhone5) {
-        self.tableView.rowHeight = 100;
-    }else{
-        self.tableView.rowHeight = 120;
-    }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView registerClass:[CommentsPageCommentsCell class] forCellReuseIdentifier:LessonRecommendedCell_id];
@@ -157,6 +147,14 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 {
     return 50;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommentsModel *model = self.dataSource[indexPath.row];
+    CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:15];
+    return tempRect.size.height + 60;
+}
+
 
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

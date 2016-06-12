@@ -48,21 +48,21 @@ static CGFloat rowHeight = 100;
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataSourceModel.result.gurus.count;
+    return self.dataSourceModel.result.taxonomy_gurus.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LessonDetailTecherDescribeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonDetailTecherDescribeCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = self.dataSourceModel.result.gurus[indexPath.row];
+    cell.model = self.dataSourceModel.result.taxonomy_gurus[indexPath.row];
     return cell;
 }
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
-    teacherDetailViewController.teacherListDataModel = self.dataSourceModel.result.gurus[indexPath.row];
+    teacherDetailViewController.teacherListDataModel = self.dataSourceModel.result.taxonomy_gurus[indexPath.row];
     [self.navigationController pushViewController:teacherDetailViewController animated:YES];
 }
 
