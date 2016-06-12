@@ -155,7 +155,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 2;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { 
     if (indexPath.row == 0) {
         TaBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaBaseCell" forIndexPath:indexPath];
         cell.model = self.model;
