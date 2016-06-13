@@ -89,8 +89,10 @@
     if (!_textFiled) {
         [_textFiled becomeFirstResponder];
         _textFiled = [[UITextField alloc] initWithFrame:CGRectMake(10,kStatusBarH+5, SCREENWITH-60, 30)];
-        _textFiled.placeholder = @"# 输入话题";
-        _textFiled.borderStyle = UITextBorderStyleRoundedRect;
+        _textFiled.placeholder = @" # 输入话题";
+        _textFiled.borderStyle = UITextBorderStyleNone;
+        _textFiled.layer.cornerRadius = 5;
+        _textFiled.layer.masksToBounds = YES;
         _textFiled.backgroundColor = BackgroundColor;
         _textFiled.font = FONT15;
         [_textFiled setReturnKeyType:UIReturnKeyDone];
@@ -108,7 +110,9 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(newSharpAddSuccessed:)]) {
         [self.delegate newSharpAddSuccessed:_textFiled.text];
     }
-    [[XJMarket sharedMarket] addLabels:_textFiled.text];
+    if (textField.text.length!=0) {
+        [[XJMarket sharedMarket] addLabels:_textFiled.text];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
     return YES;
 }

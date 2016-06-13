@@ -89,13 +89,10 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
     [self.tableView registerClass:[CommentsPageCommentsCell class] forCellReuseIdentifier:CommentsCell_id];
     if (!self.tableView.mj_footer) {
-        //mj_footer
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     }
 }

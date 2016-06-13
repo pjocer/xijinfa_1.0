@@ -49,7 +49,7 @@
     _nickname.text = data.user.nickname;
     _invest_category.text = data.user.invest_category;
     _time.text = [StringUtil compareCurrentTime:data.created_at];
-    _like_count.text = data.like_count;
+    _like_count.text = data.likes_count;
     _content.text = data.content;
     _like_image.selected = data.user_liked;
 }

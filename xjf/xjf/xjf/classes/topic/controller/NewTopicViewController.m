@@ -40,6 +40,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self resetNavBar];
+    
 }
 
 - (void)viewDidLoad {
@@ -56,16 +57,9 @@
             _bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
         }];
     });
-    RAC(self.textView,attributedText) = [[[self.textView rac_textSignal] filter:^BOOL(NSString *value) {
-        _placeholder.hidden = [value isEqualToString:@""]?NO:YES;
-        return YES;
-    }] map:^id(NSString *value) {
-        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:value];
-        for (NSString *label in self.labels) {
-            NSRange range = [_textView.text rangeOfString:label];
-            [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
-        }
-        return string;
+    [[self.textView rac_textSignal] subscribeNext:^(id x) {
+        NSString *text = (NSString *)x;
+        if (text.length>0) _placeholder.hidden = YES;
     }];
 }
 
@@ -78,12 +72,10 @@
     if (!_textView) {
         _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-20, SCREENHEIGHT-50-HEADHEIGHT-265)];
         _textView.backgroundColor = [UIColor clearColor];
-        _textView.font = FONT15;
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineSpacing = 3;
-        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle};
+        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"]};
         _textView.typingAttributes = attributes;
-        _textView.textColor = NormalColor;
         [_textView becomeFirstResponder];
         [_textView addSubview:self.placeholder];
     }
@@ -167,6 +159,8 @@
 }
 
 - (void)resetNavBar {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [self setNeedsStatusBarAppearanceUpdate];
     self.navigationController.navigationBar.barTintColor = _style==NewTopicDiscussStyle?[UIColor xjfStringToColor:@"#f7931e"]:[UIColor xjfStringToColor:@"#3fa9f5"];
     [_titleView_button setTitle:_style==NewTopicDiscussStyle?@"新讨论":@"新问答" forState:UIControlStateNormal];
 }
@@ -243,18 +237,28 @@
     }
     if ([self.labels containsObject:[NSString stringWithFormat:@"#%@#",label]]) {
         [[ZToastManager ShardInstance] showtoast:@"请不要重复添加"];
+    }else if (label.length==0) {
+        
     }else {
         [[ZToastManager ShardInstance] showtoast:@"添加标签成功"];
         [self.labels addObject:[NSString stringWithFormat:@"#%@#",label]];
         _placeholder.hidden = YES;
-        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@#%@#",_textView.text,label]];
-        NSRange range = NSMakeRange(_textView.text.length, label.length+2);
-        [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
-        for (NSString *x in self.labels) {
-            NSRange range = [_textView.text rangeOfString:x];
-            [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
+        _textView.text = [_textView.text stringByAppendingString:[NSString stringWithFormat:@"#%@#",label]];
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_textView.text];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineSpacing = 3;
+        NSUInteger location = 0;
+        for (int i = 0; i < self.labels.count; i++) {
+            NSRange range = [_textView.text rangeOfString:[self.labels objectAtIndex:i]];
+            NSRange foreRange = NSMakeRange(location, range.location-location);
+            NSRange backRange = NSMakeRange(range.location+range.length, string.length-range.location-range.length);
+            [string addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"]} range:foreRange];
+            [string addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
+            [string addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"]} range:backRange];
+            location = range.location+range.length;
         }
         _textView.attributedText = [[NSAttributedString alloc] initWithAttributedString:string];
+        _textView.typingAttributes = @{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"],NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle};
     }
 }
 - (void)didReceiveMemoryWarning {

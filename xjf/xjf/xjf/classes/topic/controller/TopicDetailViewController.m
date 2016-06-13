@@ -32,7 +32,6 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [_tableView.mj_header beginRefreshing];
     if (!self.tabBarController.tabBar.isHidden) {
         self.tabBarController.tabBar.hidden = YES;
         [self.view addSubview:self.footer];
@@ -211,19 +210,56 @@
 }
 #pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1+_dataSource.count;
+    return section==0?1:_dataSource.count;
 }
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
+        view.backgroundColor = [UIColor whiteColor];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-10, 18)];
+        label.font = FONT15;
+        label.textColor = NormalColor;
+        label.text = @"评论";
+        [view addSubview:label];
+        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
+        line.backgroundColor = BackgroundColor;
+        [view addSubview:line];
+        if (_dataSource.count==0) {
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, SCREENWITH, 200)];
+            label.font = FONT12;
+            label.textAlignment = 1;
+            label.textColor = AssistColor;
+            label.text = @"还没有人评论";
+            [view addSubview:label];
+        }
+        return view;
+    }
+    return nil;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        if (_dataSource.count==0) {
+            return 235;
+        }else {
+            return 35;
+        }
+    }else {
+        return 0;
+    }
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         _header = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
         _header.model = _model.result;
         _header.selectionStyle = UITableViewCellSelectionStyleNone;
         return _header;
     }else {
         CommentListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentListCell" forIndexPath:indexPath];
-        if (_commentList.result.data && _commentList.result.data.count>0) {
-            TopicDataModel *data = [_commentList.result.data objectAtIndex:indexPath.row-1];
+        if (_dataSource && _dataSource.count>0) {
+            TopicDataModel *data = [_dataSource objectAtIndex:indexPath.row];
             cell.data = data;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -231,14 +267,15 @@
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         return _header.cellHeight;
-    }else if (self.dataSource && self.dataSource.count>0) {
-        TopicDataModel *data = [self.dataSource objectAtIndex:indexPath.row-1];
-        return [StringUtil calculateLabelHeight:data.content width:SCREENWITH-70 fontsize:15]+71;
-    }else {
-        return 0;
+    }else if (indexPath.section == 1){
+        if (self.dataSource && self.dataSource.count>0) {
+            TopicDataModel *data = [self.dataSource objectAtIndex:indexPath.row];
+            return [StringUtil calculateLabelHeight:data.content width:SCREENWITH-70 fontsize:15]+71;
+        }
     }
+    return 0;
 }
 
 - (void)didReceiveMemoryWarning {

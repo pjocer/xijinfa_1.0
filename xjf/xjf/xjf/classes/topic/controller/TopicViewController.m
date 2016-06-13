@@ -131,7 +131,7 @@
             [self reqeustData:topic_qa method:GET tableView:_tableview_qa];
         }];
         _tableview_qa.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            [self reqeustData:_model_qa.result.next_page_url method:GET tableView:_tableview_qa];
+            [self reqeustData:[NSString stringWithFormat:@"%@&type=qa",_model_qa.result.next_page_url] method:GET tableView:_tableview_qa];
         }];
         _tableview_qa.delegate = self;
         _tableview_qa.dataSource = self;
@@ -152,7 +152,7 @@
             [self reqeustData:topic_discuss method:GET tableView:_tableView_discuss];
         }];
         _tableView_discuss.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            [self reqeustData:_model_discuss.result.next_page_url method:GET tableView:_tableView_discuss];
+            [self reqeustData:[NSString stringWithFormat:@"%@&type=discuss",_model_discuss.result.next_page_url] method:GET tableView:_tableView_discuss];
         }];
         _tableView_discuss.delegate = self;
         _tableView_discuss.dataSource = self;
@@ -245,21 +245,21 @@
                 x = all - size.width;
                 y = contentHeight+70;
                 button.frame = CGRectMake(x, y, size.width, 14);
-                return height + 34 + 36;
+                return height + 34 + 36>196?196:height + 34 + 36;
             }else if (all <= SCREENWITH*2 && all>SCREENWITH) {
                 alll = alll + tap + size.width;
                 if (alll <= SCREENWITH) {
                     x = alll - size.width;
                     y = contentHeight+94;
                     button.frame = CGRectMake(x, y, size.width, 14);
-                    return height + 30 + 28 + 36;
+                    return height + 30 + 28 + 36>196?196:height + 30 + 28 + 36;
                 }else {
-                    return height + 36 + 10;
+                    return height+36+10>196?196:height+36+10;
                 }
             }
         }
     }
-    return height+36+10;
+    return height+36+10>196?196:height+36+10;
 
 }
 #pragma TableView Delegate

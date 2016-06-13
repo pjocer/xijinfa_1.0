@@ -119,12 +119,11 @@
     _model = model;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.user.avatar]];
     _nickname.text = model.user.nickname;
-    _identity.text = @"";
-    _update_at.text = [StringUtil compareCurrentTime:model.user.updated_at];
+    _identity.text = model.user.summary;
+    _update_at.text = [StringUtil compareCurrentTime:model.updated_at];
     _content.text = model.content;
-    _commentLabel.text = model.reply_count;
-    _praiseLabel.text = model.like_count;
-    NSLog(@"likes:%@ like:%@ favorites:%@",model.likes_count,model.like_count,model.favorites_count);
+    _commentLabel.text = model.replies_count;
+    _praiseLabel.text = model.likes_count;
     _praiseImageView.highlighted = model.user_liked;
     if (![model.type isEqualToString:@"qa"]) {
         _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
