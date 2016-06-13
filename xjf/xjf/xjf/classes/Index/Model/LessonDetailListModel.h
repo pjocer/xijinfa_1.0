@@ -15,6 +15,18 @@
 @protocol LessonDetailListLessonsModel
 @end
 
+@protocol Taxonomy_categories
+@end
+
+
+@interface Taxonomy_categories : JSONModel
+@property(nonatomic, strong) NSString *id;
+@property(nonatomic, strong) NSString *type;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *summary;
+@property(nonatomic, strong) NSString *icon;
+@property(nonatomic, strong) NSString *thumbnail;
+@end
 
 @interface LessonDetailVideo : JSONModel
 @property(nonatomic, strong) NSString *resolution;
@@ -31,8 +43,9 @@
 
 @interface LessonDetailListResultModel : JSONModel
 
-@property(nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *lessons_menu;
-@property(nonatomic, strong) NSArray <TeacherListData, ConvertOnDemand> *taxonomy_gurus;
+@property(nonatomic, strong) NSArray <TalkGridModel> *lessons_menu;
+@property(nonatomic, strong) NSArray <TeacherListData> *taxonomy_gurus;
+@property(nonatomic, strong) NSArray <Taxonomy_categories> *taxonomy_categories;
 @property(nonatomic, strong) NSString *api_href;
 @property(nonatomic, strong) NSString *content;
 @property(nonatomic, strong) NSString *created_at;
@@ -43,7 +56,7 @@
 ///关键字
 @property(nonatomic, strong) NSString *keywords;
 ///原价
-@property(nonatomic, strong) NSString *original_price;
+@property(nonatomic, strong) NSString *origin;
 @property(nonatomic, strong) NSString *lessons_count;
 @property(nonatomic, strong) NSString *lessons_duration;
 @property(nonatomic, strong) NSString *price;
@@ -60,6 +73,8 @@
 ///(已登录用户)是否已收藏
 @property(nonatomic, assign) BOOL user_favored;
 @property(nonatomic, strong) NSString *user_id;
+///点赞次数
+@property(nonatomic, strong) NSString *likes_count;
 ///(已登录用户)是否已点赞
 @property(nonatomic, assign) BOOL user_liked;
 ///(已登录用户)是否已付费(含购买订阅但不含免费)

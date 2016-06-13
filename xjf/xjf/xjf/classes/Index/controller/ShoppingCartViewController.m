@@ -138,10 +138,14 @@ static CGFloat submitOrdersViewHeight = 50;
             }
         }
     }
+    if (tempArray.count == 0 || tempArray == nil) {
+        [[ZToastManager ShardInstance] showtoast:@"请选择商品"];
+    }else {
+        OrderDetaiViewController *oderDetaiPage = [OrderDetaiViewController new];
+        oderDetaiPage.dataSource = tempArray;
+        [self.navigationController pushViewController:oderDetaiPage animated:YES];
+    }
 
-    OrderDetaiViewController *oderDetaiPage = [OrderDetaiViewController new];
-    oderDetaiPage.dataSource = tempArray;
-    [self.navigationController pushViewController:oderDetaiPage animated:YES];
 }
 
 #pragma mark --setTableView--

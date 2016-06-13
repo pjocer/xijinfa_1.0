@@ -84,24 +84,24 @@
         make.top.equalTo(self.titleImage);
         make.left.mas_equalTo(self.titleImage.mas_right).with.offset(10);
         make.right.mas_equalTo(self.backgroundView).with.offset(-10);
-        make.height.mas_equalTo(40);
-    }];
-    
-    //classesLable
-    [self.classesLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.titleLable);
-        make.bottom.mas_equalTo(self.titleImage.mas_bottom);
-        make.width.mas_equalTo(self.titleLable);
-        make.height.mas_equalTo(15);
+        make.height.mas_equalTo(18);
     }];
     
     //teacherLable
     [self.teacherLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.titleLable);
-        make.bottom.mas_equalTo(self.classesLable.mas_top);
-        make.size.mas_equalTo(self.classesLable);
+        make.top.mas_equalTo(self.titleLable.mas_bottom).with.offset(7);
+        make.width.mas_equalTo(self.titleLable);
+        make.height.mas_equalTo(15);
     }];
     
+    //classesLable
+    [self.classesLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.titleLable);
+        make.top.mas_equalTo(self.teacherLable.mas_bottom).with.offset(3);
+        make.width.mas_equalTo(self.titleLable);
+        make.height.mas_equalTo(15);
+    }];
 }
 
 - (void)setModel:(TalkGridModel *)model

@@ -12,7 +12,7 @@
 @property (nonatomic, strong) UIImageView *titleImage;
 @property (nonatomic, strong) UILabel *titleLable;
 @property (nonatomic, strong) UILabel *detailLable;
-@property (nonatomic, strong) UILabel *accessoryView;
+@property (nonatomic, strong) UIImageView *accessoryView;
 @end
 
 @implementation CourseGridViewCell
@@ -47,10 +47,9 @@
         self.detailLable.font = FONT12;
         
         //accessoryView
-        self.accessoryView = [[UILabel alloc] init];
+        self.accessoryView = [[UIImageView alloc] init];
         [self addSubview:self.accessoryView];
-        self.accessoryView.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
-        self.accessoryView.text = @">";
+        self.accessoryView.image = [UIImage imageNamed:@"disclosureIndicator"];
         
     }
     return self;
@@ -90,9 +89,9 @@
     
     //accessoryView
     [self.accessoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.detailLable.mas_right);
+        make.right.mas_equalTo(self).with.offset(-10);
         make.centerY.mas_equalTo(self.backgroundView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(20, 20));
+        make.size.mas_equalTo(CGSizeMake(12.5, 21));
     }];
 }
 

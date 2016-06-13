@@ -52,8 +52,9 @@
 ///原价
 @property(nonatomic, strong) NSString *original_price;
 @property(nonatomic, strong) NSString *lessons_count;
-@property(nonatomic, strong) NSString *lessons_duration;
+@property(nonatomic, assign) float    lessons_duration;
 @property(nonatomic, strong) NSString *price;
+@property(nonatomic, strong) NSString *origin;
 @property(nonatomic, strong) NSString *purchased;
 @property(nonatomic, strong) NSString *sorting;
 @property(nonatomic, strong) NSString *status;
@@ -70,6 +71,7 @@
 ///(已登录用户)是否已收藏
 @property(nonatomic, assign) BOOL user_favored;
 @property(nonatomic, strong) NSString *user_id;
+@property(nonatomic, strong) NSString *likes_count;
 ///(已登录用户)是否已点赞
 @property(nonatomic, assign) BOOL user_liked;
 ///(已登录用户)是否已付费(含购买订阅但不含免费)
@@ -83,7 +85,7 @@
 ///是否已经学习
 @property(nonatomic, assign) int user_learned;
 ///视频时长
-@property(nonatomic, strong) NSString *video_duration;
+@property(nonatomic, assign) NSInteger video_duration;
 ///视频播放次数
 @property(nonatomic, strong) NSString *video_view;
 @property(nonatomic, strong) NSString *view;

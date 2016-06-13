@@ -52,7 +52,7 @@ static NSString *MyFavoredsWikiCell_id = @"MyFavoredsWikiCell_id";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyFavoredsWikiCell_id];
     cell.model = self.dataSource[indexPath.row];
-    cell.viedoDetail.hidden = NO;
+    cell.viedoDetail.hidden = YES;
     return cell;
 }
 

@@ -79,7 +79,6 @@ static CGFloat StudyImageH = 20;
             make.width.mas_equalTo(45);
         }];
         self.lessonCount.textColor = AssistColor;
-        self.lessonCount.text = @"00:00";
     }
     return self;
 }
@@ -87,19 +86,20 @@ static CGFloat StudyImageH = 20;
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    if (self.studyImage.hidden) {
+    if (!self.isPay) {
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self).with.offset(-10);
             make.centerY.equalTo(self);
             make.height.mas_equalTo(14);
-            make.width.mas_equalTo(45);
+            make.width.mas_equalTo(60);
         }];
-    }else {
+    }
+    else {
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.studyImage.mas_left).with.offset(-15);
             make.centerY.equalTo(self);
             make.height.mas_equalTo(14);
-            make.width.mas_equalTo(45);
+            make.width.mas_equalTo(60);
         }];
     }
 
@@ -112,9 +112,9 @@ static CGFloat StudyImageH = 20;
         _talkGridModel = talkGridModel;
     }
     self.title.text = talkGridModel.title;
-    //    self.lessonCount.text = [NSString stringWithFormat:@"%.2lf",model.video_duration / 60];
+    
+    self.lessonCount.text = [NSString timeformatFromSeconds:talkGridModel.video_duration];
 }
-
 
 
 @end

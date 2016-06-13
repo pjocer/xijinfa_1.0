@@ -113,7 +113,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     cell.lessonCount.hidden = NO;
     cell.price.hidden = NO;
     cell.oldPrice.hidden = YES;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.dataSource.count != 0) {
         cell.model = self.dataSource[indexPath.row];
     } else {

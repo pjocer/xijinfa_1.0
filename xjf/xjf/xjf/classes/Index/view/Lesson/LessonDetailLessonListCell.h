@@ -12,6 +12,7 @@
 @property (nonatomic, strong) UIImageView *studyImage;
 @property (nonatomic, strong) TalkGridModel *talkGridModel;
 @property (nonatomic, strong) UILabel *title;
-@property(nonatomic, strong) UILabel *freeVideoLogo;
-@property(nonatomic, strong) UIImageView *favorites;
+@property (nonatomic, strong) UILabel *freeVideoLogo;
+@property (nonatomic, strong) UIImageView *favorites;
+@property (nonatomic, assign) BOOL isPay;
 @end

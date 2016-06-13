@@ -69,7 +69,6 @@
         self.title = [[UILabel alloc] init];
         [self addSubview:self.title];
         self.title.font = FONT15;
-        self.title.text = @"XXXXXX";
         [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.equalTo(self.bottomBackGroundView).with.offset(10);
             make.right.equalTo(self).with.offset(-80);
@@ -89,7 +88,6 @@
         [self addSubview:self.titleDetail];
         self.titleDetail.font = FONT12;
         self.titleDetail.textColor = AssistColor;
-        self.titleDetail.text = @"播放: xxx次  类型: xx";
         [self.titleDetail mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.mas_bottom);
             make.left.equalTo(self.title);
@@ -103,14 +101,24 @@
     return self;
 }
 
-- (void)setModel:(TalkGridModel *)model
+- (void)setModel:(LessonDetailListResultModel *)model
 {
     if (model) {
         _model = model;
     }
     self.title.text = model.title;
     
-    self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次  类型: %@",model.video_view,model.type];
+    NSString *tempStr;
+    if (model.taxonomy_categories.count != 0) {
+        Taxonomy_categories *taxonomy_categories = model.taxonomy_categories.firstObject;
+        tempStr = taxonomy_categories.title;
+    }
+    if (tempStr != nil || tempStr.length > 0) {
+      self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次  类型: %@",model.view,tempStr];
+    }else {
+       self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次 ",model.view];
+    }
+    
 }
 
 @end

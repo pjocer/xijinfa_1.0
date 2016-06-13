@@ -62,7 +62,7 @@
 @property (nonatomic, copy) NSString *updated_at;
 @property (nonatomic, copy) NSString *view;
 @property (nonatomic, copy) NSString *video_view;
-@property (nonatomic, copy) NSString *video_duration;
+@property (nonatomic, assign) float video_duration;
 @property (nonatomic, copy) NSString *user_played;
 @property (nonatomic, copy) NSString *user_favored;
 @property (nonatomic, copy) NSString *user_liked;

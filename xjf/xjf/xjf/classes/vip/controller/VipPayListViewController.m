@@ -63,7 +63,7 @@ static CGFloat tableSectionHeaderH = 35;
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
                       initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 64) style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
@@ -77,7 +77,7 @@ static CGFloat tableSectionHeaderH = 35;
 
 -(UIView *)foot_background {
     if (!_foot_background) {
-        _foot_background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 60)];
+        _foot_background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 100)];
         _foot_background.backgroundColor = [UIColor clearColor];
         _footer = [UIButton buttonWithType:UIButtonTypeCustom];
         _footer.frame = CGRectMake(10, 10, SCREENWITH-20, 50);
@@ -95,9 +95,9 @@ static CGFloat tableSectionHeaderH = 35;
 #pragma mark TabelViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) {
-        return 1;
-    }
+//    if (section == 0) {
+//        return 1;
+//    }
     
     if (self.dataSourceModel.result.count != 0 && self.dataSourceModel.result) {
         VipResultModel *vipResultModel =  self.dataSourceModel.result.firstObject;
@@ -109,29 +109,32 @@ static CGFloat tableSectionHeaderH = 35;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-    VipPayListPagePrivilegeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:VipPayListPagePrivilegeCell_id];
-    return cell;
-    }
+//    if (indexPath.section == 0) {
+//    VipPayListPagePrivilegeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:VipPayListPagePrivilegeCell_id];
+//    return cell;
+//    }
     VipPayListPageChoiceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:VipPayListPageChoiceCell_id];
     if (self.dataSourceModel.result.count != 0 && self.dataSourceModel.result) {
         VipResultModel *vipResultModel =  self.dataSourceModel.result.firstObject;
         cell.model = vipResultModel.deal[indexPath.row];
         if (cell.model.isSelected) {
             cell.selectedLabel.backgroundColor = [UIColor redColor];
+            cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
             cell.backGroudView.layer.borderColor = [UIColor redColor].CGColor;
+            cell.selectedLabel.hidden = NO;
         }
         else{
-            cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-            cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-            cell.backGroudView.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+//            cell.selectedLabel.backgroundColor = [UIColor whiteColor];
+//            cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+            cell.backGroudView.layer.borderColor = [UIColor xjfStringToColor:@"#efefef"].CGColor;
+//            cell.selectedLabel.backgroundColor = [UIColor clearColor];
+            cell.selectedLabel.hidden = YES;
         }
     }
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -149,27 +152,32 @@ static CGFloat tableSectionHeaderH = 35;
     bottomView.backgroundColor = BackgroundColor;
     sectionView.moreLabel.hidden = YES;
     
-    if (section == 0) {
-        sectionView.titleLabel.text = @"会员特权";
-    } else if (section == 1) {
+//    if (section == 0) {
+//        sectionView.titleLabel.text = @"会员特权";
+//    } else if (section == 1) {
         sectionView.titleLabel.text = @"套餐选择";
-    }
+//    }
     return sectionView;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return 0.1;
+    }
     return 10;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         if (self.dataSourceModel.result.count != 0 && self.dataSourceModel.result) {
             VipResultModel *vipResultModel =  self.dataSourceModel.result.firstObject;
             VipModel *model = vipResultModel.deal[indexPath.row];
             VipPayListPageChoiceCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
             cell.selectedLabel.backgroundColor = [UIColor redColor];
+            cell.selectedLabel.layer.borderColor = [UIColor redColor].CGColor;
+            cell.selectedLabel.hidden = NO;
             cell.backGroudView.layer.borderColor = [UIColor redColor].CGColor;
             model.isSelected = YES;
         }
@@ -178,11 +186,13 @@ static CGFloat tableSectionHeaderH = 35;
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         VipPayListPageChoiceCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
-        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
-        cell.backGroudView.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+//        cell.selectedLabel.backgroundColor = [UIColor whiteColor];
+//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+//        cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
+        cell.backGroudView.layer.borderColor = [UIColor xjfStringToColor:@"#efefef"].CGColor;
+        cell.selectedLabel.hidden = YES;
         VipResultModel *vipResultModel =  self.dataSourceModel.result.firstObject;
         VipModel *model = vipResultModel.deal[indexPath.row];
         model.isSelected = NO;
@@ -191,20 +201,24 @@ static CGFloat tableSectionHeaderH = 35;
 
 #pragma mark 立即支付
 - (void)dredgeVIP{
-    VipResultModel *vipResultModel =  self.dataSourceModel.result.firstObject;
-    VipModel *model = [VipModel new];
-    for (VipModel *tempModel in vipResultModel.deal) {
-        if (tempModel.isSelected) {
-            model = tempModel;
+    NSDictionary *dicData = [NSDictionary dictionary];
+    for (VipResultModel *vipResultModel in self.dataSourceModel.result) {
+        if ([vipResultModel.type isEqualToString:@"subscriber"]) {
+            for (VipModel *vipModel in vipResultModel.deal) {
+                if (vipModel.isSelected == YES ){
+                    dicData = [vipModel toDictionary];
+                }
+            }
         }
     }
-    NSDictionary *dic = [model toDictionary];
-    TalkGridModel *talkGridModel = [TalkGridModel new];
-    talkGridModel.title = dic[@"title"];
-    talkGridModel.price = dic[@"price"];
-    OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
-    orderDetaiViewController.dataSource = [NSMutableArray arrayWithObject:talkGridModel];
-    [self.navigationController pushViewController:orderDetaiViewController animated:YES];
+    
+    
+//    OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
+//    if (orderDetaiViewController.dataSource == nil || orderDetaiViewController.dataSource.count == 0) {
+//         [[ZToastManager ShardInstance] showtoast:@"请选择要购买的套餐"];
+//    }else {
+//      [self.navigationController pushViewController:orderDetaiViewController animated:YES];
+//    }
 }
 
 

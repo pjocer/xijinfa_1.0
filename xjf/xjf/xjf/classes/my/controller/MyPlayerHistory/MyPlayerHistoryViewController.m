@@ -15,6 +15,7 @@
 @interface MyPlayerHistoryViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) TablkListModel *tablkListModel;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableDictionary *dicDate;
 @end
 
 @implementation MyPlayerHistoryViewController
@@ -45,6 +46,46 @@ static CGFloat tableHeaderH = 35;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         @strongify(self)
         self.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+        
+//        NSMutableArray *array = [NSMutableArray array];
+//        for (TalkGridModel *model in self.tablkListModel.result.data) {
+//            [array addObject: model.user_played_at];
+//        }
+//        
+//        array = (NSMutableArray *)[array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//            [formatter setDateFormat:@"yyyy-MM-dd "];
+//            if (obj1 == [NSNull null]) {
+//                obj1 = @"0000-00-00";
+//            }
+//            if (obj2 == [NSNull null]) {
+//                obj2 = @"0000-00-00";
+//            }
+//            NSDate *date1 = [formatter dateFromString:obj1];
+//            NSDate *date2 = [formatter dateFromString:obj2];
+//            NSComparisonResult result = [date1 compare:date2];
+//            return result == NSOrderedAscending;
+//        }];
+//        for (int i = 0; i < [array count]; i++) {
+//            NSLog(@"%@", [array objectAtIndex:i]);
+//        }
+//
+        
+        self.dicDate = [NSMutableDictionary dictionary];
+        TalkGridModel *tempModel = [[TalkGridModel alloc] init];
+                for (TalkGridModel *model in self.tablkListModel.result.data) {
+                    if (![[tempModel.user_played_at substringToIndex:10] isEqualToString:[model.user_played_at substringToIndex:10]]) {
+                        tempModel = model;
+                        NSMutableArray *array = [NSMutableArray array];
+                        [self.dicDate setObject:array forKey:[tempModel.user_played_at substringToIndex:10]];
+                    }else {
+                        NSMutableArray *array = self.dicDate[[tempModel.user_played_at substringToIndex:10]];
+                        [array addObject: model];
+                    }
+                    
+                }
+
+
         [self.tableView reloadData];
     }failedBlock:^(NSError *_Nullable error) {
 
@@ -71,17 +112,31 @@ static CGFloat tableHeaderH = 35;
 
 #pragma mark TabelViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    
+    NSArray *keys = [self.dicDate allKeys];
+    NSString *tempStr = keys[section];
+    return [self.dicDate[tempStr] count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.tablkListModel.result.data.count;
+    return [[self.dicDate allKeys] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyPlayerHistoryCell_id];
-    cell.model = self.tablkListModel.result.data[indexPath.section];
+    
+    NSArray *keys = [self.dicDate allKeys];
+    NSString *tempStr = keys[indexPath.section];
+    NSMutableArray *array = self.dicDate[tempStr];
+    cell.model = array[indexPath.row];
+    if (![cell.model.department isEqualToString:@"dept2"]) {
+        cell.teacherName.hidden = NO;
+        cell.lessonCount.hidden = NO;
+    }else {
+        cell.teacherName.hidden = YES;
+        cell.lessonCount.hidden = YES;
+    }
     return cell;
 }
 
@@ -97,16 +152,22 @@ static CGFloat tableHeaderH = 35;
     [sectionView addSubview:bottomView];
     bottomView.backgroundColor = BackgroundColor;
     sectionView.moreLabel.hidden = YES;
-    TalkGridModel *model = self.tablkListModel.result.data[section];
-    sectionView.titleLabel.text = model.user_played_at;
+    
+    NSArray *keys = [self.dicDate allKeys];
+    NSString *tempStr = keys[section];
+    sectionView.titleLabel.text = tempStr;
     return sectionView;
 }
 
 #pragma mark Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TalkGridModel *model = self.tablkListModel.result.data[indexPath.section];
     
+    NSArray *keys = [self.dicDate allKeys];
+    NSString *tempStr = keys[indexPath.section];
+    NSMutableArray *array = self.dicDate[tempStr];
+    TalkGridModel *model = array[indexPath.row];
+
     if ([model.department isEqualToString:@"dept2"]) {
         PlayerViewController *player = [PlayerViewController new];
         player.talkGridModel = model;
@@ -114,6 +175,11 @@ static CGFloat tableHeaderH = 35;
     } else{
         LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
         lessonDetailViewController.model = model;
+        if ([model.department isEqualToString:@"dept3"]) {
+            lessonDetailViewController.apiType = coursesProjectLessonDetailList;
+        } else if ([model.department isEqualToString:@"dept4"]) {
+            lessonDetailViewController.apiType = EmployedLessonDetailList;
+        }
         [self.navigationController pushViewController:lessonDetailViewController animated:YES];
     }
 

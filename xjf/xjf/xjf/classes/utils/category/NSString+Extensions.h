@@ -55,4 +55,13 @@
 
 // 根据秒数返回日期
 + (NSString *)dateWithSeconds:(NSUInteger)seconds;
+
+/**
+ *  根据秒数反回: 时 分 秒
+ *
+ *  @param seconds 秒
+ *
+ *  @return 时分秒
+ */
++ (NSString *)timeformatFromSeconds:(NSInteger)seconds;
 @end

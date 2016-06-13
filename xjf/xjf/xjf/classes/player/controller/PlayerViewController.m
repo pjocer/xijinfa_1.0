@@ -172,6 +172,23 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     }];
 }
 
+///发送点赞，和取消点赞
+- (void)PraiseAction:(APIName *)api Method:(RequestMethod)method
+{
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.talkGridModel.id_],@"type":[NSString stringWithFormat:@"%@",self.talkGridModel.type],@"department":[NSString stringWithFormat:@"%@",self.talkGridModel.department]}];
+    if (method == POST) {
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+    }else if (method == DELETE) {
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+    }
+}
 
 #pragma mark 横竖屏状态
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -385,7 +402,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             PlayerPageDescribeHeaderView *describeHeaderView =
                     [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                        withReuseIdentifier:PlayerVC_Describe_HeaderId forIndexPath:indexPath];
-            describeHeaderView.model = self.talkGridModel;
+            describeHeaderView.model = self.tempLessonDetailModel.result;
 
             [describeHeaderView.rightButton addTarget:self action:@selector(describeHeaderViewRightButtonAction:)
                                      forControlEvents:UIControlEventTouchUpInside];
@@ -436,6 +453,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                                                               forIndexPath:indexPath];
             [describeFooterView.thumbUpButton addTarget:self action:@selector(thumbUpAction:)
                                        forControlEvents:UIControlEventTouchUpInside];
+            describeFooterView.model = self.tempLessonDetailModel.result;
             return describeFooterView;
         }
         else if (indexPath.section == 2) {
@@ -487,7 +505,8 @@ referenceSizeForFooterInSection:(NSInteger)section {
     if (indexPath.section == 1) {
         self.talkGridModel = self.talkGridListModel.result.data[indexPath.row];
         [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
-        [_playerView pause];
+        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
+         [_playerView pause];
          [_playerView resetToPlayNewURL];
         TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
         self.playUrl = gridVideomodel.url;
@@ -588,8 +607,20 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 #pragma mark 点赞
 - (void)thumbUpAction:(UIButton *)sender {
-    [sender setImage:[[UIImage imageNamed:@"iconLike"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    [sender setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [self LoginPrompt];
+    } else {
+        LessonDetailListResultModel *lessonDetailListResultModel = self.tempLessonDetailModel.result;
+         //已点赞，进行取消点赞
+        if (lessonDetailListResultModel.user_liked) {
+            [self PraiseAction:praise Method:DELETE];
+         //未点赞，进行点赞
+        }else {
+            [self PraiseAction:praise Method:POST];
+        }
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

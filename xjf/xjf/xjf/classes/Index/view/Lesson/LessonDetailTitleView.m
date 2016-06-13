@@ -60,26 +60,24 @@
         self.teacherName = [[UILabel alloc] init];
         [self addSubview:self.teacherName];
         self.teacherName.textColor = AssistColor
-        self.teacherName.text = @"主讲: xxxx";
         self.teacherName.font = FONT12;
         [self.teacherName mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(3);
+            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(7);
             make.right.equalTo(self).with.offset(-100);
-            make.height.mas_equalTo(14);
+            make.height.mas_equalTo(15);
         }];
 
         //lessonCount
         self.lessonCount = [[UILabel alloc] init];
         [self addSubview:self.lessonCount];
         self.lessonCount.textColor = AssistColor
-        self.lessonCount.text = @"课时: xxxx";
         self.lessonCount.font = FONT12;
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.top.mas_equalTo(self.teacherName.mas_bottom);
+            make.top.mas_equalTo(self.teacherName.mas_bottom).with.offset(3);
             make.right.equalTo(self).with.offset(-100);
-            make.height.mas_equalTo(14);
+            make.height.mas_equalTo(15);
         }];
 
 
@@ -122,7 +120,7 @@
 
     CGFloat tempPrice = [model.result.price floatValue];
     self.price.text = [NSString stringWithFormat:@"￥%.2lf", tempPrice / 100];
-    self.oldPrice.text = [NSString stringWithFormat:@"￥%.2lf", [model.result.original_price floatValue] / 100];
+    self.oldPrice.text = [NSString stringWithFormat:@"￥%.2lf", [model.result.origin floatValue] / 100];
     self.lessonCount.text = [NSString stringWithFormat:@"课时: %@",model.result.lessons_count];
     if (model.result.taxonomy_gurus.count != 0 && model.result.taxonomy_gurus) {
         TeacherListData *gurus = model.result.taxonomy_gurus.firstObject;
@@ -135,7 +133,15 @@
         self.price.hidden = NO;
         self.oldPrice.hidden = NO;
     }
+    
+    if (self.teacherName.text.length == 0 || self.teacherName.text == nil) {
+        [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.videoTitle);
+            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(7);
+            make.right.equalTo(self).with.offset(-10);
+            make.height.mas_equalTo(14);
+        }];
+    }
 }
-
 
 @end

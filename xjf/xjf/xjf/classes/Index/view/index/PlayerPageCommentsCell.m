@@ -60,7 +60,6 @@
         [self.contentView addSubview:self.commentsTime];
         self.commentsTime.font = FONT12;
         self.commentsTime.textColor = AssistColor;
-        self.commentsTime.text = @"  03-30 11:25";
         self.commentsText.textAlignment = NSTextAlignmentLeft;
         [self.commentsTime mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.userName);
@@ -87,7 +86,6 @@
         self.commentsText = [[UILabel alloc] init];
         [self.contentView addSubview:self.commentsText];
         self.commentsText.font = FONT15;
-        self.commentsText.text = @"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         self.commentsText.numberOfLines = 0;
 //        [self.commentsText mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.top.equalTo(self.userImage.mas_bottom);
@@ -108,7 +106,7 @@
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:commentsModel.user_avatar]];
     self.userName.text = commentsModel.user_nickname;
     self.commentsText.text = commentsModel.content;
-
+    self.commentsTime.text = commentsModel.created_at;
     self.tempRect = [StringUtil calculateLabelRect:commentsModel.content width:SCREENWITH - 70 fontsize:15];
 
 }

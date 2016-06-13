@@ -91,6 +91,8 @@ static CGFloat tableHeaderH = 200;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:VipTableCell_id];
     cell.model = self.tablkListModel.result.data[indexPath.row];
+    cell.lessonCount.hidden = NO;
+    cell.teacherName.hidden = NO;
     return cell;
 }
 
@@ -123,6 +125,7 @@ static CGFloat tableHeaderH = 200;
     //析金学堂
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.tablkListModel.result.data[indexPath.row];
+    lessonDetailViewController.apiType = coursesProjectLessonDetailList;
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 

@@ -39,6 +39,10 @@
 }
 @end
 
-
-
+@implementation Taxonomy_categories
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+@end
 

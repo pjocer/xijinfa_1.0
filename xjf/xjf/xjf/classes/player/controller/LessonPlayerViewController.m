@@ -82,13 +82,13 @@ static CGFloat selViewH = 3;
                     }
                 }
             }
-
-                if (sSelf.playTalkGridModel.user_favored) {
-                [sSelf.videoBottomView.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-                } else {
-                [sSelf.videoBottomView.collection setImage:[UIImage imageNamed:@"iconFavorites"] forState:UIControlStateNormal];
-                }
-            
+            sSelf.videoBottomView.model = sSelf.playTalkGridModel;
+            sSelf.videoBottomView.collectionCount.text = sSelf.tempLessonDetailModel.result.likes_count;
+            if (sSelf.tempLessonDetailModel.result.user_liked) {
+                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }else {
+                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLike"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }
             sSelf.lessonPlayerLessonListViewController.lessonDetailListModel = sSelf.tempLessonDetailModel;
             sSelf.lessonPlayerLessonListViewController.selectedModel = sSelf.playTalkGridModel;
             sSelf.lessonPlayerLessonListViewController.isPay = sSelf.tempLessonDetailModel.result.user_purchased;
@@ -128,6 +128,23 @@ static CGFloat selViewH = 3;
     }failedBlock:^(NSError *_Nullable error) {
         
     }];
+}
+///发送点赞，和取消点赞
+- (void)PraiseAction:(APIName *)api Method:(RequestMethod)method
+{
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.department]}];
+    if (method == POST) {
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+           [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+    }else if (method == DELETE) {
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+      [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+    }
 }
 
 
@@ -233,7 +250,7 @@ static CGFloat selViewH = 3;
     [self.view addSubview:self.videoBottomView];
     self.videoBottomView.delegate = self;
 }
-#pragma mark 分享 - 收藏
+#pragma mark 分享 - 收藏 - 点赞
 - (void)LessonPlayerVideoBottomView:(LessonPlayerVideoBottomView *)sender DidDownloadOrCollectionButton:(UIButton *)button
 {
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
@@ -252,6 +269,16 @@ static CGFloat selViewH = 3;
         //分享
         else if (button.tag == 102){
             NSLog(@"分享");
+        }
+        //点赞
+        else if (button.tag == 103){
+            //已点赞，进行取消点赞
+            if (self.tempLessonDetailModel.result.user_liked) {
+                [self PraiseAction:praise Method:DELETE];
+                //未点赞，进行点赞
+            }else {
+                [self PraiseAction:praise Method:POST];
+            }
         }
     }
 

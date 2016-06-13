@@ -131,6 +131,11 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.dataSource[indexPath.row];
+    if ([lessonDetailViewController.model.department isEqualToString:@"dept3"]) {
+        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
+    } else if ([lessonDetailViewController.model.department isEqualToString:@"dept4"]) {
+        lessonDetailViewController.apiType = EmployedLessonDetailList;
+    }
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 

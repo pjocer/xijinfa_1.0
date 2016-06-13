@@ -9,8 +9,6 @@
 #import "VideoListCell.h"
 
 @interface VideoListCell ()
-///分割线
-@property (nonatomic, strong) UIView *customSeparator;
 ///视频图片
 @property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
@@ -30,7 +28,7 @@
         [self.contentView addSubview:self.customSeparator];
         [self.customSeparator mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self.contentView);
-            make.bottom.mas_equalTo(self.contentView).with.offset(-1);
+            make.bottom.mas_equalTo(self.contentView);
             make.height.mas_equalTo(1);
         }];
         
@@ -105,7 +103,6 @@
         self.price = [[UILabel alloc] init];
         [self.contentView addSubview:self.price];
         self.price.textColor = [UIColor redColor];
-        self.price.text = @"￥0000";
         self.price.font = FONT15;
         self.price.hidden = YES;
         self.price.textAlignment = NSTextAlignmentLeft;
@@ -120,7 +117,6 @@
         self.oldPrice = [[UILabel alloc] init];
         [self.contentView addSubview:self.oldPrice];
         self.oldPrice.textColor = AssistColor
-        self.oldPrice.text = @"￥0000";
         self.oldPrice.font = FONT12;
         self.oldPrice.hidden = YES;
         self.oldPrice.textAlignment = NSTextAlignmentLeft;
@@ -168,7 +164,11 @@
     }else {
         self.price.text = [NSString stringWithFormat:@"￥%.2lf",tempPrice / 100];
     }
-    
+    if (model.origin != nil && model.origin.length > 0) {
+        CGFloat oldPrice = [model.origin floatValue];
+        self.oldPrice.text = [NSString stringWithFormat:@"￥%.2lf",oldPrice / 100];
+    }
+   
 }
 
 
@@ -210,24 +210,24 @@
         //teacherName
         [self.teacherName mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(3);
+            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(7);
             make.right.equalTo(self.contentView).with.offset(-10);
-            make.height.mas_equalTo(14);
+            make.height.mas_equalTo(15);
         }];
         
         //lessonCount
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.top.mas_equalTo(self.teacherName.mas_bottom);
+            make.top.mas_equalTo(self.teacherName.mas_bottom).with.offset(3);
             make.right.equalTo(self.contentView).with.offset(-10);
-            make.height.mas_equalTo(14);
+            make.height.mas_equalTo(15);
         }];
     }
     
     if (self.teacherName.text.length == 0 || self.teacherName.text == nil) {
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
-            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(3);
+            make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(7);
             make.right.equalTo(self.contentView).with.offset(-10);
             make.height.mas_equalTo(14);
         }];

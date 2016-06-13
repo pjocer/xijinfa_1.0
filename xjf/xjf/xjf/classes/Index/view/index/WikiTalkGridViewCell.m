@@ -79,7 +79,7 @@
     }
     [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.titleLable.text = model.title;
-    self.detailLable.text = [NSString stringWithFormat:@"%@ 人看过",model.video_view];
+    self.detailLable.text = [NSString stringWithFormat:@"%@ 人看过",model.view];
 }
 
 @end

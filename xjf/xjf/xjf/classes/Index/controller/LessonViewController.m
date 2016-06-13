@@ -277,13 +277,8 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         }
 
     } else {
-        if (iPhone5 || iPhone4) {
             _layout.minimumLineSpacing = 1;
-            return CGSizeMake((SCREENWITH - 3) / 3, 140);
-        } else {
-            _layout.minimumLineSpacing = 1;
-            return CGSizeMake((SCREENWITH - 3) / 3, 160);
-        }
+            return CGSizeMake((SCREENWITH - 3) / 3, 150);
     }
 }
 

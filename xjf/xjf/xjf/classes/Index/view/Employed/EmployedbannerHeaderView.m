@@ -16,7 +16,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         _carouselView = [[XRCarouselView alloc] initWithFrame:self.bounds];
-
+        _carouselView.changeMode = ChangeModeFade;
         _carouselView.pagePosition = PositionBottomCenter;
         [self addSubview:_carouselView];
     }

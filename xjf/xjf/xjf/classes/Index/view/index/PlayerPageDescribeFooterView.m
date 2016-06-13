@@ -40,7 +40,6 @@
         [self addSubview:self.thumbUpLabel];
         self.thumbUpLabel.font = FONT12;
         self.thumbUpLabel.textColor = AssistColor;
-        self.thumbUpLabel.text = @"xxx";
         [self.thumbUpLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.thumbUpButton);
             make.left.equalTo(self.thumbUpButton.mas_right);
@@ -50,13 +49,13 @@
     return self;
 }
 
-- (void)setModel:(TalkGridModel *)model
+- (void)setModel:(LessonDetailListResultModel *)model
 {
     if (model) {
         _model = model;
     }
     
-//    self.thumbUpLabel.text = ;
+    self.thumbUpLabel.text = model.likes_count;
     if (model.user_liked) {
         [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     }else {

@@ -50,7 +50,10 @@ static NSString *MyFavoredsEmployedCell_id = @"MyFavoredsEmployedCell_id";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyFavoredsEmployedCell_id];
     cell.model = self.dataSource[indexPath.row];
-    cell.viedoDetail.hidden = NO;
+    cell.viedoDetail.hidden = YES;
+    cell.teacherName.hidden = NO;
+    cell.lessonCount.hidden = NO;
+    cell.price.hidden = YES;
     return cell;
 }
 
@@ -59,6 +62,7 @@ static NSString *MyFavoredsEmployedCell_id = @"MyFavoredsEmployedCell_id";
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.dataSource[indexPath.row];
+    lessonDetailViewController.apiType = EmployedLessonDetailList;
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 

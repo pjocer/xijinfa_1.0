@@ -95,6 +95,7 @@ static NSString *EmployedBasisCell_id = @"EmployedBasisCell_id";
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.dataSource[indexPath.row];
+    lessonDetailViewController.apiType = EmployedLessonDetailList;
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 

@@ -57,7 +57,9 @@ static CGFloat tableFooterH = 35;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyLessonsSchool_id];
     cell.model = self.dataSorce[indexPath.section];
-    cell.viedoDetail.hidden = NO;
+    cell.viedoDetail.hidden = YES;
+    cell.teacherName.hidden = NO;
+    cell.lessonCount.hidden = NO;
     cell.price.hidden = YES;
     return cell;
 }
@@ -86,6 +88,7 @@ static CGFloat tableFooterH = 35;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.dataSorce[indexPath.section];
+    lessonDetailViewController.apiType = coursesProjectLessonDetailList;
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 

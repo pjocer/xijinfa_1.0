@@ -59,7 +59,7 @@ static CGFloat payViewH = 285;
     self.tabBarController.tabBar.hidden = YES;
     [self setNavigationBar];
     if (self.dataSourceModel != nil) {
-        NSString *api = [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.model.id_];
+        NSString *api = [NSString stringWithFormat:@"%@/%@", self.apiType, self.model.id_];
         [self requestLessonListData:api method:GET];
     }
     
@@ -74,7 +74,7 @@ static CGFloat payViewH = 285;
     [super viewDidLoad];
     [self initMainUI];
     
-    NSString *api = [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.model.id_];
+    NSString *api = [NSString stringWithFormat:@"%@/%@", self.apiType, self.model.id_];
     [self requestLessonListData:api method:GET];
     
 }

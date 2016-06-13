@@ -11,6 +11,7 @@
 @implementation LessonPlayerVideoBottomView
 static NSInteger collectionTag = 101;
 static NSInteger downloadTag = 102;
+static NSInteger collectionLogoTag = 103;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -44,22 +45,21 @@ static NSInteger downloadTag = 102;
         self.download.tag = downloadTag;
         
         //collectionLogo
-        self.collectionLogo = [[UIImageView alloc] init];
+        self.collectionLogo = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.collectionLogo];
-        self.collectionLogo.tintColor = [UIColor xjfStringToColor:@"#warmGrey"];
-        self.collectionLogo.image = [UIImage imageNamed:@"share_logo"];
         [self.collectionLogo mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.left.equalTo(self).with.offset(10);
             make.size.mas_equalTo(CGSizeMake(14, 14));
         }];
+        [self.collectionLogo addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        self.collectionLogo.tag = collectionLogoTag;
         
         //
         self.collectionCount = [[UILabel alloc] init];
         [self addSubview:self.collectionCount];
         self.collectionCount.textColor = AssistColor;
         self.collectionCount.font = FONT12;
-        self.collectionCount.text = @"xxxxxx";
         self.collectionCount.textAlignment = NSTextAlignmentLeft;
         [self.collectionCount mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.collectionLogo.mas_right).with.offset(5);
@@ -76,6 +76,19 @@ static NSInteger downloadTag = 102;
     if (self.delegate && [self.delegate respondsToSelector:@selector(LessonPlayerVideoBottomView:DidDownloadOrCollectionButton:)]) {
       [self.delegate LessonPlayerVideoBottomView:self DidDownloadOrCollectionButton:sender];
     } 
+}
+
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    if (model.user_favored) {
+        [self.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    } else {
+        [self.collection setImage:[UIImage imageNamed:@"iconFavorites"] forState:UIControlStateNormal];
+    }
+
 }
 
 @end

@@ -313,6 +313,7 @@
                 //析金学堂
                 LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
                 lessonDetailViewController.model = (TalkGridModel *)obj;
+                lessonDetailViewController.apiType = coursesProjectLessonDetailList;
                 [self.navigationController pushViewController:lessonDetailViewController animated:YES];
             }
             else if (indexPath.section == 4){

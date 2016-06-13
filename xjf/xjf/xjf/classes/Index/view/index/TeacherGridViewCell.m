@@ -84,7 +84,7 @@
         make.centerX.mas_equalTo(self.teacherImage);
         make.top.equalTo(self.teacherName.mas_bottom).with.offset(10);
         make.width.mas_equalTo(self.backgroundView);
-        make.height.mas_equalTo(18);
+        make.height.mas_equalTo(14);
     }];
 
     

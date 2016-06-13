@@ -10,7 +10,8 @@
 #import "TalkGridModel.h"
 @interface VideoListCell : UITableViewCell
 @property (nonatomic, strong) TalkGridModel *model;
-
+///分割线
+@property (nonatomic, strong) UIView *customSeparator;
 ///主讲老师
 @property (nonatomic, strong) UILabel *teacherName;
 ///课时

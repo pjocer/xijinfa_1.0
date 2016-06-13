@@ -17,7 +17,7 @@
 //        _carouselView = [[XRCarouselView alloc] initWithFrame:self.bounds imageArray:arr2];
         self.backgroundColor = [UIColor whiteColor];
         _carouselView = [[XRCarouselView alloc] initWithFrame:self.bounds];
-        //设置分页控件的frame
+        _carouselView.changeMode = ChangeModeFade;
         _carouselView.pagePosition = PositionBottomCenter;
         [self addSubview:_carouselView];
     }

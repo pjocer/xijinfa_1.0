@@ -82,6 +82,7 @@ static CGFloat rowHeight = 50;
     if (!_isPay) {
         cell.studyImage.hidden = YES;
     }
+    cell.isPay = _isPay;
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[indexPath.section];
     if ([model.type isEqualToString:@"dir"]) {
         TalkGridModel *tempModel = model.children[indexPath.row];

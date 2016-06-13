@@ -112,6 +112,8 @@ static APIName *coursesProjectLessonDetailList = @"/api/courses3";
 #pragma mark-- 内容-从业培训 -----------------------------
 /// 从业培训-专题列表
 static APIName *Employed = @"/api/categories4";
+/// 从业培训-视频详情--视频列表
+static APIName *EmployedLessonDetailList = @"/api/courses4";
 /// 从业培训-资讯列表
 static APIName *Articles = @"/api/articles4";
 /// 从业培训-视频列表--按专题筛选
