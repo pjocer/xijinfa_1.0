@@ -50,16 +50,20 @@
 }
 
 - (void)obeserValues {
+    @weakify(self);
     ReceivedNotification(self, UIKeyboardWillChangeFrameNotification, ^(NSNotification *notification) {
+        @strongify(self)
         NSValue *value = [notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
         CGFloat y = value.CGRectValue.origin.y-114;
         [UIView animateWithDuration:[[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-            _bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
+            self.bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
         }];
     });
     [[self.textView rac_textSignal] subscribeNext:^(id x) {
+        @strongify(self)
         NSString *text = (NSString *)x;
-        if (text.length>0) _placeholder.hidden = YES;
+        _placeholder.hidden = text.length>0;
+        [self checkoutHidden];
     }];
 }
 
@@ -178,17 +182,12 @@
         _checkout = nil;
     }];
 }
-
 - (void)changeNewTopicStyle:(UIButton *)button {
     _style = _style==NewTopicDiscussStyle?NewTopicQAStyle:NewTopicDiscussStyle;
     [self checkoutHidden];
     [self resetNavBar];
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    [self checkoutHidden];
-    
-}
+
 - (void)headerViewClicked:(UITapGestureRecognizer *)gesture {
     if (_checkout == nil) {
         [self.view addSubview:self.checkout];
