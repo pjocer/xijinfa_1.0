@@ -65,6 +65,20 @@
         return 44;
     }
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"AAAAAAA" message:@"BBBBBBB" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"YYY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [controller addAction:action];
+    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.borderStyle = UITextBorderStyleNone;
+        textField.layer.cornerRadius = 5;
+        textField.layer.masksToBounds = YES;
+        textField.placeholder = @"AA";
+    }];
+    [self presentViewController:controller animated:YES completion:nil];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UserProfileModel *model = [[XJAccountManager defaultManager] user_model];
     if (indexPath.section == 0) {

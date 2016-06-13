@@ -1860,7 +1860,7 @@
 				TargetAttributes = {
 					CDF57ABF1C9F825D00049AF0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = X9X5X3UP3M;
+						DevelopmentTeam = 49X2X2Y4J5;
 					};
 				};
 			};
