@@ -56,16 +56,16 @@
             _bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
         }];
     });
-    [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
-        if (![x isEqualToString:@""]) {
-            _placeholder.hidden = YES;
-        }
-        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:x];
+    RAC(self.textView,attributedText) = [[[self.textView rac_textSignal] filter:^BOOL(NSString *value) {
+        _placeholder.hidden = [value isEqualToString:@""]?NO:YES;
+        return YES;
+    }] map:^id(NSString *value) {
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:value];
         for (NSString *label in self.labels) {
             NSRange range = [_textView.text rangeOfString:label];
             [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
         }
-        _textView.attributedText = string;
+        return string;
     }];
 }
 
@@ -124,7 +124,7 @@
         _checkout.backgroundColor = [UIColor whiteColor];
         _checkout.layer.cornerRadius = 5;
         _checkout.titleLabel.font = FONT(17);
-        [_checkout setTitle:_style==NewTopicQAStyle?@"新讨论":@"新问答" forState:UIControlStateNormal];
+        [_checkout setTitle:_style==NewTopicDiscussStyle?@"新问答":@"新讨论" forState:UIControlStateNormal];
         [_checkout setTitleColor:[UIColor xjfStringToColor:@"#444444"] forState:UIControlStateNormal];
         _checkout.frame = CGRectMake(SCREENWITH/2-50, -50, 100, 50);
         _checkout.alpha = 0;
@@ -139,7 +139,7 @@
         _titleView_button.frame = CGRectMake(0, 0, 51, 18);
         [_titleView_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _titleView_button.titleLabel.font = FONT(17);
-        [_titleView_button setTitle:_style==NewTopicQAStyle?@"新问答":@"新讨论" forState:UIControlStateNormal];
+        [_titleView_button setTitle:_style==NewTopicDiscussStyle?@"新讨论":@"新问答" forState:UIControlStateNormal];
         [_titleView_button addTarget:self action:@selector(headerViewClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _titleView_button;
@@ -163,12 +163,12 @@
     self.navigationItem.leftBarButtonItem = cancel_item;
     self.navigationItem.rightBarButtonItem = send_item;
     self.navigationItem.titleView = titleView;
-    self.navigationController.navigationBar.barTintColor = _style==NewTopicQAStyle?[UIColor blueColor]:[UIColor orangeColor];
+    self.navigationController.navigationBar.barTintColor = _style==NewTopicDiscussStyle?[UIColor xjfStringToColor:@"#f7931e"]:[UIColor xjfStringToColor:@"#3fa9f5"];
 }
 
 - (void)resetNavBar {
-    self.navigationController.navigationBar.barTintColor = _style==NewTopicQAStyle?[UIColor xjfStringToColor:@"#3fa9f5"]:[UIColor xjfStringToColor:@"#f7931e"];
-    [_titleView_button setTitle:_style==NewTopicQAStyle?@"新问答":@"新讨论" forState:UIControlStateNormal];
+    self.navigationController.navigationBar.barTintColor = _style==NewTopicDiscussStyle?[UIColor xjfStringToColor:@"#f7931e"]:[UIColor xjfStringToColor:@"#3fa9f5"];
+    [_titleView_button setTitle:_style==NewTopicDiscussStyle?@"新讨论":@"新问答" forState:UIControlStateNormal];
 }
 - (void)checkoutShow {
     [UIView animateWithDuration:0.3 animations:^{
@@ -186,7 +186,7 @@
 }
 
 - (void)changeNewTopicStyle:(UIButton *)button {
-    _style = _style==NewTopicQAStyle?NewTopicDiscussStyle:NewTopicQAStyle;
+    _style = _style==NewTopicDiscussStyle?NewTopicQAStyle:NewTopicDiscussStyle;
     [self checkoutHidden];
     [self resetNavBar];
 }
@@ -223,13 +223,7 @@
         return;
     }
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
-    NSString *content = _textView.text;
-    if (self.labels) {
-        for (NSString *label in self.labels) {
-           content = [content stringByAppendingString:label];
-        }
-    }
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":_style==NewTopicQAStyle?@"qa":@"discuss",@"content":content}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":_style==NewTopicDiscussStyle?@"discuss":@"qa",@"content":_textView.text}];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
         if ([dic[@"errCode"] integerValue] == 0) {
@@ -247,14 +241,14 @@
     if (self.labels == nil) {
         self.labels = [NSMutableArray array];
     }
-    if ([self.labels containsObject:[NSString stringWithFormat:@" #%@# ",label]]) {
+    if ([self.labels containsObject:[NSString stringWithFormat:@"#%@#",label]]) {
         [[ZToastManager ShardInstance] showtoast:@"请不要重复添加"];
     }else {
         [[ZToastManager ShardInstance] showtoast:@"添加标签成功"];
-        [self.labels addObject:[NSString stringWithFormat:@" #%@# ",label]];
+        [self.labels addObject:[NSString stringWithFormat:@"#%@#",label]];
         _placeholder.hidden = YES;
-        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ #%@# ",_textView.text,label]];
-        NSRange range = NSMakeRange(_textView.text.length, label.length+3);
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@#%@#",_textView.text,label]];
+        NSRange range = NSMakeRange(_textView.text.length, label.length+2);
         [string addAttributes:@{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
         for (NSString *x in self.labels) {
             NSRange range = [_textView.text rangeOfString:x];

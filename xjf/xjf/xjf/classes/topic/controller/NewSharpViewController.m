@@ -105,22 +105,11 @@
         [[ZToastManager ShardInstance] showtoast:@"话题内容太长"];
         return NO;
     }
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":self.topicTag==1?@"qa":@"discuss",@"content":_textFiled.text}];
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-        if ([dic[@"errCode"] integerValue] == 0) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(newSharpAddSuccessed:)]) {
-                [self.delegate newSharpAddSuccessed:_textFiled.text];
-            }
-            [[XJMarket sharedMarket] addLabels:_textFiled.text];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }else {
-            [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
-        }
-    } failedBlock:^(NSError * _Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(newSharpAddSuccessed:)]) {
+        [self.delegate newSharpAddSuccessed:_textFiled.text];
+    }
+    [[XJMarket sharedMarket] addLabels:_textFiled.text];
+    [self dismissViewControllerAnimated:YES completion:nil];
     return YES;
 }
 - (void)didReceiveMemoryWarning {

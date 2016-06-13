@@ -148,7 +148,7 @@
 }
 - (void)produceOrder:(PayStyle)style {
     if (style == Alipay) {
-        [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.yiban.iphone.mainApp" callback:^(NSDictionary *resultDic) {
+        [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.xijinfa.portal" callback:^(NSDictionary *resultDic) {
             if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
                 if (self.success) self.success();
             } else {

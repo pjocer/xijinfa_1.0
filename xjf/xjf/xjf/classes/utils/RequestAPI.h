@@ -8,19 +8,22 @@
 #pragma mark- PerryJi
 
 //找回密码页面获取短信验证码
-static APIName *reset_message_code = @"/api/auth/generate-reset-security-code";
+static APIName *reset_message_code = @"/api/auth/generate-reset-sms-code";
 
 //注册页面获取短信验证码
-static APIName *regist_message_code = @"/api/auth/generate-register-security-code";
+static APIName *regist_message_code = @"/api/auth/generate-register-sms-code";
 
 //获取图片验证码
-static APIName *get_image_code = @"/api/auth/captcha";
+static APIName *get_image_code = @"/api/auth/get-secure-code";
 
 //重置密码
 static APIName *reset_password = @"/api/auth/reset-password";
 
 //验证短信验证码是否有效
-static APIName *check_code_message = @"/api/auth/verify-security-code";
+static APIName *check_code_message = @"/api/auth/verify-sms-code";
+
+//验证图片验证码是否有效
+static APIName *check_image_code = @"/api/auth/verify-secure-code";
 
 //本地登录API
 static APIName *local_login = @"/api/auth/login";
@@ -42,7 +45,7 @@ static APIName *buy_trade = @"/api/order";
 
 //话题
 static APIName *topic_all = @"/api/topic/";
-static APIName *topic_qa = @"/api/topic/?type=QA";
+static APIName *topic_qa = @"/api/topic/?type=qa";
 static APIName *topic_discuss = @"/api/topic/?type=discuss";
 
 //点赞 (取消点赞)

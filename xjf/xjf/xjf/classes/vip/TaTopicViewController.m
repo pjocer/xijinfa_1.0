@@ -47,6 +47,7 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.backgroundColor = BackgroundColor;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             _model = nil;
             [_dataSource removeAllObjects];
@@ -69,8 +70,8 @@
     CGFloat y = 0;
     CGFloat tap = 10;
     NSMutableArray *labels = [NSMutableArray array];
-    for (CategoryLabel *label in model.categories) {
-        [labels addObject:label.name];
+    for (CategoryLabel *label in model.taxonomy_tags) {
+        [labels addObject:label.title];
     }
     for (int i = 0; i < labels.count; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -145,7 +146,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.dataSource.count>0) {
         TopicDataModel *model = [self.dataSource objectAtIndex:indexPath.row];
-        if (model.categories.count>0) {
+        if (model.taxonomy_tags.count>0) {
             return [self cellHeightByModel:model];
         }else {
             CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];

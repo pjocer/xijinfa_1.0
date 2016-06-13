@@ -91,8 +91,8 @@
     CGFloat y = 0;
     CGFloat tap = 10;
     NSMutableArray *labels = [NSMutableArray array];
-    for (CategoryLabel *label in model.categories) {
-        [labels addObject:label.name];
+    for (CategoryLabel *label in model.taxonomy_tags) {
+        [labels addObject:label.title];
     }
     for (int i = 0; i < labels.count; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

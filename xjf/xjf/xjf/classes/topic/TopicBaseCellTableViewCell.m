@@ -124,8 +124,8 @@
     _content.text = model.content;
     _commentLabel.text = model.reply_count;
     _praiseLabel.text = model.like_count;
+    NSLog(@"likes:%@ like:%@ favorites:%@",model.likes_count,model.like_count,model.favorites_count);
     _praiseImageView.highlighted = model.user_liked;
-    NSLog(@"%@",model.type);
     if (![model.type isEqualToString:@"qa"]) {
         _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
         _extension.text = @"讨论";
@@ -139,7 +139,7 @@
 - (CGFloat)heightByModel:(TopicDataModel *)model {
     CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
     CGFloat height = 10+40+10+contentHeight;
-    if (model.categories.count > 0) {
+    if (model.taxonomy_tags.count > 0) {
         if (self.contentView.subviews.count == 11) {
             [self addSubviewsWithModel:model];
         }else {
@@ -172,8 +172,8 @@
     CGFloat y = 0;
     CGFloat tap = 10;
     NSMutableArray *labels = [NSMutableArray array];
-    for (CategoryLabel *label in model.categories) {
-        [labels addObject:label.name];
+    for (CategoryLabel *label in model.taxonomy_tags) {
+        [labels addObject:label.title];
     }
     for (int i = 0; i < labels.count; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

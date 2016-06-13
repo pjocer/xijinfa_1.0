@@ -1495,6 +1495,7 @@
 		CD1CCC3A1CB37B89002FC0C9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D04D0C0E1D0D33FB0090D2CD /* XJCache */,
 				D07D74541CED9E640037B1A9 /* XJPay */,
 				D07D74531CED9E340037B1A9 /* XJAccount */,
 				D0698E781CE447F9003BF1F3 /* XJFRequest */,
@@ -1689,6 +1690,13 @@
 				D07575261D0513D500F8360F /* FansCell.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D04D0C0E1D0D33FB0090D2CD /* XJCache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = XJCache;
 			sourceTree = "<group>";
 		};
 		D05985231CF6D76500BF2A30 /* Notification */ = {
@@ -2219,6 +2227,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2258,6 +2267,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2287,7 +2297,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yiban.iphone.mainApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2316,7 +2326,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yiban.iphone.mainApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

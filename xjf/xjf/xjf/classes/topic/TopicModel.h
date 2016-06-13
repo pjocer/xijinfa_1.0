@@ -16,29 +16,25 @@
 @protocol TopicDataModel
 
 @end
-
-
-@interface Pivot : JSONModel
-@property (nonatomic, copy) NSString *classification_id;
-@property (nonatomic, copy) NSString *category_id;
-@end
-
+/**
+ *  "id": 51169,
+ "type": "tag",
+ "title": "基金",
+ "summary": "",
+ "icon": "",
+ "thumbnail": ""
+ */
 @interface CategoryLabel : JSONModel
 @property (nonatomic, copy) NSString *id;
-@property (nonatomic, copy) NSString *parent_id;
-@property (nonatomic, copy) NSString *taxonomy_tags;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *slug;
-@property (nonatomic, copy) NSString *image_id;
-@property (nonatomic, copy) NSString *desc;
-@property (nonatomic, copy) NSString *object_count;
-@property (nonatomic, copy) NSString *created_at;
-@property (nonatomic, copy) NSString *updated_at;
-@property (nonatomic, strong) Pivot *pivot;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *summary;
+@property (nonatomic, copy) NSString *icon;
+@property (nonatomic, copy) NSString *thumbnail;
 @end
 
 @interface TopicDataModel : JSONModel
-@property (nonatomic, copy) NSMutableArray <CategoryLabel>*categories;
+@property (nonatomic, copy) NSMutableArray <CategoryLabel>*taxonomy_tags;
 @property (nonatomic, copy) NSString *client;
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *created_at;
@@ -47,6 +43,8 @@
 @property (nonatomic, assign) BOOL user_liked;
 @property (nonatomic, copy) NSString *like_count;
 @property (nonatomic, copy) NSString *reply_count;
+@property (nonatomic, copy) NSString *likes_count;
+@property (nonatomic, copy) NSString *favorites_count;
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *updated_at;

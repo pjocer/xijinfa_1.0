@@ -47,7 +47,7 @@
 			<string>alipay</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.yiban.iphone.mainApp</string>
+				<string>com.xijinfa.portal</string>
 			</array>
 		</dict>
 	</array>

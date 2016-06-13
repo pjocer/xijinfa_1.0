@@ -61,4 +61,10 @@
 + (CGRect)calculateLabelRect:(NSString *)content height:(float)height fontSize:(float)fontsize {
     return [self calculateLabelRect:content size:CGSizeMake(MAXFLOAT, height) font:[UIFont systemFontOfSize:fontsize]];
 }
++(NSArray *)handleTime:(NSArray<NSString *> *)times {
+    [times sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return NSOrderedAscending;
+    }];
+    return times;
+}
 @end

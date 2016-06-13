@@ -314,7 +314,7 @@
 
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:self.secure_key forKey:@"secure_key"];
-    [dict setValue:self.secure_code forKey:@"secure_code"];
+    [dict setValue:self.txtCode.text forKey:@"secure_code"];
     [dict setValue:self.txtNickname.text forKey:@"username"];
     [dict setValue:self.txtPass.text forKey:@"password"];
     [self requestData:local_login method:POST params:dict];
@@ -342,6 +342,7 @@
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     if (params) {
         request.requestParams = params;
+        
     }
     __weak typeof(self) wSelf = self;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -363,6 +364,7 @@
             UIImage *ret = [UIImage imageWithData:imageData];
             wSelf.secure_key = model.result.secure_key;
             wSelf.secure_code = model.result.secure_code;
+            NSLog(@"%@",wSelf.secure_code);
             self.codeImageView.image = ret;
         }
     }                  failedBlock:^(NSError *_Nullable error) {
