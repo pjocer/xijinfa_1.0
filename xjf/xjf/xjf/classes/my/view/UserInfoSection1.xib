@@ -112,9 +112,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="age" destination="8Xt-6I-9O2" id="f0x-x4-eMY"/>
-                <outlet property="ageLabel" destination="q0s-RL-9RB" id="pj8-34-oZz"/>
                 <outlet property="ageView" destination="Sel-16-scT" id="qo9-X8-f6v"/>
-                <outlet property="cityLabel" destination="4gP-hS-qHO" id="Tcf-KX-feN"/>
                 <outlet property="place" destination="hzk-Ck-5J2" id="u5s-Yq-iPf"/>
                 <outlet property="placeView" destination="lVU-oQ-wT9" id="Jxm-SN-MxO"/>
                 <outlet property="sex" destination="b9s-P0-B00" id="JpF-Qt-2Hq"/>

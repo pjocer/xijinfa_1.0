@@ -92,10 +92,12 @@
         return cell;
     }else if (indexPath.row == 2) {
         UserInfoSection2 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection2"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.model = self.model;
         return cell;
     }else if (indexPath.row == 3) {
         UserInfoSection3 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection3"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.model = self.model;
         return cell;
     }
