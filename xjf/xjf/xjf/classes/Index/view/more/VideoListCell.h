@@ -25,4 +25,6 @@
 @property (nonatomic, strong) UILabel *viedoDetail;
 @property (nonatomic, strong) UILabel *selectedLabel;
 @property (nonatomic, strong) VipModel *vipModel;
+@property (nonatomic, assign) BOOL isMyOrder;
+@property (nonatomic, assign) int status;
 @end

@@ -19,6 +19,7 @@
 #import "ProjectListByModel.h"
 #import "EmployedLessonListViewController.h"
 #import "BannerWebViewViewController.h"
+#import "BannerModel.h"
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray *sectionsArray;
@@ -281,6 +282,8 @@
                 carouselView.imageClickBlock = ^(NSInteger index) {
                     NSLog(@"第%ld张图片被点击", index);
                     BannerWebViewViewController *bannerWebViewViewController = [BannerWebViewViewController new];
+                    BannerResultModel *model = (BannerResultModel*)key;
+                    bannerWebViewViewController.webHtmlUrl = model.link;
                     [self.navigationController pushViewController:bannerWebViewViewController animated:YES];
                 };
             }

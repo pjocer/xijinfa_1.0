@@ -204,13 +204,24 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    if (self.model.user_purchased) {
-        self.price.hidden = YES;
-        self.oldPrice.hidden = YES;
-    }else{
-        self.price.hidden = NO;
+    if (!_isMyOrder) {
+        if (self.model.user_purchased) {
+            self.price.hidden = YES;
+            self.oldPrice.hidden = YES;
+        }else{
+            self.price.hidden = NO;
+        }
+    }else {
+        //    "status": 0, // 订单状态 1待支付，2取消订单，4订单冲突（已支付） 9支付成功
+         if (self.status == 1) {
+            self.price.hidden = NO;
+         }else {
+             self.price.hidden = YES;
+             self.oldPrice.hidden = YES;
+         }
+
     }
+
     
     if ([self.price.text isEqualToString:@""]) {
         self.oldPrice.hidden = YES;

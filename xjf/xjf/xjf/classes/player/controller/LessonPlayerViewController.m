@@ -347,9 +347,9 @@ static CGFloat selViewH = 3;
     vc1.title = @"课程介绍";
     [self addChildViewController:vc1];
 
-    LessonPlayerLessonCommentsViewController *vc2 = [[LessonPlayerLessonCommentsViewController alloc] init];
-    vc2.title = @"推荐课程";
-    [self addChildViewController:vc2];
+//    LessonPlayerLessonCommentsViewController *vc2 = [[LessonPlayerLessonCommentsViewController alloc] init];
+//    vc2.title = @"推荐课程";
+//    [self addChildViewController:vc2];
 
     LessonPlayerLessonRecommendedViewController *vc3 = [[LessonPlayerLessonRecommendedViewController alloc] init];
     vc3.title = @"评论";

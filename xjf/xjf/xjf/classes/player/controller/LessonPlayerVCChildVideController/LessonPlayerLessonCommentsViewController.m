@@ -95,6 +95,7 @@ static NSString *LessonCommentsCel_id = @"LessonCommentsCel_id";
         self.tableView.mj_footer.automaticallyHidden = YES;
     }
 }
+
 #pragma mark TabelViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -116,11 +117,11 @@ static NSString *LessonCommentsCel_id = @"LessonCommentsCel_id";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    PlayerViewController *player = [[PlayerViewController alloc] init];
-//    TalkGridModel *model = self.dataSource[indexPath.row];
-//    player.talkGridModel = model;
-//    player.talkGridListModel = self.tablkListModel;
-//    [self.navigationController pushViewController:player animated:YES];
+    PlayerViewController *player = [[PlayerViewController alloc] init];
+    TalkGridModel *model = self.dataSource[indexPath.row];
+    player.talkGridModel = model;
+    player.talkGridListModel = self.tablkListModel;
+    [self.navigationController pushViewController:player animated:YES];
 
 }
 

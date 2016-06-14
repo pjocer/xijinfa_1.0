@@ -46,12 +46,12 @@
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 3)];
     [self.view addSubview:self.progressView];
     self.progressView.progressTintColor = BlueColor;
-    self.progressView.trackTintColor = AssistColor;
+    self.progressView.trackTintColor = BackgroundColor;
     
     self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.progressView.frame), SCREENWITH, SCREENHEIGHT - CGRectGetMaxY(self.progressView.frame))];
     [self.view addSubview:_webView];
 //    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webHtmlUrl]]];
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webHtmlUrl]]];
     
     //监听进度
     [_webView addObserver:self forKeyPath:@"estimatedProgress" options:0 context:nil];

@@ -221,7 +221,8 @@ static CGFloat vipCrownH = 18;
         [self.vipEndDate mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.vipTitle.mas_bottom).with.offset(7);
             make.left.equalTo(self).with.offset(pandding);
-            make.size.mas_equalTo(CGSizeMake(vipTitleW, vipTitleH));
+            make.height.mas_equalTo(vipCrownH);
+            make.right.equalTo(self.payVip.mas_left).with.offset(-10);
         }];
         self.vipEndDate.textColor = [UIColor whiteColor];
         self.vipEndDate.textAlignment = NSTextAlignmentLeft;
@@ -282,10 +283,16 @@ static CGFloat vipCrownH = 18;
             self.vipEndDate.text = [NSString stringWithFormat:@"%@到期",model.end_time];
             self.vipCrown.image = [UIImage imageNamed:@"vip_tie"];
             self.prompt.hidden = YES;
+            self.vipTitle.hidden = NO;
+            self.vipEndDate.hidden = NO;
+            self.vipCrown.hidden = NO;
 
         }else {
             [self.payVip setTitle:@"开通会员" forState:UIControlStateNormal];
             self.prompt.hidden = NO;
+            self.vipTitle.hidden = YES;
+            self.vipEndDate.hidden = YES;
+            self.vipCrown.hidden = YES;
         }
         
         

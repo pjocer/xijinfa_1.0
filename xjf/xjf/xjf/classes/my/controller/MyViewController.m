@@ -90,14 +90,22 @@
         _footer.backgroundColor = [UIColor xjfStringToColor:@"#e60012"];
         [_footer setTitle:@"开通会员" forState:UIControlStateNormal];
         [_footer setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_footer addTarget:self action:@selector(dredgeVIP) forControlEvents:UIControlEventTouchUpInside];
+        [_footer addTarget:self action:@selector(dredgeVIP:) forControlEvents:UIControlEventTouchUpInside];
         [_foot_background addSubview:_footer];
+        //是否是会员
+        if (self.model.result.membership.count != 0){
+            [_footer setTitle:@"续费会员" forState:UIControlStateNormal];
+        }
     }
     return _foot_background;
 }
-- (void)dredgeVIP{
-    VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
-    [self.navigationController pushViewController:vipPayListViewController animated:YES];
+- (void)dredgeVIP:(UIButton *)sender{
+    if ([sender.titleLabel.text isEqualToString:@"开通会员"]) {
+        VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
+        [self.navigationController pushViewController:vipPayListViewController animated:YES];
+    } else if ([sender.titleLabel.text isEqualToString:@"续费会员"]){
+        
+    }
 }
 #pragma mark - TableView Delegate
 
