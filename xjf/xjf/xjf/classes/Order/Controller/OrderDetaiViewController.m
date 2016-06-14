@@ -17,7 +17,7 @@
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
 
-@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource,OrderInfoDidChangedDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) UIButton *cancel;
 @property(nonatomic, strong) UIButton *nowPay;
@@ -26,6 +26,8 @@
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) OrderFooterView *orderfooterView;
 @property (nonatomic, strong) NSDictionary *requestParams;
+@property (nonatomic, assign) PayStyle style;
+@property (nonatomic, strong) XJOrder *order;
 @end
 
 @implementation OrderDetaiViewController
@@ -256,6 +258,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 - (void)payByPayStyle:(PayStyle)stayle {
      NSArray *tempArray = [NSArray array];
+    self.style = stayle;
     if (self.dataSource.count != 0) {
         tempArray = self.dataSource;
     } else {
@@ -266,27 +269,28 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
         [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
     } else {
-        XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
-        [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
-            [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-            if (self.dataSource.count > 1) {
-                [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSource];
-            }
-            if (self.dataSource.count != 0 ) {
-                self.tabBarController.selectedIndex = 3;
-                self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
-            }
-        } failed:^{
-            
-            [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-            if (self.dataSource.count != 0) {
-                MyOrderViewController *myOrderPage = [MyOrderViewController new];
-                [self.navigationController pushViewController:myOrderPage animated:YES];
-            }
-        }];
+        self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
     }
 }
-
+-(void)orderInfoDidChanged:(XJOrder *)order {
+    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+        if (self.dataSource.count > 1) {
+            [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSource];
+        }
+        if (self.dataSource.count != 0 ) {
+            self.tabBarController.selectedIndex = 3;
+            self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+        }
+    } failed:^{
+        
+        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+        if (self.dataSource.count != 0) {
+            MyOrderViewController *myOrderPage = [MyOrderViewController new];
+            [self.navigationController pushViewController:myOrderPage animated:YES];
+        }
+    }];
+}
 #pragma mark - payViewCancel
 - (void)payViewCancel:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{

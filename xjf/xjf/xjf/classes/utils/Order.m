@@ -8,6 +8,24 @@
 
 #import "Order.h"
 
+@implementation TaxonomyGurus
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+@implementation TaxonomyCategories
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+@implementation TaxonomyTags
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
 @implementation PaymentData
 +(BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
@@ -27,10 +45,6 @@
 @end
 
 @implementation OrderItemVideo
-
-+(JSONKeyMapper *)keyMapper {
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"auto":@"video_auto"}];
-}
 +(BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }

@@ -30,8 +30,8 @@
 }
 
 - (void)initTableView {
-    self.automaticallyAdjustsScrollViewInsets = YES;
-    CGRect frame = CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-40);
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    CGRect frame = CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH-HEADHEIGHT);
     self.tableView = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
     self.tableView.backgroundColor = BackgroundColor;
     self.tableView.delegate = self;
@@ -98,6 +98,15 @@
     }else if (indexPath.row == 3) {
         UserInfoSection3 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection3"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.InterestedBlock = ^(NSString *interested_invest) {
+            NSLog(@"%@",interested_invest);
+        };
+        cell.PreferenceBlock = ^(NSString *preference_invest) {
+            NSLog(@"%@",preference_invest);
+        };
+        cell.ExperienceBlock = ^(NSString *experience_invest) {
+            NSLog(@"%@",experience_invest);
+        };
         cell.model = self.model;
         return cell;
     }

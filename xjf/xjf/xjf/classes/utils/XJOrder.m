@@ -25,13 +25,13 @@
             [_goods addObject:model];
             [_trades addObject:model.id_];
         }
-        [self performSelectorOnMainThread:@selector(initOrder) withObject:nil waitUntilDone:YES];
+        [self initOrder];
     }
     return self;
 }
 -(instancetype)initWithParams:(NSDictionary *)params {
     if (self == [super init]) {
-        [self performSelectorOnMainThread:@selector(initVipOrder:) withObject:params waitUntilDone:YES];
+        [self initVipOrder:params];
     }
     return self;
 }
@@ -47,7 +47,7 @@
         self.order = [[Order alloc] initWithData:responseData error:nil];
         if (self.order.errCode.integerValue == 0) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)])  {
-                [self.delegate orderInfoDidChanged:self.order];
+                [self.delegate orderInfoDidChanged:self];
             }
         }else {
             [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
@@ -68,7 +68,7 @@
         self.order = [[Order alloc] initWithData:responseData error:nil];
         if (self.order.errCode.integerValue == 0) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)])  {
-                [self.delegate orderInfoDidChanged:self.order];
+                [self.delegate orderInfoDidChanged:self];
             }
         }else {
             [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];

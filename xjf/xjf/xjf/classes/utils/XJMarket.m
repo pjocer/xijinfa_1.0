@@ -57,11 +57,15 @@
     [array writeToFile:[self pathForLabels] atomically:YES];
     [array writeToFile:[self pathForSearched] atomically:YES];
 }
--(XJOrder *)createVipOrderWith:(NSDictionary *)params {
-    return [[XJOrder alloc] initWithParams:params];
+-(XJOrder *)createVipOrderWith:(NSDictionary *)params target:(nonnull id<OrderInfoDidChangedDelegate>)delegate{
+    XJOrder *order = [[XJOrder alloc] initWithParams:params];
+    order.delegate = delegate;
+    return order;
 }
--(XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods {
-    return [[XJOrder alloc] initWith:goods];
+-(XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods target:(nonnull id<OrderInfoDidChangedDelegate>)delegate{
+    XJOrder *order = [[XJOrder alloc] initWith:goods];
+    order.delegate = delegate;
+    return order;
 }
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc]init];

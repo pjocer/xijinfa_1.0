@@ -14,9 +14,9 @@ typedef NS_OPTIONS(NSUInteger, OrderStatus) {
     OrderStatusCancel,
     OrderStatusUndetermined
 } NS_ENUM_AVAILABLE_IOS(8_0);
-
+@class XJOrder;
 @protocol OrderInfoDidChangedDelegate <NSObject>
-- (void)orderInfoDidChanged:(Order *)order;
+- (void)orderInfoDidChanged:(XJOrder *)order;
 @end
 
 @interface XJOrder : NSObject

@@ -23,12 +23,12 @@
     [super awakeFromNib];
     NSArray *views = @[_interested_invest,_experience_invest,_preference_invest];
     for (UIView *view in views) {
-        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewClicked)];
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewClicked:)];
         [view addGestureRecognizer:tap];
     }
 }
-- (void)viewClicked {
-    
+- (void)viewClicked:(UITapGestureRecognizer *)tap {
+    NSLog(@"%ld",tap.view.tag);
 }
 -(void)setModel:(UserProfileModel *)model {
     _model = model;

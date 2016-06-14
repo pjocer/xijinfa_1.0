@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="161"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VK1-jV-RIt">
+                    <view tag="774" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VK1-jV-RIt">
                         <rect key="frame" x="0.0" y="10" width="320" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="感兴趣的金融知识" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8X-zD-BFz">
@@ -46,7 +46,7 @@
                             <constraint firstAttribute="height" constant="50" id="my6-97-MLO"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSC-RW-VTU">
+                    <view tag="775" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSC-RW-VTU">
                         <rect key="frame" x="0.0" y="61" width="320" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投资理财资历" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcT-me-LLk">
@@ -77,7 +77,7 @@
                             <constraint firstItem="BcT-me-LLk" firstAttribute="leading" secondItem="HSC-RW-VTU" secondAttribute="leading" constant="10" id="ymF-Lu-Jvs"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3M8-tQ-TZn">
+                    <view tag="776" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3M8-tQ-TZn">
                         <rect key="frame" x="0.0" y="112" width="320" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投资偏好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-er-5a8">

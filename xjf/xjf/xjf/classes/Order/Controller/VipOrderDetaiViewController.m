@@ -16,14 +16,16 @@
 #import "AlertUtils.h"
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
-@interface VipOrderDetaiViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface VipOrderDetaiViewController ()<UITableViewDelegate, UITableViewDataSource,OrderInfoDidChangedDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) UIButton *cancel;
 @property(nonatomic, strong) UIButton *nowPay;
 @property(nonatomic, strong) PayView *payView;
+@property(nonatomic, assign) PayStyle style;
 @property(nonatomic, strong) UIView *payingBackGroudView;
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) OrderFooterView *orderfooterView;
+@property(nonatomic, strong) XJOrder *order;
 @end
 
 @implementation VipOrderDetaiViewController
@@ -231,23 +233,23 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 }
 
 - (void)payByPayStyle:(PayStyle)stayle {
-    
+    self.style = stayle;
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
         [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
     } else {
-        XJOrder *order = [[XJMarket sharedMarket] createVipOrderWith:self.dicData];
-        [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
-            [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        } failed:^{
-            
-            [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-                MyOrderViewController *myOrderPage = [MyOrderViewController new];
-                [self.navigationController pushViewController:myOrderPage animated:YES];
-        }];
+        self.order = [[XJMarket sharedMarket] createVipOrderWith:self.dicData target:self];
     }
 }
-
+-(void)orderInfoDidChanged:(XJOrder *)order {
+    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+    } failed:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+        MyOrderViewController *myOrderPage = [MyOrderViewController new];
+        [self.navigationController pushViewController:myOrderPage animated:YES];
+    }];
+}
 #pragma mark - payViewCancel
 - (void)payViewCancel:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{

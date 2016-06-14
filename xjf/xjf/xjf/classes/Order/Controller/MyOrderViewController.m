@@ -15,14 +15,15 @@
 #import "OrderDetaiViewController.h"
 #import "OrderModel.h"
 #import "XJAccountManager.h"
-@interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource, MyOrderFootrtViewDelegate>
+@interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource, MyOrderFootrtViewDelegate,OrderInfoDidChangedDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) PayView *payView;
 @property(nonatomic, strong) UIView *payingBackGroudView;
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) MyOrderFooterView *orderfooterView;
-
+@property(nonatomic, assign) PayStyle style;
 @property (nonatomic, strong) OrderModel *orderModel;
+@property(nonatomic, strong) XJOrder *order;
 @end
 
 @implementation MyOrderViewController
@@ -134,7 +135,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     cell.price.hidden = NO;
     cell.oldPrice.hidden = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
     return cell;
 }
 
@@ -243,7 +243,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 }
 
 - (void)payByPayStyle:(PayStyle)stayle {
-
+    self.style = stayle;
     NSMutableArray *tempArray = [NSMutableArray array];
     for (TalkGridModel *c in self.orderfooterView.model.items) {
         [tempArray addObject:c];
@@ -252,18 +252,20 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
     }{
-        XJOrder *order = [[XJMarket sharedMarket] createOrderWith:tempArray];
-        [[XJMarket sharedMarket] buyTradeImmediately:order by:stayle success:^{
-            [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-            self.tabBarController.selectedIndex = 3;
-            self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
-        }                                     failed:^{
-            [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-        }];
+        self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
+        
     }
 
 }
-
+-(void)orderInfoDidChanged:(XJOrder *)order {
+    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+        self.tabBarController.selectedIndex = 3;
+        self.navigationController.viewControllers = @[self.navigationController.viewControllers.firstObject];
+    }                                     failed:^{
+        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+    }];
+}
 #pragma mark - payViewCancel
 
 - (void)payViewCancel:(UIButton *)sender {
