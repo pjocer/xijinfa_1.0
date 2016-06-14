@@ -11,13 +11,12 @@
 #import "WikiPediaCategoriesModel.h"
 #import "BannerModel.h"
 #import "WikiMoreViewController.h"
-
+#import "SearchViewController.h"
 @interface WikipediaViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
         XRCarouselViewDelegate,
         WikiFirstSectionCellDelegate>
-
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *layout;
 @property(nonatomic, retain) NSMutableArray *dataArrayByBanner;
@@ -25,7 +24,6 @@
 @property(nonatomic, strong) BannerModel *bannermodel;
 @property(nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
 @property(nonatomic, strong) NSMutableArray *talkGridDataArray;
-
 @end
 
 @implementation WikipediaViewController
@@ -33,6 +31,7 @@ static NSString *wikiBannerView_HeaderId = @"wikiBannerView_HeaderId";
 static NSString *wikiSectionHeaderView_HeaderId = @"wikiSectionHeaderView_HeaderId";
 static NSString *talkGridViewCell_Id = @"talkGridViewCell_Id";
 static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -107,6 +106,8 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 
 - (void)rightBarButtonItemAction:(UIBarButtonItem *)sender {
     //导航栏右按钮 搜索
+    SearchViewController *searchViewController = [SearchViewController new];
+    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
 

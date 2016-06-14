@@ -15,6 +15,7 @@
 #import "EmployedViewInformationCell.h"
 #import "TalkGridModel.h"
 #import "EmployedLessonListViewController.h"
+#import "SearchViewController.h"
 @interface EmployedViewController ()<UITableViewDelegate, UITableViewDataSource,XRCarouselViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSorce;
@@ -104,6 +105,8 @@ static CGFloat bannerHeaderViewH = 175;
 
 - (void)rightBarButtonItemAction:(UIBarButtonItem *)sender {
     //导航栏右按钮 搜索
+    SearchViewController *searchViewController = [SearchViewController new];
+    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
 #pragma mark -- initTabelView

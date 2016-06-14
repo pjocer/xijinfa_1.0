@@ -213,11 +213,11 @@ static CGFloat tableSectionHeaderH = 35;
     }
     
     
-//    OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
+    OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
 //    if (orderDetaiViewController.dataSource == nil || orderDetaiViewController.dataSource.count == 0) {
 //         [[ZToastManager ShardInstance] showtoast:@"请选择要购买的套餐"];
 //    }else {
-//      [self.navigationController pushViewController:orderDetaiViewController animated:YES];
+      [self.navigationController pushViewController:orderDetaiViewController animated:YES];
 //    }
 }
 

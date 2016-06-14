@@ -91,8 +91,9 @@ static CGFloat tableHeaderH = 200;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:VipTableCell_id];
     cell.model = self.tablkListModel.result.data[indexPath.row];
-    cell.lessonCount.hidden = NO;
+    cell.oldPrice.hidden = NO;
     cell.teacherName.hidden = NO;
+    cell.lessonCount.hidden = NO;;
     return cell;
 }
 

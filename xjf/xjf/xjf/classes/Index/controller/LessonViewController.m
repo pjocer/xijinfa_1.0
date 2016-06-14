@@ -18,6 +18,7 @@
 #import "RegistViewController.h"
 #import "TeacherListHostModel.h"
 #import "TeacherDetailViewController.h"
+#import "SearchViewController.h"
 @interface LessonViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate>
 
@@ -124,6 +125,8 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 - (void)rightBarButtonItemAction:(UIBarButtonItem *)sender {
     //导航栏右按钮 搜索
+    SearchViewController *searchViewController = [SearchViewController new];
+    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
 #pragma mark -- CollectionView
