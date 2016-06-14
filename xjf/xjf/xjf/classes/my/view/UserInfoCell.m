@@ -43,6 +43,9 @@
     [alert addAction:cancel];
     UIAlertAction *determine = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *textFiled = [alert.textFields objectAtIndex:0];
+        if (textFiled.text.length>0) {
+            [self.nickname setTitle:textFiled.text forState:UIControlStateNormal];
+        }
         if (self.NicknameBlock) self.NicknameBlock(textFiled.text);
     }];
     [alert addAction:determine];
@@ -60,6 +63,9 @@
     [alert addAction:cancel];
     UIAlertAction *determine = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *textFiled = [alert.textFields objectAtIndex:0];
+        if (textFiled.text.length>0) {
+            [self.introduce setTitle:textFiled.text forState:UIControlStateNormal];
+        }
         if (self.SummaryBlock) self.SummaryBlock(textFiled.text);
     }];
     [alert addAction:determine];

@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    AgeCase,
+    SexCase,
+    InterestedInvestCase,
+    ExperienceInvestCase,
+    PreferenceInvestCase
+} Case;
+
 @interface AlertUtils : NSObject
 
 ///默认的alertview
@@ -42,4 +50,5 @@
             cancelBlock:(dispatch_block_t)cancelBlock
                 okBlock:(dispatch_block_t)okBlock
              otherBlock:(dispatch_block_t)otherBlock;
+- (void)showChoose:(Case)type handler:(id (^) (id txt))ChooseCaseHandler;
 @end

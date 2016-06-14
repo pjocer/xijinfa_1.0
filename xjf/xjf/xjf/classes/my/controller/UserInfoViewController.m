@@ -82,11 +82,11 @@
         cell.CityBlock = ^(NSString *city) {
             NSLog(@"%@",city);
         };
-        cell.AgeBlock = ^(NSInteger age) {
-            NSLog(@"%ld",age);
+        cell.AgeBlock = ^(NSString *age) {
+            NSLog(@"%@",age);
         };
-        cell.SexBlock = ^(NSInteger sex) {
-            NSLog(@"%ld",sex);
+        cell.SexBlock = ^(NSString *sex) {
+            NSLog(@"%@",sex);
         };
         cell.model = self.model;
         return cell;

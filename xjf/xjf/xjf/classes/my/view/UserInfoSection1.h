@@ -11,7 +11,7 @@
 
 @interface UserInfoSection1 : UITableViewCell
 @property (nonatomic, strong) UserProfileModel *model;
-@property (nonatomic, strong) void (^SexBlock) (NSInteger sex);
+@property (nonatomic, strong) void (^SexBlock) (NSString *sex);
 @property (nonatomic, strong) void (^CityBlock) (NSString *city);
-@property (nonatomic, strong) void (^AgeBlock) (NSInteger age);
+@property (nonatomic, strong) void (^AgeBlock) (NSString *age);
 @end

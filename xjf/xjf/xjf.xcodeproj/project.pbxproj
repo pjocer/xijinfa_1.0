@@ -183,7 +183,6 @@
 		D04D0C181D0FBD280090D2CD /* UserInfoSection2.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04D0C161D0FBD280090D2CD /* UserInfoSection2.xib */; };
 		D04D0C1C1D0FC15C0090D2CD /* UserInfoSection3.m in Sources */ = {isa = PBXBuildFile; fileRef = D04D0C1A1D0FC15C0090D2CD /* UserInfoSection3.m */; };
 		D04D0C1D1D0FC15C0090D2CD /* UserInfoSection3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04D0C1B1D0FC15C0090D2CD /* UserInfoSection3.xib */; };
-		D04D0C201D0FD0850090D2CD /* XJTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D04D0C1F1D0FD0850090D2CD /* XJTimePicker.m */; };
 		D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E461CFE76F1008386CE /* CommentListCell.m */; };
 		D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F5E471CFE76F1008386CE /* CommentListCell.xib */; };
 		D04F5E4C1CFEB6EB008386CE /* NewTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */; };
@@ -606,8 +605,6 @@
 		D04D0C191D0FC15C0090D2CD /* UserInfoSection3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoSection3.h; sourceTree = "<group>"; };
 		D04D0C1A1D0FC15C0090D2CD /* UserInfoSection3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoSection3.m; sourceTree = "<group>"; };
 		D04D0C1B1D0FC15C0090D2CD /* UserInfoSection3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoSection3.xib; sourceTree = "<group>"; };
-		D04D0C1E1D0FD0850090D2CD /* XJTimePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJTimePicker.h; sourceTree = "<group>"; };
-		D04D0C1F1D0FD0850090D2CD /* XJTimePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJTimePicker.m; sourceTree = "<group>"; };
 		D04F5E451CFE76F1008386CE /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentListCell.h; path = xjf/classes/topic/CommentListCell.h; sourceTree = SOURCE_ROOT; };
 		D04F5E461CFE76F1008386CE /* CommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentListCell.m; path = xjf/classes/topic/CommentListCell.m; sourceTree = SOURCE_ROOT; };
 		D04F5E471CFE76F1008386CE /* CommentListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentListCell.xib; path = xjf/classes/topic/CommentListCell.xib; sourceTree = SOURCE_ROOT; };
@@ -1741,8 +1738,6 @@
 				CDF57B1D1C9F848600049AF0 /* ThirdUtils */,
 				D073E8171CE9E5B200AED895 /* AlertUtils.h */,
 				D073E8181CE9E5B200AED895 /* AlertUtils.m */,
-				D04D0C1E1D0FD0850090D2CD /* XJTimePicker.h */,
-				D04D0C1F1D0FD0850090D2CD /* XJTimePicker.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2180,7 +2175,6 @@
 				D0259AE71D02B85900283F29 /* TaBaseCell.m in Sources */,
 				5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
-				D04D0C201D0FD0850090D2CD /* XJTimePicker.m in Sources */,
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,
 				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
 				5AF7C2F91CFF049A007CC71C /* TeacherDetailHeaderView.m in Sources */,

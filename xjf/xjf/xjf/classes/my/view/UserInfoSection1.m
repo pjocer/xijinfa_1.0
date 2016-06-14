@@ -7,6 +7,7 @@
 //
 
 #import "UserInfoSection1.h"
+#import "AlertUtils.h"
 
 @interface UserInfoSection1 ()
 @property (weak, nonatomic) IBOutlet UIView *sexView;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sex;
 @property (weak, nonatomic) IBOutlet UILabel *place;
 @property (weak, nonatomic) IBOutlet UILabel *age;
+@property (strong, nonatomic) AlertUtils *alert;
 @end
 
 @implementation UserInfoSection1
@@ -28,12 +30,40 @@
     }
 }
 - (void)viewClicked:(UITapGestureRecognizer *)gesture {
-    NSLog(@"%ld",gesture.view.tag);
+    self.alert = [AlertUtils new];
+    switch (gesture.view.tag) {
+        case 770:
+        {
+            [self confirmResult:SexCase];
+        }
+            break;
+        case 771:
+            
+            break;
+        case 772:
+        {
+            [self confirmResult:AgeCase];
+        }
+            break;
+        default:
+            break;
+    }
+}
+- (void)confirmResult:(Case)type {
+    [self.alert showChoose:type handler:^id(id txt) {
+        UILabel *label = type==SexCase?self.sex:(type==AgeCase?self.age:self.place);
+        if (txt) {
+            label.text = txt;
+            void (^block) (NSString *txt) = type==SexCase?self.SexBlock:(type==AgeCase?self.AgeBlock:self.CityBlock);
+            if (block) block (txt);;
+        }
+        return label.text;
+    }];
 }
 -(void)setModel:(UserProfileModel *)model {
     _model = model;
     _sex.text = _model.result.sex==1?@"男":(_model.result.sex==2?@"女":@"未知");
-    _sex.text = _model.result.city==nil||_model.result.age.length==0?@"未知":_model.result.city;
+    _place.text = _model.result.city==nil||_model.result.city.length==0?@"未知":_model.result.city;
     _age.text = _model.result.age==nil||_model.result.age.length==0?@"未知":_model.result.age;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
