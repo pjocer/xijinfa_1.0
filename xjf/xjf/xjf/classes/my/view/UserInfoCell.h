@@ -11,4 +11,6 @@
 
 @interface UserInfoCell : UITableViewCell
 @property (nonatomic, strong) UserProfileModel *model;
+@property (nonatomic, copy) void (^NicknameBlock) (NSString *nickname);
+@property (nonatomic, copy) void (^SummaryBlock) (NSString *summary);
 @end
