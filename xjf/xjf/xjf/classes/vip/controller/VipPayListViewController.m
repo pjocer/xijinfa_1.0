@@ -13,6 +13,7 @@
 #import "IndexSectionView.h"
 #import "OrderDetaiViewController.h"
 #import "TalkGridModel.h"
+#import "VipOrderDetaiViewController.h"
 @interface VipPayListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) VipListModel *dataSourceModel;
 @property (nonatomic, strong) UITableView *tableView;
@@ -201,24 +202,32 @@ static CGFloat tableSectionHeaderH = 35;
 
 #pragma mark 立即支付
 - (void)dredgeVIP{
-    NSDictionary *dicData = [NSDictionary dictionary];
+    NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
+    VipModel *vipModelData = [[VipModel alloc] init];
     for (VipResultModel *vipResultModel in self.dataSourceModel.result) {
         if ([vipResultModel.type isEqualToString:@"subscriber"]) {
             for (VipModel *vipModel in vipResultModel.deal) {
                 if (vipModel.isSelected == YES ){
-                    dicData = [vipModel toDictionary];
+                    vipModelData = vipModel;
+                    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                    [dic setValue:vipResultModel.type forKey:@"type"];
+                    [dic setValue:vipModel.period forKey:@"period"];
+                    [dicData setValue:dic forKey:@"membership"];
                 }
             }
         }
     }
+
     
-    
-    OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
-//    if (orderDetaiViewController.dataSource == nil || orderDetaiViewController.dataSource.count == 0) {
-//         [[ZToastManager ShardInstance] showtoast:@"请选择要购买的套餐"];
-//    }else {
-      [self.navigationController pushViewController:orderDetaiViewController animated:YES];
-//    }
+    VipOrderDetaiViewController *vipOrderDetaiViewController = [VipOrderDetaiViewController new];
+    vipOrderDetaiViewController.vipModel = vipModelData;
+    vipOrderDetaiViewController.dicData = dicData;
+
+    if (vipOrderDetaiViewController.vipModel == nil || vipOrderDetaiViewController.vipModel.price.length == 0) {
+         [[ZToastManager ShardInstance] showtoast:@"请选择要购买的套餐"];
+    }else {
+      [self.navigationController pushViewController:vipOrderDetaiViewController animated:YES];
+    }
 }
 
 

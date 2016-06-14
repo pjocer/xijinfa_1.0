@@ -64,4 +64,11 @@
  *  @return 时分秒
  */
 + (NSString *)timeformatFromSeconds:(NSInteger)seconds;
+
+/**
+ *  获取系统时间
+ *
+ *  @return 现在的时间
+ */
++ (NSString *)getSystemDate;
 @end

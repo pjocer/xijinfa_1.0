@@ -82,6 +82,7 @@
 		5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */; };
 		5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */; };
 		5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */; };
+		5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A591D0FA81800008DA9 /* VipOrderDetaiViewController.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -392,6 +393,8 @@
 		5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListPageChoiceCell.m; sourceTree = "<group>"; };
 		5A565A551D0D70A200008DA9 /* BannerWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerWebViewViewController.h; sourceTree = "<group>"; };
 		5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWebViewViewController.m; sourceTree = "<group>"; };
+		5A565A581D0FA81800008DA9 /* VipOrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipOrderDetaiViewController.h; sourceTree = "<group>"; };
+		5A565A591D0FA81800008DA9 /* VipOrderDetaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipOrderDetaiViewController.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -970,6 +973,8 @@
 				5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */,
 				5AF7C2DD1CF98B07007CC71C /* MyOrderViewController.h */,
 				5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */,
+				5A565A581D0FA81800008DA9 /* VipOrderDetaiViewController.h */,
+				5A565A591D0FA81800008DA9 /* VipOrderDetaiViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2083,6 +2088,7 @@
 				5A20717C1D02BBA000462D65 /* MyFavoredsEmployedViewController.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
 				5AF7C2F61CFF0431007CC71C /* TeacherEmployedViewController.m in Sources */,
+				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
 				CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */,
@@ -2317,7 +2323,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalYes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2346,7 +2352,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalYes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

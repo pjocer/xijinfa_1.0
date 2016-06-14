@@ -483,4 +483,24 @@ finish:
     return format_time;
 }
 
+
++ (NSString *)getSystemDate
+{
+    //获取系统时间、
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"HH:mm"];
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    NSCalendar  * cal=[NSCalendar  currentCalendar];
+    NSUInteger  unitFlags= NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit;
+    NSDateComponents * conponent= [cal components:unitFlags fromDate:senddate];
+    NSInteger year=[conponent year];
+    NSInteger month=[conponent month];
+    NSInteger day=[conponent day];
+    NSString *  nsDateString= [NSString  stringWithFormat:@"%4d年%2d月%2d日",year,month,day];
+    NSString *systemdate = [NSString stringWithFormat:@"%@ %@",nsDateString,locationString];
+    return systemdate;
+}
+
+
 @end
