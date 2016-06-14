@@ -9,7 +9,6 @@
 #import "PlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-
 #import "ZFPlayerSingleton.h"
 #import "playerConfigure.h"
 #import "CommentsModel.h"

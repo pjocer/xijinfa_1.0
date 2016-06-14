@@ -64,7 +64,7 @@
         [self.teacherName mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
             make.top.mas_equalTo(self.videoTitle.mas_bottom).with.offset(7);
-            make.right.equalTo(self).with.offset(-100);
+            make.right.equalTo(self).with.offset(-10);
             make.height.mas_equalTo(15);
         }];
 

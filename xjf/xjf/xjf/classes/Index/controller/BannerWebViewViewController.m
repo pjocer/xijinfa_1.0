@@ -62,6 +62,7 @@
     self.progressView.progress = _webView.estimatedProgress;
     if (_webView.estimatedProgress > 0.6) {
         self.progressView.progress = 1;
+        self.progressView.hidden = YES;
     }
 }
 - (void)dealloc{
