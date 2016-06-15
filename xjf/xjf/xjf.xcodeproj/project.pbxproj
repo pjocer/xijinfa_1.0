@@ -86,7 +86,6 @@
 		5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A661D10FD6C00008DA9 /* FeedbackView.m */; };
 		5A565A731D110B2100008DA9 /* CloverText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A701D110B2100008DA9 /* CloverText.m */; };
 		5A565A741D110B2100008DA9 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A721D110B2100008DA9 /* CustomTextField.m */; };
-		5A565A761D112C3700008DA9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A565A751D112C3700008DA9 /* Images.xcassets */; };
 		5A565A791D11433300008DA9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A781D11433300008DA9 /* Reachability.m */; };
 		5A565A7A1D11437400008DA9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C117A1CBA924600892E2C /* SystemConfiguration.framework */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
@@ -409,7 +408,6 @@
 		5A565A701D110B2100008DA9 /* CloverText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloverText.m; sourceTree = "<group>"; };
 		5A565A711D110B2100008DA9 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		5A565A721D110B2100008DA9 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
-		5A565A751D112C3700008DA9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5A565A771D11433300008DA9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5A565A781D11433300008DA9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
@@ -2394,7 +2392,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2424,7 +2422,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
