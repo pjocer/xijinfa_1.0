@@ -86,6 +86,9 @@
 		5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A661D10FD6C00008DA9 /* FeedbackView.m */; };
 		5A565A731D110B2100008DA9 /* CloverText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A701D110B2100008DA9 /* CloverText.m */; };
 		5A565A741D110B2100008DA9 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A721D110B2100008DA9 /* CustomTextField.m */; };
+		5A565A761D112C3700008DA9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A565A751D112C3700008DA9 /* Images.xcassets */; };
+		5A565A791D11433300008DA9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A781D11433300008DA9 /* Reachability.m */; };
+		5A565A7A1D11437400008DA9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C117A1CBA924600892E2C /* SystemConfiguration.framework */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -406,6 +409,9 @@
 		5A565A701D110B2100008DA9 /* CloverText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloverText.m; sourceTree = "<group>"; };
 		5A565A711D110B2100008DA9 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		5A565A721D110B2100008DA9 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		5A565A751D112C3700008DA9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5A565A771D11433300008DA9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5A565A781D11433300008DA9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -724,6 +730,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A565A7A1D11437400008DA9 /* SystemConfiguration.framework in Frameworks */,
 				D07D744E1CED95E50037B1A9 /* CoreMotion.framework in Frameworks */,
 				D07D744C1CED95DA0037B1A9 /* CFNetwork.framework in Frameworks */,
 				D07D744A1CED95CB0037B1A9 /* CoreGraphics.framework in Frameworks */,
@@ -1793,6 +1800,8 @@
 				CDF57B1D1C9F848600049AF0 /* ThirdUtils */,
 				D073E8171CE9E5B200AED895 /* AlertUtils.h */,
 				D073E8181CE9E5B200AED895 /* AlertUtils.m */,
+				5A565A771D11433300008DA9 /* Reachability.h */,
+				5A565A781D11433300008DA9 /* Reachability.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2175,6 +2184,7 @@
 				5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
 				5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */,
+				5A565A791D11433300008DA9 /* Reachability.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				5A565A341D069F1B00008DA9 /* EmployedBasisViewController.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,

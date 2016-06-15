@@ -49,6 +49,11 @@
     cell.textLabel.text = _dataSource[indexPath.row];
     if (indexPath.row == 0) {
         UISwitch *switchB = [[UISwitch alloc] init];
+        if ([UserDefaultObjectForKey(USER_SETTING_WIFI) isEqualToString:@"YES"]) {
+            switchB.on = YES;
+        } else {
+            switchB.on = NO;
+        }
         [switchB addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
         cell.accessoryView = switchB;
     }else if (indexPath.row == 2) {
@@ -65,10 +70,12 @@
     return 50;
 }
 - (void)switchClicked:(UISwitch *)switchButton {
-    if (switchButton.isOn) {
-        NSLog(@"开");
+    if (!switchButton.isOn) {
+        [[ZToastManager ShardInstance] showtoast:@"已允许3G/4G播放"];
+        UserDefaultSetObjectForKey(@"YES", USER_SETTING_WIFI);
     }else {
-        NSLog(@"关");
+        [[ZToastManager ShardInstance] showtoast:@"不允许3G/4G播放"];
+        UserDefaultSetObjectForKey(@"NO", USER_SETTING_WIFI);
     }
 }
 -(UIView *)footer {

@@ -27,6 +27,8 @@
 #define ACCOUNT_ACCESS_TOKEN @"account_access_token"
 //用户信息
 #define USER_INFO @"user_info"
+///是否允许3G/4G player
+#define USER_SETTING_WIFI @"USER_SETTING_WIFI"
 
 #define HEADHEIGHT 64
 #define SCREENWITH [UIScreen mainScreen].bounds.size.width
