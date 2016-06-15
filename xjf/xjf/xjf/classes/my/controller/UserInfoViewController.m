@@ -21,7 +21,6 @@
 @end
 
 @implementation UserInfoViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.nav_title = @"修改个人信息";

@@ -225,11 +225,7 @@
         if (self.handler(nil)) {
             NSString *txt = self.handler(nil);
             if (txt) {
-               for (int i = 0; i < self.dataSource.count;i++) {
-                   if ([txt isEqualToString:[self.dataSource objectAtIndex:i]]) {
-                       
-                   }
-               }
+                objc_setAssociatedObject(self.tableview, @"content", txt, OBJC_ASSOCIATION_COPY_NONATOMIC);
             }
         }
     }
@@ -268,7 +264,7 @@
 - (void)buttonAction:(UIButton *)button {
     NSString *txt = nil;
     if (self.type == InterestedInvestCase) {
-        
+        txt = objc_getAssociatedObject(self.tableview, @"content");
     }else {
         txt = [self.dataSource objectAtIndex:[self.picker selectedRowInComponent:0]];
     }

@@ -21,6 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="感兴趣的金融知识" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8X-zD-BFz">
                                 <rect key="frame" x="10" y="18" width="96" height="14"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="JF1-28-Dqv"/>
                                     <constraint firstAttribute="height" constant="14" id="z9p-LD-W0Z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -28,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未知" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtQ-sH-mZr">
-                                <rect key="frame" x="280" y="16" width="30" height="18"/>
+                                <rect key="frame" x="129" y="16" width="181" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="tw2-rv-vlk"/>
                                 </constraints>
@@ -43,6 +44,7 @@
                             <constraint firstItem="V8X-zD-BFz" firstAttribute="top" secondItem="VK1-jV-RIt" secondAttribute="top" constant="18" id="9od-VE-Z0A"/>
                             <constraint firstItem="BtQ-sH-mZr" firstAttribute="top" secondItem="VK1-jV-RIt" secondAttribute="top" constant="16" id="FCB-rt-HKG"/>
                             <constraint firstAttribute="trailing" secondItem="BtQ-sH-mZr" secondAttribute="trailing" constant="10" id="OQm-oo-Kfk"/>
+                            <constraint firstItem="BtQ-sH-mZr" firstAttribute="leading" secondItem="V8X-zD-BFz" secondAttribute="trailing" constant="23" id="mvT-a5-6lk"/>
                             <constraint firstAttribute="height" constant="50" id="my6-97-MLO"/>
                         </constraints>
                     </view>
