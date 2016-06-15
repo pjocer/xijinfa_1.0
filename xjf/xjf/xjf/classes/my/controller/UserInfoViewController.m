@@ -13,6 +13,7 @@
 #import "UserInfoSection1.h"
 #import "UserInfoSection2.h"
 #import "UserInfoSection3.h"
+#import "XjfRequest.h"
 
 @interface UserInfoViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
@@ -24,11 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.nav_title = @"修改个人信息";
+    if (!self.params) {
+        self.params = [NSMutableDictionary dictionaryWithDictionary:@{@"nickname":@"",@"sex":@"",@"quote":@"",@"city":@"",@"age":@"",@"invest_category":@"",@"invest_age":@"",@"invest_type":@""}];
+    }
     self.model = [[XJAccountManager defaultManager] user_model];
     self.view.backgroundColor = BackgroundColor;
     [self initTableView];
 }
-
 - (void)initTableView {
     self.automaticallyAdjustsScrollViewInsets = NO;
     CGRect frame = CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH-HEADHEIGHT);
@@ -60,18 +63,15 @@
     }
     return 0;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         UserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.NicknameBlock = ^(NSString *nickname) {
-            NSLog(@"%@",nickname);
+            [self.params setObject:nickname forKey:@"nickname"];
         };
         cell.SummaryBlock = ^(NSString *summary) {
-            NSLog(@"%@",summary);
+            [self.params setObject:summary forKey:@"quote"];
         };
         cell.model = self.model;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -80,13 +80,13 @@
         UserInfoSection1 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection1"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.CityBlock = ^(NSString *city) {
-            NSLog(@"%@",city);
+            [self.params setObject:city forKey:@"city"];
         };
         cell.AgeBlock = ^(NSString *age) {
-            NSLog(@"%@",age);
+            [self.params setObject:age forKey:@"age"];
         };
         cell.SexBlock = ^(NSString *sex) {
-            NSLog(@"%@",sex);
+            [self.params setObject:[sex isEqualToString:@"男"]?@"1":@"2" forKey:@"sex"];
         };
         cell.model = self.model;
         return cell;
@@ -99,13 +99,13 @@
         UserInfoSection3 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection3"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.InterestedBlock = ^(NSString *interested_invest) {
-            NSLog(@"%@",interested_invest);
+            [self.params setObject:interested_invest forKey:@"invest_category"];
         };
         cell.PreferenceBlock = ^(NSString *preference_invest) {
-            NSLog(@"%@",preference_invest);
+            [self.params setObject:preference_invest forKey:@"invest_type"];
         };
         cell.ExperienceBlock = ^(NSString *experience_invest) {
-            NSLog(@"%@",experience_invest);
+            [self.params setObject:experience_invest forKey:@"invest_age"];
         };
         cell.model = self.model;
         return cell;

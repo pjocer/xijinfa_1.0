@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *place;
 @property (weak, nonatomic) IBOutlet UILabel *age;
 @property (strong, nonatomic) AlertUtils *alert;
+
 @end
 
 @implementation UserInfoSection1
@@ -38,7 +39,9 @@
         }
             break;
         case 771:
+        {
             
+        }
             break;
         case 772:
         {
@@ -55,7 +58,7 @@
         if (txt) {
             label.text = txt;
             void (^block) (NSString *txt) = type==SexCase?self.SexBlock:(type==AgeCase?self.AgeBlock:self.CityBlock);
-            if (block) block (txt);;
+            if (block) block (txt);
         }
         return label.text;
     }];

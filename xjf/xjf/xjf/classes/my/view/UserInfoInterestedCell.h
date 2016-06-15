@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UserInfoInterestedCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *selectMark;
+@property (weak, nonatomic) IBOutlet UILabel *content;
+- (void)resetMark;
 @end

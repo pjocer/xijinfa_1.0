@@ -8,14 +8,16 @@
 
 #import "AlertUtils.h"
 #import "XJAccountManager.h"
+#import "UserInfoInterestedCell.h"
 
-@interface AlertUtils () <UIPickerViewDelegate,UIPickerViewDataSource>
+@interface AlertUtils () <UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) UIView *background;
 @property (nonatomic, strong) UIView *caseView;
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UIPickerView *picker;
 @property (nonatomic, assign) Case type;
+@property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, copy) id (^handler)(NSString *);
 @end
 
@@ -140,8 +142,8 @@
     [target presentViewController:alertController animated:YES completion:nil];
 }
 
-#define CASE_WIDTH 200
-#define CASE_HEIGHT 250
+#define CASE_WIDTH 250
+#define CASE_HEIGHT 300
 
 -(void)showChoose:(Case)type handler:(id (^)(id txt))ChooseCaseHandler{
     self.handler = ChooseCaseHandler;
@@ -162,17 +164,20 @@
             break;
         case InterestedInvestCase:
         {
-            
+            self.dataSource = [NSMutableArray arrayWithArray:@[@"股票",@"债券",@"基金",@"期货",@"外汇",@"保险",@"银行理财",@"贵金属",@"其它"]];
+            [self confirmCaseView:InterestedInvestCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"修改感兴趣的金融知识"];
         }
             break;
         case ExperienceInvestCase:
         {
-            
+            self.dataSource = [NSMutableArray arrayWithArray:@[@"小于三个月",@"小于一年",@"一年至两年",@"两年至三年",@"三年至四年",@"五年至十年",@"十年以上"]];
+            [self confirmCaseView:ExperienceInvestCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"设置投资资历"];
         }
             break;
         case PreferenceInvestCase:
         {
-            
+            self.dataSource = [NSMutableArray arrayWithArray:@[@"稳健产品",@"年化收益小于20%",@"年化收益达30%至50%",@"年化收益50%以上"]];
+            [self confirmCaseView:PreferenceInvestCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"设置投资偏好"];
         }
             break;
         default:
@@ -194,23 +199,33 @@
     titleLable.textColor = NormalColor;
     titleLable.text = title;
     [self.caseView addSubview:titleLable];
-    self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(10, 38, size.width-20, size.height-34-38)];
-    self.picker.delegate = self;
-    self.picker.dataSource = self;
-    if (self.handler(nil)) {
-        NSString *txt = self.handler(nil);
-        if (txt) {
-            for (int i = 0; i < self.dataSource.count; i++) {
-                if ([txt isEqualToString:[self.dataSource objectAtIndex:i]]) {
-                    [self.picker selectRow:i inComponent:0 animated:YES];
+    if (type!=InterestedInvestCase) {
+        self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(10, 38, size.width-20, size.height-34-38)];
+        self.picker.delegate = self;
+        self.picker.dataSource = self;
+        if (self.handler(nil)) {
+            NSString *txt = self.handler(nil);
+            if (txt) {
+                for (int i = 0; i < self.dataSource.count; i++) {
+                    if ([txt isEqualToString:[self.dataSource objectAtIndex:i]]) {
+                        [self.picker selectRow:i inComponent:0 animated:YES];
+                    }
                 }
             }
         }
+        [self.caseView addSubview:self.picker];
+    }else {
+        self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(10, 38, size.width-20, size.height-34-38) style:UITableViewStylePlain];
+        self.tableview.delegate = self;
+        self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableview.dataSource = self;
+        self.tableview.showsVerticalScrollIndicator = NO;
+        [self.tableview registerNib:[UINib nibWithNibName:@"UserInfoInterestedCell" bundle:nil] forCellReuseIdentifier:@"UserInfoInterestedCell"];
+        [self.caseView addSubview:self.tableview];
     }
-    [self.caseView addSubview:self.picker];
     NSArray *titles = @[@"取消",@"确定"];
     for (int i = 0; i < titles.count; i++) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setFrame:CGRectMake(size.width/2*i, size.height-28, size.width/2, 18)];
         [button setTitle:titles[i] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor xjfStringToColor:@"#444444"] forState:UIControlStateNormal];
@@ -225,16 +240,11 @@
     [self showCaseView];
 }
 - (void)showCaseView {
-    [UIView animateWithDuration:0.1 animations:^{
-        self.caseView.alpha = 0.66;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.caseView.alpha = 1;
         self.background.alpha = 0.3;
-        self.caseView.transform = CGAffineTransformMakeScale(0.95, 0.95);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2 animations:^{
-            self.caseView.transform = CGAffineTransformMakeScale(0.9, 0.9);
-            self.caseView.alpha = 1;
-        } completion:nil];
-    }];
+        self.caseView.transform = CGAffineTransformMakeScale(0.9, 0.9);
+    } completion:nil];
 }
 - (void)hiddenCaseView {
     [UIView animateWithDuration:0.3 animations:^{
@@ -253,10 +263,8 @@
     }
     [self hiddenCaseView];
 }
+#pragma mark - PickerView Delegate
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    if (self.type == AgeCase||self.type == SexCase) {
-        return 1;
-    }
     return 1;
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -277,9 +285,21 @@
         label.textColor = NormalColor;
     }
     label.text = [self.dataSource objectAtIndex:row];
+    
     return label;
 }
-//- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-//    NSLog(@"%@",[self.dataSource objectAtIndex:row]);
-//}
+#pragma mark - TableView Delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSource.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UserInfoInterestedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoInterestedCell"];
+    cell.content.text = [self.dataSource objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UserInfoInterestedCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell resetMark];
+}
 @end

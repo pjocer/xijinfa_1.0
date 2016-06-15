@@ -7,6 +7,7 @@
 //
 
 #import "UserInfoSection3.h"
+#import "AlertUtils.h"
 
 @interface UserInfoSection3 ()
 @property (weak, nonatomic) IBOutlet UIView *interested_invest;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *interested;
 @property (weak, nonatomic) IBOutlet UILabel *experience;
 @property (weak, nonatomic) IBOutlet UILabel *preference;
+@property (strong, nonatomic) AlertUtils *alert;
 @end
 
 @implementation UserInfoSection3
@@ -28,7 +30,31 @@
     }
 }
 - (void)viewClicked:(UITapGestureRecognizer *)tap {
-    NSLog(@"%ld",tap.view.tag);
+    self.alert = [AlertUtils new];
+    switch (tap.view.tag) {
+        case 774:
+            [self confirmResult:InterestedInvestCase];
+            break;
+        case 775:
+            [self confirmResult:ExperienceInvestCase];
+            break;
+        case 776:
+            [self confirmResult:PreferenceInvestCase];
+            break;
+        default:
+            break;
+    }
+}
+- (void)confirmResult:(Case)type {
+    [self.alert showChoose:type handler:^id(id txt) {
+        UILabel *label = type==InterestedInvestCase?self.interested:(type==ExperienceInvestCase?self.experience:self.preference);
+        if (txt) {
+            label.text = txt;
+            void (^block) (NSString *txt) = type==InterestedInvestCase?self.InterestedBlock:(type==ExperienceInvestCase?self.ExperienceBlock:self.PreferenceBlock);
+            if (block) block (txt);
+        }
+        return label.text;
+    }];
 }
 -(void)setModel:(UserProfileModel *)model {
     _model = model;

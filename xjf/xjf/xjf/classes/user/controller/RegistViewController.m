@@ -174,11 +174,12 @@
             [[ZToastManager ShardInstance] showtoast:@"请输入正确的手机号码"];
         }
     }else  if (textField==self.txtCodeImage){
-        if ([textField.text isEqualToString:self.model.result.secure_code]) {
-            self.imageCodeIsOk = YES;
-        }else {
-            [[ZToastManager ShardInstance] showtoast:@"请输入正确的图片验证码"];
-        }
+//        if ([textField.text isEqualToString:self.model.result.secure_code]) {
+//            self.imageCodeIsOk = YES;
+//        }else {
+//            [[ZToastManager ShardInstance] showtoast:@"请输入正确的图片验证码"];
+//        }
+        self.imageCodeIsOk = YES;
     }
     if (!self.codeIsOk) {
         self.codeButton.enabled = self.phoneIsOK && self.imageCodeIsOk;

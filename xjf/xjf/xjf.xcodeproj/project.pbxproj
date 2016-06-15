@@ -171,6 +171,8 @@
 		D0259AE81D02B85900283F29 /* TaBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AE61D02B85900283F29 /* TaBaseCell.xib */; };
 		D0259AEC1D02C10000283F29 /* TaBaseCellFoot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */; };
 		D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */; };
+		D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */; };
+		D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */; };
 		D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA4E1CEC041600CD5359 /* XJAccountManager.m */; };
 		D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA511CEC047600CD5359 /* UserProfileModel.m */; };
 		D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA541CEC0D3400CD5359 /* UserLoadCell.m */; };
@@ -586,6 +588,9 @@
 		D0259AE91D02C10000283F29 /* TaBaseCellFoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCellFoot.h; sourceTree = "<group>"; };
 		D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCellFoot.m; sourceTree = "<group>"; };
 		D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCellFoot.xib; sourceTree = "<group>"; };
+		D02FB4B31D112458006EADAD /* UserInfoInterestedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoInterestedCell.h; sourceTree = "<group>"; };
+		D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoInterestedCell.m; sourceTree = "<group>"; };
+		D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoInterestedCell.xib; sourceTree = "<group>"; };
 		D049BA4D1CEC041600CD5359 /* XJAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJAccountManager.h; sourceTree = "<group>"; };
 		D049BA4E1CEC041600CD5359 /* XJAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAccountManager.m; sourceTree = "<group>"; tabWidth = 4; };
 		D049BA501CEC047600CD5359 /* UserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModel.h; sourceTree = "<group>"; };
@@ -1376,6 +1381,9 @@
 				D04D0C191D0FC15C0090D2CD /* UserInfoSection3.h */,
 				D04D0C1A1D0FC15C0090D2CD /* UserInfoSection3.m */,
 				D04D0C1B1D0FC15C0090D2CD /* UserInfoSection3.xib */,
+				D02FB4B31D112458006EADAD /* UserInfoInterestedCell.h */,
+				D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */,
+				D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */,
 				D083C8EF1CF450630028DE8A /* SettingRowOneCell.h */,
 				D083C8F01CF450630028DE8A /* SettingRowOneCell.m */,
 				D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */,
@@ -1881,7 +1889,7 @@
 				TargetAttributes = {
 					CDF57ABF1C9F825D00049AF0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = X9X5X3UP3M;
+						DevelopmentTeam = 49X2X2Y4J5;
 					};
 				};
 			};
@@ -1919,6 +1927,7 @@
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
 				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
+				D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */,
 				D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */,
 				D07166561D06B56D00A08B58 /* BaikeCell.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
@@ -2186,6 +2195,7 @@
 				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,
 				5AF7C2EC1CFF0292007CC71C /* TeacherDetailViewController.m in Sources */,
+				D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */,
 				CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */,
 				5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */,
 			);
@@ -2323,7 +2333,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2352,7 +2362,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

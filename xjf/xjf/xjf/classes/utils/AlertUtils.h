@@ -50,5 +50,7 @@ typedef enum : NSUInteger {
             cancelBlock:(dispatch_block_t)cancelBlock
                 okBlock:(dispatch_block_t)okBlock
              otherBlock:(dispatch_block_t)otherBlock;
+
 - (void)showChoose:(Case)type handler:(id (^) (id txt))ChooseCaseHandler;
+
 @end

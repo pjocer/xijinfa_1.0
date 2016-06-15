@@ -20,6 +20,8 @@
 #import "XJAccountManager.h"
 #import "VipPayListViewController.h"
 #import "RegistViewController.h"
+#import "XjfRequest.h"
+#import "ZToastManager.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -27,6 +29,7 @@
 @property(nonatomic, strong) UITableView *tableview;
 @property(nonatomic, strong) UIButton *footer;
 @property(nonatomic, strong) UIView *foot_background;
+@property(nonatomic, strong) UserInfoViewController *userinfo;
 @end
 
 @implementation MyViewController
@@ -36,7 +39,7 @@
     [super viewWillAppear:animated];
     self.model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
     [self.tableview reloadData];
-    
+    [self updateUserInfo];
 }
 
 - (void)viewDidLoad {
@@ -57,6 +60,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateUserInfo {
+    if (self.userinfo) {
+        if (self.userinfo.params) {
+            XjfRequest *request = [[XjfRequest alloc] initWithAPIName:update_user_info RequestMethod:POST];
+            request.requestParams = self.userinfo.params;
+            [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+                NSString *s = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+                NSLog(@"%@",s);
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+                NSLog(@"%@",dic);
+            } failedBlock:^(NSError * _Nullable error) {
+                [[ZToastManager ShardInstance] showtoast:@"更新用户信息失败"];
+            }];
+        }
+    }
 }
 
 //main UI
@@ -148,8 +168,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         if (self.model != nil) {
-            UserInfoViewController *userinfo = [[UserInfoViewController alloc]init];
-            [self.navigationController pushViewController:userinfo animated:YES];
+            self.userinfo = [[UserInfoViewController alloc]init];
+            [self.navigationController pushViewController:self.userinfo animated:YES];
         } else {
             LoginViewController *login = [LoginViewController new];
             login.delegate = self;
@@ -157,7 +177,6 @@
         }
     }
 }
-
 #pragma UserComponentDelegate
 
 - (void)componentDidSelected:(NSUInteger)index {

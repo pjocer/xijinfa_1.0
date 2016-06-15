@@ -363,8 +363,7 @@
             NSData *imageData = [NSData dataWithContentsOfURL:url];
             UIImage *ret = [UIImage imageWithData:imageData];
             wSelf.secure_key = model.result.secure_key;
-            wSelf.secure_code = model.result.secure_code;
-            NSLog(@"%@",wSelf.secure_code);
+            
             self.codeImageView.image = ret;
         }
     }                  failedBlock:^(NSError *_Nullable error) {
