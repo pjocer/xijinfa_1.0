@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVv-1s-Gu0" userLabel="bottomLine">
-                        <rect key="frame" x="0.0" y="33" width="230" height="1"/>
+                        <rect key="frame" x="42" y="33" width="188" height="1"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="B42-as-1ZM"/>
@@ -51,7 +51,7 @@
                     <constraint firstItem="mgn-cY-jj2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="OTs-yz-e8M"/>
                     <constraint firstItem="xzn-a4-RhX" firstAttribute="leading" secondItem="mgn-cY-jj2" secondAttribute="trailing" constant="8" id="OX8-YU-QU4"/>
                     <constraint firstItem="mgn-cY-jj2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="Qk1-M4-plV"/>
-                    <constraint firstItem="fVv-1s-Gu0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Za6-Xp-w6X"/>
+                    <constraint firstItem="fVv-1s-Gu0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="34" id="Za6-Xp-w6X"/>
                     <constraint firstAttribute="trailingMargin" secondItem="fVv-1s-Gu0" secondAttribute="trailing" constant="-8" id="dTM-lq-OOH"/>
                     <constraint firstAttribute="bottomMargin" secondItem="fVv-1s-Gu0" secondAttribute="bottom" constant="-8" id="xxq-jM-6Uz"/>
                 </constraints>

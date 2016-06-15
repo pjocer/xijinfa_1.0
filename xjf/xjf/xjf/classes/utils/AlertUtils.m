@@ -9,7 +9,7 @@
 #import "AlertUtils.h"
 #import "XJAccountManager.h"
 #import "UserInfoInterestedCell.h"
-
+#import <objc/runtime.h>
 @interface AlertUtils () <UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) UIView *background;
@@ -222,6 +222,16 @@
         self.tableview.showsVerticalScrollIndicator = NO;
         [self.tableview registerNib:[UINib nibWithNibName:@"UserInfoInterestedCell" bundle:nil] forCellReuseIdentifier:@"UserInfoInterestedCell"];
         [self.caseView addSubview:self.tableview];
+        if (self.handler(nil)) {
+            NSString *txt = self.handler(nil);
+            if (txt) {
+               for (int i = 0; i < self.dataSource.count;i++) {
+                   if ([txt isEqualToString:[self.dataSource objectAtIndex:i]]) {
+                       
+                   }
+               }
+            }
+        }
     }
     NSArray *titles = @[@"取消",@"确定"];
     for (int i = 0; i < titles.count; i++) {
@@ -256,7 +266,12 @@
     }];
 }
 - (void)buttonAction:(UIButton *)button {
-    NSString *txt = [self.dataSource objectAtIndex:[self.picker selectedRowInComponent:0]];
+    NSString *txt = nil;
+    if (self.type == InterestedInvestCase) {
+        
+    }else {
+        txt = [self.dataSource objectAtIndex:[self.picker selectedRowInComponent:0]];
+    }
     [self hiddenCaseView];
     if (button.tag==781) {
         if (self.handler) self.handler(txt);
@@ -285,7 +300,6 @@
         label.textColor = NormalColor;
     }
     label.text = [self.dataSource objectAtIndex:row];
-    
     return label;
 }
 #pragma mark - TableView Delegate
@@ -295,11 +309,49 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UserInfoInterestedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoInterestedCell"];
     cell.content.text = [self.dataSource objectAtIndex:indexPath.row];
+    NSMutableArray *array = [self getTableViewContentArray];
+    for (NSString *str in array) {
+        if ([str isEqualToString:cell.content.text]) {
+            [cell makeSelected];
+            break;
+        }else {
+            [cell makeDeSelected];
+        }
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UserInfoInterestedCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell resetMark];
+    [cell resetMarkSelected:^(NSString *txt) {
+        NSString *text = objc_getAssociatedObject(self.tableview, @"content");
+        if (text==nil) {
+            text = [NSString stringWithFormat:@"%@",txt];
+        }else {
+            text = [NSString stringWithFormat:@"%@/%@",text,txt];
+        }
+        objc_setAssociatedObject(self.tableview, @"content", text, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    } cancelSelected:^(NSString *txt) {
+        NSMutableArray *array = [self getTableViewContentArray];
+        [array removeObject:txt];
+        NSString *tableContent = nil;
+        for (NSString *str in array) {
+            if (array.count==1) {
+                tableContent = str;
+            }else {
+                if (tableContent==nil) {
+                    tableContent = [NSString stringWithFormat:@"%@",str];
+                }else {
+                    tableContent = [NSString stringWithFormat:@"%@/%@",tableContent,str];
+                }
+            }
+        }
+        objc_setAssociatedObject(self.tableview, @"content", tableContent, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    }];
+}
+- (NSMutableArray *)getTableViewContentArray {
+    NSString *text = objc_getAssociatedObject(self.tableview, @"content");
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[text componentsSeparatedByString:@"/"]];
+    return array;
 }
 @end

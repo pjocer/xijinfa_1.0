@@ -17,17 +17,24 @@
     self.selectMark.layer.borderWidth = 1;
     self.selectMark.layer.masksToBounds = YES;
 }
--(void)resetMark {
+-(void)resetMarkSelected:(void (^)(NSString *))selected cancelSelected:(void (^)(NSString *))deSelected{
     if (self.selectMark.layer.borderWidth!=1) {
-        self.selectMark.layer.borderColor = [[UIColor xjfStringToColor:@"#9a9a9a"] CGColor];
-        self.selectMark.layer.borderWidth = 1;
-        self.selectMark.text = nil;
-        self.selectMark.backgroundColor = [UIColor clearColor];
+        [self makeDeSelected];
+        if (deSelected) deSelected(self.content.text);
     }else {
-        self.selectMark.layer.borderWidth = 0;
-        self.selectMark.layer.borderColor = nil;
-        self.selectMark.backgroundColor = BlueColor;
+        [self makeSelected];
+        if (selected) selected (self.content.text);
     }
+}
+-(void)makeSelected {
+    self.selectMark.layer.borderWidth = 0;
+    self.selectMark.layer.borderColor = nil;
+    self.selectMark.backgroundColor = BlueColor;
+}
+-(void)makeDeSelected {
+    self.selectMark.layer.borderColor = [[UIColor xjfStringToColor:@"#9a9a9a"] CGColor];
+    self.selectMark.layer.borderWidth = 1;
+    self.selectMark.backgroundColor = [UIColor clearColor];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
