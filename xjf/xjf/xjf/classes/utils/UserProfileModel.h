@@ -48,4 +48,5 @@
 @property(nonatomic, copy) NSString *errCode;
 @property(nonatomic, copy) NSString *errMsg;
 @property(nonatomic, strong) UserInfoResultModel *result;
+
 @end

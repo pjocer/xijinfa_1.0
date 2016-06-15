@@ -26,7 +26,6 @@
     });
     return manager;
 }
-
 - (instancetype)initSingle {
     self = [super init];
     if (self) {
@@ -36,6 +35,32 @@
         _account_type = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] == nil ? NormalAccount : [[[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] intValue];
     }
     return self;
+}
+
+-(void)updateUserInfo:(NSDictionary *)newUserInfo isVipChanged:(BOOL)ret{
+    if (ret) {
+        if (self.user_model.result.membership.count>0) {
+            for (UserProfileMembership *membership in self.user_model.result.membership) {
+                if ([membership.type isEqualToString:newUserInfo[@"type"]]) {
+                    for (NSString *key in newUserInfo.allKeys) {
+                        [membership setValue:newUserInfo[key] forKey:key];
+                    }
+                }
+            }
+        }else {
+            UserProfileMembership *membership = [[UserProfileMembership alloc] initWithDictionary:newUserInfo error:nil];
+            [self.user_model.result.membership addObject:membership];
+        }
+        
+    }else {
+        for (NSString *key in newUserInfo.allKeys) {
+            [self.user_model.result setValue:[newUserInfo objectForKey:key] forKey:key];
+            
+        }
+        NSDictionary *userInfo = [self.user_model toDictionary];
+        [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:USER_INFO];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 -(BOOL)verifyValid {
