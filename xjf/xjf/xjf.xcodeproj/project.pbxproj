@@ -77,12 +77,16 @@
 		5A565A3A1D069F7200008DA9 /* EmployedGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A391D069F7200008DA9 /* EmployedGeneralViewController.m */; };
 		5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A3E1D07C05A00008DA9 /* VipModel.m */; };
 		5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A411D07C09700008DA9 /* VipHeaderView.m */; };
-		5A565A4B1D0829F500008DA9 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4A1D0829F500008DA9 /* CustomTextField.m */; };
 		5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */; };
 		5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */; };
 		5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */; };
 		5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */; };
 		5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A591D0FA81800008DA9 /* VipOrderDetaiViewController.m */; };
+		5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A601D10F1CA00008DA9 /* FeedbackViewController.m */; };
+		5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A661D10FD6C00008DA9 /* FeedbackView.m */; };
+		5A565A731D110B2100008DA9 /* CloverText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A701D110B2100008DA9 /* CloverText.m */; };
+		5A565A741D110B2100008DA9 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A721D110B2100008DA9 /* CustomTextField.m */; };
+		5A565A761D112C3700008DA9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A565A751D112C3700008DA9 /* Images.xcassets */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -385,8 +389,6 @@
 		5A565A3E1D07C05A00008DA9 /* VipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipModel.m; sourceTree = "<group>"; };
 		5A565A401D07C09700008DA9 /* VipHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipHeaderView.h; sourceTree = "<group>"; };
 		5A565A411D07C09700008DA9 /* VipHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipHeaderView.m; sourceTree = "<group>"; };
-		5A565A491D0829F500008DA9 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
-		5A565A4A1D0829F500008DA9 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		5A565A4C1D0BAC8E00008DA9 /* VipPayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListViewController.h; sourceTree = "<group>"; };
 		5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListViewController.m; sourceTree = "<group>"; };
 		5A565A4F1D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListPagePrivilegeCell.h; sourceTree = "<group>"; };
@@ -397,6 +399,15 @@
 		5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWebViewViewController.m; sourceTree = "<group>"; };
 		5A565A581D0FA81800008DA9 /* VipOrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipOrderDetaiViewController.h; sourceTree = "<group>"; };
 		5A565A591D0FA81800008DA9 /* VipOrderDetaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipOrderDetaiViewController.m; sourceTree = "<group>"; };
+		5A565A5F1D10F1CA00008DA9 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		5A565A601D10F1CA00008DA9 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		5A565A651D10FD6C00008DA9 /* FeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackView.h; sourceTree = "<group>"; };
+		5A565A661D10FD6C00008DA9 /* FeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackView.m; sourceTree = "<group>"; };
+		5A565A6F1D110B2100008DA9 /* CloverText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloverText.h; sourceTree = "<group>"; };
+		5A565A701D110B2100008DA9 /* CloverText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloverText.m; sourceTree = "<group>"; };
+		5A565A711D110B2100008DA9 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		5A565A721D110B2100008DA9 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		5A565A751D112C3700008DA9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -958,6 +969,44 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5A565A5D1D10F1A800008DA9 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A641D10FD5A00008DA9 /* View */,
+				5A565A5E1D10F1A800008DA9 /* Controller */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
+		5A565A5E1D10F1A800008DA9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A5F1D10F1CA00008DA9 /* FeedbackViewController.h */,
+				5A565A601D10F1CA00008DA9 /* FeedbackViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5A565A641D10FD5A00008DA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A651D10FD6C00008DA9 /* FeedbackView.h */,
+				5A565A661D10FD6C00008DA9 /* FeedbackView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A565A6E1D110B1200008DA9 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				5A565A6F1D110B2100008DA9 /* CloverText.h */,
+				5A565A701D110B2100008DA9 /* CloverText.m */,
+				5A565A711D110B2100008DA9 /* CustomTextField.h */,
+				5A565A721D110B2100008DA9 /* CustomTextField.m */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		5AF7C2CD1CF945F6007CC71C /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -1038,8 +1087,6 @@
 				644C10C51CBA61AC00892E2C /* UzysGridView.m */,
 				644C10C61CBA61AC00892E2C /* UzysGridViewCell.h */,
 				644C10C71CBA61AC00892E2C /* UzysGridViewCell.m */,
-				5A565A491D0829F500008DA9 /* CustomTextField.h */,
-				5A565A4A1D0829F500008DA9 /* CustomTextField.m */,
 			);
 			path = UzysGridView;
 			sourceTree = "<group>";
@@ -1343,6 +1390,7 @@
 				D01F77D11D0181E0000888D4 /* MyTopicViewController.m */,
 				D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */,
 				D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */,
+				5A565A5D1D10F1A800008DA9 /* Feedback */,
 				5A565A171D05B10700008DA9 /* MyPlayerHistory */,
 				5A565A0D1D05A8A100008DA9 /* MyLessons */,
 				5A2071701D02BA9800462D65 /* MyFavoreds */,
@@ -1535,6 +1583,7 @@
 				CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */,
 				5A7EEE931CE0299C007BAECD /* Header.h */,
 				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
+				5A565A6E1D110B1200008DA9 /* CustomView */,
 			);
 			name = Utils;
 			path = classes/utils;
@@ -1640,6 +1689,7 @@
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
+				5A565A751D112C3700008DA9 /* Images.xcassets */,
 			);
 			path = xjf;
 			sourceTree = "<group>";
@@ -1938,6 +1988,7 @@
 				D07575421D0593F300F8360F /* SearchSectionTwo.xib in Resources */,
 				D04D0C181D0FBD280090D2CD /* UserInfoSection2.xib in Resources */,
 				644C10C81CBA61AC00892E2C /* icon_del.png in Resources */,
+				5A565A761D112C3700008DA9 /* Images.xcassets in Resources */,
 				644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */,
 				D04D0C1D1D0FC15C0090D2CD /* UserInfoSection3.xib in Resources */,
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
@@ -2032,7 +2083,6 @@
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
-				5A565A4B1D0829F500008DA9 /* CustomTextField.m in Sources */,
 				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */,
@@ -2065,6 +2115,7 @@
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */,
 				D055EEA11CFD30CE004DDD7E /* TopicCommentList.m in Sources */,
+				5A565A741D110B2100008DA9 /* CustomTextField.m in Sources */,
 				D053D2641CEAF85C00873D10 /* StringUtil.m in Sources */,
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */,
@@ -2099,8 +2150,11 @@
 				5AF7C2F61CFF0431007CC71C /* TeacherEmployedViewController.m in Sources */,
 				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
+				5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
+				5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */,
 				CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */,
+				5A565A731D110B2100008DA9 /* CloverText.m in Sources */,
 				D04D0C1C1D0FC15C0090D2CD /* UserInfoSection3.m in Sources */,
 				5A20717F1D02BBFC00462D65 /* MyFavoredsSchoolViewController.m in Sources */,
 				644C10CA1CBA61AC00892E2C /* UzysGridView.m in Sources */,
@@ -2316,6 +2370,7 @@
 			baseConfigurationReference = FA5730763C928D50ED312F03 /* Pods-xjf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -2345,6 +2400,7 @@
 			baseConfigurationReference = AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;

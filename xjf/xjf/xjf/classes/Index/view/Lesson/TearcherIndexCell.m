@@ -33,14 +33,12 @@
         self.teacherName = [[UILabel alloc] init];
         [self addSubview:self.teacherName];
         self.teacherName.textColor = [UIColor xjfStringToColor:@"#444444"];
-        self.teacherName.text = @"XXXX";
         self.teacherName.textAlignment = NSTextAlignmentCenter;
         self.teacherName.font = FONT15;
 
         //teacherDetail
         self.teacherDetail = [[UILabel alloc] init];
         [self addSubview:self.teacherDetail];
-        self.teacherDetail.text = @"xxxxxxxxxxxx";
         self.teacherDetail.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
         self.teacherDetail.textAlignment = NSTextAlignmentCenter;
         self.teacherDetail.font = FONT12;
@@ -84,7 +82,7 @@
     }
     [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.guru_avatar]];
     self.teacherName.text = model.title;
-    self.teacherDetail.text = model.summary;
+    self.teacherDetail.text = model.subtitle;
 }
 
 @end

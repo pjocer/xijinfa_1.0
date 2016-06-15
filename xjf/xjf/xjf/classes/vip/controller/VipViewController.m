@@ -151,7 +151,8 @@ static CGFloat tableHeaderH = 200;
         [self.navigationController pushViewController:vipPayListViewController animated:YES];
     }
     else if ([sender.titleLabel.text isEqualToString:@"续费会员"]){
-        
+        VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
+        [self.navigationController pushViewController:vipPayListViewController animated:YES];
     }
 }
 

@@ -17,7 +17,6 @@
         self.lessonName = [[UILabel alloc] init];
         [self.contentView addSubview:self.lessonName];
         self.lessonName.font = FONT15;
-        self.lessonName.text = @"股票基础课程xxxxxx";
         self.lessonName.textAlignment = NSTextAlignmentLeft;
         [self.lessonName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).with.offset(10);

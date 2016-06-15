@@ -23,7 +23,6 @@
         [self addSubview:self.orderNumber];
         self.orderNumber.font = FONT12;
         self.orderNumber.textColor = AssistColor;
-        self.orderNumber.text = @"订单编号: xxxxxx";
         self.orderNumber.textAlignment = kCTTextAlignmentLeft;
         [self.orderNumber mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);

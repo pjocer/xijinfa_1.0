@@ -91,13 +91,15 @@ static CGFloat payViewH = 285;
         sSelf.dataSourceModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
         sSelf.lessonDetailTitleView.model = self.dataSourceModel;
         sSelf.lessonPlayerLessonDescribeViewController.contentText = self.dataSourceModel.result.content;
-        self.lessonDetailLessonListViewController.isPay = self.dataSourceModel.result.user_purchased;
+        if (self.dataSourceModel.result.user_purchased || self.dataSourceModel.result.user_subscribed) {
+            self.lessonDetailLessonListViewController.isPay = YES;
+        }
         sSelf.lessonDetailLessonListViewController.lessonDetailListModel = self.dataSourceModel;
         [sSelf.lessonDetailLessonListViewController.tableView reloadData];
         sSelf.lessonDetailTecherDescribeViewController.dataSourceModel = self.dataSourceModel;
         [sSelf.lessonDetailTecherDescribeViewController.tableView reloadData];
         //是否购买过此课程
-        if (self.dataSourceModel.result.user_purchased) {
+        if (self.dataSourceModel.result.user_purchased || self.dataSourceModel.result.user_subscribed) {
             self.nowPay.hidden = YES;
             self.addShoppingCart.hidden = YES;
             self.studing.hidden = NO;

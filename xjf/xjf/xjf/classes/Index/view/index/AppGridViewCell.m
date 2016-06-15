@@ -35,7 +35,6 @@
         self.titleLable.textColor = NormalColor;
         BackgroundColor
         self.titleLable.font = FONT13;
-        self.titleLable.text = @"XXXXX";
         self.titleLable.textAlignment = NSTextAlignmentCenter;
 
     

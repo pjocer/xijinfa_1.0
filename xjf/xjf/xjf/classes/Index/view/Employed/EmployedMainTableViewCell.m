@@ -36,14 +36,12 @@
         //titleLable
         self.titleLable = [[UILabel alloc] init];
         [self.contentView addSubview:self.titleLable];
-        self.titleLable.text = @"XXXXXXX";
         self.titleLable.textColor = [UIColor xjfStringToColor:@"#444444"];
         self.titleLable.font = FONT15;
         
         //detailLable
         self.detailLable = [[UILabel alloc] init];
         [self.contentView addSubview:self.detailLable];
-        self.detailLable.text = @"xxxxxxxxxxxxx";
         self.detailLable.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
         self.detailLable.font = FONT12;
 

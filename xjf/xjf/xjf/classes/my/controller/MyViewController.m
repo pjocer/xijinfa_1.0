@@ -22,6 +22,7 @@
 #import "RegistViewController.h"
 #import "XjfRequest.h"
 #import "ZToastManager.h"
+#import "FeedbackViewController.h"
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
@@ -124,7 +125,8 @@
         VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
         [self.navigationController pushViewController:vipPayListViewController animated:YES];
     } else if ([sender.titleLabel.text isEqualToString:@"续费会员"]){
-        
+        VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
+        [self.navigationController pushViewController:vipPayListViewController animated:YES];
     }
 }
 #pragma mark - TableView Delegate
@@ -243,21 +245,39 @@
             break;
         case 8:
         {
-            
+            [self PostCheckinMessageToSever:checkin Method:POST];
         }
             break;
         case 9:
         {
-            
-        }
-            break;
-        case 10:
-        {
-            
+            FeedbackViewController *feedbackViewController = [FeedbackViewController new];\
+            [self.navigationController pushViewController:feedbackViewController animated:YES];
         }
             break;
         default:
             break;
     }
 }
+
+///发送签到请求
+- (void)PostCheckinMessageToSever:(APIName *)api
+                        Method:(RequestMethod)method
+{
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        
+        id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+        NSString *errMsgStr = result[@"errMsg"];
+        
+        if (![errMsgStr isEqualToString:@"重复签到"]) {
+            [[ZToastManager ShardInstance] showtoast:@"今日已签到 金币 + 1 "];
+        }else {
+          [[ZToastManager ShardInstance] showtoast:result[@"errMsg"]];  
+        }
+       
+    }failedBlock:^(NSError *_Nullable error) {
+    
+    }];
+}
+
 @end

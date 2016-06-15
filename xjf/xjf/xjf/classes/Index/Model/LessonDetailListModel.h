@@ -69,6 +69,7 @@
 @property(nonatomic, strong) NSString *thumbnail;
 @property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) NSString *type;
+@property(nonatomic, strong) NSArray *package;
 @property(nonatomic, strong) NSString *updated_at;
 ///(已登录用户)是否已收藏
 @property(nonatomic, assign) BOOL user_favored;

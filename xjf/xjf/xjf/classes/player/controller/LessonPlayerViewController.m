@@ -91,7 +91,9 @@ static CGFloat selViewH = 3;
             }
             sSelf.lessonPlayerLessonListViewController.lessonDetailListModel = sSelf.tempLessonDetailModel;
             sSelf.lessonPlayerLessonListViewController.selectedModel = sSelf.playTalkGridModel;
-            sSelf.lessonPlayerLessonListViewController.isPay = sSelf.tempLessonDetailModel.result.user_purchased;
+            if (sSelf.tempLessonDetailModel.result.user_purchased || sSelf.tempLessonDetailModel.result.user_subscribed) {
+                sSelf.lessonPlayerLessonListViewController.isPay = YES;
+            }
             [sSelf.lessonPlayerLessonListViewController.tableView reloadData];
             
         }failedBlock:^(NSError *_Nullable error) {

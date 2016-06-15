@@ -24,7 +24,9 @@ static CGFloat rowHeight = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
-    self.isPay = self.lessonDetailListModel.result.user_purchased;
+    if (self.lessonDetailListModel.result.user_purchased || self.lessonDetailListModel.result.user_subscribed) {
+        self.isPay = YES;
+    }
     [self initTabelView];
 }
 

@@ -47,7 +47,6 @@
         self.videoTitle = [[UILabel alloc] init];
         [self addSubview:self.videoTitle];
         self.videoTitle.textColor = [UIColor xjfStringToColor:@"#444444"];
-        self.videoTitle.text = @"XXXXXXX";
         self.videoTitle.font = FONT15;
         [self.videoTitle mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoImage.mas_right).with.offset(10);
@@ -126,7 +125,7 @@
         TeacherListData *gurus = model.result.taxonomy_gurus.firstObject;
         self.teacherName.text = [NSString stringWithFormat:@"主讲: %@",gurus.title];
     }
-    if (self.model.result.user_purchased) {
+    if (self.model.result.user_purchased || self.model.result.user_subscribed) {
         self.price.hidden = YES;
         self.oldPrice.hidden = YES;
     } else {

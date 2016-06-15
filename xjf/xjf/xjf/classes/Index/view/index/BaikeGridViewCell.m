@@ -38,7 +38,6 @@
         self.titleLable = [[UILabel alloc] init];
         [self addSubview:self.titleLable];
         self.titleLable.textColor = [UIColor xjfStringToColor:@"#444444"];
-        self.titleLable.text = @"XXXXXXXXXXXXXXXXXXXXXXXXXX";
         self.titleLable.numberOfLines = 2;
         self.titleLable.font = FONT15;
 
@@ -46,14 +45,12 @@
         self.teacherLable = [[UILabel alloc] init];
         [self addSubview:self.teacherLable];
         self.teacherLable.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
-        self.teacherLable.text = @"主讲: xxxx";
         self.teacherLable.font = FONT12;
         
         //classesLable
         self.classesLable = [[UILabel alloc] init];
         [self addSubview:self.classesLable];
         self.classesLable.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
-        self.classesLable.text = @"课时: xxxx";
         self.classesLable.font = FONT12;
     }
     return self;

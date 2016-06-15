@@ -72,9 +72,8 @@
 }
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
 {
-    if (self.actionBlock) {
+    if (self.actionBlock && self.bannermodel.result.data.count != 0 && self.bannermodel.result.data) {
         self.actionBlock(BEventType_Unknow,nil,self.carouselView,self.bannermodel.result.data[index],self.indexPath);
-        
     }
 }
 

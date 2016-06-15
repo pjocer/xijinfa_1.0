@@ -21,7 +21,6 @@
 //    self.lessonName = [[UILabel alloc] init];
 //    [self.view addSubview:self.lessonName];
 //    self.lessonName.font = FONT15;
-//    self.lessonName.text = @"股票基础课程-XXXXXX";
 //    self.lessonName.textAlignment = NSTextAlignmentLeft;
 //    [self.lessonName mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.left.equalTo(self.view).with.offset(10);

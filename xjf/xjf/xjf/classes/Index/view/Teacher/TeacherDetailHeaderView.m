@@ -46,7 +46,6 @@
         self.teacherName = [[UILabel alloc] init];
         [self addSubview:self.teacherName];
         self.teacherName.font = FONT15;
-        self.teacherName.text = @"析金小白";
         [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.teacherImage);
             make.left.equalTo(self.teacherImage.mas_right).with.offset(10);
@@ -74,7 +73,6 @@
         [self addSubview:self.teacherDetail];
         self.teacherDetail.font = FONT12;
         self.teacherDetail.textColor = AssistColor;
-        self.teacherDetail.text = @"超级大师xxxxxxxxxxxxxxx";
         self.teacherDetail.textAlignment = NSTextAlignmentLeft;
         self.teacherDetail.numberOfLines = 2;
         [self.teacherDetail mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -102,7 +100,7 @@
     }
     [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.guru_avatar]];
     self.teacherName.text = model.title;
-    self.teacherDetail.text = model.summary;
+    self.teacherDetail.text = model.subtitle;
     
 //    if (model.user_favored) {
 //        [self.focusButton setTitle:@"已关注" forState:UIControlStateNormal];

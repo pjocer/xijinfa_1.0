@@ -90,7 +90,9 @@
 {
     BaikeGridViewCell *cell = [[BaikeGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
-    cell.model = self.talkGridModel.result.data[index];
+    if (self.talkGridModel.result.data.count > 0 && self.talkGridModel.result.data) {
+        cell.model = self.talkGridModel.result.data[index];
+    }
     return cell;
 }
 -(void)indexHandleSingleTapFrom

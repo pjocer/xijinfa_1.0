@@ -51,7 +51,6 @@
         self.videoTitle = [[UILabel alloc] init];
         [self.contentView addSubview:self.videoTitle];
         self.videoTitle.textColor = [UIColor xjfStringToColor:@"#444444"];
-        self.videoTitle.text = @"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         self.videoTitle.font = FONT15;
         self.videoTitle.numberOfLines = 2;
         [self.videoTitle mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,7 +64,6 @@
         self.viedoDetail = [[UILabel alloc] init];
         [self addSubview:self.viedoDetail];
         self.viedoDetail.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
-        self.viedoDetail.text = @"xxxxXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxxx";
         self.viedoDetail.font = FONT12;
         self.viedoDetail.numberOfLines = 2;
         [self.viedoDetail mas_makeConstraints:^(MASConstraintMaker *make) {

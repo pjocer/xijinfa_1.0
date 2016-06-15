@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
 @property (nonatomic, strong) UILabel *videoTitle;
+@property (nonatomic, strong) UILabel *vipLogo;
 @end
 
 @implementation VideoListCell
@@ -61,7 +62,6 @@
         self.viedoDetail = [[UILabel alloc] init];
         [self addSubview:self.viedoDetail];
         self.viedoDetail.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
-        self.viedoDetail.text = @"xxxxxxxxxxx";
         self.viedoDetail.font = FONT12;
         [self.viedoDetail mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.videoTitle);
@@ -139,6 +139,20 @@
         self.selectedLabel.layer.cornerRadius = 7;
         self.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
         self.selectedLabel.hidden = YES;
+        
+        //vipLogo
+        self.vipLogo = [[UILabel alloc] init];
+        [self.contentView addSubview:self.vipLogo];
+        [self.vipLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.equalTo(self.videoImage);
+            make.size.mas_equalTo(CGSizeMake(60, 20));
+        }];
+        self.vipLogo.backgroundColor = [UIColor redColor];
+        self.vipLogo.textAlignment = NSTextAlignmentCenter;
+        self.vipLogo.textColor = [UIColor whiteColor];
+        self.vipLogo.font = FONT12;
+        self.vipLogo.text = @"Vip 专享";
+        self.vipLogo.hidden = YES;
     }
     return self;
 }
@@ -205,7 +219,7 @@
 {
     [super layoutSubviews];
     if (!_isMyOrder) {
-        if (self.model.user_purchased) {
+        if (self.model.user_purchased || self.model.user_subscribed) {
             self.price.hidden = YES;
             self.oldPrice.hidden = YES;
         }else{
@@ -273,6 +287,11 @@
         }];
     }
     
+    if (self.model.package.count != 0 && [self.model.package containsObject:@"subscriber"]) {
+        self.vipLogo.hidden = NO;
+    }else {
+        self.vipLogo.hidden = YES;
+    }
 }
 
 

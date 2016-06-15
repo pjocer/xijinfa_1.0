@@ -157,3 +157,9 @@ static APIName *history = @"/api/history";
 #pragma mark-- Vip ------------------------
 ///会员 会员报价列表
 static APIName *vipPriceList = @"/api/membership/rates";
+
+#pragma mark-- 提交用户反馈 ------------------------
+static APIName *feedback = @"/api/system/feedback";
+
+#pragma mark-- 用户 每日签到 ------------------------
+static APIName *checkin = @"/api/user/checkin";

@@ -75,7 +75,6 @@
         [self.contentView addSubview:self.teacherDetail];
         self.teacherDetail.font = FONT12;
         self.teacherDetail.textColor = AssistColor;
-        self.teacherDetail.text = @"超级大师xxxxxxxxxxxxxxx";
         self.teacherDetail.textAlignment = NSTextAlignmentLeft;
         [self.teacherDetail mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.teacherName.mas_bottom);

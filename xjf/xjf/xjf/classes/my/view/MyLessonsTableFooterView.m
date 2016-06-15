@@ -40,7 +40,6 @@ static CGFloat StudyLabelH = 14;
         [self addSubview:self.studyLogoLabel];
         self.studyLogoLabel.font = FONT15;
         self.studyLogoLabel.textAlignment = NSTextAlignmentLeft;
-        self.studyLogoLabel.text = @"xxxxxxxxxxxxx";
         [self.studyLogoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.left.equalTo(self.studyImage.mas_right).with.offset(10);
