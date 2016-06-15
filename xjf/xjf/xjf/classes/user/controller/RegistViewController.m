@@ -51,12 +51,25 @@
     self.txtCodeImage.delegate = self;
     self.txtPhone.delegate = self;
     @weakify(self)
-    [[self.txtCodePhone.rac_textSignal filter:^BOOL(NSString *value) {
-        if (value.length==6) return YES;
-        return NO;
+    [[[self.txtCodePhone rac_signalForControlEvents:UIControlEventEditingChanged] filter:^BOOL(NSString *value) {
+        if (self.txtCodePhone.text.length==6&& self.txtCodeImage.text.length>0) {
+            return YES;
+        }else {
+            return NO;
+        }
     }] subscribeNext:^(id x) {
         @strongify(self)
         [self requestData:check_code_message method:POST];
+    }];
+    [[[self.txtCodeImage rac_signalForControlEvents:UIControlEventEditingDidEnd] filter:^BOOL(id value) {
+        if (self.txtCodeImage.text.length==6) {
+            return YES;
+        }else {
+            return NO;
+        }
+    }] subscribeNext:^(id x) {
+        @strongify(self)
+        [self requestData:check_image_code method:POST];
     }];
 }
 
@@ -97,6 +110,9 @@
         [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
         [request.requestParams setObject:self.txtCodePhone.text forKey:@"code"];
     }
+    if ([api isEqualToString:check_image_code]) {
+        request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"secure_key":self.model.result.secure_key,@"secure_code":self.txtCodeImage.text}];
+    }
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         __strong typeof (self)sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
@@ -132,6 +148,14 @@
                 controller.itemTitle = [self.title_item isEqualToString:@"注册"]?@"设置密码":@"重设密码";
                 controller.dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:wSelf.txtPhone.text,@"phone",wSelf.txtCodePhone.text,@"code", nil];
                 [sSelf.navigationController pushViewController:controller animated:YES];
+            }else {
+                [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+            }
+        }else if ([api isEqualToString:check_image_code]) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+            if ([dic[@"errCode"] integerValue] == 0) {
+                self.imageCodeIsOk = YES;
+                [self setCodeButtonStatus];
             }else {
                 [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
             }
@@ -173,19 +197,13 @@
         }else {
             [[ZToastManager ShardInstance] showtoast:@"请输入正确的手机号码"];
         }
-    }else  if (textField==self.txtCodeImage){
-//        if ([textField.text isEqualToString:self.model.result.secure_code]) {
-//            self.imageCodeIsOk = YES;
-//        }else {
-//            [[ZToastManager ShardInstance] showtoast:@"请输入正确的图片验证码"];
-//        }
-        self.imageCodeIsOk = YES;
     }
+}
+- (void)setCodeButtonStatus {
     if (!self.codeIsOk) {
         self.codeButton.enabled = self.phoneIsOK && self.imageCodeIsOk;
     }
     self.codeButton.backgroundColor = self.codeButton.enabled?[UIColor xjfStringToColor:@"#0061b0"]:SegementColor;
-    
 }
 /*
 #pragma mark - Navigation
