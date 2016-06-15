@@ -1936,7 +1936,7 @@
 				TargetAttributes = {
 					CDF57ABF1C9F825D00049AF0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 49X2X2Y4J5;
+						DevelopmentTeam = X9X5X3UP3M;
 					};
 				};
 			};
@@ -2384,7 +2384,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2414,7 +2414,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

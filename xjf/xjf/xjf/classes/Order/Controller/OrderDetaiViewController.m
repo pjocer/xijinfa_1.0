@@ -315,6 +315,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+        [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
         if (self.dataSource.count > 1 && self.dataSource) {
             [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSource];
         }

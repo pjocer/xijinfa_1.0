@@ -76,6 +76,7 @@
 @interface UserComponentCell () <UzysGridViewDelegate, UzysGridViewDataSource, UzysGridViewCellDelegate>
 @property(nonatomic, strong) NSMutableArray *images;
 @property(nonatomic, strong) NSMutableArray *titles;
+@property(nonatomic, strong) UILabel *goodsCount;
 @end
 
 @implementation UserComponentCell
@@ -104,6 +105,7 @@
     return 12;
 }
 
+
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     UserComponent *component = [[UserComponent alloc] initWithFrame:CGRectNull];
     if (index < self.titles.count) {
@@ -111,6 +113,22 @@
         component.image = image;
         component.title = self.titles[index];
     }
+    
+    if ([component.title isEqualToString:@"购物车"]) {
+        self.goodsCount = [[UILabel alloc] initWithFrame:CGRectNull];
+        [component addSubview:self.goodsCount];
+        [self.goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.equalTo(component);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+        }];
+        self.goodsCount.backgroundColor = [UIColor redColor];
+        self.goodsCount.layer.masksToBounds = YES;
+        self.goodsCount.layer.cornerRadius = 10.f;
+        self.goodsCount.textColor = [UIColor whiteColor];
+        self.goodsCount.font = FONT15;
+        self.goodsCount.textAlignment = NSTextAlignmentCenter;
+    }
+    
     return component;
 }
 
@@ -151,13 +169,13 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-//    if ([component.title isEqualToString:@"购物车"]) {
-//        
-//        if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
-//            component.goodsCount.hidden = NO;
-//            component.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
-//        }
-//    }
+    
+    if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
+        self.goodsCount.hidden = NO;
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+    } else {
+        self.goodsCount.hidden = YES;
+    }
 }
 
 @end

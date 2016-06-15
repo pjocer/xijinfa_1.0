@@ -26,13 +26,9 @@ static NSString *VipTableCell_id = @"VipTableCell_id";
 static CGFloat tableSectionHeaderH = 35;
 static CGFloat tableHeaderH = 200;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navigationItem.title = @"会员";
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self extendheadViewFor:Vip];
     [self initTabelView];
     [self requestLessonListApi:coursesProjectLessonDetailList method:GET];
 }

@@ -27,6 +27,7 @@
     [self.window makeKeyAndVisible];
     [ZPlatformShare initPlatformData];
     [[XJAccountManager defaultManager] verifyValid];
+    application.statusBarHidden = NO;
     return YES;
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

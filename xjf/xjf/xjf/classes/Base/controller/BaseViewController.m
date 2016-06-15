@@ -74,21 +74,26 @@ NSString *const Subscribe = @"SubscribeViewController";
 }
 
 - (void)initLeftItemWith:(NSString *)name {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 63, 24)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
-    imageView.image = [UIImage imageNamed:@"nav_left"];
-    [view addSubview:imageView];
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(29, 0, 34, 24)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 86, 22)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 34, 18)];
     if ([name isEqualToString:My]) {
         title.text = @"我的";
+        title.hidden = NO;
     }else if ([name isEqualToString:Index]) {
+        title.hidden = YES;
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:view.frame];
+        imageView.image = [UIImage imageNamed:@"indexLogo"];
+        [view addSubview:imageView];
         title.text = @"首页";
     }else if ([name isEqualToString:Topic]) {
         title.text = @"话题";
+        title.hidden = NO;
     }else if ([name isEqualToString:Vip]){
         title.text = @"会员";
+        title.hidden = NO;
     }
     title.font = FONT(17);
+    [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
     [view addSubview:title];
     UIBarButtonItem *item_left = [[UIBarButtonItem alloc] initWithCustomView:view];
     self.navigationItem.leftBarButtonItem = item_left;
