@@ -12,4 +12,5 @@
 
 ///开始监听当前网络状态
 + (void)startMonitoringAppCurrentNetworkReachabilityStatus;
+
 @end

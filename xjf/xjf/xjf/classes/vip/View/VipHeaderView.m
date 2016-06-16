@@ -10,21 +10,22 @@
 #import "XJAccountManager.h"
 #import <ReactiveCocoa/NSNotificationCenter+RACSupport.h>
 #import "UserProfileModel.h"
+
 @interface VipHeaderView ()
-@property (nonatomic, strong) UserProfileModel *userProfileModel;
-@property (nonatomic, strong) UIView *bottomView;
-@property (nonatomic, strong) UILabel *prompt;
-@property (nonatomic, strong) UIImageView *userImg;
-@property (nonatomic, strong) UILabel *userName;
-@property (nonatomic, strong) UIView *vipProgressBackGroudView;
-@property (nonatomic, strong) UIView *vipProgress;
-@property (nonatomic, strong) UILabel *levelLeftLabel;
-@property (nonatomic, strong) UILabel *levelRightLabel;
-@property (nonatomic, strong) UILabel *levelCenterLabel;
-@property (nonatomic, strong) UIImageView *levelCenterImg;
-@property (nonatomic, strong) UILabel *vipTitle;
-@property (nonatomic, strong) UILabel *vipEndDate;
-@property (nonatomic, strong) UIImageView *vipCrown;
+@property(nonatomic, strong) UserProfileModel *userProfileModel;
+@property(nonatomic, strong) UIView *bottomView;
+@property(nonatomic, strong) UILabel *prompt;
+@property(nonatomic, strong) UIImageView *userImg;
+@property(nonatomic, strong) UILabel *userName;
+@property(nonatomic, strong) UIView *vipProgressBackGroudView;
+@property(nonatomic, strong) UIView *vipProgress;
+@property(nonatomic, strong) UILabel *levelLeftLabel;
+@property(nonatomic, strong) UILabel *levelRightLabel;
+@property(nonatomic, strong) UILabel *levelCenterLabel;
+@property(nonatomic, strong) UIImageView *levelCenterImg;
+@property(nonatomic, strong) UILabel *vipTitle;
+@property(nonatomic, strong) UILabel *vipEndDate;
+@property(nonatomic, strong) UIImageView *vipCrown;
 @end
 
 @implementation VipHeaderView
@@ -44,12 +45,13 @@ static CGFloat vipTitleH = 14;
 static CGFloat vipCrownW = 21;
 static CGFloat vipCrownH = 18;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColorByFrame:self.bounds TopColor:[UIColor xjfStringToColor:@"#fae675"] BottomColor:[UIColor xjfStringToColor:@"#ffa800"] Layer:self.layer];
-        
+        [self setBackgroundColorByFrame:self.bounds TopColor:[UIColor xjfStringToColor:@"#fae675"]
+                            BottomColor:[UIColor xjfStringToColor:@"#ffa800"]
+                                  Layer:self.layer];
+
         //bottomView
         self.bottomView = [[UIView alloc] init];
         [self addSubview:self.bottomView];
@@ -59,7 +61,7 @@ static CGFloat vipCrownH = 18;
         }];
         self.bottomView.alpha = 0.3;
         self.bottomView.backgroundColor = [UIColor xjfStringToColor:@"#66000000"];
-        
+
         //prompt
         self.prompt = [[UILabel alloc] init];
         [self addSubview:self.prompt];
@@ -72,7 +74,7 @@ static CGFloat vipCrownH = 18;
         self.prompt.textAlignment = NSTextAlignmentLeft;
         self.prompt.text = @"登录后查看更多精彩";
         self.prompt.font = FONT12;
-        
+
         //vipProgressBackGroudView
         self.vipProgressBackGroudView = [[UIView alloc] init];
         [self addSubview:self.vipProgressBackGroudView];
@@ -82,7 +84,7 @@ static CGFloat vipCrownH = 18;
             make.top.equalTo(self).with.offset(vipProgressBackGroudViewTop);
             make.height.mas_equalTo(vipProgressBackGroudViewH);
         }];
-        
+
         //vipProgress
         //vipProgressBackGroudView
         self.vipProgress = [[UIView alloc] init];
@@ -94,7 +96,7 @@ static CGFloat vipCrownH = 18;
             make.height.mas_equalTo(vipProgressBackGroudViewH);
             make.width.mas_equalTo(self.vipProgressBackGroudView).multipliedBy(0.75);
         }];
-        
+
         //userImg
         self.userImg = [[UIImageView alloc] init];
         [self addSubview:self.userImg];
@@ -106,20 +108,20 @@ static CGFloat vipCrownH = 18;
         self.userImg.layer.masksToBounds = YES;
         self.userImg.layer.cornerRadius = userImageWAndH / 2;
         self.userImg.image = [UIImage imageNamed:@"user_unload"];
-     
+
         //userName
         self.userName = [[UILabel alloc] init];
         [self addSubview:self.userName];
         [self.userName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.userImg);
-            make.top.equalTo(self.userImg.mas_bottom).with.offset(pandding +5);
+            make.top.equalTo(self.userImg.mas_bottom).with.offset(pandding + 5);
             make.size.mas_equalTo(CGSizeMake(self.bounds.size.width / 2, userNameH));
         }];
         self.userName.textColor = [UIColor whiteColor];
         self.userName.textAlignment = NSTextAlignmentCenter;
         self.userName.text = @"登录/注册";
         self.userName.font = FONT15;
-        
+
         //login
         self.login = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.login];
@@ -127,7 +129,7 @@ static CGFloat vipCrownH = 18;
             make.top.left.right.equalTo(self.userImg);
             make.bottom.equalTo(self.userName);
         }];
-        
+
         //levelLeftLabel
         self.levelLeftLabel = [[UILabel alloc] init];
         [self addSubview:self.levelLeftLabel];
@@ -142,7 +144,7 @@ static CGFloat vipCrownH = 18;
         self.levelLeftLabel.backgroundColor = [UIColor whiteColor];
         self.levelLeftLabel.textAlignment = NSTextAlignmentCenter;
         self.levelLeftLabel.font = FONT15;
-        
+
         //levelRightLabel
         self.levelRightLabel = [[UILabel alloc] init];
         [self addSubview:self.levelRightLabel];
@@ -157,8 +159,8 @@ static CGFloat vipCrownH = 18;
         self.levelRightLabel.backgroundColor = [UIColor whiteColor];
         self.levelRightLabel.textAlignment = NSTextAlignmentCenter;
         self.levelRightLabel.font = FONT15;
-        
-         //levelCenterImg
+
+        //levelCenterImg
         self.levelCenterImg = [[UIImageView alloc] init];
         [self addSubview:self.levelCenterImg];
         self.levelCenterImg.image = [UIImage imageNamed:@"levelCenterImg"];
@@ -167,7 +169,7 @@ static CGFloat vipCrownH = 18;
             make.left.right.equalTo(self.userImg);
             make.height.mas_equalTo(levelCenterImgH);
         }];
-        
+
         //levelCenterLabel
         self.levelCenterLabel = [[UILabel alloc] init];
         [self addSubview:self.levelCenterLabel];
@@ -179,7 +181,7 @@ static CGFloat vipCrownH = 18;
         self.levelCenterLabel.textColor = [UIColor whiteColor];
         self.levelCenterLabel.textAlignment = NSTextAlignmentCenter;
         self.levelCenterLabel.font = FONT15;
-        
+
         //payVip
         self.payVip = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.payVip];
@@ -205,7 +207,7 @@ static CGFloat vipCrownH = 18;
         self.vipTitle.textColor = [UIColor whiteColor];
         self.vipTitle.textAlignment = NSTextAlignmentLeft;
         self.vipTitle.font = FONT12;
-        
+
         //vipCrown
         self.vipCrown = [[UIImageView alloc] init];
         [self addSubview:self.vipCrown];
@@ -214,7 +216,7 @@ static CGFloat vipCrownH = 18;
             make.left.equalTo(self.vipTitle.mas_right).with.offset(pandding);
             make.size.mas_equalTo(CGSizeMake(vipCrownW, vipCrownH));
         }];
-        
+
         //vipEndDate
         self.vipEndDate = [[UILabel alloc] init];
         [self addSubview:self.vipEndDate];
@@ -227,10 +229,11 @@ static CGFloat vipCrownH = 18;
         self.vipEndDate.textColor = [UIColor whiteColor];
         self.vipEndDate.textAlignment = NSTextAlignmentLeft;
         self.vipEndDate.font = FONT12;
-       
-        self.userProfileModel = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
+
+        self.userProfileModel = [[UserProfileModel alloc]
+                initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
         [self setUserInfo];
-        
+
         @weakify(self)
         ReceivedNotification(self, UserInfoDidChangedNotification, ^(NSNotification *notification) {
             @strongify(self)
@@ -239,16 +242,15 @@ static CGFloat vipCrownH = 18;
                 [self setUserInfo];
             });
         });
-        
+
     }
     return self;
 }
 
-- (void)setUserInfo
-{
+- (void)setUserInfo {
     //用户未登录
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         self.userImg.image = [UIImage imageNamed:@"user_unload"];
         self.prompt.text = @"登录后查看更多精彩";
         self.userName.text = @"登录/注册";
@@ -260,7 +262,7 @@ static CGFloat vipCrownH = 18;
         self.levelRightLabel.hidden = YES;
         self.payVip.hidden = YES;
     }
-    //用户已经登录
+        //用户已经登录
     else {
         [self.userImg sd_setImageWithURL:[NSURL URLWithString:self.userProfileModel.result.avatar]];
         self.prompt.text = @"普通用户";
@@ -272,32 +274,32 @@ static CGFloat vipCrownH = 18;
         self.levelCenterLabel.hidden = NO;
         self.levelRightLabel.hidden = NO;
         self.payVip.hidden = NO;
-        self.levelLeftLabel.text = [NSString stringWithFormat:@"Lv.%@",self.userProfileModel.result.level];
-        self.levelCenterLabel.text = [NSString stringWithFormat:@"Lv.%d",self.userProfileModel.result.level.intValue + 1];
-        self.levelRightLabel.text = [NSString stringWithFormat:@"Lv.%d",self.userProfileModel.result.level.intValue + 2];
+        self.levelLeftLabel.text =
+                [NSString stringWithFormat:@"Lv.%@", self.userProfileModel.result.level];
+        self.levelCenterLabel.text =
+                [NSString stringWithFormat:@"Lv.%d", self.userProfileModel.result.level.intValue + 1];
+        self.levelRightLabel.text =
+                [NSString stringWithFormat:@"Lv.%d", self.userProfileModel.result.level.intValue + 2];
         //是否是会员
         if (self.userProfileModel.result.membership.count != 0) {
             [self.payVip setTitle:@"续费会员" forState:UIControlStateNormal];
             UserProfileMembership *model = self.userProfileModel.result.membership.firstObject;
             self.vipTitle.text = model.title;
-            self.vipEndDate.text = [NSString stringWithFormat:@"%@到期",model.end_time];
+            self.vipEndDate.text = [NSString stringWithFormat:@"%@到期", model.end_time];
             self.vipCrown.image = [UIImage imageNamed:@"vip_tie"];
             self.prompt.hidden = YES;
             self.vipTitle.hidden = NO;
             self.vipEndDate.hidden = NO;
             self.vipCrown.hidden = NO;
 
-        }else {
+        } else {
             [self.payVip setTitle:@"开通会员" forState:UIControlStateNormal];
             self.prompt.hidden = NO;
             self.vipTitle.hidden = YES;
             self.vipEndDate.hidden = YES;
             self.vipCrown.hidden = YES;
         }
-        
-        
     }
 }
-
 
 @end
