@@ -12,7 +12,7 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 
-static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
+static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
 
 @interface XjfRequest ()
 

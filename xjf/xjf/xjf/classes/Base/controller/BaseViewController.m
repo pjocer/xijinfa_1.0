@@ -34,8 +34,9 @@ NSString *const Subscribe = @"SubscribeViewController";
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.nav_title = @"";
-    
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] init];
+    back.title = @"";
+    self.navigationItem.backBarButtonItem = back;;
 }
 
 - (void)viewDidLoad {
