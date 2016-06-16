@@ -12,5 +12,7 @@
 
 @interface OrderDetaiViewController : OrderDetailBaseViewController
 @property(nonatomic, strong) NSMutableArray *dataSource;
+@property(nonatomic, strong) NSMutableArray *dataSourceLesson;
+@property(nonatomic, strong) NSMutableArray *dataSourceTraining;
 @property(nonatomic, strong) OrderDataModel *orderDataModel;
 @end

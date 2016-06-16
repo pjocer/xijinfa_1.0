@@ -328,12 +328,21 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        [[XJAccountManager defaultManager]
-                updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
-        if (self.dataSource.count > 1 && self.dataSource) {
-            [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSource];
+        if (self.dataSource && self.dataSource.count > 0) {
+            if (self.dataSourceTraining.count > 0 || self.dataSourceLesson.count > 0) {
+                [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSourceLesson];
+                [[XJMarket sharedMarket] deleteGoodsFrom:XJ_CONGYE_PEIXUN_SHOP goods:self.dataSourceTraining];
+            }
+        }else {
+            if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
+                [[XJAccountManager defaultManager]
+                 updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
+            }
         }
-    }                                     failed:^{
+  
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }failed:^{
 
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
         if (self.dataSource.count != 1) {

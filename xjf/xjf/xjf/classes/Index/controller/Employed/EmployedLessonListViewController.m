@@ -83,9 +83,9 @@ static CGFloat selViewH = 3;
     self.goodsCount.textColor = [UIColor whiteColor];
     self.goodsCount.font = FONT15;
     self.goodsCount.textAlignment = NSTextAlignmentCenter;
-    if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
+    if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0 || [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count] != 0) {
         self.goodsCount.hidden = NO;
-        self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] + [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count]];
     } else {
         self.goodsCount.hidden = YES;
     }

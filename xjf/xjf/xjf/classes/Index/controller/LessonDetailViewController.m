@@ -139,9 +139,9 @@ static CGFloat payViewH = 285;
     self.goodsCount.textColor = [UIColor whiteColor];
     self.goodsCount.font = FONT15;
     self.goodsCount.textAlignment = NSTextAlignmentCenter;
-    if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
+    if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0 || [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count] != 0) {
         self.goodsCount.hidden = NO;
-        self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] + [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count]];
     } else {
         self.goodsCount.hidden = YES;
     }
@@ -232,12 +232,17 @@ static CGFloat payViewH = 285;
 #pragma mark addShoppingCart
 
 - (void)addShoppingCart:(UIButton *)sender {
-    if ([[XJMarket sharedMarket] isAlreadyExists:self.model key:XJ_XUETANG_SHOP]) {
+    if ([[XJMarket sharedMarket] isAlreadyExists:self.model key:XJ_XUETANG_SHOP] || [[XJMarket sharedMarket] isAlreadyExists:self.model key:XJ_CONGYE_PEIXUN_SHOP]) {
         [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
     } else {
         [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
-        [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_XUETANG_SHOP];
-        self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+        if ([self.model.department isEqualToString:@"dept3"]) {
+           [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_XUETANG_SHOP];
+        }else if ([self.model.department isEqualToString:@"dept4"]){
+            [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_CONGYE_PEIXUN_SHOP];
+        }
+        
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] + [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count]];
         if (self.goodsCount.hidden == YES) {
             self.goodsCount.hidden = NO;
         }

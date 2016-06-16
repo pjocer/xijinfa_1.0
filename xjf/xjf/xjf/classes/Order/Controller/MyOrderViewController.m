@@ -306,9 +306,17 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 - (void)orderInfoDidChanged:(XJOrder *)order {
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary]
-                                             isVipChanged:YES];
-    }                                     failed:^{
+        [self requestAllOrderData:queryAllOrder method:GET];
+        if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] ||
+            self.orderfooterView.model.items.count == 0) {
+            [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary]
+                                                 isVipChanged:YES];
+        }
+        
+        
+        
+
+    } failed:^{
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
     }];
 }

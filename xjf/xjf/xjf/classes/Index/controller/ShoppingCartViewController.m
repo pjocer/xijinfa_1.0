@@ -43,7 +43,7 @@ static CGFloat submitOrdersViewHeight = 50;
     [super viewDidLoad];
     [self initMainUI];
 
-    self.dataSourceTraining = [NSMutableArray array];
+    self.dataSourceTraining = [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] mutableCopy];
     self.dataSourceLesson = [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] mutableCopy];
 }
 
@@ -149,6 +149,8 @@ static CGFloat submitOrdersViewHeight = 50;
     } else {
         OrderDetaiViewController *oderDetaiPage = [OrderDetaiViewController new];
         oderDetaiPage.dataSource = tempArray;
+        oderDetaiPage.dataSourceLesson = self.dataSourceLesson;
+        oderDetaiPage.dataSourceTraining = self.dataSourceTraining;
         [self.navigationController pushViewController:oderDetaiPage animated:YES];
     }
 
@@ -279,6 +281,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
         }
         if (indexPath.section == 1) {
+            TalkGridModel *model = self.dataSourceTraining[indexPath.row];
+            if (model.isSelected) {
+                tempPrcie -= model.price.floatValue;
+                self.submitOrdersView.price.text = [NSString stringWithFormat:@"%.2lf", tempPrcie / 100];
+            }
+            
+            [[XJMarket sharedMarket] deleteGoodsFrom:XJ_CONGYE_PEIXUN_SHOP goods:@[model]];
+            
             [self.dataSourceTraining removeObjectAtIndex:indexPath.row];
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
         }
@@ -290,7 +300,13 @@ static CGFloat tempPrcie = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = (VideoListCell *) [tableView cellForRowAtIndexPath:indexPath];
-    TalkGridModel *model = self.dataSourceLesson[indexPath.row];
+    TalkGridModel *model = [[TalkGridModel alloc] init];
+    if (indexPath.section == 0) {
+        model = self.dataSourceLesson[indexPath.row];
+    } else if (indexPath.section == 1) {
+        model = self.dataSourceTraining[indexPath.row];
+    }
+    
     if (model.isSelected) {
         cell.selectedLabel.backgroundColor = [UIColor whiteColor];
         cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
@@ -303,6 +319,12 @@ static CGFloat tempPrcie = 0;
         tempPrcie += model.price.floatValue;
     }
     self.submitOrdersView.price.text = [NSString stringWithFormat:@"%.2lf", tempPrcie / 100];
+}
+
+- (void)dealloc {
+    if (tempPrcie) {
+        tempPrcie = 0;
+    }
 }
 
 @end
