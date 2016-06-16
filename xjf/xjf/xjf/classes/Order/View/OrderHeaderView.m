@@ -53,19 +53,18 @@
     return self;
 }
 
-- (void)setModel:(OrderDataModel *)model
-{
+- (void)setModel:(OrderDataModel *)model {
     if (model) {
         _model = model;
     }
     if (model.id.length > 0) {
-       self.orderNumber.text = [NSString stringWithFormat:@"订单编号: %@",model.id];
-        self.orderDate.text = [NSString stringWithFormat:@"%@",model.created_at];
+        self.orderNumber.text = [NSString stringWithFormat:@"订单编号: %@", model.id];
+        self.orderDate.text = [NSString stringWithFormat:@"%@", model.created_at];
     } else {
         self.orderNumber.text = [NSString getSystemDate];
         self.orderDate.text = @"";
     }
-    
+
 }
 
 @end

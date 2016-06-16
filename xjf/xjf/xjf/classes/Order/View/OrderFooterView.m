@@ -93,8 +93,8 @@
     }
     return self;
 }
-- (void)setModel:(OrderDataModel *)model
-{
+
+- (void)setModel:(OrderDataModel *)model {
     if (model) {
         _model = model;
     }
@@ -103,8 +103,8 @@
         self.orderStatus.text = @"订单已完成";
         if ([model.billing_channel isEqualToString:@"alipay"]) {
             self.payStyleName.text = @"支付宝";
-        }else if ([model.billing_channel isEqualToString:@"wechat"]) {
-           self.payStyleName.text = @"微信";
+        } else if ([model.billing_channel isEqualToString:@"wechat"]) {
+            self.payStyleName.text = @"微信";
         }
     }
     else if (model.status == 1) {
@@ -116,7 +116,7 @@
     else if (model.status == 4) {
         self.orderStatus.text = @"订单冲突（已支付)";
     }
-    
+
 }
 
 - (void)layoutSubviews {

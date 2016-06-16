@@ -15,14 +15,16 @@
 #import "OrderDetaiViewController.h"
 #import "OrderModel.h"
 #import "XJAccountManager.h"
-@interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource, MyOrderFootrtViewDelegate,OrderInfoDidChangedDelegate>
+
+@interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource,
+        MyOrderFootrtViewDelegate, OrderInfoDidChangedDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) PayView *payView;
 @property(nonatomic, strong) UIView *payingBackGroudView;
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) MyOrderFooterView *orderfooterView;
 @property(nonatomic, assign) PayStyle style;
-@property (nonatomic, strong) OrderModel *orderModel;
+@property(nonatomic, strong) OrderModel *orderModel;
 @property(nonatomic, strong) XJOrder *order;
 @end
 
@@ -40,7 +42,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"我的订单";
-    
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -53,7 +55,9 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     [self initMainUI];
     [self requestAllOrderData:queryAllOrder method:GET];
 }
+
 #pragma mark -requestData
+
 - (void)requestAllOrderData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
@@ -65,13 +69,13 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
             __strong typeof(self) sSelf = wSelf;
             sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
             [sSelf.tableView reloadData];
-            
+
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
     } else if (method == PUT) {
         request.requestParams = self.requestParams.mutableCopy;
-   
+
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             [self requestAllOrderData:queryAllOrder method:GET];
         }                  failedBlock:^(NSError *_Nullable error) {
@@ -135,10 +139,10 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
     if ([orderDataModel.type isEqualToString:@"subscribe"] || orderDataModel.items.count == 0) {
         //Vip
-            VipModel *vip = [[VipModel alloc] init];
-            vip.price = [NSString stringWithFormat:@"%lf",[orderDataModel.amount_display floatValue] * 100];
-            vip.period = orderDataModel.membership.period;
-            cell.vipModel = vip;
+        VipModel *vip = [[VipModel alloc] init];
+        vip.price = [NSString stringWithFormat:@"%lf", [orderDataModel.amount_display floatValue] * 100];
+        vip.period = orderDataModel.membership.period;
+        cell.vipModel = vip;
         cell.teacherName.hidden = YES;
         cell.lessonCount.hidden = YES;
     } else if ([orderDataModel.type isEqualToString:@"purchase"]) {
@@ -184,14 +188,16 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     for (TalkGridModel *model in self.orderfooterView.model.items) {
         temp += model.price.floatValue;
     }
-    
+
     if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] || self.orderfooterView.model.items.count == 0) {
         //Vip
-        self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共1件商品 实际付款:￥%.2lf",[self.orderfooterView.model.amount_display floatValue]];
+        self.orderfooterView.orderDescription.text = [NSString
+                stringWithFormat:@"共1件商品 实际付款:￥%.2lf", [self.orderfooterView.model.amount_display floatValue]];
 
     } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
         //lessons
-    self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.orderfooterView.model.items.count,temp/100];
+        self.orderfooterView.orderDescription.text = [NSString
+                stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf", self.orderfooterView.model.items.count, temp / 100];
     }
     return self.orderfooterView;
 }
@@ -210,8 +216,9 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     }
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
         [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
-            self.requestParams = @{@"status":[NSString stringWithFormat:@"2"]};
-            [self requestAllOrderData:[NSString stringWithFormat:@"%@%@",cancelOrder,orderFooterView.model.id] method:PUT];
+            self.requestParams = @{@"status" : [NSString stringWithFormat:@"2"]};
+            [self                                                       requestAllOrderData:[NSString
+                    stringWithFormat:@"%@%@", cancelOrder, orderFooterView.model.id] method:PUT];
         }];
     }
 }
@@ -246,8 +253,8 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 }
 
 #pragma mark tableViewDidSelected
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderDetaiViewController *orderDetail = [OrderDetaiViewController new];
     orderDetail.orderDataModel = self.orderModel.result.data[indexPath.section];
     [self.navigationController pushViewController:orderDetail animated:YES];
@@ -272,10 +279,12 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         [tempArray addObject:c];
     }
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
-    }{
-        if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] || self.orderfooterView.model.items.count == 0) {
+    }
+    {
+        if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] ||
+                self.orderfooterView.model.items.count == 0) {
             //Vip
             NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -289,18 +298,21 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
             self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
             [self orderInfoDidChanged:self.order];
         }
-      
+
     }
 
 }
--(void)orderInfoDidChanged:(XJOrder *)order {
+
+- (void)orderInfoDidChanged:(XJOrder *)order {
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];    
-    }failed:^{
+        [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary]
+                                             isVipChanged:YES];
+    }                                     failed:^{
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
     }];
 }
+
 #pragma mark - payViewCancel
 
 - (void)payViewCancel:(UIButton *)sender {

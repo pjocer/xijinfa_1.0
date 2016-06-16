@@ -16,7 +16,8 @@
 #import "AlertUtils.h"
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
-@interface VipOrderDetaiViewController ()<UITableViewDelegate, UITableViewDataSource,OrderInfoDidChangedDelegate>
+
+@interface VipOrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) UIButton *cancel;
 @property(nonatomic, strong) UIButton *nowPay;
@@ -45,7 +46,7 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = NO;
-    
+
 }
 
 - (void)viewDidLoad {
@@ -54,6 +55,7 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 }
 
 #pragma mark - initMainUI
+
 - (void)initMainUI {
     [self setTableView];
     [self nowPayOrCancel];
@@ -69,11 +71,11 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
         make.bottom.equalTo(self.view).with.offset(-BottomPayButtonH);
     }];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+
     if (iPhone5) {
         self.tableView.rowHeight = 100;
     } else {
@@ -81,10 +83,9 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:VipOrderDetaiCell_id];
 }
-
 
 
 #pragma mark TabelViewDataSource
@@ -102,13 +103,13 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     cell.vipModel = self.vipModel;
-    
-    
+
+
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
+
     return tableHeader_NormalH;
 }
 
@@ -122,8 +123,8 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     self.orderheaderView = [[OrderHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
 //    self.orderheaderView.model = self.orderDataModel;
-    self.orderheaderView .orderNumber.text = [NSString getSystemDate];
-    self.orderheaderView .orderDate.text = @"";
+    self.orderheaderView.orderNumber.text = [NSString getSystemDate];
+    self.orderheaderView.orderDate.text = @"";
     return self.orderheaderView;
 }
 
@@ -135,61 +136,65 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 //        for (TalkGridModel *model in self.dataSource) {
 //            temp += model.price.floatValue;
 //        }
-//        self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.dataSource.count,temp/100];
+//        self.orderfooterView.orderDescription.text =
+// [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.dataSource.count,temp/100];
 //    }else {
 //        for (TalkGridModel *model in self.orderfooterView.model.items) {
 //            temp += model.price.floatValue;
 //        }
-//        self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.orderfooterView.model.items.count,temp/100];
+//        self.orderfooterView.orderDescription.text =
+// [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.orderfooterView.model.items.count,temp/100];
 //    }
-    
-      self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共1件商品 实际付款:￥%.2lf",[self.vipModel.price floatValue] / 100];
-    
+
+    self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共1件商品 实际付款:￥%.2lf",
+                    [self.vipModel.price floatValue] / 100];
+
     return self.orderfooterView;
 }
 
 
 #pragma mark --nowPayOrCancel--
+
 - (void)nowPayOrCancel {
     self.cancel = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:self.cancel];
     self.cancel.frame = CGRectMake(0,
-                                   self.view.frame.size.height - BottomPayButtonH - HEADHEIGHT,
-                                   self.view.frame.size.width / 2,
-                                   BottomPayButtonH);
+            self.view.frame.size.height - BottomPayButtonH - HEADHEIGHT,
+            self.view.frame.size.width / 2,
+            BottomPayButtonH);
     self.cancel.backgroundColor = AssistColor;
     [self.cancel setTitle:@"取消订单" forState:UIControlStateNormal];
     self.cancel.tintColor = [UIColor whiteColor];
     self.cancel.titleLabel.font = FONT15;
     [self.cancel
-     addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
-    
+            addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+
     self.nowPay = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:self.nowPay];
     self.nowPay.frame = CGRectMake(CGRectGetMaxX(self.cancel.frame),
-                                   self.view.frame.size.height - BottomPayButtonH - HEADHEIGHT,
-                                   self.view.frame.size.width / 2,
-                                   BottomPayButtonH);
+            self.view.frame.size.height - BottomPayButtonH - HEADHEIGHT,
+            self.view.frame.size.width / 2,
+            BottomPayButtonH);
     self.nowPay.backgroundColor = [UIColor redColor];
     [self.nowPay setTitle:@"立即支付" forState:UIControlStateNormal];
     self.nowPay.tintColor = [UIColor whiteColor];
     self.nowPay.titleLabel.font = FONT15;
     [self.nowPay addTarget:self action:@selector(nowPay:)
           forControlEvents:UIControlEventTouchUpInside];
-    
+
     //PayView
     self.payingBackGroudView = [[UIView alloc] initWithFrame:self.view.bounds];
     self.payingBackGroudView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.payingBackGroudView];
     self.payingBackGroudView.hidden = YES;
     self.payingBackGroudView.alpha = 0.2;
-    
+
     self.payView = [[NSBundle mainBundle]
-                    loadNibNamed:@"PayView" owner:self options:nil].firstObject;
+            loadNibNamed:@"PayView" owner:self options:nil].firstObject;
     self.payView.frame = CGRectMake(0,
-                                    self.view.bounds.size.height,
-                                    self.view.bounds.size.width,
-                                    payViewH);
+            self.view.bounds.size.height,
+            self.view.bounds.size.width,
+            payViewH);
     [self.view addSubview:self.payView];
     [self.payView.aliPay addTarget:self
                             action:@selector(aliPay:)
@@ -203,31 +208,35 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 }
 
 #pragma mark cancel
+
 - (void)cancel:(UIButton *)sender {
     [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
     }];
 }
 
 #pragma mark nowPay
+
 - (void)nowPay:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.payView.frame = CGRectMake(0,
-                                        self.view.bounds.size.height - payViewH,
-                                        self.view.bounds.size.width,
-                                        payViewH);
+                self.view.bounds.size.height - payViewH,
+                self.view.bounds.size.width,
+                payViewH);
     }];
     self.payingBackGroudView.hidden = NO;
 }
 
 #pragma mark - aliPay
+
 - (void)aliPay:(UIButton *)sender {
     [self payByPayStyle:Alipay];
 }
 
 #pragma mark - WeixinPay
+
 - (void)WeixinPay:(UIButton *)sender {
     [self payByPayStyle:WechatPay];
 }
@@ -235,30 +244,34 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 - (void)payByPayStyle:(PayStyle)stayle {
     self.style = stayle;
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
     } else {
         self.order = [[XJMarket sharedMarket] createVipOrderWith:self.dicData target:self];
         [self orderInfoDidChanged:self.order];
     }
 }
--(void)orderInfoDidChanged:(XJOrder *)order {
+
+- (void)orderInfoDidChanged:(XJOrder *)order {
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
-    } failed:^{
+        [[XJAccountManager defaultManager]
+                updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
+    }                                     failed:^{
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
         MyOrderViewController *myOrderPage = [MyOrderViewController new];
         [self.navigationController pushViewController:myOrderPage animated:YES];
     }];
 }
+
 #pragma mark - payViewCancel
+
 - (void)payViewCancel:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.payView.frame = CGRectMake(0,
-                                        self.view.bounds.size.height,
-                                        self.view.bounds.size.width,
-                                        payViewH);
+                self.view.bounds.size.height,
+                self.view.bounds.size.width,
+                payViewH);
     }];
     self.payingBackGroudView.hidden = YES;
 }

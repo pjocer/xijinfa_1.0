@@ -109,9 +109,9 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 - (void)handleData {
-    [self                                                                             requestCommentsData:
+    [self  requestCommentsData:
             [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
-    [self                                                           requestLessonListData:
+    [self requestLessonListData:
             [NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
     [self sendPlayerHistoryToServerData:history method:POST];
 }
@@ -145,7 +145,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-            [self                                                                             requestCommentsData:
+            [self requestCommentsData:
                     [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];

@@ -111,8 +111,7 @@
     }
 }
 
-- (void)setModel:(OrderDataModel *)model
-{
+- (void)setModel:(OrderDataModel *)model {
     if (model) {
         _model = model;
     }
@@ -129,7 +128,7 @@
     else if (model.status == 4) {
         self.orderStatus.text = @"订单冲突（已支付)";
     }
-    
+
 }
 
 - (void)layoutSubviews {

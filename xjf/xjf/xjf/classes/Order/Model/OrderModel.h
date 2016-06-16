@@ -8,13 +8,14 @@
 
 #import <JSONModel/JSONModel.h>
 #import "TalkGridModel.h"
+
 @protocol OrderDataModel
 @end
 
 
 @interface OrderMembershipModel : JSONModel
-@property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSString *period;
+@property(nonatomic, strong) NSString *type;
+@property(nonatomic, strong) NSString *period;
 @end
 
 @interface OrderDataModel : JSONModel
@@ -29,10 +30,10 @@
 @property(nonatomic, strong) NSString *created_at;
 @property(nonatomic, strong) NSString *updated_at;
 @property(nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *items;
-@property (nonatomic, strong) OrderMembershipModel *membership;
-@property (nonatomic, strong) NSString *amount_display;
-@property (nonatomic, strong) NSString *billing_channel;
-@property (nonatomic, strong) NSString *billing_reference_id;
+@property(nonatomic, strong) OrderMembershipModel *membership;
+@property(nonatomic, strong) NSString *amount_display;
+@property(nonatomic, strong) NSString *billing_channel;
+@property(nonatomic, strong) NSString *billing_reference_id;
 @end
 
 

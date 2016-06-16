@@ -17,7 +17,7 @@
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
 
-@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource,OrderInfoDidChangedDelegate>
+@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) UIButton *cancel;
 @property(nonatomic, strong) UIButton *nowPay;
@@ -25,9 +25,9 @@
 @property(nonatomic, strong) UIView *payingBackGroudView;
 @property(nonatomic, strong) OrderHeaderView *orderheaderView;
 @property(nonatomic, strong) OrderFooterView *orderfooterView;
-@property (nonatomic, strong) NSDictionary *requestParams;
-@property (nonatomic, assign) PayStyle style;
-@property (nonatomic, strong) XJOrder *order;
+@property(nonatomic, strong) NSDictionary *requestParams;
+@property(nonatomic, assign) PayStyle style;
+@property(nonatomic, strong) XJOrder *order;
 @end
 
 @implementation OrderDetaiViewController
@@ -108,7 +108,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     }
     if ([self.orderDataModel.type isEqualToString:@"subscribe"]) {
         return 1;
-    }else if ([self.orderDataModel.type isEqualToString:@"purchase"]){
+    } else if ([self.orderDataModel.type isEqualToString:@"purchase"]) {
         return self.orderDataModel.items.count;
     }
     return 0;
@@ -124,12 +124,12 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     if (self.dataSource.count != 0) {
         cell.model = self.dataSource[indexPath.row];
     } else {
-        
-        
+
+
         if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
             //Vip
             VipModel *vip = [[VipModel alloc] init];
-            vip.price = [NSString stringWithFormat:@"%lf",[self.orderDataModel.amount_display floatValue] * 100];
+            vip.price = [NSString stringWithFormat:@"%lf", [self.orderDataModel.amount_display floatValue] * 100];
             vip.period = self.orderDataModel.membership.period;
             cell.vipModel = vip;
         } else if ([self.orderDataModel.type isEqualToString:@"purchase"]) {
@@ -154,7 +154,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     self.orderheaderView = [[OrderHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 0)];
-       self.orderheaderView.model = self.orderDataModel;
+    self.orderheaderView.model = self.orderDataModel;
     return self.orderheaderView;
 }
 
@@ -166,28 +166,34 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
         for (TalkGridModel *model in self.dataSource) {
             temp += model.price.floatValue;
         }
-          self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.dataSource.count,temp/100];
-    }else {
+        self.orderfooterView.orderDescription.text =
+                [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf", self.dataSource.count, temp / 100];
+    } else {
         for (TalkGridModel *model in self.orderfooterView.model.items) {
             temp += model.price.floatValue;
         }
-        if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] || self.orderfooterView.model.items.count == 0) {
+        if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] ||
+                self.orderfooterView.model.items.count == 0) {
             //Vip
-            self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共1件商品 实际付款:￥%.2lf",[self.orderfooterView.model.amount_display floatValue]];
-            
+            self.orderfooterView.orderDescription.text =
+                    [NSString stringWithFormat:@"共1件商品 实际付款:￥%.2lf",
+                                               [self.orderfooterView.model.amount_display floatValue]];
+
         } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
             //lessons
-            self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",self.orderfooterView.model.items.count,temp/100];
+            self.orderfooterView.orderDescription.text =
+                    [NSString stringWithFormat:@"共x%ld件商品 实际付款:￥%.2lf",
+                                               self.orderfooterView.model.items.count, temp / 100];
         }
     }
-    
-    
-    
+
+
     return self.orderfooterView;
 }
 
 
 #pragma mark --nowPayOrCancel--
+
 - (void)nowPayOrCancel {
     self.cancel = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:self.cancel];
@@ -241,20 +247,24 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 #pragma mark cancel
+
 - (void)cancel:(UIButton *)sender {
     [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
         if (self.dataSource.count == 0) {
-            MyOrderViewController *tempVC = self.navigationController.viewControllers[self.navigationController.viewControllers.count-2];
-            tempVC.requestParams = @{@"status":[NSString stringWithFormat:@"2"]};
-            [tempVC requestAllOrderData:[NSString stringWithFormat:@"/api/order/%@",self.orderDataModel.id] method:PUT];
+            MyOrderViewController *tempVC =
+                    self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
+            tempVC.requestParams = @{@"status" : [NSString stringWithFormat:@"2"]};
+            [tempVC requestAllOrderData:[NSString stringWithFormat:@"/api/order/%@", self.orderDataModel.id] method:PUT];
+
         }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-           [self.navigationController popViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
         });
     }];
 }
 
 #pragma mark nowPay
+
 - (void)nowPay:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.payView.frame = CGRectMake(0,
@@ -266,32 +276,34 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 }
 
 #pragma mark - aliPay
+
 - (void)aliPay:(UIButton *)sender {
     [self payByPayStyle:Alipay];
 }
 
 #pragma mark - WeixinPay
+
 - (void)WeixinPay:(UIButton *)sender {
     [self payByPayStyle:WechatPay];
 }
 
 - (void)payByPayStyle:(PayStyle)stayle {
-     NSArray *tempArray = [NSArray array];
+    NSArray *tempArray = [NSArray array];
     self.style = stayle;
     if (self.dataSource.count != 0) {
         tempArray = self.dataSource;
     } else {
         tempArray = self.orderDataModel.items;
     }
-   
+
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
     } else {
         if (self.dataSource != 0) {
             self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
             [self orderInfoDidChanged:self.order];
-        }else {
+        } else {
             if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
                 //Vip
                 NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
@@ -309,18 +321,20 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
         }
     }
 }
--(void)orderInfoDidChanged:(XJOrder *)order {
-    
-    NSLog(@"%@",self.navigationController.viewControllers);
-    
+
+- (void)orderInfoDidChanged:(XJOrder *)order {
+
+    NSLog(@"%@", self.navigationController.viewControllers);
+
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
+        [[XJAccountManager defaultManager]
+                updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
         if (self.dataSource.count > 1 && self.dataSource) {
             [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSource];
         }
-    } failed:^{
-        
+    }                                     failed:^{
+
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
         if (self.dataSource.count != 1) {
             MyOrderViewController *myOrderPage = [MyOrderViewController new];
@@ -328,7 +342,9 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
         }
     }];
 }
+
 #pragma mark - payViewCancel
+
 - (void)payViewCancel:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.payView.frame = CGRectMake(0,
