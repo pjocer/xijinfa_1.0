@@ -324,7 +324,7 @@
         if (text==nil) {
             text = [NSString stringWithFormat:@"%@",txt];
         }else {
-            text = [NSString stringWithFormat:@"%@/%@",text,txt];
+            text = [NSString stringWithFormat:@"%@,%@",text,txt];
         }
         objc_setAssociatedObject(self.tableview, @"content", text, OBJC_ASSOCIATION_COPY_NONATOMIC);
     } cancelSelected:^(NSString *txt) {
@@ -338,7 +338,7 @@
                 if (tableContent==nil) {
                     tableContent = [NSString stringWithFormat:@"%@",str];
                 }else {
-                    tableContent = [NSString stringWithFormat:@"%@/%@",tableContent,str];
+                    tableContent = [NSString stringWithFormat:@"%@,%@",tableContent,str];
                 }
             }
         }
@@ -347,7 +347,7 @@
 }
 - (NSMutableArray *)getTableViewContentArray {
     NSString *text = objc_getAssociatedObject(self.tableview, @"content");
-    NSMutableArray *array = [NSMutableArray arrayWithArray:[text componentsSeparatedByString:@"/"]];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[text componentsSeparatedByString:@","]];
     return array;
 }
 @end

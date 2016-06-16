@@ -8,6 +8,8 @@
 
 #import "UserInfoSection1.h"
 #import "AlertUtils.h"
+#import "XJAccountManager.h"
+#import "CitySelecter.h"
 
 @interface UserInfoSection1 ()
 @property (weak, nonatomic) IBOutlet UIView *sexView;
@@ -40,7 +42,8 @@
             break;
         case 771:
         {
-            
+            UIViewController *controller = getCurrentDisplayController();
+            [controller.navigationController pushViewController:[CitySelecter new] animated:YES];
         }
             break;
         case 772:
