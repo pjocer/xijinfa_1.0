@@ -80,7 +80,8 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
         [[ZToastManager ShardInstance] hideprogress];
         if (!self.tableView.mj_footer) {
             //mj_footer
-            self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+            self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
+                                                                            refreshingAction:@selector(loadMoreData)];
         }
     }                  failedBlock:^(NSError *_Nullable error) {
         __strong typeof(self) sSelf = wSelf;

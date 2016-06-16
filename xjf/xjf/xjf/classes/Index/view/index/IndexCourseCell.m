@@ -11,83 +11,85 @@
 #import "UzysGridView.h"
 #import "CourseGridViewCell.h"
 #import "ProjectListByModel.h"
-@interface IndexCourseCell()<UzysGridViewDelegate,UzysGridViewDataSource>
-@property(nonatomic,strong)IndexSectionView *sectionView;
-@property(nonatomic,strong)UzysGridView *gridView;
-@property(nonatomic,strong)ProjectListByModel *model;
+
+@interface IndexCourseCell () <UzysGridViewDelegate, UzysGridViewDataSource>
+@property(nonatomic, strong) IndexSectionView *sectionView;
+@property(nonatomic, strong) UzysGridView *gridView;
+@property(nonatomic, strong) ProjectListByModel *model;
 @end
 
 @implementation IndexCourseCell
-@synthesize gridView=_gridView;
+@synthesize gridView = _gridView;
 
--(void)setCallBack:(void(^)(BEventType,UIView*,id,id,NSIndexPath *))callback
-{
-    self.actionBlock=callback;
+- (void)setCallBack:(void (^)(BEventType, UIView *, id, id, NSIndexPath *))callback {
+    self.actionBlock = callback;
 }
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self)
-    {
+    if (self) {
         _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-        _sectionView.titleLabel.text=@" 从业培训";
-        _sectionView.moreLabel.text=@"";
-        _sectionView.userInteractionEnabled =YES;
+        _sectionView.titleLabel.text = @" 从业培训";
+        _sectionView.moreLabel.text = @"";
+        _sectionView.userInteractionEnabled = YES;
         [self addSubview:_sectionView];
         //
-        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height-35) numOfRow:3 numOfColumns:1 cellMargin:1];
+        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0,
+                        35,
+                        self.bounds.size.width,
+                self.bounds.size.height - 35)
+                                               numOfRow:3 numOfColumns:1 cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
     }
     return self;
 }
--(void)dealloc
-{
-    self.actionBlock =nil;
-    self.data=nil;
-    self.key =nil;
-    self.other=nil;
-    self.indexPath=nil;
-    self.sectionView=nil;
-    self.gridView=nil;
+
+- (void)dealloc {
+    self.actionBlock = nil;
+    self.data = nil;
+    self.key = nil;
+    self.other = nil;
+    self.indexPath = nil;
+    self.sectionView = nil;
+    self.gridView = nil;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 }
+
 /// 根据数据模型来显示内容
-- (void)showInfo:(id)model key:(id)key indexPath:(NSIndexPath *)indexPath
-{
-    self.key =key;
-    self.model =model;
-    self.indexPath =indexPath;
+- (void)showInfo:(id)model key:(id)key indexPath:(NSIndexPath *)indexPath {
+    self.key = key;
+    self.model = model;
+    self.indexPath = indexPath;
 //    NSDictionary *dict =(NSDictionary*)model;
     [_gridView reloadData];
-    
+
 }
+
 /// 返回Cell高度
-+ (CGFloat)returnCellHeight:(id)model
-{
++ (CGFloat)returnCellHeight:(id)model {
 //    NSDictionary *dict =(NSDictionary*)model;
     return 342;
-    
+
 }
--(NSInteger) numberOfCellsInGridView:(UzysGridView *)gridview {
+
+- (NSInteger)numberOfCellsInGridView:(UzysGridView *)gridview {
     return self.model.result.data.count;
 }
--(UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index
-{
+
+- (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     CourseGridViewCell *cell = [[CourseGridViewCell alloc] initWithFrame:CGRectNull];
     cell.model = self.model.result.data[index];
     return cell;
 }
 
-- (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index
-{
+- (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_Unknow,nil,self.model.result.data[index],nil,self.indexPath);
+        self.actionBlock(BEventType_Unknow, nil, self.model.result.data[index], nil, self.indexPath);
     }
 }
 

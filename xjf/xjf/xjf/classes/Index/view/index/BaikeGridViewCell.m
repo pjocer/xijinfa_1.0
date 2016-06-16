@@ -10,17 +10,16 @@
 
 @interface BaikeGridViewCell ()
 
-@property (nonatomic, strong) UIImageView *titleImage;
-@property (nonatomic, strong) UILabel *titleLable;
-@property (nonatomic, strong) UILabel *teacherLable;
-@property (nonatomic, strong) UILabel *classesLable;
+@property(nonatomic, strong) UIImageView *titleImage;
+@property(nonatomic, strong) UILabel *titleLable;
+@property(nonatomic, strong) UILabel *teacherLable;
+@property(nonatomic, strong) UILabel *classesLable;
 
 @end
 
 @implementation BaikeGridViewCell
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -28,12 +27,12 @@
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectNull];
         self.backgroundView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.backgroundView];
-        
+
         //titleImage
         self.titleImage = [[UIImageView alloc] init];
         [self addSubview:self.titleImage];
         self.titleImage.backgroundColor = BackgroundColor;
-        
+
         //titleLable
         self.titleLable = [[UILabel alloc] init];
         [self addSubview:self.titleLable];
@@ -46,7 +45,7 @@
         [self addSubview:self.teacherLable];
         self.teacherLable.textColor = [UIColor xjfStringToColor:@"#9a9a9a"];
         self.teacherLable.font = FONT12;
-        
+
         //classesLable
         self.classesLable = [[UILabel alloc] init];
         [self addSubview:self.classesLable];
@@ -57,8 +56,7 @@
 }
 
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     // Background view
@@ -73,7 +71,7 @@
         make.top.left.mas_equalTo(self).with.offset(10);
         make.bottom.equalTo(self).with.offset(-10);
         make.width.mas_equalTo((SCREENWITH / 2) - 20);
- 
+
     }];
 
     //titleLable
@@ -83,7 +81,7 @@
         make.right.mas_equalTo(self.backgroundView).with.offset(-10);
         make.height.mas_equalTo(18);
     }];
-    
+
     //teacherLable
     [self.teacherLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.titleLable);
@@ -91,7 +89,7 @@
         make.width.mas_equalTo(self.titleLable);
         make.height.mas_equalTo(15);
     }];
-    
+
     //classesLable
     [self.classesLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.titleLable);
@@ -101,18 +99,17 @@
     }];
 }
 
-- (void)setModel:(TalkGridModel *)model
-{
+- (void)setModel:(TalkGridModel *)model {
     if (model) {
         _model = model;
     }
-   
+
     [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.titleLable.text = model.title;
-    self.classesLable.text = [NSString stringWithFormat:@"课时: %@",model.lessons_count];
+    self.classesLable.text = [NSString stringWithFormat:@"课时: %@", model.lessons_count];
     if (model.taxonomy_gurus.count != 0 && model.taxonomy_gurus) {
         taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
-        self.teacherLable.text = [NSString stringWithFormat:@"主讲: %@",gurus.title];
+        self.teacherLable.text = [NSString stringWithFormat:@"主讲: %@", gurus.title];
     }
 }
 

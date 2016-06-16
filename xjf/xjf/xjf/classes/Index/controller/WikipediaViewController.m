@@ -12,6 +12,7 @@
 #import "BannerModel.h"
 #import "WikiMoreViewController.h"
 #import "SearchViewController.h"
+
 @interface WikipediaViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,

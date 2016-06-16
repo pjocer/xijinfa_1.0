@@ -8,7 +8,8 @@
 
 #import "UzysGridViewCell.h"
 #import "TalkGridModel.h"
+
 @interface BaikeGridViewCell : UzysGridViewCell
-@property (nonatomic, retain) UIView *backgroundView;
-@property (nonatomic, strong) TalkGridModel *model;
+@property(nonatomic, retain) UIView *backgroundView;
+@property(nonatomic, strong) TalkGridModel *model;
 @end

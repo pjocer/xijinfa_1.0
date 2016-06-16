@@ -9,6 +9,7 @@
 #import "VideolistViewController.h"
 #import "IndexConfigure.h"
 #import <MJRefresh.h>
+
 @interface VideolistViewController () <UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSMutableArray *dataSource;
@@ -28,8 +29,8 @@ static NSString *videListCell_id = @"videListCell_id";
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = NO;
 }
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.dataSource = [NSMutableArray array];
@@ -46,19 +47,19 @@ static NSString *videListCell_id = @"videListCell_id";
     } else {
         [self requesData:talkGrid method:GET];
     }
-   
+
 }
-- (void)loadMoreData
-{
+
+- (void)loadMoreData {
     if (self.tablkListModel.result.next_page_url != nil) {
         [self requesData:self.tablkListModel.result.next_page_url method:GET];
-    } else if (self.tablkListModel.result.current_page == self.tablkListModel.result.last_page)
-    {
+    } else if (self.tablkListModel.result.current_page == self.tablkListModel.result.last_page) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
 }
 
 #pragma mark requestData
+
 - (void)requesData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     [[ZToastManager ShardInstance] showprogress];
@@ -67,15 +68,15 @@ static NSString *videListCell_id = @"videListCell_id";
         __strong typeof(self) sSelf = wSelf;
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
         [sSelf.dataSource addObjectsFromArray:sSelf.tablkListModel.result.data];
-        [sSelf.tableView.mj_footer isRefreshing]?[sSelf.tableView.mj_footer endRefreshing]:nil;
+        [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
         [sSelf.tableView reloadData];
         [[ZToastManager ShardInstance] hideprogress];
 
     }                  failedBlock:^(NSError *_Nullable error) {
-         __strong typeof(self) sSelf = wSelf;
+        __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-        [sSelf.tableView.mj_footer isRefreshing]?[sSelf.tableView.mj_footer endRefreshing]:nil;
+        [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
     }];
 }
 
@@ -99,7 +100,8 @@ static NSString *videListCell_id = @"videListCell_id";
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:videListCell_id];
     if (!self.tableView.mj_footer) {
         //mj_footer
-        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
+                                                                        refreshingAction:@selector(loadMoreData)];
         self.tableView.mj_footer.automaticallyHidden = YES;
     }
 }

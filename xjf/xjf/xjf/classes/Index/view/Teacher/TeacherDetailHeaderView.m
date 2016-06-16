@@ -20,12 +20,11 @@
 
 
 @implementation TeacherDetailHeaderView
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        
+
         CGFloat teacherImageH = 55;
         CGFloat userNameW = 60;
         CGFloat FocusButtonW = 90;
@@ -41,7 +40,7 @@
             make.centerY.equalTo(self);
             make.size.mas_offset(CGSizeMake(teacherImageH, teacherImageH));
         }];
-        
+
         //teacherName
         self.teacherName = [[UILabel alloc] init];
         [self addSubview:self.teacherName];
@@ -52,7 +51,7 @@
             make.height.mas_equalTo(self.teacherImage).multipliedBy(0.5);
             make.width.mas_equalTo(userNameW);
         }];
-        
+
         //FocusButton
         self.focusButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.focusButton];
@@ -81,7 +80,7 @@
             make.height.equalTo(self.teacherName).multipliedBy(1.3);
             make.right.equalTo(self.focusButton.mas_left).with.offset(-10);
         }];
-        
+
         self.bottomView = [[UIView alloc] init];
         self.bottomView.backgroundColor = BackgroundColor;
         [self addSubview:self.bottomView];
@@ -93,15 +92,14 @@
     return self;
 }
 
-- (void)setModel:(TeacherListData *)model
-{
+- (void)setModel:(TeacherListData *)model {
     if (model) {
         _model = model;
     }
     [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.guru_avatar]];
     self.teacherName.text = model.title;
     self.teacherDetail.text = model.subtitle;
-    
+
 //    if (model.user_favored) {
 //        [self.focusButton setTitle:@"已关注" forState:UIControlStateNormal];
 //        self.focusButton.backgroundColor = BackgroundColor;

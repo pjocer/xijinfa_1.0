@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "XRCarouselView.h"
+
 @interface WikiBannerView : UICollectionReusableView
 
-@property (nonatomic, strong) XRCarouselView *carouselView;
+@property(nonatomic, strong) XRCarouselView *carouselView;
 
 @end

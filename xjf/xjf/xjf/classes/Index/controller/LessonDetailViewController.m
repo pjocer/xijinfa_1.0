@@ -16,6 +16,7 @@
 #import "MyLessonsViewController.h"
 #import "OrderDetaiViewController.h"
 #import "LessonDetailListModel.h"
+
 @interface LessonDetailViewController () <UIScrollViewDelegate>
 @property(nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
 ///加入购物车按钮
@@ -62,7 +63,7 @@ static CGFloat payViewH = 285;
         NSString *api = [NSString stringWithFormat:@"%@/%@", self.apiType, self.model.id_];
         [self requestLessonListData:api method:GET];
     }
-    
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -73,19 +74,18 @@ static CGFloat payViewH = 285;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-    
+
     NSString *api = [NSString stringWithFormat:@"%@/%@", self.apiType, self.model.id_];
     [self requestLessonListData:api method:GET];
-    
-}
 
+}
 
 
 - (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    
+
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
         sSelf.dataSourceModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
@@ -117,6 +117,7 @@ static CGFloat payViewH = 285;
 
 
 #pragma mark - setNavigationBar
+
 - (void)setNavigationBar {
     self.navigationItem.title = @"课程详情";
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -125,7 +126,7 @@ static CGFloat payViewH = 285;
     UIBarButtonItem *barbutton2 = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = barbutton2;
     [button addTarget:self action:@selector(shoppingCartAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     self.goodsCount = [[UILabel alloc] initWithFrame:CGRectNull];
     [button addSubview:self.goodsCount];
     [self.goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -140,7 +141,7 @@ static CGFloat payViewH = 285;
     self.goodsCount.textAlignment = NSTextAlignmentCenter;
     if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0) {
         self.goodsCount.hidden = NO;
-        self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
     } else {
         self.goodsCount.hidden = YES;
     }
@@ -200,7 +201,7 @@ static CGFloat payViewH = 285;
     self.addShoppingCart.tintColor = [UIColor whiteColor];
     self.addShoppingCart.titleLabel.font = FONT15;
     [self.addShoppingCart
-     addTarget:self action:@selector(addShoppingCart:) forControlEvents:UIControlEventTouchUpInside];
+            addTarget:self action:@selector(addShoppingCart:) forControlEvents:UIControlEventTouchUpInside];
 
     self.nowPay = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:self.nowPay];
@@ -232,13 +233,13 @@ static CGFloat payViewH = 285;
 
 - (void)addShoppingCart:(UIButton *)sender {
     if ([[XJMarket sharedMarket] isAlreadyExists:self.model key:XJ_XUETANG_SHOP]) {
-         [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
+        [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
     } else {
-         [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
+        [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
         [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_XUETANG_SHOP];
-        self.goodsCount.text = [NSString stringWithFormat:@"%ld",[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
+        self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count]];
         if (self.goodsCount.hidden == YES) {
-               self.goodsCount.hidden = NO;
+            self.goodsCount.hidden = NO;
         }
     }
 }
@@ -258,6 +259,7 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 设置头部标题栏
+
 - (void)setupTitleScrollView {
     CGRect rect = CGRectMake(0, CGRectGetMaxY(self.lessonDetailTitleView.frame) + 1, SCREENWITH, titleH);
     self.titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
@@ -266,6 +268,7 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 设置内容
+
 - (void)setupContentScrollView {
     CGFloat y = CGRectGetMaxY(self.titleScrollView.frame);
     CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH - BottomPayButtonH);
@@ -275,6 +278,7 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 添加子控制器
+
 - (void)addChildViewController {
     self.lessonDetailLessonListViewController = [[LessonDetailLessonListViewController alloc] init];
     self.lessonDetailLessonListViewController.title = @"目录";
@@ -290,6 +294,7 @@ static CGFloat payViewH = 285;
 }
 
 #pragma mark - 设置标题
+
 - (void)setupTitle {
     NSUInteger count = self.childViewControllers.count;
     CGFloat x = 0;
@@ -340,7 +345,7 @@ static CGFloat payViewH = 285;
 // 选中按钮
 - (void)selTitleBtn:(UIButton *)btn {
     [UIView animateWithDuration:0.3 animations:^{
-      self.selView.center = CGPointMake(btn.center.x, self.selBackGroundView.center.y);
+        self.selView.center = CGPointMake(btn.center.x, self.selBackGroundView.center.y);
     }];
 }
 

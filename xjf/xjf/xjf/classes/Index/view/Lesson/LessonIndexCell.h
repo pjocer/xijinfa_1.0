@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ProjectListByModel.h"
+
 @interface LessonIndexCell : UICollectionViewCell
-@property (nonatomic, strong) ProjectList *model;
+@property(nonatomic, strong) ProjectList *model;
 @end

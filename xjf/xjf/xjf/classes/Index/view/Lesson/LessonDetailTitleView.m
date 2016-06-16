@@ -120,10 +120,10 @@
     CGFloat tempPrice = [model.result.price floatValue];
     self.price.text = [NSString stringWithFormat:@"￥%.2lf", tempPrice / 100];
     self.oldPrice.text = [NSString stringWithFormat:@"￥%.2lf", [model.result.origin floatValue] / 100];
-    self.lessonCount.text = [NSString stringWithFormat:@"课时: %@",model.result.lessons_count];
+    self.lessonCount.text = [NSString stringWithFormat:@"课时: %@", model.result.lessons_count];
     if (model.result.taxonomy_gurus.count != 0 && model.result.taxonomy_gurus) {
         TeacherListData *gurus = model.result.taxonomy_gurus.firstObject;
-        self.teacherName.text = [NSString stringWithFormat:@"主讲: %@",gurus.title];
+        self.teacherName.text = [NSString stringWithFormat:@"主讲: %@", gurus.title];
     }
     if (self.model.result.user_purchased || self.model.result.user_subscribed) {
         self.price.hidden = YES;
@@ -132,7 +132,7 @@
         self.price.hidden = NO;
         self.oldPrice.hidden = NO;
     }
-    
+
     if (self.teacherName.text.length == 0 || self.teacherName.text == nil) {
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);

@@ -9,24 +9,21 @@
 #import "ProjectListByModel.h"
 
 @implementation ProjectList
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation ProjectListResult
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation ProjectListByModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end

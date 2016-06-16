@@ -12,6 +12,7 @@
 #import "LessonDetailHaveToPayHeaderView.h"
 #import "IndexSectionView.h"
 #import "LessonPlayerViewController.h"
+
 @interface LessonDetailLessonListViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
 
@@ -25,6 +26,7 @@ static CGFloat rowHeight = 50;
     self.view.backgroundColor = BackgroundColor;
     [self initTabelView];
 }
+
 #pragma mark- initTabelView
 
 - (void)initTabelView {
@@ -62,10 +64,10 @@ static CGFloat rowHeight = 50;
 
 #pragma mark TabelViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.lessonDetailListModel.result.lessons_menu.count;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[section];
     if ([model.type isEqualToString:@"dir"]) {
@@ -94,44 +96,43 @@ static CGFloat rowHeight = 50;
     }
     return cell;
 }
+
 ///Cell 判断性操作
-- (void)lessonDetailLessonListCellJudge:(LessonDetailLessonListCell *)cell
-{
+- (void)lessonDetailLessonListCellJudge:(LessonDetailLessonListCell *)cell {
     //是否免费试看
     if ([cell.talkGridModel.package containsObject:@"visitor"]) {
         cell.freeVideoLogo.hidden = NO;
-    }else {
+    } else {
         cell.freeVideoLogo.hidden = YES;
     }
     //是否收藏
     if (cell.talkGridModel.user_favored) {
         cell.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
-    }else {
+    } else {
         cell.favorites.image = nil;
     }
     //是否学习过
     if (cell.talkGridModel.user_learned == 1) {
         cell.studyImage.hidden = NO;
-    }else if(cell.talkGridModel.user_learned == 0){
+    } else if (cell.talkGridModel.user_learned == 0) {
         cell.studyImage.hidden = YES;
     }
     //买过此课，免费试看隐藏
-    if (_isPay){
+    if (_isPay) {
         cell.freeVideoLogo.hidden = YES;
     }
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[section];
     if ([model.type isEqualToString:@"dir"]) {
         return 35;
     }
     return 0;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[section];
     if ([model.type isEqualToString:@"dir"]) {
         IndexSectionView *sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
@@ -156,42 +157,44 @@ static CGFloat rowHeight = 50;
         TalkGridModel *tempModel = model.children[indexPath.row];
         if (!_isPay && ![tempModel.package containsObject:@"visitor"]) {
             [[ZToastManager ShardInstance] showtoast:@"只有购买后才可以观看哦"];
-        }else {
-           [self cellPuchAction:tempModel];
+        } else {
+            [self cellPuchAction:tempModel];
         }
     } else if ([model.type isEqualToString:@"lesson"]) {
         if (!_isPay && ![model.package containsObject:@"visitor"]) {
             [[ZToastManager ShardInstance] showtoast:@"只有购买后才可以观看哦"];
-        }else {
+        } else {
             [self cellPuchAction:model];
         }
     }
 }
 
-- (void)cellPuchAction:(TalkGridModel *)model
-{
+- (void)cellPuchAction:(TalkGridModel *)model {
     LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
     lessonPlayerViewController.lessonDetailListModel = self.lessonDetailListModel;
     lessonPlayerViewController.lesssonID = self.lessonDetailListModel.result.id;
     lessonPlayerViewController.playTalkGridModel = model;
     if (model.video_player.count != 0) {
         TalkGridVideo *gridVideomodel = model.video_player.firstObject;
-        lessonPlayerViewController.playUrl =  gridVideomodel.url;
+        lessonPlayerViewController.playUrl = gridVideomodel.url;
     }
     //给服务器发送用户已学习消息
     if (_isPay) {
-       [self sendUserLearendMessage:user_learnedApi Method:POST ByModel:model];
+        [self sendUserLearendMessage:user_learnedApi Method:POST ByModel:model];
     }
     [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
 }
 
-- (void)sendUserLearendMessage:(APIName *)api Method:(RequestMethod)method ByModel:(TalkGridModel *)model
-{
+- (void)sendUserLearendMessage:(APIName *)api Method:(RequestMethod)method ByModel:(TalkGridModel *)model {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",model.id_],@"type":[NSString stringWithFormat:@"%@",model.type],@"department":[NSString stringWithFormat:@"%@",model.department],@"status":@"1"}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", model.id_],
+                    @"type" : [NSString stringWithFormat:@"%@", model.type],
+                    @"department" : [NSString stringWithFormat:@"%@", model.department],
+                    @"status" : @"1"}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
-    }failedBlock:^(NSError *_Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
 
     }];
 }

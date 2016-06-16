@@ -9,20 +9,23 @@
 #import "TeacherLessonsViewController.h"
 #import "VideoListCell.h"
 #import "LessonDetailViewController.h"
-@interface TeacherLessonsViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface TeacherLessonsViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
 
 @implementation TeacherLessonsViewController
 static NSString *TeacherLessonsCell_id = @"TeacherLessonsCell_id";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-   [self initTabelView];
+    [self initTabelView];
 }
+
 #pragma mark- initTabelView
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectNull style:UITableViewStylePlain];
+            initWithFrame:CGRectNull style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
@@ -38,7 +41,7 @@ static NSString *TeacherLessonsCell_id = @"TeacherLessonsCell_id";
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:TeacherLessonsCell_id];
 }
 

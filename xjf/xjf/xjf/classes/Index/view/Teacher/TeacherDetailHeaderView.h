@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TeacherListHostModel.h"
+
 @interface TeacherDetailHeaderView : UIView
-@property (nonatomic, strong) TeacherListData *model;
+@property(nonatomic, strong) TeacherListData *model;
 ///关注按钮
-@property (nonatomic, strong) UIButton *focusButton;
+@property(nonatomic, strong) UIButton *focusButton;
 @end

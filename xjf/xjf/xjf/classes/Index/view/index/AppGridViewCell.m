@@ -17,8 +17,7 @@
 
 @implementation AppGridViewCell
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -28,7 +27,7 @@
         [self addSubview:self.imageTag];
         self.imageTag.layer.masksToBounds = YES;
         self.imageTag.layer.cornerRadius = 22.5;
-        
+
         //titleLable
         self.titleLable = [[UILabel alloc] init];
         [self addSubview:self.titleLable];
@@ -37,14 +36,13 @@
         self.titleLable.font = FONT13;
         self.titleLable.textAlignment = NSTextAlignmentCenter;
 
-    
+
     }
     return self;
 }
 
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     //imageView
     [self.imageTag mas_makeConstraints:^(MASConstraintMaker *make) {

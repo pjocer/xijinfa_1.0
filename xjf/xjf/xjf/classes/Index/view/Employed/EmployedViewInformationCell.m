@@ -10,22 +10,21 @@
 
 @interface EmployedViewInformationCell ()
 ///分割线
-@property (nonatomic, strong) UIView *customSeparator;
+@property(nonatomic, strong) UIView *customSeparator;
 ///资讯图片
-@property (nonatomic, strong) UIImageView *videoImage;
+@property(nonatomic, strong) UIImageView *videoImage;
 ///资讯标题
-@property (nonatomic, strong) UILabel *videoTitle;
+@property(nonatomic, strong) UILabel *videoTitle;
 ///资讯详情
-@property (nonatomic, strong) UILabel *viedoDetail;
+@property(nonatomic, strong) UILabel *viedoDetail;
 @end
 
 @implementation EmployedViewInformationCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+
         //separator
         self.customSeparator = [[UIView alloc] init];
         self.customSeparator.backgroundColor = BackgroundColor;
@@ -35,7 +34,7 @@
             make.bottom.mas_equalTo(self.contentView).with.offset(-1);
             make.height.mas_equalTo(1);
         }];
-        
+
         //videoImage
         self.videoImage = [[UIImageView alloc] init];
         [self.contentView addSubview:self.videoImage];
@@ -43,10 +42,10 @@
         [self.videoImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(self.contentView).with.offset(10);
             make.width.mas_equalTo((SCREENWITH / 2) - 20);
-            make.height.equalTo(self.videoImage.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
-            
+            make.height.equalTo(self.videoImage.mas_width).multipliedBy(9.0f / 16.0f).with.priority(750);
+
         }];
-        
+
         //videoTitle
         self.videoTitle = [[UILabel alloc] init];
         [self.contentView addSubview:self.videoTitle];
@@ -59,7 +58,7 @@
             make.top.equalTo(self.videoImage);
             make.height.mas_equalTo(self.videoImage).multipliedBy(0.5);
         }];
-        
+
         //viedoDetail
         self.viedoDetail = [[UILabel alloc] init];
         [self addSubview:self.viedoDetail];
@@ -76,8 +75,7 @@
     return self;
 }
 
-- (void)setModel:(TalkGridModel *)model
-{
+- (void)setModel:(TalkGridModel *)model {
     if (model) {
         _model = model;
     }

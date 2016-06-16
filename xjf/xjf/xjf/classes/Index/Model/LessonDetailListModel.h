@@ -9,6 +9,7 @@
 #import <JSONModel/JSONModel.h>
 #import "TalkGridModel.h"
 #import "TeacherListHostModel.h"
+
 @protocol LessonDetailVideo
 @end
 

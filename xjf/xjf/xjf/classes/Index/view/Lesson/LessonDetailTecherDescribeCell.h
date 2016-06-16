@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TeacherListHostModel.h"
+
 @interface LessonDetailTecherDescribeCell : UITableViewCell
-@property (nonatomic, strong) TeacherListData *model;
+@property(nonatomic, strong) TeacherListData *model;
 @end

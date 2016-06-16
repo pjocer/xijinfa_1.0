@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface WikiMoreViewController : BaseViewController
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@property(nonatomic, strong) NSMutableArray *dataArray;
 @end

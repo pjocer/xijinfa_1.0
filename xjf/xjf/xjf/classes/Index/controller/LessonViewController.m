@@ -19,6 +19,7 @@
 #import "TeacherListHostModel.h"
 #import "TeacherDetailViewController.h"
 #import "SearchViewController.h"
+
 @interface LessonViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate>
 
@@ -76,7 +77,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
         for (BannerResultModel *model in sSelf.bannermodel.result.data) {
             [self.dataArrayByBanner addObject:model.thumbnail];
         }
-     
+
         [sSelf.collectionView reloadData];
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
@@ -87,7 +88,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 - (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
-    
+
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
@@ -98,18 +99,18 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
     }];
 }
 
-- (void)requestTeacherData:(APIName *)api method:(RequestMethod)method{
+- (void)requestTeacherData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    
+
     //TeacherListHostModel
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
         sSelf.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
         [sSelf.collectionView reloadData];
-        
+
     }                  failedBlock:^(NSError *_Nullable error) {
-         [[ZToastManager ShardInstance] hideprogress];
+        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
@@ -246,23 +247,23 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-        if (indexPath.section == 0) {
-            if ([[XJAccountManager defaultManager] accessToken] == nil ||
+    if (indexPath.section == 0) {
+        if ([[XJAccountManager defaultManager] accessToken] == nil ||
                 [[[XJAccountManager defaultManager] accessToken] length] == 0) {
-                [self LoginPrompt];
-            } else {
-                LessonListViewController *lessonListViewController = [LessonListViewController new];
-                ProjectList *model = self.projectListByModel.result.data[indexPath.row];;
-                lessonListViewController.LessonListTitle = model.title;
-                lessonListViewController.ID = model.id;
-                [self.navigationController pushViewController:lessonListViewController animated:YES];
-            }
+            [self LoginPrompt];
+        } else {
+            LessonListViewController *lessonListViewController = [LessonListViewController new];
+            ProjectList *model = self.projectListByModel.result.data[indexPath.row];;
+            lessonListViewController.LessonListTitle = model.title;
+            lessonListViewController.ID = model.id;
+            [self.navigationController pushViewController:lessonListViewController animated:YES];
         }
-        else if (indexPath.section == 1) {
-            TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
-            teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
-            [self.navigationController pushViewController:teacherDetailViewController animated:YES];
-        }
+    }
+    else if (indexPath.section == 1) {
+        TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+        teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
+        [self.navigationController pushViewController:teacherDetailViewController animated:YES];
+    }
 }
 
 #pragma mark FlowLayoutDelegate
@@ -280,8 +281,8 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         }
 
     } else {
-            _layout.minimumLineSpacing = 1;
-            return CGSizeMake((SCREENWITH - 3) / 3, 150);
+        _layout.minimumLineSpacing = 1;
+        return CGSizeMake((SCREENWITH - 3) / 3, 150);
     }
 }
 

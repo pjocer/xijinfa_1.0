@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 
 @interface TeacherLessonsViewController : BaseViewController
-@property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) NSMutableArray *dataSource;
+@property(nonatomic, strong) UITableView *tableView;
 @end

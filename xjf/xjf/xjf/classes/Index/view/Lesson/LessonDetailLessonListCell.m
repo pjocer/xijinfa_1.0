@@ -18,7 +18,7 @@ static CGFloat StudyImageH = 20;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+
 //        iconFavorites
         self.favorites = [[UIImageView alloc] init];
         [self addSubview:self.favorites];
@@ -28,7 +28,7 @@ static CGFloat StudyImageH = 20;
             make.centerY.equalTo(self);
             make.size.mas_equalTo(CGSizeMake(16, 16));
         }];
-        
+
         self.title = [[UILabel alloc] init];
         [self addSubview:self.title];
         self.title.font = FONT15;
@@ -56,7 +56,7 @@ static CGFloat StudyImageH = 20;
             make.size.mas_equalTo(CGSizeMake(60, 20));
         }];
         self.freeVideoLogo.hidden = YES;
-        
+
         self.studyImage = [[UIImageView alloc] init];
         [self addSubview:self.studyImage];
         self.studyImage.layer.masksToBounds = YES;
@@ -106,13 +106,12 @@ static CGFloat StudyImageH = 20;
 }
 
 
-- (void)setTalkGridModel:(TalkGridModel *)talkGridModel
-{
+- (void)setTalkGridModel:(TalkGridModel *)talkGridModel {
     if (talkGridModel) {
         _talkGridModel = talkGridModel;
     }
     self.title.text = talkGridModel.title;
-    
+
     self.lessonCount.text = [NSString timeformatFromSeconds:talkGridModel.video_duration];
 }
 

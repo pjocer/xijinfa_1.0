@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "LessonDetailListModel.h"
+
 @interface LessonDetailTitleView : UIView
-@property (nonatomic, strong) LessonDetailListModel *model;
+@property(nonatomic, strong) LessonDetailListModel *model;
 
 @end

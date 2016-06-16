@@ -40,7 +40,8 @@
 
 //main UI
 - (void)initMainUI {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - HEADHEIGHT) style:UITableViewStylePlain];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - HEADHEIGHT)
+                                              style:UITableViewStylePlain];
     _tableview.dataSource = self;
     _tableview.delegate = self;
     _tableview.showsVerticalScrollIndicator = NO;

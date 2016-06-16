@@ -75,8 +75,7 @@
 
 }
 
-- (void)setModel:(TeacherListData *)model
-{
+- (void)setModel:(TeacherListData *)model {
     if (model) {
         _model = model;
     }

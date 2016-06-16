@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WikiPediaCategoriesModel.h"
+
 @interface WikiMoreClassificationCell : UICollectionViewCell
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) WikiPediaCategoriesDataModel *model;
+@property(nonatomic, strong) UILabel *titleLabel;
+@property(nonatomic, strong) WikiPediaCategoriesDataModel *model;
 @end

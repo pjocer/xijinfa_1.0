@@ -93,15 +93,15 @@
     }
     return self;
 }
-- (void)setModel:(TeacherListData *)model
-{
+
+- (void)setModel:(TeacherListData *)model {
     if (model) {
         _model = model;
     }
     [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.guru_avatar]];
     self.teacherName.text = model.title;
     self.teacherDetail.text = model.summary;
-    
+
     //    if (model.user_favored) {
     //        [self.focusButton setTitle:@"已关注" forState:UIControlStateNormal];
     //        self.focusButton.backgroundColor = BackgroundColor;

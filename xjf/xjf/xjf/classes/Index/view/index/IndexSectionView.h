@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface IndexSectionView : UIView
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *moreLabel;
-@property (nonatomic, strong) UIView *bottomView;
+@property(nonatomic, strong) UILabel *titleLabel;
+@property(nonatomic, strong) UILabel *moreLabel;
+@property(nonatomic, strong) UIView *bottomView;
 @end

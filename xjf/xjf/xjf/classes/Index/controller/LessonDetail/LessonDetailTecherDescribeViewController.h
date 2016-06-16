@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LessonDetailListModel.h"
+
 @interface LessonDetailTecherDescribeViewController : UIViewController
-@property (nonatomic, strong) LessonDetailListModel *dataSourceModel;
-@property (nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) LessonDetailListModel *dataSourceModel;
+@property(nonatomic, strong) UITableView *tableView;
 @end

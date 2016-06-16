@@ -9,39 +9,34 @@
 #import "LessonDetailListModel.h"
 
 @implementation LessonDetailListModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation LessonDetailVideo
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation LessonDetailPivot
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation LessonDetailListResultModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 @implementation Taxonomy_categories
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end

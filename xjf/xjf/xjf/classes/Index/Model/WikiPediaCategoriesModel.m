@@ -9,23 +9,20 @@
 #import "WikiPediaCategoriesModel.h"
 
 @implementation WikiPediaCategoriesDataModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 @implementation WikiPediaCategoriesResultModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 
 @end
 
 @implementation WikiPediaCategoriesModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 

@@ -1,4 +1,3 @@
-
 //
 //  PayView.m
 //  xjf
@@ -15,8 +14,7 @@
 
 @implementation PayView
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     self.backgroundColor = BackgroundColor;
 }
 

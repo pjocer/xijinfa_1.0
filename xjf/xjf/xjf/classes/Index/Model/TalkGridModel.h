@@ -18,18 +18,18 @@
 @end
 
 @interface taxonomy_gurus : JSONModel
-@property (nonatomic, assign) int id;
-@property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *summary;
-@property (nonatomic, strong) NSString *icon;
-@property (nonatomic, strong) NSString *thumbnail;
-@property (nonatomic, strong) NSString *guru_avatar;
-@property (nonatomic, strong) NSString *comments_count;
-@property (nonatomic, strong) NSString *user_played;
-@property (nonatomic, strong) NSString *user_played_at;
-@property (nonatomic, strong) NSString *user_favored;
-@property (nonatomic, strong) NSString *user_liked;
+@property(nonatomic, assign) int id;
+@property(nonatomic, strong) NSString *type;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *summary;
+@property(nonatomic, strong) NSString *icon;
+@property(nonatomic, strong) NSString *thumbnail;
+@property(nonatomic, strong) NSString *guru_avatar;
+@property(nonatomic, strong) NSString *comments_count;
+@property(nonatomic, strong) NSString *user_played;
+@property(nonatomic, strong) NSString *user_played_at;
+@property(nonatomic, strong) NSString *user_favored;
+@property(nonatomic, strong) NSString *user_liked;
 @end
 
 @interface TalkGridVideo : JSONModel
@@ -52,7 +52,7 @@
 ///原价
 @property(nonatomic, strong) NSString *original_price;
 @property(nonatomic, strong) NSString *lessons_count;
-@property(nonatomic, assign) float    lessons_duration;
+@property(nonatomic, assign) float lessons_duration;
 @property(nonatomic, strong) NSString *price;
 @property(nonatomic, strong) NSString *origin;
 @property(nonatomic, strong) NSString *purchased;
