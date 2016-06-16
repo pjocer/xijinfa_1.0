@@ -17,13 +17,15 @@
 #import "CustomTextField.h"
 #import "SettingViewController.h"
 #import <AFNetworkReachabilityManager.h>
+
 @implementation ZFPlayerView (LoadingImageUrl)
 
--(void)setXjfloading_image:(UIImage *)xjfloading_image {
-    self.layer.contents = (id)xjfloading_image.CGImage;
+- (void)setXjfloading_image:(UIImage *)xjfloading_image {
+    self.layer.contents = (id) xjfloading_image.CGImage;
     objc_setAssociatedObject(self, @selector(xjfloading_image), xjfloading_image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
--(UIImage *)xjfloading_image {
+
+- (UIImage *)xjfloading_image {
     return objc_getAssociatedObject(self, @selector(xjfloading_image));
 }
 @end
@@ -31,17 +33,23 @@
 @interface PlayerViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
-        UITextFieldDelegate,UIAlertViewDelegate>
+        UITextFieldDelegate, UIAlertViewDelegate>
 @property(nonatomic, strong) UIView *playView;
 @property(strong, nonatomic) ZFPlayerView *playerView;
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property(nonatomic, assign) BOOL isShowVideDescrible;/**< 是否展示视频描述 */
-@property(nonatomic, retain) UIView *keyBoardView;/**< 键盘背景图 */
-@property(nonatomic, retain) UIView *keyBoardAppearView;/**< 键盘出现，屏幕背景图 */
-@property(nonatomic, retain) CustomTextField *textField;/**< 键盘 */
-@property(nonatomic, strong) UIButton *sendMsgButton;/**< 发表评论内容按钮 */
-@property(nonatomic, strong) CommentsAllDataList *commentsModel;/**< 评论数据 */
+@property(nonatomic, assign) BOOL isShowVideDescrible;
+/**< 是否展示视频描述 */
+@property(nonatomic, retain) UIView *keyBoardView;
+/**< 键盘背景图 */
+@property(nonatomic, retain) UIView *keyBoardAppearView;
+/**< 键盘出现，屏幕背景图 */
+@property(nonatomic, retain) CustomTextField *textField;
+/**< 键盘 */
+@property(nonatomic, strong) UIButton *sendMsgButton;
+/**< 发表评论内容按钮 */
+@property(nonatomic, strong) CommentsAllDataList *commentsModel;
+/**< 评论数据 */
 @property(nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @end
 
@@ -65,27 +73,30 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     //若3G/4G 提示打开开关
-    if ([UserDefaultObjectForKey(USER_SETTING_WIFI) isEqualToString:@"NO"]  && [AFNetworkReachabilityManager sharedManager].reachableViaWWAN) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前为3G/4G网络,请去设置中打开,才可以观看视频" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+    if ([UserDefaultObjectForKey(USER_SETTING_WIFI) isEqualToString:@"NO"]
+            && [AFNetworkReachabilityManager sharedManager].reachableViaWWAN) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"当前为3G/4G网络,请去设置中打开,才可以观看视频"
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:@"取消", nil];
         [alert show];
     }
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         [self.navigationController pushViewController:[SettingViewController new] animated:YES];
-    }else if (buttonIndex == 1){
+    } else if (buttonIndex == 1) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
@@ -97,16 +108,18 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
 }
 
-- (void)handleData
-{
-    [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
-    [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
+- (void)handleData {
+    [self                                                                             requestCommentsData:
+            [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
+    [self                                                           requestLessonListData:
+            [NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
     [self sendPlayerHistoryToServerData:history method:POST];
 }
 
 #pragma mark requestData
+
 - (void)requestCommentsData:(APIName *)api method:(RequestMethod)method {
-    
+
     [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     //GET
@@ -114,9 +127,9 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-                [[ZToastManager ShardInstance] hideprogress];
-                self.commentsModel = [[CommentsAllDataList alloc] initWithData:responseData error:nil];
-                [self.collectionView reloadData];
+            [[ZToastManager ShardInstance] hideprogress];
+            self.commentsModel = [[CommentsAllDataList alloc] initWithData:responseData error:nil];
+            [self.collectionView reloadData];
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
@@ -128,12 +141,13 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [dic setValue:self.textField.text forKey:@"content"];
         [dic setValue:self.talkGridModel.id_ forKey:@"ID"];
         request.requestParams = dic;
-        
+
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-              [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
-        }failedBlock:^(NSError *_Nullable error) {
+            [self                                                                             requestCommentsData:
+                    [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
+        }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
 
@@ -143,19 +157,19 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 - (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
-    
+
     if (method == GET) {
         __weak typeof(self) wSelf = self;
         [[ZToastManager ShardInstance] showprogress];
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-        
+
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             __strong typeof(self) sSelf = wSelf;
             sSelf.tempLessonDetailModel = [[LessonDetailListModel alloc]
-                                           initWithData:responseData error:nil];
+                    initWithData:responseData error:nil];
             [self.collectionView reloadData];
             [[ZToastManager ShardInstance] hideprogress];
-            NSLog(@"哈利路亚  -----   %d",sSelf.tempLessonDetailModel.result.user_favored);
+            NSLog(@"哈利路亚  -----   %d", sSelf.tempLessonDetailModel.result.user_favored);
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] hideprogress];
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -167,50 +181,62 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     if (method == DELETE) {
         [self PostOrDeleteRequestData:api Method:DELETE];
     }
-    
+
 }
 
-- (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method
-{
+- (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.tempLessonDetailModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.tempLessonDetailModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.tempLessonDetailModel.result.department]}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.id],
+                    @"type" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.department]}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
-    }failedBlock:^(NSError *_Nullable error) {
+        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id]
+                             method:GET];
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
 
-- (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method{
+- (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.talkGridModel.id_],@"type":[NSString stringWithFormat:@"%@",self.talkGridModel.type],@"department":[NSString stringWithFormat:@"%@",self.talkGridModel.department],@"duration":@"1"}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", self.talkGridModel.id_],
+                    @"type" : [NSString stringWithFormat:@"%@", self.talkGridModel.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.talkGridModel.department],
+                    @"duration" : @"1"}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
-    }failedBlock:^(NSError *_Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
 
     }];
 }
 
 ///发送点赞，和取消点赞
-- (void)PraiseAction:(APIName *)api Method:(RequestMethod)method
-{
+- (void)PraiseAction:(APIName *)api Method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.talkGridModel.id_],@"type":[NSString stringWithFormat:@"%@",self.talkGridModel.type],@"department":[NSString stringWithFormat:@"%@",self.talkGridModel.department]}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", self.talkGridModel.id_],
+                    @"type" : [NSString stringWithFormat:@"%@", self.talkGridModel.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.talkGridModel.department]}];
     if (method == POST) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
-        }failedBlock:^(NSError *_Nullable error) {
+            [self                                                                         requestLessonListData:
+                    [NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
+        }                  failedBlock:^(NSError *_Nullable error) {
         }];
-    }else if (method == DELETE) {
+    } else if (method == DELETE) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
-        }failedBlock:^(NSError *_Nullable error) {
+            [self                                                                         requestLessonListData:
+                    [NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id] method:GET];
+        }                  failedBlock:^(NSError *_Nullable error) {
         }];
     }
 }
 
 #pragma mark 横竖屏状态
+
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration {
     if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
@@ -230,6 +256,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark- mainUI
+
 - (void)initMainUI {
     [self initPlayerView];
     [self initCollectionView];
@@ -237,6 +264,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark PlayerView
+
 - (void)initPlayerView {
     if (_playView) {
         [_playView removeFromSuperview];
@@ -276,13 +304,15 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
-    
+
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
-    
+    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
+            [NSURL URLWithString:self.talkGridModel.thumbnail]]];
+
 }
 
 #pragma mark CollectionView
+
 - (void)initCollectionView {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.minimumLineSpacing = 0.0;
@@ -309,22 +339,28 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             forCellWithReuseIdentifier:PlayerVC_Comments_Cell_Id];
 
     [self.collectionView registerClass:[PlayerPageDescribeHeaderView class]
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:PlayerVC_Describe_HeaderId];
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:PlayerVC_Describe_HeaderId];
     [self.collectionView registerClass:[PlayerPageDescribeFooterView class]
-            forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:PlayerVC_Describe_FooterId];
+            forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
+                   withReuseIdentifier:PlayerVC_Describe_FooterId];
 
     [self.collectionView registerClass:[PlayerPageRecommendedHeaderView class]
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:PlayerVC_Recommended_HeaderId];
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:PlayerVC_Recommended_HeaderId];
 
     [self.collectionView registerClass:[PlayerPageCommentsHeaderView class]
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:PlayerVC_Comments_HeaderId];
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:PlayerVC_Comments_HeaderId];
     [self.collectionView registerClass:[PlayerPageCommentsFooterView class]
-            forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:PlayerVC_Comments_FooterId];
+            forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
+                   withReuseIdentifier:PlayerVC_Comments_FooterId];
 
 
 }
 
 #pragma mark 键盘
+
 /**键盘 */
 - (void)initTextField {
     self.keyBoardAppearView = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -371,6 +407,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 #pragma mark- CollectionViewDelegate & DataSource
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 3;
 }
@@ -421,28 +458,32 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
             PlayerPageDescribeHeaderView *describeHeaderView =
                     [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                       withReuseIdentifier:PlayerVC_Describe_HeaderId forIndexPath:indexPath];
+                                                       withReuseIdentifier:PlayerVC_Describe_HeaderId
+                                                              forIndexPath:indexPath];
             describeHeaderView.model = self.tempLessonDetailModel.result;
 
             [describeHeaderView.rightButton addTarget:self action:@selector(describeHeaderViewRightButtonAction:)
                                      forControlEvents:UIControlEventTouchUpInside];
             if (_isShowVideDescrible == NO) {
-                [describeHeaderView.rightButton                                    setImage:[[UIImage imageNamed:@"iconMore"]
+                [describeHeaderView.rightButton  setImage:[[UIImage imageNamed:@"iconMore"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             } else if (_isShowVideDescrible == YES) {
-                [describeHeaderView.rightButton                                    setImage:[[UIImage imageNamed:@"iconLess"]
+                [describeHeaderView.rightButton  setImage:[[UIImage imageNamed:@"iconLess"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             }
 //           [describeHeaderView.downLoadButton addTarget:self action:@selector(describeHeaderViewdownLoadButtonAction:)
 // forControlEvents:UIControlEventTouchUpInside];
             [describeHeaderView.shareButton addTarget:self action:@selector(describeHeaderViewshareButtonAction:)
                                      forControlEvents:UIControlEventTouchUpInside];
-            [describeHeaderView.collectionButton addTarget:self action:@selector(describeHeaderViewcollectionButtonAction:)
-                                          forControlEvents:UIControlEventTouchUpInside];
+            [describeHeaderView.collectionButton
+                    addTarget:self action:@selector(describeHeaderViewcollectionButtonAction:)
+             forControlEvents:UIControlEventTouchUpInside];
             if (self.tempLessonDetailModel.result.user_favored) {
-                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavoritesOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
+                        imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             } else {
-                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavorites"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavorites"]
+                        imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             }
             return describeHeaderView;
         }
@@ -457,7 +498,8 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         else if (indexPath.section == 2) {
 
             PlayerPageCommentsHeaderView *CommentsHeaderView =
-                    [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PlayerVC_Comments_HeaderId
+                    [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
+                                    PlayerVC_Comments_HeaderId
                                                               forIndexPath:indexPath];
             [CommentsHeaderView.commentsButton addTarget:self action:@selector(comments:)
                                         forControlEvents:UIControlEventTouchUpInside];
@@ -469,7 +511,8 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         if (indexPath.section == 0) {
 
             PlayerPageDescribeFooterView *describeFooterView =
-                    [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PlayerVC_Describe_FooterId
+                    [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
+                                    PlayerVC_Describe_FooterId
                                                               forIndexPath:indexPath];
             [describeFooterView.thumbUpButton addTarget:self action:@selector(thumbUpAction:)
                                        forControlEvents:UIControlEventTouchUpInside];
@@ -479,7 +522,8 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         else if (indexPath.section == 2) {
 
             PlayerPageCommentsFooterView *CommentsFooterView =
-                    [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PlayerVC_Comments_FooterId
+                    [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
+                                    PlayerVC_Comments_FooterId
                                                               forIndexPath:indexPath];
             [CommentsFooterView.lookCommentsButton addTarget:self
                                                       action:@selector(CommentsFooterViewlookCommentsButton:)
@@ -524,14 +568,16 @@ referenceSizeForFooterInSection:(NSInteger)section {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         self.talkGridModel = self.talkGridListModel.result.data[indexPath.row];
-        [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
+        [self                                                                             requestCommentsData:
+                [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
         [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
-         [_playerView pause];
-         [_playerView resetToPlayNewURL];
+        [_playerView pause];
+        [_playerView resetToPlayNewURL];
         TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
         self.playUrl = gridVideomodel.url;
         _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-        _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
+        _playerView.xjfloading_image = [UIImage imageWithData:
+                [NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
         [_playerView play];
 
         [self sendPlayerHistoryToServerData:history method:POST];
@@ -539,12 +585,14 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark FlowLayoutDelegate
+
 /** 每个分区item的大小 */
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (self.talkGridModel.content != nil && self.talkGridModel.content.length != 0) {
-            CGRect tempRect = [StringUtil calculateLabelRect:self.talkGridModel.content width:SCREENWITH - 20 fontsize:12];
+            CGRect tempRect = [StringUtil
+                    calculateLabelRect:self.talkGridModel.content width:SCREENWITH - 20 fontsize:12];
             return CGSizeMake(SCREENWITH, tempRect.size.height + 10);
         }
         else {
@@ -571,6 +619,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark- 右按钮展示视频描述详情
+
 - (void)describeHeaderViewRightButtonAction:(UIButton *)sender {
     _isShowVideDescrible = !_isShowVideDescrible;
     [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
@@ -582,15 +631,17 @@ referenceSizeForFooterInSection:(NSInteger)section {
 //}
 
 #pragma mark 视频分享
+
 - (void)describeHeaderViewshareButtonAction:(UIButton *)sender {
     NSLog(@"视频分享");
 }
 
 #pragma mark 视频收藏
-- (void)describeHeaderViewcollectionButtonAction:(UIButton *)sender{
-    
+
+- (void)describeHeaderViewcollectionButtonAction:(UIButton *)sender {
+
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [self LoginPrompt];
     } else {
         if (self.tempLessonDetailModel.result.user_favored) {
@@ -602,6 +653,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark 查看全部评论
+
 - (void)CommentsFooterViewlookCommentsButton:(UIButton *)sender {
     CommentsViewController *allComents = [CommentsViewController new];
     allComents.ID = self.self.talkGridModel.id_;
@@ -609,35 +661,38 @@ referenceSizeForFooterInSection:(NSInteger)section {
 }
 
 #pragma mark 评论
+
 - (void)comments:(UIButton *)sender {
-        if ([[XJAccountManager defaultManager] accessToken] == nil ||
-                [[[XJAccountManager defaultManager] accessToken] length] == 0) {
-            [self LoginPrompt];
-        } else {
-            [self.textField becomeFirstResponder];
-        }
+    if ([[XJAccountManager defaultManager] accessToken] == nil ||
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+        [self LoginPrompt];
+    } else {
+        [self.textField becomeFirstResponder];
+    }
 }
 
 #pragma mark 发表评论
+
 - (void)sendCommentMsg:(UIButton *)sender {
-    NSString *tempApi = [NSString stringWithFormat:@"%@%@/comments",talkGridcomments,self.talkGridModel.id_];
+    NSString *tempApi = [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_];
     [self requestCommentsData:tempApi method:POST];
     [self.textField resignFirstResponder];
 }
 
 #pragma mark 点赞
+
 - (void)thumbUpAction:(UIButton *)sender {
 
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [self LoginPrompt];
     } else {
         LessonDetailListResultModel *lessonDetailListResultModel = self.tempLessonDetailModel.result;
-         //已点赞，进行取消点赞
+        //已点赞，进行取消点赞
         if (lessonDetailListResultModel.user_liked) {
             [self PraiseAction:praise Method:DELETE];
-         //未点赞，进行点赞
-        }else {
+            //未点赞，进行点赞
+        } else {
             [self PraiseAction:praise Method:POST];
         }
     }
@@ -650,6 +705,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 
 #pragma mark- KeyboardAction
+
 /** UIKeyboardWillHide */
 - (void)UIKeyboardWillHide:(NSNotification *)notifation {
     [UIView animateWithDuration:0.25 animations:^{
@@ -680,6 +736,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 
 
 #pragma mark- dealloc
+
 - (void)dealloc {
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];

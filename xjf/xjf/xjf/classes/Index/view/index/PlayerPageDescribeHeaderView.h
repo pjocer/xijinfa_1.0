@@ -8,19 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "LessonDetailListModel.h"
+
 @interface PlayerPageDescribeHeaderView : UICollectionReusableView
 
 ///下载
-@property (nonatomic, strong) UIButton *downLoadButton;
+@property(nonatomic, strong) UIButton *downLoadButton;
 ///分享
-@property (nonatomic, strong) UIButton *shareButton;
+@property(nonatomic, strong) UIButton *shareButton;
 ///收藏
-@property (nonatomic, strong) UIButton *collectionButton;
+@property(nonatomic, strong) UIButton *collectionButton;
 ///标题
-@property (nonatomic, strong) UILabel *title;
+@property(nonatomic, strong) UILabel *title;
 ///播放次数 及 视频类型
-@property (nonatomic, strong) UILabel *titleDetail;
+@property(nonatomic, strong) UILabel *titleDetail;
 ///展示描述视频按钮
-@property (nonatomic, strong) UIButton *rightButton;
-@property (nonatomic, strong) LessonDetailListResultModel *model;
+@property(nonatomic, strong) UIButton *rightButton;
+@property(nonatomic, strong) LessonDetailListResultModel *model;
 @end

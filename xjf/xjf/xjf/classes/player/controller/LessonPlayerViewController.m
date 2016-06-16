@@ -14,17 +14,18 @@
 #import "XJAccountManager.h"
 #import "SettingViewController.h"
 #import <AFNetworkReachabilityManager.h>
+
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
 
 
-@interface LessonPlayerViewController () <UIScrollViewDelegate,LessonPlayerVideoBottomViewDelegate,LessonPlayerLessonListViewControllerDelegate,UIAlertViewDelegate>
+@interface LessonPlayerViewController () <UIScrollViewDelegate, LessonPlayerVideoBottomViewDelegate,
+        LessonPlayerLessonListViewControllerDelegate,
+        UIAlertViewDelegate>
 @property(nonatomic, strong) UIView *playView;
 @property(strong, nonatomic) ZFPlayerView *playerView;
-
 @property(nonatomic, strong) LessonPlayerVideoBottomView *videoBottomView;
-
 @property(nonatomic, weak) UIScrollView *titleScrollView;
 @property(nonatomic, weak) UIScrollView *contentScrollView;
 /// 选中按钮
@@ -47,26 +48,28 @@ static CGFloat selViewH = 3;
     return _buttons;
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //若3G/4G 提示打开开关
-    if ([UserDefaultObjectForKey(USER_SETTING_WIFI) isEqualToString:@"NO"]  && [AFNetworkReachabilityManager sharedManager].reachableViaWWAN) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前为3G/4G网络,请去设置中打开,才可以观看视频" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+    if ([UserDefaultObjectForKey(USER_SETTING_WIFI) isEqualToString:@"NO"]
+            && [AFNetworkReachabilityManager sharedManager].reachableViaWWAN) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"当前为3G/4G网络,请去设置中打开,才可以观看视频"
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
         [alert show];
     }
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         [self.navigationController pushViewController:[SettingViewController new] animated:YES];
-    }else if (buttonIndex == 1){
+    } else if (buttonIndex == 1) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -75,21 +78,22 @@ static CGFloat selViewH = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-    [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+    [self requestLessonListData:[NSString stringWithFormat:@"%@/%@",
+                    coursesProjectLessonDetailList, self.lesssonID] method:GET];
     [self sendPlayerHistoryToServerData:history method:POST];
-    
+
 }
 
 - (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
-    
+
     if (method == GET) {
         __weak typeof(self) wSelf = self;
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-        
+
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             __strong typeof(self) sSelf = wSelf;
             sSelf.tempLessonDetailModel = [[LessonDetailListModel alloc]
-                                           initWithData:responseData error:nil];
+                    initWithData:responseData error:nil];
             for (TalkGridModel *model in sSelf.tempLessonDetailModel.result.lessons_menu) {
                 if ([model.type isEqualToString:@"dir"]) {
                     for (TalkGridModel *dirModel in model.children) {
@@ -97,7 +101,7 @@ static CGFloat selViewH = 3;
                             sSelf.playTalkGridModel = dirModel;
                         }
                     }
-                } else if ([model.type isEqualToString:@"lesson"]){
+                } else if ([model.type isEqualToString:@"lesson"]) {
                     if ([model.id_ isEqualToString:self.playTalkGridModel.id_]) {
                         sSelf.playTalkGridModel = model;
                     }
@@ -106,18 +110,21 @@ static CGFloat selViewH = 3;
             sSelf.videoBottomView.model = sSelf.playTalkGridModel;
             sSelf.videoBottomView.collectionCount.text = sSelf.tempLessonDetailModel.result.likes_count;
             if (sSelf.tempLessonDetailModel.result.user_liked) {
-                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLikeOn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-            }else {
-                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLike"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLikeOn"]
+                        imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            } else {
+                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLike"]
+                        imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             }
             sSelf.lessonPlayerLessonListViewController.lessonDetailListModel = sSelf.tempLessonDetailModel;
             sSelf.lessonPlayerLessonListViewController.selectedModel = sSelf.playTalkGridModel;
-            if (sSelf.tempLessonDetailModel.result.user_purchased || sSelf.tempLessonDetailModel.result.user_subscribed) {
+            if (sSelf.tempLessonDetailModel.result.user_purchased || sSelf.tempLessonDetailModel.result.user_subscribed)
+            {
                 sSelf.lessonPlayerLessonListViewController.isPay = YES;
             }
             [sSelf.lessonPlayerLessonListViewController.tableView reloadData];
-            
-        }failedBlock:^(NSError *_Nullable error) {
+
+        }                  failedBlock:^(NSError *_Nullable error) {
 //
         }];
     }
@@ -127,51 +134,65 @@ static CGFloat selViewH = 3;
     if (method == DELETE) {
         [self PostOrDeleteRequestData:api Method:DELETE];
     }
-    
+
 }
-- (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method
-{
+
+- (void)PostOrDeleteRequestData:(APIName *)api Method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.playTalkGridModel.id_],@"type":[NSString stringWithFormat:@"%@",self.playTalkGridModel.type],@"department":[NSString stringWithFormat:@"%@",self.playTalkGridModel.department]}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.id_],
+                    @"type" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.department]}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-       [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
-    }failedBlock:^(NSError *_Nullable error) {
+        [self requestLessonListData:
+                [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
 
 ///给服务器发送POST PlayerHistory
-- (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method{
+- (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.department],@"duration":@"1"}];
-    
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.id],
+                    @"type" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.department],
+                    @"duration" : @"1"}];
+
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        
-    }failedBlock:^(NSError *_Nullable error) {
-        
+
+    }                  failedBlock:^(NSError *_Nullable error) {
+
     }];
 }
+
 ///发送点赞，和取消点赞
-- (void)PraiseAction:(APIName *)api Method:(RequestMethod)method
-{
+- (void)PraiseAction:(APIName *)api Method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.id],@"type":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.type],@"department":[NSString stringWithFormat:@"%@",self.lessonDetailListModel.result.department]}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.id],
+                    @"type" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.department]}];
     if (method == POST) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-           [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
-        }failedBlock:^(NSError *_Nullable error) {
+            [self requestLessonListData:
+                    [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+        }                  failedBlock:^(NSError *_Nullable error) {
         }];
-    }else if (method == DELETE) {
+    } else if (method == DELETE) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-      [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
-        }failedBlock:^(NSError *_Nullable error) {
+            [self requestLessonListData:
+                    [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+        }                  failedBlock:^(NSError *_Nullable error) {
         }];
     }
 }
 
 
 #pragma mark- mainUI
+
 - (void)initMainUI {
     [self initPlayerView];
     [self setVideoBottomView];
@@ -211,7 +232,7 @@ static CGFloat selViewH = 3;
         [_playerView resetPlayer];
         [_playerView removeFromSuperview];
         _playerView = nil;
-        
+
     }
 
     _playerView = [ZFPlayerView sharedPlayerView];
@@ -230,9 +251,10 @@ static CGFloat selViewH = 3;
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
-    
+
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.lessonDetailListModel.result.thumbnail]]];
+    _playerView.xjfloading_image = [UIImage imageWithData:
+            [NSData dataWithContentsOfURL:[NSURL URLWithString:self.lessonDetailListModel.result.thumbnail]]];
 }
 
 #pragma mark 横竖屏状态
@@ -273,33 +295,36 @@ static CGFloat selViewH = 3;
     [self.view addSubview:self.videoBottomView];
     self.videoBottomView.delegate = self;
 }
+
 #pragma mark 分享 - 收藏 - 点赞
-- (void)LessonPlayerVideoBottomView:(LessonPlayerVideoBottomView *)sender DidDownloadOrCollectionButton:(UIButton *)button
-{
+
+- (void)LessonPlayerVideoBottomView:(LessonPlayerVideoBottomView *)sender
+      DidDownloadOrCollectionButton:(UIButton *)button {
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [self LoginPrompt];
-    } {
+    }
+    {
         //收藏
         if (button.tag == 101) {
-            
+
             if (self.playTalkGridModel.user_favored) {
                 [self requestLessonListData:favorite method:DELETE];
             } else if (!self.playTalkGridModel.user_favored) {
                 [self requestLessonListData:favorite method:POST];
             }
         }
-        //分享
-        else if (button.tag == 102){
+            //分享
+        else if (button.tag == 102) {
             NSLog(@"分享");
         }
-        //点赞
-        else if (button.tag == 103){
+            //点赞
+        else if (button.tag == 103) {
             //已点赞，进行取消点赞
             if (self.tempLessonDetailModel.result.user_liked) {
                 [self PraiseAction:praise Method:DELETE];
                 //未点赞，进行点赞
-            }else {
+            } else {
                 [self PraiseAction:praise Method:POST];
             }
         }
@@ -341,9 +366,9 @@ static CGFloat selViewH = 3;
     [self addChildViewController:self.lessonPlayerLessonListViewController];
     self.lessonPlayerLessonListViewController.delegate = self;
     __weak LessonPlayerViewController *tempSelf = self;
-    
+
     ///选择Cell 切换播放Model
-    self.lessonPlayerLessonListViewController.actionWithDidSelectedBlock = ^(TalkGridModel *model){
+    self.lessonPlayerLessonListViewController.actionWithDidSelectedBlock = ^(TalkGridModel *model) {
         tempSelf.playTalkGridModel = model;
         //视频换URL
         [tempSelf.playerView pause];
@@ -353,18 +378,20 @@ static CGFloat selViewH = 3;
             TalkGridVideo *gridVideomodel = tempSelf.playTalkGridModel.video_player.firstObject;
             tempSelf.playUrl = gridVideomodel.url;
             tempSelf.playerView.videoURL = [NSURL URLWithString:tempSelf.playUrl];
-            tempSelf.playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tempSelf.playTalkGridModel.thumbnail]]];
+            tempSelf.playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
+                    [NSURL URLWithString:tempSelf.playTalkGridModel.thumbnail]]];
             [tempSelf.playerView play];
         }
         //视频是否收藏过
         if (tempSelf.playTalkGridModel.user_favored) {
-            [tempSelf.videoBottomView.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            [tempSelf.videoBottomView.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
+                    imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         } else {
-            [tempSelf.videoBottomView.collection setImage:[UIImage imageNamed:@"iconFavorites"] forState:UIControlStateNormal];
+            [tempSelf.videoBottomView.collection setImage:[UIImage imageNamed:@"iconFavorites"]
+                                                 forState:UIControlStateNormal];
         }
     };
 
-    
     LessonPlayerLessonDescribeViewController *vc1 = [[LessonPlayerLessonDescribeViewController alloc] init];
     vc1.contentText = self.lessonDetailListModel.result.content;
     vc1.title = @"课程介绍";
@@ -493,18 +520,24 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark -lessonPlayerLessonListViewControllerDelegate
-- (void)lessonPlayerLessonListViewController:(LessonPlayerLessonListViewController *)vc TableDidSelectedAction:(TalkGridModel *)selectModel
-{
+
+- (void)lessonPlayerLessonListViewController:(LessonPlayerLessonListViewController *)vc
+                      TableDidSelectedAction:(TalkGridModel *)selectModel {
     [self sendUserLearendMessage:user_learnedApi Method:POST ByModel:selectModel];
 }
-- (void)sendUserLearendMessage:(APIName *)api Method:(RequestMethod)method ByModel:(TalkGridModel *)model
-{
+
+- (void)sendUserLearendMessage:(APIName *)api Method:(RequestMethod)method ByModel:(TalkGridModel *)model {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"id":[NSString stringWithFormat:@"%@",model.id_],@"type":[NSString stringWithFormat:@"%@",model.type],@"department":[NSString stringWithFormat:@"%@",model.department],@"status":@"1"}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
+            @{@"id" : [NSString stringWithFormat:@"%@", model.id_],
+                    @"type" : [NSString stringWithFormat:@"%@", model.type],
+                    @"department" : [NSString stringWithFormat:@"%@", model.department],
+                    @"status" : @"1"}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
-    }failedBlock:^(NSError *_Nullable error) {
-        
+        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID]
+                             method:GET];
+    }                  failedBlock:^(NSError *_Nullable error) {
+
     }];
 }
 

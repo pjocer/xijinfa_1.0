@@ -10,5 +10,5 @@
 
 @interface PlayerPageCommentsHeaderView : UICollectionReusableView
 ///评论按钮
-@property (nonatomic, strong) UIButton *commentsButton;
+@property(nonatomic, strong) UIButton *commentsButton;
 @end

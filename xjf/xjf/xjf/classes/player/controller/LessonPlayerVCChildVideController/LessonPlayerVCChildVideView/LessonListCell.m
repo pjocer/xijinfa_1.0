@@ -10,8 +10,7 @@
 
 @implementation LessonListCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.lessonName = [[UILabel alloc] init];
@@ -24,7 +23,7 @@
             make.height.mas_equalTo(18);
             make.right.equalTo(self.contentView).with.offset(120);
         }];
-        
+
         self.lessonTime = [[UILabel alloc] init];
         [self.contentView addSubview:self.lessonTime];
         self.lessonTime.font = FONT12;

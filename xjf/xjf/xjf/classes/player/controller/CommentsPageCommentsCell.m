@@ -10,29 +10,28 @@
 
 @interface CommentsPageCommentsCell ()
 ///分割线
-@property (nonatomic, strong) UIView *customSeparator;
+@property(nonatomic, strong) UIView *customSeparator;
 ///用户头像
-@property (nonatomic, strong) UIImageView *userImage;
+@property(nonatomic, strong) UIImageView *userImage;
 ///用户名字
-@property (nonatomic, strong) UILabel *userName;
+@property(nonatomic, strong) UILabel *userName;
 ///评论时间
-@property (nonatomic, strong) UILabel *commentsTime;
+@property(nonatomic, strong) UILabel *commentsTime;
 ///用户详情
-@property (nonatomic, strong) UILabel *userDetail;
+@property(nonatomic, strong) UILabel *userDetail;
 ///评论内容
-@property (nonatomic, strong) UILabel *commentsText;
+@property(nonatomic, strong) UILabel *commentsText;
 
-@property (nonatomic, assign) CGRect tempRect;
+@property(nonatomic, assign) CGRect tempRect;
 @end
 
 @implementation CommentsPageCommentsCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.contentView.backgroundColor = [UIColor whiteColor];
-        
+
         //separator
         self.customSeparator = [[UIView alloc] init];
         self.customSeparator.backgroundColor = BackgroundColor;
@@ -42,7 +41,7 @@
             make.bottom.mas_equalTo(self.contentView).with.offset(-1);
             make.height.mas_equalTo(1);
         }];
-        
+
         self.backgroundColor = [UIColor whiteColor];
         //userImage
         self.userImage = [[UIImageView alloc] init];
@@ -54,7 +53,7 @@
             make.left.top.equalTo(self).with.offset(10);
             make.size.mas_offset(CGSizeMake(40, 40));
         }];
-        
+
         //userName
         self.userName = [[UILabel alloc] init];
         [self.contentView addSubview:self.userName];
@@ -66,7 +65,7 @@
             make.height.mas_equalTo(self.userImage).multipliedBy(0.5);
             make.width.mas_equalTo(60);
         }];
-        
+
         //commentsTime
         self.commentsTime = [[UILabel alloc] init];
         [self.contentView addSubview:self.commentsTime];
@@ -79,7 +78,7 @@
             make.height.mas_equalTo(12);
             make.width.mas_equalTo(200);
         }];
-        
+
         //userDetail
         self.userDetail = [[UILabel alloc] init];
         [self.contentView addSubview:self.userDetail];
@@ -93,7 +92,7 @@
             make.height.equalTo(self.userName);
             make.width.mas_equalTo(200);
         }];
-        
+
         //commentsText
         self.commentsText = [[UILabel alloc] init];
         [self.contentView addSubview:self.commentsText];
@@ -109,9 +108,8 @@
     return self;
 }
 
-- (void)setCommentsModel:(CommentsModel *)commentsModel
-{
-    
+- (void)setCommentsModel:(CommentsModel *)commentsModel {
+
     if (commentsModel) {
         _commentsModel = commentsModel;
     }
@@ -122,10 +120,10 @@
     self.tempRect = [StringUtil calculateLabelRect:commentsModel.content width:SCREENWITH - 70 fontsize:15];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    //    self.commentsText.frame = CGRectMake(self.userDetail.frame.origin.x, CGRectGetMaxY(self.userDetail.frame), SCREENWITH - 70, 30);
+    //    self.commentsText.frame = CGRectMake(self.userDetail.frame.origin.x,
+    // CGRectGetMaxY(self.userDetail.frame), SCREENWITH - 70, 30);
     [self.commentsText mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.userImage.mas_bottom);
         make.left.equalTo(self.userName);

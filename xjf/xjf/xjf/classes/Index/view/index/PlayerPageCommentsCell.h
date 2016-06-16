@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CommentsModel.h"
+
 @interface PlayerPageCommentsCell : UICollectionViewCell
-@property (nonatomic, strong) CommentsModel *commentsModel;
+@property(nonatomic, strong) CommentsModel *commentsModel;
 @end

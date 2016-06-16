@@ -9,20 +9,20 @@
 #import "PlayerPageCommentsHeaderView.h"
 #import "IndexSectionView.h"
 #import "XJAccountManager.h"
+
 @interface PlayerPageCommentsHeaderView ()
 
-@property (nonatomic, strong) UIView *backGroundView;
+@property(nonatomic, strong) UIView *backGroundView;
 
-@property (nonatomic, strong) IndexSectionView *indexSectionView;
+@property(nonatomic, strong) IndexSectionView *indexSectionView;
 ///用户头像
-@property (nonatomic, strong) UIImageView *userImage;
+@property(nonatomic, strong) UIImageView *userImage;
 
 @end
 
 @implementation PlayerPageCommentsHeaderView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         //indexSectionView
@@ -35,8 +35,8 @@
             make.left.right.equalTo(self);
             make.height.mas_offset(35);
         }];
-        
-       // backGroundView
+
+        // backGroundView
         self.backGroundView = [[UIView alloc] init];
         self.backGroundView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.backGroundView];
@@ -45,7 +45,7 @@
             make.top.equalTo(self.indexSectionView.mas_bottom).with.offset(1);
             make.bottom.equalTo(self).with.offset(-1);
         }];
-        
+
         //userImage
         self.userImage = [[UIImageView alloc] init];
         self.userImage.backgroundColor = BackgroundColor
@@ -57,12 +57,14 @@
             make.left.equalTo(self).with.offset(10);
             make.size.mas_offset(CGSizeMake(40, 40));
         }];
-        if ([[XJAccountManager defaultManager] accessToken] != nil || [[XJAccountManager defaultManager] accessToken].length > 0) {
-            [self.userImage sd_setImageWithURL:[NSURL URLWithString:[XJAccountManager defaultManager].user_model.result.avatar]];
-        }else {
+        if ([[XJAccountManager defaultManager] accessToken] != nil ||
+                [[XJAccountManager defaultManager] accessToken].length > 0) {
+            [self.userImage sd_setImageWithURL:[NSURL URLWithString:
+                    [XJAccountManager defaultManager].user_model.result.avatar]];
+        } else {
             self.userImage.image = [UIImage imageNamed:@"user_unload"];
         }
-        
+
         //commentsButton
         self.commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.commentsButton];
@@ -71,7 +73,7 @@
         self.commentsButton.titleLabel.font = FONT15;
         [self.commentsButton setTintColor:[UIColor xjfStringToColor:@"#9a9a9a"]];
         self.commentsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        self.commentsButton.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);
+        self.commentsButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
         self.commentsButton.layer.masksToBounds = YES;
         self.commentsButton.layer.cornerRadius = 5;
         [self.commentsButton mas_makeConstraints:^(MASConstraintMaker *make) {

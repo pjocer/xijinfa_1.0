@@ -13,11 +13,10 @@ static NSInteger collectionTag = 101;
 static NSInteger downloadTag = 102;
 static NSInteger collectionLogoTag = 103;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self= [super initWithFrame:frame];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
-        
+
         //collection
         self.collection = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.collection];
@@ -30,7 +29,7 @@ static NSInteger collectionLogoTag = 103;
         }];
         [self.collection addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         self.collection.tag = collectionTag;
-        
+
         //share
         self.download = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.download];
@@ -43,7 +42,7 @@ static NSInteger collectionLogoTag = 103;
         }];
         [self.download addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         self.download.tag = downloadTag;
-        
+
         //collectionLogo
         self.collectionLogo = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.collectionLogo];
@@ -54,7 +53,7 @@ static NSInteger collectionLogoTag = 103;
         }];
         [self.collectionLogo addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         self.collectionLogo.tag = collectionLogoTag;
-        
+
         //
         self.collectionCount = [[UILabel alloc] init];
         [self addSubview:self.collectionCount];
@@ -66,25 +65,25 @@ static NSInteger collectionLogoTag = 103;
             make.centerY.equalTo(self);
             make.size.mas_equalTo(CGSizeMake(100, 14));
         }];
-        
+
     }
     return self;
 }
 
-- (void)click:(UIButton *)sender
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(LessonPlayerVideoBottomView:DidDownloadOrCollectionButton:)]) {
-      [self.delegate LessonPlayerVideoBottomView:self DidDownloadOrCollectionButton:sender];
-    } 
+- (void)click:(UIButton *)sender {
+    if (self.delegate && [self.delegate
+            respondsToSelector:@selector(LessonPlayerVideoBottomView:DidDownloadOrCollectionButton:)]) {
+        [self.delegate LessonPlayerVideoBottomView:self DidDownloadOrCollectionButton:sender];
+    }
 }
 
-- (void)setModel:(TalkGridModel *)model
-{
+- (void)setModel:(TalkGridModel *)model {
     if (model) {
         _model = model;
     }
     if (model.user_favored) {
-        [self.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        [self.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
+                imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     } else {
         [self.collection setImage:[UIImage imageNamed:@"iconFavorites"] forState:UIControlStateNormal];
     }

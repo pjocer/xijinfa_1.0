@@ -10,8 +10,7 @@
 
 @implementation PlayerPageCommentsFooterView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.lookCommentsButton = [UIButton buttonWithType:UIButtonTypeSystem];

@@ -9,24 +9,21 @@
 #import "CommentsModel.h"
 
 @implementation CommentsModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation CommentsResultModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation CommentsAllDataList
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end

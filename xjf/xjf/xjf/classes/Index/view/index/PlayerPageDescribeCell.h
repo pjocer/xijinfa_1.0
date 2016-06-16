@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TalkGridModel.h"
+
 @interface PlayerPageDescribeCell : UICollectionViewCell
 
 ///视频描述
-@property (nonatomic, strong) UILabel *videoDescribe;
+@property(nonatomic, strong) UILabel *videoDescribe;
 
-@property (nonatomic, strong) TalkGridModel *model;
+@property(nonatomic, strong) TalkGridModel *model;
 @end

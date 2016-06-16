@@ -11,24 +11,23 @@
 @interface PlayerPageCommentsCell ()
 
 ///用户头像
-@property (nonatomic, strong) UIImageView *userImage;
+@property(nonatomic, strong) UIImageView *userImage;
 ///用户名字
-@property (nonatomic, strong) UILabel *userName;
+@property(nonatomic, strong) UILabel *userName;
 ///评论时间
-@property (nonatomic, strong) UILabel *commentsTime;
+@property(nonatomic, strong) UILabel *commentsTime;
 ///用户详情
-@property (nonatomic, strong) UILabel *userDetail;
+@property(nonatomic, strong) UILabel *userDetail;
 ///评论内容
-@property (nonatomic, strong) UILabel *commentsText;
+@property(nonatomic, strong) UILabel *commentsText;
 
-@property (nonatomic, assign) CGRect tempRect;
+@property(nonatomic, assign) CGRect tempRect;
 
 @end
 
 @implementation PlayerPageCommentsCell
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
@@ -42,7 +41,7 @@
             make.left.top.equalTo(self).with.offset(10);
             make.size.mas_offset(CGSizeMake(40, 40));
         }];
-        
+
         //userName
         self.userName = [[UILabel alloc] init];
         [self.contentView addSubview:self.userName];
@@ -67,7 +66,7 @@
             make.height.mas_equalTo(12);
             make.width.mas_equalTo(200);
         }];
-        
+
         //userDetail
         self.userDetail = [[UILabel alloc] init];
         [self.contentView addSubview:self.userDetail];
@@ -81,7 +80,7 @@
             make.height.equalTo(self.userName);
             make.width.mas_equalTo(200);
         }];
-        
+
         //commentsText
         self.commentsText = [[UILabel alloc] init];
         [self.contentView addSubview:self.commentsText];
@@ -98,8 +97,7 @@
     return self;
 }
 
-- (void)setCommentsModel:(CommentsModel *)commentsModel
-{
+- (void)setCommentsModel:(CommentsModel *)commentsModel {
     if (commentsModel) {
         _commentsModel = commentsModel;
     }
@@ -112,11 +110,11 @@
 }
 
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 //    
-//    self.commentsText.frame = CGRectMake(self.userDetail.frame.origin.x, CGRectGetMaxY(self.userDetail.frame), SCREENWITH - 70, 30);
+//    self.commentsText.frame = CGRectMake(self.userDetail.frame.origin.x,
+// CGRectGetMaxY(self.userDetail.frame), SCREENWITH - 70, 30);
     [self.commentsText mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.userImage.mas_bottom);
         make.left.equalTo(self.userName);

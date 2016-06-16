@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+
     self.view.backgroundColor = [UIColor whiteColor];
 //    self.lessonName = [[UILabel alloc] init];
 //    [self.view addSubview:self.lessonName];
@@ -27,9 +27,9 @@
 //        make.right.equalTo(self.view).with.offset(-10);
 //        make.height.mas_equalTo(18);
 //    }];
-    
+
     self.textView = [[UITextView alloc] init];
-    [self.view addSubview: self.textView];
+    [self.view addSubview:self.textView];
     self.textView.textColor = AssistColor
     self.textView.font = [UIFont fontWithName:@"Arial" size:12.0];
 //    self.textView.delegate = self;//设置它的委托方法
@@ -37,7 +37,7 @@
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.editable = NO;
     self.textView.text = self.contentText;
-    
+
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(10);
