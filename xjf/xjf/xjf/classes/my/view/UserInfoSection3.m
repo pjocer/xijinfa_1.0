@@ -53,6 +53,9 @@
             void (^block) (NSString *txt) = type==InterestedInvestCase?self.InterestedBlock:(type==ExperienceInvestCase?self.ExperienceBlock:self.PreferenceBlock);
             if (block) block (txt);
         }
+        if ([label.text isEqualToString:@"未知"]) {
+            return nil;
+        }
         return label.text;
     }];
 }

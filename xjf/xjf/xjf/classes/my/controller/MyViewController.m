@@ -69,6 +69,7 @@
             XjfRequest *request = [[XjfRequest alloc] initWithAPIName:update_user_info RequestMethod:POST];
             request.requestParams = self.userinfo.params;
             NSLog(@"%@",request.requestParams);
+            NSLog(@"%@",request.requestHeaders);
             [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
                 NSString *s = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
                 NSLog(@"%@",s);

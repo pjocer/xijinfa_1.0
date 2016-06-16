@@ -155,14 +155,6 @@
             nextDataSource = [dic objectForKey:@"cities"];
         }
     }
-    if ([self.nav_title isEqualToString:@"选择区/县"]) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(cityDidChoosed:)]) {
-            [self.delegate cityDidChoosed:self.cityChoosed];
-        }
-        UIViewController *controller = [self.navigationController.childViewControllers objectAtIndex:1];
-        [self.navigationController popToViewController:controller animated:YES];
-        return;
-    }
     CitySelecter *next = [[CitySelecter alloc] initWithDataSource:nextDataSource];
     if ([self.nav_title isEqualToString:@"选择省份"]) {
         next.nav_title = @"选择市";
@@ -172,9 +164,17 @@
     if (self.cityChoosed) {
         next.cityChoosed = [NSString stringWithFormat:@"%@,%@",self.cityChoosed,text];
     }else {
-        next.cityChoosed = self.cityChoosed;
+        next.cityChoosed = text;
     }
     next.delegate = self.delegate;
+    if ([self.nav_title isEqualToString:@"选择区/县"]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(cityDidChoosed:)]) {
+            [self.delegate cityDidChoosed:next.cityChoosed];
+        }
+        UIViewController *controller = [self.navigationController.childViewControllers objectAtIndex:1];
+        [self.navigationController popToViewController:controller animated:YES];
+        return;
+    }
     [self.navigationController pushViewController:next animated:YES];
 }
 -(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
