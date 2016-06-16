@@ -11,7 +11,7 @@
 #import "XJAccountManager.h"
 #import "CitySelecter.h"
 
-@interface UserInfoSection1 ()
+@interface UserInfoSection1 () <CityDidChoosedDelegate>
 @property (weak, nonatomic) IBOutlet UIView *sexView;
 @property (weak, nonatomic) IBOutlet UIView *placeView;
 @property (weak, nonatomic) IBOutlet UIView *ageView;
@@ -42,8 +42,7 @@
             break;
         case 771:
         {
-            UIViewController *controller = getCurrentDisplayController();
-            [controller.navigationController pushViewController:[CitySelecter new] animated:YES];
+            [self confirmResult:UnKnownCase];
         }
             break;
         case 772:
@@ -56,7 +55,16 @@
     }
 }
 - (void)confirmResult:(Case)type {
-    [self.alert showChoose:type handler:^id(id txt) {
+    if (type == UnKnownCase) {
+        UIViewController *controller = getCurrentDisplayController();
+        NSData *citiesData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"zh_CN" ofType:@"json"]];
+        NSMutableArray *dataSource = [NSMutableArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:citiesData options:NSJSONReadingMutableLeaves error:nil]];;
+        CitySelecter *selector = [[CitySelecter alloc] initWithDataSource:dataSource];
+        selector.delegate = self;
+        selector.nav_title = @"选择省份";
+        [controller.navigationController pushViewController:selector animated:YES];
+    }else {
+        [self.alert showChoose:type handler:^id(id txt) {
         UILabel *label = type==SexCase?self.sex:(type==AgeCase?self.age:self.place);
         if (txt) {
             label.text = txt;
@@ -64,7 +72,12 @@
             if (block) block (txt);
         }
         return label.text;
-    }];
+        }];
+    }
+}
+-(void)cityDidChoosed:(NSString *)city {
+    self.place.text = city;
+    if (self.CityBlock) self.CityBlock(city);
 }
 -(void)setModel:(UserProfileModel *)model {
     _model = model;

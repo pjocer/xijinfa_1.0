@@ -178,6 +178,9 @@
 		D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */; };
 		D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */; };
 		D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */; };
+		D02FB4D01D12798A006EADAD /* CitySelecter.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4CF1D12798A006EADAD /* CitySelecter.m */; };
+		D02FB4D51D127A05006EADAD /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4D41D127A05006EADAD /* zh_CN.json */; };
+		D02FB4DC1D1290B8006EADAD /* NSString+FirstLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4DB1D1290B8006EADAD /* NSString+FirstLetter.m */; };
 		D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA4E1CEC041600CD5359 /* XJAccountManager.m */; };
 		D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA511CEC047600CD5359 /* UserProfileModel.m */; };
 		D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA541CEC0D3400CD5359 /* UserLoadCell.m */; };
@@ -604,6 +607,11 @@
 		D02FB4B31D112458006EADAD /* UserInfoInterestedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoInterestedCell.h; sourceTree = "<group>"; };
 		D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoInterestedCell.m; sourceTree = "<group>"; };
 		D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoInterestedCell.xib; sourceTree = "<group>"; };
+		D02FB4CE1D12798A006EADAD /* CitySelecter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitySelecter.h; sourceTree = "<group>"; };
+		D02FB4CF1D12798A006EADAD /* CitySelecter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitySelecter.m; sourceTree = "<group>"; };
+		D02FB4D41D127A05006EADAD /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = zh_CN.json; path = controller/zh_CN.json; sourceTree = "<group>"; };
+		D02FB4DA1D1290B8006EADAD /* NSString+FirstLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FirstLetter.h"; sourceTree = "<group>"; };
+		D02FB4DB1D1290B8006EADAD /* NSString+FirstLetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FirstLetter.m"; sourceTree = "<group>"; };
 		D049BA4D1CEC041600CD5359 /* XJAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJAccountManager.h; sourceTree = "<group>"; };
 		D049BA4E1CEC041600CD5359 /* XJAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAccountManager.m; sourceTree = "<group>"; tabWidth = 4; };
 		D049BA501CEC047600CD5359 /* UserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModel.h; sourceTree = "<group>"; };
@@ -1120,6 +1128,8 @@
 				D053D2631CEAF85C00873D10 /* StringUtil.m */,
 				D053D2651CEAF87800873D10 /* NSDate+Convenience.h */,
 				D053D2661CEAF87800873D10 /* NSDate+Convenience.m */,
+				D02FB4DA1D1290B8006EADAD /* NSString+FirstLetter.h */,
+				D02FB4DB1D1290B8006EADAD /* NSString+FirstLetter.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -1367,7 +1377,7 @@
 			isa = PBXGroup;
 			children = (
 				CD1CCBFB1CB35A2D002FC0C9 /* controller */,
-				CD1CCBFE1CB35A2D002FC0C9 /* model */,
+				D02FB4D61D127A0F006EADAD /* Model */,
 				CD1CCBFF1CB35A2D002FC0C9 /* view */,
 				644C11121CBA8A1300892E2C /* myConfigure.h */,
 			);
@@ -1389,6 +1399,8 @@
 				D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */,
 				D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */,
 				D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */,
+				D02FB4CE1D12798A006EADAD /* CitySelecter.h */,
+				D02FB4CF1D12798A006EADAD /* CitySelecter.m */,
 				D01F77D01D0181E0000888D4 /* MyTopicViewController.h */,
 				D01F77D11D0181E0000888D4 /* MyTopicViewController.m */,
 				D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */,
@@ -1400,13 +1412,6 @@
 				5A0C3F8D1CF6939E00D7EEEB /* Mymoney */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		CD1CCBFE1CB35A2D002FC0C9 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		CD1CCBFF1CB35A2D002FC0C9 /* view */ = {
@@ -1775,6 +1780,14 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		D02FB4D61D127A0F006EADAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D02FB4D41D127A05006EADAD /* zh_CN.json */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D04D0C0E1D0D33FB0090D2CD /* XJCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -1943,7 +1956,7 @@
 				TargetAttributes = {
 					CDF57ABF1C9F825D00049AF0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = X9X5X3UP3M;
+						DevelopmentTeam = 49X2X2Y4J5;
 					};
 				};
 			};
@@ -1987,6 +2000,7 @@
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
 				644C115C1CBA90A000892E2C /* WeiboSDK.bundle in Resources */,
+				D02FB4D51D127A05006EADAD /* zh_CN.json in Resources */,
 				D04D0C131D0FA5240090D2CD /* UserInfoSection1.xib in Resources */,
 				D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */,
 				D07575421D0593F300F8360F /* SearchSectionTwo.xib in Resources */,
@@ -2167,6 +2181,7 @@
 				5A105E681CEC09540079BEFE /* LessonPlayerLessonListViewController.m in Sources */,
 				CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */,
 				5A240E071CE4270F003B7971 /* PlayerPageDescribeFooterView.m in Sources */,
+				D02FB4D01D12798A006EADAD /* CitySelecter.m in Sources */,
 				5A105E971CED91040079BEFE /* TalkGridModel.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,
@@ -2237,6 +2252,7 @@
 				D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */,
 				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
+				D02FB4DC1D1290B8006EADAD /* NSString+FirstLetter.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
 				D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */,
 				D0259AE71D02B85900283F29 /* TaBaseCell.m in Sources */,

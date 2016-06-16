@@ -7,14 +7,21 @@
 //
 
 #import "CitySelecter.h"
-#import "pinyin.h"
+#import "NSString+FirstLetter.h"
+#import <objc/runtime.h>
 @interface CitySelecter ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *sectionTitles;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation CitySelecter
-
+-(instancetype)initWithDataSource:(NSMutableArray *)dataSource {
+    if (self = [super init]) {
+        self.dataSource = dataSource;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initDataSource];
@@ -22,34 +29,93 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.allowsSelection = YES;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.sectionIndexColor = NormalColor;
     [self.view addSubview:self.tableView];
 }
 - (void)initDataSource {
-    self.dataSource = [NSMutableArray array];
-    NSData *citiesData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"zh_CN" ofType:@"json"]];
-    self.dataSource = [NSJSONSerialization JSONObjectWithData:citiesData options:NSJSONReadingMutableLeaves error:nil];
+    self.sectionTitles = [NSMutableArray arrayWithArray:[self getSectionTitles]];
     [self sortCities];
 }
 - (NSArray *)getSectionTitles {
     NSMutableArray *titles = [NSMutableArray array];
-    for (char c = 'A'; c <= 'Z'; c++) {
-        NSString *charactor=[NSString stringWithFormat:@"%c",c];
-        if (![charactor isEqualToString:@"I"]&&![charactor isEqualToString:@"O"]&&![charactor isEqualToString:@"U"]&&![charactor isEqualToString:@"V"]) {
-             [titles addObject:[NSString stringWithFormat:@"%c",c]];
+    for (NSDictionary *dic in self.dataSource) {
+        NSString *single = [[[dic objectForKey:@"areaName"] substringWithRange:NSMakeRange(0, 1)] firstLetter];
+        if (![titles containsObject:single]) {
+            [titles addObject:single];
         }
     }
+    [titles sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2];
+    }];
     return titles;
 }
+
 - (void)sortCities {
-    
+    NSMutableArray *cities = [NSMutableArray array];
+    for (NSDictionary *dic in self.dataSource) {
+        [cities addObject:[dic objectForKey:@"areaName"]];
+    }
+    NSMutableDictionary *citiesFirstLetters = [NSMutableDictionary dictionary];
+    NSMutableArray *firstLetters = [NSMutableArray array];
+    int key = 0;
+    for (NSString *city in cities) {
+        NSString *firstLetter = @"";
+        for (int i = 0; i < city.length; i++) {
+            NSString *singleFirstLetter = [[NSString stringWithFormat:@"%@",[city substringWithRange:NSMakeRange(i, 1)]] firstLetter];
+            firstLetter = [firstLetter stringByAppendingString:singleFirstLetter];
+        }
+        if ([firstLetter isEqualToString:@"ZQ"]) {
+            firstLetter = @"CQ";
+        }
+        
+        if ([citiesFirstLetters.allKeys containsObject:firstLetter]) {
+            firstLetter = [NSString stringWithFormat:@"%@%d",firstLetter,key];
+            [citiesFirstLetters setObject:city forKey: firstLetter];
+            key++;
+        }else {
+            key=0;
+            [citiesFirstLetters setObject:city forKey:firstLetter];
+        }
+        [firstLetters addObject:firstLetter];
+    }
+    [firstLetters sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2];
+    }];
+    NSMutableArray *separate = [NSMutableArray array];
+    if (firstLetters.count>1) {
+        for (NSInteger i = 0; i < firstLetters.count-1; i++) {
+            NSString *first = [firstLetters[i] substringWithRange:NSMakeRange(0, 1)];
+            NSString *second = [firstLetters[i+1] substringWithRange:NSMakeRange(0, 1)];
+            if (![first isEqualToString:second]) {
+                int count=0;
+                for (NSArray *array in separate) {
+                    count += array.count;
+                }
+                NSMutableArray *sameFirst = [NSMutableArray array];
+                int key = 0;
+                for (NSInteger j = count; j < i+1; j++) {
+                    NSString *cityName = [citiesFirstLetters objectForKey:firstLetters[j]];
+                    if ([sameFirst containsObject:cityName]) {
+                        cityName = [citiesFirstLetters objectForKey:[NSString stringWithFormat:@"%@%d",firstLetters[j],key]];
+                        key++;
+                    }else {
+                        key = 0;
+                    }
+                    [sameFirst addObject:cityName];
+                }
+                [separate addObject:sameFirst];
+            }
+        }
+    }else {
+        [separate addObject:@[[citiesFirstLetters objectForKey:firstLetters[0]]]];
+    }
+    objc_setAssociatedObject(self.dataSource, @"separate", separate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self getSectionTitles].count;
+    return [objc_getAssociatedObject(self.dataSource, @"separate") count];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [[objc_getAssociatedObject(self.dataSource, @"separate") objectAtIndex:section] count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -66,9 +132,9 @@
     lblBiaoti.backgroundColor = [UIColor clearColor];
     lblBiaoti.textAlignment = NSTextAlignmentLeft;
     lblBiaoti.font = [UIFont systemFontOfSize:15];
-    lblBiaoti.textColor = [UIColor blackColor];
+    lblBiaoti.textColor = NormalColor;
     lblBiaoti.frame = CGRectMake(15, 7.5, 200, 15);
-    lblBiaoti.text = [[self getSectionTitles] objectAtIndex:section];
+    lblBiaoti.text = [self.sectionTitles objectAtIndex:section];
     [biaotiView addSubview:lblBiaoti];
     return headView;
 }
@@ -76,15 +142,48 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"A"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"A"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"第%ld区，第%ld列",indexPath.section,indexPath.row];
+    cell.textLabel.text = objc_getAssociatedObject(self.dataSource, @"separate")[indexPath.section][indexPath.row];
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *text = objc_getAssociatedObject(self.dataSource, @"separate")[indexPath.section][indexPath.row];
+    NSMutableArray *nextDataSource = nil;
+    for (NSDictionary *dic in self.dataSource) {
+        if ([[dic objectForKey:@"areaName"] isEqualToString:text]) {
+            nextDataSource = [dic objectForKey:@"cities"];
+        }
+    }
+    if ([self.nav_title isEqualToString:@"选择区/县"]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(cityDidChoosed:)]) {
+            [self.delegate cityDidChoosed:self.cityChoosed];
+        }
+        UIViewController *controller = [self.navigationController.childViewControllers objectAtIndex:1];
+        [self.navigationController popToViewController:controller animated:YES];
+        return;
+    }
+    CitySelecter *next = [[CitySelecter alloc] initWithDataSource:nextDataSource];
+    if ([self.nav_title isEqualToString:@"选择省份"]) {
+        next.nav_title = @"选择市";
+    }else if ([self.nav_title isEqualToString:@"选择市"]) {
+        next.nav_title = @"选择区/县";
+    }
+    if (self.cityChoosed) {
+        next.cityChoosed = [NSString stringWithFormat:@"%@,%@",self.cityChoosed,text];
+    }else {
+        next.cityChoosed = self.cityChoosed;
+    }
+    next.delegate = self.delegate;
+    [self.navigationController pushViewController:next animated:YES];
+}
 -(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return [self getSectionTitles];
+    if (self.sectionTitles.count<5) {
+        return nil;
+    }
+    return self.sectionTitles;
 }
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    NSLog(@"%@,%ld",title,index);
     [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     return index;
 }

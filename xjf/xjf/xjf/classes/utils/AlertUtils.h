@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 
 typedef enum : NSUInteger {
-    AgeCase,
+    AgeCase = 0,
     SexCase,
     InterestedInvestCase,
     ExperienceInvestCase,
-    PreferenceInvestCase
+    PreferenceInvestCase,
+    UnKnownCase
 } Case;
 
 @interface AlertUtils : NSObject

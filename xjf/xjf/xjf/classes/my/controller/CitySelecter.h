@@ -8,6 +8,12 @@
 
 #import "MyBaseViewController.h"
 
-@interface CitySelecter : MyBaseViewController
+@protocol CityDidChoosedDelegate <NSObject>
+- (void)cityDidChoosed:(NSString *)city;
+@end
 
+@interface CitySelecter : MyBaseViewController
+@property (nonatomic, copy) NSString *cityChoosed;
+@property (nonatomic, weak) id <CityDidChoosedDelegate>delegate;
+-(instancetype)initWithDataSource:(NSMutableArray *)dataSource;
 @end
