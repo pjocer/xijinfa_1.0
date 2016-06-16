@@ -86,8 +86,8 @@
 		5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A661D10FD6C00008DA9 /* FeedbackView.m */; };
 		5A565A731D110B2100008DA9 /* CloverText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A701D110B2100008DA9 /* CloverText.m */; };
 		5A565A741D110B2100008DA9 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A721D110B2100008DA9 /* CustomTextField.m */; };
-		5A565A791D11433300008DA9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A781D11433300008DA9 /* Reachability.m */; };
 		5A565A7A1D11437400008DA9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C117A1CBA924600892E2C /* SystemConfiguration.framework */; };
+		5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF1D41D126FA700676255 /* AppDelegateManager.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -408,8 +408,8 @@
 		5A565A701D110B2100008DA9 /* CloverText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloverText.m; sourceTree = "<group>"; };
 		5A565A711D110B2100008DA9 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		5A565A721D110B2100008DA9 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
-		5A565A771D11433300008DA9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		5A565A781D11433300008DA9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5A6CF1D31D126FA600676255 /* AppDelegateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateManager.h; sourceTree = "<group>"; };
+		5A6CF1D41D126FA700676255 /* AppDelegateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateManager.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -1692,6 +1692,8 @@
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
+				5A6CF1D31D126FA600676255 /* AppDelegateManager.h */,
+				5A6CF1D41D126FA700676255 /* AppDelegateManager.m */,
 			);
 			path = xjf;
 			sourceTree = "<group>";
@@ -1798,8 +1800,6 @@
 				CDF57B1D1C9F848600049AF0 /* ThirdUtils */,
 				D073E8171CE9E5B200AED895 /* AlertUtils.h */,
 				D073E8181CE9E5B200AED895 /* AlertUtils.m */,
-				5A565A771D11433300008DA9 /* Reachability.h */,
-				5A565A781D11433300008DA9 /* Reachability.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2132,6 +2132,7 @@
 				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
 				D07575271D0513D500F8360F /* FansCell.m in Sources */,
 				5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */,
+				5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */,
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
 				CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */,
 				5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */,
@@ -2182,7 +2183,6 @@
 				5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
 				5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */,
-				5A565A791D11433300008DA9 /* Reachability.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				5A565A341D069F1B00008DA9 /* EmployedBasisViewController.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
@@ -2392,7 +2392,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2422,7 +2422,7 @@
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/SinaWeiboSDK",
 					"$(PROJECT_DIR)/xjf/vendor/XMShareView/Vendor/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portalx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

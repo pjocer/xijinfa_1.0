@@ -145,7 +145,8 @@
     shareView=nil;
     
 }
-+ (void)qqLoginWithSuccess:(void(^)(NSDictionary *message))success failure:(void(^)(NSDictionary *message, NSError *error))failure
++ (void)qqLoginWithSuccess:(void(^)(NSDictionary *message))success
+                   failure:(void(^)(NSDictionary *message, NSError *error))failure
 {
     [[XMShareQQUtil sharedInstance] Auth:@"" Success:^(NSDictionary *message) {
         success(message);
@@ -191,4 +192,5 @@
     req.sign = data_payment.sign;
     [WXApi sendReq:req];
 }
+
 @end

@@ -21,6 +21,12 @@
     self.navigationItem.title = @"设置";
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"----%@",UserDefaultObjectForKey(USER_SETTING_WIFI));
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
@@ -70,7 +76,7 @@
     return 50;
 }
 - (void)switchClicked:(UISwitch *)switchButton {
-    if (!switchButton.isOn) {
+    if (switchButton.isOn == YES) {
         [[ZToastManager ShardInstance] showtoast:@"已允许3G/4G播放"];
         UserDefaultSetObjectForKey(@"YES", USER_SETTING_WIFI);
     }else {

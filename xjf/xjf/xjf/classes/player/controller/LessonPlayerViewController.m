@@ -12,12 +12,14 @@
 #import "playerConfigure.h"
 #import "LessonDetailLessonListViewController.h"
 #import "XJAccountManager.h"
+#import "SettingViewController.h"
+#import <AFNetworkReachabilityManager.h>
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
 
 
-@interface LessonPlayerViewController () <UIScrollViewDelegate,LessonPlayerVideoBottomViewDelegate,LessonPlayerLessonListViewControllerDelegate>
+@interface LessonPlayerViewController () <UIScrollViewDelegate,LessonPlayerVideoBottomViewDelegate,LessonPlayerLessonListViewControllerDelegate,UIAlertViewDelegate>
 @property(nonatomic, strong) UIView *playView;
 @property(strong, nonatomic) ZFPlayerView *playerView;
 
@@ -50,6 +52,25 @@ static CGFloat selViewH = 3;
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //若3G/4G 提示打开开关
+    if ([UserDefaultObjectForKey(USER_SETTING_WIFI) isEqualToString:@"NO"]  && [AFNetworkReachabilityManager sharedManager].reachableViaWWAN) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前为3G/4G网络,请去设置中打开,才可以观看视频" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+        [alert show];
+    }
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.navigationController pushViewController:[SettingViewController new] animated:YES];
+    }else if (buttonIndex == 1){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

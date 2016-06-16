@@ -12,10 +12,10 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 
-
 static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
 
 @interface XjfRequest ()
+
 @property (nonatomic, copy) NSString *api_name;
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
 @property (nonatomic, strong) NSData *responseData;
@@ -44,10 +44,10 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
     dispatch_async(dispatch_get_main_queue(), ^{
         [[ZToastManager ShardInstance] showprogress];
     });
+    
     switch (self.requestMethod) {
         case POST:
         {
-            
             [_manager POST:self.api_name parameters:self.requestParams progress:^(NSProgress * _Nonnull uploadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -142,7 +142,9 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
         [_manager.requestSerializer setValue:[[XJAccountManager defaultManager] accessToken] forHTTPHeaderField:@"Authorization"];
     });
 }
+
 -(void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)filed {
     [_manager.requestSerializer setValue:value forHTTPHeaderField:filed];
 }
+
 @end

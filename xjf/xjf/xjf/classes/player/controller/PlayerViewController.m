@@ -15,6 +15,8 @@
 #import "XJAccountManager.h"
 #import <objc/runtime.h>
 #import "CustomTextField.h"
+#import "SettingViewController.h"
+#import <AFNetworkReachabilityManager.h>
 @implementation ZFPlayerView (LoadingImageUrl)
 
 -(void)setXjfloading_image:(UIImage *)xjfloading_image {
@@ -29,7 +31,7 @@
 @interface PlayerViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
-        UITextFieldDelegate>
+        UITextFieldDelegate,UIAlertViewDelegate>
 @property(nonatomic, strong) UIView *playView;
 @property(strong, nonatomic) ZFPlayerView *playerView;
 @property(nonatomic, strong) UICollectionView *collectionView;
@@ -61,6 +63,25 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         self.isShowVideDescrible = NO; //默认不展示视频详情
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //若3G/4G 提示打开开关
+    if ([UserDefaultObjectForKey(USER_SETTING_WIFI) isEqualToString:@"NO"]  && [AFNetworkReachabilityManager sharedManager].reachableViaWWAN) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前为3G/4G网络,请去设置中打开,才可以观看视频" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+        [alert show];
+    }
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.navigationController pushViewController:[SettingViewController new] animated:YES];
+    }else if (buttonIndex == 1){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
