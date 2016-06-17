@@ -29,7 +29,7 @@
     _model = model;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:_model.result.avatar]];
     [_nickname setTitle:_model.result.nickname forState:UIControlStateNormal];
-    [_introduce setTitle:_model.result.summary==nil||_model.result.summary.length==0?@"一句话介绍你自己（兴趣/职业）":_model.result.summary forState:UIControlStateNormal];
+    [_introduce setTitle:_model.result.quote==nil||_model.result.quote.length==0?@"一句话介绍你自己（兴趣/职业）":_model.result.quote forState:UIControlStateNormal];
 }
 - (IBAction)nicknameAction:(UIButton *)sender {
     UIViewController *controller = getCurrentDisplayController();

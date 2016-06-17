@@ -14,6 +14,7 @@
 #import "UserInfoSection2.h"
 #import "UserInfoSection3.h"
 #import "XjfRequest.h"
+#import "ZToastManager.h"
 
 @interface UserInfoViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
@@ -30,6 +31,21 @@
     self.model = [[XJAccountManager defaultManager] user_model];
     self.view.backgroundColor = BackgroundColor;
     [self initTableView];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(commitUserInfo)];
+    self.navigationItem.rightBarButtonItem = right;
+}
+- (void)commitUserInfo {
+    XjfRequest *reuest = [[XjfRequest alloc] initWithAPIName:update_user_info RequestMethod:POST];
+    reuest.requestParams = self.params;
+    [reuest startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        UserProfileModel *userProfile = [[UserProfileModel alloc] initWithData:responseData error:nil];
+        if (userProfile.errCode==0) {
+            [[XJAccountManager defaultManager] setUser_model:userProfile];
+            [[ZToastManager ShardInstance] showtoast:@"更新用户信息成功"];
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"更新用户信息失败"];
+    }];
 }
 - (void)initTableView {
     self.automaticallyAdjustsScrollViewInsets = NO;
