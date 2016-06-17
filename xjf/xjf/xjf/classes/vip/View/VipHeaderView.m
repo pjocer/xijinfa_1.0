@@ -283,7 +283,7 @@ static CGFloat vipCrownH = 18;
         //是否是会员
         if (self.userProfileModel.result.membership.count != 0) {
             [self.payVip setTitle:@"续费会员" forState:UIControlStateNormal];
-            UserProfileMembership *model = self.userProfileModel.result.membership.firstObject;
+            UserMembership *model = self.userProfileModel.result.membership.firstObject;
             self.vipTitle.text = model.title;
             self.vipEndDate.text = [NSString stringWithFormat:@"%@到期", model.end_time];
             self.vipCrown.image = [UIImage imageNamed:@"vip_tie"];

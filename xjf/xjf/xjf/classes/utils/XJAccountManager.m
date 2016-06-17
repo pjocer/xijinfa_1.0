@@ -40,7 +40,7 @@
 -(void)updateUserInfo:(NSDictionary *)newUserInfo isVipChanged:(BOOL)ret{
     if (ret) {
         if (self.user_model.result.membership.count>0) {
-            for (UserProfileMembership *membership in self.user_model.result.membership) {
+            for (UserMembership *membership in self.user_model.result.membership) {
                 if ([membership.type isEqualToString:newUserInfo[@"type"]]) {
                     for (NSString *key in newUserInfo.allKeys) {
                         [membership setValue:newUserInfo[key] forKey:key];
@@ -48,7 +48,7 @@
                 }
             }
         }else {
-            UserProfileMembership *membership = [[UserProfileMembership alloc] initWithDictionary:newUserInfo error:nil];
+            UserMembership *membership = [[UserMembership alloc] initWithDictionary:newUserInfo error:nil];
             [self.user_model.result.membership addObject:membership];
         }
         
@@ -87,7 +87,10 @@
     });
     return NO;
 }
-
+-(void)setUser_model:(UserProfileModel *)user_model {
+    _user_model = user_model;
+    UserDefaultSetObjectForKey([user_model toDictionary], USER_INFO);
+}
 - (void)setAccuontInfo:(NSDictionary *)info {
     self.accountFinalModel = [[RegistFinalModel alloc] initWithDictionary:info error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:info forKey:ACCOUNT_INFO];

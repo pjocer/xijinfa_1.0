@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserInfoModel.h"
 #import "UserProfileModel.h"
-
 
 #define TOKEN_INVALID_STATUS 206
 #define TOKEN_INVALID @"token_invalid"

@@ -7,19 +7,6 @@
 //
 
 #import "UserProfileModel.h"
-
-@implementation UserProfileMembership
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
-@end
-
-@implementation UserInfoResultModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
-@end
-
 @implementation UserProfileModel
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;

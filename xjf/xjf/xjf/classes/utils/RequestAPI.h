@@ -71,7 +71,7 @@ static APIName *search_person = @"/api/search/users?s=";
 static APIName *user_comment_list = @"/api/user/%@/reply";
 
 //更新用户个人信息
-static APIName *update_user_info = @"api/user/profile";
+static APIName *update_user_info = @"/api/user/profile";
 #pragma mark- Hunter_Wang
 
 
