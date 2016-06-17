@@ -10,7 +10,8 @@
 #import "TalkGridModel.h"
 #import "VideoListCell.h"
 #import "LessonDetailViewController.h"
-@interface MyFavoredsSchoolViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface MyFavoredsSchoolViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
 
 @implementation MyFavoredsSchoolViewController
@@ -26,7 +27,7 @@ static NSString *MyFavoredsSchoolCell_id = @"MyFavoredsSchoolCell_id";
 - (void)initTabelView {
 
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, self.view.frame.size.height - 100)];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, self.view.frame.size.height - 100)];
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
@@ -38,7 +39,7 @@ static NSString *MyFavoredsSchoolCell_id = @"MyFavoredsSchoolCell_id";
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyFavoredsSchoolCell_id];
 }
 
@@ -59,11 +60,12 @@ static NSString *MyFavoredsSchoolCell_id = @"MyFavoredsSchoolCell_id";
 }
 
 #pragma mark Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.dataSource[indexPath.row];
-     lessonDetailViewController.apiType = coursesProjectLessonDetailList;
+    lessonDetailViewController.apiType = coursesProjectLessonDetailList;
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 

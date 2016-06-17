@@ -26,23 +26,27 @@
     UITapGestureRecognizer *topic_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(topicClicked:)];
     [_topic addGestureRecognizer:topic_tap];
 }
+
 - (void)commentClicked:(UIGestureRecognizer *)gesture {
-    MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *)self.model];
+    MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *) self.model];
     UIViewController *vc = getCurrentDisplayController();
     [vc.navigationController pushViewController:controller animated:YES];
 }
--(void)setModel:(JSONModel *)model {
-    UserInfoModel *userInfo = (UserInfoModel *)model;
+
+- (void)setModel:(JSONModel *)model {
+    UserInfoModel *userInfo = (UserInfoModel *) model;
     _model = userInfo;
-    _topic.text = [NSString stringWithFormat:@"%@的话题",userInfo.nickname];
-    _comment.text = [NSString stringWithFormat:@"%@的回答",userInfo.nickname];
+    _topic.text = [NSString stringWithFormat:@"%@的话题", userInfo.nickname];
+    _comment.text = [NSString stringWithFormat:@"%@的回答", userInfo.nickname];
 }
+
 - (void)topicClicked:(UIGestureRecognizer *)gesture {
-    UserInfoModel *user_info = (UserInfoModel *)self.model;
+    UserInfoModel *user_info = (UserInfoModel *) self.model;
     UIViewController *controller = getCurrentDisplayController();
     TaTopicViewController *ta_topic = [[TaTopicViewController alloc] initWithID:user_info.id nickname:user_info.nickname];
     [controller.navigationController pushViewController:ta_topic animated:YES];
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

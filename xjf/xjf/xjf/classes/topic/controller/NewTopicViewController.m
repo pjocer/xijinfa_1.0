@@ -14,33 +14,35 @@
 #import "NewSharpViewController.h"
 
 @interface NewTopicViewController () <NewSharpAddSuccessed>
-@property (nonatomic, strong)UIButton *checkout;
-@property (nonatomic, strong)UIButton *titleView_button;
-@property (nonatomic, strong)UIButton *topic_new;
-@property (nonatomic, strong)UIView *bottom;
-@property (nonatomic, strong)UITextView *textView;
-@property (nonatomic, strong)UILabel *placeholder;
-@property (nonatomic, strong)NSMutableArray *labels;
+@property (nonatomic, strong) UIButton *checkout;
+@property (nonatomic, strong) UIButton *titleView_button;
+@property (nonatomic, strong) UIButton *topic_new;
+@property (nonatomic, strong) UIView *bottom;
+@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UILabel *placeholder;
+@property (nonatomic, strong) NSMutableArray *labels;
 @end
 
 @implementation NewTopicViewController
 
--(instancetype)initWithStyle:(NewTopicStyle)style {
+- (instancetype)initWithStyle:(NewTopicStyle)style {
     self = [super init];
     if (self) {
         _style = style;
     }
     return self;
 }
--(void)viewWillDisappear:(BOOL)animated {
+
+- (void)viewWillDisappear:(BOOL)animated {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self setNeedsStatusBarAppearanceUpdate];
     [super viewWillDisappear:animated];
 }
--(void)viewWillAppear:(BOOL)animated {
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self resetNavBar];
-    
+
 }
 
 - (void)viewDidLoad {
@@ -54,15 +56,15 @@
     ReceivedNotification(self, UIKeyboardWillChangeFrameNotification, ^(NSNotification *notification) {
         @strongify(self)
         NSValue *value = [notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-        CGFloat y = value.CGRectValue.origin.y-114;
+        CGFloat y = value.CGRectValue.origin.y - 114;
         [UIView animateWithDuration:[[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
             self.bottom.frame = CGRectMake(0, y, SCREENWITH, 50);
         }];
     });
     [[self.textView rac_textSignal] subscribeNext:^(id x) {
         @strongify(self)
-        NSString *text = (NSString *)x;
-        _placeholder.hidden = text.length>0;
+        NSString *text = (NSString *) x;
+        _placeholder.hidden = text.length > 0;
         [self checkoutHidden];
     }];
 }
@@ -72,22 +74,24 @@
     [self.view addSubview:self.bottom];
     [self.view addSubview:self.textView];
 }
--(UITextView *)textView {
+
+- (UITextView *)textView {
     if (!_textView) {
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-20, SCREENHEIGHT-50-HEADHEIGHT-265)];
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH - 20, SCREENHEIGHT - 50 - HEADHEIGHT - 265)];
         _textView.backgroundColor = [UIColor clearColor];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineSpacing = 3;
-        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"]};
+        NSDictionary *attributes = @{NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : [UIColor xjfStringToColor:@"#444444"]};
         _textView.typingAttributes = attributes;
         [_textView becomeFirstResponder];
         [_textView addSubview:self.placeholder];
     }
     return _textView;
 }
--(UILabel *)placeholder {
+
+- (UILabel *)placeholder {
     if (!_placeholder) {
-        _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH-20, 21)];
+        _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH - 20, 21)];
         _placeholder.text = @"谈谈你的想法吧~";
         _placeholder.textColor = AssistColor;
         _placeholder.font = FONT15;
@@ -95,47 +99,47 @@
     return _placeholder;
 }
 
--(UIView *)bottom {
+- (UIView *)bottom {
     if (!_bottom) {
-        _bottom = [[UIView alloc] initWithFrame:CGRectMake(0, SCREENHEIGHT-HEADHEIGHT-50, SCREENWITH, 50)];
+        _bottom = [[UIView alloc] initWithFrame:CGRectMake(0, SCREENHEIGHT - HEADHEIGHT - 50, SCREENWITH, 50)];
         _bottom.backgroundColor = [UIColor whiteColor];
         [_bottom addSubview:self.topic_new];
     }
     return _bottom;
 }
 
--(UIButton *)topic_new {
+- (UIButton *)topic_new {
     if (!_topic_new) {
         _topic_new = [UIButton buttonWithType:UIButtonTypeCustom];
         [_topic_new setBackgroundImage:[UIImage imageNamed:@"new_topic"] forState:UIControlStateNormal];
-        _topic_new.frame = CGRectMake(SCREENWITH-32, 14, 22, 22);
+        _topic_new.frame = CGRectMake(SCREENWITH - 32, 14, 22, 22);
         [_topic_new addTarget:self action:@selector(newTopic:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _topic_new;
 }
 
--(UIButton *)checkout {
+- (UIButton *)checkout {
     if (!_checkout) {
         _checkout = [UIButton buttonWithType:UIButtonTypeCustom];
         _checkout.backgroundColor = [UIColor whiteColor];
         _checkout.layer.cornerRadius = 5;
         _checkout.titleLabel.font = FONT(17);
-        [_checkout setTitle:_style==NewTopicDiscussStyle?@"新问答":@"新讨论" forState:UIControlStateNormal];
+        [_checkout setTitle:_style == NewTopicDiscussStyle ? @"新问答" : @"新讨论" forState:UIControlStateNormal];
         [_checkout setTitleColor:[UIColor xjfStringToColor:@"#444444"] forState:UIControlStateNormal];
-        _checkout.frame = CGRectMake(SCREENWITH/2-50, -50, 100, 50);
+        _checkout.frame = CGRectMake(SCREENWITH / 2 - 50, -50, 100, 50);
         _checkout.alpha = 0;
         [_checkout addTarget:self action:@selector(changeNewTopicStyle:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _checkout;
 }
 
--(UIButton *)titleView_button {
+- (UIButton *)titleView_button {
     if (!_titleView_button) {
         _titleView_button = [UIButton buttonWithType:UIButtonTypeCustom];
         _titleView_button.frame = CGRectMake(0, 0, 51, 18);
         [_titleView_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _titleView_button.titleLabel.font = FONT(17);
-        [_titleView_button setTitle:_style==NewTopicDiscussStyle?@"新讨论":@"新问答" forState:UIControlStateNormal];
+        [_titleView_button setTitle:_style == NewTopicDiscussStyle ? @"新讨论" : @"新问答" forState:UIControlStateNormal];
         [_titleView_button addTarget:self action:@selector(headerViewClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _titleView_button;
@@ -159,31 +163,34 @@
     self.navigationItem.leftBarButtonItem = cancel_item;
     self.navigationItem.rightBarButtonItem = send_item;
     self.navigationItem.titleView = titleView;
-    self.navigationController.navigationBar.barTintColor = _style==NewTopicDiscussStyle?[UIColor xjfStringToColor:@"#f7931e"]:[UIColor xjfStringToColor:@"#3fa9f5"];
+    self.navigationController.navigationBar.barTintColor = _style == NewTopicDiscussStyle ? [UIColor xjfStringToColor:@"#f7931e"] : [UIColor xjfStringToColor:@"#3fa9f5"];
 }
 
 - (void)resetNavBar {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self setNeedsStatusBarAppearanceUpdate];
-    self.navigationController.navigationBar.barTintColor = _style==NewTopicDiscussStyle?[UIColor xjfStringToColor:@"#f7931e"]:[UIColor xjfStringToColor:@"#3fa9f5"];
-    [_titleView_button setTitle:_style==NewTopicDiscussStyle?@"新讨论":@"新问答" forState:UIControlStateNormal];
+    self.navigationController.navigationBar.barTintColor = _style == NewTopicDiscussStyle ? [UIColor xjfStringToColor:@"#f7931e"] : [UIColor xjfStringToColor:@"#3fa9f5"];
+    [_titleView_button setTitle:_style == NewTopicDiscussStyle ? @"新讨论" : @"新问答" forState:UIControlStateNormal];
 }
+
 - (void)checkoutShow {
     [UIView animateWithDuration:0.3 animations:^{
         _checkout.alpha = 1;
-        _checkout.frame = CGRectMake(SCREENWITH/2-50, 10, 100, 50);
+        _checkout.frame = CGRectMake(SCREENWITH / 2 - 50, 10, 100, 50);
     }];
 }
+
 - (void)checkoutHidden {
     [UIView animateWithDuration:0.3 animations:^{
         _checkout.alpha = 0;
-        _checkout.frame = CGRectMake(SCREENWITH/2-50, -50, 100, 50);
-    } completion:^(BOOL finished) {
+        _checkout.frame = CGRectMake(SCREENWITH / 2 - 50, -50, 100, 50);
+    }                completion:^(BOOL finished) {
         _checkout = nil;
     }];
 }
+
 - (void)changeNewTopicStyle:(UIButton *)button {
-    _style = _style==NewTopicDiscussStyle?NewTopicQAStyle:NewTopicDiscussStyle;
+    _style = _style == NewTopicDiscussStyle ? NewTopicQAStyle : NewTopicDiscussStyle;
     [self checkoutHidden];
     [self resetNavBar];
 }
@@ -192,22 +199,25 @@
     if (_checkout == nil) {
         [self.view addSubview:self.checkout];
         [self checkoutShow];
-    }else {
+    } else {
         [self checkoutHidden];
     }
 }
+
 - (void)newTopic:(UIButton *)button {
     NewSharpViewController *controller = [[NewSharpViewController alloc] init];
     controller.delegate = self;
     [self.navigationController presentViewController:controller animated:YES completion:nil];
 }
+
 - (void)cancleClicked:(UIBarButtonItem *)item {
     [self checkoutHidden];
     [_textView resignFirstResponder];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void)sendClicked:(UIBarButtonItem *)item {
-    if (_textView.text.length>140) {
+    if (_textView.text.length > 140) {
         [[ZToastManager ShardInstance] showtoast:@"内容长度超出了140字"];
         return;
     }
@@ -216,50 +226,52 @@
         return;
     }
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":_style==NewTopicDiscussStyle?@"discuss":@"qa",@"content":_textView.text}];
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type" : _style == NewTopicDiscussStyle ? @"discuss" : @"qa", @"content" : _textView.text}];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
         if ([dic[@"errCode"] integerValue] == 0) {
             [[ZToastManager ShardInstance] showtoast:@"发表成功"];
             [_textView resignFirstResponder];
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-        }else {
+        } else {
             [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
         }
-    } failedBlock:^(NSError * _Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
     }];
 }
--(void)newSharpAddSuccessed:(NSString *)label {
+
+- (void)newSharpAddSuccessed:(NSString *)label {
     if (self.labels == nil) {
         self.labels = [NSMutableArray array];
     }
-    if ([self.labels containsObject:[NSString stringWithFormat:@"#%@#",label]]) {
+    if ([self.labels containsObject:[NSString stringWithFormat:@"#%@#", label]]) {
         [[ZToastManager ShardInstance] showtoast:@"请不要重复添加"];
-    }else if (label.length==0) {
-        
-    }else {
+    } else if (label.length == 0) {
+
+    } else {
         [[ZToastManager ShardInstance] showtoast:@"添加标签成功"];
-        [self.labels addObject:[NSString stringWithFormat:@"#%@#",label]];
+        [self.labels addObject:[NSString stringWithFormat:@"#%@#", label]];
         _placeholder.hidden = YES;
-        _textView.text = [_textView.text stringByAppendingString:[NSString stringWithFormat:@"#%@#",label]];
+        _textView.text = [_textView.text stringByAppendingString:[NSString stringWithFormat:@"#%@#", label]];
         NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_textView.text];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineSpacing = 3;
         NSUInteger location = 0;
         for (int i = 0; i < self.labels.count; i++) {
             NSRange range = [_textView.text rangeOfString:[self.labels objectAtIndex:i]];
-            NSRange foreRange = NSMakeRange(location, range.location-location);
-            NSRange backRange = NSMakeRange(range.location+range.length, string.length-range.location-range.length);
-            [string addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"]} range:foreRange];
-            [string addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#0061B0"]} range:range];
-            [string addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"]} range:backRange];
-            location = range.location+range.length;
+            NSRange foreRange = NSMakeRange(location, range.location - location);
+            NSRange backRange = NSMakeRange(range.location + range.length, string.length - range.location - range.length);
+            [string addAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : [UIColor xjfStringToColor:@"#444444"]} range:foreRange];
+            [string addAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : [UIColor xjfStringToColor:@"#0061B0"]} range:range];
+            [string addAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : [UIColor xjfStringToColor:@"#444444"]} range:backRange];
+            location = range.location + range.length;
         }
         _textView.attributedText = [[NSAttributedString alloc] initWithAttributedString:string];
-        _textView.typingAttributes = @{NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"],NSFontAttributeName:[UIFont systemFontOfSize:15],NSParagraphStyleAttributeName:paragraphStyle};
+        _textView.typingAttributes = @{NSForegroundColorAttributeName : [UIColor xjfStringToColor:@"#444444"], NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle};
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

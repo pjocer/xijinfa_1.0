@@ -20,11 +20,11 @@ typedef enum {
 
 @interface BaseViewCell : UITableViewCell
 
-@property(nonatomic, strong) id data;
-@property(nonatomic, strong) id key;
-@property(nonatomic, strong) id other;
-@property(nonatomic, strong) NSIndexPath *indexPath;
-@property(nonatomic, copy) void(^actionBlock)(BEventType, UIView *, id, id, NSIndexPath *);
+@property (nonatomic, strong) id data;
+@property (nonatomic, strong) id key;
+@property (nonatomic, strong) id other;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, copy) void(^actionBlock)(BEventType, UIView *, id, id, NSIndexPath *);
 
 - (void)setCallBack:(void (^)(BEventType, UIView *, id, id, NSIndexPath *))callback;
 

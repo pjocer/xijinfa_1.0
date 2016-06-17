@@ -25,5 +25,5 @@
 - (NSMutableAttributedString *)changeColorWithString:(NSString *)string
                                                light:(NSString *)light
                                                 Font:(CGFloat)font
-                                               Color:(UIColor*)color;
+                                               Color:(UIColor *)color;
 @end

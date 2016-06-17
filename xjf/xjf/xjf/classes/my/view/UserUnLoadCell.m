@@ -8,15 +8,14 @@
 
 #import "UserUnLoadCell.h"
 
-@implementation UserUnLoadCell
-{
+@implementation UserUnLoadCell {
     __weak IBOutlet UILabel *bottomLine;
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
     bottomLine.backgroundColor = BackgroundColor;
-    
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

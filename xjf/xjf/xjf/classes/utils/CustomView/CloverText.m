@@ -10,12 +10,11 @@
 
 @implementation CloverText
 
-- (id)initWithFrame:(CGRect)frame placeholder:(NSString *)placeholder
-{
+- (id)initWithFrame:(CGRect)frame placeholder:(NSString *)placeholder {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.TV = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        self.TV = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         self.TV.text = placeholder;
         self.TV.font = [UIFont boldSystemFontOfSize:15];
         self.TV.textColor = [UIColor lightGrayColor];

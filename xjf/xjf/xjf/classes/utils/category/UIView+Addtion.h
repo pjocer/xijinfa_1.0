@@ -10,7 +10,9 @@
 
 @interface UIView (Addtion)
 - (void)addShadow;
+
 - (UIView *)addBottomLine;
+
 /**
  *  颜色渐变(上下)
  *

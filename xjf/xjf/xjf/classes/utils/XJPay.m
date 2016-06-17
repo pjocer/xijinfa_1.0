@@ -82,11 +82,11 @@
 
 @implementation Product
 - (NSString *)description {
-    NSMutableString * discription = [NSMutableString string];
+    NSMutableString *discription = [NSMutableString string];
     if (self.partner) {
         [discription appendFormat:@"partner=\"%@\"", self.partner];
     }
-    
+
     if (self.sellerID) {
         [discription appendFormat:@"&seller_id=\"%@\"", self.sellerID];
     }
@@ -96,7 +96,7 @@
     if (self.subject) {
         [discription appendFormat:@"&subject=\"%@\"", self.subject];
     }
-    
+
     if (self.body) {
         [discription appendFormat:@"&body=\"%@\"", self.body];
     }
@@ -106,27 +106,27 @@
     if (self.notifyURL) {
         [discription appendFormat:@"&notify_url=\"%@\"", self.notifyURL];
     }
-    
+
     if (self.service) {
-        [discription appendFormat:@"&service=\"%@\"",self.service];//mobile.securitypay.pay
+        [discription appendFormat:@"&service=\"%@\"", self.service];//mobile.securitypay.pay
     }
     if (self.paymentType) {
-        [discription appendFormat:@"&payment_type=\"%@\"",self.paymentType];//1
+        [discription appendFormat:@"&payment_type=\"%@\"", self.paymentType];//1
     }
-    
+
     if (self.inputCharset) {
-        [discription appendFormat:@"&_input_charset=\"%@\"",self.inputCharset];//utf-8
+        [discription appendFormat:@"&_input_charset=\"%@\"", self.inputCharset];//utf-8
     }
     if (self.itBPay) {
-        [discription appendFormat:@"&it_b_pay=\"%@\"",self.itBPay];//30m
+        [discription appendFormat:@"&it_b_pay=\"%@\"", self.itBPay];//30m
     }
     if (self.showURL) {
-        [discription appendFormat:@"&show_url=\"%@\"",self.showURL];//m.alipay.com
+        [discription appendFormat:@"&show_url=\"%@\"", self.showURL];//m.alipay.com
     }
     if (self.appID) {
-        [discription appendFormat:@"&app_id=\"%@\"",self.appID];
+        [discription appendFormat:@"&app_id=\"%@\"", self.appID];
     }
-    for (NSString * key in [self.outContext allKeys]) {
+    for (NSString *key in [self.outContext allKeys]) {
         [discription appendFormat:@"&%@=\"%@\"", key, [self.outContext objectForKey:key]];
     }
     return discription;
@@ -139,24 +139,25 @@
 @end
 
 @implementation XJPay
--(void)buyTradeImmediately:(NSArray<Payment *> *)payment by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
+- (void)buyTradeImmediately:(NSArray<Payment *> *)payment by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     self.success = success;
     self.failed = failed;
     if ([self handleData:payment]) {
         [self produceOrder:style];
     }
 }
+
 - (void)produceOrder:(PayStyle)style {
     if (style == Alipay) {
         [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.xijinfa.portal" callback:^(NSDictionary *resultDic) {
             if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
                 if (self.success) self.success();
             } else {
-                NSLog(@"%@",resultDic[@"memo"]);
+                NSLog(@"%@", resultDic[@"memo"]);
                 if (self.failed) self.failed();
             }
         }];
-    }else {
+    } else {
         [[ZPlatformShare sharedInstance] weiChatPay:self.payment_wechat.data success:self.success failed:self.failed];
     }
 }
@@ -166,7 +167,7 @@
         for (Payment *payment in data) {
             if ([payment.channel isEqualToString:@"alipay"]) {
                 self.payment_alipay = payment;
-            }else {
+            } else {
                 self.payment_wechat = payment;
             }
         }

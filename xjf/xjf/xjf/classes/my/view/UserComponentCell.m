@@ -11,11 +11,11 @@
 #import "XJMarket.h"
 
 @interface UserComponent : UzysGridViewCell
-@property(nonatomic, strong) UIImage *image;
-@property(nonatomic, copy) NSString *title;
-@property(nonatomic, strong) UIImageView *icon;
-@property(nonatomic, strong) UILabel *titleLabel;
-@property(nonatomic, strong) UILabel *goodsCount;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, strong) UIImageView *icon;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *goodsCount;
 @end
 
 @implementation UserComponent
@@ -74,9 +74,9 @@
 @end
 
 @interface UserComponentCell () <UzysGridViewDelegate, UzysGridViewDataSource, UzysGridViewCellDelegate>
-@property(nonatomic, strong) NSMutableArray *images;
-@property(nonatomic, strong) NSMutableArray *titles;
-@property(nonatomic, strong) UILabel *goodsCount;
+@property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic, strong) NSMutableArray *titles;
+@property (nonatomic, strong) UILabel *goodsCount;
 @end
 
 @implementation UserComponentCell
@@ -113,7 +113,7 @@
         component.image = image;
         component.title = self.titles[index];
     }
-    
+
     if ([component.title isEqualToString:@"购物车"]) {
         self.goodsCount = [[UILabel alloc] initWithFrame:CGRectNull];
         [component addSubview:self.goodsCount];
@@ -128,7 +128,7 @@
         self.goodsCount.font = FONT15;
         self.goodsCount.textAlignment = NSTextAlignmentCenter;
     }
-    
+
     return component;
 }
 
@@ -169,7 +169,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     if ([[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] != 0 || [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count] != 0) {
         self.goodsCount.hidden = NO;
         self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] + [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count]];

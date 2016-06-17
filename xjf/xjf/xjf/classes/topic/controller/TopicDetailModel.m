@@ -9,7 +9,7 @@
 #import "TopicDetailModel.h"
 
 @implementation TopicDetailModel
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end

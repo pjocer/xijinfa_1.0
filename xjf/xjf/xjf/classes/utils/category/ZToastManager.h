@@ -9,10 +9,9 @@
 #import "MBProgressHUD.h"
 
 //定义显示HUD的每个动作，当此东西不需要显示是值设为小于0
-typedef enum
-{
+typedef enum {
     HUDShowType_None = 0,
-    HUDShowType_RegExistPhone ,
+    HUDShowType_RegExistPhone,
     HUDShowType_RegOrGetPassGetCode,
     HUDShowType_RegOrGetPassAction,
     HUDShowType_GetPassExitPhone,
@@ -25,8 +24,8 @@ typedef enum
     HUDShowType_SaveAddress,
     HUDShowType_DefaultAddress,
     HUDShowType_DeleteAddress
-    
-}HUDShowType;
+
+} HUDShowType;
 
 
 @interface ZToastManager : NSObject
@@ -35,10 +34,13 @@ typedef enum
 
 // toast
 - (void)showtoast:(NSString *)toastStr;
+
 - (void)showtoast:(NSString *)toastStr wait:(double)wait;
 
 // progress
 - (void)hideprogress;
+
 - (void)showprogress;
+
 - (void)showHUD:(HUDShowType)type;
 @end

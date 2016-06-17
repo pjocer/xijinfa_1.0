@@ -10,5 +10,5 @@
 #import "UserProfileModel.h"
 
 @interface UserLoadCell : UITableViewCell
-@property(nonatomic, strong) UserProfileModel *model;
+@property (nonatomic, strong) UserProfileModel *model;
 @end

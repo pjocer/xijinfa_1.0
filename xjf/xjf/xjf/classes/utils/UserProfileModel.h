@@ -11,7 +11,7 @@
 #import "UserInfoModel.h"
 
 @interface UserProfileModel : JSONModel
-@property(nonatomic, assign) NSInteger errCode;
-@property(nonatomic, copy) NSString *errMsg;
-@property(nonatomic, strong) UserInfoModel *result;
+@property (nonatomic, assign) NSInteger errCode;
+@property (nonatomic, copy) NSString *errMsg;
+@property (nonatomic, strong) UserInfoModel *result;
 @end

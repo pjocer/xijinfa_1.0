@@ -18,13 +18,12 @@ static CGFloat StudyImageH = 20;
 static CGFloat StudyLabelW = 40;
 static CGFloat StudyLabelH = 14;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
+
         self.backgroundColor = [UIColor whiteColor];
-        
+
         self.studyImage = [[UIImageView alloc] init];
         [self addSubview:self.studyImage];
         self.studyImage.layer.masksToBounds = YES;
@@ -35,7 +34,7 @@ static CGFloat StudyLabelH = 14;
             make.centerY.equalTo(self);
             make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
         }];
-        
+
         self.studyLogoLabel = [[UILabel alloc] init];
         [self addSubview:self.studyLogoLabel];
         self.studyLogoLabel.font = FONT15;
@@ -46,7 +45,7 @@ static CGFloat StudyLabelH = 14;
             make.right.equalTo(self).with.offset(-10);
             make.height.equalTo(self.studyImage);
         }];
-        
+
     }
     return self;
 }

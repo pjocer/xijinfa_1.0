@@ -27,7 +27,7 @@
 @end
 
 @interface TopicDataModel : JSONModel
-@property (nonatomic, copy) NSMutableArray <CategoryLabel>*taxonomy_tags;
+@property (nonatomic, copy) NSMutableArray <CategoryLabel> *taxonomy_tags;
 @property (nonatomic, copy) NSString *client;
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *created_at;
@@ -55,7 +55,7 @@
 @property (nonatomic, copy) NSString *prev_page_url;
 @property (nonatomic, copy) NSString *to;
 @property (nonatomic, copy) NSString *total;
-@property (nonatomic, strong) NSMutableArray <TopicDataModel>*data;
+@property (nonatomic, strong) NSMutableArray <TopicDataModel> *data;
 @end
 
 @interface TopicModel : JSONModel

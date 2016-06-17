@@ -10,13 +10,14 @@
 #import "TeacherDetailViewController.h"
 #import "TearcherIndexCell.h"
 #import "TeacherListHostModel.h"
-@interface MyTeacherViewController ()<UICollectionViewDataSource,
-UICollectionViewDelegate,
-UICollectionViewDelegateFlowLayout>
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property(nonatomic, strong) TeacherListHostModel *teacherListHostModel;
-@property(nonatomic, strong) NSMutableArray *dataSource;
+
+@interface MyTeacherViewController () <UICollectionViewDataSource,
+        UICollectionViewDelegate,
+        UICollectionViewDelegateFlowLayout>
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, retain) UICollectionViewFlowLayout *layout;
+@property (nonatomic, strong) TeacherListHostModel *teacherListHostModel;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation MyTeacherViewController
@@ -48,7 +49,7 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
         sSelf.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
-        
+
         for (TeacherListData *model in self.teacherListHostModel.result.data) {
             if ([model.type isEqualToString:@"guru"]) {
                 [self.dataSource addObject:model];
@@ -67,27 +68,28 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
     _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);//针对分区
     _layout.minimumLineSpacing = 1.0;   //最小列间距默认10
     _layout.minimumInteritemSpacing = 0.0;//左右间隔
-    
+
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
-    
+
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.view addSubview:self.collectionView];
-    
+
     [self.collectionView registerClass:[TearcherIndexCell class] forCellWithReuseIdentifier:myTeacherListCell_Id];
 }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
+
     return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TearcherIndexCell *cell =
-    [collectionView dequeueReusableCellWithReuseIdentifier:myTeacherListCell_Id forIndexPath:indexPath];
+            [collectionView dequeueReusableCellWithReuseIdentifier:myTeacherListCell_Id forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     cell.model = self.dataSource[indexPath.row];
     return cell;
@@ -108,7 +110,7 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
     TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
     teacherDetailViewController.teacherListDataModel = self.dataSource[indexPath.row];
     [self.navigationController pushViewController:teacherDetailViewController animated:YES];
-    
+
 }
 
 @end

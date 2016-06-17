@@ -13,13 +13,13 @@
 #pragma mark - 转换string大小写
 
 - (NSString *)lowercaseFirstCharacter {
-    NSRange range = NSMakeRange(0,1);
+    NSRange range = NSMakeRange(0, 1);
     NSString *lowerFirstCharacter = [[self substringToIndex:1] lowercaseString];
     return [self stringByReplacingCharactersInRange:range withString:lowerFirstCharacter];
 }
 
 - (NSString *)uppercaseFirstCharacter {
-    NSRange range = NSMakeRange(0,1);
+    NSRange range = NSMakeRange(0, 1);
     NSString *upperFirstCharacter = [[self substringToIndex:1] uppercaseString];
     return [self stringByReplacingCharactersInRange:range withString:upperFirstCharacter];
 }
@@ -27,27 +27,28 @@
 #pragma mark - trim string
 
 - (NSString *)trim {
-    if(self==nil)
+    if (self == nil)
         return @"";
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
-- (NSString *)replaceNullString
-{
-    if(self==nil)
+
+- (NSString *)replaceNullString {
+    if (self == nil)
         return @"";
     NSUInteger myLength = [self length];
-    if (myLength>0) {
-        if ([self isEqualToString:@"(null)"]||[self isEqualToString:@"<null>"]) {
+    if (myLength > 0) {
+        if ([self isEqualToString:@"(null)"] || [self isEqualToString:@"<null>"]) {
             return @"";
         }
         return self;
     }
     return @"";
 }
-- (NSString *)trimTheExtraSpaces{
+
+- (NSString *)trimTheExtraSpaces {
     NSCharacterSet *whitespaces = [NSCharacterSet whitespaceCharacterSet];
     NSPredicate *noEmptyStrings = [NSPredicate predicateWithFormat:@"SELF != ''"];
-    
+
     NSArray *parts = [self componentsSeparatedByCharactersInSet:whitespaces];
     NSArray *filteredArray = [parts filteredArrayUsingPredicate:noEmptyStrings];
     return [filteredArray componentsJoinedByString:@" "];
@@ -74,24 +75,24 @@
 // implementation by Daniel Dickison and Walty
 // http://stackoverflow.com/questions/1105169/html-character-decoding-in-objective-c-cocoa-touch
 - (NSString *)stringByDecodingXMLEntities {
-    if(self==nil)
+    if (self == nil)
         return @"";
     NSUInteger myLength = [self length];
     NSUInteger ampIndex = [self rangeOfString:@"&" options:NSLiteralSearch].location;
-    
+
     // Short-circuit if there are no ampersands.
     if (ampIndex == NSNotFound) {
         return self;
     }
     // Make result string with some extra capacity.
     NSMutableString *result = [NSMutableString stringWithCapacity:(myLength * 1.25)];
-    
+
     // First iteration doesn't need to scan to & since we did that already, but for code simplicity's sake we'll do it again with the scanner.
     NSScanner *scanner = [NSScanner scannerWithString:self];
     [scanner setCharactersToBeSkipped:nil];
-    
+
     NSCharacterSet *boundaryCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" \t\n\r;"];
-    
+
     do {
         // Scan up to the next entity or the end of the string.
         NSString *nonEntityString;
@@ -116,17 +117,17 @@
             BOOL gotNumber;
             unsigned charCode;
             NSString *xForHex = @"";
-            
+
             // Is it hex or decimal?
             if ([scanner scanString:@"x" intoString:&xForHex]) {
                 gotNumber = [scanner scanHexInt:&charCode];
             }
             else {
-                gotNumber = [scanner scanInt:(int*)&charCode];
+                gotNumber = [scanner scanInt:(int *) &charCode];
             }
-            
+
             if (gotNumber) {
-                [result appendFormat:@"%C", (unichar)charCode];
+                [result appendFormat:@"%C", (unichar) charCode];
                 [scanner scanString:@";" intoString:NULL];
             }
             else {
@@ -143,8 +144,8 @@
         }
     }
     while (![scanner isAtEnd]);
-    
-finish:
+
+    finish:
     return result;
 }
 
@@ -154,41 +155,41 @@ finish:
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(cStr, strlen(cStr), result);
     return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-            result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
-            result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]];
+                                      result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
+                                      result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]];
 }
 
 //UTF16的MD5加密
-- (NSString *)md5ForUTF16{
+- (NSString *)md5ForUTF16 {
     NSData *temp = [self dataUsingEncoding:NSUTF16LittleEndianStringEncoding];
-    
-    UInt8 *cStr = (UInt8 *)[temp bytes];
-    
+
+    UInt8 *cStr = (UInt8 *) [temp bytes];
+
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(cStr, [temp length], result);
     return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-            result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
-            result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]];
+                                      result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
+                                      result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]];
 }
 
 //自适应文字大小
 - (CGFloat)fontSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size {
-    if(self==nil)
+    if (self == nil)
         return 0;
     CGFloat fontSize = [font pointSize];
-    CGSize sizeName = [self boundingRectWithSize:CGSizeMake(size.width,FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font}context:nil].size;
-    
-    CGFloat height = sizeName.height ;//[self sizeWithFont:font constrainedToSize:CGSizeMake(size.width,FLT_MAX) lineBreakMode:UILineBreakModeWordWrap].height;
+    CGSize sizeName = [self boundingRectWithSize:CGSizeMake(size.width, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
+
+    CGFloat height = sizeName.height;//[self sizeWithFont:font constrainedToSize:CGSizeMake(size.width,FLT_MAX) lineBreakMode:UILineBreakModeWordWrap].height;
     UIFont *newFont = font;
-    
+
     //Reduce font size while too large, break if no height (empty string)
     while (height > size.height && height != 0) {
         fontSize--;
         newFont = [UIFont fontWithName:font.fontName size:fontSize];
-        CGSize sizeName1 = [self boundingRectWithSize:CGSizeMake(size.width,FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:newFont}context:nil].size;
-        height =sizeName1.height ;//[self sizeWithFont:newFont constrainedToSize:CGSizeMake(size.width,FLT_MAX) lineBreakMode:UILineBreakModeWordWrap].height;
+        CGSize sizeName1 = [self boundingRectWithSize:CGSizeMake(size.width, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : newFont} context:nil].size;
+        height = sizeName1.height;//[self sizeWithFont:newFont constrainedToSize:CGSizeMake(size.width,FLT_MAX) lineBreakMode:UILineBreakModeWordWrap].height;
     };
-    
+
     return fontSize;
 }
 
@@ -201,28 +202,28 @@ finish:
  NSStringEnumerationBySentences，根据句子
  这3个比较常用
  */
-- (NSMutableArray *)tokenizationStringByNSStringEnumerationOptions:(NSStringEnumerationOptions)opts{
+- (NSMutableArray *)tokenizationStringByNSStringEnumerationOptions:(NSStringEnumerationOptions)opts {
     NSMutableArray *splitArray = [NSMutableArray array];
     NSRange range = NSMakeRange(0, [self length]);
     [self enumerateSubstringsInRange:range options:opts usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
         [splitArray addObject:substring];
     }];
-    
+
     return splitArray;
 }
 
 //detect string language，对于句子相对准确，单词不是很准确
-- (NSString *)languageForString{
-    return (__bridge NSString *)CFStringTokenizerCopyBestStringLanguage((CFStringRef)self, CFRangeMake(0, MIN(self.length,400)));
+- (NSString *)languageForString {
+    return (__bridge NSString *) CFStringTokenizerCopyBestStringLanguage((CFStringRef) self, CFRangeMake(0, MIN(self.length, 400)));
 }
 
 //分析句中单词的词性
-- (NSMutableArray *)analyseTextOfSentences{
+- (NSMutableArray *)analyseTextOfSentences {
     NSMutableArray *analyseArray = [NSMutableArray array];
-    
+
     // This range contains the entire string, since we want to parse it completely
     NSRange stringRange = NSMakeRange(0, self.length);
-    
+
     //第一种方式
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:[NSArray arrayWithObject:NSLinguisticTagSchemeNameTypeOrLexicalClass] options:0];
     [tagger setString:self];
@@ -230,17 +231,19 @@ finish:
                           scheme:NSLinguisticTagSchemeNameTypeOrLexicalClass
                          options:NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerOmitPunctuation
                       usingBlock:^(NSString *tag, NSRange tokenRange, NSRange sentenceRange, BOOL *stop) {
-                          [analyseArray addObject:@{@"word":[self substringWithRange:tokenRange],@"tag" : tag}];
+                          [analyseArray addObject:@{@"word" : [self substringWithRange:tokenRange], @"tag" : tag}];
                       }];
-    
+
     return analyseArray;
 }
+
 //
 + (NSString *)documentPath {
     return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
 }
 
 #pragma mark - 获取缓存路径
+
 + (NSString *)cachePath {
     return [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches"];
 }
@@ -258,7 +261,7 @@ finish:
             NSLog(@"success");
         }
     }
-    
+
     return path;
 }
 
@@ -267,6 +270,7 @@ finish:
 }
 
 #pragma mark - 验证邮箱格式
+
 - (BOOL)isValidEmail {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
@@ -274,6 +278,7 @@ finish:
 }
 
 #pragma mark - 验证手机号码格式
+
 - (BOOL)isValidPhoneNumber {
     /**
      * 手机号码
@@ -291,24 +296,24 @@ finish:
      15         * 中国联通：China Unicom
      16         * 130,131,132,152,155,156,185,186
      17         */
-    NSString * chinaUnicom = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
+    NSString *chinaUnicom = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
     /**
      20         * 中国电信：China Telecom
      21         * 133,1349,153,180,189
      22         */
-    NSString * chinaTelecom = @"^1((33|53|8[09])[0-9]|349)\\d{7}$";
-    
+    NSString *chinaTelecom = @"^1((33|53|8[09])[0-9]|349)\\d{7}$";
+
     NSPredicate *mobilePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mobile];
     NSPredicate *cmPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", chinaMobile];
     NSPredicate *cuPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", chinaUnicom];
     NSPredicate *ctPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", chinaTelecom];
     if ([mobilePredicate evaluateWithObject:self]
-        || [cmPredicate evaluateWithObject:self]
-        || [cuPredicate evaluateWithObject:self]
-        || [ctPredicate evaluateWithObject:self]) {
+            || [cmPredicate evaluateWithObject:self]
+            || [cuPredicate evaluateWithObject:self]
+            || [ctPredicate evaluateWithObject:self]) {
         return YES;
     }
-    
+
     return NO;
 }
 
@@ -324,33 +329,33 @@ finish:
     NSString *carid = self;
     long lSumQT = 0;
     // 加权因子
-    int R[] ={7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
+    int R[] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
     // 校验码
-    unsigned char sChecker[11]={'1','0','X', '9', '8', '7', '6', '5', '4', '3', '2'};
-    
+    unsigned char sChecker[11] = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
+
     // 将15位身份证号转换成18位
     NSMutableString *mString = [NSMutableString stringWithString:self];
     if (self.length == 15) {
         [mString insertString:@"19" atIndex:6];
         long p = 0;
         const char *pid = [mString UTF8String];
-        
-        for (int i = 0; i<= 16; i++) {
+
+        for (int i = 0; i <= 16; i++) {
             p += (pid[i] - 48) * R[i];
         }
-        
+
         int o = p % 11;
         NSString *string_content = [NSString stringWithFormat:@"%c", sChecker[o]];
         [mString insertString:string_content atIndex:[mString length]];
         carid = mString;
     }
-    
+
     // 判断地区码
-    NSString * sProvince = [carid substringToIndex:2];
+    NSString *sProvince = [carid substringToIndex:2];
     if (![self areaCode:sProvince]) {
         return NO;
     }
-    
+
     // 判断年月日是否有效
     // 年份
     int strYear = [[self substringWithString:carid begin:6 end:4] intValue];
@@ -358,35 +363,35 @@ finish:
     int strMonth = [[self substringWithString:carid begin:10 end:2] intValue];
     // 日
     int strDay = [[self substringWithString:carid begin:12 end:2] intValue];
-    
+
     NSTimeZone *localZone = [NSTimeZone localTimeZone];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     [dateFormatter setTimeZone:localZone];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date=[dateFormatter dateFromString:[NSString stringWithFormat:@"%d-%d-%d 12:01:01",
-                                                strYear, strMonth, strDay]];
+    NSDate *date = [dateFormatter dateFromString:[NSString stringWithFormat:@"%d-%d-%d 12:01:01",
+                                                                            strYear, strMonth, strDay]];
     if (date == nil) {
         return NO;
     }
-    
-    const char *PaperId  = [carid UTF8String];
+
+    const char *PaperId = [carid UTF8String];
     // 检验长度
-    if(18 != strlen(PaperId)) return NO;
+    if (18 != strlen(PaperId)) return NO;
     // 校验数字
     for (int i = 0; i < 18; i++) {
-        if ( !isdigit(PaperId[i]) && !(('X' == PaperId[i] || 'x' == PaperId[i]) && 17 == i) ) {
+        if (!isdigit(PaperId[i]) && !(('X' == PaperId[i] || 'x' == PaperId[i]) && 17 == i)) {
             return NO;
         }
     }
-    
+
     // 验证最末的校验码
-    for (int i=0; i<=16; i++) {
-        lSumQT += (PaperId[i]-48) * R[i];
+    for (int i = 0; i <= 16; i++) {
+        lSumQT += (PaperId[i] - 48) * R[i];
     }
-    
-    if (sChecker[lSumQT%11] != PaperId[17] ) {
+
+    if (sChecker[lSumQT % 11] != PaperId[17]) {
         return NO;
     }
     return YES;
@@ -433,7 +438,7 @@ finish:
     [dic setObject:@"香港" forKey:@"81"];
     [dic setObject:@"澳门" forKey:@"82"];
     [dic setObject:@"国外" forKey:@"91"];
-    
+
     if ([dic objectForKey:code] == nil) {
         return NO;
     }
@@ -441,6 +446,7 @@ finish:
 }
 
 #pragma mark - 根据文件名返回路径
+
 + (NSString *)pathWithFileName:(NSString *)fileName {
     return [self pathWithFileName:fileName ofType:nil];
 }
@@ -454,7 +460,7 @@ finish:
  * 参数:字符串的开始小标
  * 参数:字符串的结束下标
  */
-- (NSString *)substringWithString:(NSString *)str begin:(NSInteger)begin end:(NSInteger )end {
+- (NSString *)substringWithString:(NSString *)str begin:(NSInteger)begin end:(NSInteger)end {
     return [str substringWithRange:NSMakeRange(begin, end)];
 }
 
@@ -470,35 +476,33 @@ finish:
 }
 
 
-+ (NSString *)timeformatFromSeconds:(NSInteger)seconds
-{
++ (NSString *)timeformatFromSeconds:(NSInteger)seconds {
     //format of hour
-    NSString *str_hour = [NSString stringWithFormat:@"%02ld",seconds/3600];
+    NSString *str_hour = [NSString stringWithFormat:@"%02ld", seconds / 3600];
     //format of minute
-    NSString *str_minute = [NSString stringWithFormat:@"%02ld",(seconds%3600)/60];
+    NSString *str_minute = [NSString stringWithFormat:@"%02ld", (seconds % 3600) / 60];
     //format of second
-    NSString *str_second = [NSString stringWithFormat:@"%02ld",seconds%60];
+    NSString *str_second = [NSString stringWithFormat:@"%02ld", seconds % 60];
     //format of time
-    NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
+    NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@", str_hour, str_minute, str_second];
     return format_time;
 }
 
 
-+ (NSString *)getSystemDate
-{
++ (NSString *)getSystemDate {
     //获取系统时间、
-    NSDate *  senddate=[NSDate date];
-    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    NSDate *senddate = [NSDate date];
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"HH:mm"];
-    NSString *  locationString=[dateformatter stringFromDate:senddate];
-    NSCalendar  * cal=[NSCalendar  currentCalendar];
-    NSUInteger  unitFlags= NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit;
-    NSDateComponents * conponent= [cal components:unitFlags fromDate:senddate];
-    NSInteger year=[conponent year];
-    NSInteger month=[conponent month];
-    NSInteger day=[conponent day];
-    NSString *  nsDateString= [NSString  stringWithFormat:@"%4d年%2d月%2d日",year,month,day];
-    NSString *systemdate = [NSString stringWithFormat:@"%@ %@",nsDateString,locationString];
+    NSString *locationString = [dateformatter stringFromDate:senddate];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
+    NSDateComponents *conponent = [cal components:unitFlags fromDate:senddate];
+    NSInteger year = [conponent year];
+    NSInteger month = [conponent month];
+    NSInteger day = [conponent day];
+    NSString *nsDateString = [NSString stringWithFormat:@"%4d年%2d月%2d日", year, month, day];
+    NSString *systemdate = [NSString stringWithFormat:@"%@ %@", nsDateString, locationString];
     return systemdate;
 }
 

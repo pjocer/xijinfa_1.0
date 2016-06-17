@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TalkGridModel.h"
+
 @interface SearchSectionTwo : UITableViewCell
-@property (nonatomic, strong)TalkGridModel *model;
+@property (nonatomic, strong) TalkGridModel *model;
 @end

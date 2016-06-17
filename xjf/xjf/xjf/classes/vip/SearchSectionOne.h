@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchSectionOne : UITableViewCell
-@property (nonatomic, copy) void (^SearchHandler) (NSString *text);
+@property (nonatomic, copy) void (^SearchHandler)(NSString *text);
+
 - (void)initSubViews;
+
 @property (nonatomic, assign) NSInteger cellHeight;
 @end

@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface Fans_FocusViewController : BaseViewController
--(instancetype)initWithID:(NSString *)userId type:(NSInteger)type nickname:(NSString *)nickname;
+- (instancetype)initWithID:(NSString *)userId type:(NSInteger)type nickname:(NSString *)nickname;
 @end

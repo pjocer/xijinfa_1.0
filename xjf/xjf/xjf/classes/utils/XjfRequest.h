@@ -19,8 +19,9 @@ typedef NS_OPTIONS(short, RequestMethod) {
     DELETE
 };
 
-typedef void(^SuccessBlock)( NSData * _Nullable responseData);
-typedef void(^FailedBlock)(NSError * _Nullable error);
+typedef void(^SuccessBlock)(NSData *_Nullable responseData);
+
+typedef void(^FailedBlock)(NSError *_Nullable error);
 
 
 @interface XjfRequest : NSObject

@@ -18,10 +18,11 @@
     [super awakeFromNib];
     // Initialization code
 }
+
 - (IBAction)switchAction:(UISwitch *)sender {
     if (sender.isOn) {
         NSLog(@"开启");
-    }else {
+    } else {
         NSLog(@"关闭");
     }
 }

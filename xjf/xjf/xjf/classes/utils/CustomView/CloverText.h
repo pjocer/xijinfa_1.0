@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CloverText : UITextView<UITextViewDelegate>
+@interface CloverText : UITextView <UITextViewDelegate>
 
-@property(nonatomic,strong) UITextView *TV;
+@property (nonatomic, strong) UITextView *TV;
 
 - (id)initWithFrame:(CGRect)frame placeholder:(NSString *)placeholder;
 @end

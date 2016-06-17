@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#define RGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1.]
+#define RGB(r, g, b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1.]
 
 @interface UIColor (hexColor)
 
 + (UIColor *)hexFloatColor:(NSString *)hexStr;
+
 ///十六进制颜色转换
-+ (UIColor *) xjfStringToColor: (NSString *) stringToConvert;
++ (UIColor *)xjfStringToColor:(NSString *)stringToConvert;
 
 @end

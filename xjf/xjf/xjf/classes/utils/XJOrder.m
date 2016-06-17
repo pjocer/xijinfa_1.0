@@ -16,7 +16,7 @@
 
 @implementation XJOrder
 
--(instancetype)initWith:(NSArray<TalkGridModel *> *)goods {
+- (instancetype)initWith:(NSArray<TalkGridModel *> *)goods {
     self = [super init];
     if (self) {
         _goods = [NSMutableArray array];
@@ -29,60 +29,63 @@
     }
     return self;
 }
--(instancetype)initWithParams:(NSDictionary *)params {
+
+- (instancetype)initWithParams:(NSDictionary *)params {
     if (self == [super init]) {
         [self initVipOrder:params];
     }
     return self;
 }
+
 - (void)initVipOrder:(NSDictionary *)params {
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:buy_trade RequestMethod:POST];
     NSString *access_token = [[XJAccountManager defaultManager] accessToken];
-    NSString *authorization = [NSString stringWithFormat:@"Bearer %@",access_token];
+    NSString *authorization = [NSString stringWithFormat:@"Bearer %@", access_token];
     [request setValue:authorization forHTTPHeaderField:@"Authorization"];
     request.requestParams = [NSMutableDictionary dictionaryWithDictionary:params];
     @weakify(self)
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         @strongify(self)
         self.order = [[Order alloc] initWithData:responseData error:nil];
         if (self.order.errCode.integerValue == 0) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)])  {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)]) {
                 [self.delegate orderInfoDidChanged:self];
             }
-        }else {
+        } else {
             [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
         }
-    } failedBlock:^(NSError * _Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
-    }];
-}
-- (void)initOrder {
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:buy_trade RequestMethod:POST];
-    NSString *access_token = [[XJAccountManager defaultManager] accessToken];
-    NSString *authorization = [NSString stringWithFormat:@"Bearer %@",access_token];
-    [request setValue:authorization forHTTPHeaderField:@"Authorization"];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"items":_trades}];
-    @weakify(self)
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        @strongify(self)
-        self.order = [[Order alloc] initWithData:responseData error:nil];
-        if (self.order.errCode.integerValue == 0) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)])  {
-                [self.delegate orderInfoDidChanged:self];
-            }
-        }else {
-            [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
-        }
-    } failedBlock:^(NSError * _Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
     }];
 }
 
--(void)orderCancel {
+- (void)initOrder {
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:buy_trade RequestMethod:POST];
+    NSString *access_token = [[XJAccountManager defaultManager] accessToken];
+    NSString *authorization = [NSString stringWithFormat:@"Bearer %@", access_token];
+    [request setValue:authorization forHTTPHeaderField:@"Authorization"];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"items" : _trades}];
+    @weakify(self)
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        @strongify(self)
+        self.order = [[Order alloc] initWithData:responseData error:nil];
+        if (self.order.errCode.integerValue == 0) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)]) {
+                [self.delegate orderInfoDidChanged:self];
+            }
+        } else {
+            [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+        }
+    }                  failedBlock:^(NSError *_Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+    }];
+}
+
+- (void)orderCancel {
     self.goods = nil;
 }
 
--(NSArray<TalkGridModel *> *)getClassGoods {
+- (NSArray<TalkGridModel *> *)getClassGoods {
     NSMutableArray *classes = [NSMutableArray array];
     for (TalkGridModel *model in self.goods) {
         if ([model.department isEqualToString:@"dept3"]) {
@@ -92,7 +95,7 @@
     return classes;
 }
 
--(NSArray<TalkGridModel *> *)getTrainGoods {
+- (NSArray<TalkGridModel *> *)getTrainGoods {
     NSMutableArray *trains = [NSMutableArray array];
     for (TalkGridModel *model in self.goods) {
         if ([model.department isEqualToString:@"dept4"]) {

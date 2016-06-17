@@ -21,13 +21,16 @@
     [_view addGestureRecognizer:tap];
     // Initialization code
 }
+
 - (void)viewClicked:(UITapGestureRecognizer *)tap {
-    NSLog(@"%ld",tap.view.tag);
+    NSLog(@"%ld", tap.view.tag);
 }
--(void)setModel:(UserProfileModel *)model {
+
+- (void)setModel:(UserProfileModel *)model {
     _model = model;
-    _phone.text = _model.result.phone==nil||_model.result.phone.length==0?@"未知":_model.result.phone;
+    _phone.text = _model.result.phone == nil || _model.result.phone.length == 0 ? @"未知" : _model.result.phone;
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

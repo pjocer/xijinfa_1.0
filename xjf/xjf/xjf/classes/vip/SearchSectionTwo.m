@@ -8,6 +8,7 @@
 
 #import "SearchSectionTwo.h"
 #import <UIImageView+WebCache.h>
+
 @interface SearchSectionTwo ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *className;
@@ -21,14 +22,14 @@
 
 @implementation SearchSectionTwo
 
--(void)setModel:(TalkGridModel *)model {
+- (void)setModel:(TalkGridModel *)model {
     _model = model;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     _className.text = model.title;
     _teacher.text = [NSString stringWithFormat:@"主讲: Mr.Ji"];
     _period.text = [NSString stringWithFormat:@"10000000节课爽不爽？"];
     _nowPrice.text = model.price;
-    _oldPrice.text = [model.original_price isEqualToString:@""]?@"0":model.original_price;
+    _oldPrice.text = [model.original_price isEqualToString:@""] ? @"0" : model.original_price;
     _priceLine.text = _oldPrice.text;
 }
 

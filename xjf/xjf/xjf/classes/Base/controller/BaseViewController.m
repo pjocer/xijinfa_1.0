@@ -15,6 +15,7 @@
 #import "ZToastManager.h"
 #import "MyPlayerHistoryViewController.h"
 #import "RegistViewController.h"
+
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
 NSString *const Topic = @"TopicViewController";
@@ -32,6 +33,7 @@ NSString *const Subscribe = @"SubscribeViewController";
         self.navigationItem.title = self.nav_title;
     }
 }
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     UIBarButtonItem *back = [[UIBarButtonItem alloc] init];
@@ -51,25 +53,25 @@ NSString *const Subscribe = @"SubscribeViewController";
     self.view.backgroundColor = BackgroundColor;
 }
 
--(void)extendheadViewFor:(NSString *)name {
+- (void)extendheadViewFor:(NSString *)name {
     if ([name isEqualToString:My]) {
-        UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
+        UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 13;
         self.navigationItem.rightBarButtonItem = item2;
     } else if ([name isEqualToString:Index]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 10;
-        UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
+        UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 12;
-        self.navigationItem.rightBarButtonItems = @[item,item2];
+        self.navigationItem.rightBarButtonItems = @[item, item2];
     } else if ([name isEqualToString:Topic]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pulish"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 14;
-        UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
+        UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 15;
-        self.navigationItem.rightBarButtonItems = @[item,item2];
+        self.navigationItem.rightBarButtonItems = @[item, item2];
     } else if ([name isEqualToString:Vip]) {
-        
+
     }
     [self initLeftItemWith:name];
 }
@@ -80,16 +82,16 @@ NSString *const Subscribe = @"SubscribeViewController";
     if ([name isEqualToString:My]) {
         title.text = @"我的";
         title.hidden = NO;
-    }else if ([name isEqualToString:Index]) {
+    } else if ([name isEqualToString:Index]) {
         title.hidden = YES;
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:view.frame];
         imageView.image = [UIImage imageNamed:@"indexLogo"];
         [view addSubview:imageView];
         title.text = @"首页";
-    }else if ([name isEqualToString:Topic]) {
+    } else if ([name isEqualToString:Topic]) {
         title.text = @"话题";
         title.hidden = NO;
-    }else if ([name isEqualToString:Vip]){
+    } else if ([name isEqualToString:Vip]) {
         title.text = @"会员";
         title.hidden = NO;
     }
@@ -149,7 +151,7 @@ NSString *const Subscribe = @"SubscribeViewController";
             NewTopicStyle style = NewTopicDefaultStyle;
             if (self.topicTag == 1) {
                 style = NewTopicQAStyle;
-            }else if (self.topicTag == 2) {
+            } else if (self.topicTag == 2) {
                 style = NewTopicDiscussStyle;
             }
             NewTopicViewController *controller = [[NewTopicViewController alloc] initWithStyle:style];
@@ -167,12 +169,13 @@ NSString *const Subscribe = @"SubscribeViewController";
             break;
     }
 }
--(void)setNav_title:(NSString *)nav_title {
+
+- (void)setNav_title:(NSString *)nav_title {
     _nav_title = nav_title;
     self.navigationItem.title = nav_title;
 }
 
-- (void)LoginPrompt{
+- (void)LoginPrompt {
     [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"
                         okTitle:@"登录"
                      otherTitle:@"注册"
@@ -181,13 +184,13 @@ NSString *const Subscribe = @"SubscribeViewController";
                     cancelBlock:^{
                         NSLog(@"取消");
                     } okBlock:^{
-                        LoginViewController *loginPage = [LoginViewController new];
-                        [self.navigationController pushViewController:loginPage animated:YES];
-                    }        otherBlock:^{
-                        RegistViewController *registPage = [RegistViewController new];
-                        registPage.title_item = @"注册";
-                        [self.navigationController pushViewController:registPage animated:YES];
-                    }];
+                LoginViewController *loginPage = [LoginViewController new];
+                [self.navigationController pushViewController:loginPage animated:YES];
+            }        otherBlock:^{
+                RegistViewController *registPage = [RegistViewController new];
+                registPage.title_item = @"注册";
+                [self.navigationController pushViewController:registPage animated:YES];
+            }];
 }
 
 @end

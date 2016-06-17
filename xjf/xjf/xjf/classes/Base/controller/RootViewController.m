@@ -101,7 +101,7 @@
 }
 
 // 哪些页面支持自动转屏
-- (BOOL)shouldAutorotate{
+- (BOOL)shouldAutorotate {
     UINavigationController *nav = self.viewControllers[self.selectedIndex];
     // MoviePlayerViewController 、ZFTableViewController 控制器支持自动转屏
     if ([nav.topViewController isKindOfClass:[PlayerViewController class]] || [nav.topViewController isKindOfClass:[LessonPlayerViewController class]]) {

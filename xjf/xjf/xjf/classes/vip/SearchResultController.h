@@ -23,11 +23,12 @@ typedef enum : NSUInteger {
 @protocol TableViewRefreshDelegate <NSObject>
 @optional
 - (void)tableViewFooterDidRefresh:(NSString *)url;
+
 - (void)tableViewHeaderDidRefresh;
 @end
 
 @interface SearchResultController : BaseViewController
-@property (nonatomic, weak) id <TableViewRefreshDelegate>delegate;
+@property (nonatomic, weak) id <TableViewRefreshDelegate> delegate;
 @property (nonatomic, strong) TablkListModel *baike_list;
 @property (nonatomic, strong) TablkListModel *lesson_list;
 @property (nonatomic, strong) TopicModel *topic_list;
@@ -36,9 +37,13 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSMutableArray *lessonsDataSource;
 @property (nonatomic, strong) NSMutableArray *topicsDataSource;
 @property (nonatomic, strong) NSMutableArray *personsDataSource;
-@property (nonatomic, copy) APIName *api;//当前Table的搜索API
+@property (nonatomic, copy) APIName *api;
+//当前Table的搜索API
 @property (nonatomic, assign) ReloadTableType type;
+
 - (void)reloadData:(ReloadTableType)type;
+
 - (void)clearDataSource;
+
 - (void)hiddenMJRefresh;
 @end

@@ -26,12 +26,12 @@
 @interface VipResultModel : JSONModel
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSArray <VipModel>*deal;
+@property (nonatomic, strong) NSArray <VipModel> *deal;
 @end
 
 
 @interface VipListModel : JSONModel
 @property (nonatomic, strong) NSString *errCode;
 @property (nonatomic, strong) NSString *errMsg;
-@property (nonatomic, strong) NSArray <VipResultModel>*result;
+@property (nonatomic, strong) NSArray <VipResultModel> *result;
 @end

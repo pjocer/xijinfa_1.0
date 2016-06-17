@@ -10,7 +10,7 @@
 #import "VipModel.h"
 
 @interface VipPayListPageChoiceCell : UITableViewCell
-@property(nonatomic, strong) VipModel *model;
-@property(nonatomic, strong) UILabel *selectedLabel;
-@property(nonatomic, strong) UIView *backGroudView;
+@property (nonatomic, strong) VipModel *model;
+@property (nonatomic, strong) UILabel *selectedLabel;
+@property (nonatomic, strong) UIView *backGroudView;
 @end

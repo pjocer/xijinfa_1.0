@@ -22,7 +22,7 @@
 @property (nonatomic, copy) NSString *prev_page_url;
 @property (nonatomic, copy) NSString *to;
 @property (nonatomic, copy) NSString *total;
-@property (nonatomic, strong) NSMutableArray <UserInfoModel>*data;
+@property (nonatomic, strong) NSMutableArray <UserInfoModel> *data;
 @end
 
 @interface FansFocus : JSONModel

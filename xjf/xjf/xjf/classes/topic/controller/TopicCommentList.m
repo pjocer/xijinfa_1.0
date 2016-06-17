@@ -9,13 +9,13 @@
 #import "TopicCommentList.h"
 
 @implementation CommentListResult
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 @implementation TopicCommentList
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end

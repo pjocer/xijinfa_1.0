@@ -11,6 +11,7 @@
 #import "StringUtil.h"
 #import "XJAccountManager.h"
 #import "TaViewController.h"
+
 @interface CommentDetailHeader ()
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *invest_category;
@@ -40,33 +41,35 @@
     if (![[[XJAccountManager defaultManager] user_id] isEqualToString:self.model.user.id]) {
         UIViewController *controller = getCurrentDisplayController();
         TaViewController *ta = [[TaViewController alloc] init];
-        ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.model.user.nickname];
+        ta.nav_title = [NSString stringWithFormat:@"%@的主页", self.model.user.nickname];
         ta.model = self.model.user;
         [controller.navigationController pushViewController:ta animated:YES];
     }
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
--(void)setModel:(TopicDataModel *)model {
+
+- (void)setModel:(TopicDataModel *)model {
     _model = model;
     _content.text = model.content;
     _nickname.text = model.user.nickname;
-    _invest_category.text = model.user.summary;
+    _invest_category.text = model.user.quote;
     _time.text = [StringUtil compareCurrentTime:model.created_at];
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.user.avatar]];
     if (![model.type isEqualToString:@"qa"]) {
         _comment_category.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
         _comment_category.text = @"讨论";
-    }else {
+    } else {
         _comment_category.backgroundColor = [UIColor xjfStringToColor:@"#3FA9F5"];
         _comment_category.text = @"问答";
     }
-    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-20 fontsize:15];
-    CGFloat height = 10+40+10+contentHeight;
-    
+    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH - 20 fontsize:15];
+    CGFloat height = 10 + 40 + 10 + contentHeight;
+
     if (model) {
         if (model.taxonomy_tags.count > 0) {
             if (self.contentView.subviews.count == 7) {
@@ -81,22 +84,22 @@
                 }
                 for (int i = 0; i < labels.count; i++) {
                     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-                    NSString *title = [NSString stringWithFormat:@"#%@#",labels[i]];
+                    NSString *title = [NSString stringWithFormat:@"#%@#", labels[i]];
                     CGSize size = [title sizeWithFont:FONT12 constrainedToSize:CGSizeMake(SCREENWITH, 14) lineBreakMode:1];
                     all = all + tap + size.width;
                     if (all <= SCREENWITH) {
                         x = all - size.width;
-                        y = contentHeight+70;
+                        y = contentHeight + 70;
                         button.frame = CGRectMake(x, y, size.width, 14);
                         self.cellHeight = height + 44;
-                    }else if (all <= SCREENWITH*2 && all>SCREENWITH) {
+                    } else if (all <= SCREENWITH * 2 && all > SCREENWITH) {
                         alll = alll + tap + size.width;
                         if (alll <= SCREENWITH) {
                             x = alll - size.width;
-                            y = contentHeight+94;
+                            y = contentHeight + 94;
                             button.frame = CGRectMake(x, y, size.width, 14);
                             self.cellHeight = height + 68;
-                        }else {
+                        } else {
                             self.cellHeight = height + 20;
                             continue;
                         }
@@ -104,31 +107,32 @@
                     [button setTitle:title forState:UIControlStateNormal];
                     [button setTitleColor:[UIColor xjfStringToColor:@"#0061B0"] forState:UIControlStateNormal];
                     button.titleLabel.font = FONT12;
-                    button.tag = 350+i;
+                    button.tag = 350 + i;
                     [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
                     [self.contentView addSubview:button];
                 }
-            }else {
+            } else {
                 for (UIView *view in self.contentView.subviews) {
-                    if (view.tag>=400) {
+                    if (view.tag >= 400) {
                         [view removeFromSuperview];
                     }
                 }
-                if (self.cellHeight==0) {
-                    self.cellHeight = height+10+10;
+                if (self.cellHeight == 0) {
+                    self.cellHeight = height + 10 + 10;
                 }
             }
-        }else {
+        } else {
             for (UIView *view in self.contentView.subviews) {
-                if (view.tag>=400) {
+                if (view.tag >= 400) {
                     [view removeFromSuperview];
                 }
             }
-            self.cellHeight=height+10+10;
+            self.cellHeight = height + 10 + 10;
         }
     }
 }
+
 - (void)buttonClicked:(UIButton *)button {
-    NSLog(@"%ld",button.tag);
+    NSLog(@"%ld", button.tag);
 }
 @end

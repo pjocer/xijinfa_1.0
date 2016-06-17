@@ -9,23 +9,20 @@
 #import "VipModel.h"
 
 @implementation VipModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 
 @implementation VipResultModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end
 
 @implementation VipListModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
 @end

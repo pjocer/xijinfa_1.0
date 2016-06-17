@@ -10,7 +10,8 @@
 #import "TalkGridModel.h"
 #import "VideoListCell.h"
 #import "PlayerViewController.h"
-@interface MyFavoredsWikiViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface MyFavoredsWikiViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -25,9 +26,9 @@ static NSString *MyFavoredsWikiCell_id = @"MyFavoredsWikiCell_id";
 #pragma mark- initTabelView
 
 - (void)initTabelView {
-    
+
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, self.view.frame.size.height - 100)];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, self.view.frame.size.height - 100)];
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
@@ -39,7 +40,7 @@ static NSString *MyFavoredsWikiCell_id = @"MyFavoredsWikiCell_id";
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyFavoredsWikiCell_id];
 }
 
@@ -57,6 +58,7 @@ static NSString *MyFavoredsWikiCell_id = @"MyFavoredsWikiCell_id";
 }
 
 #pragma mark Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     PlayerViewController *player = [[PlayerViewController alloc] init];

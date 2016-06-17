@@ -11,14 +11,14 @@
 #import "MyLessonsTableFooterView.h"
 #import "TalkGridModel.h"
 #import "LessonDetailViewController.h"
-@interface MyLessonsEmployedViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface MyLessonsEmployedViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
 @implementation MyLessonsEmployedViewController
 static NSString *MyLessonsEmployed_id = @"MyLessonsEmployed_id";
 static CGFloat tableFooterH = 35;
-
 
 
 - (void)viewDidLoad {
@@ -28,7 +28,7 @@ static CGFloat tableFooterH = 35;
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 100) style:UITableViewStyleGrouped];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 100) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -40,7 +40,7 @@ static CGFloat tableFooterH = 35;
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyLessonsEmployed_id];
 }
 
@@ -50,8 +50,7 @@ static CGFloat tableFooterH = 35;
     return 1;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSorce.count;
 }
 
@@ -65,18 +64,16 @@ static CGFloat tableFooterH = 35;
     return cell;
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     MyLessonsTableFooterView *myLessonsTableFooterView = [[MyLessonsTableFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, tableFooterH)];
     return myLessonsTableFooterView;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return tableFooterH;
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return 0.01;
     }
@@ -89,7 +86,7 @@ static CGFloat tableFooterH = 35;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
     lessonDetailViewController.model = self.dataSorce[indexPath.section];
-     lessonDetailViewController.apiType = EmployedLessonDetailList;
+    lessonDetailViewController.apiType = EmployedLessonDetailList;
     [self.navigationController pushViewController:lessonDetailViewController animated:YES];
 }
 

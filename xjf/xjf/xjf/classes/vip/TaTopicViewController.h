@@ -9,5 +9,5 @@
 #import "TaBaseViewController.h"
 
 @interface TaTopicViewController : TaBaseViewController
--(instancetype)initWithID:(NSString *)userId nickname:(NSString *)nickname;
+- (instancetype)initWithID:(NSString *)userId nickname:(NSString *)nickname;
 @end

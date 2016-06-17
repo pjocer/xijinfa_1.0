@@ -10,6 +10,7 @@
 #import "ZToastManager.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "XjfRequest.h"
+
 @interface NewCommentViewController ()
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UILabel *placeholder;
@@ -38,13 +39,13 @@
     }];
 }
 
--(UITextView *)textView {
+- (UITextView *)textView {
     if (!_textView) {
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH-20, SCREENHEIGHT-HEADHEIGHT-258)];
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH - 20, SCREENHEIGHT - HEADHEIGHT - 258)];
         _textView.backgroundColor = [UIColor clearColor];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineSpacing = 3;
-        NSDictionary *attributes = @{NSFontAttributeName:FONT15,NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:[UIColor xjfStringToColor:@"#444444"]};
+        NSDictionary *attributes = @{NSFontAttributeName : FONT15, NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : [UIColor xjfStringToColor:@"#444444"]};
         _textView.typingAttributes = attributes;
 //        _textView.textColor = NormalColor;
         [_textView becomeFirstResponder];
@@ -52,9 +53,10 @@
     }
     return _textView;
 }
--(UILabel *)placeholder {
+
+- (UILabel *)placeholder {
     if (!_placeholder) {
-        _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH-20, 21)];
+        _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH - 20, 21)];
         _placeholder.text = @"谈谈你的想法吧~";
         _placeholder.textColor = AssistColor;
         _placeholder.font = FONT15;
@@ -66,8 +68,9 @@
     [_textView resignFirstResponder];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void)sendClicked:(UIBarButtonItem *)item {
-    if (_textView.text.length>140) {
+    if (_textView.text.length > 140) {
         [[ZToastManager ShardInstance] showtoast:@"内容长度超出了140字"];
         return;
     }
@@ -75,22 +78,23 @@
         [[ZToastManager ShardInstance] showtoast:@"内容不能为空"];
         return;
     }
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@/reply",topic_all,self.topic_id] RequestMethod:POST];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"content":_textView.text}];
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@/reply", topic_all, self.topic_id] RequestMethod:POST];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"content" : _textView.text}];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
         if ([dic[@"errCode"] integerValue] == 0) {
             [[ZToastManager ShardInstance] showtoast:@"发表成功"];
             [_textView resignFirstResponder];
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-        }else {
+        } else {
             [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
         }
-    } failedBlock:^(NSError * _Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
     }];
-    
+
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

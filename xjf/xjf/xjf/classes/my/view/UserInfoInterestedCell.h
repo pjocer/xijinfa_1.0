@@ -11,7 +11,10 @@
 @interface UserInfoInterestedCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *selectMark;
 @property (weak, nonatomic) IBOutlet UILabel *content;
-- (void)resetMarkSelected:(void (^) (NSString *txt))selected cancelSelected:(void(^)(NSString *txt))deSelected;
+
+- (void)resetMarkSelected:(void (^)(NSString *txt))selected cancelSelected:(void (^)(NSString *txt))deSelected;
+
 - (void)makeSelected;
+
 - (void)makeDeSelected;
 @end

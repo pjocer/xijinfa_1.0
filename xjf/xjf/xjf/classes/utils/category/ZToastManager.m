@@ -9,12 +9,13 @@
 #import "AppDelegate.h"
 #import "ZToastManager.h"
 #import "UIColor+hexColor.h"
+
 #define minshowtime   0.5
 #define progesswidth  5.
 #define rotationspeed 2
 #define customcenter  CGPointMake(22.5, 22.5)
 
-@interface ZAnnurImageView :UIImageView {
+@interface ZAnnurImageView : UIImageView {
 @public
     UIBezierPath *trackPath;
     CAShapeLayer *trackLayer;
@@ -26,6 +27,7 @@
 @implementation ZAnnurImageView
 
 #pragma mark -initWithFrame
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self actionRenderLayerComponents];
@@ -34,19 +36,20 @@
 }
 
 #pragma mark -actionRenderLayerComponents
+
 - (void)actionRenderLayerComponents {
-    
+
     trackLayer = [CAShapeLayer layer];
     trackPath = [UIBezierPath bezierPathWithArcCenter:self.center
-                                               radius:(CGRectGetWidth(self.bounds)-progesswidth)/2. startAngle:0
-                                             endAngle:M_PI*2 clockwise:YES];
+                                               radius:(CGRectGetWidth(self.bounds) - progesswidth) / 2. startAngle:0
+                                             endAngle:M_PI * 2 clockwise:YES];
     trackLayer.frame = self.bounds;
     trackLayer.path = trackPath.CGPath;
     trackLayer.lineWidth = progesswidth;
     trackLayer.strokeColor = [UIColor whiteColor].CGColor;
     [self.layer addSublayer:trackLayer];
-    
-    progressPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(22.5, 22.5) radius:(CGRectGetWidth(self.bounds)-progesswidth)/2. startAngle:-M_PI_2 endAngle:M_PI/3 clockwise:YES];
+
+    progressPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(22.5, 22.5) radius:(CGRectGetWidth(self.bounds) - progesswidth) / 2. startAngle:-M_PI_2 endAngle:M_PI / 3 clockwise:YES];
     progressLayer = [CAShapeLayer layer];
     progressLayer.frame = self.bounds;
     progressLayer.lineWidth = progesswidth;
@@ -57,11 +60,12 @@
 }
 
 #pragma mark -actionRotationAnimation
+
 - (void)actionRotationAnimation:(CGFloat)speed {
     [progressLayer removeAllAnimations];
-    
+
     CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI*2];
+    rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI * 2];
     rotationAnimation.duration = speed;
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = MAXFLOAT;
@@ -79,9 +83,11 @@
 @end
 
 static ZToastManager *toastManager;
+
 @implementation ZToastManager
 
 #pragma mark -manager
+
 + (ZToastManager *)ShardInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -92,20 +98,22 @@ static ZToastManager *toastManager;
 }
 
 #pragma mark -keyWindow
+
 + (UIWindow *)keyWindow {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
     UIWindow *keywindow = delegate.window;
     return keywindow;
 }
 
 #pragma mark -actionRenderUIComponents
+
 - (void)actionRenderUIComponents {
     UIWindow *keywindow = [ZToastManager keyWindow];
     toastHud = [[MBProgressHUD alloc] initWithWindow:keywindow];
     toastHud.minSize = CGSizeMake(220, 60);
     toastHud.userInteractionEnabled = NO;
     toastHud.mode = MBProgressHUDModeText;
-    toastHud.minShowTime = minshowtime*2;
+    toastHud.minShowTime = minshowtime * 2;
     toastHud.color = [UIColor hexFloatColor:@"545454"];
     toastHud.alpha = 0.3;
     [keywindow addSubview:toastHud];
@@ -122,6 +130,7 @@ static ZToastManager *toastManager;
 }
 
 #pragma mark -toast
+
 - (void)showtoast:(NSString *)toastStr {
     if (toastStr.length > 0) {
         if (toastStr.length > 15) {
@@ -137,14 +146,14 @@ static ZToastManager *toastManager;
     }
 }
 
-- (void)showtoast:(NSString *)toastStr wait:(double)wait
-{
+- (void)showtoast:(NSString *)toastStr wait:(double)wait {
     toastHud.minShowTime = wait;
     [self showtoast:toastStr];
     toastHud.minShowTime = minshowtime * 2;
 }
 
 #pragma mark -progress
+
 - (void)hideprogress {
     [progressHud hide:YES];
     [toastHud hide:YES];
@@ -154,24 +163,25 @@ static ZToastManager *toastManager;
     [toastHud hide:YES];
     [[ZToastManager keyWindow] bringSubviewToFront:progressHud];
     [progressHud setMinShowTime:0];
-    progressHud.labelText  = @"";
+    progressHud.labelText = @"";
     [toastManager actionCountProgress];
     [progressHud show:NO];
 }
 
-- (void)showHUD:(HUDShowType)type
-{
+- (void)showHUD:(HUDShowType)type {
     if (type <= HUDShowType_None)
         return;
     [self showprogress];
 }
 
 #pragma mark -actionRemoveAnimation
+
 - (void)actionRemoveAnimation {
     [annurImageView->progressLayer removeAllAnimations];
 }
 
 #pragma mark -actionCountProgress
+
 - (void)actionCountProgress {
     [annurImageView actionRotationAnimation:rotationspeed];
 }

@@ -16,7 +16,7 @@
 #import "XjfRequest.h"
 #import "ZToastManager.h"
 
-@interface UserInfoViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface UserInfoViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UserProfileModel *model;
 @end
@@ -26,7 +26,7 @@
     [super viewDidLoad];
     self.nav_title = @"修改个人信息";
     if (!self.params) {
-        self.params = [NSMutableDictionary dictionaryWithDictionary:@{@"nickname":@"",@"sex":@"",@"quote":@"",@"city":@"",@"age":@"",@"invest_category":@"",@"invest_age":@"",@"invest_type":@""}];
+        self.params = [NSMutableDictionary dictionaryWithDictionary:@{@"nickname" : @"", @"sex" : @"", @"quote" : @"", @"city" : @"", @"age" : @"", @"invest_category" : @"", @"invest_age" : @"", @"invest_type" : @""}];
     }
     self.model = [[XJAccountManager defaultManager] user_model];
     self.view.backgroundColor = BackgroundColor;
@@ -34,23 +34,26 @@
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(commitUserInfo)];
     self.navigationItem.rightBarButtonItem = right;
 }
+
 - (void)commitUserInfo {
     XjfRequest *reuest = [[XjfRequest alloc] initWithAPIName:update_user_info RequestMethod:POST];
     reuest.requestParams = self.params;
-    [reuest startWithSuccessBlock:^(NSData * _Nullable responseData) {
+    [reuest startWithSuccessBlock:^(NSData *_Nullable responseData) {
         UserProfileModel *userProfile = [[UserProfileModel alloc] initWithData:responseData error:nil];
-        if (userProfile.errCode==0) {
+        if (userProfile.errCode == 0) {
             [[XJAccountManager defaultManager] setUser_model:userProfile];
             [[ZToastManager ShardInstance] showtoast:@"更新用户信息成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }
-    } failedBlock:^(NSError * _Nullable error) {
+    }                 failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"更新用户信息失败"];
     }];
 }
+
 - (void)initTableView {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    CGRect frame = CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH-HEADHEIGHT);
-    self.tableView = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
+    CGRect frame = CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - HEADHEIGHT);
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     self.tableView.backgroundColor = BackgroundColor;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -66,18 +69,20 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 4;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return 110;
-    }else if (indexPath.row == 1){
+    } else if (indexPath.row == 1) {
         return 152;
-    }else if (indexPath.row == 2) {
+    } else if (indexPath.row == 2) {
         return 60;
-    }else if (indexPath.row == 3) {
+    } else if (indexPath.row == 3) {
         return 162;
     }
     return 0;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         UserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoCell"];
@@ -91,7 +96,7 @@
         cell.model = self.model;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-    }else if (indexPath.row == 1){
+    } else if (indexPath.row == 1) {
         UserInfoSection1 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection1"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.CityBlock = ^(NSString *city) {
@@ -101,16 +106,16 @@
             [self.params setObject:age forKey:@"age"];
         };
         cell.SexBlock = ^(NSString *sex) {
-            [self.params setObject:[sex isEqualToString:@"男"]?@"1":@"2" forKey:@"sex"];
+            [self.params setObject:[sex isEqualToString:@"男"] ? @"1" : @"2" forKey:@"sex"];
         };
         cell.model = self.model;
         return cell;
-    }else if (indexPath.row == 2) {
+    } else if (indexPath.row == 2) {
         UserInfoSection2 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection2"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.model = self.model;
         return cell;
-    }else if (indexPath.row == 3) {
+    } else if (indexPath.row == 3) {
         UserInfoSection3 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection3"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.InterestedBlock = ^(NSString *interested_invest) {

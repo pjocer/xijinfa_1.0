@@ -27,8 +27,7 @@
 
 @implementation MyMoneyHeaderView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     CGFloat headerViewH = 100;
     CGFloat bottomViewH = 35;
     CGFloat topClearance = 37;
@@ -36,11 +35,11 @@
     CGFloat countLabelW = 80;
     CGFloat countLabelH = 27;
     CGFloat headerLabelH = 18;
-   
-    
+
+
     self = [super initWithFrame:frame];
     if (self) {
-        
+
         //headerView
         self.headerView = [[UIView alloc] init];
         [self addSubview:self.headerView];
@@ -50,7 +49,7 @@
             make.height.mas_offset(headerViewH);
         }];
         self.headerView.backgroundColor = [UIColor whiteColor];
-        
+
         self.bottomView = [[UIView alloc] init];
         [self addSubview:self.bottomView];
         [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,8 +58,8 @@
             make.height.mas_offset(bottomViewH);
         }];
         self.bottomView.backgroundColor = [UIColor whiteColor];
-        
-        
+
+
         self.mymyGoldCOINSCount = [[UILabel alloc] init];
         [self addSubview:self.mymyGoldCOINSCount];
         self.mymyGoldCOINSCount.font = [UIFont systemFontOfSize:25];
@@ -71,7 +70,7 @@
             make.top.mas_equalTo(topClearance);
             make.size.mas_equalTo(CGSizeMake(countLabelW, countLabelH));
         }];
-        
+
         self.myGoldCOINS = [[UILabel alloc] init];
         [self addSubview:self.myGoldCOINS];
         self.myGoldCOINS.text = @"我的金币";
@@ -83,7 +82,7 @@
             make.bottom.mas_equalTo(self.headerView).with.offset(-10);
             make.size.mas_equalTo(CGSizeMake(countLabelW, headerLabelH));
         }];
-        
+
         self.myMoneyCount = [[UILabel alloc] init];
         [self addSubview:self.myMoneyCount];
         self.myMoneyCount.font = [UIFont systemFontOfSize:25];
@@ -94,7 +93,7 @@
             make.left.mas_equalTo(countLeft);
             make.size.mas_equalTo(CGSizeMake(countLabelW, countLabelH));
         }];
-        
+
         self.myMoney = [[UILabel alloc] init];
         [self addSubview:self.myMoney];
         self.myMoney.text = @"我的余额";
@@ -106,7 +105,7 @@
             make.bottom.mas_equalTo(self.headerView).with.offset(-10);
             make.size.mas_equalTo(CGSizeMake(countLabelW, headerLabelH));
         }];
-        
+
         self.myCouponsCount = [[UILabel alloc] init];
         [self addSubview:self.myCouponsCount];
         self.myCouponsCount.font = [UIFont systemFontOfSize:25];
@@ -114,10 +113,10 @@
         self.myCouponsCount.textAlignment = NSTextAlignmentCenter;
         [self.myCouponsCount mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.myMoneyCount);
-            make.right.mas_equalTo(- countLeft);
+            make.right.mas_equalTo(-countLeft);
             make.size.mas_equalTo(CGSizeMake(countLabelW, countLabelH));
         }];
-        
+
         self.myCoupons = [[UILabel alloc] init];
         [self addSubview:self.myCoupons];
         self.myCoupons.text = @"我的优惠卷";
@@ -129,8 +128,8 @@
             make.bottom.mas_equalTo(self.headerView).with.offset(-10);
             make.size.mas_equalTo(CGSizeMake(countLabelW, headerLabelH));
         }];
-        
-        
+
+
         //bottomView
         self.bottomView = [[UIView alloc] init];
         [self addSubview:self.bottomView];
@@ -140,7 +139,7 @@
             make.bottom.equalTo(self);
         }];
         self.bottomView.backgroundColor = [UIColor whiteColor];
-        
+
         self.myOrderlabel = [[UILabel alloc] init];
         [self addSubview:self.myOrderlabel];
         self.myOrderlabel.font = FONT15;
@@ -150,7 +149,7 @@
             make.left.mas_equalTo(10);
             make.size.mas_equalTo(CGSizeMake(60, 18));
         }];
-        
+
         self.LookOrder = [[UILabel alloc] init];
         [self addSubview:self.LookOrder];
         self.LookOrder.font = FONT12;
@@ -162,7 +161,7 @@
             make.size.mas_equalTo(CGSizeMake(80, 14));
         }];
         self.LookOrder.textColor = BlueColor;
-        
+
     }
     return self;
 }

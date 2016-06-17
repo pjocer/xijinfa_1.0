@@ -12,20 +12,20 @@
 #import "UserProfileModel.h"
 
 @interface VipHeaderView ()
-@property(nonatomic, strong) UserProfileModel *userProfileModel;
-@property(nonatomic, strong) UIView *bottomView;
-@property(nonatomic, strong) UILabel *prompt;
-@property(nonatomic, strong) UIImageView *userImg;
-@property(nonatomic, strong) UILabel *userName;
-@property(nonatomic, strong) UIView *vipProgressBackGroudView;
-@property(nonatomic, strong) UIView *vipProgress;
-@property(nonatomic, strong) UILabel *levelLeftLabel;
-@property(nonatomic, strong) UILabel *levelRightLabel;
-@property(nonatomic, strong) UILabel *levelCenterLabel;
-@property(nonatomic, strong) UIImageView *levelCenterImg;
-@property(nonatomic, strong) UILabel *vipTitle;
-@property(nonatomic, strong) UILabel *vipEndDate;
-@property(nonatomic, strong) UIImageView *vipCrown;
+@property (nonatomic, strong) UserProfileModel *userProfileModel;
+@property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) UILabel *prompt;
+@property (nonatomic, strong) UIImageView *userImg;
+@property (nonatomic, strong) UILabel *userName;
+@property (nonatomic, strong) UIView *vipProgressBackGroudView;
+@property (nonatomic, strong) UIView *vipProgress;
+@property (nonatomic, strong) UILabel *levelLeftLabel;
+@property (nonatomic, strong) UILabel *levelRightLabel;
+@property (nonatomic, strong) UILabel *levelCenterLabel;
+@property (nonatomic, strong) UIImageView *levelCenterImg;
+@property (nonatomic, strong) UILabel *vipTitle;
+@property (nonatomic, strong) UILabel *vipEndDate;
+@property (nonatomic, strong) UIImageView *vipCrown;
 @end
 
 @implementation VipHeaderView

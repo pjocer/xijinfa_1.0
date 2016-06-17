@@ -17,10 +17,12 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
 }
--(void)viewWillDisappear:(BOOL)animated {
+
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = NO;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

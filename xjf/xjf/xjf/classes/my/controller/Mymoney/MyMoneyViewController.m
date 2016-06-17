@@ -9,6 +9,7 @@
 #import "MyMoneyViewController.h"
 #import "MyMoneyHeaderView.h"
 #import "MyOrderViewController.h"
+
 @interface MyMoneyViewController ()
 
 @end
@@ -38,8 +39,7 @@ static CGFloat MyMoneyHeaderViewH = 155;
 
 }
 
-- (void)LookOrder:(UITapGestureRecognizer *)sender
-{
+- (void)LookOrder:(UITapGestureRecognizer *)sender {
     MyOrderViewController *myOrderPage = [MyOrderViewController new];
     [self.navigationController pushViewController:myOrderPage animated:YES];
 }

@@ -18,5 +18,5 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign) NewTopicStyle style;
 
--(instancetype)initWithStyle:(NewTopicStyle)style;
+- (instancetype)initWithStyle:(NewTopicStyle)style;
 @end

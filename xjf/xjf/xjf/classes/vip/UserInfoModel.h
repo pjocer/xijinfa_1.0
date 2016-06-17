@@ -39,8 +39,8 @@
 @property (nonatomic, copy) NSString *summary;
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *quote;
-@property (nonatomic, copy) NSString *sex;
+@property (nonatomic, assign) NSInteger sex;
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString *updated_at;
-@property (nonatomic, strong) NSMutableArray <UserMembership>*membership;
+@property (nonatomic, strong) NSMutableArray <UserMembership> *membership;
 @end

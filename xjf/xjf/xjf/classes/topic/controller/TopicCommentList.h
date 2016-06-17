@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *prev_page_url;
 @property (nonatomic, copy) NSString *from;
 @property (nonatomic, copy) NSString *to;
-@property (nonatomic, strong) NSMutableArray <TopicDataModel>*data;
+@property (nonatomic, strong) NSMutableArray <TopicDataModel> *data;
 @end
 
 @interface TopicCommentList : JSONModel

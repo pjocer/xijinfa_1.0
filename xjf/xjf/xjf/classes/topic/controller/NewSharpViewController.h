@@ -15,5 +15,5 @@
 @end
 
 @interface NewSharpViewController : TopicBaseViewController
-@property (nonatomic, strong) id <NewSharpAddSuccessed>delegate;
+@property (nonatomic, strong) id <NewSharpAddSuccessed> delegate;
 @end

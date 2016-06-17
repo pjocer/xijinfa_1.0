@@ -23,7 +23,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
 
 @implementation XjfRequest
 
--(instancetype)initWithAPIName:(nonnull APIName *)apiName RequestMethod:(RequestMethod)method {
+- (instancetype)initWithAPIName:(nonnull APIName *)apiName RequestMethod:(RequestMethod)method {
     self = [super init];
     if (self) {
         _requestMethod = method;
@@ -31,8 +31,8 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
         _requestHeaders = [NSMutableDictionary dictionary];
         if ([apiName rangeOfString:defaultAPIHost].location != NSNotFound) {
             _api_name = apiName;
-        }else {
-            _api_name = [NSString stringWithFormat:@"%@%@",defaultAPIHost,apiName];
+        } else {
+            _api_name = [NSString stringWithFormat:@"%@%@", defaultAPIHost, apiName];
         }
         _api_name = [_api_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         _manager = [AFHTTPSessionManager manager];
@@ -40,24 +40,24 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
     }
     return self;
 }
--(void)startWithSuccessBlock:(SuccessBlock)successBlock failedBlock:(FailedBlock)failedBlock {
+
+- (void)startWithSuccessBlock:(SuccessBlock)successBlock failedBlock:(FailedBlock)failedBlock {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[ZToastManager ShardInstance] showprogress];
     });
-    
+
     switch (self.requestMethod) {
-        case POST:
-        {
-            [_manager POST:self.api_name parameters:self.requestParams progress:^(NSProgress * _Nonnull uploadProgress) {
-                
-            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        case POST: {
+            [_manager POST:self.api_name parameters:self.requestParams progress:^(NSProgress *_Nonnull uploadProgress) {
+
+            }      success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
-                NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
                 [self formmatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            }      failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
@@ -65,18 +65,17 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
             }];
         }
             break;
-        case GET:
-        {
-            [_manager GET:self.api_name parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-                
-            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        case GET: {
+            [_manager GET:self.api_name parameters:nil progress:^(NSProgress *_Nonnull downloadProgress) {
+
+            }     success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
-                NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
                 [self formmatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            }     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
@@ -84,32 +83,30 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
             }];
         }
             break;
-        case PUT:
-        {
-            [_manager PUT:self.api_name parameters:self.requestParams success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        case PUT: {
+            [_manager PUT:self.api_name parameters:self.requestParams success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
-                NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
                 [self formmatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            }     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
                 if (failedBlock) failedBlock(error);
             }];
         }
-        case DELETE:
-        {
-            [_manager DELETE:self.api_name parameters:self.requestParams success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        case DELETE: {
+            [_manager DELETE:self.api_name parameters:self.requestParams success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
-                NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
                 [self formmatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            }        failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
@@ -127,7 +124,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
     _responseData = responseObject;
 }
 
--(NSDictionary *)requestHeaders {
+- (NSDictionary *)requestHeaders {
     return _manager.requestSerializer.HTTPRequestHeaders;
 }
 
@@ -143,7 +140,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
     });
 }
 
--(void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)filed {
+- (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)filed {
     [_manager.requestSerializer setValue:value forHTTPHeaderField:filed];
 }
 

@@ -10,7 +10,8 @@
 #import "TalkGridModel.h"
 #import "VideoListCell.h"
 #import "LessonDetailViewController.h"
-@interface MyFavoredsEmployedViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface MyFavoredsEmployedViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
 
 @implementation MyFavoredsEmployedViewController
@@ -25,7 +26,7 @@ static NSString *MyFavoredsEmployedCell_id = @"MyFavoredsEmployedCell_id";
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, self.view.frame.size.height - 100)];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, self.view.frame.size.height - 100)];
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
@@ -37,14 +38,14 @@ static NSString *MyFavoredsEmployedCell_id = @"MyFavoredsEmployedCell_id";
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyFavoredsEmployedCell_id];
 }
 
 #pragma mark TabelViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-        return self.dataSource.count;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,6 +59,7 @@ static NSString *MyFavoredsEmployedCell_id = @"MyFavoredsEmployedCell_id";
 }
 
 #pragma mark Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];

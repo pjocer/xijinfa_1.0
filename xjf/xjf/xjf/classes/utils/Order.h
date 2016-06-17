@@ -62,10 +62,10 @@
 
 @interface TaxonomyGurus : JSONModel
 @property (nonatomic, assign) NSInteger comments_count;
-@property (nonatomic, assign)NSInteger id;
-@property (nonatomic, assign)NSInteger user_favored;
-@property (nonatomic, assign)NSInteger user_liked;
-@property (nonatomic, assign)NSInteger user_played;
+@property (nonatomic, assign) NSInteger id;
+@property (nonatomic, assign) NSInteger user_favored;
+@property (nonatomic, assign) NSInteger user_liked;
+@property (nonatomic, assign) NSInteger user_played;
 @property (nonatomic, copy) NSString *guru_avatar;
 @property (nonatomic, copy) NSString *icon;
 @property (nonatomic, copy) NSString *summary;
@@ -86,10 +86,10 @@
 @property (nonatomic, copy) NSString *created_at;
 @property (nonatomic, copy) NSString *department;
 @property (nonatomic, copy) NSString *icon;
-@property (nonatomic, assign)NSInteger favorites_count;
-@property (nonatomic, assign)NSInteger finish;
-@property (nonatomic, assign)NSInteger likes_count;
-@property (nonatomic, assign)NSInteger origin;
+@property (nonatomic, assign) NSInteger favorites_count;
+@property (nonatomic, assign) NSInteger finish;
+@property (nonatomic, assign) NSInteger likes_count;
+@property (nonatomic, assign) NSInteger origin;
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *is_album;
 @property (nonatomic, copy) NSString *keywords;
@@ -149,9 +149,9 @@
 @property (nonatomic, copy) NSString *channel;
 @property (nonatomic, copy) NSString *created_at;
 @property (nonatomic, copy) NSString *id;
-@property (nonatomic, strong) NSMutableArray <OrderItem>*items;
+@property (nonatomic, strong) NSMutableArray <OrderItem> *items;
 @property (nonatomic, strong) Membership *membership;
-@property (nonatomic, strong) NSMutableArray <Payment>*payment;
+@property (nonatomic, strong) NSMutableArray <Payment> *payment;
 @end
 
 @interface Order : JSONModel

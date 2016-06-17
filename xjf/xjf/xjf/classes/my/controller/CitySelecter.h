@@ -14,6 +14,7 @@
 
 @interface CitySelecter : MyBaseViewController
 @property (nonatomic, copy) NSString *cityChoosed;
-@property (nonatomic, weak) id <CityDidChoosedDelegate>delegate;
--(instancetype)initWithDataSource:(NSMutableArray *)dataSource;
+@property (nonatomic, weak) id <CityDidChoosedDelegate> delegate;
+
+- (instancetype)initWithDataSource:(NSMutableArray *)dataSource;
 @end

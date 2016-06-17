@@ -26,6 +26,7 @@ FOUNDATION_EXTERN NSString *const Subscribe;
 @property (nonatomic, copy) NSString *nav_title;
 
 - (void)extendheadViewFor:(NSString *)name;
+
 ///提示登录
 - (void)LoginPrompt;
 @end

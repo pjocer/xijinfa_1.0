@@ -11,7 +11,7 @@
 
 @interface UserInfoSection3 : UITableViewCell
 @property (nonatomic, strong) UserProfileModel *model;
-@property (nonatomic, strong) void (^InterestedBlock) (NSString *interested);
-@property (nonatomic, strong) void (^ExperienceBlock) (NSString *experience);
-@property (nonatomic, strong) void (^PreferenceBlock) (NSString *preference);
+@property (nonatomic, strong) void (^InterestedBlock)(NSString *interested);
+@property (nonatomic, strong) void (^ExperienceBlock)(NSString *experience);
+@property (nonatomic, strong) void (^PreferenceBlock)(NSString *preference);
 @end

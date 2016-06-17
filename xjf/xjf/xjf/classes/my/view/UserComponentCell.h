@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "myConfigure.h"
+
 @protocol UserComponentCellDelegate <NSObject>
 
 - (void)componentDidSelected:(NSUInteger)index;
@@ -16,6 +17,6 @@
 
 @interface UserComponentCell : UITableViewCell
 
-@property (nonatomic, weak)id <UserComponentCellDelegate> delegate;
+@property (nonatomic, weak) id <UserComponentCellDelegate> delegate;
 
 @end

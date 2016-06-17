@@ -28,15 +28,17 @@
     _avatar.layer.masksToBounds = YES;
     // Initialization code
 }
--(void)setModel:(TopicDataModel *)model {
+
+- (void)setModel:(TopicDataModel *)model {
     _model = model;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:_model.user.avatar]];
     _nickname.text = _model.user.nickname;
-    _summary.text = _model.user.summary;
+    _summary.text = _model.user.quote;
     _content.text = _model.content;
     _commentFor.text = _model.topic_content;
     _time.text = [StringUtil compareCurrentTime:_model.created_at];
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

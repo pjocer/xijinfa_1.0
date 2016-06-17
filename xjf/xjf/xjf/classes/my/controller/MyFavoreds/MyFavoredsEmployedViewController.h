@@ -9,6 +9,6 @@
 #import "MyBaseViewController.h"
 
 @interface MyFavoredsEmployedViewController : MyBaseViewController
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end

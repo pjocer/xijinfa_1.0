@@ -13,6 +13,7 @@
 #import "ZToastManager.h"
 #import "StringUtil.h"
 #import "TaViewController.h"
+
 @interface CommentListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
@@ -34,16 +35,18 @@
     [_avatar addGestureRecognizer:avatar_tap];
     // Initialization code
 }
+
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
     if (![self.data.user.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
         UIViewController *controller = getCurrentDisplayController();
         TaViewController *ta = [[TaViewController alloc] init];
-        ta.nav_title = [NSString stringWithFormat:@"%@的主页",self.data.user.nickname];
+        ta.nav_title = [NSString stringWithFormat:@"%@的主页", self.data.user.nickname];
         ta.model = self.data.user;
         [controller.navigationController pushViewController:ta animated:YES];
     }
 }
--(void)setData:(TopicDataModel *)data {
+
+- (void)setData:(TopicDataModel *)data {
     _data = data;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:data.user.avatar]];
     _nickname.text = data.user.nickname;
@@ -53,23 +56,24 @@
     _content.text = data.content;
     _like_image.selected = data.user_liked;
 }
+
 - (IBAction)likeClicked:(UIButton *)sender {
     if ([[XJAccountManager defaultManager] accessToken]) {
         [[ZToastManager ShardInstance] showprogress];
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:praise RequestMethod:sender.selected?DELETE:POST];
-        request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type":@"reply",@"id":self.data.id}];
-        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves  error:nil];
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:praise RequestMethod:sender.selected ? DELETE : POST];
+        request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type" : @"reply", @"id" : self.data.id}];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
             if ([dic[@"errCode"] integerValue] == 0) {
                 [[ZToastManager ShardInstance] hideprogress];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     sender.selected = !sender.isSelected;
-                    _like_count.text = [NSString stringWithFormat:@"%ld",sender.isSelected?_like_count.text.integerValue+1:_like_count.text.integerValue-1];
+                    _like_count.text = [NSString stringWithFormat:@"%ld", sender.isSelected ? _like_count.text.integerValue + 1 : _like_count.text.integerValue - 1];
                 });
-            }else {
+            } else {
                 [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
             }
-        } failedBlock:^(NSError * _Nullable error) {
+        }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络请求失败"];
         }];
     }

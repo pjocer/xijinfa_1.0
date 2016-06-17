@@ -10,8 +10,7 @@
 
 @implementation FeedbackView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         //scrolleView
@@ -21,7 +20,7 @@
         self.scrolleView.contentSize = CGSizeMake(self.bounds.size.width, self.bounds.size.height + 30);
         self.scrolleView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         self.scrolleView.showsVerticalScrollIndicator = NO;
-        
+
         //feedbackTextView
         self.feedbackTextView = [[CloverText alloc] initWithFrame:CGRectMake(10, 10, self.bounds.size.width - 20, SCREENHEIGHT / 5 * 2) placeholder:@" 输入你的反馈信息"];
         self.feedbackTextView.font = FONT15;
@@ -36,7 +35,7 @@
         self.qqTextField.placeholder = @"您的QQ号码 (选填)";
         self.qqTextField.keyboardType = UIKeyboardTypeNumberPad;
         self.qqTextField.returnKeyType = UIReturnKeyDone;
-        
+
         //submit
         self.submit = [UIButton buttonWithType:UIButtonTypeCustom];
         self.submit.frame = CGRectMake(self.feedbackTextView.frame.origin.x, CGRectGetMaxY(self.qqTextField.frame) + 10, self.feedbackTextView.frame.size.width, 50);
@@ -52,8 +51,7 @@
     return self;
 }
 
-- (void)dredgeVIP:(UIButton *)sender
-{
+- (void)dredgeVIP:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(FeedbackView:FeedAction:)]) {
         [self.delegate FeedbackView:self FeedAction:sender];
     }

@@ -13,7 +13,7 @@
 #import "ZPlatformShare.h"
 
 @interface XJAccountManager ()
-@property(nonatomic, strong) RegistFinalModel *accountFinalModel;
+@property (nonatomic, strong) RegistFinalModel *accountFinalModel;
 @end
 
 @implementation XJAccountManager
@@ -26,6 +26,7 @@
     });
     return manager;
 }
+
 - (instancetype)initSingle {
     self = [super init];
     if (self) {
@@ -37,9 +38,9 @@
     return self;
 }
 
--(void)updateUserInfo:(NSDictionary *)newUserInfo isVipChanged:(BOOL)ret{
+- (void)updateUserInfo:(NSDictionary *)newUserInfo isVipChanged:(BOOL)ret {
     if (ret) {
-        if (self.user_model.result.membership.count>0) {
+        if (self.user_model.result.membership.count > 0) {
             for (UserMembership *membership in self.user_model.result.membership) {
                 if ([membership.type isEqualToString:newUserInfo[@"type"]]) {
                     for (NSString *key in newUserInfo.allKeys) {
@@ -47,15 +48,15 @@
                     }
                 }
             }
-        }else {
+        } else {
             UserMembership *membership = [[UserMembership alloc] initWithDictionary:newUserInfo error:nil];
             [self.user_model.result.membership addObject:membership];
         }
-        
-    }else {
+
+    } else {
         for (NSString *key in newUserInfo.allKeys) {
             [self.user_model.result setValue:[newUserInfo objectForKey:key] forKey:key];
-            
+
         }
         NSDictionary *userInfo = [self.user_model toDictionary];
         [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:USER_INFO];
@@ -63,34 +64,36 @@
     }
 }
 
--(BOOL)verifyValid {
+- (BOOL)verifyValid {
     if ([self accessToken] == nil) return YES;
     @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         @strongify(self);
-        XjfRequest *request = [[XjfRequest alloc]initWithAPIName:verify_user RequestMethod:GET];
-        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:verify_user RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
             if (model && model.errCode == 0) {
                 NSLog(@"当前AccessToken有效");
             } else {
                 UIViewController *controller = getCurrentDisplayController();
-                NSString *content = model.errMsg?:@"登录信息已失效，请重新登录";
+                NSString *content = model.errMsg ?: @"登录信息已失效，请重新登录";
                 [[ZToastManager ShardInstance] showtoast:content];
                 [self logout];
-                LoginViewController *vc = [[LoginViewController alloc]init];
+                LoginViewController *vc = [[LoginViewController alloc] init];
                 [controller.navigationController pushViewController:vc animated:YES];
             }
-        } failedBlock:^(NSError * _Nullable error) {
+        }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"验证用户信息失败"];
         }];
     });
     return NO;
 }
--(void)setUser_model:(UserProfileModel *)user_model {
+
+- (void)setUser_model:(UserProfileModel *)user_model {
     _user_model = user_model;
     UserDefaultSetObjectForKey([user_model toDictionary], USER_INFO);
 }
+
 - (void)setAccuontInfo:(NSDictionary *)info {
     self.accountFinalModel = [[RegistFinalModel alloc] initWithDictionary:info error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:info forKey:ACCOUNT_INFO];
@@ -112,7 +115,7 @@
     }];
 }
 
--(NSString *)user_id {
+- (NSString *)user_id {
     return self.user_model.result.id;
 }
 

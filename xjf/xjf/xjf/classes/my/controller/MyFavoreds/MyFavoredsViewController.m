@@ -11,7 +11,8 @@
 #import "MyFavoredsEmployedViewController.h"
 #import "MyFavoredsWikiViewController.h"
 #import "TalkGridModel.h"
-@interface MyFavoredsViewController ()<UIScrollViewDelegate>
+
+@interface MyFavoredsViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
@@ -40,6 +41,7 @@ static CGFloat selViewH = 3;
     }
     return _buttons;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
@@ -56,6 +58,7 @@ static CGFloat selViewH = 3;
     [self initMainUI];
     [self requestCategoriesTalkGridData:favorite method:GET];
 }
+
 - (void)requestCategoriesTalkGridData:(APIName *)talkGridApi
                                method:(RequestMethod)method {
     self.dataSource_MyWikiView = [NSMutableArray array];
@@ -91,7 +94,7 @@ static CGFloat selViewH = 3;
         }
         sSelf.myFavoredsEmployedViewController.dataSource = self.dataSource_myFavoredsEmployed;
         [sSelf.myFavoredsEmployedViewController.tableView reloadData];
-        
+
         [[ZToastManager ShardInstance] hideprogress];
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
@@ -101,6 +104,7 @@ static CGFloat selViewH = 3;
 
 
 #pragma mark - initMainUI
+
 - (void)initMainUI {
     [self setupTitleScrollView];//创建小scrollview
     [self setupContentScrollView];//创建大scrollview
@@ -115,6 +119,7 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark - 设置头部标题栏
+
 - (void)setupTitleScrollView {
     CGRect rect = CGRectMake(0, 1, SCREENWITH, titleH);
     self.titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
@@ -123,6 +128,7 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark - 设置内容
+
 - (void)setupContentScrollView {
     CGFloat y = CGRectGetMaxY(self.titleScrollView.frame);
     CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH);
@@ -132,22 +138,24 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark - 添加子控制器
+
 - (void)addChildViewController {
-    
+
     self.myFavoredsWikiViewController = [[MyFavoredsWikiViewController alloc] init];
     self.myFavoredsWikiViewController.title = @"析金百科";
     [self addChildViewController:self.myFavoredsWikiViewController];
-    
+
     self.myFavoredsSchoolViewController = [[MyFavoredsSchoolViewController alloc] init];
     self.myFavoredsSchoolViewController.title = @"析金学堂";
     [self addChildViewController:self.myFavoredsSchoolViewController];
-    
+
     self.myFavoredsEmployedViewController = [[MyFavoredsEmployedViewController alloc] init];
     self.myFavoredsEmployedViewController.title = @"从业培训";
     [self addChildViewController:self.myFavoredsEmployedViewController];
 }
 
 #pragma mark - 设置标题
+
 - (void)setupTitle {
     NSUInteger count = self.childViewControllers.count;
     CGFloat x = 0;
@@ -158,26 +166,26 @@ static CGFloat selViewH = 3;
         x = i * w;
         CGRect rect = CGRectMake(x, 0, w, h);
         UIButton *btn = [[UIButton alloc] initWithFrame:rect];
-        
+
         btn.tag = i;
         [btn setTitle:vc.title forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.titleLabel.font = FONT15;
-        
+
         [btn addTarget:self action:@selector(chick:) forControlEvents:UIControlEventTouchDown];
-        
+
         [self.buttons addObject:btn];
         [self.titleScrollView addSubview:btn];
-        
+
         if (i == 0) {
             [self chick:btn];
         }
     }
     self.titleScrollView.contentSize = CGSizeMake(count * w, 0);
     self.titleScrollView.showsHorizontalScrollIndicator = NO;
-    
+
     self.selBackGroundView = [[UIView alloc]
-                              initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH, selViewH)];
+            initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH, selViewH)];
     self.selBackGroundView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.selBackGroundView];
     //
@@ -224,10 +232,11 @@ static CGFloat selViewH = 3;
         offset = maxOffset;
     }
     [self.titleScrollView setContentOffset:CGPointMake(offset, 0) animated:YES];
-    
+
 }
 
 #pragma mark - UIScrollViewDelegate
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSUInteger i = self.contentScrollView.contentOffset.x / SCREENWITH;
     [self selTitleBtn:self.buttons[i]];
@@ -236,9 +245,8 @@ static CGFloat selViewH = 3;
 
 // 只要滚动UIScrollView就会调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-}
 
+}
 
 
 @end

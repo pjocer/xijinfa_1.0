@@ -17,7 +17,7 @@
 #define KEY_ACCOUNT_TYPE @"account_type"
 #define KEY_CURRENT_USER_NAME @"current_user_name"
 
-FOUNDATION_EXTERN UIViewController * getCurrentDisplayController(void);
+FOUNDATION_EXTERN UIViewController *getCurrentDisplayController(void);
 
 typedef enum : NSUInteger {
     NormalAccount,
@@ -25,8 +25,8 @@ typedef enum : NSUInteger {
 } AcccountType;
 
 @interface XJAccountManager : NSObject
-@property(nonatomic, strong) UserProfileModel *user_model;
-@property(nonatomic, assign) AcccountType account_type;
+@property (nonatomic, strong) UserProfileModel *user_model;
+@property (nonatomic, assign) AcccountType account_type;
 
 + (instancetype)defaultManager;
 

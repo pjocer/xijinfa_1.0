@@ -23,14 +23,15 @@
 #import "XjfRequest.h"
 #import "ZToastManager.h"
 #import "FeedbackViewController.h"
+
 @interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UserDelegate, UserComponentCellDelegate> {
 
 }
-@property(nonatomic, strong) UserProfileModel *model;
-@property(nonatomic, strong) UITableView *tableview;
-@property(nonatomic, strong) UIButton *footer;
-@property(nonatomic, strong) UIView *foot_background;
-@property(nonatomic, strong) UserInfoViewController *userinfo;
+@property (nonatomic, strong) UserProfileModel *model;
+@property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) UIButton *footer;
+@property (nonatomic, strong) UIView *foot_background;
+@property (nonatomic, strong) UserInfoViewController *userinfo;
 @end
 
 @implementation MyViewController
@@ -61,29 +62,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)updateUserInfo {
-    if (self.userinfo) {
-        if (self.userinfo.params) {
-            XjfRequest *request = [[XjfRequest alloc] initWithAPIName:update_user_info RequestMethod:POST];
-            request.requestParams = self.userinfo.params;
-            NSLog(@"%@",request.requestParams);
-            NSLog(@"%@",request.requestHeaders);
-            [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-                NSString *s = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-                NSLog(@"%@",s);
-                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-                NSLog(@"%@",dic);
-            } failedBlock:^(NSError * _Nullable error) {
-                [[ZToastManager ShardInstance] showtoast:@"更新用户信息失败"];
-            }];
-        }
-    }
-}
-
 //main UI
 - (void)initMainUI {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH-HEADHEIGHT) style:UITableViewStylePlain];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - HEADHEIGHT) style:UITableViewStylePlain];
     _tableview.dataSource = self;
     _tableview.delegate = self;
     _tableview.showsVerticalScrollIndicator = NO;
@@ -101,12 +82,12 @@
     }
 }
 
--(UIView *)foot_background {
+- (UIView *)foot_background {
     if (!_foot_background) {
         _foot_background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 60)];
         _foot_background.backgroundColor = [UIColor clearColor];
         _footer = [UIButton buttonWithType:UIButtonTypeCustom];
-        _footer.frame = CGRectMake(10, 10, SCREENWITH-20, 50);
+        _footer.frame = CGRectMake(10, 10, SCREENWITH - 20, 50);
         _footer.layer.cornerRadius = 5;
         _footer.layer.masksToBounds = YES;
         _footer.backgroundColor = [UIColor xjfStringToColor:@"#e60012"];
@@ -115,21 +96,23 @@
         [_footer addTarget:self action:@selector(dredgeVIP:) forControlEvents:UIControlEventTouchUpInside];
         [_foot_background addSubview:_footer];
         //是否是会员
-        if (self.model.result.membership.count != 0){
+        if (self.model.result.membership.count != 0) {
             [_footer setTitle:@"续费会员" forState:UIControlStateNormal];
         }
     }
     return _foot_background;
 }
-- (void)dredgeVIP:(UIButton *)sender{
+
+- (void)dredgeVIP:(UIButton *)sender {
     if ([sender.titleLabel.text isEqualToString:@"开通会员"]) {
         VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
         [self.navigationController pushViewController:vipPayListViewController animated:YES];
-    } else if ([sender.titleLabel.text isEqualToString:@"续费会员"]){
+    } else if ([sender.titleLabel.text isEqualToString:@"续费会员"]) {
         VipPayListViewController *vipPayListViewController = [VipPayListViewController new];
         [self.navigationController pushViewController:vipPayListViewController animated:YES];
     }
 }
+
 #pragma mark - TableView Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -161,7 +144,7 @@
         cell.backgroundColor = BackgroundColor;
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+
         return cell;
     }
     return nil;
@@ -171,7 +154,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         if (self.model != nil) {
-            self.userinfo = [[UserInfoViewController alloc]init];
+            self.userinfo = [[UserInfoViewController alloc] init];
             [self.navigationController pushViewController:self.userinfo animated:YES];
         } else {
             LoginViewController *login = [LoginViewController new];
@@ -180,77 +163,68 @@
         }
     }
 }
+
 #pragma UserComponentDelegate
 
 - (void)componentDidSelected:(NSUInteger)index {
-    
+
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
-        [[[XJAccountManager defaultManager] accessToken] length] == 0) {
+            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [self LoginPrompt];
-    } {
+    }
+    {
         [self pushAction:index];
     }
 
 }
 
-- (void)pushAction:(NSUInteger)index
-{
+- (void)pushAction:(NSUInteger)index {
     switch (index) {
-        case 0:
-        {
+        case 0: {
             MyLessonsViewController *myLessonsViewController = [MyLessonsViewController new];
             [self.navigationController pushViewController:myLessonsViewController animated:YES];
         }
             break;
-        case 1:
-        {
+        case 1: {
             MyTeacherViewController *myTeacherViewController = [MyTeacherViewController new];
             [self.navigationController pushViewController:myTeacherViewController animated:YES];
         }
             break;
-        case 2:
-        {
+        case 2: {
             MyTopicViewController *controller = [[MyTopicViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;
-        case 3:
-        {
-            MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *)[[XJAccountManager defaultManager] user_model].result];
+        case 3: {
+            MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *) [[XJAccountManager defaultManager] user_model].result];
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;
-        case 4:
-        {
+        case 4: {
             MyPlayerHistoryViewController *myPlayerHistoryViewController = [[MyPlayerHistoryViewController alloc] init];
             [self.navigationController pushViewController:myPlayerHistoryViewController animated:YES];
         }
             break;
-        case 5:
-        {
+        case 5: {
             MyFavoredsViewController *myFavoredsViewController = [[MyFavoredsViewController alloc] init];
             [self.navigationController pushViewController:myFavoredsViewController animated:YES];
         }
             break;
-        case 6:
-        {
+        case 6: {
             MyMoneyViewController *myMoneyPage = [MyMoneyViewController new];
             [self.navigationController pushViewController:myMoneyPage animated:YES];
         }
             break;
-        case 7:
-        {
+        case 7: {
             ShoppingCartViewController *shoppingCartPage = [ShoppingCartViewController new];
             [self.navigationController pushViewController:shoppingCartPage animated:YES];
         }
             break;
-        case 8:
-        {
+        case 8: {
             [self PostCheckinMessageToSever:checkin Method:POST];
         }
             break;
-        case 9:
-        {
+        case 9: {
             FeedbackViewController *feedbackViewController = [FeedbackViewController new];\
             [self.navigationController pushViewController:feedbackViewController animated:YES];
         }
@@ -262,22 +236,21 @@
 
 ///发送签到请求
 - (void)PostCheckinMessageToSever:(APIName *)api
-                        Method:(RequestMethod)method
-{
+                           Method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        
+
         id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
         NSString *errMsgStr = result[@"errMsg"];
-        
+
         if (![errMsgStr isEqualToString:@"重复签到"]) {
             [[ZToastManager ShardInstance] showtoast:@"今日已签到 金币 + 1 "];
-        }else {
-          [[ZToastManager ShardInstance] showtoast:result[@"errMsg"]];  
+        } else {
+            [[ZToastManager ShardInstance] showtoast:result[@"errMsg"]];
         }
-       
-    }failedBlock:^(NSError *_Nullable error) {
-    
+
+    }                  failedBlock:^(NSError *_Nullable error) {
+
     }];
 }
 

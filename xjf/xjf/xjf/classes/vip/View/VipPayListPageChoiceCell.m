@@ -15,11 +15,10 @@
 
 @implementation VipPayListPageChoiceCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+
         //backGroudView
         self.backGroudView = [[UIView alloc] init];
         [self.contentView addSubview:self.backGroudView];
@@ -32,7 +31,7 @@
         }];
         self.backGroudView.layer.masksToBounds = YES;
         self.backGroudView.layer.cornerRadius = 5;
-        
+
         //selectedLabel;
         self.selectedLabel = [[UILabel alloc] init];
         [self.contentView addSubview:self.selectedLabel];
@@ -44,7 +43,7 @@
         self.selectedLabel.layer.borderWidth = 1;
         self.selectedLabel.layer.masksToBounds = YES;
         self.selectedLabel.layer.cornerRadius = 7;
-        
+
         //vipDescribe;
         self.vipDescribe = [[UILabel alloc] init];
         [self.contentView addSubview:self.vipDescribe];
@@ -55,7 +54,7 @@
             make.height.mas_equalTo(18);
         }];
         self.vipDescribe.font = FONT15;
-        
+
         //vipDescribeDetail
         self.vipDescribeDetail = [[UILabel alloc] init];
         [self.contentView addSubview:self.vipDescribeDetail];
@@ -72,23 +71,22 @@
     return self;
 }
 
-- (void)setModel:(VipModel *)model
-{
+- (void)setModel:(VipModel *)model {
     if (model) {
         _model = model;
     }
-    
+
     NSString *tempPeriod;
     if ([model.period isEqualToString:@"1m"]) {
-       tempPeriod = @"一个月:";
-        self.vipDescribeDetail.text = [NSString stringWithFormat:@"￥%.2lf/月",[model.price floatValue] / 100];
-    } else if ([model.period isEqualToString:@"1y"]){
-       tempPeriod = @"一年:";
-        self.vipDescribeDetail.text = [NSString stringWithFormat:@"￥%.2lf/月",[model.price floatValue] / 100 / 12];
+        tempPeriod = @"一个月:";
+        self.vipDescribeDetail.text = [NSString stringWithFormat:@"￥%.2lf/月", [model.price floatValue] / 100];
+    } else if ([model.period isEqualToString:@"1y"]) {
+        tempPeriod = @"一年:";
+        self.vipDescribeDetail.text = [NSString stringWithFormat:@"￥%.2lf/月", [model.price floatValue] / 100 / 12];
     }
-    
-    self.vipDescribe.attributedText = [self.vipDescribe changeColorWithString:[NSString stringWithFormat:@"%@ %@",tempPeriod,[NSString stringWithFormat:@"￥%.2lf",[model.price floatValue] / 100]] light:[NSString stringWithFormat:@"￥%.2lf",[model.price floatValue] / 100] Font:15 Color:[UIColor redColor]];
- 
+
+    self.vipDescribe.attributedText = [self.vipDescribe changeColorWithString:[NSString stringWithFormat:@"%@ %@", tempPeriod, [NSString stringWithFormat:@"￥%.2lf", [model.price floatValue] / 100]] light:[NSString stringWithFormat:@"￥%.2lf", [model.price floatValue] / 100] Font:15 Color:[UIColor redColor]];
+
 }
 
 @end

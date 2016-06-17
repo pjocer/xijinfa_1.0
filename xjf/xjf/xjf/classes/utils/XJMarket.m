@@ -1,4 +1,3 @@
-
 //
 //  XJMarket.m
 //  xjf
@@ -24,7 +23,7 @@
 
 @implementation XJMarket
 
-+(instancetype)sharedMarket {
++ (instancetype)sharedMarket {
     static XJMarket *market = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -40,13 +39,14 @@
     }
     return self;
 }
+
 - (void)createPlistFile {
     _shopping_class = [NSMutableArray array];
     _shopping_training = [NSMutableArray array];
     _my_lessons_class = [NSMutableArray array];
     _my_lessons_training = [NSMutableArray array];
-    _my_lessons = [NSMutableDictionary dictionaryWithObjectsAndKeys:_my_lessons_class,MY_LESSONS_XUETANG,_my_lessons_training,MY_LESSONS_PEIXUN, nil];
-    _shopping_cart = [NSMutableDictionary dictionaryWithObjectsAndKeys:_shopping_class,XJ_XUETANG_SHOP,_shopping_training,XJ_CONGYE_PEIXUN_SHOP, nil];
+    _my_lessons = [NSMutableDictionary dictionaryWithObjectsAndKeys:_my_lessons_class, MY_LESSONS_XUETANG, _my_lessons_training, MY_LESSONS_PEIXUN, nil];
+    _shopping_cart = [NSMutableDictionary dictionaryWithObjectsAndKeys:_shopping_class, XJ_XUETANG_SHOP, _shopping_training, XJ_CONGYE_PEIXUN_SHOP, nil];
     [self createFileAtPath:[self pathForShoppingCart]];
     [_shopping_cart writeToFile:[self pathForShoppingCart] atomically:YES];
     [self createFileAtPath:[self pathForMyLessons]];
@@ -57,25 +57,28 @@
     [array writeToFile:[self pathForLabels] atomically:YES];
     [array writeToFile:[self pathForSearched] atomically:YES];
 }
--(XJOrder *)createVipOrderWith:(NSDictionary *)params target:(nonnull id<OrderInfoDidChangedDelegate>)delegate{
+
+- (XJOrder *)createVipOrderWith:(NSDictionary *)params target:(nonnull id <OrderInfoDidChangedDelegate>)delegate {
     XJOrder *order = [[XJOrder alloc] initWithParams:params];
     order.delegate = delegate;
     return order;
 }
--(XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods target:(nonnull id<OrderInfoDidChangedDelegate>)delegate{
+
+- (XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods target:(nonnull id <OrderInfoDidChangedDelegate>)delegate {
     XJOrder *order = [[XJOrder alloc] initWith:goods];
     order.delegate = delegate;
     return order;
 }
+
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
-    XJPay *pay = [[XJPay alloc]init];
+    XJPay *pay = [[XJPay alloc] init];
     [pay buyTradeImmediately:order.order.result.payment by:style success:success failed:failed];
     ReceivedNotification(self, PayLessonsSuccess, ^(NSNotification *notification) {
         if (success) success();
     });
 }
 
--(BOOL)isAlreadyExists:(TalkGridModel *)goods key:(NSString *)key {
+- (BOOL)isAlreadyExists:(TalkGridModel *)goods key:(NSString *)key {
     if ([key isEqualToString:XJ_XUETANG_SHOP] || [key isEqualToString:XJ_CONGYE_PEIXUN_SHOP]) {
         NSArray *classes = [self shoppingCartFor:key];
         for (TalkGridModel *good in classes) {
@@ -83,7 +86,7 @@
                 return YES;
             }
         }
-    }else if ([key isEqualToString:MY_LESSONS_PEIXUN] || [key isEqualToString:MY_LESSONS_XUETANG]) {
+    } else if ([key isEqualToString:MY_LESSONS_PEIXUN] || [key isEqualToString:MY_LESSONS_XUETANG]) {
         NSArray *classes = [self myLessonsFor:key];
         for (TalkGridModel *good in classes) {
             if ([good.id_ isEqualToString:goods.id_]) {
@@ -94,12 +97,12 @@
     return NO;
 }
 
--(void)clearRecentlySearched {
+- (void)clearRecentlySearched {
     NSArray *array = [NSArray array];
     [array writeToFile:[self pathForSearched] atomically:YES];
 }
 
--(void)deleteGoodsFrom:(NSString *)key goods:(NSArray<TalkGridModel *> *)goods {
+- (void)deleteGoodsFrom:(NSString *)key goods:(NSArray<TalkGridModel *> *)goods {
     NSMutableArray *goodsList = [NSMutableArray arrayWithArray:[self shoppingCartFor:key]];
     NSMutableArray *array = [goodsList mutableCopy];
     for (int i = 0; i < goods.count; i++) {
@@ -120,7 +123,7 @@
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
 
--(void)deleteLessons:(NSArray<TalkGridModel *> *)lessons key:(NSString *)key {
+- (void)deleteLessons:(NSArray<TalkGridModel *> *)lessons key:(NSString *)key {
     NSMutableArray *goodsList = [NSMutableArray arrayWithArray:[self myLessonsFor:key]];
     for (int i = 0; i < lessons.count; i++) {
         TalkGridModel *good = lessons[i];
@@ -140,7 +143,7 @@
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
 
-- (void)addLessons:(NSArray <TalkGridModel*>*)lessons key:(NSString *)key {
+- (void)addLessons:(NSArray <TalkGridModel *> *)lessons key:(NSString *)key {
     NSMutableArray *classes = [NSMutableArray arrayWithArray:[self myLessonsFor:key]];
     NSMutableArray *class = [NSMutableArray new];
     for (TalkGridModel *model in classes) {
@@ -155,7 +158,7 @@
     [dic writeToFile:[self pathForMyLessons] atomically:YES];
 }
 
-- (void)addGoods:(NSArray <TalkGridModel*>*)goods key:(NSString *)key {
+- (void)addGoods:(NSArray <TalkGridModel *> *)goods key:(NSString *)key {
     NSMutableArray *goodsList = [NSMutableArray arrayWithArray:[self shoppingCartFor:key]];
     NSMutableArray *goodlist = [NSMutableArray new];
     for (TalkGridModel *model in goodsList) {
@@ -171,7 +174,7 @@
     [dic writeToFile:[self pathForShoppingCart] atomically:YES];
 }
 
--(void)addSearch:(NSString *)search {
+- (void)addSearch:(NSString *)search {
     NSMutableArray *array = [[NSMutableArray arrayWithContentsOfFile:[self pathForSearched]] mutableCopy];
     if (![array containsObject:search]) {
         [array insertObject:search atIndex:0];
@@ -182,7 +185,7 @@
     }
 }
 
--(void)addLabels:(NSString *)label {
+- (void)addLabels:(NSString *)label {
     NSMutableArray *array = [[NSMutableArray arrayWithContentsOfFile:[self pathForLabels]] mutableCopy];
     if (![array containsObject:label]) {
         [array insertObject:label atIndex:0];
@@ -192,13 +195,16 @@
         [array writeToFile:[self pathForLabels] atomically:YES];
     }
 }
--(NSMutableArray<NSString *> *)recentlyUsedLabels {
+
+- (NSMutableArray<NSString *> *)recentlyUsedLabels {
     return [NSMutableArray arrayWithContentsOfFile:[self pathForLabels]];
 }
--(NSMutableArray<NSString *> *)recentlySearched {
+
+- (NSMutableArray<NSString *> *)recentlySearched {
     return [NSMutableArray arrayWithContentsOfFile:[self pathForSearched]];
 }
--(NSMutableArray<TalkGridModel *> *)myLessonsFor:(NSString *)key {
+
+- (NSMutableArray<TalkGridModel *> *)myLessonsFor:(NSString *)key {
     NSString *path = [self pathForMyLessons];
     NSDictionary *lessons = [NSDictionary dictionaryWithContentsOfFile:path];
     NSMutableArray *array = [NSMutableArray array];
@@ -208,7 +214,8 @@
     }
     return array;
 }
--(NSArray<TalkGridModel *> *)shoppingCartFor:(NSString *)key {
+
+- (NSArray<TalkGridModel *> *)shoppingCartFor:(NSString *)key {
     NSString *path = [self pathForShoppingCart];
     NSDictionary *shoppcart = [NSDictionary dictionaryWithContentsOfFile:path];
     NSMutableArray *array = [NSMutableArray array];

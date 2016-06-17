@@ -14,7 +14,7 @@
 
 @protocol FeedbackViewDelegate <NSObject>
 - (void)FeedbackView:(FeedbackView *)feedbackViewsub
-           FeedAction:(UIButton *)sender;
+          FeedAction:(UIButton *)sender;
 @end
 
 @interface FeedbackView : UIView
@@ -22,5 +22,5 @@
 @property (strong, nonatomic) CustomTextField *qqTextField;
 @property (strong, nonatomic) UIButton *submit;
 @property (strong, nonatomic) UIScrollView *scrolleView;
-@property (assign, nonatomic) id<FeedbackViewDelegate>delegate;
+@property (assign, nonatomic) id <FeedbackViewDelegate> delegate;
 @end

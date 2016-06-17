@@ -11,7 +11,8 @@
 #import "MyLessonsTableFooterView.h"
 #import "TalkGridModel.h"
 #import "LessonDetailViewController.h"
-@interface MyLessonsSchoolViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface MyLessonsSchoolViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -27,7 +28,7 @@ static CGFloat tableFooterH = 35;
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 100) style:UITableViewStyleGrouped];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 100) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -39,7 +40,7 @@ static CGFloat tableFooterH = 35;
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:MyLessonsSchool_id];
 }
 
@@ -49,8 +50,7 @@ static CGFloat tableFooterH = 35;
     return 1;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSorce.count;
 }
 
@@ -64,18 +64,16 @@ static CGFloat tableFooterH = 35;
     return cell;
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     MyLessonsTableFooterView *myLessonsTableFooterView = [[MyLessonsTableFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, tableFooterH)];
     return myLessonsTableFooterView;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return tableFooterH;
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return 0.01;
     }

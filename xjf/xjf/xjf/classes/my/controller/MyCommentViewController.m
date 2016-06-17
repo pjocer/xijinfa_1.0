@@ -15,7 +15,7 @@
 #import "TopicDetailViewController.h"
 #import "TopicDetailModel.h"
 
-@interface MyCommentViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface MyCommentViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) TopicModel *model;
@@ -23,56 +23,63 @@
 @end
 
 @implementation MyCommentViewController
--(instancetype)initWith:(UserInfoModel *)user {
+- (instancetype)initWith:(UserInfoModel *)user {
     if (self == [super init]) {
-        
+
         _user = user;
     }
     return self;
 }
--(void)viewWillDisappear:(BOOL)animated {
+
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = NO;
 }
--(void)viewWillAppear:(BOOL)animated {
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
 }
+
 - (void)initMainUI {
     self.dataSource = [NSMutableArray array];
     [self.view addSubview:self.tableView];
-    [self requestData:[NSString stringWithFormat:user_comment_list,self.user.id] Method:GET];
-    self.nav_title = [NSString stringWithFormat:@"%@的回答",[_user.id isEqualToString:[[XJAccountManager defaultManager] user_id]]?@"我":_user.nickname];
+    [self requestData:[NSString stringWithFormat:user_comment_list, self.user.id] Method:GET];
+    self.nav_title = [NSString stringWithFormat:@"%@的回答", [_user.id isEqualToString:[[XJAccountManager defaultManager] user_id]] ? @"我" : _user.nickname];
 }
+
 - (void)requestData:(APIName *)api Method:(RequestMethod)method {
     if (api == nil) {
         [self hiddenMJRefresh:self.tableView];
         return;
     }
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         self.model = [[TopicModel alloc] initWithData:responseData error:nil];
         if (self.model.errCode == 0) {
-            [self.dataSource addObjectsFromArray:self.model.result.data.count>0?self.model.result.data:nil];
+            [self.dataSource addObjectsFromArray:self.model.result.data.count > 0 ? self.model.result.data : nil];
             [self.tableView reloadData];
-        }else {
+        } else {
             [[ZToastManager ShardInstance] showtoast:self.model.errMsg];
         }
         [self hiddenMJRefresh:self.tableView];
-    } failedBlock:^(NSError * _Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         [self hiddenMJRefresh:self.tableView];
     }];
 }
+
 - (void)hiddenMJRefresh:(UITableView *)tableView {
-    [tableView.mj_footer isRefreshing]?[tableView.mj_footer endRefreshing]:nil;
-    [tableView.mj_header isRefreshing]?[tableView.mj_header endRefreshing]:nil;
+    [tableView.mj_footer isRefreshing] ? [tableView.mj_footer endRefreshing] : nil;
+    [tableView.mj_header isRefreshing] ? [tableView.mj_header endRefreshing] : nil;
 }
--(UITableView *)tableView {
+
+- (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT) style:UITableViewStylePlain];
         _tableView.backgroundColor = BackgroundColor;
@@ -84,7 +91,7 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self.dataSource removeAllObjects];
-            [self requestData:[NSString stringWithFormat:user_comment_list,self.user.id] Method:GET];
+            [self requestData:[NSString stringWithFormat:user_comment_list, self.user.id] Method:GET];
         }];
         _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             [self requestData:self.model.result.next_page_url Method:GET];
@@ -94,22 +101,26 @@
     }
     return _tableView;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataSource.count?:0;
+    return _dataSource.count ?: 0;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
-    TopicDataModel *model = self.dataSource.count>0?[self.dataSource objectAtIndex:indexPath.row]:nil;
+    TopicDataModel *model = self.dataSource.count > 0 ? [self.dataSource objectAtIndex:indexPath.row] : nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (model) cell.model = model;
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TopicDetailViewController *detail = [[TopicDetailViewController alloc] init];
     TopicDataModel *data = [self.dataSource objectAtIndex:indexPath.row];
     detail.topic_id = data.topic_id;
     [self.navigationController pushViewController:detail animated:YES];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

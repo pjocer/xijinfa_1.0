@@ -11,6 +11,7 @@
 #import <UIImageView+WebCache.h>
 #import "XJAccountManager.h"
 #import "Fans_FocusViewController.h"
+
 @interface TaBaseCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
@@ -28,17 +29,18 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _avatar.layer.cornerRadius = 75/2;
+    _avatar.layer.cornerRadius = 75 / 2;
     _avatar.layer.masksToBounds = YES;
 }
--(void)setModel:(JSONModel *)model {
-    UserInfoModel *userinfo = (UserInfoModel *)model;
+
+- (void)setModel:(JSONModel *)model {
+    UserInfoModel *userinfo = (UserInfoModel *) model;
     _model = userinfo;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:userinfo.avatar]];
     _nickname.text = userinfo.nickname;
-    _vip_tie.hidden = (userinfo.membership==nil||userinfo.membership.count==0)?YES:NO;
-    _fans_count.text = userinfo.follower?:@"0";
-    _focus_count.text = userinfo.following?:@"0";
+    _vip_tie.hidden = (userinfo.membership == nil || userinfo.membership.count == 0) ? YES : NO;
+    _fans_count.text = userinfo.follower ?: @"0";
+    _focus_count.text = userinfo.following ?: @"0";
     _taFans.text = @"粉丝";
     _taFocus.text = @"关注";
     UITapGestureRecognizer *fans_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fansClicked:)];
@@ -46,18 +48,21 @@
     UITapGestureRecognizer *following_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followClicked:)];
     [_focus_background addGestureRecognizer:following_tap];
 }
+
 - (void)fansClicked:(UITapGestureRecognizer *)gesture {
-    UserInfoModel *userinfo = (UserInfoModel *)self.model;
+    UserInfoModel *userinfo = (UserInfoModel *) self.model;
     UIViewController *controller = getCurrentDisplayController();
     Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:userinfo.id type:0 nickname:userinfo.nickname];
     [controller.navigationController pushViewController:fans_focus animated:YES];
 }
-- (void)followClicked:(UITapGestureRecognizer *)gesture{
-    UserInfoModel *userinfo = (UserInfoModel *)self.model;
+
+- (void)followClicked:(UITapGestureRecognizer *)gesture {
+    UserInfoModel *userinfo = (UserInfoModel *) self.model;
     UIViewController *controller = getCurrentDisplayController();
     Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:userinfo.id type:1 nickname:userinfo.nickname];
     [controller.navigationController pushViewController:fans_focus animated:YES];
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

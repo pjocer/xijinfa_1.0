@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.avatar.layer.cornerRadius = 55/2.0;
+    self.avatar.layer.cornerRadius = 55 / 2.0;
     self.avatar.layer.masksToBounds = YES;
     // Initialization code
 }

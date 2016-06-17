@@ -52,6 +52,6 @@ typedef enum : NSUInteger {
                 okBlock:(dispatch_block_t)okBlock
              otherBlock:(dispatch_block_t)otherBlock;
 
-- (void)showChoose:(Case)type handler:(id (^) (id txt))ChooseCaseHandler;
+- (void)showChoose:(Case)type handler:(id (^)(id txt))ChooseCaseHandler;
 
 @end

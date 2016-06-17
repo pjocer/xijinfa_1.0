@@ -28,35 +28,35 @@ typedef enum : NSUInteger {
 
 + (nonnull instancetype)sharedMarket;
 
--(nonnull instancetype)init NS_UNAVAILABLE;
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
-- (nonnull XJOrder *)createVipOrderWith:(nonnull NSDictionary *)params target:(nonnull id<OrderInfoDidChangedDelegate>)delegate;
+- (nonnull XJOrder *)createVipOrderWith:(nonnull NSDictionary *)params target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
 
-- (nonnull XJOrder *)createOrderWith:(nullable NSArray <TalkGridModel *>*)goods target:(nonnull id<OrderInfoDidChangedDelegate>)delegate;
+- (nonnull XJOrder *)createOrderWith:(nullable NSArray <TalkGridModel *> *)goods target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
 
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
 
-- (nullable NSArray <TalkGridModel*>*)shoppingCartFor:(nullable NSString *)key;
+- (nullable NSArray <TalkGridModel *> *)shoppingCartFor:(nullable NSString *)key;
 
-- (nullable NSMutableArray <TalkGridModel*>*)myLessonsFor:(nullable NSString *)key;
+- (nullable NSMutableArray <TalkGridModel *> *)myLessonsFor:(nullable NSString *)key;
 
-- (nullable NSMutableArray <NSString *>*)recentlyUsedLabels;
+- (nullable NSMutableArray <NSString *> *)recentlyUsedLabels;
 
-- (nullable NSMutableArray <NSString *>*)recentlySearched;
+- (nullable NSMutableArray <NSString *> *)recentlySearched;
 
 - (void)addSearch:(nonnull NSString *)search;
 
 - (void)addLabels:(nonnull NSString *)label;
 
-- (void)addLessons:(nullable NSArray <TalkGridModel*>*)lessons key:(nonnull NSString *)key;
+- (void)addLessons:(nullable NSArray <TalkGridModel *> *)lessons key:(nonnull NSString *)key;
 
-- (void)addGoods:(nullable NSArray <TalkGridModel*>*)goods key:(nonnull NSString *)key;
+- (void)addGoods:(nullable NSArray <TalkGridModel *> *)goods key:(nonnull NSString *)key;
 
 - (void)deleteGoodsFrom:(nonnull NSString *)key goods:(nonnull NSArray<TalkGridModel *> *)goods;
 
 - (void)deleteLessons:(nonnull NSArray<TalkGridModel *> *)lessons key:(nonnull NSString *)key;
 
--  (void)clearRecentlySearched;
+- (void)clearRecentlySearched;
 
 - (BOOL)isAlreadyExists:(nonnull TalkGridModel *)goods key:(nonnull NSString *)key;
 
