@@ -43,7 +43,7 @@
  \param delegate 第三方应用用于处理来至QQ请求及响应的委托对象
  \return 跳转请求处理结果，YES表示成功处理，NO表示不支持的请求协议或处理失败
  */
-+ (BOOL)handleOpenURL:(NSURL *)url delegate:(id<QQApiInterfaceDelegate>)delegate;
++ (BOOL)handleOpenURL:(NSURL *)url delegate:(id <QQApiInterfaceDelegate>)delegate;
 
 /**
  向手Q发起分享请求
@@ -84,12 +84,12 @@
 /**
  批量检测QQ号码是否在线
  */
-+ (void)getQQUinOnlineStatues:(NSArray *)QQUins delegate:(id<QQApiInterfaceDelegate>)delegate;
++ (void)getQQUinOnlineStatues:(NSArray *)QQUins delegate:(id <QQApiInterfaceDelegate>)delegate;
 
 /**
  检测QQ是否支持API调用
  \return 如果当前安装QQ版本支持API调用则返回YES，否则返回NO
- */  
+ */
 + (BOOL)isQQSupportApi;
 
 /**

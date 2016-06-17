@@ -25,7 +25,7 @@
  * 返回一个对象用来进行API参数的填充
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCAddTopicDic *) dictionary;
++ (TCAddTopicDic *)dictionary;
 
 /** 
  * 发布心情时引用的信息的类型。
@@ -100,6 +100,7 @@
 
 #pragma mark -
 #pragma mark TCAddOneBlogDic
+
 /**
  * \brief 发表日志的参数字典定义
  *
@@ -111,7 +112,7 @@
  * 返回一个对象用来进行API参数的填充
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCAddOneBlogDic *) dictionary;
++ (TCAddOneBlogDic *)dictionary;
 
 /** 
  * 日志标题（纯文本，最大长度128个字节，utf-8编码）。
@@ -126,7 +127,8 @@
 
 #pragma mark -
 #pragma mark TCAddAlbumDic
-/** 
+
+/**
  * \brief 创建空间相册的参数字典定义
  *
  * 可以直接填写相应参数后将对象当作参数传入API中
@@ -138,7 +140,7 @@
  *
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCAddAlbumDic *) dictionary;
++ (TCAddAlbumDic *)dictionary;
 
 /** 
  * albumname 必须 string 相册名 不能超过30个字符。
@@ -178,6 +180,7 @@
 
 #pragma mark -
 #pragma mark TCUploadPicDic
+
 /**
  * \brief 上传一张照片到QQ空间相册的参数字典定义
  *
@@ -189,7 +192,7 @@
  * 返回一个对象用来进行API参数的填充
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCUploadPicDic *) dictionary;
++ (TCUploadPicDic *)dictionary;
 
 /** 
  * photodesc string 照片描述，注意照片描述不能超过200个字符。
@@ -233,13 +236,13 @@
  * needfeed int	 标识上传照片时是否要发feed
  * \note（0：不发feed； 1：发feed）。如果不填则默认为发feed。
  */
-@property (nonatomic, assign)TCOptionalStr paramNeedfeed;
+@property (nonatomic, assign) TCOptionalStr paramNeedfeed;
 
 /** 
  * successnum int 批量上传照片时，已成功上传的张数，指明上传完成情况。
  * \note 单张上传时可以不填，不填则默认为0。
  */
-@property (nonatomic, assign)TCOptionalStr paramSuccessnum;
+@property (nonatomic, assign) TCOptionalStr paramSuccessnum;
 
 /** 
  * picnum int 批量上传照片的总张数，如果不填则默认为1。
@@ -250,12 +253,13 @@
  *       信息中心中的feed表现形式：批量上传时最新的7张在feed中展示。其中最新上传的一张图片展示为大图，剩下的
  *       六张按从新到旧的顺序展示为小图，其他图片不在feed中展示。
  */
-@property (nonatomic, assign)TCOptionalStr paramPicnum;
+@property (nonatomic, assign) TCOptionalStr paramPicnum;
 
 @end
 
 #pragma mark -
 #pragma mark TCAddShareDic
+
 /**
  * \brief 同步分享到QQ空间,腾讯微博的参数字典定义
  *
@@ -268,7 +272,7 @@
  *
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCAddShareDic *) dictionary;
++ (TCAddShareDic *)dictionary;
 
 /** 
  * title 必须 string	 feeds的标题 最长36个中文字，超出部分会被截断。
@@ -330,6 +334,7 @@
 
 #pragma mark -
 #pragma mark TCCheckPageFansDic
+
 /**
  * \brief 验证是否认证空间粉丝tttyttyyyu的参数字典定义
  *
@@ -342,7 +347,7 @@
  *
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCCheckPageFansDic *) dictionary;
++ (TCCheckPageFansDic *)dictionary;
 
 /** 
  * 表示认证空间的QQ号码
@@ -352,6 +357,7 @@
 
 #pragma mark -
 #pragma mark TCSetUserHeadpic
+
 /**
  * \brief 设置用户头像
  *
@@ -363,7 +369,7 @@
  * 返回一个对象用来进行API参数的填充
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCSetUserHeadpic *) dictionary;
++ (TCSetUserHeadpic *)dictionary;
 
 /** 
  * 设置用户头像的图片
@@ -391,7 +397,7 @@
  *
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCListPhotoDic *) dictionary;
++ (TCListPhotoDic *)dictionary;
 
 /**
  * 表示要获取的照片列表所在的相册ID
@@ -402,7 +408,8 @@
 
 #pragma mark -
 #pragma mark TCMatchNickTipsDic
-/** 
+
+/**
  * \brief 微博获取好友输入提示的参数字典定义
  *
  * 可以直接填写相应参数后将对象当作参数传入API中
@@ -414,7 +421,7 @@
  *
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCMatchNickTipsDic *) dictionary;
++ (TCMatchNickTipsDic *)dictionary;
 
 /** 
  * 匹配字符串（目前匹配范围为我收听的人）
@@ -431,6 +438,7 @@
 
 #pragma mark -
 #pragma mark TCGetIntimateFriendsDic
+
 /**
  * \brief 微博获取最近联系人列表的参数字典定义
  *
@@ -443,7 +451,7 @@
  *
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCGetIntimateFriendsDic *) dictionary;
++ (TCGetIntimateFriendsDic *)dictionary;
 
 /** 
  * 请求个数（1-20）
@@ -454,6 +462,7 @@
 
 #pragma mark -
 #pragma mark TCSendStoryDic
+
 /**
  * \brief QQ空间定向分享的参数字典定义
  *
@@ -469,7 +478,7 @@
  *
  * \note 不用释放，返回的对象是自动释放的
  */
-+ (TCSendStoryDic *) dictionary;
++ (TCSendStoryDic *)dictionary;
 
 /**
  * 分享的标题

@@ -9,36 +9,34 @@
 #import <UIKit/UIKit.h>
 
 //  分享类型
-typedef NS_ENUM(NSInteger, SHARE_ITEM){
-    
+typedef NS_ENUM(NSInteger, SHARE_ITEM) {
+
     //  微信会话
-    SHARE_ITEM_WEIXIN_SESSION,
-    
+            SHARE_ITEM_WEIXIN_SESSION,
+
     //  微信朋友圈
-    SHARE_ITEM_WEIXIN_TIMELINE,
-    
+            SHARE_ITEM_WEIXIN_TIMELINE,
+
     //  QQ会话
-    SHARE_ITEM_QQ,
-    
+            SHARE_ITEM_QQ,
+
     //  QQ空间
-    SHARE_ITEM_QZONE,
-    
+            SHARE_ITEM_QZONE,
+
     //  微博
-    SHARE_ITEM_WEIBO,
-    
+            SHARE_ITEM_WEIBO,
+
     //  复制链接
-    SHARE_ITEM_COPY,
+            SHARE_ITEM_COPY,
     //  关闭
-    SHARE_ITEM_CLOSE
+            SHARE_ITEM_CLOSE
 };
 
 
-@interface XMShareView : UIView
-
-{
+@interface XMShareView : UIView {
     //  图片项
     NSMutableArray *iconList;
-    
+
     //  文字项
     NSMutableArray *textList;
 }
@@ -54,6 +52,7 @@ typedef NS_ENUM(NSInteger, SHARE_ITEM){
 @property (nonatomic, strong) NSString *shareUrl;
 //  分享图片
 @property (nonatomic, strong) NSString *shareImage;
-- (id)initWithFrame:(CGRect)frame type:(NSString*)type;
+
+- (id)initWithFrame:(CGRect)frame type:(NSString *)type;
 @end
 

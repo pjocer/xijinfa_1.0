@@ -10,6 +10,7 @@
 #import "PasswordSettingViewController.h"
 #import "XjfRequest.h"
 #import "ImageCodeModel.h"
+
 @interface RegistViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (weak, nonatomic) IBOutlet UITextField *txtCodePhone;
@@ -27,34 +28,34 @@
 @implementation RegistViewController {
     NSInteger _timecount;
 }
-+ (instancetype)newController
-{
++ (instancetype)newController {
     return [super new];
 }
-+ (instancetype)newWithDelegate:(id<UserDelegate>)delegate
-{
+
++ (instancetype)newWithDelegate:(id <UserDelegate>)delegate {
     RegistViewController *viewController = [RegistViewController newController];
     if (viewController) {
         viewController.delegate = delegate;
     }
     return viewController;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.codeImage.layer.cornerRadius = 5;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changeCodeImage:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeCodeImage:)];
     [self.codeImage addGestureRecognizer:tap];
     self.codeButton.layer.cornerRadius = 5;
     self.codeButton.enabled = NO;
-    self.codeButton.backgroundColor = self.codeButton.enabled?[UIColor xjfStringToColor:@"#0061b0"]:SegementColor;
+    self.codeButton.backgroundColor = self.codeButton.enabled ? [UIColor xjfStringToColor:@"#0061b0"] : SegementColor;
     self.txtCodePhone.delegate = self;
     self.txtCodeImage.delegate = self;
     self.txtPhone.delegate = self;
     @weakify(self)
     [[[self.txtCodePhone rac_signalForControlEvents:UIControlEventEditingChanged] filter:^BOOL(NSString *value) {
-        if (self.txtCodePhone.text.length==6&& self.txtCodeImage.text.length>0) {
+        if (self.txtCodePhone.text.length == 6 && self.txtCodeImage.text.length > 0) {
             return YES;
-        }else {
+        } else {
             return NO;
         }
     }] subscribeNext:^(id x) {
@@ -62,9 +63,9 @@
         [self requestData:check_code_message method:POST];
     }];
     [[[self.txtCodeImage rac_signalForControlEvents:UIControlEventEditingDidEnd] filter:^BOOL(id value) {
-        if (self.txtCodeImage.text.length==6) {
+        if (self.txtCodeImage.text.length == 6) {
             return YES;
-        }else {
+        } else {
             return NO;
         }
     }] subscribeNext:^(id x) {
@@ -73,22 +74,24 @@
     }];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self requestData:get_image_code method:GET];
 }
 
--(void)setTitle_item:(NSString *)title_item {
+- (void)setTitle_item:(NSString *)title_item {
     _title_item = title_item;
     self.navigationItem.title = title_item;
 }
+
 //点击更换图片验证码
 - (void)changeCodeImage:(UITapGestureRecognizer *)gesture {
     [self requestData:get_image_code method:GET];
 }
+
 - (IBAction)codeButtonClicked:(UIButton *)sender {
     self.codeIsOk = YES;
-    [self requestData:[self.title_item isEqualToString:@"注册"]?regist_message_code:reset_message_code method:POST];
+    [self requestData:[self.title_item isEqualToString:@"注册"] ? regist_message_code : reset_message_code method:POST];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,11 +99,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)requestData:(APIName *)api method:(RequestMethod)method{
-    __weak typeof (self) wSelf = self;
+- (void)requestData:(APIName *)api method:(RequestMethod)method {
+    __weak typeof(self) wSelf = self;
     [[ZToastManager ShardInstance] showprogress];
-    XjfRequest *request = [[XjfRequest alloc]initWithAPIName:api RequestMethod:method];
-    if ([api isEqualToString:regist_message_code]||[api isEqualToString:reset_message_code]) {
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    if ([api isEqualToString:regist_message_code] || [api isEqualToString:reset_message_code]) {
         [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
         [request.requestParams setObject:self.txtCodeImage.text forKey:@"secure_code"];
         [request.requestParams setObject:self.model.result.secure_key forKey:@"secure_key"];
@@ -111,30 +114,30 @@
         [request.requestParams setObject:self.txtCodePhone.text forKey:@"code"];
     }
     if ([api isEqualToString:check_image_code]) {
-        request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"secure_key":self.model.result.secure_key,@"secure_code":self.txtCodeImage.text}];
+        request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"secure_key" : self.model.result.secure_key, @"secure_code" : self.txtCodeImage.text}];
     }
-    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-        __strong typeof (self)sSelf = wSelf;
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         if ([api isEqualToString:get_image_code]) {
             [sSelf.indicator stopAnimating];
-            sSelf.model = [[ImageCodeModel alloc]initWithData:responseData error:nil];
+            sSelf.model = [[ImageCodeModel alloc] initWithData:responseData error:nil];
             NSURL *url = [NSURL URLWithString:sSelf.model.result.secure_image];
             NSData *imageData = [NSData dataWithContentsOfURL:url];
             UIImage *ret = [UIImage imageWithData:imageData];
             sSelf.codeImage.image = ret;
-        }else if ([api isEqualToString:regist_message_code]||[api isEqualToString:reset_message_code]) {
+        } else if ([api isEqualToString:regist_message_code] || [api isEqualToString:reset_message_code]) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
             if ([dic[@"errCode"] integerValue] == 0) {
                 [[ZToastManager ShardInstance] showtoast:@"发送验证码成功"];
-            }else {
+            } else {
                 [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
             }
             self.codeButton.enabled = NO;
             self.codeButton.backgroundColor = SegementColor;
             self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(setValidateBtnTitle) userInfo:nil repeats:YES];
             [self.timer fire];
-        }else if ([api isEqualToString:check_code_message]) {
+        } else if ([api isEqualToString:check_code_message]) {
             [self.txtCodePhone resignFirstResponder];
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
             if ([dic[@"errCode"] integerValue] == 0) {
@@ -144,66 +147,71 @@
                 _timecount = 0;
                 self.codeButton.enabled = YES;
                 self.codeButton.backgroundColor = PrimaryColor;
-                PasswordSettingViewController *controller = [[PasswordSettingViewController alloc]init];
-                controller.itemTitle = [self.title_item isEqualToString:@"注册"]?@"设置密码":@"重设密码";
-                controller.dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:wSelf.txtPhone.text,@"phone",wSelf.txtCodePhone.text,@"code", nil];
+                PasswordSettingViewController *controller = [[PasswordSettingViewController alloc] init];
+                controller.itemTitle = [self.title_item isEqualToString:@"注册"] ? @"设置密码" : @"重设密码";
+                controller.dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:wSelf.txtPhone.text, @"phone", wSelf.txtCodePhone.text, @"code", nil];
                 [sSelf.navigationController pushViewController:controller animated:YES];
-            }else {
+            } else {
                 [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
             }
-        }else if ([api isEqualToString:check_image_code]) {
+        } else if ([api isEqualToString:check_image_code]) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
             if ([dic[@"errCode"] integerValue] == 0) {
                 self.imageCodeIsOk = YES;
                 [self setCodeButtonStatus];
-            }else {
+            } else {
                 [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
             }
         }
-    } failedBlock:^(NSError * _Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance]showtoast:@"请求失败"];
+        [[ZToastManager ShardInstance] showtoast:@"请求失败"];
     }];
 }
--(void)setValidateBtnTitle{
-    _timecount ++;
+
+- (void)setValidateBtnTitle {
+    _timecount++;
     if (_timecount >= 60) {
         [_timer invalidate];
         _timer = nil;
         _timecount = 0;
         self.codeButton.enabled = YES;
         self.codeButton.backgroundColor = PrimaryColor;
-    }else {
+    } else {
         self.codeButton.enabled = NO;
-        [self.codeButton setTitle:[NSString stringWithFormat:@"倒计时:%lis",60-_timecount] forState:UIControlStateDisabled];
+        [self.codeButton setTitle:[NSString stringWithFormat:@"倒计时:%lis", 60 - _timecount] forState:UIControlStateDisabled];
     }
 }
+
 #pragma mark - TextFiled Delegate
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-    if (textField==self.txtPhone) {
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+
+    if (textField == self.txtPhone) {
         [self.txtCodeImage becomeFirstResponder];
-    }else  if (textField==self.txtCodeImage){
+    } else if (textField == self.txtCodeImage) {
         [self.txtCodePhone becomeFirstResponder];
-    }else {
+    } else {
         [textField resignFirstResponder];
     }
     return YES;
 }
--(void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField==self.txtPhone) {
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.txtPhone) {
         if ([self.txtPhone.text isValidEmail] || [textField.text isValidPhoneNumber]) {
             self.phoneIsOK = YES;
-        }else {
+        } else {
             [[ZToastManager ShardInstance] showtoast:@"请输入正确的手机号码"];
         }
     }
 }
+
 - (void)setCodeButtonStatus {
     if (!self.codeIsOk) {
         self.codeButton.enabled = self.phoneIsOK && self.imageCodeIsOk;
     }
-    self.codeButton.backgroundColor = self.codeButton.enabled?[UIColor xjfStringToColor:@"#0061b0"]:SegementColor;
+    self.codeButton.backgroundColor = self.codeButton.enabled ? [UIColor xjfStringToColor:@"#0061b0"] : SegementColor;
 }
 /*
 #pragma mark - Navigation

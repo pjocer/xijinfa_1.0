@@ -17,15 +17,15 @@
 @interface LoginViewController () <UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UserDelegate> {
 
 }
-@property(nonatomic, strong) void(^actionBlock)(id, id);
-@property(nonatomic, strong) UITextField *txtNickname;
-@property(nonatomic, strong) UITextField *txtPass;
-@property(nonatomic, strong) UITextField *txtCode;
-@property(nonatomic, strong) UIButton *loginBtn;
-@property(nonatomic, strong) UIButton *settingBtn;
-@property(nonatomic, strong) UIImageView *codeImageView;
-@property(nonatomic, copy) NSString *secure_key;
-@property(nonatomic, copy) NSString *secure_code;
+@property (nonatomic, strong) void(^actionBlock)(id, id);
+@property (nonatomic, strong) UITextField *txtNickname;
+@property (nonatomic, strong) UITextField *txtPass;
+@property (nonatomic, strong) UITextField *txtCode;
+@property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UIButton *settingBtn;
+@property (nonatomic, strong) UIImageView *codeImageView;
+@property (nonatomic, copy) NSString *secure_key;
+@property (nonatomic, copy) NSString *secure_code;
 @end
 
 @implementation LoginViewController
@@ -181,20 +181,20 @@
     CGFloat qq_x = SCREENWITH / 2 - 62.5;
     CGFloat y = CGRectGetMaxY(self.txtCode.frame) + 100;
     CGFloat wechat_x = SCREENWITH / 2 + 12.5;
-    CGRect center = CGRectMake(SCREENWITH/2-25, y, 50, 50);
-    
+    CGRect center = CGRectMake(SCREENWITH / 2 - 25, y, 50, 50);
+
     UIButton *qq = [UIButton buttonWithType:UIButtonTypeCustom];
     qq.tag = 4;
-    qq.frame = [XMShareWechatUtil isInstalled]?CGRectMake(qq_x, y, 50, 50):center;
+    qq.frame = [XMShareWechatUtil isInstalled] ? CGRectMake(qq_x, y, 50, 50) : center;
     qq.hidden = ![XMShareQQUtil isInstalled];
     [qq setBackgroundImage:[UIImage imageNamed:@"login_qq"] forState:UIControlStateNormal];
     [qq addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:qq];
-    
+
     UIButton *wx = [UIButton buttonWithType:UIButtonTypeCustom];
     wx.tag = 5;
     wx.hidden = ![XMShareWechatUtil isInstalled];
-    wx.frame = [XMShareQQUtil isInstalled]?CGRectMake(wechat_x, y, 50, 50):center;
+    wx.frame = [XMShareQQUtil isInstalled] ? CGRectMake(wechat_x, y, 50, 50) : center;
     [wx setBackgroundImage:[UIImage imageNamed:@"login_wechat"] forState:UIControlStateNormal];
     [wx addTarget:self action:@selector(loginbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wx];
@@ -296,7 +296,7 @@
             } else {
                 [[ZToastManager ShardInstance] showtoast:model.errMsg];
             }
-        }failedBlock:^(NSError *_Nullable error) {
+        }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"登录失败"];
         }];
     }
@@ -342,7 +342,7 @@
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     if (params) {
         request.requestParams = params;
-        
+
     }
     __weak typeof(self) wSelf = self;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -363,7 +363,7 @@
             NSData *imageData = [NSData dataWithContentsOfURL:url];
             UIImage *ret = [UIImage imageWithData:imageData];
             wSelf.secure_key = model.result.secure_key;
-            
+
             self.codeImageView.image = ret;
         }
     }                  failedBlock:^(NSError *_Nullable error) {

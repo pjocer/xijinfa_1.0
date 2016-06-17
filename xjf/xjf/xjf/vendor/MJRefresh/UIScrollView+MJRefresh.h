@@ -14,6 +14,7 @@
 
 @interface UIScrollView (MJRefresh)
 #pragma mark - 下拉刷新
+
 /**
  *  添加一个下拉刷新头部控件
  *
@@ -55,6 +56,7 @@
 @property (nonatomic, assign, readonly, getter = isHeaderRefreshing) BOOL headerRefreshing;
 
 #pragma mark - 上拉刷新
+
 /**
  *  添加一个上拉刷新尾部控件
  *

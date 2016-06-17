@@ -7,35 +7,34 @@
 //
 
 #import "XMShareUtil.h"
+
 @implementation XMShareUtil
 
--(void)setAuthSuccess:(void (^)(NSDictionary *))authSuccess
-{
-   _authSuccess =authSuccess;
-}
--(void)setAuthFail:(void (^)(NSDictionary *, NSError *))authFail
-{
-    _authFail =authFail;
+- (void)setAuthSuccess:(void (^)(NSDictionary *))authSuccess {
+    _authSuccess = authSuccess;
 }
 
-+(BOOL)isInstalled
-{
+- (void)setAuthFail:(void (^)(NSDictionary *, NSError *))authFail {
+    _authFail = authFail;
+}
+
++ (BOOL)isInstalled {
     return NO;
 }
--(void)Auth:(NSString*)scope Success:(authSuccess)success Fail:(authFail)fail
-{
-    
+
+- (void)Auth:(NSString *)scope Success:(authSuccess)success Fail:(authFail)fail {
+
 }
--(void)openURL:(NSString*)url{
+
+- (void)openURL:(NSString *)url {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
--(BOOL)handleOpenURL:(NSURL *)url
-{
+- (BOOL)handleOpenURL:(NSURL *)url {
     return NO;
 }
--(void)logout
-{
-    
+
+- (void)logout {
+
 }
 @end

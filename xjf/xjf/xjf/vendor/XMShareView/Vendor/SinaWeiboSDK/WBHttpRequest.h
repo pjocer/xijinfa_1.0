@@ -66,10 +66,9 @@
  微博封装Http请求的消息结构
  
  */
-@interface WBHttpRequest : NSObject
-{
-    NSURLConnection                 *connection;
-    NSMutableData                   *responseData;
+@interface WBHttpRequest : NSObject {
+    NSURLConnection *connection;
+    NSMutableData *responseData;
 }
 
 /**
@@ -92,14 +91,14 @@
 /**
  WBHttpRequestDelegate对象，用于接收微博SDK对于发起的接口请求的请求的响应
  */
-@property (nonatomic, weak) id<WBHttpRequestDelegate> delegate;
+@property (nonatomic, weak) id <WBHttpRequestDelegate> delegate;
 
 /**
  用户自定义TAG
  
  用于区分回调Request
  */
-@property (nonatomic, strong) NSString* tag;
+@property (nonatomic, strong) NSString *tag;
 
 /**
  统一HTTP请求接口
@@ -113,7 +112,7 @@
 + (WBHttpRequest *)requestWithURL:(NSString *)url
                        httpMethod:(NSString *)httpMethod
                            params:(NSDictionary *)params
-                         delegate:(id<WBHttpRequestDelegate>)delegate
+                         delegate:(id <WBHttpRequestDelegate>)delegate
                           withTag:(NSString *)tag;
 
 /**
@@ -130,7 +129,7 @@
                                       url:(NSString *)url
                                httpMethod:(NSString *)httpMethod
                                    params:(NSDictionary *)params
-                                 delegate:(id<WBHttpRequestDelegate>)delegate
+                                 delegate:(id <WBHttpRequestDelegate>)delegate
                                   withTag:(NSString *)tag;
 
 
@@ -144,8 +143,8 @@
 #pragma mark - block extension
 
 typedef void (^WBRequestHandler)(WBHttpRequest *httpRequest,
-                                 id result,
-                                 NSError *error);
+        id result,
+        NSError *error);
 
 /**
  统一微博Open API HTTP请求接口
@@ -159,7 +158,7 @@ typedef void (^WBRequestHandler)(WBHttpRequest *httpRequest,
 + (WBHttpRequest *)requestWithURL:(NSString *)url
                        httpMethod:(NSString *)httpMethod
                            params:(NSDictionary *)params
-                            queue:(NSOperationQueue*)queue
+                            queue:(NSOperationQueue *)queue
             withCompletionHandler:(WBRequestHandler)handler;
 
 
@@ -176,7 +175,7 @@ typedef void (^WBRequestHandler)(WBHttpRequest *httpRequest,
                                       url:(NSString *)url
                                httpMethod:(NSString *)httpMethod
                                    params:(NSDictionary *)params
-                                    queue:(NSOperationQueue*)queue
+                                    queue:(NSOperationQueue *)queue
                     withCompletionHandler:(WBRequestHandler)handler;
 
 @end

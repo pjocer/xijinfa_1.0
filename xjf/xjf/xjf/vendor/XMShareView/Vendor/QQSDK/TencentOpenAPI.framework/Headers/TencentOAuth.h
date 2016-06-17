@@ -18,8 +18,7 @@
 @class TencentApiReq;
 @class TencentApiResp;
 
-typedef enum
-{
+typedef enum {
     kTencentNotAuthorizeState,
     kTencentSSOAuthorizeState,
     kTencentWebviewAuthorzieState,
@@ -33,60 +32,60 @@ typedef enum
  *
  * TencentOAuth实现授权登录逻辑以及相关开放接口的请求调用
  */
-@interface TencentOAuth : NSObject
-{
-    NSMutableDictionary* _apiRequests;
-	NSString* _accessToken;
-	NSDate* _expirationDate;
-	id<TencentSessionDelegate> _sessionDelegate;
-	NSString* _localAppId;
-	NSString* _openId;
-	NSString* _redirectURI;
-	NSArray* _permissions;
+@interface TencentOAuth : NSObject {
+    NSMutableDictionary *_apiRequests;
+    NSString *_accessToken;
+    NSDate *_expirationDate;
+    id <TencentSessionDelegate> _sessionDelegate;
+    NSString *_localAppId;
+    NSString *_openId;
+    NSString *_redirectURI;
+    NSArray *_permissions;
 }
 
 /** Access Token凭证，用于后续访问各开放接口 */
-@property(nonatomic, copy) NSString* accessToken;
+@property (nonatomic, copy) NSString *accessToken;
 
 /** Access Token的失效期 */
-@property(nonatomic, copy) NSDate* expirationDate;
+@property (nonatomic, copy) NSDate *expirationDate;
 
 /** 已实现的开放接口的回调委托对象 */
-@property(nonatomic, assign) id<TencentSessionDelegate> sessionDelegate;
+@property (nonatomic, assign) id <TencentSessionDelegate> sessionDelegate;
 
 /** 第三方应用在开发过程中设置的URLSchema，用于浏览器登录后后跳到第三方应用 */
-@property(nonatomic, copy) NSString* localAppId;
+@property (nonatomic, copy) NSString *localAppId;
 
 /** 用户授权登录后对该用户的唯一标识 */
-@property(nonatomic, copy) NSString* openId;
+@property (nonatomic, copy) NSString *openId;
 
 /** 用户登录成功过后的跳转页面地址 */
-@property(nonatomic, copy) NSString* redirectURI;
+@property (nonatomic, copy) NSString *redirectURI;
 
 /** 第三方应用在互联开放平台申请的appID */
-@property(nonatomic, retain) NSString* appId;
+@property (nonatomic, retain) NSString *appId;
 
 /** 主要是互娱的游戏设置uin */
-@property(nonatomic, retain) NSString* uin;
+@property (nonatomic, retain) NSString *uin;
 
 /** 主要是互娱的游戏设置鉴定票据 */
-@property(nonatomic, retain) NSString* skey;
+@property (nonatomic, retain) NSString *skey;
 
 /** 登陆透传的数据 */
-@property(nonatomic, copy) NSDictionary* passData;
+@property (nonatomic, copy) NSDictionary *passData;
+
 /**
  * 用来获得当前sdk的版本号
  * \return 返回sdk版本号
  **/
 
-+ (NSString*)sdkVersion;
++ (NSString *)sdkVersion;
 
 /**
  * 用来获得当前sdk的小版本号
  * \return 返回sdk小版本号
  **/
 
-+ (NSString*)sdkSubVersion;
++ (NSString *)sdkSubVersion;
 
 /** 
  * 主要是用来帮助判断是否有登陆被发起，但是还没有过返回结果 
@@ -111,7 +110,7 @@ typedef enum
  * \return 初始化后的授权登录对象
  */
 - (id)initWithAppId:(NSString *)appId
-        andDelegate:(id<TencentSessionDelegate>)delegate;
+        andDelegate:(id <TencentSessionDelegate>)delegate;
 
 
 /**
@@ -119,7 +118,7 @@ typedef enum
  * \return YES:安装 NO:没安装
  */
 + (BOOL)iphoneQQInstalled;
- 
+
 /**
  * 判断用户手机上的手机QQ是否支持SSO登录
  * \return YES:支持 NO:不支持
@@ -151,7 +150,7 @@ typedef enum
  * \param bInSafari 是否使用safari进行登录.<b>IOS SDK 1.3版本开始此参数废除</b>
  */
 - (BOOL)authorize:(NSArray *)permissions
-		 inSafari:(BOOL)bInSafari;
+         inSafari:(BOOL)bInSafari;
 
 /**
  * 登录授权
@@ -161,7 +160,7 @@ typedef enum
  */
 - (BOOL)authorize:(NSArray *)permissions
        localAppId:(NSString *)localAppId
-		 inSafari:(BOOL)bInSafari;
+         inSafari:(BOOL)bInSafari;
 
 /**
  * 增量授权，因用户没有授予相应接口调用的权限，需要用户确认是否授权
@@ -195,7 +194,7 @@ typedef enum
  * 退出登录
  * \param delegate 第三方应用用于接收请求返回结果的委托对象
  */
-- (void)logout:(id<TencentSessionDelegate>)delegate;
+- (void)logout:(id <TencentSessionDelegate>)delegate;
 
 /**
  * 判断登录态是否有效
@@ -387,14 +386,14 @@ typedef enum
  * \param callback CGI请求结果的回调接口对象
  * \return CGI请求任务实例，用于取消任务，返回nil代表任务创建失败
  */
-- (TCAPIRequest *)cgiRequestWithURL:(NSURL *)apiURL method:(NSString *)method params:(NSDictionary *)params callback:(id<TCAPIRequestDelegate>)callback;
+- (TCAPIRequest *)cgiRequestWithURL:(NSURL *)apiURL method:(NSString *)method params:(NSDictionary *)params callback:(id <TCAPIRequestDelegate>)callback;
 
 /**
  * TencentOpenApi发送任务统一接口
  * \param request 请求发送的任务
  * \param callback 任务发送后的回调地址
  */
-- (BOOL)sendAPIRequest:(TCAPIRequest *)request callback:(id<TCAPIRequestDelegate>)callback;
+- (BOOL)sendAPIRequest:(TCAPIRequest *)request callback:(id <TCAPIRequestDelegate>)callback;
 
 - (NSString *)getUserOpenID;
 
@@ -442,7 +441,7 @@ typedef enum
  *
  * 第三方应用需要实现每条需要调用的API的回调协议
  */
-@protocol TencentSessionDelegate<NSObject, TencentLoginDelegate, TencentApiInterfaceDelegate, TencentWebViewDelegate>
+@protocol TencentSessionDelegate <NSObject, TencentLoginDelegate, TencentApiInterfaceDelegate, TencentWebViewDelegate>
 
 @optional
 
@@ -487,17 +486,18 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/getUserInfoResponse.exp success
  *          错误返回示例: \snippet example/getUserInfoResponse.exp fail
  */
-- (void)getUserInfoResponse:(APIResponse*) response;
+- (void)getUserInfoResponse:(APIResponse *)response;
 
 
 #ifndef QQ_OPEN_SDK_LITE
+
 /**
  * 获取用户QZone相册列表回调
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
  * \remarks 正确返回示例: \snippet example/getListAlbumResponse.exp success
  *          错误返回示例: \snippet example/getListAlbumResponse.exp fail
  */
-- (void)getListAlbumResponse:(APIResponse*) response;
+- (void)getListAlbumResponse:(APIResponse *)response;
 
 /**
  * 获取用户QZone相片列表
@@ -505,7 +505,7 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/getListPhotoResponse.exp success
  *          错误返回示例: \snippet example/getListPhotoResponse.exp fail
  */
-- (void)getListPhotoResponse:(APIResponse*) response;
+- (void)getListPhotoResponse:(APIResponse *)response;
 
 /**
  * 检查是否是QZone某个用户的粉丝回调
@@ -513,15 +513,15 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/checkPageFansResponse.exp success
  *          错误返回示例: \snippet example/checkPageFansResponse.exp fail
  */
-- (void)checkPageFansResponse:(APIResponse*) response;
- 
+- (void)checkPageFansResponse:(APIResponse *)response;
+
 /**
  * 分享到QZone回调
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
  * \remarks 正确返回示例: \snippet example/addShareResponse.exp success
  *          错误返回示例: \snippet example/addShareResponse.exp fail
  */
-- (void)addShareResponse:(APIResponse*) response;
+- (void)addShareResponse:(APIResponse *)response;
 
 /**
  * 在QZone相册中创建一个新的相册回调
@@ -529,7 +529,7 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/addAlbumResponse.exp success
  *          错误返回示例: \snippet example/addAlbumResponse.exp fail
  */
-- (void)addAlbumResponse:(APIResponse*) response;
+- (void)addAlbumResponse:(APIResponse *)response;
 
 /**
  * 上传照片到QZone指定相册回调
@@ -537,7 +537,7 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/uploadPicResponse.exp success
  *          错误返回示例: \snippet example/uploadPicResponse.exp fail
  */
-- (void)uploadPicResponse:(APIResponse*) response;
+- (void)uploadPicResponse:(APIResponse *)response;
 
 
 /**
@@ -546,7 +546,7 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/addOneBlogResponse.exp success
  *          错误返回示例: \snippet example/addOneBlogResponse.exp fail
  */
-- (void)addOneBlogResponse:(APIResponse*) response;
+- (void)addOneBlogResponse:(APIResponse *)response;
 
 /**
  * 在QZone中发表一条说说回调
@@ -554,7 +554,7 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/addTopicResponse.exp success
  *          错误返回示例: \snippet example/addTopicResponse.exp fail
  */
-- (void)addTopicResponse:(APIResponse*) response;
+- (void)addTopicResponse:(APIResponse *)response;
 
 /**
  * 设置QQ头像回调
@@ -562,7 +562,7 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/setUserHeadpicResponse.exp success
  *          错误返回示例: \snippet example/setUserHeadpicResponse.exp fail
  */
-- (void)setUserHeadpicResponse:(APIResponse*) response;
+- (void)setUserHeadpicResponse:(APIResponse *)response;
 
 /**
  * 获取QQ会员信息回调
@@ -570,13 +570,13 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/getVipInfoResponse.exp success
  *          错误返回示例: \snippet example/getVipInfoResponse.exp fail
  */
-- (void)getVipInfoResponse:(APIResponse*) response;
+- (void)getVipInfoResponse:(APIResponse *)response;
 
 /**
  * 获取QQ会员详细信息回调
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
  */
-- (void)getVipRichInfoResponse:(APIResponse*) response;
+- (void)getVipRichInfoResponse:(APIResponse *)response;
 
 /**
  * 获取微博好友名称输入提示回调
@@ -584,7 +584,7 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/matchNickTipsResponse.exp success
  *          错误返回示例: \snippet example/matchNickTipsResponse.exp fail
  */
-- (void)matchNickTipsResponse:(APIResponse*) response;
+- (void)matchNickTipsResponse:(APIResponse *)response;
 
 /**
  * 获取最近的微博好友回调
@@ -592,13 +592,13 @@ typedef enum
  * \remarks 正确返回示例: \snippet example/getIntimateFriendsResponse.exp success
  *          错误返回示例: \snippet example/getIntimateFriendsResponse.exp fail
  */
-- (void)getIntimateFriendsResponse:(APIResponse*) response;
+- (void)getIntimateFriendsResponse:(APIResponse *)response;
 
 /**
  * sendStory分享的回调（已废弃，使用responseDidReceived:forMessage:）
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
  */
-- (void)sendStoryResponse:(APIResponse*) response;
+- (void)sendStoryResponse:(APIResponse *)response;
 
 #endif
 
@@ -607,7 +607,7 @@ typedef enum
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
  * \param message 响应的消息，目前支持‘SendStory’,‘AppInvitation’，‘AppChallenge’，‘AppGiftRequest’
  */
-- (void)responseDidReceived:(APIResponse*)response forMessage:(NSString *)message;
+- (void)responseDidReceived:(APIResponse *)response forMessage:(NSString *)message;
 
 /**
  * post请求的上传进度
@@ -638,7 +638,9 @@ typedef enum
  */
 @protocol TencentWebViewDelegate <NSObject>
 @optional
-- (BOOL) tencentWebViewShouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
-- (NSUInteger) tencentWebViewSupportedInterfaceOrientationsWithWebkit;
-- (BOOL) tencentWebViewShouldAutorotateWithWebkit;
+- (BOOL)tencentWebViewShouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
+
+- (NSUInteger)tencentWebViewSupportedInterfaceOrientationsWithWebkit;
+
+- (BOOL)tencentWebViewShouldAutorotateWithWebkit;
 @end

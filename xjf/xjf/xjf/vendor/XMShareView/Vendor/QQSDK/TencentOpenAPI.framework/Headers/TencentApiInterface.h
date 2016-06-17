@@ -9,23 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "TencentMessageObject.h"
 
-typedef enum
-{
+typedef enum {
     kIphoneQQ,
     kIphoneQZONE,
     kThirdApp,
 }
-TecnentPlatformType;
+        TecnentPlatformType;
 
-typedef enum
-{
+typedef enum {
     kTencentApiSuccess,
     kTencentApiPlatformUninstall,
     kTencentApiPlatformNotSupport,
     kTencentApiParamsError,
     kTencentApiFail,
 }
-TencentApiRetCode;
+        TencentApiRetCode;
 
 @class TencentApiReq;
 @class TencentApiResp;
@@ -72,7 +70,7 @@ TencentApiRetCode;
  * \param delegate 指定的回调
  * \return 是否是腾讯API认识的消息类型
  */
-+ (BOOL)canOpenURL:(NSURL *)url delegate:(id<TencentApiInterfaceDelegate>)delegate;
++ (BOOL)canOpenURL:(NSURL *)url delegate:(id <TencentApiInterfaceDelegate>)delegate;
 
 /**
  * 处理应用拉起协议
@@ -80,7 +78,7 @@ TencentApiRetCode;
  * \param delegate 指定的回调
  * \return 是否是腾讯API认识的消息类型
  */
-+ (BOOL)handleOpenURL:(NSURL *)url delegate:(id<TencentApiInterfaceDelegate>)delegate;
++ (BOOL)handleOpenURL:(NSURL *)url delegate:(id <TencentApiInterfaceDelegate>)delegate;
 
 /**
  * 用户设备是否安装腾讯APP

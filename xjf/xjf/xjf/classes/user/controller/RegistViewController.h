@@ -7,11 +7,13 @@
 //
 #import "BaseViewController.h"
 #import "UserDelegate.h"
+
 @interface RegistViewController : BaseViewController
 
-@property (nonatomic, weak)id <UserDelegate>delegate;
+@property (nonatomic, weak) id <UserDelegate> delegate;
 @property (nonatomic, copy) NSString *title_item;
-+ (instancetype)newWithDelegate:(id<UserDelegate>)delegate;
+
++ (instancetype)newWithDelegate:(id <UserDelegate>)delegate;
 @end
 
 

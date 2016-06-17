@@ -48,6 +48,7 @@
 @end
 
 #pragma mark - 照片相关
+
 /**
  * \brief 申请上传照片
  *
@@ -137,6 +138,7 @@
 @end
 
 #pragma mark - 视频相关
+
 /**
  * \brief 申请上传视频
  *
@@ -185,6 +187,7 @@
 @end
 
 #pragma mark - 音频相关
+
 /**
  * \brief 申请上传音频
  *
@@ -234,6 +237,7 @@
 
 
 #pragma mark - 结构化数据
+
 /**
  * \brief 查询key所对应的键值对是否存在
  */
@@ -267,10 +271,10 @@
 @interface WeiYun_create_record_POST : WeiYun_BaseRequest
 
 /** KV键值对的key，十六进制编码，字符串（对应的二进制串不超过100字节）*/
-@property (nonatomic, retain)TCRequiredStr param_key;
+@property (nonatomic, retain) TCRequiredStr param_key;
 
 /** KV键值对的value，十六进制编码，字符串（对应的二进制串不超过1M字节）*/
-@property (nonatomic, retain)NSData *param_value;
+@property (nonatomic, retain) NSData *param_value;
 
 @end
 

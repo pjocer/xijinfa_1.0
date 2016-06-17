@@ -12,8 +12,7 @@
 /**
  * \brief 手机qq的当前版本
  */
-typedef enum QQVersion
-{
+typedef enum QQVersion {
     kQQUninstall,
     kQQVersion3_0,
     kQQVersion4_0,      //支持sso登陆
@@ -26,13 +25,12 @@ typedef enum QQVersion
 /**
  * \brief APIResponse.retCode可能的枚举常量
  */
-typedef enum
-{
-	URLREQUEST_SUCCEED = 0, /**< 网络请求成功发送至服务器，并且服务器返回数据格式正确
+typedef enum {
+    URLREQUEST_SUCCEED = 0, /**< 网络请求成功发送至服务器，并且服务器返回数据格式正确
                              * \note 这里包括所请求业务操作失败的情况，例如没有授权等原因导致
                              */
-    
-	URLREQUEST_FAILED = 1,  /**< 网络异常，或服务器返回的数据格式不正确导致无法解析 */
+
+            URLREQUEST_FAILED = 1,  /**< 网络异常，或服务器返回的数据格式不正确导致无法解析 */
 } REPONSE_RESULT;
 
 /**
@@ -40,8 +38,7 @@ typedef enum
  *
  * \note 增量授权失败不影响原token的有效性（原token已失效的情况除外）
  */
-typedef enum
-{
+typedef enum {
     kUpdateFailUnknown = 1,  ///< 未知原因
     kUpdateFailUserCancel,   ///< 用户取消
     kUpdateFailNetwork,      ///< 网络问题
@@ -52,14 +49,14 @@ typedef enum
  *
  * APIResponse用于封装所有请求的返回结果，包括错误码、错误信息、原始返回数据以及返回数据的json格式字典
  */
-@interface APIResponse : NSObject<NSCoding> {
-    int      _detailRetCode;
-	int		 _retCode;
-	int		 _seq;
-	NSString *_errorMsg;
-	NSDictionary *_jsonResponse;
-	NSString *_message;
-    id       _userData;
+@interface APIResponse : NSObject <NSCoding> {
+    int _detailRetCode;
+    int _retCode;
+    int _seq;
+    NSString *_errorMsg;
+    NSDictionary *_jsonResponse;
+    NSString *_message;
+    id _userData;
 }
 
 /**
@@ -106,7 +103,7 @@ typedef enum
 /**
  * 用户自定义的保留字段
  */
-FOUNDATION_EXTERN NSString * const PARAM_USER_DATA;
+FOUNDATION_EXTERN NSString *const PARAM_USER_DATA;
 
 /**
  * \name 应用邀请参数字段定义
@@ -114,13 +111,13 @@ FOUNDATION_EXTERN NSString * const PARAM_USER_DATA;
 ///@{
 
 /** 应用邀请展示图片url的key */
-FOUNDATION_EXTERN NSString * const PARAM_APP_ICON;
+FOUNDATION_EXTERN NSString *const PARAM_APP_ICON;
 
 /** 应用邀请描述文本的key */
-FOUNDATION_EXTERN NSString * const PARAM_APP_DESC;
+FOUNDATION_EXTERN NSString *const PARAM_APP_DESC;
 
 /** 应用邀请好友列表的key */
-FOUNDATION_EXTERN NSString * const PARAM_APP_INVITED_OPENIDS;
+FOUNDATION_EXTERN NSString *const PARAM_APP_INVITED_OPENIDS;
 
 ///@}
 
@@ -130,25 +127,25 @@ FOUNDATION_EXTERN NSString * const PARAM_APP_INVITED_OPENIDS;
 ///@{
 
 /** 预填入接受人列表的key */
-FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_RECEIVER;
+FOUNDATION_EXTERN NSString *const PARAM_SENDSTORY_RECEIVER;
 
 /** 分享feeds标题的key */
-FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_TITLE;
+FOUNDATION_EXTERN NSString *const PARAM_SENDSTORY_TITLE;
 
 /** 分享feeds评论内容的key */
-FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_COMMENT;
+FOUNDATION_EXTERN NSString *const PARAM_SENDSTORY_COMMENT;
 
 /** 分享feeds摘要的key */
-FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_SUMMARY;
+FOUNDATION_EXTERN NSString *const PARAM_SENDSTORY_SUMMARY;
 
 /** 分享feeds展示图片url的key */
-FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_IMAGE;
+FOUNDATION_EXTERN NSString *const PARAM_SENDSTORY_IMAGE;
 
 /** 分享feeds跳转链接url的key */
-FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_URL;
+FOUNDATION_EXTERN NSString *const PARAM_SENDSTORY_URL;
 
 /** 分享feeds点击操作默认行为的key */
-FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_ACT;
+FOUNDATION_EXTERN NSString *const PARAM_SENDSTORY_ACT;
 
 ///@}
 
@@ -158,10 +155,10 @@ FOUNDATION_EXTERN NSString * const PARAM_SENDSTORY_ACT;
 ///@{
 
 /** 头像图片数据的key */
-FOUNDATION_EXTERN NSString * const PARAM_SETUSERHEAD_PIC;
+FOUNDATION_EXTERN NSString *const PARAM_SETUSERHEAD_PIC;
 
 /** 头像图片文件名的key */
-FOUNDATION_EXTERN NSString * const PARAM_SETUSERHEAD_FILENAME;
+FOUNDATION_EXTERN NSString *const PARAM_SETUSERHEAD_FILENAME;
 
 ///@}
 
@@ -171,13 +168,13 @@ FOUNDATION_EXTERN NSString * const PARAM_SETUSERHEAD_FILENAME;
 ///@{
 
 /** 服务器返回码的key */
-FOUNDATION_EXTERN NSString * const PARAM_RETCODE;
+FOUNDATION_EXTERN NSString *const PARAM_RETCODE;
 
 /** 服务器返回错误信息的key */
-FOUNDATION_EXTERN NSString * const PARAM_MESSAGE;
+FOUNDATION_EXTERN NSString *const PARAM_MESSAGE;
 
 /** 服务器返回额外数据的key */
-FOUNDATION_EXTERN NSString * const PARAM_DATA;
+FOUNDATION_EXTERN NSString *const PARAM_DATA;
 
 ///@}
 
@@ -187,90 +184,89 @@ FOUNDATION_EXTERN NSString * const PARAM_DATA;
 ///@{
 
 /** 详细错误信息字典中额外信息的key */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorKeyExtraInfo;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorKeyExtraInfo;
 
 /** 详细错误信息字典中返回码的key */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorKeyRetCode;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorKeyRetCode;
 
 /** 详细错误信息字典中错误语句的key */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorKeyMsg;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorKeyMsg;
 
 /** 不支持的接口 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgUnsupportedAPI;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgUnsupportedAPI;
 
 /** 操作成功 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgSuccess;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgSuccess;
 
 /** 未知错误 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgUnknown;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgUnknown;
 
 /** 用户取消 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgUserCancel;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgUserCancel;
 
 /** 请重新登录 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgReLogin;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgReLogin;
 
 /** 应用没有操作权限 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgOperationDeny;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgOperationDeny;
 
 /** 网络异常或没有网络 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgNetwork;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgNetwork;
 
 /** URL格式或协议错误 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgURL;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgURL;
 
 /** 解析数据出错 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgDataParse;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgDataParse;
 
 /** 传入参数有误 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgParam;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgParam;
 
 /** 连接超时 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgTimeout;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgTimeout;
 
 /** 安全问题 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgSecurity;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgSecurity;
 
 /** 文件读写错误 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgIO;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgIO;
 
 /** 服务器端错误 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgServer;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgServer;
 
 /** 页面错误 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgWebPage;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgWebPage;
 
 /** 设置头像图片过大 */
-FOUNDATION_EXTERN NSString * const TCOpenSDKErrorMsgUserHeadPicLarge;
+FOUNDATION_EXTERN NSString *const TCOpenSDKErrorMsgUserHeadPicLarge;
 
 ///@}
 
 /**
  * \brief SDK新增详细错误常量
  */
-typedef enum
-{
+typedef enum {
     kOpenSDKInvalid = -1,                       ///< 无效的错误码
     kOpenSDKErrorUnsupportedAPI = -2,                ///< 不支持的接口
-    
+
     /**
      * \name CommonErrorCode
      * 公共错误码
      */
     ///@{
-    kOpenSDKErrorSuccess = 0,                   ///< 成功
+            kOpenSDKErrorSuccess = 0,                   ///< 成功
     kOpenSDKErrorUnknown,                       ///< 未知错误
     kOpenSDKErrorUserCancel,                    ///< 用户取消
     kOpenSDKErrorReLogin,                       ///< token无效或用户未授权相应权限需要重新登录
     kOpenSDKErrorOperationDeny,                 ///< 第三方应用没有该api操作的权限
     ///@}
-    
+
     /**
      * \name NetworkRelatedErrorCode
      * 网络相关错误码
      */
     ///@{
-    kOpenSDKErrorNetwork,                       ///< 网络错误，网络不通或连接不到服务器
+            kOpenSDKErrorNetwork,                       ///< 网络错误，网络不通或连接不到服务器
     kOpenSDKErrorURL,                           ///< URL格式或协议错误
     kOpenSDKErrorDataParse,                     ///< 数据解析错误，服务器返回的数据解析出错
     kOpenSDKErrorParam,                         ///< 传入参数错误
@@ -279,21 +275,21 @@ typedef enum
     kOpenSDKErrorIO,                            ///< 下载和文件IO错误
     kOpenSDKErrorServer,                        ///< 服务器端错误
     ///@}
-    
+
     /**
      * \name WebViewRelatedError
      * webview特有错误
      */
     ///@{
-    kOpenSDKErrorWebPage,                       ///< 页面错误
+            kOpenSDKErrorWebPage,                       ///< 页面错误
     ///@}
-    
+
     /**
      * \name SetUserHeadRelatedErrorCode
      * 设置头像自定义错误码段
      */
     ///@{
-    kOpenSDKErrorUserHeadPicLarge = 0x010000,   ///< 图片过大 设置头像自定义错误码
+            kOpenSDKErrorUserHeadPicLarge = 0x010000,   ///< 图片过大 设置头像自定义错误码
     ///@}
 } OpenSDKError;
 

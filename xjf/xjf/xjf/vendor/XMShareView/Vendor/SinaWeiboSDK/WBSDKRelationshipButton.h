@@ -8,13 +8,11 @@
 
 #import "WBSDKBasicButton.h"
 
-enum
-{
+enum {
     WBSDKRelationshipButtonStateFollow,
     WBSDKRelationshipButtonStateUnfollow
 };
 typedef NSUInteger WBSDKRelationshipButtonState;
-
 
 
 @interface WBSDKRelationshipButton : WBSDKBasicButton
@@ -28,17 +26,17 @@ typedef NSUInteger WBSDKRelationshipButtonState;
  @param handler   回调函数，当用户点击按钮，进行完关注组件相关的交互之后，回调的函数。
  */
 - (id)initWithFrame:(CGRect)frame
-        accessToken:(NSString*)accessToken
-        currentUser:(NSString*)currentUserID
-         followUser:(NSString*)followerUserID
+        accessToken:(NSString *)accessToken
+        currentUser:(NSString *)currentUserID
+         followUser:(NSString *)followerUserID
   completionHandler:(WBSDKButtonHandler)handler;
 
-@property (nonatomic, strong)NSString* accessToken;
-@property (nonatomic, strong)NSString* currentUserID;
-@property (nonatomic, strong)NSString* followUserID;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSString *currentUserID;
+@property (nonatomic, strong) NSString *followUserID;
 
 
-@property (nonatomic, assign)WBSDKRelationshipButtonState currentRelationShip;
+@property (nonatomic, assign) WBSDKRelationshipButtonState currentRelationShip;
 
 
 /**

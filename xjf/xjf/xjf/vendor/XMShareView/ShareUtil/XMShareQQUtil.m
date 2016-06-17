@@ -12,7 +12,7 @@
 @interface XMShareQQUtil () <TencentSessionDelegate> {
 
 }
-@property(nonatomic, strong) TencentOAuth *tencentOAuth;
+@property (nonatomic, strong) TencentOAuth *tencentOAuth;
 @end
 
 @implementation XMShareQQUtil

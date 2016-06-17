@@ -11,6 +11,7 @@
 
 
 #pragma mark - WXApiDelegate
+
 /*! @brief 接收并处理来自微信终端程序的事件消息
  *
  * 接收并处理来自微信终端程序的事件消息，期间微信界面会切换到第三方应用程序。
@@ -25,8 +26,7 @@
  * 可能收到的请求有GetMessageFromWXReq、ShowMessageFromWXReq等。
  * @param req 具体请求内容，是自动释放的
  */
--(void) onReq:(BaseReq*)req;
-
+- (void)onReq:(BaseReq *)req;
 
 
 /*! @brief 发送一个sendReq后，收到微信的回应
@@ -35,10 +35,9 @@
  * 可能收到的处理结果有SendMessageToWXResp、SendAuthResp等。
  * @param resp具体的回应内容，是自动释放的
  */
--(void) onResp:(BaseResp*)resp;
+- (void)onResp:(BaseResp *)resp;
 
 @end
-
 
 
 #pragma mark - WXApi
@@ -57,8 +56,7 @@
  * @param appid 微信开发者ID
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) registerApp:(NSString *)appid;
-
++ (BOOL)registerApp:(NSString *)appid;
 
 
 /*! @brief WXApi的成员函数，向微信终端程序注册第三方应用。
@@ -69,8 +67,7 @@
  * @param appdesc 应用附加信息，长度不超过1024字节
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) registerApp:(NSString *)appid withDescription:(NSString *)appdesc;
-
++ (BOOL)registerApp:(NSString *)appid withDescription:(NSString *)appdesc;
 
 
 /*! @brief 处理微信通过URL启动App时传递的数据
@@ -80,48 +77,42 @@
  * @param delegate  WXApiDelegate对象，用来接收微信触发的消息。
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) handleOpenURL:(NSURL *) url delegate:(id<WXApiDelegate>) delegate;
-
++ (BOOL)handleOpenURL:(NSURL *)url delegate:(id <WXApiDelegate>)delegate;
 
 
 /*! @brief 检查微信是否已被用户安装
  *
  * @return 微信已安装返回YES，未安装返回NO。
  */
-+(BOOL) isWXAppInstalled;
-
++ (BOOL)isWXAppInstalled;
 
 
 /*! @brief 判断当前微信的版本是否支持OpenApi
  *
  * @return 支持返回YES，不支持返回NO。
  */
-+(BOOL) isWXAppSupportApi;
-
++ (BOOL)isWXAppSupportApi;
 
 
 /*! @brief 获取微信的itunes安装地址
  *
  * @return 微信的安装地址字符串。
  */
-+(NSString *) getWXAppInstallUrl;
-
++ (NSString *)getWXAppInstallUrl;
 
 
 /*! @brief 获取当前微信SDK的版本号
  *
  * @return 返回当前微信SDK的版本号
  */
-+(NSString *) getApiVersion;
-
++ (NSString *)getApiVersion;
 
 
 /*! @brief 打开微信
  *
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) openWXApp;
-
++ (BOOL)openWXApp;
 
 
 /*! @brief 发送请求到微信，等待微信返回onResp
@@ -131,7 +122,7 @@
  * @param req 具体的发送请求，在调用函数后，请自己释放。
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) sendReq:(BaseReq*)req;
++ (BOOL)sendReq:(BaseReq *)req;
 
 /*! @brief 发送Auth请求到微信，支持用户没安装微信，等待微信返回onResp
  *
@@ -141,7 +132,7 @@
  * @param delegate  WXApiDelegate对象，用来接收微信触发的消息。
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) sendAuthReq:(SendAuthReq*) req viewController : (UIViewController*) viewController delegate:(id<WXApiDelegate>) delegate;
++ (BOOL)sendAuthReq:(SendAuthReq *)req viewController:(UIViewController *)viewController delegate:(id <WXApiDelegate>)delegate;
 
 
 /*! @brief 收到微信onReq的请求，发送对应的应答给微信，并切换到微信界面
@@ -151,7 +142,7 @@
  * @param resp 具体的应答内容，调用函数后，请自己释放
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) sendResp:(BaseResp*)resp;
++ (BOOL)sendResp:(BaseResp *)resp;
 
 
 @end

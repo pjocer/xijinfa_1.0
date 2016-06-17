@@ -8,40 +8,39 @@
 
 #import "UserThirdLogin.h"
 
-@interface UserThirdLogin ()<UITextFieldDelegate>
-{
-    
+@interface UserThirdLogin () <UITextFieldDelegate> {
+
 }
-@property (weak) id<UserDelegate> delegate;
-@property(nonatomic,strong) NSDictionary     *userinfo;
-@property(nonatomic,strong) UITextField     *txtUser;
-@property(nonatomic,strong)void(^actionBlock)(id,id);
+@property (weak) id <UserDelegate> delegate;
+@property (nonatomic, strong) NSDictionary *userinfo;
+@property (nonatomic, strong) UITextField *txtUser;
+@property (nonatomic, strong) void(^actionBlock)(id, id);
+
 + (instancetype)newController;
 @end
 
 @implementation UserThirdLogin
-+ (instancetype)newController
-{
++ (instancetype)newController {
     return [super new];
 }
 
-+ (instancetype)newWithDelegate:(id<UserDelegate>)delegate userinfo:(NSDictionary*)userinfo
-{
++ (instancetype)newWithDelegate:(id <UserDelegate>)delegate userinfo:(NSDictionary *)userinfo {
     UserThirdLogin *viewController = [UserThirdLogin newController];
-    
+
     if (viewController) {
         viewController.delegate = delegate;
-        viewController.userinfo= userinfo;
+        viewController.userinfo = userinfo;
     }
-    
+
     return viewController;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.txtUser.frame =CGRectMake(PHOTO_FRAME_WIDTH*2, 100, SCREENWITH-PHOTO_FRAME_WIDTH*4, PHOTO_FRAME_WIDTH*4);
-    self.txtUser.text =[self.userinfo objectForKey:@"nick_name"];
+    self.txtUser.frame = CGRectMake(PHOTO_FRAME_WIDTH * 2, 100, SCREENWITH - PHOTO_FRAME_WIDTH * 4, PHOTO_FRAME_WIDTH * 4);
+    self.txtUser.text = [self.userinfo objectForKey:@"nick_name"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,23 +48,21 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc
-{
-    self.actionBlock=nil;
+- (void)dealloc {
+    self.actionBlock = nil;
     [self.txtUser resignFirstResponder];
-    self.txtUser=nil;
+    self.txtUser = nil;
     DLog(@"%s", __PRETTY_FUNCTION__);
 }
--(void)setSelectedCallBack:(void(^)(id,id))callback
-{
-    self.actionBlock=callback;
+
+- (void)setSelectedCallBack:(void (^)(id, id))callback {
+    self.actionBlock = callback;
 }
--(void)clickNavEvent:(id)sender
-{
-    UIButton *btn =(UIButton*)sender;
+
+- (void)clickNavEvent:(id)sender {
+    UIButton *btn = (UIButton *) sender;
     switch (btn.tag) {
-        case 0:
-        {
+        case 0: {
             [self.txtUser resignFirstResponder];
             if (self.navigationController) {
                 if (self.navigationController.viewControllers.count == 1) {
@@ -78,8 +75,7 @@
             }
         }
             break;
-        case 1:
-        {
+        case 1: {
             [self okAction];
         }
             break;
@@ -87,8 +83,8 @@
             break;
     }
 }
--(UITextField *)txtUser
-{
+
+- (UITextField *)txtUser {
     if (!_txtUser) {
         self.txtUser = [[UITextField alloc] initWithFrame:CGRectZero];
         self.txtUser.placeholder = @" 用户昵称";
@@ -99,25 +95,26 @@
         self.txtUser.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.txtUser.returnKeyType = UIReturnKeyNext;
         self.txtUser.clearButtonMode = UITextFieldViewModeWhileEditing;
-        self.txtUser.delegate=self;
+        self.txtUser.delegate = self;
         [self.txtUser becomeFirstResponder];
         [self.view addSubview:self.txtUser];
     }
     return _txtUser;
 }
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+
     [textField resignFirstResponder];
     return YES;
 }
--(void)okAction
-{
-    if (self.txtUser.text.length==0) {
+
+- (void)okAction {
+    if (self.txtUser.text.length == 0) {
         return;
     }
     [self.txtUser resignFirstResponder];
-   
-    
+
+
 }
 
 @end

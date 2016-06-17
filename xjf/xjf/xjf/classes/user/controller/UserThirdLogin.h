@@ -8,13 +8,14 @@
 
 #import "BaseViewController.h"
 #import "UserDelegate.h"
+
 @interface UserThirdLogin : BaseViewController
 + (instancetype)new __attribute__
 ((unavailable("[+new] is not allowed, use [+newWithDelegate:userinfo:]")));
 
-- (instancetype) init __attribute__
+- (instancetype)init __attribute__
 ((unavailable("[-init] is not allowed, use [+newWithDelegate:userinfo:]")));
 
-+ (instancetype)newWithDelegate:(id<UserDelegate>)delegate userinfo:(NSDictionary*)userinfo;
++ (instancetype)newWithDelegate:(id <UserDelegate>)delegate userinfo:(NSDictionary *)userinfo;
 
 @end

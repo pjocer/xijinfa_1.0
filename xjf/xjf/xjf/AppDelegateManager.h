@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
+
 @interface AppDelegateManager : NSObject
 + (void)initControl;
 @end

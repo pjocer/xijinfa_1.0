@@ -93,19 +93,19 @@
             }
         }
 
-    }else if ([resp isKindOfClass:[PayResp class]]) {
+    } else if ([resp isKindOfClass:[PayResp class]]) {
         switch (resp.errCode) {
             case WXSuccess:
                 NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
-            {
-                if ([[ZPlatformShare sharedInstance] success]) [ZPlatformShare sharedInstance].success();
-            }
+                {
+                    if ([[ZPlatformShare sharedInstance] success]) [ZPlatformShare sharedInstance].success();
+                }
                 break;
             default:
-                NSLog(@"%@", [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr]);
-            {
-                if ([[ZPlatformShare sharedInstance] failed]) [ZPlatformShare sharedInstance].failed();
-            }
+                NSLog(@"%@", [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode, resp.errStr]);
+                {
+                    if ([[ZPlatformShare sharedInstance] failed]) [ZPlatformShare sharedInstance].failed();
+                }
                 break;
         }
     }
@@ -206,7 +206,7 @@
 
 }
 
--(void)logout {
+- (void)logout {
 }
 
 + (instancetype)sharedInstance {

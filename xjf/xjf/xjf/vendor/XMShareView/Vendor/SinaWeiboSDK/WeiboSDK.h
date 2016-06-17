@@ -18,17 +18,16 @@
 #import "WBSDKCommentButton.h"
 
 
-typedef NS_ENUM(NSInteger, WeiboSDKResponseStatusCode)
-{
-    WeiboSDKResponseStatusCodeSuccess               = 0,//成功
-    WeiboSDKResponseStatusCodeUserCancel            = -1,//用户取消发送
-    WeiboSDKResponseStatusCodeSentFail              = -2,//发送失败
-    WeiboSDKResponseStatusCodeAuthDeny              = -3,//授权失败
-    WeiboSDKResponseStatusCodeUserCancelInstall     = -4,//用户取消安装微博客户端
-    WeiboSDKResponseStatusCodePayFail               = -5,//支付失败
-    WeiboSDKResponseStatusCodeShareInSDKFailed      = -8,//分享失败 详情见response UserInfo
-    WeiboSDKResponseStatusCodeUnsupport             = -99,//不支持的请求
-    WeiboSDKResponseStatusCodeUnknown               = -100,
+typedef NS_ENUM(NSInteger, WeiboSDKResponseStatusCode) {
+    WeiboSDKResponseStatusCodeSuccess = 0, //成功
+            WeiboSDKResponseStatusCodeUserCancel = -1, //用户取消发送
+            WeiboSDKResponseStatusCodeSentFail = -2, //发送失败
+            WeiboSDKResponseStatusCodeAuthDeny = -3, //授权失败
+            WeiboSDKResponseStatusCodeUserCancelInstall = -4, //用户取消安装微博客户端
+            WeiboSDKResponseStatusCodePayFail = -5, //支付失败
+            WeiboSDKResponseStatusCodeShareInSDKFailed = -8, //分享失败 详情见response UserInfo
+            WeiboSDKResponseStatusCodeUnsupport = -99, //不支持的请求
+            WeiboSDKResponseStatusCodeUnknown = -100,
 };
 
 @protocol WeiboSDKDelegate;
@@ -40,6 +39,7 @@ typedef NS_ENUM(NSInteger, WeiboSDKResponseStatusCode)
 @class WBBaseMediaObject;
 @class WBHttpRequest;
 @class WBOrderObject;
+
 /**
  微博SDK接口类
  */
@@ -88,8 +88,9 @@ typedef NS_ENUM(NSInteger, WeiboSDKResponseStatusCode)
 + (NSString *)getSDKVersion;
 
 
-extern NSString * const WeiboSDKGetAidSucessNotification;
-extern NSString * const WeiboSDKGetAidFailNotification;
+extern NSString *const WeiboSDKGetAidSucessNotification;
+extern NSString *const WeiboSDKGetAidFailNotification;
+
 /**
  获取当前微博SDK的aid
  返回的aid值可能为 nil ,当值为 nil 时会尝试获取 aid 值。
@@ -114,7 +115,7 @@ extern NSString * const WeiboSDKGetAidFailNotification;
  @param delegate WeiboSDKDelegate对象，用于接收微博触发的消息
  @see WeiboSDKDelegate
  */
-+ (BOOL)handleOpenURL:(NSURL *)url delegate:(id<WeiboSDKDelegate>)delegate;
++ (BOOL)handleOpenURL:(NSURL *)url delegate:(id <WeiboSDKDelegate>)delegate;
 
 /**
  发送请求给微博客户端程序，并切换到微博
@@ -154,7 +155,7 @@ extern NSString * const WeiboSDKGetAidFailNotification;
  @param tag 用户自定义TAG,将通过回调WBHttpRequest实例的tag属性返回
  
  */
-+ (void)logOutWithToken:(NSString *)token delegate:(id<WBHttpRequestDelegate>)delegate withTag:(NSString*)tag;
++ (void)logOutWithToken:(NSString *)token delegate:(id <WBHttpRequestDelegate>)delegate withTag:(NSString *)tag;
 
 /**
  邀请好友使用应用
@@ -171,7 +172,7 @@ extern NSString * const WeiboSDKGetAidFailNotification;
  @param tag 用户自定义TAG,将通过回调WBHttpRequest实例的tag属性返回
  
  */
-+ (void)inviteFriend:(NSString* )data withUid:(NSString *)uid withToken:(NSString *)access_token delegate:(id<WBHttpRequestDelegate>)delegate withTag:(NSString*)tag;
++ (void)inviteFriend:(NSString *)data withUid:(NSString *)uid withToken:(NSString *)access_token delegate:(id <WBHttpRequestDelegate>)delegate withTag:(NSString *)tag;
 
 /*
  第三方调用微博短信注册或者登陆
@@ -432,7 +433,7 @@ extern NSString * const WeiboSDKGetAidFailNotification;
 /**
  可能在分享过程中用户进行了授权操作，当此值不为空时，为用户相应授权信息
  */
-@property (nonatomic,strong) WBAuthorizeResponse *authResponse;
+@property (nonatomic, strong) WBAuthorizeResponse *authResponse;
 @end
 
 #pragma mark - AppRecomend Request/Response
@@ -453,7 +454,7 @@ extern NSString * const WeiboSDKGetAidFailNotification;
 /**
  私信对象列表
  */
-@property (nonatomic, strong) NSArray* uids;
+@property (nonatomic, strong) NSArray *uids;
 /**
  用于认证的Token
  */
@@ -466,7 +467,7 @@ extern NSString * const WeiboSDKGetAidFailNotification;
  WBSDKAppRecommendResponse 结构中仅包含常用的 userID 、accessToken 和 expirationDate 信息，其他的认证信息（比如部分应用可以获取的 refresh_token 信息）会统一存放到 userInfo 中
  */
 @interface WBSDKAppRecommendResponse : WBBaseResponse
-@property (nonatomic,strong) WBAuthorizeResponse *authResponse;
+@property (nonatomic, strong) WBAuthorizeResponse *authResponse;
 /**
  用户ID
  */

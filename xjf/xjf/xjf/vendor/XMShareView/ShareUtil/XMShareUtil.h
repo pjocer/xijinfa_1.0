@@ -10,14 +10,15 @@
 #import <UIKit/UIKit.h>
 #import "CommonMarco.h"
 
-typedef void (^authSuccess)(NSDictionary * message);
-typedef void (^authFail)(NSDictionary * message,NSError *error);
+typedef void (^authSuccess)(NSDictionary *message);
+
+typedef void (^authFail)(NSDictionary *message, NSError *error);
 
 @interface XMShareUtil : NSObject
 
 
-@property(nonatomic,strong) void (^authSuccess)(NSDictionary * message);
-@property(nonatomic,strong) void (^authFail)(NSDictionary * message,NSError *error);
+@property (nonatomic, strong) void (^authSuccess)(NSDictionary *message);
+@property (nonatomic, strong) void (^authFail)(NSDictionary *message, NSError *error);
 /**
  *  分享标题
  */
@@ -35,9 +36,12 @@ typedef void (^authFail)(NSDictionary * message,NSError *error);
 //  分享图片
 @property (nonatomic, strong) NSString *shareImage;
 
--(void)openURL:(NSString*)url;
+- (void)openURL:(NSString *)url;
+
 //+(BOOL)isInstalled;
--(void)Auth:(NSString*)scope Success:(authSuccess)success Fail:(authFail)fail;
--(BOOL)handleOpenURL:(NSURL *)url;
--(void)logout;
+- (void)Auth:(NSString *)scope Success:(authSuccess)success Fail:(authFail)fail;
+
+- (BOOL)handleOpenURL:(NSURL *)url;
+
+- (void)logout;
 @end

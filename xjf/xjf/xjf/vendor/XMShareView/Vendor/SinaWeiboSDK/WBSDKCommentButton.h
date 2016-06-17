@@ -20,15 +20,15 @@
  @param handler   回调函数，当用户点击按钮，进行完与社会化评论组件相关的交互之后，回调的函数。
  */
 - (id)initWithFrame:(CGRect)frame
-        accessToken:(NSString*)accessToken
-            keyword:(NSString*)keyWord
-          urlString:(NSString*)urlString
-           category:(NSString*)category
+        accessToken:(NSString *)accessToken
+            keyword:(NSString *)keyWord
+          urlString:(NSString *)urlString
+           category:(NSString *)category
   completionHandler:(WBSDKButtonHandler)handler;
 
-@property (nonatomic, strong)NSString* keyWord;
-@property (nonatomic, strong)NSString* accessToken;
-@property (nonatomic, strong)NSString* urlString;
-@property (nonatomic, strong)NSString* category;
+@property (nonatomic, strong) NSString *keyWord;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSString *urlString;
+@property (nonatomic, strong) NSString *category;
 
 @end

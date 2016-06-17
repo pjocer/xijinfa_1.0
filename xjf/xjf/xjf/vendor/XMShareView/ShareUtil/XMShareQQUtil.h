@@ -13,14 +13,14 @@
 #import "XMShareUtil.h"
 
 //  分享到QQ的类型
-typedef NS_ENUM(NSInteger, SHARE_QQ_TYPE){
-    
+typedef NS_ENUM(NSInteger, SHARE_QQ_TYPE) {
+
     //  QQ会话
-    SHARE_QQ_TYPE_SESSION,
-    
+            SHARE_QQ_TYPE_SESSION,
+
     //  QQ空间
-    SHARE_QQ_TYPE_QZONE
-    
+            SHARE_QQ_TYPE_QZONE
+
 };
 
 @interface XMShareQQUtil : XMShareUtil
@@ -36,5 +36,6 @@ typedef NS_ENUM(NSInteger, SHARE_QQ_TYPE){
 - (void)shareToQzone;
 
 + (instancetype)sharedInstance;
+
 + (BOOL)isInstalled;
 @end

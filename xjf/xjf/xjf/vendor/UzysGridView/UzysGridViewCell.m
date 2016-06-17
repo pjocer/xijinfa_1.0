@@ -13,11 +13,12 @@
 - (void)BtnActionDelete;                                //Cell Delete Action Handler
 - (void)moveByOffset:(CGPoint)offset;                   //Cell Moving by offset
 //- (void)SetPosition:(CGPoint) point;                    //Cell moving absolute position
-- (void)movePagesTimer:(NSTimer*)timer;                 //Page Move Timer
+- (void)movePagesTimer:(NSTimer *)timer;                 //Page Move Timer
 @end
+
 @implementation UzysGridViewCell
 
-@synthesize index=_index;
+@synthesize index = _index;
 //@synthesize gridView;
 @synthesize ButtonDelete;
 @synthesize page;
@@ -25,11 +26,10 @@
 @synthesize cellInitFrame;
 @synthesize delegate;
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-         // Initialization code       
+        // Initialization code
         deletable = NO;
         [self setEdit:NO];
         ButtonDelete = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -37,45 +37,42 @@
         [ButtonDelete setImage:[UIImage imageNamed:@"icon_del.png"] forState:UIControlStateNormal];
         [ButtonDelete setImage:[UIImage imageNamed:@"icon_del_h.png"] forState:UIControlStateHighlighted];
         [ButtonDelete setHidden:YES];
-        [self addSubview:ButtonDelete];        
-        self.exclusiveTouch =YES;
-        
+        [self addSubview:ButtonDelete];
+        self.exclusiveTouch = YES;
+
         UILongPressGestureRecognizer *_gestureLong = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-        _gestureLong.minimumPressDuration =1.0;
+        _gestureLong.minimumPressDuration = 1.0;
         [self addGestureRecognizer:_gestureLong];
-       
+
     }
     return self;
 }
 
 - (void)dealloc {
-   // NSLog(@"dealloc gridviewcell");
+    // NSLog(@"dealloc gridviewcell");
 
 }
 
--(void) handleLongPress:(UILongPressGestureRecognizer *)recognizer  {
-    
-    if(self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:handleLongPress:)])
-    {
-        [self.delegate gridViewCell:self handleLongPress:self.index];        
+- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:handleLongPress:)]) {
+        [self.delegate gridViewCell:self handleLongPress:self.index];
     }
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     CGSize imgsize = [UIImage imageNamed:@"icon_del.png"].size;
     CGRect CellBound = self.bounds;
-    [ButtonDelete setFrame:CGRectMake(CellBound.size.width - imgsize.width , 0, imgsize.width, imgsize.height)];
+    [ButtonDelete setFrame:CGRectMake(CellBound.size.width - imgsize.width, 0, imgsize.width, imgsize.height)];
 }
 
-- (void)setCellIndex:(NSNumber *)theIndex
-{
+- (void)setCellIndex:(NSNumber *)theIndex {
     _index = [theIndex intValue];
 }
-- (void)setCellPage:(NSNumber *)thePage
-{
+
+- (void)setCellPage:(NSNumber *)thePage {
     page = [thePage intValue];
 }
 
@@ -84,28 +81,25 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 
-    if(self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesMoved:withEvent:)])
-    {
-        [self.delegate gridViewCell:self touchesBegan:touches withEvent:event];        
+    if (self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesMoved:withEvent:)]) {
+        [self.delegate gridViewCell:self touchesBegan:touches withEvent:event];
     }
-	[super touchesBegan:touches withEvent:event];
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 
-    if(self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesMoved:withEvent:)])
-    {
-        [self.delegate gridViewCell:self touchesMoved:touches withEvent:event];        
+    if (self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesMoved:withEvent:)]) {
+        [self.delegate gridViewCell:self touchesMoved:touches withEvent:event];
     }
     [super touchesMoved:touches withEvent:event];
-	
+
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
-    if(self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesEnded:withEvent:)])
-    {
-        [self.delegate gridViewCell:self touchesEnded:touches withEvent:event];        
+    if (self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesEnded:withEvent:)]) {
+        [self.delegate gridViewCell:self touchesEnded:touches withEvent:event];
     }
     [super touchesEnded:touches withEvent:event];
 
@@ -113,20 +107,17 @@
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesCancelled:touches withEvent:event];
-    
-    if(self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesCancelled:withEvent:)])
-    {
-        [self.delegate gridViewCell:self touchesCancelled:touches withEvent:event];        
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:touchesCancelled:withEvent:)]) {
+        [self.delegate gridViewCell:self touchesCancelled:touches withEvent:event];
     }
 }
 
 
-- (void) BtnActionDelete;
-{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:didDelete:)])
-    {
-        [self.delegate gridViewCell:self didDelete:self.index];        
-    }   
+- (void)BtnActionDelete; {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(gridViewCell:didDelete:)]) {
+        [self.delegate gridViewCell:self didDelete:self.index];
+    }
 }
 
 /*
@@ -138,30 +129,24 @@
 }
 */
 
-- (void)moveByOffset:(CGPoint)offset 
-{
-	CGRect frame = [self frame];
-	frame.origin.x += offset.x;
-	frame.origin.y += offset.y;
-	[self setFrame:frame];
+- (void)moveByOffset:(CGPoint)offset {
+    CGRect frame = [self frame];
+    frame.origin.x += offset.x;
+    frame.origin.y += offset.y;
+    [self setFrame:frame];
 }
 
-- (void)setEdit:(BOOL)edit
-{
-    if(edit == YES)
-    {
-        if(self.deletable == YES)
-        {
+- (void)setEdit:(BOOL)edit {
+    if (edit == YES) {
+        if (self.deletable == YES) {
             [self.ButtonDelete setHidden:NO];
         }
     }
-    else
-    {
-        if(self.deletable ==YES)
-        {
+    else {
+        if (self.deletable == YES) {
             [self.ButtonDelete setHidden:YES];
         }
-        
+
     }
 }
 

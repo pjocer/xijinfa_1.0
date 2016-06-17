@@ -34,10 +34,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForFriendsListOfUser:(NSString*)currentUserID
-                               withAccessToken:(NSString*)accessToken
-                            andOtherProperties:(NSDictionary*)otherProperties
-                                         queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForFriendsListOfUser:(NSString *)currentUserID
+                               withAccessToken:(NSString *)accessToken
+                            andOtherProperties:(NSDictionary *)otherProperties
+                                         queue:(NSOperationQueue *)queue
                          withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -64,10 +64,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForFriendsUserIDListOfUser:(NSString*)currentUserID
-                                     withAccessToken:(NSString*)accessToken
-                                  andOtherProperties:(NSDictionary*)otherProperties
-                                               queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForFriendsUserIDListOfUser:(NSString *)currentUserID
+                                     withAccessToken:(NSString *)accessToken
+                                  andOtherProperties:(NSDictionary *)otherProperties
+                                               queue:(NSOperationQueue *)queue
                                withCompletionHandler:(WBRequestHandler)handler;
 
 
@@ -95,11 +95,11 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForCommonFriendsListBetweenUser:(NSString*)currentUserID
-                                                  andUser:(NSString*)anotherUserID
-                                          withAccessToken:(NSString*)accessToken
-                                       andOtherProperties:(NSDictionary*)otherProperties
-                                                    queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForCommonFriendsListBetweenUser:(NSString *)currentUserID
+                                                  andUser:(NSString *)anotherUserID
+                                          withAccessToken:(NSString *)accessToken
+                                       andOtherProperties:(NSDictionary *)otherProperties
+                                                    queue:(NSOperationQueue *)queue
                                     withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -126,10 +126,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForBilateralFriendsListOfUser:(NSString*)currentUserID
-                                        withAccessToken:(NSString*)accessToken
-                                     andOtherProperties:(NSDictionary*)otherProperties
-                                                  queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForBilateralFriendsListOfUser:(NSString *)currentUserID
+                                        withAccessToken:(NSString *)accessToken
+                                     andOtherProperties:(NSDictionary *)otherProperties
+                                                  queue:(NSOperationQueue *)queue
                                   withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -156,10 +156,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForFollowersListOfUser:(NSString*)currentUserID
-                                 withAccessToken:(NSString*)accessToken
-                              andOtherProperties:(NSDictionary*)otherProperties
-                                           queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForFollowersListOfUser:(NSString *)currentUserID
+                                 withAccessToken:(NSString *)accessToken
+                              andOtherProperties:(NSDictionary *)otherProperties
+                                           queue:(NSOperationQueue *)queue
                            withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -186,11 +186,11 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForFollowersUserIDListOfUser:(NSString*)currentUserID
-                                     withAccessToken:(NSString*)accessToken
-                                  andOtherProperties:(NSDictionary*)otherProperties
-                                               queue:(NSOperationQueue*)queue
-                               withCompletionHandler:(WBRequestHandler)handler;
++ (WBHttpRequest *)requestForFollowersUserIDListOfUser:(NSString *)currentUserID
+                                       withAccessToken:(NSString *)accessToken
+                                    andOtherProperties:(NSDictionary *)otherProperties
+                                                 queue:(NSOperationQueue *)queue
+                                 withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
  @method
@@ -215,10 +215,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForActiveFollowersListOfUser:(NSString*)currentUserID
-                                       withAccessToken:(NSString*)accessToken
-                                    andOtherProperties:(NSDictionary*)otherProperties
-                                                 queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForActiveFollowersListOfUser:(NSString *)currentUserID
+                                       withAccessToken:(NSString *)accessToken
+                                    andOtherProperties:(NSDictionary *)otherProperties
+                                                 queue:(NSOperationQueue *)queue
                                  withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -244,10 +244,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForBilateralFollowersListOfUser:(NSString*)currentUserID
-                                          withAccessToken:(NSString*)accessToken
-                                       andOtherProperties:(NSDictionary*)otherProperties
-                                                    queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForBilateralFollowersListOfUser:(NSString *)currentUserID
+                                          withAccessToken:(NSString *)accessToken
+                                       andOtherProperties:(NSDictionary *)otherProperties
+                                                    queue:(NSOperationQueue *)queue
                                     withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -275,11 +275,11 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForFriendshipDetailBetweenTargetUser:(NSString*)targetUserID
-                                                 andSourceUser:(NSString*)sourceUserID
-                                               withAccessToken:(NSString*)accessToken
-                                            andOtherProperties:(NSDictionary*)otherProperties
-                                                         queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForFriendshipDetailBetweenTargetUser:(NSString *)targetUserID
+                                                 andSourceUser:(NSString *)sourceUserID
+                                               withAccessToken:(NSString *)accessToken
+                                            andOtherProperties:(NSDictionary *)otherProperties
+                                                         queue:(NSOperationQueue *)queue
                                          withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -305,10 +305,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForFollowAUser:(NSString*)theUserToBeFollowed
-                         withAccessToken:(NSString*)accessToken
-                      andOtherProperties:(NSDictionary*)otherProperties
-                                   queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForFollowAUser:(NSString *)theUserToBeFollowed
+                         withAccessToken:(NSString *)accessToken
+                      andOtherProperties:(NSDictionary *)otherProperties
+                                   queue:(NSOperationQueue *)queue
                    withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -334,10 +334,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForCancelFollowAUser:(NSString*)theUserThatYouDontLike
-                               withAccessToken:(NSString*)accessToken
-                            andOtherProperties:(NSDictionary*)otherProperties
-                                         queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForCancelFollowAUser:(NSString *)theUserThatYouDontLike
+                               withAccessToken:(NSString *)accessToken
+                            andOtherProperties:(NSDictionary *)otherProperties
+                                         queue:(NSOperationQueue *)queue
                          withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -365,11 +365,11 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForRemoveFollowerUser:(NSString*)theUserThatYouDontLike
-                                 withAccessToken:(NSString*)accessToken
-                              andOtherProperties:(NSDictionary*)otherProperties
-                                           queue:(NSOperationQueue*)queue
-                           withCompletionHandler:(WBRequestHandler)handler;
++ (WBHttpRequest *)requestForRemoveFollowerUser:(NSString *)theUserThatYouDontLike
+                                withAccessToken:(NSString *)accessToken
+                             andOtherProperties:(NSDictionary *)otherProperties
+                                          queue:(NSOperationQueue *)queue
+                          withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
  @method
@@ -398,12 +398,12 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForInviteBilateralFriend:(NSString*)theUserThatShouldBeYourBilateralFriend
-                                   withAccessToken:(NSString*)accessToken
-                                        inviteText:(NSString*)text
-                                         inviteUrl:(NSString*)url
-                                     inviteLogoUrl:(NSString*)logoUrl
-                                             queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForInviteBilateralFriend:(NSString *)theUserThatShouldBeYourBilateralFriend
+                                   withAccessToken:(NSString *)accessToken
+                                        inviteText:(NSString *)text
+                                         inviteUrl:(NSString *)url
+                                     inviteLogoUrl:(NSString *)logoUrl
+                                             queue:(NSOperationQueue *)queue
                              withCompletionHandler:(WBRequestHandler)handler;
 
 
@@ -430,10 +430,10 @@
  
  @param handler             the comletion block which will be executed after received response from Open API server.
  */
-+ (WBHttpRequest *)requestForUserProfile:(NSString*)aUserID
-                         withAccessToken:(NSString*)accessToken
-                      andOtherProperties:(NSDictionary*)otherProperties
-                                   queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForUserProfile:(NSString *)aUserID
+                         withAccessToken:(NSString *)accessToken
+                      andOtherProperties:(NSDictionary *)otherProperties
+                                   queue:(NSOperationQueue *)queue
                    withCompletionHandler:(WBRequestHandler)handler;
 
 @end

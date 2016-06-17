@@ -26,10 +26,10 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)addGameObject:(NSString*)userID
-                 withAccessToken:(NSString*)accessToken
-              andOtherProperties:(NSDictionary*)otherProperties
-                           queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)addGameObject:(NSString *)userID
+                 withAccessToken:(NSString *)accessToken
+              andOtherProperties:(NSDictionary *)otherProperties
+                           queue:(NSOperationQueue *)queue
            withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -48,10 +48,10 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)addGameAchievementObject:(NSString*)userID
-                            withAccessToken:(NSString*)accessToken
-                         andOtherProperties:(NSDictionary*)otherProperties
-                                      queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)addGameAchievementObject:(NSString *)userID
+                            withAccessToken:(NSString *)accessToken
+                         andOtherProperties:(NSDictionary *)otherProperties
+                                      queue:(NSOperationQueue *)queue
                       withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -70,10 +70,10 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)addGameAchievementGain:(NSString*)userID
-                          withAccessToken:(NSString*)accessToken
-                       andOtherProperties:(NSDictionary*)otherProperties
-                                    queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)addGameAchievementGain:(NSString *)userID
+                          withAccessToken:(NSString *)accessToken
+                       andOtherProperties:(NSDictionary *)otherProperties
+                                    queue:(NSOperationQueue *)queue
                     withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -92,10 +92,10 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)addGameScoreGain:(NSString*)userID
-                    withAccessToken:(NSString*)accessToken
-                 andOtherProperties:(NSDictionary*)otherProperties
-                              queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)addGameScoreGain:(NSString *)userID
+                    withAccessToken:(NSString *)accessToken
+                 andOtherProperties:(NSDictionary *)otherProperties
+                              queue:(NSOperationQueue *)queue
               withCompletionHandler:(WBRequestHandler)handler;
 
 
@@ -115,10 +115,10 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)requestForGameScore:(NSString*)userID
-                       withAccessToken:(NSString*)accessToken
-                    andOtherProperties:(NSDictionary*)otherProperties
-                                 queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForGameScore:(NSString *)userID
+                       withAccessToken:(NSString *)accessToken
+                    andOtherProperties:(NSDictionary *)otherProperties
+                                 queue:(NSOperationQueue *)queue
                  withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -137,10 +137,10 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)requestForFriendsGameScore:(NSString*)userID
-                              withAccessToken:(NSString*)accessToken
-                           andOtherProperties:(NSDictionary*)otherProperties
-                                        queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForFriendsGameScore:(NSString *)userID
+                              withAccessToken:(NSString *)accessToken
+                           andOtherProperties:(NSDictionary *)otherProperties
+                                        queue:(NSOperationQueue *)queue
                         withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -159,10 +159,10 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)requestForGameAchievementGain:(NSString*)userID
-                                 withAccessToken:(NSString*)accessToken
-                              andOtherProperties:(NSDictionary*)otherProperties
-                                           queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForGameAchievementGain:(NSString *)userID
+                                 withAccessToken:(NSString *)accessToken
+                              andOtherProperties:(NSDictionary *)otherProperties
+                                           queue:(NSOperationQueue *)queue
                            withCompletionHandler:(WBRequestHandler)handler;
 
 @end

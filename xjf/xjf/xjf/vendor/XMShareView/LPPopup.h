@@ -39,9 +39,11 @@ extern CGFloat const kLPPopupDefaultWaitDuration;
 @property (assign, nonatomic) CGFloat maxWidth;
 
 #pragma mark - Initialization
+
 + (LPPopup *)popupWithText:(NSString *)txt;
 
 #pragma mark - Showing popup
+
 - (void)showInView:(UIView *)parentView
      centerAtPoint:(CGPoint)pos
           duration:(CGFloat)waitDuration

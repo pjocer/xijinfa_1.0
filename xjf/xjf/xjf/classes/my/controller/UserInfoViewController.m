@@ -119,10 +119,10 @@
         UserInfoSection3 *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSection3"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.InterestedBlock = ^(NSString *interested_invest) {
-            [self.params setObject:interested_invest forKey:@"invest_category"];
+            [self.params setObject:interested_invest forKey:@"invest_type"];
         };
         cell.PreferenceBlock = ^(NSString *preference_invest) {
-            [self.params setObject:preference_invest forKey:@"invest_type"];
+            [self.params setObject:preference_invest forKey:@"invest_category"];
         };
         cell.ExperienceBlock = ^(NSString *experience_invest) {
             [self.params setObject:experience_invest forKey:@"invest_age"];

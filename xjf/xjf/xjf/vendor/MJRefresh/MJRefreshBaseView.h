@@ -15,9 +15,9 @@
 
 #pragma mark - 控件的刷新状态
 typedef enum {
-	MJRefreshStatePulling = 1, // 松开就可以进行刷新的状态
-	MJRefreshStateNormal = 2, // 普通状态
-	MJRefreshStateRefreshing = 3, // 正在刷新中的状态
+    MJRefreshStatePulling = 1, // 松开就可以进行刷新的状态
+    MJRefreshStateNormal = 2, // 普通状态
+    MJRefreshStateRefreshing = 3, // 正在刷新中的状态
     MJRefreshStateWillRefreshing = 4
 } MJRefreshState;
 
@@ -59,16 +59,19 @@ typedef enum {
  *  是否正在刷新
  */
 @property (nonatomic, readonly, getter=isRefreshing) BOOL refreshing;
+
 /**
  *  开始刷新
  */
 - (void)beginRefreshing;
+
 /**
  *  结束刷新
  */
 - (void)endRefreshing;
 
 #pragma mark - 交给子类去实现 和 调用
+
 @property (assign, nonatomic) MJRefreshState state;
 
 /**

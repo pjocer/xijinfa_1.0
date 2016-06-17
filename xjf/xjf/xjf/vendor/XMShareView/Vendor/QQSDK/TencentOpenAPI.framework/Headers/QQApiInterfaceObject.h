@@ -14,8 +14,7 @@
 /**
  QQApi请求消息类型
  */
-enum QQApiInterfaceReqType
-{
+enum QQApiInterfaceReqType {
     EGETMESSAGEFROMQQREQTYPE = 0,   ///< 手Q -> 第三方应用，请求第三方应用向手Q发送消息
     ESENDMESSAGETOQQREQTYPE = 1,    ///< 第三方应用 -> 手Q，第三方应用向手Q分享消息
     ESHOWMESSAGEFROMQQREQTYPE = 2   ///< 手Q -> 第三方应用，请求第三方应用展现消息中的数据
@@ -24,8 +23,7 @@ enum QQApiInterfaceReqType
 /**
  QQApi应答消息类型
  */
-enum QQApiInterfaceRespType
-{
+enum QQApiInterfaceRespType {
     ESHOWMESSAGEFROMQQRESPTYPE = 0, ///< 第三方应用 -> 手Q，第三方应用应答消息展现结果
     EGETMESSAGEFROMQQRESPTYPE = 1,  ///< 第三方应用 -> 手Q，第三方应用回应发往手Q的消息
     ESENDMESSAGETOQQRESPTYPE = 2    ///< 手Q -> 第三方应用，手Q应答处理分享消息的结果
@@ -47,16 +45,16 @@ enum QQApiInterfaceRespType
 @interface QQBaseResp : NSObject
 
 /** 请求处理结果 */
-@property (nonatomic, copy) NSString* result;
+@property (nonatomic, copy) NSString *result;
 
 /** 具体错误描述信息 */
-@property (nonatomic, copy) NSString* errorDescription;
+@property (nonatomic, copy) NSString *errorDescription;
 
 /** 应答消息类型，参见\ref QQApiInterfaceRespType */
 @property (nonatomic, assign) int type;
 
 /** 扩展信息 */
-@property (nonatomic, assign) NSString* extendInfo;
+@property (nonatomic, assign) NSString *extendInfo;
 
 @end
 
@@ -118,7 +116,7 @@ enum QQApiInterfaceRespType
  \param extendInfo 扩展信息
  \return 新创建的SendMessageToQQResp应答实例
  */
-+ (SendMessageToQQResp *)respWithResult:(NSString *)result errorDescription:(NSString *)errDesp extendInfo:(NSString*)extendInfo;
++ (SendMessageToQQResp *)respWithResult:(NSString *)result errorDescription:(NSString *)errDesp extendInfo:(NSString *)extendInfo;
 
 @end
 

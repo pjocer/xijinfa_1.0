@@ -11,18 +11,20 @@
 #import "XJAccountManager.h"
 #import "SettingViewController.h"
 #import "ZPlatformShare.h"
+
 @interface AppDelegateManager ()
 @end
+
 @implementation AppDelegateManager
-+(void)initControl {
++ (void)initControl {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self startMonitoringAppCurrentNetworkReachabilityStatus];
     [ZPlatformShare initPlatformData];
     [[XJAccountManager defaultManager] verifyValid];
 }
+
 //网络状态
-+ (void)startMonitoringAppCurrentNetworkReachabilityStatus
-{
++ (void)startMonitoringAppCurrentNetworkReachabilityStatus {
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
@@ -35,11 +37,11 @@
                     UIViewController *currentViewController = getCurrentDisplayController();
                     [currentViewController.navigationController pushViewController:[SettingViewController new] animated:YES];
                 }];
-                break;  
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                
                 break;
-        }  
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+
+                break;
+        }
     }];
     [manager startMonitoring];
 }

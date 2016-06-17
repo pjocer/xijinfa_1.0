@@ -28,10 +28,10 @@
 
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
 */
-+ (WBHttpRequest *)requestForStatusIDsFromCurrentUser:(NSString*)userID
-                                      withAccessToken:(NSString*)accessToken
-                                   andOtherProperties:(NSDictionary*)otherProperties
-                                                queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForStatusIDsFromCurrentUser:(NSString *)userID
+                                      withAccessToken:(NSString *)accessToken
+                                   andOtherProperties:(NSDictionary *)otherProperties
+                                                queue:(NSOperationQueue *)queue
                                 withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -52,11 +52,11 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)requestForRepostAStatus:(NSString*)statusID
-                                repostText:(NSString*)text
-                           withAccessToken:(NSString*)accessToken
-                        andOtherProperties:(NSDictionary*)otherProperties
-                                     queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForRepostAStatus:(NSString *)statusID
+                                repostText:(NSString *)text
+                           withAccessToken:(NSString *)accessToken
+                        andOtherProperties:(NSDictionary *)otherProperties
+                                     queue:(NSOperationQueue *)queue
                      withCompletionHandler:(WBRequestHandler)handler;
 
 /*!
@@ -81,12 +81,12 @@
  
  @caution 注意，如果参数imageObject和url都有值，则发布带有imageObject所对应的图片，忽略url所对应的图片。
  */
-+ (WBHttpRequest *)requestForShareAStatus:(NSString*)statusText
-                        contatinsAPicture:(WBImageObject*)imageObject
-                             orPictureUrl:(NSString*)url
-                          withAccessToken:(NSString*)accessToken
-                       andOtherProperties:(NSDictionary*)otherProperties
-                                    queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForShareAStatus:(NSString *)statusText
+                        contatinsAPicture:(WBImageObject *)imageObject
+                             orPictureUrl:(NSString *)url
+                          withAccessToken:(NSString *)accessToken
+                       andOtherProperties:(NSDictionary *)otherProperties
+                                    queue:(NSOperationQueue *)queue
                     withCompletionHandler:(WBRequestHandler)handler;
 
 

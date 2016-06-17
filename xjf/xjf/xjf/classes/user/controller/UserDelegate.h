@@ -11,10 +11,13 @@
 @protocol UserDelegate <NSObject>
 @optional
 - (void)userLoginOK:(id)userinfo;
+
 - (void)userLoginFail;
+
 - (void)userDidCancel;
 
 - (void)userRegistOK:(id)userInfo;
+
 - (void)userRegistFail;
 
 @end

@@ -24,7 +24,7 @@
  
  @param handler             完成请求后会回调handler，处理完成请求后的逻辑。
  */
-+ (WBHttpRequest *)requestForRenewAccessTokenWithRefreshToken:(NSString*)refreshToken
-                                                        queue:(NSOperationQueue*)queue
++ (WBHttpRequest *)requestForRenewAccessTokenWithRefreshToken:(NSString *)refreshToken
+                                                        queue:(NSOperationQueue *)queue
                                         withCompletionHandler:(WBRequestHandler)handler;
 @end

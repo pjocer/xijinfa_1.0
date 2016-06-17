@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class WBSDKBasicButton;
+
 typedef void (^WBSDKButtonHandler)(WBSDKBasicButton *button,
-                                BOOL isSuccess,
-                                NSDictionary *resultDict);
+        BOOL isSuccess,
+        NSDictionary *resultDict);
 
 @interface WBSDKBasicButton : UIButton
 
