@@ -9,11 +9,11 @@
 #import "EmployedMainTableViewCell.h"
 
 @interface EmployedMainTableViewCell ()
-@property(nonatomic, strong) UIImageView *titleImage;
-@property(nonatomic, strong) UILabel *titleLable;
-@property(nonatomic, strong) UILabel *detailLable;
+@property (nonatomic, strong) UIImageView *titleImage;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UILabel *detailLable;
 ///分割线
-@property(nonatomic, strong) UIView *customSeparator;
+@property (nonatomic, strong) UIView *customSeparator;
 @end
 
 

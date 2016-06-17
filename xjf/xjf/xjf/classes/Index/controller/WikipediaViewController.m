@@ -18,13 +18,13 @@
         UICollectionViewDelegateFlowLayout,
         XRCarouselViewDelegate,
         WikiFirstSectionCellDelegate>
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property(nonatomic, retain) NSMutableArray *dataArrayByBanner;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, retain) UICollectionViewFlowLayout *layout;
+@property (nonatomic, retain) NSMutableArray *dataArrayByBanner;
 /**< 广告数据源 */
-@property(nonatomic, strong) BannerModel *bannermodel;
-@property(nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
-@property(nonatomic, strong) NSMutableArray *talkGridDataArray;
+@property (nonatomic, strong) BannerModel *bannermodel;
+@property (nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
+@property (nonatomic, strong) NSMutableArray *talkGridDataArray;
 @end
 
 @implementation WikipediaViewController

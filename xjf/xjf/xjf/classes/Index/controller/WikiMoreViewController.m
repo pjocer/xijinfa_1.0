@@ -12,8 +12,8 @@
 
 @interface WikiMoreViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout>
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, retain) UICollectionViewFlowLayout *layout;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, retain) UICollectionViewFlowLayout *layout;
 @end
 
 @implementation WikiMoreViewController

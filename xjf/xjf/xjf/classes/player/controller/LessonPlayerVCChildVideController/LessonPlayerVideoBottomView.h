@@ -16,10 +16,10 @@
 @end
 
 @interface LessonPlayerVideoBottomView : UIView
-@property(nonatomic, strong) TalkGridModel *model;
-@property(nonatomic, strong) UIButton *download;
-@property(nonatomic, strong) UIButton *collection;
-@property(nonatomic, strong) UIButton *collectionLogo;
-@property(nonatomic, strong) UILabel *collectionCount;
-@property(nonatomic, assign) id <LessonPlayerVideoBottomViewDelegate> delegate;
+@property (nonatomic, strong) TalkGridModel *model;
+@property (nonatomic, strong) UIButton *download;
+@property (nonatomic, strong) UIButton *collection;
+@property (nonatomic, strong) UIButton *collectionLogo;
+@property (nonatomic, strong) UILabel *collectionCount;
+@property (nonatomic, assign) id <LessonPlayerVideoBottomViewDelegate> delegate;
 @end

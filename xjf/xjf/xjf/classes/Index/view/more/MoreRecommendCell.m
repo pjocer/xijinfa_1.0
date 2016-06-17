@@ -15,8 +15,8 @@
 @interface MoreRecommendCell () <UzysGridViewDelegate, UzysGridViewDataSource> {
 
 }
-@property(nonatomic, strong) IndexSectionView *sectionView;
-@property(nonatomic, strong) UzysGridView *gridView;
+@property (nonatomic, strong) IndexSectionView *sectionView;
+@property (nonatomic, strong) UzysGridView *gridView;
 @end
 
 @implementation MoreRecommendCell
@@ -36,7 +36,7 @@
         [self addSubview:_sectionView];
 
         //
-        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0, 30, self.bounds.size.width,
+        _gridView = [[UzysGridView alloc]                               initWithFrame:CGRectMake(0, 30, self.bounds.size.width,
                 self.bounds.size.height - 30) numOfRow:4 numOfColumns:1 cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;

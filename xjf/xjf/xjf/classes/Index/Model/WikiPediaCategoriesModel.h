@@ -13,21 +13,21 @@
 @end
 
 @interface WikiPediaCategoriesDataModel : JSONModel
-@property(nonatomic, strong) NSString *id;
-@property(nonatomic, strong) NSString *type;
-@property(nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *title;
 @end
 
 
 @interface WikiPediaCategoriesResultModel : JSONModel
-@property(nonatomic, strong) NSArray <WikiPediaCategoriesDataModel, ConvertOnDemand> *data;
+@property (nonatomic, strong) NSArray <WikiPediaCategoriesDataModel, ConvertOnDemand> *data;
 @end
 
 
 @interface WikiPediaCategoriesModel : JSONModel
-@property(nonatomic, strong) NSString *errCode;
-@property(nonatomic, strong) NSString *errMsg;
-@property(nonatomic, strong) WikiPediaCategoriesResultModel *result;
+@property (nonatomic, strong) NSString *errCode;
+@property (nonatomic, strong) NSString *errMsg;
+@property (nonatomic, strong) WikiPediaCategoriesResultModel *result;
 @end
 
 

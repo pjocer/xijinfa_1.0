@@ -10,12 +10,11 @@
 #import "IndexSectionView.h"
 #import "UzysGridView.h"
 #import "TalkGridViewCell.h"
-#import "TalkGridModel.h"
 
 @interface IndexTalkCell () <UzysGridViewDelegate, UzysGridViewDataSource>
-@property(nonatomic, strong) TablkListModel *tablkListModel;
-@property(nonatomic, strong) IndexSectionView *sectionView;
-@property(nonatomic, strong) UzysGridView *gridView;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
+@property (nonatomic, strong) IndexSectionView *sectionView;
+@property (nonatomic, strong) UzysGridView *gridView;
 @end
 
 @implementation IndexTalkCell
@@ -41,7 +40,7 @@
 
         //
         _gridView = [[UzysGridView alloc] initWithFrame:
-                CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height - 35)
+                        CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height - 35)
                                                numOfRow:2 numOfColumns:2 cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;

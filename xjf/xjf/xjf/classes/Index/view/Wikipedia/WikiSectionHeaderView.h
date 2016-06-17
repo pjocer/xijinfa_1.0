@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WikiSectionHeaderView : UICollectionReusableView
-@property(nonatomic, strong) UILabel *titleLabel;
-@property(nonatomic, strong) UILabel *moreLabel;
-@property(nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *moreLabel;
+@property (nonatomic, strong) UIView *backgroundView;
 @end

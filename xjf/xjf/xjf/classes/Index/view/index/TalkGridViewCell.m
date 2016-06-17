@@ -10,9 +10,9 @@
 
 @interface TalkGridViewCell ()
 
-@property(nonatomic, strong) UIImageView *titleImage;
-@property(nonatomic, strong) UILabel *titleLable;
-@property(nonatomic, strong) UILabel *detailLable;
+@property (nonatomic, strong) UIImageView *titleImage;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UILabel *detailLable;
 
 @end
 

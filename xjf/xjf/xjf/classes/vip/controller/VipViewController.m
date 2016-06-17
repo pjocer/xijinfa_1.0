@@ -17,9 +17,9 @@
 #import "VipPayListViewController.h"
 
 @interface VipViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(nonatomic, strong) TablkListModel *tablkListModel;
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) VipHeaderView *tableHeaderView;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) VipHeaderView *tableHeaderView;
 @end
 
 @implementation VipViewController

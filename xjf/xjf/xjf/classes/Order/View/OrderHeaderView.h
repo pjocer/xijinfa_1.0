@@ -10,7 +10,7 @@
 #import "OrderModel.h"
 
 @interface OrderHeaderView : UIView
-@property(nonatomic, strong) UILabel *orderNumber;
-@property(nonatomic, strong) UILabel *orderDate;
-@property(nonatomic, strong) OrderDataModel *model;
+@property (nonatomic, strong) UILabel *orderNumber;
+@property (nonatomic, strong) UILabel *orderDate;
+@property (nonatomic, strong) OrderDataModel *model;
 @end

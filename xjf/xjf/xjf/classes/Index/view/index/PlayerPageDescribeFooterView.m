@@ -10,9 +10,9 @@
 
 @interface PlayerPageDescribeFooterView ()
 ///点赞次数
-@property(nonatomic, strong) UILabel *thumbUpLabel;
+@property (nonatomic, strong) UILabel *thumbUpLabel;
 
-@property(nonatomic, strong) UIView *backGroudView;
+@property (nonatomic, strong) UIView *backGroudView;
 @end
 
 @implementation PlayerPageDescribeFooterView
@@ -29,7 +29,7 @@
         self.thumbUpButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.thumbUpButton];
 //        self.thumbUpButton.backgroundColor = BackgroundColor
-        [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLike"]
+        [self.thumbUpButton                                                setImage:[[UIImage imageNamed:@"iconLike"]
                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [self.thumbUpButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
@@ -57,10 +57,10 @@
 
     self.thumbUpLabel.text = model.likes_count;
     if (model.user_liked) {
-        [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLikeOn"]
+        [self.thumbUpButton                                                setImage:[[UIImage imageNamed:@"iconLikeOn"]
                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     } else {
-        [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLike"]
+        [self.thumbUpButton                                                setImage:[[UIImage imageNamed:@"iconLike"]
                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     }
 

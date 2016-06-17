@@ -10,5 +10,5 @@
 #import "TeacherListHostModel.h"
 
 @interface TearcherIndexCell : UICollectionViewCell
-@property(nonatomic, strong) TeacherListData *model;
+@property (nonatomic, strong) TeacherListData *model;
 @end

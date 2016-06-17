@@ -12,22 +12,21 @@
 #import "TeacherEmployedViewController.h"
 #import "TeacherDetailHeaderView.h"
 #import "TeacherDetailModel.h"
-#import "TalkGridModel.h"
 #import "XJAccountManager.h"
 
 @interface TeacherDetailViewController () <UIScrollViewDelegate>
-@property(nonatomic, strong) TeacherDetailHeaderView *teacherDetailHeaderView;
-@property(nonatomic, strong) UIScrollView *titleScrollView;
-@property(nonatomic, strong) UIScrollView *contentScrollView;
-@property(nonatomic, strong) TeacherDescriptionViewController *teacherDescriptionViewController;
-@property(nonatomic, strong) TeacherLessonsViewController *teacherLessonsViewController;
-@property(nonatomic, strong) TeacherEmployedViewController *teacherEmployedViewController;
-@property(nonatomic, strong) NSMutableArray *buttons;
-@property(nonatomic, strong) UIView *selBackGroundView;
-@property(nonatomic, strong) UIView *selView;
-@property(nonatomic, strong) TeacherDetailModel *teacherDetailModel;
-@property(nonatomic, strong) NSMutableArray *dataSourcerDep3_Lesson;
-@property(nonatomic, strong) NSMutableArray *dataSourcerDep4_Employed;
+@property (nonatomic, strong) TeacherDetailHeaderView *teacherDetailHeaderView;
+@property (nonatomic, strong) UIScrollView *titleScrollView;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, strong) TeacherDescriptionViewController *teacherDescriptionViewController;
+@property (nonatomic, strong) TeacherLessonsViewController *teacherLessonsViewController;
+@property (nonatomic, strong) TeacherEmployedViewController *teacherEmployedViewController;
+@property (nonatomic, strong) NSMutableArray *buttons;
+@property (nonatomic, strong) UIView *selBackGroundView;
+@property (nonatomic, strong) UIView *selView;
+@property (nonatomic, strong) TeacherDetailModel *teacherDetailModel;
+@property (nonatomic, strong) NSMutableArray *dataSourcerDep3_Lesson;
+@property (nonatomic, strong) NSMutableArray *dataSourcerDep4_Employed;
 @end
 
 @implementation TeacherDetailViewController

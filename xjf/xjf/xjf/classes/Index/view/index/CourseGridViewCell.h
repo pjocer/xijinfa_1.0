@@ -10,6 +10,6 @@
 #import "ProjectListByModel.h"
 
 @interface CourseGridViewCell : UzysGridViewCell
-@property(nonatomic, retain) UIView *backgroundView;
-@property(nonatomic, strong) ProjectList *model;
+@property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, strong) ProjectList *model;
 @end

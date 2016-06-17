@@ -13,7 +13,7 @@
 
 }
 
-@property(nonatomic, strong) XRCarouselView *carouselView;
+@property (nonatomic, strong) XRCarouselView *carouselView;
 @end
 
 @implementation MoreBannerCell

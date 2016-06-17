@@ -7,11 +7,7 @@
 //
 
 #import "PlayerViewController.h"
-#import <AVFoundation/AVFoundation.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import "ZFPlayerSingleton.h"
 #import "playerConfigure.h"
-#import "CommentsModel.h"
 #import "XJAccountManager.h"
 #import <objc/runtime.h>
 #import "CustomTextField.h"
@@ -34,23 +30,23 @@
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
         UITextFieldDelegate, UIAlertViewDelegate>
-@property(nonatomic, strong) UIView *playView;
-@property(strong, nonatomic) ZFPlayerView *playerView;
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property(nonatomic, assign) BOOL isShowVideDescrible;
+@property (nonatomic, strong) UIView *playView;
+@property (strong, nonatomic) ZFPlayerView *playerView;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, retain) UICollectionViewFlowLayout *layout;
+@property (nonatomic, assign) BOOL isShowVideDescrible;
 /**< 是否展示视频描述 */
-@property(nonatomic, retain) UIView *keyBoardView;
+@property (nonatomic, retain) UIView *keyBoardView;
 /**< 键盘背景图 */
-@property(nonatomic, retain) UIView *keyBoardAppearView;
+@property (nonatomic, retain) UIView *keyBoardAppearView;
 /**< 键盘出现，屏幕背景图 */
-@property(nonatomic, retain) CustomTextField *textField;
+@property (nonatomic, retain) CustomTextField *textField;
 /**< 键盘 */
-@property(nonatomic, strong) UIButton *sendMsgButton;
+@property (nonatomic, strong) UIButton *sendMsgButton;
 /**< 发表评论内容按钮 */
-@property(nonatomic, strong) CommentsAllDataList *commentsModel;
+@property (nonatomic, strong) CommentsAllDataList *commentsModel;
 /**< 评论数据 */
-@property(nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
+@property (nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @end
 
 static NSString *PlayerVC_Describe_HeaderId = @"PlayerVC_Describe_HeaderId";
@@ -109,9 +105,9 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 }
 
 - (void)handleData {
-    [self  requestCommentsData:
+    [self                                                                             requestCommentsData:
             [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
-    [self requestLessonListData:
+    [self                                                           requestLessonListData:
             [NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
     [self sendPlayerHistoryToServerData:history method:POST];
 }
@@ -145,7 +141,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-            [self requestCommentsData:
+            [self                                                                             requestCommentsData:
                     [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
         }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
@@ -465,10 +461,10 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             [describeHeaderView.rightButton addTarget:self action:@selector(describeHeaderViewRightButtonAction:)
                                      forControlEvents:UIControlEventTouchUpInside];
             if (_isShowVideDescrible == NO) {
-                [describeHeaderView.rightButton  setImage:[[UIImage imageNamed:@"iconMore"]
+                [describeHeaderView.rightButton                                    setImage:[[UIImage imageNamed:@"iconMore"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             } else if (_isShowVideDescrible == YES) {
-                [describeHeaderView.rightButton  setImage:[[UIImage imageNamed:@"iconLess"]
+                [describeHeaderView.rightButton                                    setImage:[[UIImage imageNamed:@"iconLess"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             }
 //           [describeHeaderView.downLoadButton addTarget:self action:@selector(describeHeaderViewdownLoadButtonAction:)
@@ -479,10 +475,10 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                     addTarget:self action:@selector(describeHeaderViewcollectionButtonAction:)
              forControlEvents:UIControlEventTouchUpInside];
             if (self.tempLessonDetailModel.result.user_favored) {
-                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
+                [describeHeaderView.collectionButton                               setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             } else {
-                [describeHeaderView.collectionButton setImage:[[UIImage imageNamed:@"iconFavorites"]
+                [describeHeaderView.collectionButton                               setImage:[[UIImage imageNamed:@"iconFavorites"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             }
             return describeHeaderView;

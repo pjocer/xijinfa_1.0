@@ -10,5 +10,5 @@
 #import "TalkGridModel.h"
 
 @interface EmployedViewInformationCell : UITableViewCell
-@property(nonatomic, strong) TalkGridModel *model;
+@property (nonatomic, strong) TalkGridModel *model;
 @end

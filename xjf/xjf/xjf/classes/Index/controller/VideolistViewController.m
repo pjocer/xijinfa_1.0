@@ -11,8 +11,8 @@
 #import <MJRefresh.h>
 
 @interface VideolistViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation VideolistViewController

@@ -11,17 +11,17 @@
 
 @interface LessonDetailTitleView ()
 ///视频图片
-@property(nonatomic, strong) UIImageView *videoImage;
+@property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
-@property(nonatomic, strong) UILabel *videoTitle;
+@property (nonatomic, strong) UILabel *videoTitle;
 ///主讲老师
-@property(nonatomic, strong) UILabel *teacherName;
+@property (nonatomic, strong) UILabel *teacherName;
 ///课时
-@property(nonatomic, strong) UILabel *lessonCount;
+@property (nonatomic, strong) UILabel *lessonCount;
 ///现在价格
-@property(nonatomic, strong) UILabel *price;
+@property (nonatomic, strong) UILabel *price;
 ///之前前个
-@property(nonatomic, strong) UILabel *oldPrice;
+@property (nonatomic, strong) UILabel *oldPrice;
 @end
 
 

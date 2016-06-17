@@ -10,6 +10,6 @@
 
 @interface PlayerPageCommentsFooterView : UICollectionReusableView
 ///查看评论
-@property(nonatomic, strong) UIButton *lookCommentsButton;
+@property (nonatomic, strong) UIButton *lookCommentsButton;
 
 @end

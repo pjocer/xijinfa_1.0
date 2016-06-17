@@ -10,6 +10,6 @@
 #import "LessonDetailListModel.h"
 
 @interface PlayerPageDescribeFooterView : UICollectionReusableView
-@property(nonatomic, strong) UIButton *thumbUpButton;
-@property(nonatomic, strong) LessonDetailListResultModel *model;
+@property (nonatomic, strong) UIButton *thumbUpButton;
+@property (nonatomic, strong) LessonDetailListResultModel *model;
 @end

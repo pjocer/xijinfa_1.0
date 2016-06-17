@@ -10,13 +10,11 @@
 #import "EmployedbannerHeaderView.h"
 #import "EmployedMainTableViewCell.h"
 #import "IndexSectionView.h"
-#import "BannerModel.h"
-#import "ProjectListByModel.h"
 #import "EmployedViewInformationCell.h"
-#import "TalkGridModel.h"
 #import "EmployedLessonListViewController.h"
 #import "SearchViewController.h"
-@interface EmployedViewController ()<UITableViewDelegate, UITableViewDataSource,XRCarouselViewDelegate>
+
+@interface EmployedViewController () <UITableViewDelegate, UITableViewDataSource, XRCarouselViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSorce;
 @property (nonatomic, strong) BannerModel *bannermodel;
@@ -51,6 +49,7 @@ static CGFloat bannerHeaderViewH = 175;
 }
 
 #pragma mark requestData
+
 //bannermodel
 - (void)requestBannerData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
@@ -63,10 +62,11 @@ static CGFloat bannerHeaderViewH = 175;
             [sSelf.dataArrayByBanner addObject:model.thumbnail];
         }
         [sSelf.tableView reloadData];
-    }failedBlock:^(NSError *_Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
 
     }];
 }
+
 //ProjectListByModel
 - (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
@@ -75,32 +75,34 @@ static CGFloat bannerHeaderViewH = 175;
         __strong typeof(self) sSelf = wSelf;
         sSelf.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
         [sSelf.tableView reloadData];
-    }failedBlock:^(NSError *_Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
     }];
 }
+
 //TablkListModel
-- (void)requestTeacherData:(APIName *)api method:(RequestMethod)method{
+- (void)requestTeacherData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
         [sSelf.tableView reloadData];
-        
-    }failedBlock:^(NSError *_Nullable error) {
+
+    }                  failedBlock:^(NSError *_Nullable error) {
 
     }];
 }
 
 #pragma mark -- Navigation
+
 - (void)setNavigation {
     self.navigationItem.title = @"析金从业";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithImage:[UIImage imageNamed:@"search"]
-                                              style:UIBarButtonItemStylePlain
-                                              target:self
-                                              action:@selector(rightBarButtonItemAction:)];
-    
+            initWithImage:[UIImage imageNamed:@"search"]
+                    style:UIBarButtonItemStylePlain
+                   target:self
+                   action:@selector(rightBarButtonItemAction:)];
+
 }
 
 - (void)rightBarButtonItemAction:(UIBarButtonItem *)sender {
@@ -110,9 +112,10 @@ static CGFloat bannerHeaderViewH = 175;
 }
 
 #pragma mark -- initTabelView
+
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) style:UITableViewStyleGrouped];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -124,7 +127,7 @@ static CGFloat bannerHeaderViewH = 175;
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-    
+
     [self.tableView registerClass:[EmployedMainTableViewCell class] forCellReuseIdentifier:EmployedViewMainCell_id];
     [self.tableView registerClass:[EmployedViewInformationCell class] forCellReuseIdentifier:EmployedViewInformationCell_id];
 }
@@ -133,13 +136,12 @@ static CGFloat bannerHeaderViewH = 175;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-    return self.projectListByModel.result.data.count;
+        return self.projectListByModel.result.data.count;
     }
     return 3;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
 
@@ -156,8 +158,7 @@ static CGFloat bannerHeaderViewH = 175;
     return nil;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         EmployedbannerHeaderView *bannerHeaderView = [[EmployedbannerHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, bannerHeaderViewH)];
         bannerHeaderView.carouselView.delegate = self;
@@ -173,26 +174,26 @@ static CGFloat bannerHeaderViewH = 175;
     sectionView.titleLabel.text = @"资讯动态";
     return sectionView;
 }
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return bannerHeaderViewH;
     }
     return tableNormulHeaderH;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 10;
 }
 
 #pragma mark Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
         ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
-        
+
         for (ProjectList *model in tempModel.children) {
             if ([model.title isEqualToString:@"基础知识"]) {
                 employedLessonListViewController.employedBasisID = model.id;
@@ -204,14 +205,15 @@ static CGFloat bannerHeaderViewH = 175;
                 employedLessonListViewController.employedGeneralID = model.id;
             }
         }
-        
+
         employedLessonListViewController.employedLessonList = tempModel.title;
         [self.navigationController pushViewController:employedLessonListViewController animated:YES];
     }
-    
+
 }
 
 #pragma mark - carouselView DidClickImage
+
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index {
     NSLog(@"点击..... %ld", index);
 }

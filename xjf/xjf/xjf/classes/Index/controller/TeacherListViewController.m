@@ -14,9 +14,9 @@
 @interface TeacherListViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout>
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property(nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, retain) UICollectionViewFlowLayout *layout;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation TeacherListViewController

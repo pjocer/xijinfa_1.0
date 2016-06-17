@@ -10,11 +10,11 @@
 #import "ZFPlayer.h"
 
 @interface ZFPlayerView (LoadingImageUrl)
-@property(nonatomic, strong) UIImage *xjfloading_image;
+@property (nonatomic, strong) UIImage *xjfloading_image;
 @end
 
 @interface PlayerViewController : PlayerBaseViewController
-@property(nonatomic, retain) TalkGridModel *talkGridModel;
-@property(nonatomic, strong) NSString *playUrl;
-@property(nonatomic, strong) TablkListModel *talkGridListModel;
+@property (nonatomic, retain) TalkGridModel *talkGridModel;
+@property (nonatomic, strong) NSString *playUrl;
+@property (nonatomic, strong) TablkListModel *talkGridListModel;
 @end

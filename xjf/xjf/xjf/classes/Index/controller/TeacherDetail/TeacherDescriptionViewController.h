@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 
 @interface TeacherDescriptionViewController : BaseViewController
-@property(nonatomic, retain) UITextView *textView;
-@property(nonatomic, strong) NSString *tempContent;
+@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, strong) NSString *tempContent;
 @end

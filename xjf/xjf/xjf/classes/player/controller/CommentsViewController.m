@@ -11,10 +11,10 @@
 #import <MJRefresh.h>
 
 @interface CommentsViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 ///评论数据
-@property(nonatomic, strong) CommentsAllDataList *commentsModel;
+@property (nonatomic, strong) CommentsAllDataList *commentsModel;
 @end
 
 @implementation CommentsViewController

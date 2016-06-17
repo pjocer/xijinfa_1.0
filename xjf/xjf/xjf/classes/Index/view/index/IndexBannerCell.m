@@ -11,8 +11,8 @@
 #import "BannerModel.h"
 
 @interface IndexBannerCell () <XRCarouselViewDelegate>
-@property(nonatomic, strong) BannerModel *bannermodel;
-@property(nonatomic, strong) XRCarouselView *carouselView;
+@property (nonatomic, strong) BannerModel *bannermodel;
+@property (nonatomic, strong) XRCarouselView *carouselView;
 @end
 
 @implementation IndexBannerCell

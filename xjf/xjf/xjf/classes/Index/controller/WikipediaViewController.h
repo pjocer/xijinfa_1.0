@@ -10,5 +10,5 @@
 #import "TalkGridModel.h"
 
 @interface WikipediaViewController : IndexBaseViewController
-@property(nonatomic, strong) TablkListModel *tablkListModel;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
 @end

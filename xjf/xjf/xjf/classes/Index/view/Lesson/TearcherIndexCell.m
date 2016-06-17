@@ -9,9 +9,9 @@
 #import "TearcherIndexCell.h"
 
 @interface TearcherIndexCell ()
-@property(nonatomic, strong) UIImageView *teacherImage;
-@property(nonatomic, strong) UILabel *teacherName;
-@property(nonatomic, strong) UILabel *teacherDetail;
+@property (nonatomic, strong) UIImageView *teacherImage;
+@property (nonatomic, strong) UILabel *teacherName;
+@property (nonatomic, strong) UILabel *teacherDetail;
 @end
 
 

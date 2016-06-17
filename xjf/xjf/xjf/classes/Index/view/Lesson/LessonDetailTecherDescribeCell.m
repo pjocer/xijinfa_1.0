@@ -10,14 +10,14 @@
 
 @interface LessonDetailTecherDescribeCell ()
 ///老师头像
-@property(nonatomic, strong) UIImageView *teacherImage;
+@property (nonatomic, strong) UIImageView *teacherImage;
 ///老师名字
-@property(nonatomic, strong) UILabel *teacherName;
+@property (nonatomic, strong) UILabel *teacherName;
 ///老师详情
-@property(nonatomic, strong) UILabel *teacherDetail;
+@property (nonatomic, strong) UILabel *teacherDetail;
 ///关注按钮
 //@property (nonatomic, strong) UIButton *focusButton;
-@property(nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) UIView *bottomView;
 @end
 
 

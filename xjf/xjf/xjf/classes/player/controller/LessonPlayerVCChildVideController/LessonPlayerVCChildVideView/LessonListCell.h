@@ -10,7 +10,7 @@
 
 @interface LessonListCell : UITableViewCell
 ///课程名字
-@property(nonatomic, strong) UILabel *lessonName;
+@property (nonatomic, strong) UILabel *lessonName;
 ///课程时长
-@property(nonatomic, strong) UILabel *lessonTime;
+@property (nonatomic, strong) UILabel *lessonTime;
 @end

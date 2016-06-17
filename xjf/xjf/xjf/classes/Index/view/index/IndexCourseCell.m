@@ -10,12 +10,11 @@
 #import "IndexSectionView.h"
 #import "UzysGridView.h"
 #import "CourseGridViewCell.h"
-#import "ProjectListByModel.h"
 
 @interface IndexCourseCell () <UzysGridViewDelegate, UzysGridViewDataSource>
-@property(nonatomic, strong) IndexSectionView *sectionView;
-@property(nonatomic, strong) UzysGridView *gridView;
-@property(nonatomic, strong) ProjectListByModel *model;
+@property (nonatomic, strong) IndexSectionView *sectionView;
+@property (nonatomic, strong) UzysGridView *gridView;
+@property (nonatomic, strong) ProjectListByModel *model;
 @end
 
 @implementation IndexCourseCell
@@ -37,7 +36,7 @@
         _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0,
                         35,
                         self.bounds.size.width,
-                self.bounds.size.height - 35)
+                        self.bounds.size.height - 35)
                                                numOfRow:3 numOfColumns:1 cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;

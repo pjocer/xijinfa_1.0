@@ -18,101 +18,101 @@
 @end
 
 @interface taxonomy_gurus : JSONModel
-@property(nonatomic, assign) int id;
-@property(nonatomic, strong) NSString *type;
-@property(nonatomic, strong) NSString *title;
-@property(nonatomic, strong) NSString *summary;
-@property(nonatomic, strong) NSString *icon;
-@property(nonatomic, strong) NSString *thumbnail;
-@property(nonatomic, strong) NSString *guru_avatar;
-@property(nonatomic, strong) NSString *comments_count;
-@property(nonatomic, strong) NSString *user_played;
-@property(nonatomic, strong) NSString *user_played_at;
-@property(nonatomic, strong) NSString *user_favored;
-@property(nonatomic, strong) NSString *user_liked;
+@property (nonatomic, assign) int id;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *summary;
+@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *thumbnail;
+@property (nonatomic, strong) NSString *guru_avatar;
+@property (nonatomic, strong) NSString *comments_count;
+@property (nonatomic, strong) NSString *user_played;
+@property (nonatomic, strong) NSString *user_played_at;
+@property (nonatomic, strong) NSString *user_favored;
+@property (nonatomic, strong) NSString *user_liked;
 @end
 
 @interface TalkGridVideo : JSONModel
-@property(nonatomic, strong) NSString *resolution;
-@property(nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *resolution;
+@property (nonatomic, strong) NSString *url;
 @end
 
 
 @interface TalkGridModel : JSONModel
-@property(nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *children;
-@property(nonatomic, strong) NSString *api_href;
-@property(nonatomic, strong) NSString *content;
-@property(nonatomic, strong) NSString *created_at;
-@property(nonatomic, strong) NSString *department;
-@property(nonatomic, strong) NSString *icon;
-@property(nonatomic, strong) NSString *id_;
-@property(nonatomic, strong) NSString *is_album;
+@property (nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *children;
+@property (nonatomic, strong) NSString *api_href;
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *created_at;
+@property (nonatomic, strong) NSString *department;
+@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *id_;
+@property (nonatomic, strong) NSString *is_album;
 ///关键字
-@property(nonatomic, strong) NSString *keywords;
+@property (nonatomic, strong) NSString *keywords;
 ///原价
-@property(nonatomic, strong) NSString *original_price;
-@property(nonatomic, strong) NSString *lessons_count;
-@property(nonatomic, assign) float lessons_duration;
-@property(nonatomic, strong) NSString *price;
-@property(nonatomic, strong) NSString *origin;
-@property(nonatomic, strong) NSString *purchased;
-@property(nonatomic, strong) NSString *sorting;
-@property(nonatomic, strong) NSString *status;
-@property(nonatomic, strong) NSString *subscribed;
-@property(nonatomic, strong) NSString *subtitle;
-@property(nonatomic, strong) NSString *summary;
-@property(nonatomic, strong) NSString *thumbnail;
-@property(nonatomic, strong) NSString *title;
-@property(nonatomic, strong) NSString *type;
-@property(nonatomic, strong) NSString *updated_at;
-@property(nonatomic, strong) NSArray *package;
+@property (nonatomic, strong) NSString *original_price;
+@property (nonatomic, strong) NSString *lessons_count;
+@property (nonatomic, assign) float lessons_duration;
+@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *origin;
+@property (nonatomic, strong) NSString *purchased;
+@property (nonatomic, strong) NSString *sorting;
+@property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *subscribed;
+@property (nonatomic, strong) NSString *subtitle;
+@property (nonatomic, strong) NSString *summary;
+@property (nonatomic, strong) NSString *thumbnail;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *updated_at;
+@property (nonatomic, strong) NSArray *package;
 ///用户在什么时候播放的视频
-@property(nonatomic, strong) NSString *user_played_at;
+@property (nonatomic, strong) NSString *user_played_at;
 ///(已登录用户)是否已收藏
-@property(nonatomic, assign) BOOL user_favored;
-@property(nonatomic, strong) NSString *user_id;
-@property(nonatomic, strong) NSString *likes_count;
+@property (nonatomic, assign) BOOL user_favored;
+@property (nonatomic, strong) NSString *user_id;
+@property (nonatomic, strong) NSString *likes_count;
 ///(已登录用户)是否已点赞
-@property(nonatomic, assign) BOOL user_liked;
+@property (nonatomic, assign) BOOL user_liked;
 ///(已登录用户)是否已付费(含购买订阅但不含免费)
-@property(nonatomic, assign) BOOL user_paid;
+@property (nonatomic, assign) BOOL user_paid;
 ///(已登录用户)是否已购买
-@property(nonatomic, assign) BOOL user_purchased;
+@property (nonatomic, assign) BOOL user_purchased;
 ///(已登录用户)是否已订阅
-@property(nonatomic, assign) BOOL user_subscribed;
+@property (nonatomic, assign) BOOL user_subscribed;
 ///(已登录用户)播放历史, 秒
-@property(nonatomic, strong) NSString *user_played;
+@property (nonatomic, strong) NSString *user_played;
 ///是否已经学习
-@property(nonatomic, assign) int user_learned;
+@property (nonatomic, assign) int user_learned;
 ///视频时长
-@property(nonatomic, assign) NSInteger video_duration;
+@property (nonatomic, assign) NSInteger video_duration;
 ///视频播放次数
-@property(nonatomic, strong) NSString *video_view;
-@property(nonatomic, strong) NSString *view;
-@property(nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video_player;
-@property(nonatomic, strong) NSArray <taxonomy_gurus> *taxonomy_gurus;
-@property(nonatomic, assign) BOOL isSelected;
+@property (nonatomic, strong) NSString *video_view;
+@property (nonatomic, strong) NSString *view;
+@property (nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video_player;
+@property (nonatomic, strong) NSArray <taxonomy_gurus> *taxonomy_gurus;
+@property (nonatomic, assign) BOOL isSelected;
 @end
 
 
 @interface TablkResultModel : JSONModel
-@property(nonatomic, assign) int current_page;
-@property(nonatomic, strong) NSArray <TalkGridModel> *data;
-@property(nonatomic, strong) NSString *from;
-@property(nonatomic, assign) int last_page;
-@property(nonatomic, strong) NSString *next_page_url;
-@property(nonatomic, strong) NSString *per_page;
-@property(nonatomic, strong) NSString *prev_page_url;
-@property(nonatomic, strong) NSString *to;
-@property(nonatomic, strong) NSString *total;
+@property (nonatomic, assign) int current_page;
+@property (nonatomic, strong) NSArray <TalkGridModel> *data;
+@property (nonatomic, strong) NSString *from;
+@property (nonatomic, assign) int last_page;
+@property (nonatomic, strong) NSString *next_page_url;
+@property (nonatomic, strong) NSString *per_page;
+@property (nonatomic, strong) NSString *prev_page_url;
+@property (nonatomic, strong) NSString *to;
+@property (nonatomic, strong) NSString *total;
 
 @end
 
 @interface TablkListModel : JSONModel
 
-@property(nonatomic, assign) int errCode;
-@property(nonatomic, strong) NSString *errMsg;
-@property(nonatomic, strong) TablkResultModel *result;
+@property (nonatomic, assign) int errCode;
+@property (nonatomic, strong) NSString *errMsg;
+@property (nonatomic, strong) TablkResultModel *result;
 
 @end
 

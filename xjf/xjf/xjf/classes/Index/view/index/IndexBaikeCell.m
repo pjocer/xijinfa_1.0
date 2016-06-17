@@ -10,12 +10,11 @@
 #import "IndexSectionView.h"
 #import "UzysGridView.h"
 #import "BaikeGridViewCell.h"
-#import "TalkGridModel.h"
 
 @interface IndexBaikeCell () <UzysGridViewDelegate, UzysGridViewDataSource>
-@property(nonatomic, strong) TablkListModel *talkGridModel;
-@property(nonatomic, strong) IndexSectionView *sectionView;
-@property(nonatomic, strong) UzysGridView *gridView;
+@property (nonatomic, strong) TablkListModel *talkGridModel;
+@property (nonatomic, strong) IndexSectionView *sectionView;
+@property (nonatomic, strong) UzysGridView *gridView;
 @end
 
 @implementation IndexBaikeCell

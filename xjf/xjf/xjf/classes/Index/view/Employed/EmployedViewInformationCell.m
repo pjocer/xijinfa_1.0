@@ -10,13 +10,13 @@
 
 @interface EmployedViewInformationCell ()
 ///分割线
-@property(nonatomic, strong) UIView *customSeparator;
+@property (nonatomic, strong) UIView *customSeparator;
 ///资讯图片
-@property(nonatomic, strong) UIImageView *videoImage;
+@property (nonatomic, strong) UIImageView *videoImage;
 ///资讯标题
-@property(nonatomic, strong) UILabel *videoTitle;
+@property (nonatomic, strong) UILabel *videoTitle;
 ///资讯详情
-@property(nonatomic, strong) UILabel *viedoDetail;
+@property (nonatomic, strong) UILabel *viedoDetail;
 @end
 
 @implementation EmployedViewInformationCell

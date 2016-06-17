@@ -10,6 +10,7 @@
 #import "LessonDetailListModel.h"
 
 @class LessonPlayerLessonListViewController;
+
 @protocol LessonPlayerLessonListViewControllerDelegate <NSObject>
 - (void)lessonPlayerLessonListViewController:(LessonPlayerLessonListViewController *)vc TableDidSelectedAction:(TalkGridModel *)selectModel;
 @end
@@ -20,6 +21,6 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) BOOL isPay;
 @property (nonatomic, strong) TalkGridModel *selectedModel;
-@property (nonatomic, assign) id<LessonPlayerLessonListViewControllerDelegate>delegate;
-@property (copy, nonatomic) void (^actionWithDidSelectedBlock)(TalkGridModel* model);
+@property (nonatomic, assign) id <LessonPlayerLessonListViewControllerDelegate> delegate;
+@property (copy, nonatomic) void (^actionWithDidSelectedBlock)(TalkGridModel *model);
 @end

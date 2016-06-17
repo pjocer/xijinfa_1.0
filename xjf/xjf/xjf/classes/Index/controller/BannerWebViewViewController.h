@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface BannerWebViewViewController : BaseViewController
-@property(nonatomic, strong) NSString *webHtmlUrl;
+@property (nonatomic, strong) NSString *webHtmlUrl;
 @end

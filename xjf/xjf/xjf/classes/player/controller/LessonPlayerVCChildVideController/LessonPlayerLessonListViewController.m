@@ -8,10 +8,7 @@
 
 #import "LessonPlayerLessonListViewController.h"
 #import "LessonDetailLessonListCell.h"
-#import "LessonDetailNoPayHeaderView.h"
-#import "LessonDetailHaveToPayHeaderView.h"
 #import "IndexSectionView.h"
-#import "LessonPlayerViewController.h"
 
 @interface LessonPlayerLessonListViewController () <UITableViewDelegate, UITableViewDataSource>
 

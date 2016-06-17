@@ -13,32 +13,30 @@
 #import "LessonPlayerLessonDescribeViewController.h"
 #import "LessonDetailLessonListViewController.h"
 #import "LessonDetailTecherDescribeViewController.h"
-#import "MyLessonsViewController.h"
 #import "OrderDetaiViewController.h"
-#import "LessonDetailListModel.h"
 
 @interface LessonDetailViewController () <UIScrollViewDelegate>
-@property(nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
+@property (nonatomic, strong) LessonDetailTitleView *lessonDetailTitleView;
 ///加入购物车按钮
-@property(nonatomic, strong) UIButton *addShoppingCart;
+@property (nonatomic, strong) UIButton *addShoppingCart;
 ///立刻购买按钮
-@property(nonatomic, strong) UIButton *nowPay;
+@property (nonatomic, strong) UIButton *nowPay;
 ///继续学习按钮
-@property(nonatomic, strong) UIButton *studing;
+@property (nonatomic, strong) UIButton *studing;
 
-@property(nonatomic, strong) UIScrollView *titleScrollView;
-@property(nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIScrollView *titleScrollView;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 /// 选中按钮
-@property(nonatomic, weak) UIButton *selTitleButton;
+@property (nonatomic, weak) UIButton *selTitleButton;
 ///展示按钮下View
-@property(nonatomic, strong) UIView *selView;
-@property(nonatomic, strong) UIView *selBackGroundView;
-@property(nonatomic, strong) NSMutableArray *buttons;
-@property(nonatomic, strong) LessonDetailLessonListViewController *lessonDetailLessonListViewController;
-@property(nonatomic, strong) LessonPlayerLessonDescribeViewController *lessonPlayerLessonDescribeViewController;
-@property(nonatomic, strong) LessonDetailTecherDescribeViewController *lessonDetailTecherDescribeViewController;
-@property(nonatomic, strong) UILabel *goodsCount;
-@property(nonatomic, strong) LessonDetailListModel *dataSourceModel;
+@property (nonatomic, strong) UIView *selView;
+@property (nonatomic, strong) UIView *selBackGroundView;
+@property (nonatomic, strong) NSMutableArray *buttons;
+@property (nonatomic, strong) LessonDetailLessonListViewController *lessonDetailLessonListViewController;
+@property (nonatomic, strong) LessonPlayerLessonDescribeViewController *lessonPlayerLessonDescribeViewController;
+@property (nonatomic, strong) LessonDetailTecherDescribeViewController *lessonDetailTecherDescribeViewController;
+@property (nonatomic, strong) UILabel *goodsCount;
+@property (nonatomic, strong) LessonDetailListModel *dataSourceModel;
 @end
 
 
@@ -237,11 +235,11 @@ static CGFloat payViewH = 285;
     } else {
         [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
         if ([self.model.department isEqualToString:@"dept3"]) {
-           [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_XUETANG_SHOP];
-        }else if ([self.model.department isEqualToString:@"dept4"]){
+            [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_XUETANG_SHOP];
+        } else if ([self.model.department isEqualToString:@"dept4"]) {
             [[XJMarket sharedMarket] addGoods:@[self.model] key:XJ_CONGYE_PEIXUN_SHOP];
         }
-        
+
         self.goodsCount.text = [NSString stringWithFormat:@"%ld", [[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] count] + [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count]];
         if (self.goodsCount.hidden == YES) {
             self.goodsCount.hidden = NO;

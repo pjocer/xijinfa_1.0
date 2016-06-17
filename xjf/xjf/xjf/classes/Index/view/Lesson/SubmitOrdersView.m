@@ -9,7 +9,7 @@
 #import "SubmitOrdersView.h"
 
 @interface SubmitOrdersView ()
-@property(nonatomic, strong) UILabel *aCombinedLabel;
+@property (nonatomic, strong) UILabel *aCombinedLabel;
 @end
 
 @implementation SubmitOrdersView

@@ -12,11 +12,11 @@
 
 @interface PlayerPageCommentsHeaderView ()
 
-@property(nonatomic, strong) UIView *backGroundView;
+@property (nonatomic, strong) UIView *backGroundView;
 
-@property(nonatomic, strong) IndexSectionView *indexSectionView;
+@property (nonatomic, strong) IndexSectionView *indexSectionView;
 ///用户头像
-@property(nonatomic, strong) UIImageView *userImage;
+@property (nonatomic, strong) UIImageView *userImage;
 
 @end
 

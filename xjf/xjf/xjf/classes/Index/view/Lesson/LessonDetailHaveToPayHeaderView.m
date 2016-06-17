@@ -10,17 +10,17 @@
 
 
 @interface LessonDetailHaveToPayHeaderView ()
-@property(nonatomic, strong) UIImageView *noStudyImage;
-@property(nonatomic, strong) UILabel *noStudyLabel;
-@property(nonatomic, strong) UIImageView *studingImage;
-@property(nonatomic, strong) UILabel *studingLabel;
-@property(nonatomic, strong) UIImageView *studedImage;
-@property(nonatomic, strong) UILabel *studedLabel;
+@property (nonatomic, strong) UIImageView *noStudyImage;
+@property (nonatomic, strong) UILabel *noStudyLabel;
+@property (nonatomic, strong) UIImageView *studingImage;
+@property (nonatomic, strong) UILabel *studingLabel;
+@property (nonatomic, strong) UIImageView *studedImage;
+@property (nonatomic, strong) UILabel *studedLabel;
 ///修饰图
-@property(nonatomic, strong) UIView *modifiedView;
-@property(nonatomic, strong) UILabel *title;
-@property(nonatomic, strong) UILabel *lessonCount;
-@property(nonatomic, strong) UILabel *progress;
+@property (nonatomic, strong) UIView *modifiedView;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *lessonCount;
+@property (nonatomic, strong) UILabel *progress;
 @end
 
 @implementation LessonDetailHaveToPayHeaderView

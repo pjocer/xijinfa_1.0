@@ -10,8 +10,8 @@
 
 @interface PlayerPageDescribeHeaderView ()
 
-@property(nonatomic, strong) UIView *topBackGroundView;
-@property(nonatomic, strong) UIView *bottomBackGroundView;
+@property (nonatomic, strong) UIView *topBackGroundView;
+@property (nonatomic, strong) UIView *bottomBackGroundView;
 
 @end
 
@@ -30,7 +30,7 @@
         self.collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.collectionButton];
 //        self.collectionButton.backgroundColor = BackgroundColor
-        [self.collectionButton setImage:[[UIImage imageNamed:@"iconFavorites"]
+        [self.collectionButton                                             setImage:[[UIImage imageNamed:@"iconFavorites"]
                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [self.collectionButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.topBackGroundView);
@@ -41,7 +41,7 @@
         self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.shareButton];
 //        self.shareButton.backgroundColor = BackgroundColor
-        [self.shareButton setImage:[[UIImage imageNamed:@"iconShare"]
+        [self.shareButton                                                  setImage:[[UIImage imageNamed:@"iconShare"]
                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [self.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.topBackGroundView);

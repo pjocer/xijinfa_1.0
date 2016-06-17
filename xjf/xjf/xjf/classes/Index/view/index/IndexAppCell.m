@@ -11,9 +11,9 @@
 #import "AppGridViewCell.h"
 
 @interface IndexAppCell () <UzysGridViewDelegate, UzysGridViewDataSource>
-@property(nonatomic, strong) UzysGridView *gridView;
-@property(nonatomic, strong) NSArray *dataTitle;
-@property(nonatomic, strong) NSArray *dataImage;
+@property (nonatomic, strong) UzysGridView *gridView;
+@property (nonatomic, strong) NSArray *dataTitle;
+@property (nonatomic, strong) NSArray *dataImage;
 @end
 
 @implementation IndexAppCell

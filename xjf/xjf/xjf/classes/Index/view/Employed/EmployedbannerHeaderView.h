@@ -11,5 +11,5 @@
 #import "XRCarouselView.h"
 
 @interface EmployedbannerHeaderView : UIView
-@property(nonatomic, strong) XRCarouselView *carouselView;
+@property (nonatomic, strong) XRCarouselView *carouselView;
 @end

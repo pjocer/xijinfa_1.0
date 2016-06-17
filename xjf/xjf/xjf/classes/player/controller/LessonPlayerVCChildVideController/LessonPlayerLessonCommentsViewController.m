@@ -12,9 +12,9 @@
 #import "PlayerViewController.h"
 
 @interface LessonPlayerLessonCommentsViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) NSMutableArray *dataSource;
-@property(nonatomic, strong) TablkListModel *tablkListModel;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
 @end
 
 @implementation LessonPlayerLessonCommentsViewController

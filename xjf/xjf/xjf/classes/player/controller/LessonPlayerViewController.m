@@ -7,10 +7,8 @@
 //
 
 #import "LessonPlayerViewController.h"
-#import <AVFoundation/AVFoundation.h>
 #import "ZFPlayer.h"
 #import "playerConfigure.h"
-#import "LessonDetailLessonListViewController.h"
 #import "XJAccountManager.h"
 #import "SettingViewController.h"
 #import <AFNetworkReachabilityManager.h>
@@ -23,19 +21,19 @@ static CGFloat selViewH = 3;
 @interface LessonPlayerViewController () <UIScrollViewDelegate, LessonPlayerVideoBottomViewDelegate,
         LessonPlayerLessonListViewControllerDelegate,
         UIAlertViewDelegate>
-@property(nonatomic, strong) UIView *playView;
-@property(strong, nonatomic) ZFPlayerView *playerView;
-@property(nonatomic, strong) LessonPlayerVideoBottomView *videoBottomView;
-@property(nonatomic, weak) UIScrollView *titleScrollView;
-@property(nonatomic, weak) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIView *playView;
+@property (strong, nonatomic) ZFPlayerView *playerView;
+@property (nonatomic, strong) LessonPlayerVideoBottomView *videoBottomView;
+@property (nonatomic, weak) UIScrollView *titleScrollView;
+@property (nonatomic, weak) UIScrollView *contentScrollView;
 /// 选中按钮
-@property(nonatomic, weak) UIButton *selTitleButton;
+@property (nonatomic, weak) UIButton *selTitleButton;
 ///展示按钮下View
-@property(nonatomic, strong) UIView *selView;
-@property(nonatomic, strong) UIView *selBackGroundView;
-@property(nonatomic, strong) NSMutableArray *buttons;
-@property(nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
-@property(nonatomic, strong) LessonPlayerLessonListViewController *lessonPlayerLessonListViewController;
+@property (nonatomic, strong) UIView *selView;
+@property (nonatomic, strong) UIView *selBackGroundView;
+@property (nonatomic, strong) NSMutableArray *buttons;
+@property (nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
+@property (nonatomic, strong) LessonPlayerLessonListViewController *lessonPlayerLessonListViewController;
 @end
 
 @implementation LessonPlayerViewController
@@ -79,7 +77,7 @@ static CGFloat selViewH = 3;
     [super viewDidLoad];
     [self initMainUI];
     [self requestLessonListData:[NSString stringWithFormat:@"%@/%@",
-                    coursesProjectLessonDetailList, self.lesssonID] method:GET];
+                                                           coursesProjectLessonDetailList, self.lesssonID] method:GET];
     [self sendPlayerHistoryToServerData:history method:POST];
 
 }
@@ -110,16 +108,15 @@ static CGFloat selViewH = 3;
             sSelf.videoBottomView.model = sSelf.playTalkGridModel;
             sSelf.videoBottomView.collectionCount.text = sSelf.tempLessonDetailModel.result.likes_count;
             if (sSelf.tempLessonDetailModel.result.user_liked) {
-                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLikeOn"]
+                [sSelf.videoBottomView.collectionLogo                              setImage:[[UIImage imageNamed:@"iconLikeOn"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             } else {
-                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLike"]
+                [sSelf.videoBottomView.collectionLogo                              setImage:[[UIImage imageNamed:@"iconLike"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             }
             sSelf.lessonPlayerLessonListViewController.lessonDetailListModel = sSelf.tempLessonDetailModel;
             sSelf.lessonPlayerLessonListViewController.selectedModel = sSelf.playTalkGridModel;
-            if (sSelf.tempLessonDetailModel.result.user_purchased || sSelf.tempLessonDetailModel.result.user_subscribed)
-            {
+            if (sSelf.tempLessonDetailModel.result.user_purchased || sSelf.tempLessonDetailModel.result.user_subscribed) {
                 sSelf.lessonPlayerLessonListViewController.isPay = YES;
             }
             [sSelf.lessonPlayerLessonListViewController.tableView reloadData];
@@ -144,7 +141,7 @@ static CGFloat selViewH = 3;
                     @"type" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.type],
                     @"department" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.department]}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [self requestLessonListData:
+        [self                                                                         requestLessonListData:
                 [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
@@ -177,13 +174,13 @@ static CGFloat selViewH = 3;
                     @"department" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.department]}];
     if (method == POST) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            [self requestLessonListData:
+            [self                                                                         requestLessonListData:
                     [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
         }                  failedBlock:^(NSError *_Nullable error) {
         }];
     } else if (method == DELETE) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            [self requestLessonListData:
+            [self                                                                         requestLessonListData:
                     [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
         }                  failedBlock:^(NSError *_Nullable error) {
         }];
@@ -384,7 +381,7 @@ static CGFloat selViewH = 3;
         }
         //视频是否收藏过
         if (tempSelf.playTalkGridModel.user_favored) {
-            [tempSelf.videoBottomView.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
+            [tempSelf.videoBottomView.collection                               setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
                     imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         } else {
             [tempSelf.videoBottomView.collection setImage:[UIImage imageNamed:@"iconFavorites"]

@@ -9,8 +9,8 @@
 #import "LessonDetailNoPayHeaderView.h"
 
 @interface LessonDetailNoPayHeaderView ()
-@property(nonatomic, strong) UILabel *title;
-@property(nonatomic, strong) UILabel *lessonCount;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *lessonCount;
 @end
 
 @implementation LessonDetailNoPayHeaderView

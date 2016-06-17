@@ -9,7 +9,7 @@
 #import "LessonDetailLessonListCell.h"
 
 @interface LessonDetailLessonListCell ()
-@property(nonatomic, strong) UILabel *lessonCount;
+@property (nonatomic, strong) UILabel *lessonCount;
 @end
 
 @implementation LessonDetailLessonListCell

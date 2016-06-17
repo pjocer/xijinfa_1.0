@@ -10,7 +10,7 @@
 #import "IndexSectionView.h"
 
 @interface PlayerPageRecommendedHeaderView ()
-@property(nonatomic, strong) IndexSectionView *indexSectionView;
+@property (nonatomic, strong) IndexSectionView *indexSectionView;
 @end
 
 @implementation PlayerPageRecommendedHeaderView

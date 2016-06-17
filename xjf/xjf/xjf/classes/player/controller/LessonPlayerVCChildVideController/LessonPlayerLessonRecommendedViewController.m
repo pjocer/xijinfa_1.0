@@ -9,26 +9,22 @@
 #import "LessonPlayerLessonRecommendedViewController.h"
 #import "CommentsPageCommentsCell.h"
 #import "LessonRecommendedHeaderView.h"
-#import "LessonPlayerViewController.h"
 #import "XJAccountManager.h"
-#import "LoginViewController.h"
-#import "RegistViewController.h"
-#import "CommentsModel.h"
 #import <MJRefresh.h>
 #import "CustomTextField.h"
 
 @interface LessonPlayerLessonRecommendedViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) NSMutableArray *dataSource;
-@property(nonatomic, retain) UIView *keyBoardView;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, retain) UIView *keyBoardView;
 /**< 键盘背景图 */
-@property(nonatomic, retain) UIView *keyBoardAppearView;
+@property (nonatomic, retain) UIView *keyBoardAppearView;
 /**< 键盘出现，屏幕背景图 */
-@property(nonatomic, retain) CustomTextField *textField;
+@property (nonatomic, retain) CustomTextField *textField;
 /**< 键盘 */
-@property(nonatomic, strong) LessonRecommendedHeaderView *tableHeaderView;
-@property(nonatomic, strong) UIButton *sendMsgButton;
-@property(nonatomic, strong) CommentsAllDataList *commentsModel;
+@property (nonatomic, strong) LessonRecommendedHeaderView *tableHeaderView;
+@property (nonatomic, strong) UIButton *sendMsgButton;
+@property (nonatomic, strong) CommentsAllDataList *commentsModel;
 @end
 
 

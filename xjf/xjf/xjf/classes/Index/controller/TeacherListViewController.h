@@ -10,5 +10,5 @@
 #import "TeacherListHostModel.h"
 
 @interface TeacherListViewController : IndexBaseViewController
-@property(nonatomic, strong) TeacherListHostModel *hostModel;
+@property (nonatomic, strong) TeacherListHostModel *hostModel;
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "IndexSectionView.h"
-#import "xjfConfigure.h"
 
 
 @implementation IndexSectionView

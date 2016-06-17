@@ -12,22 +12,20 @@
 #import "VideoListCell.h"
 #import "OrderHeaderView.h"
 #import "OrderFooterView.h"
-#import "MyViewController.h"
-#import "AlertUtils.h"
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
 
 @interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) UIButton *cancel;
-@property(nonatomic, strong) UIButton *nowPay;
-@property(nonatomic, strong) PayView *payView;
-@property(nonatomic, strong) UIView *payingBackGroudView;
-@property(nonatomic, strong) OrderHeaderView *orderheaderView;
-@property(nonatomic, strong) OrderFooterView *orderfooterView;
-@property(nonatomic, strong) NSDictionary *requestParams;
-@property(nonatomic, assign) PayStyle style;
-@property(nonatomic, strong) XJOrder *order;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *cancel;
+@property (nonatomic, strong) UIButton *nowPay;
+@property (nonatomic, strong) PayView *payView;
+@property (nonatomic, strong) UIView *payingBackGroudView;
+@property (nonatomic, strong) OrderHeaderView *orderheaderView;
+@property (nonatomic, strong) OrderFooterView *orderfooterView;
+@property (nonatomic, strong) NSDictionary *requestParams;
+@property (nonatomic, assign) PayStyle style;
+@property (nonatomic, strong) XJOrder *order;
 @end
 
 @implementation OrderDetaiViewController
@@ -333,16 +331,16 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
                 [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSourceLesson];
                 [[XJMarket sharedMarket] deleteGoodsFrom:XJ_CONGYE_PEIXUN_SHOP goods:self.dataSourceTraining];
             }
-        }else {
+        } else {
             if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
                 [[XJAccountManager defaultManager]
-                 updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
+                        updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
             }
         }
-  
+
         [self.navigationController popViewControllerAnimated:YES];
-        
-    }failed:^{
+
+    }                                     failed:^{
 
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
         if (self.dataSource.count != 1) {

@@ -9,10 +9,10 @@
 #import "CourseGridViewCell.h"
 
 @interface CourseGridViewCell ()
-@property(nonatomic, strong) UIImageView *titleImage;
-@property(nonatomic, strong) UILabel *titleLable;
-@property(nonatomic, strong) UILabel *detailLable;
-@property(nonatomic, strong) UIImageView *accessoryView;
+@property (nonatomic, strong) UIImageView *titleImage;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UILabel *detailLable;
+@property (nonatomic, strong) UIImageView *accessoryView;
 @end
 
 @implementation CourseGridViewCell

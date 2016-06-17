@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TalkGridModel.h"
+
 @interface LessonDetailLessonListCell : UITableViewCell
 @property (nonatomic, strong) UIImageView *studyImage;
 @property (nonatomic, strong) TalkGridModel *talkGridModel;

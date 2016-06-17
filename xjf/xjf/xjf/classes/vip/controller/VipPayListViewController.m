@@ -12,14 +12,13 @@
 #import "VipPayListPagePrivilegeCell.h"
 #import "IndexSectionView.h"
 #import "OrderDetaiViewController.h"
-#import "TalkGridModel.h"
 #import "VipOrderDetaiViewController.h"
 
 @interface VipPayListViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(nonatomic, strong) VipListModel *dataSourceModel;
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) UIButton *footer;
-@property(nonatomic, strong) UIView *foot_background;
+@property (nonatomic, strong) VipListModel *dataSourceModel;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *footer;
+@property (nonatomic, strong) UIView *foot_background;
 @end
 
 @implementation VipPayListViewController

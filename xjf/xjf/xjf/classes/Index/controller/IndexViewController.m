@@ -8,26 +8,21 @@
 
 #import "IndexViewController.h"
 #import "IndexConfigure.h"
-#import "VideolistViewController.h"
-#import "PlayerViewController.h"
-#import "TalkGridModel.h"
 #import "LessonListViewController.h"
 #import "LessonDetailViewController.h"
-#import "TeacherListHostModel.h"
 #import "TeacherDetailViewController.h"
 #import "EmployedViewController.h"
-#import "ProjectListByModel.h"
 #import "EmployedLessonListViewController.h"
 #import "BannerWebViewViewController.h"
 #import "BannerModel.h"
 
 @interface IndexViewController () <UITableViewDataSource, UITableViewDelegate>
-@property(nonatomic, strong) UITableView *tableview;
-@property(nonatomic, strong) NSMutableArray *sectionsArray;
-@property(nonatomic, strong) TablkListModel *tablkListModel;
-@property(nonatomic, strong) TablkListModel *tablkListModel_Lesson;
-@property(nonatomic, strong) TeacherListHostModel *teacherListHostModel;
-@property(nonatomic, strong) ProjectListByModel *projectListByModel;
+@property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) NSMutableArray *sectionsArray;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
+@property (nonatomic, strong) TablkListModel *tablkListModel_Lesson;
+@property (nonatomic, strong) TeacherListHostModel *teacherListHostModel;
+@property (nonatomic, strong) ProjectListByModel *projectListByModel;
 @end
 
 @implementation IndexViewController
@@ -38,7 +33,7 @@
         _sectionsArray = [[NSMutableArray alloc] init];
     }
     _sectionsArray = [NSMutableArray arrayWithObjects:@"bannercell", @"appcell", @"talkcell", @"baikecell",
-                    @"teachercell", @"coursecell", nil];
+                                                      @"teachercell", @"coursecell", nil];
     //
     [self extendheadViewFor:Index];
     [self initMainUI];

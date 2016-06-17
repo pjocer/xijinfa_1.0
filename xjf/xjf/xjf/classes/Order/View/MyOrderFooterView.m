@@ -9,7 +9,7 @@
 #import "MyOrderFooterView.h"
 
 @interface MyOrderFooterView ()
-@property(nonatomic, strong) UIView *backGroudView;
+@property (nonatomic, strong) UIView *backGroudView;
 @end
 
 @implementation MyOrderFooterView

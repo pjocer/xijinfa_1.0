@@ -11,5 +11,5 @@
 @interface MyOrderViewController : OrderDetailBaseViewController
 - (void)requestAllOrderData:(APIName *)api method:(RequestMethod)method;
 
-@property(nonatomic, strong) NSDictionary *requestParams;
+@property (nonatomic, strong) NSDictionary *requestParams;
 @end

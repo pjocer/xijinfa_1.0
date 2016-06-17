@@ -15,13 +15,13 @@
 
 @interface ShoppingCartViewController () <UITableViewDelegate, UITableViewDataSource>
 ///提交订单视图
-@property(nonatomic, strong) SubmitOrdersView *submitOrdersView;
-@property(nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) SubmitOrdersView *submitOrdersView;
+@property (nonatomic, strong) UITableView *tableView;
 ///析金学堂数据数组
-@property(nonatomic, strong) NSMutableArray *dataSourceLesson;
+@property (nonatomic, strong) NSMutableArray *dataSourceLesson;
 ///从业培训数据数组
-@property(nonatomic, strong) NSMutableArray *dataSourceTraining;
-@property(nonatomic, strong) VideoListCell *videoListCell;
+@property (nonatomic, strong) NSMutableArray *dataSourceTraining;
+@property (nonatomic, strong) VideoListCell *videoListCell;
 @end
 
 @implementation ShoppingCartViewController
@@ -254,8 +254,8 @@ static CGFloat submitOrdersViewHeight = 50;
     return YES;
 }
 
-- (nullable NSString *)tableView:(UITableView *)tableView
-        titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (nullable NSString *)                 tableView:(UITableView *)tableView
+titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";
 }
 
@@ -286,9 +286,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 tempPrcie -= model.price.floatValue;
                 self.submitOrdersView.price.text = [NSString stringWithFormat:@"%.2lf", tempPrcie / 100];
             }
-            
+
             [[XJMarket sharedMarket] deleteGoodsFrom:XJ_CONGYE_PEIXUN_SHOP goods:@[model]];
-            
+
             [self.dataSourceTraining removeObjectAtIndex:indexPath.row];
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
         }
@@ -306,7 +306,7 @@ static CGFloat tempPrcie = 0;
     } else if (indexPath.section == 1) {
         model = self.dataSourceTraining[indexPath.row];
     }
-    
+
     if (model.isSelected) {
         cell.selectedLabel.backgroundColor = [UIColor whiteColor];
         cell.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;

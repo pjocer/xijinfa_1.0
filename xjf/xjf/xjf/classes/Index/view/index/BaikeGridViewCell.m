@@ -10,10 +10,10 @@
 
 @interface BaikeGridViewCell ()
 
-@property(nonatomic, strong) UIImageView *titleImage;
-@property(nonatomic, strong) UILabel *titleLable;
-@property(nonatomic, strong) UILabel *teacherLable;
-@property(nonatomic, strong) UILabel *classesLable;
+@property (nonatomic, strong) UIImageView *titleImage;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UILabel *teacherLable;
+@property (nonatomic, strong) UILabel *classesLable;
 
 @end
 

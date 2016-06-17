@@ -7,6 +7,7 @@
 //
 
 #import "IndexBaseViewController.h"
+
 @interface EmployedLessonListViewController : IndexBaseViewController
 ///基础知识ID
 @property (nonatomic, strong) NSString *employedBasisID;

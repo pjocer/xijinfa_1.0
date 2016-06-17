@@ -10,9 +10,9 @@
 #import "XJAccountManager.h"
 
 @interface LessonRecommendedHeaderView ()
-@property(nonatomic, strong) UIView *backGroundView;
+@property (nonatomic, strong) UIView *backGroundView;
 ///用户头像
-@property(nonatomic, strong) UIImageView *userImage;
+@property (nonatomic, strong) UIImageView *userImage;
 
 @end
 

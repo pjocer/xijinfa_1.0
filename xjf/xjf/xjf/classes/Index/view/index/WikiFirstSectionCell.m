@@ -10,7 +10,7 @@
 #import "WikiPediaCategoriesModel.h"
 
 @interface WikiFirstSectionCell ()
-@property(nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
+@property (nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
 @end
 
 @implementation WikiFirstSectionCell

@@ -8,10 +8,10 @@
 
 #import "EmployedLawsViewController.h"
 #import "VideoListCell.h"
-#import "TalkGridModel.h"
 #import "LessonDetailViewController.h"
 #import <MJRefresh.h>
-@interface EmployedLawsViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface EmployedLawsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) TablkListModel *tablkListModel;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -24,10 +24,11 @@ static NSString *EmployedLawsCell_id = @"EmployedLawsCell_id";
     [super viewDidLoad];
     [self initTabelView];
     self.dataSource = [NSMutableArray array];
-    [self requesData:[NSString stringWithFormat:@"%@%@",employedCategory,self.ID] method:GET];
+    [self requesData:[NSString stringWithFormat:@"%@%@", employedCategory, self.ID] method:GET];
 }
 
 #pragma mark requestData
+
 - (void)requesData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
@@ -35,27 +36,25 @@ static NSString *EmployedLawsCell_id = @"EmployedLawsCell_id";
         __strong typeof(self) sSelf = wSelf;
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
         [sSelf.dataSource addObjectsFromArray:sSelf.tablkListModel.result.data];
-        [sSelf.tableView.mj_footer isRefreshing]?[sSelf.tableView.mj_footer endRefreshing]:nil;
+        [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
         [sSelf.tableView reloadData];
-    }failedBlock:^(NSError *_Nullable error) {
+    }                  failedBlock:^(NSError *_Nullable error) {
         __strong typeof(self) sSelf = wSelf;
-        [sSelf.tableView.mj_footer isRefreshing]?[sSelf.tableView.mj_footer endRefreshing]:nil;
+        [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
     }];
 }
 
-- (void)loadMoreData
-{
+- (void)loadMoreData {
     if (self.tablkListModel.result.next_page_url != nil) {
         [self requesData:self.tablkListModel.result.next_page_url method:GET];
-    } else if (self.tablkListModel.result.current_page == self.tablkListModel.result.last_page)
-    {
+    } else if (self.tablkListModel.result.current_page == self.tablkListModel.result.last_page) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
 }
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-                      initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 100) style:UITableViewStylePlain];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 100) style:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -68,7 +67,7 @@ static NSString *EmployedLawsCell_id = @"EmployedLawsCell_id";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView registerClass:[VideoListCell class] forCellReuseIdentifier:EmployedLawsCell_id];
-    
+
     if (!self.tableView.mj_footer) {
         //mj_footer
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
@@ -76,8 +75,8 @@ static NSString *EmployedLawsCell_id = @"EmployedLawsCell_id";
 }
 
 #pragma mark TabelViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;
 }
 
@@ -91,6 +90,7 @@ static NSString *EmployedLawsCell_id = @"EmployedLawsCell_id";
 }
 
 #pragma mark Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];

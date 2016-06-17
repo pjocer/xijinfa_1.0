@@ -12,21 +12,19 @@
 #import "VideoListCell.h"
 #import "OrderHeaderView.h"
 #import "OrderFooterView.h"
-#import "MyViewController.h"
-#import "AlertUtils.h"
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
 
 @interface VipOrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) UIButton *cancel;
-@property(nonatomic, strong) UIButton *nowPay;
-@property(nonatomic, strong) PayView *payView;
-@property(nonatomic, assign) PayStyle style;
-@property(nonatomic, strong) UIView *payingBackGroudView;
-@property(nonatomic, strong) OrderHeaderView *orderheaderView;
-@property(nonatomic, strong) OrderFooterView *orderfooterView;
-@property(nonatomic, strong) XJOrder *order;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *cancel;
+@property (nonatomic, strong) UIButton *nowPay;
+@property (nonatomic, strong) PayView *payView;
+@property (nonatomic, assign) PayStyle style;
+@property (nonatomic, strong) UIView *payingBackGroudView;
+@property (nonatomic, strong) OrderHeaderView *orderheaderView;
+@property (nonatomic, strong) OrderFooterView *orderfooterView;
+@property (nonatomic, strong) XJOrder *order;
 @end
 
 @implementation VipOrderDetaiViewController
@@ -147,7 +145,7 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 //    }
 
     self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共1件商品 实际付款:￥%.2lf",
-                    [self.vipModel.price floatValue] / 100];
+                                                                            [self.vipModel.price floatValue] / 100];
 
     return self.orderfooterView;
 }

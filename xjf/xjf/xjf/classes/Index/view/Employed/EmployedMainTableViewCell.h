@@ -10,5 +10,5 @@
 #import "ProjectListByModel.h"
 
 @interface EmployedMainTableViewCell : UITableViewCell
-@property(nonatomic, strong) ProjectList *model;
+@property (nonatomic, strong) ProjectList *model;
 @end

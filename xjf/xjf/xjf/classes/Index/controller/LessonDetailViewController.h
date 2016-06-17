@@ -11,6 +11,6 @@
 #import "TalkGridModel.h"
 
 @interface LessonDetailViewController : BaseViewController
-@property(nonatomic, strong) TalkGridModel *model;
-@property(nonatomic, strong) NSString *apiType;
+@property (nonatomic, strong) TalkGridModel *model;
+@property (nonatomic, strong) NSString *apiType;
 @end

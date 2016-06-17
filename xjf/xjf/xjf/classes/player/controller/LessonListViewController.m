@@ -8,11 +8,11 @@
 
 #import "LessonListViewController.h"
 #import "VideoListCell.h"
-#import "LessonPlayerViewController.h"
 #import "LessonDetailViewController.h"
 #import <MJRefresh.h>
+
 @interface LessonListViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation LessonListViewController
@@ -29,8 +29,7 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
     self.tabBarController.tabBar.hidden = NO;
 }
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.dataSource = [NSMutableArray array];
@@ -44,19 +43,17 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
     [self initTabelView];
 
     if (self.ID) {
-         NSString *api = [NSString stringWithFormat:@"%@%@", coursesProject, self.ID];
+        NSString *api = [NSString stringWithFormat:@"%@%@", coursesProject, self.ID];
         [self requesData:api method:GET];
     } else {
-         [self requesData:coursesProjectLessonDetailList method:GET];
+        [self requesData:coursesProjectLessonDetailList method:GET];
     }
 }
 
-- (void)loadMoreData
-{
+- (void)loadMoreData {
     if (self.tablkListModel.result.next_page_url != nil) {
         [self requesData:self.tablkListModel.result.next_page_url method:GET];
-    } else if (self.tablkListModel.result.current_page == self.tablkListModel.result.last_page)
-    {
+    } else if (self.tablkListModel.result.current_page == self.tablkListModel.result.last_page) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
 }
@@ -68,14 +65,14 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 
     __weak typeof(self) wSelf = self;
     [[ZToastManager ShardInstance] showprogress];
-    
+
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
 
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
         sSelf.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
         [sSelf.dataSource addObjectsFromArray:sSelf.tablkListModel.result.data];
-        [sSelf.tableView.mj_footer isRefreshing]?[sSelf.tableView.mj_footer endRefreshing]:nil;
+        [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
         [sSelf.tableView reloadData];
         [[ZToastManager ShardInstance] hideprogress];
         if (!self.tableView.mj_footer) {
@@ -87,7 +84,7 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
         __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-        [sSelf.tableView.mj_footer isRefreshing]?[sSelf.tableView.mj_footer endRefreshing]:nil;
+        [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
     }];
 }
 

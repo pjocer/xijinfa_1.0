@@ -13,19 +13,18 @@
 #import "OrderHeaderView.h"
 #import "MyOrderFooterView.h"
 #import "OrderDetaiViewController.h"
-#import "OrderModel.h"
 #import "XJAccountManager.h"
 
 @interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource,
         MyOrderFootrtViewDelegate, OrderInfoDidChangedDelegate>
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) PayView *payView;
-@property(nonatomic, strong) UIView *payingBackGroudView;
-@property(nonatomic, strong) OrderHeaderView *orderheaderView;
-@property(nonatomic, strong) MyOrderFooterView *orderfooterView;
-@property(nonatomic, assign) PayStyle style;
-@property(nonatomic, strong) OrderModel *orderModel;
-@property(nonatomic, strong) XJOrder *order;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) PayView *payView;
+@property (nonatomic, strong) UIView *payingBackGroudView;
+@property (nonatomic, strong) OrderHeaderView *orderheaderView;
+@property (nonatomic, strong) MyOrderFooterView *orderfooterView;
+@property (nonatomic, assign) PayStyle style;
+@property (nonatomic, strong) OrderModel *orderModel;
+@property (nonatomic, strong) XJOrder *order;
 @end
 
 @implementation MyOrderViewController
@@ -308,15 +307,13 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
         [self requestAllOrderData:queryAllOrder method:GET];
         if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] ||
-            self.orderfooterView.model.items.count == 0) {
+                self.orderfooterView.model.items.count == 0) {
             [[XJAccountManager defaultManager] updateUserInfo:[self.order.order.result.membership toDictionary]
                                                  isVipChanged:YES];
         }
-        
-        
-        
 
-    } failed:^{
+
+    }                                     failed:^{
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
     }];
 }

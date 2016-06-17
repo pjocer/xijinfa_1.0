@@ -10,10 +10,10 @@
 
 @interface VideoListCell ()
 ///视频图片
-@property(nonatomic, strong) UIImageView *videoImage;
+@property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
-@property(nonatomic, strong) UILabel *videoTitle;
-@property(nonatomic, strong) UILabel *vipLogo;
+@property (nonatomic, strong) UILabel *videoTitle;
+@property (nonatomic, strong) UILabel *vipLogo;
 @end
 
 @implementation VideoListCell
@@ -198,7 +198,7 @@
         self.videoImage.image = [UIImage imageNamed:@"icon_vip_12m"];
         CGFloat price = [vipModel.price floatValue] / 100 / 12;
         self.videoTitle.text = [NSString stringWithFormat:@"年费会员充值%.2lf元 ￥%.2lf/月",
-                        [vipModel.price floatValue] / 100, price];
+                                                          [vipModel.price floatValue] / 100, price];
     }
     self.price.text = [NSString stringWithFormat:@"￥%.2lf", [vipModel.price floatValue] / 100];
 

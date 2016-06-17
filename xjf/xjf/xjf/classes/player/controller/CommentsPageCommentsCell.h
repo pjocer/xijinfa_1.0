@@ -10,5 +10,5 @@
 #import "CommentsModel.h"
 
 @interface CommentsPageCommentsCell : UITableViewCell
-@property(nonatomic, strong) CommentsModel *commentsModel;
+@property (nonatomic, strong) CommentsModel *commentsModel;
 @end

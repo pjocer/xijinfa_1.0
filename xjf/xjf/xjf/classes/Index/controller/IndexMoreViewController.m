@@ -8,13 +8,12 @@
 
 #import "IndexMoreViewController.h"
 #import "IndexConfigure.h"
-#import "playerConfigure.h"
 
 @interface IndexMoreViewController () <UITableViewDataSource, UITableViewDelegate> {
 
 }
-@property(nonatomic, strong) UITableView *tableview;
-@property(nonatomic, strong) NSMutableArray *sectionsArray;
+@property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) NSMutableArray *sectionsArray;
 
 @end
 

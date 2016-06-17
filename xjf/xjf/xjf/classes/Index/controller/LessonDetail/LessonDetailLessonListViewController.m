@@ -8,8 +8,6 @@
 
 #import "LessonDetailLessonListViewController.h"
 #import "LessonDetailLessonListCell.h"
-#import "LessonDetailNoPayHeaderView.h"
-#import "LessonDetailHaveToPayHeaderView.h"
 #import "IndexSectionView.h"
 #import "LessonPlayerViewController.h"
 

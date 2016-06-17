@@ -12,8 +12,8 @@
 #import "EmployedBasisViewController.h"
 #import "EmployedLawsViewController.h"
 #import "EmployedGeneralViewController.h"
-#import "TalkGridModel.h"
-@interface EmployedLessonListViewController ()<UIScrollViewDelegate>
+
+@interface EmployedLessonListViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UILabel *goodsCount;
 @property (nonatomic, strong) EmployedBasisViewController *employedBasisViewController;
 @property (nonatomic, strong) EmployedLawsViewController *employedLawsViewController;
@@ -58,10 +58,11 @@ static CGFloat selViewH = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-    
+
 }
 
 #pragma mark - setNavigationBar
+
 - (void)setNavigationBar {
     self.navigationItem.title = self.employedLessonList;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -70,7 +71,7 @@ static CGFloat selViewH = 3;
     UIBarButtonItem *barbutton2 = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = barbutton2;
     [button addTarget:self action:@selector(shoppingCartAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     self.goodsCount = [[UILabel alloc] initWithFrame:CGRectNull];
     [button addSubview:self.goodsCount];
     [self.goodsCount mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -98,12 +99,13 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark - initMainUI
+
 - (void)initMainUI {
     [self setupTitleScrollView];//创建小scrollview
     [self setupContentScrollView];//创建大scrollview
     [self addChildViewController];//添加子控制器
     [self setupTitle];//根据子视图个数创建小scrollview的按钮
-    
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.contentScrollView.contentSize = CGSizeMake(self.childViewControllers.count * SCREENWITH, 0);
     self.contentScrollView.pagingEnabled = YES;
@@ -112,6 +114,7 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark - 设置头部标题栏
+
 - (void)setupTitleScrollView {
     CGRect rect = CGRectMake(0, 1, SCREENWITH, titleH);
     self.titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
@@ -120,6 +123,7 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark - 设置内容
+
 - (void)setupContentScrollView {
     CGFloat y = CGRectGetMaxY(self.titleScrollView.frame);
     CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH);
@@ -129,27 +133,29 @@ static CGFloat selViewH = 3;
 }
 
 #pragma mark - 添加子控制器
+
 - (void)addChildViewController {
-    
+
     self.employedBasisViewController = [[EmployedBasisViewController alloc] init];
     self.employedBasisViewController.title = @"基础知识";
     [self addChildViewController:self.employedBasisViewController];
     self.employedBasisViewController.ID = self.employedBasisID;
-    
+
     self.employedLawsViewController = [[EmployedLawsViewController alloc] init];
     self.employedLawsViewController.title = @"法律法规";
     [self addChildViewController:self.employedLawsViewController];
     self.employedLawsViewController.ID = self.employedLawsID;
-    
+
     self.employedGeneralViewController = [[EmployedGeneralViewController alloc] init];
     self.employedGeneralViewController.title = @"全科";
     [self addChildViewController:self.employedGeneralViewController];
     self.employedGeneralViewController.ID = self.employedGeneralID;
-    
-    
+
+
 }
 
 #pragma mark - 设置标题
+
 - (void)setupTitle {
     NSUInteger count = self.childViewControllers.count;
     CGFloat x = 0;
@@ -160,26 +166,26 @@ static CGFloat selViewH = 3;
         x = i * w;
         CGRect rect = CGRectMake(x, 0, w, h);
         UIButton *btn = [[UIButton alloc] initWithFrame:rect];
-        
+
         btn.tag = i;
         [btn setTitle:vc.title forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.titleLabel.font = FONT15;
-        
+
         [btn addTarget:self action:@selector(chick:) forControlEvents:UIControlEventTouchDown];
-        
+
         [self.buttons addObject:btn];
         [self.titleScrollView addSubview:btn];
-        
+
         if (i == 0) {
             [self chick:btn];
         }
     }
     self.titleScrollView.contentSize = CGSizeMake(count * w, 0);
     self.titleScrollView.showsHorizontalScrollIndicator = NO;
-    
+
     self.selBackGroundView = [[UIView alloc]
-                              initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH, selViewH)];
+            initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH, selViewH)];
     self.selBackGroundView.backgroundColor = BackgroundColor;
     [self.view addSubview:self.selBackGroundView];
     //
@@ -226,10 +232,11 @@ static CGFloat selViewH = 3;
         offset = maxOffset;
     }
     [self.titleScrollView setContentOffset:CGPointMake(offset, 0) animated:YES];
-    
+
 }
 
 #pragma mark - UIScrollViewDelegate
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSUInteger i = self.contentScrollView.contentOffset.x / SCREENWITH;
     [self selTitleBtn:self.buttons[i]];
@@ -238,7 +245,7 @@ static CGFloat selViewH = 3;
 
 // 只要滚动UIScrollView就会调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
+
 }
 
 

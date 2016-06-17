@@ -10,19 +10,19 @@
 
 @interface CommentsPageCommentsCell ()
 ///分割线
-@property(nonatomic, strong) UIView *customSeparator;
+@property (nonatomic, strong) UIView *customSeparator;
 ///用户头像
-@property(nonatomic, strong) UIImageView *userImage;
+@property (nonatomic, strong) UIImageView *userImage;
 ///用户名字
-@property(nonatomic, strong) UILabel *userName;
+@property (nonatomic, strong) UILabel *userName;
 ///评论时间
-@property(nonatomic, strong) UILabel *commentsTime;
+@property (nonatomic, strong) UILabel *commentsTime;
 ///用户详情
-@property(nonatomic, strong) UILabel *userDetail;
+@property (nonatomic, strong) UILabel *userDetail;
 ///评论内容
-@property(nonatomic, strong) UILabel *commentsText;
+@property (nonatomic, strong) UILabel *commentsText;
 
-@property(nonatomic, assign) CGRect tempRect;
+@property (nonatomic, assign) CGRect tempRect;
 @end
 
 @implementation CommentsPageCommentsCell

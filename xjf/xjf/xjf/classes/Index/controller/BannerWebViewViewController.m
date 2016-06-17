@@ -10,8 +10,8 @@
 #import <WebKit/WebKit.h>
 
 @interface BannerWebViewViewController ()
-@property(strong, nonatomic) WKWebView *webView;
-@property(nonatomic, strong) UIProgressView *progressView;
+@property (strong, nonatomic) WKWebView *webView;
+@property (nonatomic, strong) UIProgressView *progressView;
 @end
 
 @implementation BannerWebViewViewController

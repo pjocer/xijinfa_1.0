@@ -10,6 +10,6 @@
 #import "VipModel.h"
 
 @interface VipOrderDetaiViewController : OrderDetailBaseViewController
-@property(nonatomic, strong) VipModel *vipModel;
-@property(nonatomic, strong) NSMutableDictionary *dicData;
+@property (nonatomic, strong) VipModel *vipModel;
+@property (nonatomic, strong) NSMutableDictionary *dicData;
 @end

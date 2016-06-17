@@ -9,28 +9,22 @@
 #import "LessonViewController.h"
 #import "IndexConfigure.h"
 #import "BannerModel.h"
-#import "LessonPlayerViewController.h"
 #import "LessonListViewController.h"
-#import "ProjectListByModel.h"
 #import "XJAccountManager.h"
-#import "AlertUtils.h"
-#import "LoginViewController.h"
-#import "RegistViewController.h"
-#import "TeacherListHostModel.h"
 #import "TeacherDetailViewController.h"
 #import "SearchViewController.h"
 
 @interface LessonViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout, XRCarouselViewDelegate>
 
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property(nonatomic, retain) NSMutableArray *dataArrayByBanner;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, retain) UICollectionViewFlowLayout *layout;
+@property (nonatomic, retain) NSMutableArray *dataArrayByBanner;
 /**< 广告数据源 */
-@property(nonatomic, strong) BannerModel *bannermodel;
+@property (nonatomic, strong) BannerModel *bannermodel;
 ///视频专题列表数据
-@property(nonatomic, strong) ProjectListByModel *projectListByModel;
-@property(nonatomic, strong) TeacherListHostModel *teacherListHostModel;
+@property (nonatomic, strong) ProjectListByModel *projectListByModel;
+@property (nonatomic, strong) TeacherListHostModel *teacherListHostModel;
 @end
 
 static NSString *lessonBannerView_HeaderId = @"lessonBannerView_HeaderId";
@@ -60,21 +54,20 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 #pragma mark requestData
 
-- (void)racTestRequestData
-{
-    RACSignal *ProjectListDat = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+- (void)racTestRequestData {
+    RACSignal *ProjectListDat = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         @weakify(self)
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:projectList RequestMethod:GET];
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
             self.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
             [subscriber sendNext:self.projectListByModel];
-        }failedBlock:^(NSError *_Nullable error) {
+        }                  failedBlock:^(NSError *_Nullable error) {
         }];
         return nil;
     }];
-    
-    RACSignal *resquestBannerx = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+    RACSignal *resquestBannerx = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         self.dataArrayByBanner = [NSMutableArray array];
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:appDeptCarousel3 RequestMethod:GET];
         @weakify(self);
@@ -85,31 +78,31 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
                 [self.dataArrayByBanner addObject:model.thumbnail];
             }
             [subscriber sendNext:self.dataArrayByBanner];
-        } failedBlock:^(NSError *_Nullable error) {
+        }                  failedBlock:^(NSError *_Nullable error) {
         }];
         return nil;
     }];
-    
-    RACSignal *requestTeacherData = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+
+    RACSignal *requestTeacherData = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:teacherListHot RequestMethod:GET];
         @weakify(self);
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self);
             self.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
             [subscriber sendNext:self.teacherListHostModel];
-        }failedBlock:^(NSError *_Nullable error) {
+        }                  failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
         return nil;
     }];
-    
-    [self rac_liftSelector:@selector(updateUI:data2:data3:) withSignalsFromArray:@[ProjectListDat,resquestBannerx,requestTeacherData]];
+
+    [self rac_liftSelector:@selector(updateUI:data2:data3:) withSignalsFromArray:@[ProjectListDat, resquestBannerx, requestTeacherData]];
 }
 
-- (void)updateUI:(ProjectListByModel *)data1 data2:(NSMutableArray *)data2 data3:(TeacherListHostModel *)data3
-{
+- (void)updateUI:(ProjectListByModel *)data1 data2:(NSMutableArray *)data2 data3:(TeacherListHostModel *)data3 {
     [self.collectionView reloadData];
 }
+
 #pragma mark -- Navigation
 
 - (void)setNavigation {
@@ -203,7 +196,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
         }
         else if (indexPath.section == 1) {
             WikiSectionHeaderView *wikiSectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-            withReuseIdentifier:teacher_HeaderId forIndexPath:indexPath];
+                                                                                              withReuseIdentifier:teacher_HeaderId forIndexPath:indexPath];
             wikiSectionHeaderView.titleLabel.text = @"人气讲师";
             UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc]
                     initWithTarget:self action:@selector(handleSingleTapFrom)];
