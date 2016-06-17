@@ -264,6 +264,11 @@ static CGFloat BottomPayButtonH = 50;
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
+    [RACObserve(self.contentScrollView, contentOffset) subscribeNext:^(id x) {
+        CGPoint offSet = [x CGPointValue];
+        CGFloat percent = offSet.x/SCREENWITH;
+        [self.selView setFrame:CGRectMake(percent*SCREENWITH/count, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH/count, selViewH)];
+    }];
 }
 
 // 按钮点击

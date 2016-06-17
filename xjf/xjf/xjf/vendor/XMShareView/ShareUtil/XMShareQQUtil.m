@@ -32,7 +32,7 @@
         self.authSuccess = success;
         self.authFail = fail;
     } else {
-        NSLog(@"未安装QQ");
+        [[ZToastManager ShardInstance] showtoast:@"未安装QQ"];
     }
 }
 

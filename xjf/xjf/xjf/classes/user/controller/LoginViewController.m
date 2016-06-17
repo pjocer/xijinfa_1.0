@@ -278,6 +278,7 @@
         [dict setObject:accessToken forKey:@"access_token"];
         [dict setObject:openid forKey:@"openid"];
         NSMutableDictionary *param = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"qq", @"type", nil];
+        
         request = [[XjfRequest alloc] initWithAPIName:third_login RequestMethod:POST];
         request.requestParams = param;
     } else if (typev == 2) {

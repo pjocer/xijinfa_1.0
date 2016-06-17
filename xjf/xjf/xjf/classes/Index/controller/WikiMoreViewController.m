@@ -19,6 +19,9 @@
 @implementation WikiMoreViewController
 static NSString *WikiMoreCell_Id = @"WikiMoreCell_Id";
 
++(void)load {
+    
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;

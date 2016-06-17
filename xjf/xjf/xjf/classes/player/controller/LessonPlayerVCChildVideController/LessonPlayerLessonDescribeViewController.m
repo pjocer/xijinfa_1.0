@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.view.backgroundColor = [UIColor whiteColor];
 //    self.lessonName = [[UILabel alloc] init];
 //    [self.view addSubview:self.lessonName];
@@ -27,7 +26,6 @@
 //        make.right.equalTo(self.view).with.offset(-10);
 //        make.height.mas_equalTo(18);
 //    }];
-
     self.textView = [[UITextView alloc] init];
     [self.view addSubview:self.textView];
     self.textView.textColor = AssistColor
@@ -37,7 +35,6 @@
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.editable = NO;
     self.textView.text = self.contentText;
-
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(10);
