@@ -55,66 +55,61 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCollectionView];
-    [self requestBannerData:appDeptCarousel3 method:GET];
-    [self requesProjectListDat:projectList method:GET];
-    [self requestTeacherData:teacherListHot method:GET];
+    [self racTestRequestData];
 }
 
 #pragma mark requestData
 
-- (void)requestBannerData:(APIName *)api method:(RequestMethod)method {
-    __weak typeof(self) wSelf = self;
-    self.dataArrayByBanner = [NSMutableArray array];
-    [[ZToastManager ShardInstance] showprogress];
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-
-    //bannermodel
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-
-        __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
-        sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
-        for (BannerResultModel *model in sSelf.bannermodel.result.data) {
-            [self.dataArrayByBanner addObject:model.thumbnail];
-        }
-
-        [sSelf.collectionView reloadData];
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+- (void)racTestRequestData
+{
+    RACSignal *ProjectListDat = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @weakify(self)
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:projectList RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.projectListByModel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
     }];
-
+    
+    RACSignal *resquestBannerx = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        self.dataArrayByBanner = [NSMutableArray array];
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:appDeptCarousel3 RequestMethod:GET];
+        @weakify(self);
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+            for (BannerResultModel *model in self.bannermodel.result.data) {
+                [self.dataArrayByBanner addObject:model.thumbnail];
+            }
+            [subscriber sendNext:self.dataArrayByBanner];
+        } failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
+    
+    RACSignal *requestTeacherData = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:teacherListHot RequestMethod:GET];
+        @weakify(self);
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self);
+            self.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.teacherListHostModel];
+        }failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+        return nil;
+    }];
+    
+    [self rac_liftSelector:@selector(updateUI:data2:data3:) withSignalsFromArray:@[ProjectListDat,resquestBannerx,requestTeacherData]];
 }
 
-- (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
-    __weak typeof(self) wSelf = self;
-
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
-        [sSelf.collectionView reloadData];
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
+- (void)updateUI:(ProjectListByModel *)data1 data2:(NSMutableArray *)data2 data3:(TeacherListHostModel *)data3
+{
+    [self.collectionView reloadData];
 }
-
-- (void)requestTeacherData:(APIName *)api method:(RequestMethod)method {
-    __weak typeof(self) wSelf = self;
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-
-    //TeacherListHostModel
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
-        sSelf.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
-        [sSelf.collectionView reloadData];
-
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
-    }];
-}
-
 #pragma mark -- Navigation
 
 - (void)setNavigation {

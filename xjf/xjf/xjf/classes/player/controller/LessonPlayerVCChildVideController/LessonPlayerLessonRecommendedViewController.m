@@ -202,7 +202,10 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     self.sendMsgButton.frame = CGRectMake(0, 0, 30, 19);
     self.sendMsgButton.center = CGPointMake(CGRectGetMaxX(self.textField.frame) + 30, self.textField.center.y);
     self.sendMsgButton.tintColor = [UIColor blackColor];
-    [self.sendMsgButton addTarget:self action:@selector(sendCommentMsg:) forControlEvents:UIControlEventTouchUpInside];
+    [[self.sendMsgButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self requestCommentsData:[NSString stringWithFormat:@"%@/%@/comments", coursesProjectLessonDetailList, self.ID] method:POST];
+        [self.textField resignFirstResponder];
+    }];
 
     //UIKeyboardWillShow
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardwillAppear:)
@@ -221,14 +224,6 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     } else {
         [self.textField becomeFirstResponder];
     }
-}
-
-#pragma mark 发表评论
-
-- (void)sendCommentMsg:(UIButton *)sender {
-    [self requestCommentsData:[NSString stringWithFormat:@"%@/%@/comments", coursesProjectLessonDetailList, self.ID]
-                       method:POST];
-    [self.textField resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
