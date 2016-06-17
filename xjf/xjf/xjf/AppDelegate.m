@@ -28,14 +28,7 @@
     RootViewController *root = [[RootViewController alloc] init];
     self.window.rootViewController = root;
     [self.window makeKeyAndVisible];
-    
-    [ZPlatformShare initPlatformData];
-    [[XJAccountManager defaultManager] verifyValid];
-
-    application.statusBarHidden = NO;
-    
-    //检测网络状态
-    [AppDelegateManager startMonitoringAppCurrentNetworkReachabilityStatus];
+    [AppDelegateManager initControl];
     return YES;
 }
 

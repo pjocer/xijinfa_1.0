@@ -7,10 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AppDelegate.h"
 @interface AppDelegateManager : NSObject
-
-///开始监听当前网络状态
-+ (void)startMonitoringAppCurrentNetworkReachabilityStatus;
-
++ (void)initControl;
 @end

@@ -16,14 +16,7 @@
 @protocol TopicDataModel
 
 @end
-/**
- *  "id": 51169,
- "type": "tag",
- "title": "基金",
- "summary": "",
- "icon": "",
- "thumbnail": ""
- */
+
 @interface CategoryLabel : JSONModel
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *type;

@@ -10,8 +10,17 @@
 #import <AFNetworking/AFNetworking.h>
 #import "XJAccountManager.h"
 #import "SettingViewController.h"
-
+#import "ZPlatformShare.h"
+@interface AppDelegateManager ()
+@end
 @implementation AppDelegateManager
++(void)initControl {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self startMonitoringAppCurrentNetworkReachabilityStatus];
+    [ZPlatformShare initPlatformData];
+    [[XJAccountManager defaultManager] verifyValid];
+}
+//网络状态
 + (void)startMonitoringAppCurrentNetworkReachabilityStatus
 {
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
