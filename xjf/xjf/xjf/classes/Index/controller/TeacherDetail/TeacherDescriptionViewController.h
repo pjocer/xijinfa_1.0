@@ -7,8 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import <WebKit/WebKit.h>
 @interface TeacherDescriptionViewController : BaseViewController
-@property (nonatomic, retain) UITextView *textView;
 @property (nonatomic, strong) NSString *tempContent;
+@property (nonatomic, strong) UIWebView *web;
 @end

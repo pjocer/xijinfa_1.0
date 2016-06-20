@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <WebKit/WebKit.h>
 @interface LessonPlayerLessonDescribeViewController : UIViewController
-@property (nonatomic, retain) UITextView *textView;
-@property (nonatomic, strong) NSString *contentText;;
+@property (nonatomic, strong) UIWebView *web;
+@property (nonatomic, strong) NSString *contentText;
 @end
