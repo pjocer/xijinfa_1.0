@@ -72,6 +72,28 @@
     return result;
 }
 
+- (NSString *)flattenHTML:(NSString *)html {
+    
+    NSScanner *theScanner;
+    NSString *text = nil;
+    
+    theScanner = [NSScanner scannerWithString:html];
+    
+    while ([theScanner isAtEnd] == NO) {
+        // find start of tag
+        [theScanner scanUpToString:@"<" intoString:NULL] ;
+        // find end of tag
+        [theScanner scanUpToString:@">" intoString:&text] ;
+        // replace the found tag with a space
+        //(you can filter multi-spaces out later if you wish)
+        html = [html stringByReplacingOccurrencesOfString:
+                [NSString stringWithFormat:@"%@>", text]
+                                               withString:@""];
+    } // while //
+    return html;
+}
+
+
 // implementation by Daniel Dickison and Walty
 // http://stackoverflow.com/questions/1105169/html-character-decoding-in-objective-c-cocoa-touch
 - (NSString *)stringByDecodingXMLEntities {

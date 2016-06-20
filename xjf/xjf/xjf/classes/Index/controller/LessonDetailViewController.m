@@ -78,7 +78,6 @@ static CGFloat payViewH = 285;
 
 }
 
-
 - (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     [[ZToastManager ShardInstance] showprogress];
@@ -88,7 +87,7 @@ static CGFloat payViewH = 285;
         __strong typeof(self) sSelf = wSelf;
         sSelf.dataSourceModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
         sSelf.lessonDetailTitleView.model = self.dataSourceModel;
-        sSelf.lessonPlayerLessonDescribeViewController.contentText = [self.dataSourceModel.result.content escapeHTML];
+        sSelf.lessonPlayerLessonDescribeViewController.contentText = [self.dataSourceModel.result.content flattenHTML:self.dataSourceModel.result.content];
         if (self.dataSourceModel.result.user_purchased || self.dataSourceModel.result.user_subscribed) {
             self.lessonDetailLessonListViewController.isPay = YES;
         }
