@@ -24,7 +24,6 @@
 - (NSString *)trimTheExtraSpaces;
 
 - (NSString *)escapeHTML;
-- (NSString *)flattenHTML:(NSString *)html;
 
 - (NSString *)stringByDecodingXMLEntities;
 
