@@ -91,14 +91,17 @@
 }
 
 - (NSInteger)numberOfCellsInGridView:(UzysGridView *)gridview {
-    return 4;
+    if (self.tablkListModel.result.data.count > 4) {
+        return 4;
+    }
+    return self.tablkListModel.result.data.count;
 }
 
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     TalkGridViewCell *cell = [[TalkGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
 
-    if (self.tablkListModel.result.data && self.tablkListModel.result.data.count > index) {
+    if (self.tablkListModel != nil && self.tablkListModel.result.data && self.tablkListModel.result.data.count > 0) {
         cell.model = self.tablkListModel.result.data[index];
     }
     return cell;

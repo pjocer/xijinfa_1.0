@@ -122,9 +122,9 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 - (void)initCollectionView {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
-    _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);//针对分区
-    _layout.minimumLineSpacing = 0.0;   //最小列间距默认10
-    _layout.minimumInteritemSpacing = 0.0;//左右间隔
+    _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);
+    _layout.minimumLineSpacing = 0.0;
+    _layout.minimumInteritemSpacing = 0.0;
 
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,
                     0,

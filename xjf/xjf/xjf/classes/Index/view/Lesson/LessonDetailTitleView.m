@@ -91,7 +91,7 @@
         [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
             make.bottom.mas_equalTo(self.videoImage);
-            make.width.mas_equalTo(52);
+            make.width.mas_equalTo(80);
             make.height.mas_equalTo(14);
         }];
         //oldPrice

@@ -88,7 +88,7 @@ static CGFloat payViewH = 285;
         __strong typeof(self) sSelf = wSelf;
         sSelf.dataSourceModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
         sSelf.lessonDetailTitleView.model = self.dataSourceModel;
-        sSelf.lessonPlayerLessonDescribeViewController.contentText = self.dataSourceModel.result.content;
+        sSelf.lessonPlayerLessonDescribeViewController.contentText = [self.dataSourceModel.result.content escapeHTML];
         if (self.dataSourceModel.result.user_purchased || self.dataSourceModel.result.user_subscribed) {
             self.lessonDetailLessonListViewController.isPay = YES;
         }

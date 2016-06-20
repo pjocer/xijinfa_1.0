@@ -88,7 +88,10 @@
 }
 
 - (NSInteger)numberOfCellsInGridView:(UzysGridView *)gridview {
-    return 2;
+    if (self.talkGridModel.result.data.count > 2) {
+        return 2;
+    }
+    return self.talkGridModel.result.data.count;
 }
 
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
