@@ -151,27 +151,54 @@
     self.window = [[UIApplication sharedApplication] keyWindow];
     switch (type) {
         case AgeCase: {
-            self.dataSource = [NSMutableArray arrayWithObjects:@"18-22岁", @"23-30岁", @"31-40岁", @"41-50岁", @"51-60岁", @"61-70岁", @">70岁", nil];
+            self.dataSource = [@[
+                    @"22岁以下",
+                    @"22岁-28岁",
+                    @"28岁-35岁",
+                    @"35岁-45岁",
+                    @"45岁以上"
+            ] mutableCopy];
             [self confirmCaseView:AgeCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"设置年龄"];
         }
             break;
         case SexCase: {
-            self.dataSource = [NSMutableArray arrayWithObjects:@"男", @"女", nil];
+            self.dataSource = [@[
+                    @"男",
+                    @"女"
+            ] mutableCopy];
             [self confirmCaseView:SexCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"设置性别"];
         }
             break;
         case InterestedInvestCase: {
-            self.dataSource = [NSMutableArray arrayWithArray:@[@"股票", @"债券", @"基金", @"期货", @"外汇", @"保险", @"银行理财", @"贵金属", @"其它"]];
+            self.dataSource = [NSMutableArray arrayWithArray:@[
+                    @"股票",
+                    @"债券",
+                    @"基金",
+                    @"期货",
+                    @"外汇",
+                    @"保险",
+                    @"银行理财",
+                    @"贵金属",
+                    @"其它"]];
             [self confirmCaseView:InterestedInvestCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"修改感兴趣的金融知识"];
         }
             break;
         case ExperienceInvestCase: {
-            self.dataSource = [NSMutableArray arrayWithArray:@[@"小于三个月", @"小于一年", @"一年至两年", @"两年至三年", @"三年至四年", @"五年至十年", @"十年以上"]];
+            self.dataSource = [NSMutableArray arrayWithArray:@[
+                    @"10年以上",
+                    @"5-10年",
+                    @"2-5年",
+                    @"1-2年",
+                    @"1年以下"]];
             [self confirmCaseView:ExperienceInvestCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"设置投资资历"];
         }
             break;
         case PreferenceInvestCase: {
-            self.dataSource = [NSMutableArray arrayWithArray:@[@"稳健产品", @"年化收益小于20%", @"年化收益达30%至50%", @"年化收益50%以上"]];
+            self.dataSource = [NSMutableArray arrayWithArray:@[
+                    @"稳健产品",
+                    @"年化收益小于20%",
+                    @"年化收益达30%至50%",
+                    @"年化收益50%以上"]];
             [self confirmCaseView:PreferenceInvestCase size:CGSizeMake(CASE_WIDTH, CASE_HEIGHT) title:@"设置投资偏好"];
         }
             break;
