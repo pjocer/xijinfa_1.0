@@ -35,10 +35,11 @@
         [self addSubview:_sectionView];
 
         //
-        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0,
-                        35,
-                        self.bounds.size.width, self.bounds.size.height - 35)
-                                               numOfRow:1 numOfColumns:3 cellMargin:1];
+        _gridView = [[UzysGridView alloc]
+                initWithFrame:CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height - 35)
+                     numOfRow:1
+                 numOfColumns:3
+                   cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
@@ -82,7 +83,8 @@
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     TeacherGridViewCell *cell = [[TeacherGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
-    cell.model = self.teacherListHostModel.result.data[index];
+    if (self.teacherListHostModel.result.data && self.teacherListHostModel.result.data.count > index)
+        cell.model = self.teacherListHostModel.result.data[index];
     return cell;
 }
 

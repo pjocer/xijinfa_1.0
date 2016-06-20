@@ -39,9 +39,11 @@
         [self addSubview:_sectionView];
 
         //
-        _gridView = [[UzysGridView alloc] initWithFrame:
-                        CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height - 35)
-                                               numOfRow:2 numOfColumns:2 cellMargin:1];
+        _gridView = [[UzysGridView alloc]
+                initWithFrame:CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height - 35)
+                     numOfRow:2
+                 numOfColumns:2
+                   cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
@@ -96,8 +98,7 @@
     TalkGridViewCell *cell = [[TalkGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
 
-    if (self.tablkListModel.result.data && self.tablkListModel.result.data.count > 0) {
-
+    if (self.tablkListModel.result.data && self.tablkListModel.result.data.count > index) {
         cell.model = self.tablkListModel.result.data[index];
     }
     return cell;

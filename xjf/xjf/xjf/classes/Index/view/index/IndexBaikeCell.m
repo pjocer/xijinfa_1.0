@@ -39,11 +39,11 @@
         [self addSubview:_sectionView];
 
         //
-        _gridView = [[UzysGridView alloc] initWithFrame:CGRectMake(0,
-                        35,
-                        self.bounds.size.width,
-                        self.bounds.size.height - 35)
-                                               numOfRow:2 numOfColumns:1 cellMargin:1];
+        _gridView = [[UzysGridView alloc]
+                initWithFrame:CGRectMake(0, 35, self.bounds.size.width, self.bounds.size.height - 35)
+                     numOfRow:2
+                 numOfColumns:1
+                   cellMargin:1];
         _gridView.delegate = self;
         _gridView.dataSource = self;
         [self addSubview:_gridView];
@@ -94,7 +94,7 @@
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     BaikeGridViewCell *cell = [[BaikeGridViewCell alloc] initWithFrame:CGRectNull];
     cell.deletable = NO;
-    if (self.talkGridModel.result.data.count > 0 && self.talkGridModel.result.data) {
+    if (self.talkGridModel.result.data && self.talkGridModel.result.data.count > index) {
         cell.model = self.talkGridModel.result.data[index];
     }
     return cell;
