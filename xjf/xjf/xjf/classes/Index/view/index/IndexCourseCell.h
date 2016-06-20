@@ -8,6 +8,9 @@
 
 #import "BaseViewCell.h"
 
+/**
+ * 首页推荐:从业培训
+ */
 @interface IndexCourseCell : BaseViewCell
 
 @end
