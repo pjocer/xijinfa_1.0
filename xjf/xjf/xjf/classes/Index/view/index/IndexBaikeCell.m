@@ -18,7 +18,6 @@
 @end
 
 @implementation IndexBaikeCell
-@synthesize gridView = _gridView;
 
 - (void)setCallBack:(void (^)(BEventType, UIView *, id, id, NSIndexPath *))callback {
     self.actionBlock = callback;
@@ -27,12 +26,12 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
         //
-        UITapGestureRecognizer *singleRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                           action:@selector(indexHandleSingleTapFrom)];
+        UITapGestureRecognizer *singleRecognizer =
+                [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                        action:@selector(indexHandleSingleTapFrom)];
         _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-        _sectionView.titleLabel.text = @" 析金学堂";
+        _sectionView.titleLabel.text = @"析金学堂";
         _sectionView.userInteractionEnabled = YES;
         [_sectionView addGestureRecognizer:singleRecognizer];
         singleRecognizer = nil;
@@ -51,21 +50,6 @@
     return self;
 }
 
-- (void)dealloc {
-    self.actionBlock = nil;
-    self.data = nil;
-    self.key = nil;
-    self.other = nil;
-    self.indexPath = nil;
-    self.sectionView = nil;
-    self.gridView = nil;
-
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-}
-
 /// 根据数据模型来显示内容
 - (void)showInfo:(id)model key:(id)key indexPath:(NSIndexPath *)indexPath {
     self.key = key;
@@ -73,7 +57,6 @@
     self.indexPath = indexPath;
     self.talkGridModel = (TablkListModel *) model;
     [_gridView reloadData];
-
 }
 
 /// 返回Cell高度
@@ -82,9 +65,7 @@
     if (iPhone5 || iPhone4) {
         return 240;
     }
-
     return 280;
-
 }
 
 - (NSInteger)numberOfCellsInGridView:(UzysGridView *)gridview {
@@ -96,7 +77,6 @@
 
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     BaikeGridViewCell *cell = [[BaikeGridViewCell alloc] initWithFrame:CGRectNull];
-    cell.deletable = NO;
     if (self.talkGridModel.result.data && self.talkGridModel.result.data.count > index) {
         cell.model = self.talkGridModel.result.data[index];
     }
@@ -111,7 +91,7 @@
 
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_Unknow, nil, self.talkGridModel.result.data[index], nil, self.indexPath);
+        self.actionBlock(BEventType_Unknown, nil, self.talkGridModel.result.data[index], nil, self.indexPath);
     }
 }
 

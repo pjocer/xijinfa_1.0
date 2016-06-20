@@ -21,18 +21,6 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-}
-
-- (void)dealloc {
-    self.actionBlock = nil;
-    self.data = nil;
-    self.indexPath = nil;
-    self.other = nil;
-    self.key = nil;
-}
-
 - (void)setCallBack:(void (^)(BEventType, UIView *, id, id, NSIndexPath *))callback {
     self.actionBlock = callback;
 }

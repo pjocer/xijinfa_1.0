@@ -8,6 +8,9 @@
 
 #import "BaseViewCell.h"
 
+/**
+ * 首页的4个圆形图标入口
+ */
 @interface IndexAppCell : BaseViewCell
 
 @end

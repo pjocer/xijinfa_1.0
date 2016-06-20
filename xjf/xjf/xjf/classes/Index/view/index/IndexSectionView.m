@@ -33,14 +33,8 @@
         self.bottomView.backgroundColor = BackgroundColor;
         [self addSubview:self.bottomView];
         self.bottomView.hidden = YES;
-
-
     }
     return self;
 }
 
-- (void)dealloc {
-    self.titleLabel = nil;
-    self.moreLabel = nil;
-}
 @end

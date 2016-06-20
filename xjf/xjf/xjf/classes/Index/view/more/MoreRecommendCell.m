@@ -82,8 +82,6 @@
 
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     TeacherGridViewCell *cell = [[TeacherGridViewCell alloc] initWithFrame:CGRectNull];
-
-    cell.deletable = NO;
     return cell;
 }
 

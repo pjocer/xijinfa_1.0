@@ -18,7 +18,6 @@
 @end
 
 @implementation IndexTeacherCell
-@synthesize gridView = _gridView;
 
 - (void)setCallBack:(void (^)(BEventType, UIView *, id, id, NSIndexPath *))callback {
     self.actionBlock = callback;
@@ -29,7 +28,7 @@
     if (self) {
         //
         _sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-        _sectionView.titleLabel.text = @" 析金讲师";
+        _sectionView.titleLabel.text = @"析金讲师";
         _sectionView.moreLabel.text = @"";
         _sectionView.userInteractionEnabled = NO;
         [self addSubview:_sectionView];
@@ -47,20 +46,6 @@
     return self;
 }
 
-- (void)dealloc {
-    self.actionBlock = nil;
-    self.data = nil;
-    self.key = nil;
-    self.other = nil;
-    self.indexPath = nil;
-    self.sectionView = nil;
-    self.gridView = nil;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-}
-
 /// 根据数据模型来显示内容
 - (void)showInfo:(id)model key:(id)key indexPath:(NSIndexPath *)indexPath {
     self.key = key;
@@ -68,7 +53,6 @@
     self.indexPath = indexPath;
     self.teacherListHostModel = (TeacherListHostModel *) model;
     [_gridView reloadData];
-
 }
 
 /// 返回Cell高度
@@ -82,7 +66,6 @@
 
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {
     TeacherGridViewCell *cell = [[TeacherGridViewCell alloc] initWithFrame:CGRectNull];
-    cell.deletable = NO;
     if (self.teacherListHostModel.result.data && self.teacherListHostModel.result.data.count > index)
         cell.model = self.teacherListHostModel.result.data[index];
     return cell;
@@ -96,7 +79,7 @@
 
 - (void)gridView:(UzysGridView *)gridView didSelectCell:(UzysGridViewCell *)cell atIndex:(NSUInteger)index {
     if (self.actionBlock) {
-        self.actionBlock(BEventType_Unknow, nil, self.teacherListHostModel.result.data[index], nil, self.indexPath);
+        self.actionBlock(BEventType_Unknown, nil, self.teacherListHostModel.result.data[index], nil, self.indexPath);
     }
 }
 

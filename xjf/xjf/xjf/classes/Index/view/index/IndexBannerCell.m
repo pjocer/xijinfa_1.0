@@ -26,26 +26,13 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
 
-        NSArray *arr2 = @[@"http://www.5068.com/u/faceimg/20140725173411.jpg",
-                @"http://file27.mafengwo.net/M00/52/F2/wKgB6lO_PTyAKKPBACID2dURuk410.jpeg",
-                @"http://file27.mafengwo.net/M00/B2/12/wKgB6lO0ahWAMhL8AAV1yBFJDJw20.jpeg"];
-
-        self.carouselView = [[XRCarouselView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 175) imageArray:arr2];
+        self.carouselView = [[XRCarouselView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 175) imageArray:nil];
         [self.contentView addSubview:_carouselView];
         _carouselView.changeMode = ChangeModeFade;
         _carouselView.delegate = self;
         [self requestBannerData:appHomeCarousel method:GET];
-
     }
     return self;
-}
-
-- (void)dealloc {
-    self.actionBlock = nil;
-    self.data = nil;
-    self.key = nil;
-    self.indexPath = nil;
-
 }
 
 - (void)layoutSubviews {
@@ -58,25 +45,18 @@
     self.key = key;
     self.data = model;
     self.indexPath = indexPath;
-    NSDictionary *dict = (NSDictionary *) model;
-
-
 }
 
 /// 返回Cell高度
 + (CGFloat)returnCellHeight:(id)model {
-    NSDictionary *dict = (NSDictionary *) model;
-
     return 175;
-
 }
 
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index {
     if (self.actionBlock && self.bannermodel.result.data.count != 0 && self.bannermodel.result.data) {
-        self.actionBlock(BEventType_Unknow, nil, self.carouselView, self.bannermodel.result.data[index], self.indexPath);
+        self.actionBlock(BEventType_Unknown, nil, self.carouselView, self.bannermodel.result.data[index], self.indexPath);
     }
 }
-
 
 - (void)requestBannerData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
@@ -84,9 +64,8 @@
     [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
 
-    //bannermodel
+    // banner model
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-
         __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
@@ -98,7 +77,6 @@
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
-
 }
 
 @end

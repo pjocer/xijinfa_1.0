@@ -251,7 +251,7 @@
 
 - (void)cellAction:(BEventType)type views:(UIView *)v obj:(id)obj key:(id)key indexPath:(NSIndexPath *)indexPath {
     switch (type) {
-        case BEventType_Unknow:
+        case BEventType_Unknown:
 
             if (indexPath.section == 0) {
                 XRCarouselView *carouselView = obj;

@@ -29,7 +29,3 @@
 #import "LessonIndexCell.h"
 #import "TearcherIndexCell.h"
 #import "TeacherListViewController.h"
-
-
-
-

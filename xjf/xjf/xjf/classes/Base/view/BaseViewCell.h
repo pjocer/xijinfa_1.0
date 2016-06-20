@@ -14,8 +14,8 @@
 #import "UIImageView+WebCache.h"
 
 typedef enum {
-    BEventType_Unknow,
-    BEventType_More,//更多
+    BEventType_Unknown,
+    BEventType_More, // 更多
 } BEventType;
 
 @interface BaseViewCell : UITableViewCell
