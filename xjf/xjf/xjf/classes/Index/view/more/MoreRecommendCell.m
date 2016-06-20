@@ -64,14 +64,12 @@
     self.key = key;
     self.data = model;
     self.indexPath = indexPath;
-    NSDictionary *dict = (NSDictionary *) model;
     [_gridView reloadData];
 
 }
 
 /// 返回Cell高度
 + (CGFloat)returnCellHeight:(id)model {
-    NSDictionary *dict = (NSDictionary *) model;
     return 200;
 
 }

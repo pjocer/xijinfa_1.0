@@ -28,13 +28,7 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    if (self.text.length == 0) {
-        self.TV.hidden = NO;
-    }
-    else {
-        self.TV.hidden = YES;
-    }
+    self.TV.hidden = self.text.length != 0;
 }
-
 
 @end

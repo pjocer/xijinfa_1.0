@@ -19,7 +19,11 @@
 }
 
 - (UIView *)addBottomLine {
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 1 / [UIScreen mainScreen].scale, SCREENWITH, 1 / [UIScreen mainScreen].scale)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(
+            0,
+            self.frame.size.height - 1 / [UIScreen mainScreen].scale,
+            SCREENWITH,
+            1 / [UIScreen mainScreen].scale)];
     lineView.backgroundColor = GrayColorLine;
     [self addSubview:lineView];
     return lineView;
@@ -31,7 +35,7 @@
                             Layer:(CALayer *)layer {
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = frame;
-    gradientLayer.colors = [NSArray arrayWithObjects:(id) [topColor CGColor], (id) [bottomColor CGColor], nil];
+    gradientLayer.colors = @[(id) topColor.CGColor, (id) bottomColor.CGColor];
     for (CALayer *sublayer in [layer sublayers]) {
         [sublayer removeFromSuperlayer];
     }
