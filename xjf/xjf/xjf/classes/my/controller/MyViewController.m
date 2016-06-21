@@ -177,7 +177,7 @@
             [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [self LoginPrompt];
     }
-    {
+    else{
         [self pushAction:index];
     }
 

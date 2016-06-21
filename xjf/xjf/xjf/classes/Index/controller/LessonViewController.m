@@ -159,7 +159,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
         return self.projectListByModel.result.data.count;
     }
     else if (section == 1) {
-        return 3;
+        return self.teacherListHostModel.result.data.count > 3 ? 3 : self.teacherListHostModel.result.data.count;
     }
     return 0;
 }
