@@ -43,6 +43,7 @@ NSString *const Subscribe = @"SubscribeViewController";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.nav_title = @"";
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];

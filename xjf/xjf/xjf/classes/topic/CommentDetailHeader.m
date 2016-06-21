@@ -123,7 +123,7 @@
             }
         } else {
             for (UIView *view in self.contentView.subviews) {
-                if (view.tag >= 400) {
+                if (view.tag >= 350) {
                     [view removeFromSuperview];
                 }
             }
