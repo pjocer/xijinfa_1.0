@@ -8,11 +8,12 @@
 
 #import "SettingViewController.h"
 #import "XJAccountManager.h"
-
+#import "AlertUtils.h"
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) UIView *footer;
+@property (nonatomic, strong) NSString *cacheSizeStr;
 @end
 
 @implementation SettingViewController
@@ -20,11 +21,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationItem.title = @"设置";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    NSLog(@"----%@", UserDefaultObjectForKey(USER_SETTING_WIFI));
 }
 
 - (void)viewDidLoad {
@@ -64,7 +60,7 @@
         [switchB addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
         cell.accessoryView = switchB;
     } else if (indexPath.row == 2) {
-        NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"20MB" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : color}];
+        NSAttributedString *string = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2fMB",[NSString folderSizeAtPath:[NSString cachePath]]] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : color}];
         [cell.detailTextLabel setAttributedText:string];
     }
     NSAttributedString *string = [[NSAttributedString alloc] initWithString:_dataSource[indexPath.row] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : color}];
@@ -76,6 +72,24 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        [AlertUtils alertWithTarget:self title:@"提示" content:@"确定清除当前缓存?" confirmBlock:^{
+            [NSString deletecachePath:[NSString cachePath] Success:^{
+                [[ZToastManager ShardInstance] showtoast:@"清除缓存成功"];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            } WithFailure:^{
+                if ([NSString folderSizeAtPath:[NSString cachePath]] == 0) {
+                    [[ZToastManager ShardInstance] showtoast:@"当前无缓存"];
+                }else{
+                    [[ZToastManager ShardInstance] showtoast:@"清除缓存失败"];
+                }
+            }];
+        }];
+    }
 }
 
 - (void)switchClicked:(UISwitch *)switchButton {

@@ -89,4 +89,41 @@
  *  @return 现在的时间
  */
 + (NSString *)getSystemDate;
+
+
+/**
+ *  计算缓存文件的大小的M
+ *
+ *  @param filePath 文件路径
+ *
+ *  @return 缓存文件的大小的M
+ */
++ (long long) fileSizeAtPath:(NSString*) filePath;
+
+/**
+ *  遍历文件夹获得文件夹大小，
+ *
+ *  @param folderPath 文件路径
+ *
+ *  @return 返回多少M
+ */
++ (float ) folderSizeAtPath:(NSString*) folderPath;
+
+/**
+ *  计算SDWebImage缓存大小
+ *
+ *  @return 缓存大小
+ */
++ (NSString *)sdCacesSize;
+
+/**
+ *  删除缓存
+ *
+ *  @param path    路径
+ *  @param success successBlock
+ *  @param failure failureBlock
+ */
++ (void)deletecachePath:(NSString *)path
+               Success:(void(^)())success
+            WithFailure:(void (^)())failure;
 @end

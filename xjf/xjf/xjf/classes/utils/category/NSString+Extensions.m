@@ -506,5 +506,77 @@
     return systemdate;
 }
 
+#pragma mark - FileManager
+
+///计算SDWebImage缓存大小
++ (NSString *)sdCacesSize
+{
+    unsigned long iLength = [[SDImageCache sharedImageCache]getSize]/1024.0;
+    if(iLength > 1024.0)
+    {
+        iLength = iLength/1024.0;
+        NSString *sLength = [NSString stringWithFormat:@"%lu",iLength];
+        return [sLength stringByAppendingString:@"M"];
+    }
+    else
+    {
+        NSString *sLength = [NSString stringWithFormat:@"%lu",iLength];
+        return [sLength stringByAppendingString:@"kb"];
+    }
+}
+
+///遍历文件夹获得文件夹大小，返回多少M
++ (float ) folderSizeAtPath:(NSString*) folderPath{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:folderPath]) return 0;
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:folderPath] objectEnumerator];
+    NSString* fileName;
+    long long folderSize = 0;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        NSString* fileAbsolutePath = [folderPath stringByAppendingPathComponent:fileName];
+        folderSize += [self fileSizeAtPath:fileAbsolutePath];
+    }
+    return folderSize/(1024.0*1024.0);
+}
+///计算缓存文件的大小的M
++ (long long) fileSizeAtPath:(NSString*) filePath{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:filePath]){
+        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+    }
+    return 0;
+}
+///删除缓存
++ (void)deletecachePath:(NSString *)path
+               Success:(void(^)())success
+           WithFailure:(void (^)())failure
+
+{
+    //    //清除缓存
+    //    [[SDImageCache sharedImageCache] clearDisk];
+    //    [[SDImageCache sharedImageCache] clearMemory];
+    
+    NSFileManager* fileManager=[NSFileManager defaultManager];
+    
+    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:path];
+    if (!blHave)
+    {
+        NSLog(@"no  have");
+        return ;
+    }else
+    {
+        NSLog(@" have");
+        BOOL blDele= [fileManager removeItemAtPath:path error:nil];
+        if (blDele)
+        {
+            success();
+        }
+        else
+        {
+            failure();
+        }
+    }
+}
+
 
 @end
