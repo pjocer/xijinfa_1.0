@@ -12,7 +12,7 @@
 - (void)cityDidChoosed:(NSString *)city;
 @end
 
-@interface CitySelecter : MyBaseViewController
+@interface CitySelector : MyBaseViewController
 @property (nonatomic, copy) NSString *cityChoosed;
 @property (nonatomic, weak) id <CityDidChoosedDelegate> delegate;
 

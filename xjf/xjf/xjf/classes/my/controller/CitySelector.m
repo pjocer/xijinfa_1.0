@@ -6,17 +6,17 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "CitySelecter.h"
+#import "CitySelector.h"
 #import "NSString+FirstLetter.h"
 #import <objc/runtime.h>
 
-@interface CitySelecter () <UITableViewDelegate, UITableViewDataSource>
+@interface CitySelector () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *sectionTitles;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
-@implementation CitySelecter
+@implementation CitySelector
 - (instancetype)initWithDataSource:(NSMutableArray *)dataSource {
     if (self = [super init]) {
         self.dataSource = dataSource;
@@ -164,7 +164,7 @@
             nextDataSource = [dic objectForKey:@"cities"];
         }
     }
-    CitySelecter *next = [[CitySelecter alloc] initWithDataSource:nextDataSource];
+    CitySelector *next = [[CitySelector alloc] initWithDataSource:nextDataSource];
     if ([self.nav_title isEqualToString:@"选择省份"]) {
         next.nav_title = @"选择市";
     } else if ([self.nav_title isEqualToString:@"选择市"]) {

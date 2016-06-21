@@ -9,7 +9,7 @@
 #import "UserInfoSection1.h"
 #import "AlertUtils.h"
 #import "XJAccountManager.h"
-#import "CitySelecter.h"
+#import "CitySelector.h"
 
 @interface UserInfoSection1 () <CityDidChoosedDelegate>
 @property (weak, nonatomic) IBOutlet UIView *sexView;
@@ -58,7 +58,7 @@
         UIViewController *controller = getCurrentDisplayController();
         NSData *citiesData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"zh_CN" ofType:@"json"]];
         NSMutableArray *dataSource = [NSMutableArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:citiesData options:NSJSONReadingMutableLeaves error:nil]];;
-        CitySelecter *selector = [[CitySelecter alloc] initWithDataSource:dataSource];
+        CitySelector *selector = [[CitySelector alloc] initWithDataSource:dataSource];
         selector.delegate = self;
         selector.nav_title = @"选择省份";
         [controller.navigationController pushViewController:selector animated:YES];
