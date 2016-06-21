@@ -18,7 +18,7 @@ typedef void (^NotificationBlock)(NSNotification *notification);
  @param name 通知名称
  @param object 通知传参
  */
-FOUNDATION_EXTERN void SendNotification(NotificationName *name, id object);
+FOUNDATION_EXTERN void SendNotification(NotificationName *name, id object) __deprecated;
 
 /**
  接收原生通知
@@ -26,16 +26,16 @@ FOUNDATION_EXTERN void SendNotification(NotificationName *name, id object);
  @param name 通知名称
  @param block 通知回调
  */
-FOUNDATION_EXTERN id ReceivedNotification(id target, NotificationName *name, NotificationBlock block);
+FOUNDATION_EXTERN id ReceivedNotification(id target, NotificationName *name, NotificationBlock block) __deprecated;
 
 /**
  根据target对象移除其通知
  @param target 需要移除通知的宿主对象
  */
-FOUNDATION_EXTERN void RemoveNotification(id target);
+FOUNDATION_EXTERN void RemoveNotification(id target) __deprecated;
 
 /**
  *  移除所有被记录的通知
  */
-FOUNDATION_EXTERN void ClearAllNotifications();
+FOUNDATION_EXTERN void ClearAllNotifications() __deprecated;
 

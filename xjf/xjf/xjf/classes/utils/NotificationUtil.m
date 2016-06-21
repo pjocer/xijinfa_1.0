@@ -16,13 +16,6 @@ void SendNotification(NSString *name, id object) {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:object];
 }
 
-//void SendUpdateNotification(UpdateCategory category, UpdateType type, id object)
-//{
-//    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"category":[NSNumber numberWithInt:category], @"type":[NSNumber numberWithInt:type]}];
-//    if (object) [dictionary setObject:object forKey:@"object"];
-//    SendNotification(UpdateInfoNotification, dictionary);
-//}
-
 id ReceivedNotification(id target, NotificationName *name, NotificationBlock block) {
     if (!target) return nil;
     static dispatch_once_t onceToken;
@@ -36,16 +29,6 @@ id ReceivedNotification(id target, NotificationName *name, NotificationBlock blo
     [__notification_targets setObject:array forKey:key];
     return notification;
 }
-
-//id ReceivedUpdateNotification(id target, UpdateNotificationBlock block)
-//{
-//    return ReceivedNotification(target, UpdateInfoNotification, ^(NSNotification *notification) {
-//        NSDictionary *infoObject = notification.object;
-//        if (block) block((UpdateCategory)[infoObject[@"category"] intValue],
-//                         (UpdateType)[infoObject[@"type"] intValue],
-//                         infoObject[@"object"]);
-//    });
-//}
 
 void RemoveNotification(id target) {
     if (!target || !__notification_targets) return;
