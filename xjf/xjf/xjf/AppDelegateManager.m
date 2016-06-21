@@ -22,7 +22,6 @@
     [ZPlatformShare initPlatformData];
     [[XJAccountManager defaultManager] verifyValid];
 }
-
 //网络状态
 + (void)startMonitoringAppCurrentNetworkReachabilityStatus {
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];

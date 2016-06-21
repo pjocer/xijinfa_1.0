@@ -158,7 +158,6 @@
 		CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */; };
 		CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC351CB37950002FC0C9 /* VipBaseViewController.m */; };
 		CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */; };
-		CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */; };
 		CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */; };
 		CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC4C1CB39B3D002FC0C9 /* PlayerBaseViewController.m */; };
 		CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC4E1CB39B3D002FC0C9 /* PlayerViewController.m */; };
@@ -570,8 +569,6 @@
 		CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBaseViewController.m; sourceTree = "<group>"; };
 		CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xjfConfigure.h; sourceTree = "<group>"; };
-		CD1CCC3E1CB37BB6002FC0C9 /* XjfShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XjfShare.h; sourceTree = "<group>"; };
-		CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XjfShare.m; sourceTree = "<group>"; };
 		CD1CCC411CB37BDB002FC0C9 /* XjfRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XjfRequest.h; sourceTree = "<group>"; };
 		CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XjfRequest.m; sourceTree = "<group>"; };
 		CD1CCC471CB37D54002FC0C9 /* IndexConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexConfigure.h; sourceTree = "<group>"; };
@@ -1587,8 +1584,6 @@
 				D05985231CF6D76500BF2A30 /* Notification */,
 				D05985241CF6D99200BF2A30 /* Utils */,
 				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
-				CD1CCC3E1CB37BB6002FC0C9 /* XjfShare.h */,
-				CD1CCC3F1CB37BB6002FC0C9 /* XjfShare.m */,
 				5A7EEE931CE0299C007BAECD /* Header.h */,
 				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 				5A565A6E1D110B1200008DA9 /* CustomView */,
@@ -2250,7 +2245,6 @@
 				5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */,
 				D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */,
 				D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */,
-				CD1CCC401CB37BB6002FC0C9 /* XjfShare.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
 				D02FB4DC1D1290B8006EADAD /* NSString+FirstLetter.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
