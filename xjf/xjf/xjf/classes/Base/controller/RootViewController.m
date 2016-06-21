@@ -104,7 +104,8 @@
 - (BOOL)shouldAutorotate {
     UINavigationController *nav = self.viewControllers[self.selectedIndex];
     // MoviePlayerViewController 、ZFTableViewController 控制器支持自动转屏
-    if ([nav.topViewController isKindOfClass:[PlayerViewController class]] || [nav.topViewController isKindOfClass:[LessonPlayerViewController class]]) {
+    if ([nav.topViewController isKindOfClass:[PlayerViewController class]]
+            || [nav.topViewController isKindOfClass:[LessonPlayerViewController class]]) {
         // 调用ZFPlayerSingleton单例记录播放状态是否锁定屏幕方向
         return !ZFPlayerShared.isLockScreen;
     }

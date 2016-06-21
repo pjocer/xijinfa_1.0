@@ -28,7 +28,6 @@
     self.navigationItem.title = @"意见反馈";
 }
 
-
 - (void)loadView {
     [super loadView];
     self.feedbackView = [[FeedbackView alloc] initWithFrame:self.view.bounds];
@@ -50,15 +49,18 @@
                         Method:(RequestMethod)method
                   FeedbackView:(FeedbackView *)feedbackViewsub
                     FeedAction:(UIButton *)sender {
+
     UserProfileModel *userProfileModel = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"nickname" : userProfileModel.result.nickname, @"contact" : feedbackViewsub.qqTextField.text, @"content" : feedbackViewsub.feedbackTextView.text}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{
+            @"nickname" : userProfileModel.result.nickname,
+            @"contact" : feedbackViewsub.qqTextField.text,
+            @"content" : feedbackViewsub.feedbackTextView.text}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         [[ZToastManager ShardInstance] showtoast:@"我们已收到您的反馈信息,谢谢!"];
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
-
 
 @end

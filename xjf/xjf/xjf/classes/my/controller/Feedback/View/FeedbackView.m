@@ -13,7 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        //scrolleView
+        // scrollView
         self.scrolleView = [[UIScrollView alloc] init];
         self.scrolleView.frame = self.bounds;
         [self addSubview:self.scrolleView];
@@ -21,14 +21,15 @@
         self.scrolleView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         self.scrolleView.showsVerticalScrollIndicator = NO;
 
-        //feedbackTextView
+        // feedbackTextView
         self.feedbackTextView = [[CloverText alloc] initWithFrame:CGRectMake(10, 10, self.bounds.size.width - 20, SCREENHEIGHT / 5 * 2) placeholder:@" 输入你的反馈信息"];
         self.feedbackTextView.font = FONT15;
         [self.scrolleView addSubview:self.feedbackTextView];
         self.feedbackTextView.backgroundColor = [UIColor whiteColor];
 
-        //qqTextField
-        self.qqTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(self.feedbackTextView.frame.origin.x, CGRectGetMaxY(self.feedbackTextView.frame) + 10, self.feedbackTextView.frame.size.width, 50)];
+        // qqTextField
+        self.qqTextField = [[CustomTextField alloc]
+                initWithFrame:CGRectMake(self.feedbackTextView.frame.origin.x, CGRectGetMaxY(self.feedbackTextView.frame) + 10, self.feedbackTextView.frame.size.width, 50)];
         [self.scrolleView addSubview:self.qqTextField];
         self.qqTextField.borderStyle = UITextBorderStyleNone;
         self.qqTextField.backgroundColor = [UIColor whiteColor];
@@ -36,7 +37,7 @@
         self.qqTextField.keyboardType = UIKeyboardTypeNumberPad;
         self.qqTextField.returnKeyType = UIReturnKeyDone;
 
-        //submit
+        // submit
         self.submit = [UIButton buttonWithType:UIButtonTypeCustom];
         self.submit.frame = CGRectMake(self.feedbackTextView.frame.origin.x, CGRectGetMaxY(self.qqTextField.frame) + 10, self.feedbackTextView.frame.size.width, 50);
         self.submit.layer.cornerRadius = 5;

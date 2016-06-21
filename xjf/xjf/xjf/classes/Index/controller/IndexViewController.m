@@ -27,13 +27,26 @@
 
 @implementation IndexViewController
 
+NSString *const BANNER_CELL = @"bannercell";
+NSString *const ENTRY_CELL = @"appcell";
+NSString *const TALK_CELL = @"talkcell";
+NSString *const BAIKE_CELL = @"baikecell";
+NSString *const TEACHER_CELL = @"teachercell";
+NSString *const COURSE_CELL = @"coursecell";
+NSString *const CONGYE_CELL = @"congyecell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (!_sectionsArray) {
         _sectionsArray = [[NSMutableArray alloc] init];
     }
-    _sectionsArray = [NSMutableArray arrayWithObjects:@"bannercell", @"appcell", @"talkcell", @"baikecell",
-                                                      @"teachercell", @"coursecell", nil];
+    _sectionsArray = [@[
+            BANNER_CELL,
+            ENTRY_CELL,
+            TALK_CELL,
+            BAIKE_CELL,
+            TEACHER_CELL,
+            COURSE_CELL] mutableCopy];
     //
     [self extendheadViewFor:Index];
     [self initMainUI];
@@ -116,10 +129,9 @@
     [self.view addSubview:_tableview];
 }
 
-//tableview
+// table view
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sectionsArray.count;
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -128,24 +140,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *sectionTitle = [self.sectionsArray objectAtIndex:indexPath.section];
-    if ([sectionTitle isEqualToString:@"bannercell"]) {
+    if ([sectionTitle isEqualToString:BANNER_CELL]) {
         return [IndexBannerCell returnCellHeight:nil];
-    } else if ([sectionTitle isEqualToString:@"appcell"]) {
+    } else if ([sectionTitle isEqualToString:ENTRY_CELL]) {
         return [IndexAppCell returnCellHeight:nil];
-    } else if ([sectionTitle isEqualToString:@"talkcell"]) {
+    } else if ([sectionTitle isEqualToString:TALK_CELL]) {
         return [IndexTalkCell returnCellHeight:nil];
-    }
-    else if ([sectionTitle isEqualToString:@"baikecell"]) {
+    } else if ([sectionTitle isEqualToString:BAIKE_CELL]) {
         return [IndexBaikeCell returnCellHeight:nil];
-    }
-    else if ([sectionTitle isEqualToString:@"teachercell"]) {
+    } else if ([sectionTitle isEqualToString:TEACHER_CELL]) {
         return [IndexTeacherCell returnCellHeight:nil];
-    }
-    else if ([sectionTitle isEqualToString:@"coursecell"]) {
+    } else if ([sectionTitle isEqualToString:COURSE_CELL]) {
         return [IndexCourseCell returnCellHeight:nil];
+    } else {
+        return 50;
     }
-
-    return 50;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -154,7 +163,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     NSString *sectionTitle = [self.sectionsArray objectAtIndex:section];
-    if ([sectionTitle isEqualToString:@"bannercell"] || [sectionTitle isEqualToString:@"appcell"]) {
+    if ([sectionTitle isEqualToString:BANNER_CELL] || [sectionTitle isEqualToString:ENTRY_CELL]) {
         return 0.01;
     }
     return 10;
@@ -163,7 +172,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSString *sectionTitle = [self.sectionsArray objectAtIndex:indexPath.section];
-    if ([sectionTitle isEqualToString:@"bannercell"]) {
+    if ([sectionTitle isEqualToString:BANNER_CELL]) {
         IndexBannerCell *cell = (IndexBannerCell *) [tableView dequeueReusableCellWithIdentifier:@"IndexBannerCell"];
         if (cell == nil) {
             cell = [[IndexBannerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexBannerCell"];
@@ -176,7 +185,8 @@
         }
         [cell showInfo:nil key:sectionTitle indexPath:indexPath];
         return cell;
-    } else if ([sectionTitle isEqualToString:@"appcell"]) {
+
+    } else if ([sectionTitle isEqualToString:ENTRY_CELL]) {
         IndexAppCell *cell = (IndexAppCell *) [tableView dequeueReusableCellWithIdentifier:@"IndexAppCell"];
         if (cell == nil) {
             cell = [[IndexAppCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexAppCell"];
@@ -189,7 +199,7 @@
         [cell showInfo:nil key:sectionTitle indexPath:indexPath];
         return cell;
 
-    } else if ([sectionTitle isEqualToString:@"talkcell"]) {
+    } else if ([sectionTitle isEqualToString:TALK_CELL]) {
         IndexTalkCell *cell = (IndexTalkCell *) [tableView dequeueReusableCellWithIdentifier:@"IndexTalkCell"];
         if (cell == nil) {
             cell = [[IndexTalkCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexTalkCell"];
@@ -201,8 +211,8 @@
         }
         [cell showInfo:self.tablkListModel key:sectionTitle indexPath:indexPath];
         return cell;
-    }
-    else if ([sectionTitle isEqualToString:@"baikecell"]) {
+
+    } else if ([sectionTitle isEqualToString:BAIKE_CELL]) {
         IndexBaikeCell *cell = (IndexBaikeCell *) [tableView dequeueReusableCellWithIdentifier:@"IndexBaikeCell"];
         if (cell == nil) {
             cell = [[IndexBaikeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexBaikeCell"];
@@ -214,8 +224,8 @@
         }
         [cell showInfo:self.tablkListModel_Lesson key:sectionTitle indexPath:indexPath];
         return cell;
-    }
-    else if ([sectionTitle isEqualToString:@"teachercell"]) {
+
+    } else if ([sectionTitle isEqualToString:TEACHER_CELL]) {
         IndexTeacherCell *cell = (IndexTeacherCell *) [tableView dequeueReusableCellWithIdentifier:@"IndexTeacherCell"];
         if (cell == nil) {
             cell = [[IndexTeacherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexTeacherCell"];
@@ -227,8 +237,8 @@
         }
         [cell showInfo:self.teacherListHostModel key:sectionTitle indexPath:indexPath];
         return cell;
-    }
-    else if ([sectionTitle isEqualToString:@"coursecell"]) {
+
+    } else if ([sectionTitle isEqualToString:COURSE_CELL]) {
         IndexCourseCell *cell = (IndexCourseCell *) [tableView dequeueReusableCellWithIdentifier:@"IndexCourseCell"];
         if (cell == nil) {
             cell = [[IndexCourseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexCourseCell"];
@@ -240,13 +250,15 @@
         }
         [cell showInfo:self.projectListByModel key:sectionTitle indexPath:indexPath];
         return cell;
+
+    } else {
+        static NSString *CellIdentifier = @"Cell";
+        UITableViewCell *cell = (UITableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        return cell;
     }
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = (UITableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    return cell;
 }
 
 - (void)cellAction:(BEventType)type views:(UIView *)v obj:(id)obj key:(id)key indexPath:(NSIndexPath *)indexPath {
@@ -262,8 +274,7 @@
                     bannerWebViewViewController.webHtmlUrl = model.link;
                     [self.navigationController pushViewController:bannerWebViewViewController animated:YES];
                 };
-            }
-            else if (indexPath.section == 1) {
+            } else if (indexPath.section == 1) {
 
                 if ([key isEqualToString:@"0"]) {
                     WikipediaViewController *wikiPage = [WikipediaViewController new];
@@ -279,29 +290,25 @@
                     NSLog(@"%@", obj[3]);
                 }
 
-            }
-            else if (indexPath.section == 2) {
+            } else if (indexPath.section == 2) {
                 //析金百科
                 PlayerViewController *playerPage = [PlayerViewController new];
                 TalkGridModel *model = (TalkGridModel *) obj;
                 playerPage.talkGridModel = model;
                 playerPage.talkGridListModel = self.tablkListModel;
                 [self.navigationController pushViewController:playerPage animated:YES];
-            }
-            else if (indexPath.section == 3) {
+            } else if (indexPath.section == 3) {
                 //析金学堂
                 LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
                 lessonDetailViewController.model = (TalkGridModel *) obj;
                 lessonDetailViewController.apiType = coursesProjectLessonDetailList;
                 [self.navigationController pushViewController:lessonDetailViewController animated:YES];
-            }
-            else if (indexPath.section == 4) {
+            } else if (indexPath.section == 4) {
                 //析金讲师
                 TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
                 teacherDetailViewController.teacherListDataModel = (TeacherListData *) obj;
                 [self.navigationController pushViewController:teacherDetailViewController animated:YES];
-            }
-            else if (indexPath.section == 5) {
+            } else if (indexPath.section == 5) {
 //                //从业培训
                 EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
                 ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
@@ -328,8 +335,7 @@
                 VideolistViewController *videolListPage = [VideolistViewController new];
                 videolListPage.title = @"析金百科更多";
                 [self.navigationController pushViewController:videolListPage animated:YES];
-            }
-            else if (indexPath.section == 3) {
+            } else if (indexPath.section == 3) {
                 //析金学堂更多
 
                 LessonListViewController *lessonlListPage = [[LessonListViewController alloc] init];
