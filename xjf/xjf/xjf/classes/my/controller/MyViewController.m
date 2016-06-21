@@ -50,12 +50,12 @@
     [self initMainUI];
     [self resetTableViewFooter];
     @weakify(self)
-    ReceivedNotification(self, UserInfoDidChangedNotification, ^(NSNotification *notification) {
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(NSNotification *x) {
         @strongify(self)
-        self.model = notification.object;
+        self.model = x.object;
         [self resetTableViewFooter];
         [self.tableview reloadData];
-    });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,8 +78,16 @@
 }
 
 - (void)resetTableViewFooter {
-    if (self.model.result.membership) {
+    if ([[XJAccountManager defaultManager] accessToken]) {
         _tableview.tableFooterView = self.foot_background;
+        if (self.model.result.membership.count>0) {
+            [_footer setTitle:@"续费会员" forState:UIControlStateNormal];
+        }
+        if (self.model.result.membership.count==0) {
+            [_footer setTitle:@"开通会员" forState:UIControlStateNormal];
+        }
+    }else {
+        _tableview.tableFooterView = nil;
     }
 }
 
@@ -96,10 +104,6 @@
         [_footer setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_footer addTarget:self action:@selector(dredgeVIP:) forControlEvents:UIControlEventTouchUpInside];
         [_foot_background addSubview:_footer];
-        //是否是会员
-        if (self.model.result.membership.count != 0) {
-            [_footer setTitle:@"续费会员" forState:UIControlStateNormal];
-        }
     }
     return _foot_background;
 }
