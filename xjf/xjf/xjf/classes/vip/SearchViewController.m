@@ -61,6 +61,7 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREENWITH, SCREENHEIGHT - 64) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:[SearchSectionOne class] forCellReuseIdentifier:@"SearchSectionOne"];
         [_tableView registerNib:[UINib nibWithNibName:@"SearchSectionTwo" bundle:nil] forCellReuseIdentifier:@"SearchSectionTwo"];
     }

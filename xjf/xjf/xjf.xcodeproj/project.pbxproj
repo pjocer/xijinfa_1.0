@@ -177,7 +177,7 @@
 		D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */; };
 		D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */; };
 		D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */; };
-		D02FB4D01D12798A006EADAD /* CitySelecter.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4CF1D12798A006EADAD /* CitySelecter.m */; };
+		D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4CF1D12798A006EADAD /* CitySelector.m */; };
 		D02FB4D51D127A05006EADAD /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4D41D127A05006EADAD /* zh_CN.json */; };
 		D02FB4DC1D1290B8006EADAD /* NSString+FirstLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4DB1D1290B8006EADAD /* NSString+FirstLetter.m */; };
 		D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA4E1CEC041600CD5359 /* XJAccountManager.m */; };
@@ -604,8 +604,8 @@
 		D02FB4B31D112458006EADAD /* UserInfoInterestedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoInterestedCell.h; sourceTree = "<group>"; };
 		D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoInterestedCell.m; sourceTree = "<group>"; };
 		D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoInterestedCell.xib; sourceTree = "<group>"; };
-		D02FB4CE1D12798A006EADAD /* CitySelecter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitySelecter.h; sourceTree = "<group>"; };
-		D02FB4CF1D12798A006EADAD /* CitySelecter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitySelecter.m; sourceTree = "<group>"; };
+		D02FB4CE1D12798A006EADAD /* CitySelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitySelector.h; sourceTree = "<group>"; };
+		D02FB4CF1D12798A006EADAD /* CitySelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitySelector.m; sourceTree = "<group>"; };
 		D02FB4D41D127A05006EADAD /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = zh_CN.json; path = controller/zh_CN.json; sourceTree = "<group>"; };
 		D02FB4DA1D1290B8006EADAD /* NSString+FirstLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FirstLetter.h"; sourceTree = "<group>"; };
 		D02FB4DB1D1290B8006EADAD /* NSString+FirstLetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FirstLetter.m"; sourceTree = "<group>"; };
@@ -1396,8 +1396,8 @@
 				D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */,
 				D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */,
 				D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */,
-				D02FB4CE1D12798A006EADAD /* CitySelecter.h */,
-				D02FB4CF1D12798A006EADAD /* CitySelecter.m */,
+				D02FB4CE1D12798A006EADAD /* CitySelector.h */,
+				D02FB4CF1D12798A006EADAD /* CitySelector.m */,
 				D01F77D01D0181E0000888D4 /* MyTopicViewController.h */,
 				D01F77D11D0181E0000888D4 /* MyTopicViewController.m */,
 				D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */,
@@ -2176,7 +2176,7 @@
 				5A105E681CEC09540079BEFE /* LessonPlayerLessonListViewController.m in Sources */,
 				CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */,
 				5A240E071CE4270F003B7971 /* PlayerPageDescribeFooterView.m in Sources */,
-				D02FB4D01D12798A006EADAD /* CitySelecter.m in Sources */,
+				D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */,
 				5A105E971CED91040079BEFE /* TalkGridModel.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,

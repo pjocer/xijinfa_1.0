@@ -13,6 +13,10 @@
 #import "CommentDetailHeader.h"
 #import "FansCell.h"
 #import <MJRefresh/MJRefresh.h>
+#import "TopicDetailViewController.h"
+#import "XJAccountManager.h"
+#import "TaViewController.h"
+#import "LessonDetailViewController.h"
 
 @interface SearchResultController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIView *header;
@@ -349,14 +353,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIViewController *current = getCurrentDisplayController();
     if (tableView == self.encyclopedia) {
         NSLog(@"encylopedia");
     } else if (tableView == self.topics) {
-        NSLog(@"topics");
+        TopicDetailViewController *controller = [[TopicDetailViewController alloc] init];
+        TopicDataModel *model = [self.topicsDataSource objectAtIndex:indexPath.row];
+        controller.topic_id = model.id;
+        [current.navigationController pushViewController:controller animated:YES];
     } else if (tableView == self.lessons) {
-        NSLog(@"lessons");
+        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+        lessonDetailViewController.model = [self.lessonsDataSource objectAtIndex:indexPath.row];
+        if ([lessonDetailViewController.model.department isEqualToString:@"dept3"]) {
+            lessonDetailViewController.apiType = coursesProjectLessonDetailList;
+        } else if ([lessonDetailViewController.model.department isEqualToString:@"dept4"]) {
+            lessonDetailViewController.apiType = EmployedLessonDetailList;
+        }
+        [current.navigationController pushViewController:lessonDetailViewController animated:YES];
     } else {
-        NSLog(@"persons");
+        TaViewController *controller = [[TaViewController alloc] init];
+        UserInfoModel *model = [self.personsDataSource objectAtIndex:indexPath.row];
+        controller.model = model;
+        [current.navigationController pushViewController:controller animated:YES];
     }
 }
 

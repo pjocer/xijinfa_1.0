@@ -34,6 +34,10 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.footer];
     [self requestData:focusOrNot Method:POST];
+    if (self.model) {
+        UserInfoModel *userInfo = (UserInfoModel *)self.model;
+        self.nav_title = [NSString stringWithFormat:@"%@的个人主页",userInfo.nickname];
+    }
 }
 
 - (UIView *)footer {
