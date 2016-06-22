@@ -215,7 +215,7 @@ static CGFloat bannerHeaderViewH = 175;
 #pragma mark - carouselView DidClickImage
 
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index {
-    NSLog(@"点击..... %ld", index);
+    NSLog(@"点击..... %ld", (long)index);
 }
 
 

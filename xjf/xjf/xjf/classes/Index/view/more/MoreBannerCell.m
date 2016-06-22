@@ -28,7 +28,7 @@
         _carouselView.changeMode = ChangeModeFade;
         _carouselView.delegate = self;
         _carouselView.imageClickBlock = ^(NSInteger index) {
-            NSLog(@"第%d张图片被点击", index);
+            NSLog(@"第%ld张图片被点击", (long)index);
         };
         _carouselView.pagePosition = PositionBottomCenter;
         [self addSubview:_carouselView];

@@ -32,7 +32,7 @@ static CGFloat BottomPayButtonH = 50;
 static CGFloat payViewH = 285;
 static CGFloat tableHeader_NormalH = 35;
 static CGFloat tableFooter_NormalH = 45;
-static CGFloat tableFooter_orderSucceslH = 80;
+//static CGFloat tableFooter_orderSucceslH = 80;
 static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 
 - (void)viewWillAppear:(BOOL)animated {

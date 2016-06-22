@@ -127,8 +127,8 @@
     shareView.shareTitle = [NSString stringWithFormat:@"%@", [shareDict objectForKey:@"info"]];
     shareView.shareTitle = [NSString stringWithFormat:@"%@", [shareDict objectForKey:@"title"]];
     shareView.shareText = [NSString stringWithFormat:@"%@", [shareDict objectForKey:@"desc"]];
-    NSString *urlstr = [NSString stringWithFormat:@"%@", [shareDict objectForKey:@"url"]];
-    NSRange foundObj = [urlstr rangeOfString:@"?" options:NSCaseInsensitiveSearch];
+//    NSString *urlstr = [NSString stringWithFormat:@"%@", [shareDict objectForKey:@"url"]];
+//    NSRange foundObj = [urlstr rangeOfString:@"?" options:NSCaseInsensitiveSearch];
 //    if(foundObj.length>0) {
 //        shareView.shareUrl=[NSString stringWithFormat:@"%@&share_code=%@",urlstr,[ZShare sharedInstance].sharecode_key];
 //    } else {

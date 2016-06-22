@@ -16,7 +16,7 @@
 
 @implementation LessonPlayerLessonListViewController
 static NSString *LessonListCell_id = @"LessonListCell_id";
-static CGFloat offset = 60;
+//static CGFloat offset = 60;
 static CGFloat rowHeight = 50;
 
 - (void)viewDidLoad {

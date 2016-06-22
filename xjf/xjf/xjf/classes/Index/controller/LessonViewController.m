@@ -215,7 +215,7 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 }
 
 - (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index {
-    NSLog(@"点击..... %ld", index);
+    NSLog(@"点击..... %ld", (long)index);
 }
 
 /** Header大小 */

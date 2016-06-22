@@ -61,7 +61,6 @@
 
 /// 返回Cell高度
 + (CGFloat)returnCellHeight:(id)model {
-    NSDictionary *dict = (NSDictionary *) model;
     if (iPhone5 || iPhone4) {
         return 240;
     }

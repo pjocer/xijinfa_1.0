@@ -15,8 +15,8 @@
 
 @implementation MyLessonsTableFooterView
 static CGFloat StudyImageH = 20;
-static CGFloat StudyLabelW = 40;
-static CGFloat StudyLabelH = 14;
+//static CGFloat StudyLabelW = 40;
+//static CGFloat StudyLabelH = 14;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

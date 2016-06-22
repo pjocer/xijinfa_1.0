@@ -44,7 +44,7 @@
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
 static CGFloat BottomPayButtonH = 50;
-static CGFloat payViewH = 285;
+//static CGFloat payViewH = 285;
 
 - (NSMutableArray *)buttons {
     if (!_buttons) {
