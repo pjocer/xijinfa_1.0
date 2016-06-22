@@ -449,8 +449,9 @@ static CGFloat selViewH = 3;
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
     self.selView.backgroundColor = BlueColor
     [self.view addSubview:self.selView];
-    
+    @weakify(self)
     [RACObserve(self.contentScrollView, contentOffset) subscribeNext:^(id x) {
+        @strongify(self)
         CGPoint offSet = [x CGPointValue];
         CGFloat percent = offSet.x/SCREENWITH;
         [self.selView setFrame:CGRectMake(percent*SCREENWITH/count, CGRectGetMaxY(self.titleScrollView.frame), SCREENWITH/count, selViewH)];
