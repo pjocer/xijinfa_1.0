@@ -38,7 +38,7 @@ typedef enum : NSUInteger {
 
 - (void)setAccuontInfo:(NSDictionary *)info;
 
-- (void)updateUserInfo:(NSDictionary *)newUserInfo isVipChanged:(BOOL)ret;
+- (void)updateUserInfo;
 
 - (instancetype)init NS_UNAVAILABLE;
 

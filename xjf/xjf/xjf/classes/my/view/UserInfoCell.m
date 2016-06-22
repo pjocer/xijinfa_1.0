@@ -9,12 +9,14 @@
 #import "UserInfoCell.h"
 #import "UIImageView+WebCache.h"
 #import "XJAccountManager.h"
-
-@interface UserInfoCell ()
+#import "PhotoHandler.h"
+#import "XjfRequest.h"
+#import "ZToastManager.h"
+#import <MobileCoreServices/UTCoreTypes.h>
+@interface UserInfoCell () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIButton *nickname;
 @property (weak, nonatomic) IBOutlet UIButton *introduce;
-
 @end
 
 @implementation UserInfoCell
@@ -23,11 +25,32 @@
     [super awakeFromNib];
     _avatar.layer.cornerRadius = 75 / 2.0;
     _avatar.layer.masksToBounds = YES;
+    _avatar.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarAction)];
+    [_avatar addGestureRecognizer:tap];
     // Initialization code
 }
-
+- (void)avatarAction {
+    UIViewController *controller = getCurrentDisplayController();
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"从相册上传" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        PhotoHandler *handler = [[PhotoHandler alloc] initWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary imagePickerDelegate:self];
+        [handler show];
+    }];
+    [alert addAction:album];
+    UIAlertAction *photograph = [UIAlertAction actionWithTitle:@"拍摄上传" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        PhotoHandler *handler = [[PhotoHandler alloc] initWithSourceType:UIImagePickerControllerSourceTypeCamera imagePickerDelegate:self];
+        [handler show];
+    }];
+    [alert addAction:photograph];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:cancel];
+    [controller presentViewController:alert animated:YES completion:nil];
+}
 - (void)setModel:(UserProfileModel *)model {
-    _model = model;
+    _model = [[XJAccountManager defaultManager] user_model];
     [_avatar sd_setImageWithURL:[NSURL URLWithString:_model.result.avatar]];
     [_nickname setTitle:_model.result.nickname forState:UIControlStateNormal];
     [_introduce setTitle:_model.result.quote == nil || _model.result.quote.length == 0 ? @"一句话介绍你自己（兴趣/职业）" : _model.result.quote forState:UIControlStateNormal];
@@ -74,7 +97,31 @@
     [alert addAction:determine];
     [controller presentViewController:alert animated:YES completion:nil];
 }
-
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo {
+    
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
+        NSURL *image = [info objectForKey:UIImagePickerControllerReferenceURL];
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:upload_avatar fileURL:image];
+        request.fileData = UIImagePNGRepresentation([info objectForKey:UIImagePickerControllerOriginalImage]);
+        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dic);
+            [[XJAccountManager defaultManager] updateUserInfo];
+            _avatar.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+            [picker dismissViewControllerAnimated:YES completion:nil];
+        } failedBlock:^(NSError * _Nullable error) {
+            [picker dismissViewControllerAnimated:YES completion:nil];
+            [[ZToastManager ShardInstance] showtoast:@"上传头像失败"];
+        }];
+    }else {
+        [[ZToastManager ShardInstance] showtoast:@"请上传正确的图片"];
+    }
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

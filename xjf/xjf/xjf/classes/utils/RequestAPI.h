@@ -72,6 +72,8 @@ static APIName *user_comment_list = @"/api/user/%@/reply";
 
 //更新用户个人信息
 static APIName *update_user_info = @"/api/user/profile";
+//上传头像
+static APIName *upload_avatar = @"/api/user/avatar";
 #pragma mark- Hunter_Wang
 
 

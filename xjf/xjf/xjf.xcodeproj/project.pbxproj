@@ -250,6 +250,8 @@
 		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
 		D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */; };
 		D08534A21CE1DD1F00F0047B /* UserComponentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534A01CE1DD1F00F0047B /* UserComponentCell.m */; };
+		D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A254441D1948CC00BDD146 /* PhotoHandler.m */; };
+		D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A254521D1A3E6100BDD146 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -725,6 +727,11 @@
 		D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserUnLoadCell.xib; sourceTree = "<group>"; };
 		D085349F1CE1DD1F00F0047B /* UserComponentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserComponentCell.h; sourceTree = "<group>"; };
 		D08534A01CE1DD1F00F0047B /* UserComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserComponentCell.m; sourceTree = "<group>"; };
+		D0A254431D1948CC00BDD146 /* PhotoHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHandler.h; sourceTree = "<group>"; };
+		D0A254441D1948CC00BDD146 /* PhotoHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHandler.m; sourceTree = "<group>"; };
+		D0A2544E1D1A3E0200BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		D0A2544F1D1A3E0300BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		D0A254511D1A3E6100BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FA5730763C928D50ED312F03 /* Pods-xjf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1620,6 +1627,8 @@
 				D05985231CF6D76500BF2A30 /* Notification */,
 				D05985241CF6D99200BF2A30 /* Utils */,
 				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
+				D0A254431D1948CC00BDD146 /* PhotoHandler.h */,
+				D0A254441D1948CC00BDD146 /* PhotoHandler.m */,
 				5A7EEE931CE0299C007BAECD /* Header.h */,
 				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 				5A565A6E1D110B1200008DA9 /* CustomView */,
@@ -1905,6 +1914,7 @@
 				644C116E1CBA91DD00892E2C /* libsqlite3.tbd */,
 				644C117E1CBA927F00892E2C /* QuartzCore.framework */,
 				9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */,
+				D0A254521D1A3E6100BDD146 /* InfoPlist.strings */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1971,6 +1981,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */,
+				D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */,
 				D0259AE81D02B85900283F29 /* TaBaseCell.xib in Resources */,
 				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
@@ -2085,6 +2096,7 @@
 				5A565A3A1D069F7200008DA9 /* EmployedGeneralViewController.m in Sources */,
 				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
 				5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */,
+				D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */,
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
@@ -2268,6 +2280,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CDF57ACD1C9F825D00049AF0 /* Base */,
+				D0A2544E1D1A3E0200BDD146 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2276,8 +2289,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				CDF57AD21C9F825D00049AF0 /* Base */,
+				D0A2544F1D1A3E0300BDD146 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D0A254521D1A3E6100BDD146 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0A254511D1A3E6100BDD146 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

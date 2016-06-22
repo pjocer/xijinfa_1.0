@@ -34,34 +34,13 @@
         _accountFinalModel = [[RegistFinalModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:ACCOUNT_INFO] error:nil];
         _user_model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
         _account_type = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] == nil ? NormalAccount : [[[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] intValue];
+        
     }
     return self;
 }
 
-- (void)updateUserInfo:(NSDictionary *)newUserInfo isVipChanged:(BOOL)ret {
-    if (ret) {
-        if (self.user_model.result.membership.count > 0) {
-            for (UserMembership *membership in self.user_model.result.membership) {
-                if ([membership.type isEqualToString:newUserInfo[@"type"]]) {
-                    for (NSString *key in newUserInfo.allKeys) {
-                        [membership setValue:newUserInfo[key] forKey:key];
-                    }
-                }
-            }
-        } else {
-            UserMembership *membership = [[UserMembership alloc] initWithDictionary:newUserInfo error:nil];
-            [self.user_model.result.membership addObject:membership];
-        }
-
-    } else {
-        for (NSString *key in newUserInfo.allKeys) {
-            [self.user_model.result setValue:[newUserInfo objectForKey:key] forKey:key];
-
-        }
-        NSDictionary *userInfo = [self.user_model toDictionary];
-        [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:USER_INFO];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+- (void)updateUserInfo{
+    [self getAccountInfo];
 }
 
 - (BOOL)verifyValid {

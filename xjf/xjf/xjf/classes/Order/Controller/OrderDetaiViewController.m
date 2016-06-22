@@ -334,7 +334,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
         } else {
             if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
                 [[XJAccountManager defaultManager]
-                        updateUserInfo:[self.order.order.result.membership toDictionary] isVipChanged:YES];
+                        updateUserInfo];
             }
         }
 
