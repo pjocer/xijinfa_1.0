@@ -226,7 +226,7 @@
         return;
     }
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:topic_all RequestMethod:POST];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type" : _style == NewTopicDiscussStyle ? @"discuss" : @"qa", @"content" : _textView.text}];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type" : _style == NewTopicDiscussStyle ? @"discuss" : @"qa", @"content" : _textView.text,@"client":@"ios"}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
         if ([dic[@"errCode"] integerValue] == 0) {
