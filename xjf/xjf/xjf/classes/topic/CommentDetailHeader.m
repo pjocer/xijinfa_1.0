@@ -133,6 +133,6 @@
 }
 
 - (void)buttonClicked:(UIButton *)button {
-    NSLog(@"%ld", button.tag);
+    NSLog(@"%ld", (long)button.tag);
 }
 @end

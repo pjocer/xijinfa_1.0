@@ -158,7 +158,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 #pragma mark Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"点击CommentsPageCommentsCell : %ld", indexPath.row);
+    NSLog(@"点击CommentsPageCommentsCell : %ld", (long)indexPath.row);
 
 }
 

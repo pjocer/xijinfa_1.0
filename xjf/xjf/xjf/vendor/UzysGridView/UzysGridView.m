@@ -294,10 +294,10 @@
             } else {
                 retInd = coll.index + 1;
             }
-            NSLog(@"Collide index:%d right", retInd);
+            NSLog(@"Collide index:%ld right", (long)retInd);
         } else {
             retInd = coll.index;
-            NSLog(@"Collide index:%d left", retInd);
+            NSLog(@"Collide index:%ld left", (long)retInd);
         }
     }
 

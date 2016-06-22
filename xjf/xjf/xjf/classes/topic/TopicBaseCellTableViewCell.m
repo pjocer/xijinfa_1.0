@@ -83,7 +83,7 @@
                 if ([dic[@"errCode"] integerValue] == 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSInteger count = [_praiseLabel.text integerValue];
-                        _praiseLabel.text = [NSString stringWithFormat:@"%ld", count + 1];
+                        _praiseLabel.text = [NSString stringWithFormat:@"%ld", (long)(count + 1)];
                         _praiseImageView.highlighted = !_praiseImageView.isHighlighted;
                     });
                 } else {
@@ -102,7 +102,7 @@
                 if ([dic[@"errCode"] integerValue] == 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSInteger count = [_praiseLabel.text integerValue];
-                        _praiseLabel.text = [NSString stringWithFormat:@"%ld", count - 1];
+                        _praiseLabel.text = [NSString stringWithFormat:@"%ld", (long)(count - 1)];
                         _praiseImageView.highlighted = !_praiseImageView.isHighlighted;
                     });
                 } else {
@@ -210,7 +210,7 @@
 }
 
 - (void)buttonClicked:(UIButton *)button {
-    NSLog(@"%ld", button.tag);
+    NSLog(@"%ld", (long)button.tag);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
