@@ -12,7 +12,7 @@
 #import "XJAccountManager.h"
 #import "SettingViewController.h"
 #import <AFNetworkReachabilityManager.h>
-
+#import "XMShareView.h"
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
 static CGFloat selViewH = 3;
@@ -34,6 +34,7 @@ static CGFloat selViewH = 3;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @property (nonatomic, strong) LessonPlayerLessonListViewController *lessonPlayerLessonListViewController;
+@property (nonatomic, strong) XMShareView *shareView;
 @end
 
 @implementation LessonPlayerViewController
@@ -202,7 +203,16 @@ static CGFloat selViewH = 3;
     self.contentScrollView.pagingEnabled = YES;
     self.contentScrollView.showsHorizontalScrollIndicator = NO;
     self.contentScrollView.delegate = self;
+    [self setSharView];
 }
+- (void)setSharView
+{
+    self.shareView = [[XMShareView alloc] initWithFrame:self.view.bounds
+                                                   type:@"分享"];
+    [self.view addSubview:_shareView];
+    _shareView.hidden = YES;
+}
+
 
 #pragma mark PlayerView
 
@@ -314,7 +324,11 @@ static CGFloat selViewH = 3;
         }
             //分享
         else if (button.tag == 102) {
-            NSLog(@"分享");
+            _shareView.shareTitle = self.playTalkGridModel.title;
+            _shareView.shareText = self.playTalkGridModel.content;
+            _shareView.shareUrl = self.playUrl;
+            _shareView.shareImage = self.playTalkGridModel.thumbnail;
+            _shareView.hidden = _shareView.hidden ? NO : YES;
         }
             //点赞
         else if (button.tag == 103) {

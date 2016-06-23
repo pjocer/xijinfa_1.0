@@ -55,7 +55,13 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>mqzoneopensdkapi</string>
+		<string>mqzoneopensdkapi19</string>
+		<string>mqzoneopensdk</string>
+		<string>mqzoneopensdkapiV2</string>
+		<string>mqqapi</string>
 		<string>wechat</string>
+		<string>mqqbrowser</string>
 		<string>mqzone</string>
 		<string>wtloginmqq2</string>
 		<string>mqqopensdkapiV3</string>

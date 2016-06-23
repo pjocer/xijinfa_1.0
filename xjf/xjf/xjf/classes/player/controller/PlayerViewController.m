@@ -265,6 +265,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     [self setSharView];
 }
 
+#pragma mark setSharView
 - (void)setSharView
 {
     self.shareView = [[XMShareView alloc] initWithFrame:self.view.bounds
