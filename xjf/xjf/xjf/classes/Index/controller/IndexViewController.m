@@ -54,7 +54,7 @@ NSString *const CONGYE_CELL = @"congyecell";
     [self requestCategoriesTalkGridData:talkGrid method:GET];
     [self requestLessonListApi:coursesProjectLessonDetailList method:GET];
     [self requestTeacherListData:teacherListHot method:GET];
-    [self requesProjectListDat:Employed method:GET];
+    [self requestProjectListDat:Employed method:GET];
 }
 
 - (void)requestCategoriesTalkGridData:(APIName *)talkGridApi
@@ -107,7 +107,7 @@ NSString *const CONGYE_CELL = @"congyecell";
 }
 
 //ProjectListByModel
-- (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
+- (void)requestProjectListDat:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -309,7 +309,7 @@ NSString *const CONGYE_CELL = @"congyecell";
                 teacherDetailViewController.teacherListDataModel = (TeacherListData *) obj;
                 [self.navigationController pushViewController:teacherDetailViewController animated:YES];
             } else if (indexPath.section == 5) {
-//                //从业培训
+                //从业培训
                 EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
                 ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
 
@@ -349,6 +349,6 @@ NSString *const CONGYE_CELL = @"congyecell";
             break;
     }
 
-
 }
+
 @end

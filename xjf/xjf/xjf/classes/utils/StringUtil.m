@@ -14,34 +14,20 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date = [formatter dateFromString:compareDate];
-    NSTimeInterval timeInterval = [date timeIntervalSinceNow];
-    timeInterval = -timeInterval;
-    long temp = 0;
-    NSString *result;
-    if (timeInterval < 60) {
-        result = [NSString stringWithFormat:@"刚刚"];
+    long t = -(long) [date timeIntervalSinceNow]; // long is big enough
+    if (t < 60) {
+        return [NSString stringWithFormat:@"刚刚"];
+    } else if ((t = t / 60) < 60) {
+        return [NSString stringWithFormat:@"%ld分钟前", t];
+    } else if ((t = t / 60) < 24) {
+        return [NSString stringWithFormat:@"%ld小时前", t];
+    } else if ((t = t / 24) < 30) {
+        return [NSString stringWithFormat:@"%ld天前", t];
+    } else if ((t = t / 30) < 12) {
+        return [NSString stringWithFormat:@"%ld月前", t];
+    } else {
+        return [NSString stringWithFormat:@"%ld年前", t / 12];
     }
-    else if ((temp = timeInterval / 60) < 60) {
-        result = [NSString stringWithFormat:@"%ld分钟前", temp];
-    }
-
-    else if ((temp = temp / 60) < 24) {
-        result = [NSString stringWithFormat:@"%ld小时前", temp];
-    }
-
-    else if ((temp = temp / 24) < 30) {
-        result = [NSString stringWithFormat:@"%ld天前", temp];
-    }
-
-    else if ((temp = temp / 30) < 12) {
-        result = [NSString stringWithFormat:@"%ld月前", temp];
-    }
-    else {
-        temp = temp / 12;
-        result = [NSString
-                stringWithFormat:@"%ld年前", temp];
-    }
-    return result;
 }
 
 + (CGFloat)calculateLabelHeight:(NSString *)content width:(float)width fontsize:(float)fontsize {
@@ -55,7 +41,9 @@
 
 + (CGRect)calculateLabelRect:(NSString *)content size:(CGSize)size font:(UIFont *)font {
     NSDictionary *attributes = @{NSFontAttributeName : font};
-    NSInteger options = NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin;
+    NSInteger options = NSStringDrawingUsesFontLeading
+            | NSStringDrawingTruncatesLastVisibleLine
+            | NSStringDrawingUsesLineFragmentOrigin;
     return [content boundingRectWithSize:size options:(NSStringDrawingOptions) options attributes:attributes context:nil];
 }
 
@@ -69,4 +57,5 @@
     }];
     return times;
 }
+
 @end

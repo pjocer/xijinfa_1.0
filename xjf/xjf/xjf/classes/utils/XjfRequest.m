@@ -40,13 +40,15 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
     }
     return self;
 }
--(instancetype)initWithAPIName:(APIName *)apiName fileURL:(nullable NSURL *)fileUrl {
+
+- (instancetype)initWithAPIName:(APIName *)apiName fileURL:(nullable NSURL *)fileUrl {
     self = [self initWithAPIName:apiName RequestMethod:POST];
     if (self) {
         _url = fileUrl;
     }
     return self;
 }
+
 - (void)startWithSuccessBlock:(SuccessBlock)successBlock failedBlock:(FailedBlock)failedBlock {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[ZToastManager ShardInstance] showprogress];
@@ -60,7 +62,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
                     [[ZToastManager ShardInstance] hideprogress];
                 });
                 NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
-                [self formmatSessionDataTask:response data:responseObject];
+                [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }      failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -78,7 +80,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
                     [[ZToastManager ShardInstance] hideprogress];
                 });
                 NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
-                [self formmatSessionDataTask:response data:responseObject];
+                [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -94,7 +96,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
                     [[ZToastManager ShardInstance] hideprogress];
                 });
                 NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
-                [self formmatSessionDataTask:response data:responseObject];
+                [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -110,7 +112,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
                     [[ZToastManager ShardInstance] hideprogress];
                 });
                 NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
-                [self formmatSessionDataTask:response data:responseObject];
+                [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }        failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -121,7 +123,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
         }
             break;
         case UPLOAD: {
-            [_manager POST:_api_name parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            [_manager POST:_api_name parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> _Nonnull formData) {
                 if (_url) {
                     [formData appendPartWithFileURL:_url name:@"file" error:nil];
                     return;
@@ -130,22 +132,22 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
                     [formData appendPartWithFormData:_fileData name:@"file"];
                     return;
                 }
-            } progress:^(NSProgress * _Nonnull uploadProgress) {
+            }     progress:^(NSProgress *_Nonnull uploadProgress) {
                 int64_t totalProgress = uploadProgress.totalUnitCount;
                 int64_t compeletedProgress = uploadProgress.completedUnitCount;
-                NSLog(@"total:%lld,compeleted:%lld",totalProgress,compeletedProgress);
-            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSLog(@"total:%lld,compeleted:%lld", totalProgress, compeletedProgress);
+            }      success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
-                NSHTTPURLResponse *ret = (NSHTTPURLResponse *)task.response;
+                NSHTTPURLResponse *ret = (NSHTTPURLResponse *) task.response;
                 _responseStatusCode = ret.statusCode;
                 if (_responseStatusCode == 200) {
                     if (successBlock) successBlock(nil);
-                }else {
+                } else {
                     if (failedBlock) failedBlock(nil);
                 }
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            }      failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
                 });
@@ -159,7 +161,7 @@ static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
 }
 
 
-- (void)formmatSessionDataTask:(NSHTTPURLResponse *)task data:(id)responseObject {
+- (void)formatSessionDataTask:(NSHTTPURLResponse *)task data:(id)responseObject {
     _responseStatusCode = task.statusCode;
     _responseData = responseObject;
 }

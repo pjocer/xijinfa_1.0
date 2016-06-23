@@ -50,6 +50,7 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *  Upload Request Need
  */
 @property (nonatomic, strong, nullable) NSData *fileData;
+
 /**
  *  XjfRequest Initializing Method
  *
@@ -59,6 +60,7 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *  @return XjfReqeust Object
  */
 - (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName RequestMethod:(RequestMethod)method;
+
 /**
  *  XjfRequest Initializing Method
  *
@@ -68,6 +70,7 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *  @return XjfRequest Object
  */
 - (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName fileURL:(nullable NSURL *)fileUrl;
+
 /**
  *  Start Request Data From Host
  *
@@ -75,6 +78,7 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *  @param failedBlock  Return If Server Did Not Response
  */
 - (void)startWithSuccessBlock:(nullable SuccessBlock)successBlock failedBlock:(nullable FailedBlock)failedBlock;
+
 /**
  *  Set HTTPHeaderFile
  *
@@ -82,4 +86,5 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *  @param filed Key
  */
 - (void)setValue:(nonnull NSString *)value forHTTPHeaderField:(nonnull NSString *)filed;
+
 @end
