@@ -25,7 +25,7 @@
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 - (void)shareView:(UIView *)view dict:(NSDictionary *)shareDict;
-
+ 
 - (void)shareView:(UIView *)view dict:(NSDictionary *)shareDict type:(NSString *)type;
 
 + (void)qqLoginWithSuccess:(void (^)(NSDictionary *message))success failure:(void (^)(NSDictionary *message, NSError *error))failure;

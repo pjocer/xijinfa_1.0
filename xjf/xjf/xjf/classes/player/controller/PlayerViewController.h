@@ -8,10 +8,7 @@
 #import "PlayerBaseViewController.h"
 #import "TalkGridModel.h"
 #import "ZFPlayer.h"
-
-@interface ZFPlayerView (LoadingImageUrl)
-@property (nonatomic, strong) UIImage *xjfloading_image;
-@end
+#import "ZFPlayerView+Category.h"
 
 @interface PlayerViewController : PlayerBaseViewController
 @property (nonatomic, retain) TalkGridModel *talkGridModel;

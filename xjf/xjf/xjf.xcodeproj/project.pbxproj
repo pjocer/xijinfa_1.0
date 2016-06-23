@@ -250,6 +250,7 @@
 		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
 		D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */; };
 		D08534A21CE1DD1F00F0047B /* UserComponentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534A01CE1DD1F00F0047B /* UserComponentCell.m */; };
+		D09B5C091D1B787F0018387B /* ZFPlayerView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D09B5C081D1B787F0018387B /* ZFPlayerView+Category.m */; };
 		D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A254441D1948CC00BDD146 /* PhotoHandler.m */; };
 		D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A254521D1A3E6100BDD146 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
@@ -727,6 +728,8 @@
 		D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserUnLoadCell.xib; sourceTree = "<group>"; };
 		D085349F1CE1DD1F00F0047B /* UserComponentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserComponentCell.h; sourceTree = "<group>"; };
 		D08534A01CE1DD1F00F0047B /* UserComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserComponentCell.m; sourceTree = "<group>"; };
+		D09B5C071D1B787F0018387B /* ZFPlayerView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZFPlayerView+Category.h"; sourceTree = "<group>"; };
+		D09B5C081D1B787F0018387B /* ZFPlayerView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZFPlayerView+Category.m"; sourceTree = "<group>"; };
 		D0A254431D1948CC00BDD146 /* PhotoHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHandler.h; sourceTree = "<group>"; };
 		D0A254441D1948CC00BDD146 /* PhotoHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHandler.m; sourceTree = "<group>"; };
 		D0A2544E1D1A3E0200BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -1644,6 +1647,8 @@
 				CD1CCC501CB39B3D002FC0C9 /* model */,
 				CD1CCC511CB39B3D002FC0C9 /* view */,
 				CD1CCC5A1CB39BE4002FC0C9 /* playerConfigure.h */,
+				D09B5C071D1B787F0018387B /* ZFPlayerView+Category.h */,
+				D09B5C081D1B787F0018387B /* ZFPlayerView+Category.m */,
 			);
 			name = Player;
 			path = classes/player;
@@ -1652,10 +1657,10 @@
 		CD1CCC4B1CB39B3D002FC0C9 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				CD1CCC4C1CB39B3D002FC0C9 /* PlayerBaseViewController.m */,
 				CD1CCC4D1CB39B3D002FC0C9 /* PlayerBaseViewController.h */,
-				CD1CCC4E1CB39B3D002FC0C9 /* PlayerViewController.m */,
+				CD1CCC4C1CB39B3D002FC0C9 /* PlayerBaseViewController.m */,
 				CD1CCC4F1CB39B3D002FC0C9 /* PlayerViewController.h */,
+				CD1CCC4E1CB39B3D002FC0C9 /* PlayerViewController.m */,
 				5A441C581CE5FB03000CF748 /* CommentsViewController.h */,
 				5A441C591CE5FB03000CF748 /* CommentsViewController.m */,
 				5A105E621CEBFDA30079BEFE /* LessonPlayerViewController.h */,
@@ -2240,6 +2245,7 @@
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				D0259ADD1D02B72600283F29 /* TaBaseViewController.m in Sources */,
+				D09B5C091D1B787F0018387B /* ZFPlayerView+Category.m in Sources */,
 				D07575231D050F7A00F8360F /* TaTopicViewController.m in Sources */,
 				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
 				5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */,
