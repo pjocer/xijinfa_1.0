@@ -35,6 +35,7 @@ static CGFloat selViewH = 3;
 @property (nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @property (nonatomic, strong) LessonPlayerLessonListViewController *lessonPlayerLessonListViewController;
 @property (nonatomic, strong) XMShareView *shareView;
+@property (nonatomic, strong) UIView *backGroudView;
 @end
 
 @implementation LessonPlayerViewController
@@ -193,6 +194,7 @@ static CGFloat selViewH = 3;
 
 - (void)initMainUI {
     [self initPlayerView];
+    [self setBackGroudView];
     [self setVideoBottomView];
     [self setupTitleScrollView];
     [self setupContentScrollView];
@@ -209,7 +211,7 @@ static CGFloat selViewH = 3;
 {
     self.shareView = [[XMShareView alloc] initWithFrame:self.view.bounds
                                                    type:@"分享"];
-    [self.view addSubview:_shareView];
+    [self.backGroudView addSubview:_shareView];
     _shareView.hidden = YES;
 }
 
@@ -221,7 +223,7 @@ static CGFloat selViewH = 3;
         [_playView removeFromSuperview];
         _playView = nil;
     }
-    _playView = [[UIView alloc] init];
+    self.playView = [[UIView alloc] init];
     _playView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_playView];
     [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -241,7 +243,7 @@ static CGFloat selViewH = 3;
 
     }
 
-    _playerView = [ZFPlayerView sharedPlayerView];
+    self.playerView = [ZFPlayerView sharedPlayerView];
     [self.view addSubview:_playerView];
 
     [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -261,6 +263,17 @@ static CGFloat selViewH = 3;
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
     _playerView.xjfloading_image = [UIImage imageWithData:
             [NSData dataWithContentsOfURL:[NSURL URLWithString:self.lessonDetailListModel.result.thumbnail]]];
+}
+
+- (void)setBackGroudView
+{
+    self.backGroudView = [[UIView alloc] init];
+    [self.view addSubview:self.backGroudView];
+    [self.backGroudView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.playerView.mas_bottom);
+        make.left.right.bottom.equalTo(self.view);
+    }];
+    self.backGroudView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark 横竖屏状态
@@ -298,9 +311,9 @@ static CGFloat selViewH = 3;
 
 - (void)setVideoBottomView {
     self.videoBottomView = [[LessonPlayerVideoBottomView alloc]
-            initWithFrame:CGRectMake(0, CGRectGetMaxY(self.playerView.frame), SCREENWITH, videoBottomViewH)];
+            initWithFrame:CGRectMake(0, 0, SCREENWITH, videoBottomViewH)];
     self.videoBottomView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.videoBottomView];
+    [self.backGroudView addSubview:self.videoBottomView];
     self.videoBottomView.delegate = self;
 }
 
@@ -351,7 +364,7 @@ static CGFloat selViewH = 3;
 
     UIScrollView *titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
     titleScrollView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:titleScrollView];
+    [self.backGroudView addSubview:titleScrollView];
 
     self.titleScrollView = titleScrollView;
 }
@@ -363,7 +376,7 @@ static CGFloat selViewH = 3;
     CGRect rect = CGRectMake(0, y + selViewH, SCREENWITH, SCREENHEIGHT - y - selViewH);
 
     UIScrollView *contentScrollView = [[UIScrollView alloc] initWithFrame:rect];
-    [self.view addSubview:contentScrollView];
+    [self.backGroudView addSubview:contentScrollView];
 
     self.contentScrollView = contentScrollView;
     self.contentScrollView.bounces = NO;
@@ -459,12 +472,12 @@ static CGFloat selViewH = 3;
             SCREENWITH,
             selViewH)];
     self.selBackGroundView.backgroundColor = BackgroundColor;
-    [self.view addSubview:self.selBackGroundView];
+    [self.backGroudView addSubview:self.selBackGroundView];
 
     //
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
     self.selView.backgroundColor = BlueColor
-    [self.view addSubview:self.selView];
+    [self.backGroudView addSubview:self.selView];
     @weakify(self)
     [RACObserve(self.contentScrollView, contentOffset) subscribeNext:^(id x) {
         @strongify(self)
@@ -501,10 +514,10 @@ static CGFloat selViewH = 3;
     if (vc.view.superview) {
         return;
     }
-    vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - self.contentScrollView.frame.origin.y);
+    CGFloat tempHeight = ScreenWidth * 9 / 16;
+    vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - tempHeight - 20 - videoBottomViewH - titleH - selViewH);
 
     [self.contentScrollView addSubview:vc.view];
-
 }
 
 - (void)setupTitleCenter:(UIButton *)btn {

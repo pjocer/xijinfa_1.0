@@ -16,15 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = BackgroundColor;
     [self wetWKWebView];
 }
 
 - (void)wetWKWebView
 {
-    self.web = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    self.web = [[UIWebView alloc] init];
     [self.view addSubview:self.web];
+    [self.web mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.view);
+    }];
     [self.web loadHTMLString:self.contentText baseURL:nil];
+    self.web.backgroundColor = [UIColor clearColor];
 }
 
 @end

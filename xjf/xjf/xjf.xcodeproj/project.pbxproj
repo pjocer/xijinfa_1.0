@@ -829,8 +829,8 @@
 				5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */,
 				5A105E691CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.h */,
 				5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */,
-				5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */,
 				5A105E6C1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.h */,
+				5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */,
 				5A105E6F1CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.h */,
 				5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */,
 			);
