@@ -112,36 +112,43 @@
 
 - (void)shareToQQBase:(SHARE_QQ_TYPE)type {
 
-    TencentOAuth *tencentOAuth = [[TencentOAuth alloc] initWithAppId:APP_KEY_QQ andDelegate:self];
-    DLog(@"TencentOAuth accessToken:%@", tencentOAuth.accessToken);
+//    TencentOAuth *tencentOAuth = [[TencentOAuth alloc] initWithAppId:APP_KEY_QQ andDelegate:self];
+//    DLog(@"TencentOAuth accessToken:%@", tencentOAuth.accessToken);
+//
+//    NSString *utf8String = self.shareUrl;
+//    NSString *theTitle = self.shareTitle;
+//    NSString *description = self.shareText;
+////    UIImage *image =[UIImage imageWithData: [NSData dataWithContentsOfURL:[NSURL URLWithString:self.shareImage]]];
+////    NSData *imageData = UIImageJPEGRepresentation(image, SHARE_IMG_COMPRESSION_QUALITY);
+////    
+//    QQApiNewsObject *newsObj = [QQApiNewsObject
+//            objectWithURL:[NSURL URLWithString:utf8String]
+//                    title:theTitle
+//              description:description
+//          previewImageURL:[NSURL URLWithString:self.shareImage]];
+//
+//    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
 
-    NSString *utf8String = self.shareUrl;
-    NSString *theTitle = self.shareTitle;
-    NSString *description = self.shareText;
-//    UIImage *image =[UIImage imageWithData: [NSData dataWithContentsOfURL:[NSURL URLWithString:self.shareImage]]];
-//    NSData *imageData = UIImageJPEGRepresentation(image, SHARE_IMG_COMPRESSION_QUALITY);
-//    
-    QQApiNewsObject *newsObj = [QQApiNewsObject
-            objectWithURL:[NSURL URLWithString:utf8String]
-                    title:theTitle
-              description:description
-          previewImageURL:[NSURL URLWithString:self.shareImage]];
-
-    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
-
-    if (type == SHARE_QQ_TYPE_SESSION) {
-
-        //将内容分享到qq
-        QQApiSendResultCode sent = [QQApiInterface sendReq:req];
-        DLog(@"QQApiSendResultCode:%d", sent);
-
-    } else {
-
-        //将内容分享到qzone
-        QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
-        DLog(@"Qzone QQApiSendResultCode:%d", sent);
-
-    }
+//    if (type == SHARE_QQ_TYPE_SESSION) {
+//
+//        //将内容分享到qq
+//        QQApiSendResultCode sent = [QQApiInterface sendReq:req];
+//        DLog(@"QQApiSendResultCode:%d", sent);
+//
+//    } else {
+//
+//        //将内容分享到qzone
+//        QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
+//        DLog(@"Qzone QQApiSendResultCode:%d", sent);
+//
+//    }
+    
+    
+    
+    QQApiTextObject *txtObj = [QQApiTextObject objectWithText:@"QQ互联测试"];
+    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:txtObj];
+    //将内容分享到qq
+    QQApiSendResultCode sent = [QQApiInterface sendReq:req];
 }
 
 

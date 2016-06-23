@@ -267,6 +267,7 @@ static CGFloat selViewH = 3;
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(20);
         }];
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     } else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight ||
             toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
         self.view.backgroundColor = [UIColor blackColor];
@@ -278,6 +279,7 @@ static CGFloat selViewH = 3;
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(0);
         }];
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 
 }

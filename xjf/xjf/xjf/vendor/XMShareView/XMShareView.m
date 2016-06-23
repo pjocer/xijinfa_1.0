@@ -304,10 +304,8 @@ static const NSInteger numbersOfItemInLine = 3;
 
 - (void)clickClose {
     [UIView animateWithDuration:1 animations:^{
-        self.alpha = 0.0;
+        self.hidden = YES;
     }];
-
-
 }
 
 
