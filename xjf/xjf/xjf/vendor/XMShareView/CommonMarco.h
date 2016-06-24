@@ -39,18 +39,4 @@
 ///  Common size
 #define SIZE_OF_SCREEN    [[UIScreen mainScreen] bounds].size
 
-
-/// View 圆角
-#define ViewRadius(View, Radius)\
-\
-[View.layer setCornerRadius:(Radius)];\
-[View.layer setMasksToBounds:YES]
-
-///  View加边框
-#define ViewBorder(View, BorderColor, BorderWidth)\
-\
-View.layer.borderColor = BorderColor.CGColor;\
-View.layer.borderWidth = BorderWidth;
-
-
 #endif

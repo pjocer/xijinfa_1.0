@@ -60,6 +60,7 @@
 #define FONT_NAME  ((SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) ? (@"PingFangSC-Light") : (@"STHeitiSC-Light"))
 #define FONT14 [UIFont systemFontOfSize:14.0f]
 #define FONT16 [UIFont systemFontOfSize:16.0f]
+#define FONT17 [UIFont systemFontOfSize:17.0f]
 #define FONT12 [UIFont systemFontOfSize:12.0f]
 #define FONT13 [UIFont systemFontOfSize:13.0f]
 #define FONT15 [UIFont systemFontOfSize:15.0f]
@@ -70,7 +71,19 @@
 #define FONT_BOLD(Size) [UIFont fontWithName:FONT_NAME_BOLD size:Size]
 //
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-//
+
+/// View 圆角
+#define ViewRadius(View, Radius)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES]
+
+///  View加边框
+#define ViewBorder(View, BorderColor, BorderWidth)\
+\
+View.layer.borderColor = BorderColor.CGColor;\
+View.layer.borderWidth = BorderWidth;
+
 // player的单例
 
 //

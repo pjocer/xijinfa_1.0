@@ -13,7 +13,7 @@
 #import "MyViewController.h"
 #import "PlayerViewController.h"
 #import "LessonPlayerViewController.h"
-
+#import "HomePageMainViewController.h"
 @interface RootViewController ()
 
 @end
@@ -38,6 +38,7 @@
  *  初始化所有的子控制器
  */
 - (void)setupAllChildViewControllers {
+//    HomePageMainViewController *vc1 = [[HomePageMainViewController alloc] init];
     IndexViewController *vc1 = [[IndexViewController alloc] init];
     vc1.tabBarItem.badgeValue = @"8";
     [self setupChildViewController:vc1
