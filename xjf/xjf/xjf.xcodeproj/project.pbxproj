@@ -137,6 +137,18 @@
 		AA5B95FA1D1948790088A196 /* SearchSectionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95F21D1948790088A196 /* SearchSectionTwo.m */; };
 		AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B95F31D1948790088A196 /* SearchSectionTwo.xib */; };
 		AA5B95FC1D1948790088A196 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95F51D1948790088A196 /* SearchViewController.m */; };
+		AA5B96161D1C0DF60088A196 /* Fans_FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */; };
+		AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96041D1C0DF60088A196 /* FansCell.m */; };
+		AA5B96181D1C0DF60088A196 /* FansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B96051D1C0DF60088A196 /* FansCell.xib */; };
+		AA5B96191D1C0DF60088A196 /* FansFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96071D1C0DF60088A196 /* FansFocus.m */; };
+		AA5B961A1D1C0DF60088A196 /* TaBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96091D1C0DF60088A196 /* TaBaseCell.m */; };
+		AA5B961B1D1C0DF60088A196 /* TaBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B960A1D1C0DF60088A196 /* TaBaseCell.xib */; };
+		AA5B961C1D1C0DF60088A196 /* TaBaseCellFoot.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960C1D1C0DF60088A196 /* TaBaseCellFoot.m */; };
+		AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B960D1D1C0DF60088A196 /* TaBaseCellFoot.xib */; };
+		AA5B961E1D1C0DF60088A196 /* TaBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960F1D1C0DF60088A196 /* TaBaseViewController.m */; };
+		AA5B961F1D1C0DF60088A196 /* TaTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */; };
+		AA5B96201D1C0DF60088A196 /* TaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96131D1C0DF60088A196 /* TaViewController.m */; };
+		AA5B96211D1C0DF60088A196 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96151D1C0DF60088A196 /* UserInfoModel.m */; };
 		C397B48DFAE47D8F0F3C8A55 /* libPods-xjf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */; };
 		CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */; };
 		CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF11CBB732900A0636D /* AppGridViewCell.m */; };
@@ -173,15 +185,8 @@
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
 		CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
-		D01201C01D02D705000AEF43 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D01201BF1D02D705000AEF43 /* UserInfoModel.m */; };
 		D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D11D0181E0000888D4 /* MyTopicViewController.m */; };
 		D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */; };
-		D0259ADD1D02B72600283F29 /* TaBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259ADC1D02B72600283F29 /* TaBaseViewController.m */; };
-		D0259AE31D02B76700283F29 /* TaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259AE21D02B76700283F29 /* TaViewController.m */; };
-		D0259AE71D02B85900283F29 /* TaBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259AE51D02B85900283F29 /* TaBaseCell.m */; };
-		D0259AE81D02B85900283F29 /* TaBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AE61D02B85900283F29 /* TaBaseCell.xib */; };
-		D0259AEC1D02C10000283F29 /* TaBaseCellFoot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */; };
-		D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */; };
 		D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */; };
 		D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */; };
 		D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4CF1D12798A006EADAD /* CitySelector.m */; };
@@ -225,11 +230,6 @@
 		D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF791CFC62E1002D3FAF /* TopicDetailModel.m */; };
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
-		D07575231D050F7A00F8360F /* TaTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07575221D050F7A00F8360F /* TaTopicViewController.m */; };
-		D07575271D0513D500F8360F /* FansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07575251D0513D500F8360F /* FansCell.m */; };
-		D07575281D0513D500F8360F /* FansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07575261D0513D500F8360F /* FansCell.xib */; };
-		D075752B1D05160700F8360F /* Fans_FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D075752A1D05160700F8360F /* Fans_FocusViewController.m */; };
-		D075752E1D05178400F8360F /* FansFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = D075752D1D05178400F8360F /* FansFocus.m */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
 		D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */; };
 		D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */; };
@@ -528,6 +528,27 @@
 		AA5B95F31D1948790088A196 /* SearchSectionTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSectionTwo.xib; sourceTree = "<group>"; };
 		AA5B95F41D1948790088A196 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		AA5B95F51D1948790088A196 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		AA5B96011D1C0DF60088A196 /* Fans_FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fans_FocusViewController.h; sourceTree = "<group>"; };
+		AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fans_FocusViewController.m; sourceTree = "<group>"; };
+		AA5B96031D1C0DF60088A196 /* FansCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansCell.h; sourceTree = "<group>"; };
+		AA5B96041D1C0DF60088A196 /* FansCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansCell.m; sourceTree = "<group>"; };
+		AA5B96051D1C0DF60088A196 /* FansCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FansCell.xib; sourceTree = "<group>"; };
+		AA5B96061D1C0DF60088A196 /* FansFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansFocus.h; sourceTree = "<group>"; };
+		AA5B96071D1C0DF60088A196 /* FansFocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansFocus.m; sourceTree = "<group>"; };
+		AA5B96081D1C0DF60088A196 /* TaBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCell.h; sourceTree = "<group>"; };
+		AA5B96091D1C0DF60088A196 /* TaBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCell.m; sourceTree = "<group>"; };
+		AA5B960A1D1C0DF60088A196 /* TaBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCell.xib; sourceTree = "<group>"; };
+		AA5B960B1D1C0DF60088A196 /* TaBaseCellFoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCellFoot.h; sourceTree = "<group>"; };
+		AA5B960C1D1C0DF60088A196 /* TaBaseCellFoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCellFoot.m; sourceTree = "<group>"; };
+		AA5B960D1D1C0DF60088A196 /* TaBaseCellFoot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCellFoot.xib; sourceTree = "<group>"; };
+		AA5B960E1D1C0DF60088A196 /* TaBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseViewController.h; sourceTree = "<group>"; };
+		AA5B960F1D1C0DF60088A196 /* TaBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseViewController.m; sourceTree = "<group>"; };
+		AA5B96101D1C0DF60088A196 /* TaTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaTopicViewController.h; sourceTree = "<group>"; };
+		AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaTopicViewController.m; sourceTree = "<group>"; };
+		AA5B96121D1C0DF60088A196 /* TaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaViewController.h; sourceTree = "<group>"; };
+		AA5B96131D1C0DF60088A196 /* TaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaViewController.m; sourceTree = "<group>"; };
+		AA5B96141D1C0DF60088A196 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		AA5B96151D1C0DF60088A196 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.release.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.release.xcconfig"; sourceTree = "<group>"; };
 		CD0668711CBB4BC9003CF45A /* IndexMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexMoreViewController.h; sourceTree = "<group>"; };
 		CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexMoreViewController.m; sourceTree = "<group>"; };
@@ -600,22 +621,10 @@
 		CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF57AD21C9F825D00049AF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D01201BE1D02D705000AEF43 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
-		D01201BF1D02D705000AEF43 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		D01F77D01D0181E0000888D4 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
 		D01F77D11D0181E0000888D4 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
 		D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
 		D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
-		D0259ADB1D02B72600283F29 /* TaBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseViewController.h; sourceTree = "<group>"; };
-		D0259ADC1D02B72600283F29 /* TaBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseViewController.m; sourceTree = "<group>"; };
-		D0259AE11D02B76700283F29 /* TaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaViewController.h; sourceTree = "<group>"; };
-		D0259AE21D02B76700283F29 /* TaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaViewController.m; sourceTree = "<group>"; };
-		D0259AE41D02B85900283F29 /* TaBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCell.h; sourceTree = "<group>"; };
-		D0259AE51D02B85900283F29 /* TaBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCell.m; sourceTree = "<group>"; };
-		D0259AE61D02B85900283F29 /* TaBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCell.xib; sourceTree = "<group>"; };
-		D0259AE91D02C10000283F29 /* TaBaseCellFoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCellFoot.h; sourceTree = "<group>"; };
-		D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCellFoot.m; sourceTree = "<group>"; };
-		D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCellFoot.xib; sourceTree = "<group>"; };
 		D02FB4B31D112458006EADAD /* UserInfoInterestedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoInterestedCell.h; sourceTree = "<group>"; };
 		D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoInterestedCell.m; sourceTree = "<group>"; };
 		D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoInterestedCell.xib; sourceTree = "<group>"; };
@@ -692,15 +701,6 @@
 		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationSet.h; path = ../NotificationSet.h; sourceTree = "<group>"; };
 		D073E8171CE9E5B200AED895 /* AlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtils.h; sourceTree = "<group>"; };
 		D073E8181CE9E5B200AED895 /* AlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtils.m; sourceTree = "<group>"; };
-		D07575211D050F7A00F8360F /* TaTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaTopicViewController.h; sourceTree = "<group>"; };
-		D07575221D050F7A00F8360F /* TaTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaTopicViewController.m; sourceTree = "<group>"; };
-		D07575241D0513D500F8360F /* FansCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansCell.h; sourceTree = "<group>"; };
-		D07575251D0513D500F8360F /* FansCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansCell.m; sourceTree = "<group>"; };
-		D07575261D0513D500F8360F /* FansCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FansCell.xib; sourceTree = "<group>"; };
-		D07575291D05160700F8360F /* Fans_FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fans_FocusViewController.h; sourceTree = "<group>"; };
-		D075752A1D05160700F8360F /* Fans_FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fans_FocusViewController.m; sourceTree = "<group>"; };
-		D075752C1D05178400F8360F /* FansFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansFocus.h; sourceTree = "<group>"; };
-		D075752D1D05178400F8360F /* FansFocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansFocus.m; sourceTree = "<group>"; };
 		D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -1312,6 +1312,59 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		AA5B96001D1C08800088A196 /* Ta */ = {
+			isa = PBXGroup;
+			children = (
+				AA5B96241D1C0E650088A196 /* Controller */,
+				AA5B96231D1C0E5A0088A196 /* View */,
+				AA5B96221D1C0E270088A196 /* Model */,
+			);
+			name = Ta;
+			path = classes/Ta;
+			sourceTree = "<group>";
+		};
+		AA5B96221D1C0E270088A196 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA5B96061D1C0DF60088A196 /* FansFocus.h */,
+				AA5B96071D1C0DF60088A196 /* FansFocus.m */,
+				AA5B96141D1C0DF60088A196 /* UserInfoModel.h */,
+				AA5B96151D1C0DF60088A196 /* UserInfoModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AA5B96231D1C0E5A0088A196 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA5B96031D1C0DF60088A196 /* FansCell.h */,
+				AA5B96041D1C0DF60088A196 /* FansCell.m */,
+				AA5B96051D1C0DF60088A196 /* FansCell.xib */,
+				AA5B96081D1C0DF60088A196 /* TaBaseCell.h */,
+				AA5B96091D1C0DF60088A196 /* TaBaseCell.m */,
+				AA5B960A1D1C0DF60088A196 /* TaBaseCell.xib */,
+				AA5B960B1D1C0DF60088A196 /* TaBaseCellFoot.h */,
+				AA5B960C1D1C0DF60088A196 /* TaBaseCellFoot.m */,
+				AA5B960D1D1C0DF60088A196 /* TaBaseCellFoot.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AA5B96241D1C0E650088A196 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA5B96011D1C0DF60088A196 /* Fans_FocusViewController.h */,
+				AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */,
+				AA5B960E1D1C0DF60088A196 /* TaBaseViewController.h */,
+				AA5B960F1D1C0DF60088A196 /* TaBaseViewController.m */,
+				AA5B96101D1C0DF60088A196 /* TaTopicViewController.h */,
+				AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */,
+				AA5B96121D1C0DF60088A196 /* TaViewController.h */,
+				AA5B96131D1C0DF60088A196 /* TaViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		CD144EEF1CBB732900A0636D /* index */ = {
 			isa = PBXGroup;
 			children = (
@@ -1737,8 +1790,8 @@
 				CD1CCC061CB35A2D002FC0C9 /* Topic */,
 				CD1CCC3A1CB37B89002FC0C9 /* Utils */,
 				CD1CCC0C1CB35A2D002FC0C9 /* Vip */,
-				D0259ADA1D02B6DF00283F29 /* Ta */,
 				AA5B95E91D1948790088A196 /* Search */,
+				AA5B96001D1C08800088A196 /* Ta */,
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
@@ -1770,59 +1823,6 @@
 			);
 			name = ThirdUtils;
 			path = ../../vendor;
-			sourceTree = "<group>";
-		};
-		D0259ADA1D02B6DF00283F29 /* Ta */ = {
-			isa = PBXGroup;
-			children = (
-				D0259ADE1D02B73D00283F29 /* Controller */,
-				D0259ADF1D02B74500283F29 /* Model */,
-				D0259AE01D02B74A00283F29 /* View */,
-			);
-			name = Ta;
-			path = classes/vip;
-			sourceTree = "<group>";
-		};
-		D0259ADE1D02B73D00283F29 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D0259AE11D02B76700283F29 /* TaViewController.h */,
-				D0259AE21D02B76700283F29 /* TaViewController.m */,
-				D07575211D050F7A00F8360F /* TaTopicViewController.h */,
-				D07575221D050F7A00F8360F /* TaTopicViewController.m */,
-				D07575291D05160700F8360F /* Fans_FocusViewController.h */,
-				D075752A1D05160700F8360F /* Fans_FocusViewController.m */,
-				D0259ADB1D02B72600283F29 /* TaBaseViewController.h */,
-				D0259ADC1D02B72600283F29 /* TaBaseViewController.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		D0259ADF1D02B74500283F29 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D01201BE1D02D705000AEF43 /* UserInfoModel.h */,
-				D01201BF1D02D705000AEF43 /* UserInfoModel.m */,
-				D075752C1D05178400F8360F /* FansFocus.h */,
-				D075752D1D05178400F8360F /* FansFocus.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		D0259AE01D02B74A00283F29 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D0259AE41D02B85900283F29 /* TaBaseCell.h */,
-				D0259AE51D02B85900283F29 /* TaBaseCell.m */,
-				D0259AE61D02B85900283F29 /* TaBaseCell.xib */,
-				D0259AE91D02C10000283F29 /* TaBaseCellFoot.h */,
-				D0259AEA1D02C10000283F29 /* TaBaseCellFoot.m */,
-				D0259AEB1D02C10000283F29 /* TaBaseCellFoot.xib */,
-				D07575241D0513D500F8360F /* FansCell.h */,
-				D07575251D0513D500F8360F /* FansCell.m */,
-				D07575261D0513D500F8360F /* FansCell.xib */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		D02FB4D61D127A0F006EADAD /* Model */ = {
@@ -1987,19 +1987,17 @@
 			files = (
 				D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */,
 				D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */,
-				D0259AE81D02B85900283F29 /* TaBaseCell.xib in Resources */,
 				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
 				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
 				AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */,
-				D07575281D0513D500F8360F /* FansCell.xib in Resources */,
 				D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */,
 				644C115A1CBA90A000892E2C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
 				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
+				AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */,
 				D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */,
-				D0259AED1D02C10000283F29 /* TaBaseCellFoot.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				644C115E1CBA90A000892E2C /* read_me.txt in Resources */,
 				644C115C1CBA90A000892E2C /* WeiboSDK.bundle in Resources */,
@@ -2011,11 +2009,13 @@
 				644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */,
 				D04D0C1D1D0FC15C0090D2CD /* UserInfoSection3.xib in Resources */,
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
+				AA5B96181D1C0DF60088A196 /* FansCell.xib in Resources */,
 				AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */,
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
 				D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */,
 				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
+				AA5B961B1D1C0DF60088A196 /* TaBaseCell.xib in Resources */,
 				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2081,7 +2081,6 @@
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
-				D01201C01D02D705000AEF43 /* UserInfoModel.m in Sources */,
 				5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */,
 				D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */,
 				CD144F111CBB732900A0636D /* IndexTalkCell.m in Sources */,
@@ -2108,10 +2107,10 @@
 				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */,
+				AA5B96201D1C0DF60088A196 /* TaViewController.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
-				D0259AEC1D02C10000283F29 /* TaBaseCellFoot.m in Sources */,
 				D04D0C121D0FA5240090D2CD /* UserInfoSection1.m in Sources */,
 				5AF7C2F31CFF040D007CC71C /* TeacherLessonsViewController.m in Sources */,
 				5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */,
@@ -2133,6 +2132,7 @@
 				5A565A161D05A8F300008DA9 /* MyLessonsEmployedViewController.m in Sources */,
 				5A565A0C1D02D78C00008DA9 /* MyFavoredsWikiViewController.m in Sources */,
 				D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */,
+				AA5B96191D1C0DF60088A196 /* FansFocus.m in Sources */,
 				D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */,
 				644C11581CBA90A000892E2C /* XMShareWeiboUtil.m in Sources */,
 				D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */,
@@ -2148,7 +2148,6 @@
 				5A565A1E1D066B2900008DA9 /* EmployedViewController.m in Sources */,
 				5A441C5D1CE5FC32000CF748 /* CommentsPageCommentsCell.m in Sources */,
 				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
-				D07575271D0513D500F8360F /* FansCell.m in Sources */,
 				5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */,
 				5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */,
 				644C11551CBA90A000892E2C /* XMShareQQUtil.m in Sources */,
@@ -2161,10 +2160,10 @@
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
 				AA5B95F81D1948790088A196 /* SearchResultController.m in Sources */,
 				5A105EB31CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m in Sources */,
-				D0259AE31D02B76700283F29 /* TaViewController.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
 				D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */,
+				AA5B961E1D1C0DF60088A196 /* TaBaseViewController.m in Sources */,
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */,
 				5A105E921CED880D0079BEFE /* BannerModel.m in Sources */,
@@ -2173,6 +2172,7 @@
 				5AF7C2F61CFF0431007CC71C /* TeacherEmployedViewController.m in Sources */,
 				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
+				AA5B961C1D1C0DF60088A196 /* TaBaseCellFoot.m in Sources */,
 				AA5B95FA1D1948790088A196 /* SearchSectionTwo.m in Sources */,
 				5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
@@ -2191,7 +2191,6 @@
 				5A105E971CED91040079BEFE /* TalkGridModel.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,
-				D075752E1D05178400F8360F /* FansFocus.m in Sources */,
 				D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
 				5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */,
@@ -2202,8 +2201,10 @@
 				5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */,
 				5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
+				AA5B96211D1C0DF60088A196 /* UserInfoModel.m in Sources */,
 				5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
+				AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */,
 				5A565A341D069F1B00008DA9 /* EmployedBasisViewController.m in Sources */,
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
@@ -2235,6 +2236,7 @@
 				644C116D1CBA919000892E2C /* UIColor+hexColor.m in Sources */,
 				D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */,
 				5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */,
+				AA5B96161D1C0DF60088A196 /* Fans_FocusViewController.m in Sources */,
 				5A240E161CE427C0003B7971 /* PlayerPageCommentsCell.m in Sources */,
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
 				5A565A311D069E1800008DA9 /* EmployedLessonListViewController.m in Sources */,
@@ -2243,15 +2245,13 @@
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
 				644C10FE1CBA80BC00892E2C /* NSString+Extensions.m in Sources */,
 				644C112A1CBA907A00892E2C /* ZToastManager.m in Sources */,
+				AA5B961A1D1C0DF60088A196 /* TaBaseCell.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
-				D0259ADD1D02B72600283F29 /* TaBaseViewController.m in Sources */,
 				D09B5C091D1B787F0018387B /* ZFPlayerView+Category.m in Sources */,
-				D07575231D050F7A00F8360F /* TaTopicViewController.m in Sources */,
 				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
 				5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */,
 				5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */,
 				5A105E9A1CED91ED0079BEFE /* WikiPediaCategoriesModel.m in Sources */,
-				D075752B1D05160700F8360F /* Fans_FocusViewController.m in Sources */,
 				5A240E0A1CE42738003B7971 /* PlayerPageRecommendedHeaderView.m in Sources */,
 				D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */,
 				D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */,
@@ -2259,7 +2259,6 @@
 				D02FB4DC1D1290B8006EADAD /* NSString+FirstLetter.m in Sources */,
 				644C11541CBA90A000892E2C /* VerticalUIButton.m in Sources */,
 				D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */,
-				D0259AE71D02B85900283F29 /* TaBaseCell.m in Sources */,
 				5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
 				D05843A51CDC5F7C00B1363C /* ZFPlayerSingleton.m in Sources */,
@@ -2274,6 +2273,7 @@
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,
 				5AF7C2EC1CFF0292007CC71C /* TeacherDetailViewController.m in Sources */,
 				D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */,
+				AA5B961F1D1C0DF60088A196 /* TaTopicViewController.m in Sources */,
 				CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */,
 				5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */,
 			);
