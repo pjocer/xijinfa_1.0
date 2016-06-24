@@ -211,7 +211,7 @@ static CGFloat selViewH = 3;
 {
     self.shareView = [[XMShareView alloc] initWithFrame:self.view.bounds
                                                    type:@"分享"];
-    [self.backGroudView addSubview:_shareView];
+    [self.view addSubview:_shareView];
     _shareView.hidden = YES;
 }
 

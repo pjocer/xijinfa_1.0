@@ -41,6 +41,13 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     return self;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.keyBoardAppearView removeFromSuperview];
+    [self.keyBoardView removeFromSuperview];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor
@@ -174,7 +181,6 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
             initWithTarget:self action:@selector(keyBoardresignFirstResponder:)];
     [self.keyBoardAppearView addGestureRecognizer:tap];
-
 
     self.keyBoardView = [[UIView alloc]
             initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];

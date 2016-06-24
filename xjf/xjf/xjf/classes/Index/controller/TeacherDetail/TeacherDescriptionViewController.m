@@ -23,8 +23,11 @@
 
 - (void)wetWKWebView
 {
-    self.web = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    self.web = [[UIWebView alloc] init];
     [self.view addSubview:self.web];
+    [self.web mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.view);
+    }];
 }
 
 @end
