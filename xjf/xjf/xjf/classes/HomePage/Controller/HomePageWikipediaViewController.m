@@ -53,6 +53,7 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     [self.view addSubview:_collectionView];
     
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerText_Cell];
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFBigWikipediaCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByWikipediaBig_CellID];
     [_collectionView registerClass:[HomePageBanderCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerBander_CellID];
     [_collectionView registerClass:[HomePageScrollCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerHomePageScrollCell_CellID];
     
@@ -87,7 +88,6 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
                                     HomePageSelectViewControllerBander_CellID
                                     forIndexPath:indexPath];
         cell.carouselView.delegate = self;
-        cell.carouselView.backgroundColor = [UIColor redColor];
         return cell;
     }else if (indexPath.section == HomePageClassificationSection){
         HomePageScrollCell *cell = [collectionView
@@ -97,18 +97,16 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
         cell.cellType = ClassificationCell;
         cell.delegate = self;
         return cell;
+    }else if (indexPath.section == HomePageWikipediaSection){
+        XJFBigWikipediaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionByWikipediaBig_CellID forIndexPath:indexPath];
+                return cell;
     }
-//    else if (indexPath.section == HomePageWikipediaSection){
-//        //        TestCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TestCell_IDTWO forIndexPath:indexPath];
-//        //        return cell;
-//    }
     
     UICollectionViewCell *cell = [collectionView
                                   dequeueReusableCellWithReuseIdentifier:
                                   HomePageSelectViewControllerText_Cell
                                   forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor orangeColor];
     return cell;
 }
 
@@ -144,6 +142,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageWikipediaSection){
+        _layout.minimumLineSpacing = 10.0;
         return KHomePageCollectionByWikipediaSize;
     }
     

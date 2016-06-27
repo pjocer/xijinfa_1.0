@@ -7,6 +7,7 @@
 //
 
 #import "HomePageScrollCell.h"
+#import "HomePageConfigure.h"
 
 @interface HomePageScrollCell ()<UICollectionViewDataSource,
                                     UICollectionViewDelegate,
@@ -50,6 +51,8 @@ static NSString *HomePageScrollCellText_CellID = @"HomePageScrollCellText_CellID
     self.collectionView.dataSource = self;
     [self.contentView addSubview:self.collectionView];
     
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFClassificationCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByClassification_CellID];
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFTeacherCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByTeacher_CellID];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomePageScrollCellText_CellID];
 }
 
@@ -62,16 +65,14 @@ static NSString *HomePageScrollCellText_CellID = @"HomePageScrollCellText_CellID
     
     switch (self.cellType) {
         case ClassificationCell: {
-            UICollectionViewCell *cell = [collectionView
-                                          dequeueReusableCellWithReuseIdentifier:HomePageScrollCellText_CellID forIndexPath:indexPath];
-            cell.backgroundColor = [UIColor redColor];
+            XJFClassificationCollectionViewCell *cell = [collectionView
+                                          dequeueReusableCellWithReuseIdentifier:HomePageCollectionByClassification_CellID forIndexPath:indexPath];
             return cell;
         }
             break;
         case TeacherCell: {
-            UICollectionViewCell *cell = [collectionView
-                                          dequeueReusableCellWithReuseIdentifier:HomePageScrollCellText_CellID forIndexPath:indexPath];
-            cell.backgroundColor = [UIColor blueColor];
+            XJFTeacherCollectionViewCell *cell = [collectionView
+                                          dequeueReusableCellWithReuseIdentifier:HomePageCollectionByTeacher_CellID forIndexPath:indexPath];
             return cell;
         }
             break;

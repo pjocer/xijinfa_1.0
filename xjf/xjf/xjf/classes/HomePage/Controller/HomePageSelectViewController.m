@@ -55,6 +55,8 @@ typedef NS_OPTIONS(NSInteger, SelectViewControllerSectionType) {
     
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerText_Cell];
     [_collectionView registerClass:[HomePageBanderCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerBander_CellID];
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFWikipediaCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByWikipedia_CellID];
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFSchoolCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionBySchool_CellID];
     [_collectionView registerClass:[HomePageScrollCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerHomePageScrollCell_CellID];
     
     [_collectionView registerClass:[HomePageCollectionSectionHeaderView class]
@@ -91,20 +93,19 @@ typedef NS_OPTIONS(NSInteger, SelectViewControllerSectionType) {
                                     HomePageSelectViewControllerBander_CellID
                                     forIndexPath:indexPath];
         cell.carouselView.delegate = self;
-        cell.carouselView.backgroundColor = [UIColor redColor];
         return cell;
     }else if (indexPath.section == HomePageWikipediaSection){
-//        MainCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageWikipediaCell_IDTest forIndexPath:indexPath];
-//        return cell;
+        XJFWikipediaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionByWikipedia_CellID forIndexPath:indexPath];
+        return cell;
     }else if (indexPath.section == HomePageSchoolSection){
-//        TestCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TestCell_IDTWO forIndexPath:indexPath];
-//        return cell;
+        XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
+        return cell;
     }else if (indexPath.section == HomePageEmployedSection){
         HomePageScrollCell *cell = [collectionView
                                     dequeueReusableCellWithReuseIdentifier:
                                     HomePageSelectViewControllerHomePageScrollCell_CellID
                                     forIndexPath:indexPath];
-        cell.cellType = ClassificationCell;
+        cell.cellType = TeacherCell;
         cell.delegate = self;
         return cell;
     }
