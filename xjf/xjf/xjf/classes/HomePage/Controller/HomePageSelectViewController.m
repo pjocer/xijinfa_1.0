@@ -15,6 +15,13 @@
                                             XRCarouselViewDelegate,
                                             HomePageScrollCellDelegate>
 
+typedef NS_OPTIONS(NSInteger, SelectViewControllerSectionType) {
+    HomePageBannerSection = 0,
+    HomePageWikipediaSection,
+    HomePageSchoolSection,
+    HomePageEmployedSection
+};
+
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
 @property (nonatomic, retain) NSMutableArray *dataArrayByBanner;
@@ -22,10 +29,6 @@
 @end
 
 @implementation HomePageSelectViewController
-static NSString *HomePageSelectViewControllerText_Cell = @"HomePageSelectViewControllerText_Cell";
-static NSString *HomePageSelectViewControllerBander_CellID = @"HomePageSelectViewControllerBander_CellID";
-static NSString *HomePageSelectViewControllerHomePageScrollCell_CellID = @"HomePageSelectViewControllerHomePageScrollCell_CellID";
-static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"HomePageSelectViewControllerSeccontionHeader_identfail";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,18 +46,18 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
     self.collectionView = [[UICollectionView alloc]
                            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH)
                            collectionViewLayout:_layout];
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.showsVerticalScrollIndicator = NO;
+    _collectionView.backgroundColor = [UIColor clearColor];
+    _collectionView.showsVerticalScrollIndicator = NO;
     
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    [self.view addSubview:self.collectionView];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    [self.view addSubview:_collectionView];
     
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerText_Cell];
-     [self.collectionView registerClass:[HomePageBanderCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerBander_CellID];
-    [self.collectionView registerClass:[HomePageScrollCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerHomePageScrollCell_CellID];
+    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerText_Cell];
+    [_collectionView registerClass:[HomePageBanderCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerBander_CellID];
+    [_collectionView registerClass:[HomePageScrollCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerHomePageScrollCell_CellID];
     
-    [self.collectionView registerClass:[HomePageCollectionSectionHeaderView class]
+    [_collectionView registerClass:[HomePageCollectionSectionHeaderView class]
             forSupplementaryViewOfKind:
      UICollectionElementKindSectionHeader withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail];
 }
@@ -65,15 +68,15 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (section == 0) {
+    if (section == HomePageBannerSection) {
         return 1;
-    }else if (section == 1) {
+    }else if (section == HomePageWikipediaSection) {
 //        return self.teacherListHostModel.result.data.count > 3 ? 3 : self.teacherListHostModel.result.data.count;
         return 4;
-    }else if (section == 2) {
+    }else if (section == HomePageSchoolSection) {
         //        return self.teacherListHostModel.result.data.count > 3 ? 3 : self.teacherListHostModel.result.data.count;
         return 4;
-    }else if (section == 3) {
+    }else if (section == HomePageEmployedSection) {
         //        return self.teacherListHostModel.result.data.count > 3 ? 3 : self.teacherListHostModel.result.data.count;
         return 1;
     }
@@ -82,7 +85,7 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.section == HomePageBannerSection) {
         HomePageBanderCell *cell = [collectionView
                                     dequeueReusableCellWithReuseIdentifier:
                                     HomePageSelectViewControllerBander_CellID
@@ -90,13 +93,13 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
         cell.carouselView.delegate = self;
         cell.carouselView.backgroundColor = [UIColor redColor];
         return cell;
-    }else if (indexPath.section == 1){
+    }else if (indexPath.section == HomePageWikipediaSection){
 //        MainCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageWikipediaCell_IDTest forIndexPath:indexPath];
 //        return cell;
-    }else if (indexPath.section == 2){
+    }else if (indexPath.section == HomePageSchoolSection){
 //        TestCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TestCell_IDTWO forIndexPath:indexPath];
 //        return cell;
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == HomePageEmployedSection){
         HomePageScrollCell *cell = [collectionView
                                     dequeueReusableCellWithReuseIdentifier:
                                     HomePageSelectViewControllerHomePageScrollCell_CellID
@@ -129,25 +132,26 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
     
-    if (section == 0) {
+    if (section == HomePageBannerSection) {
         return CGSizeZero;
     }
     return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
 }
+
 #pragma mark FlowLayoutDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    if (indexPath.section == 0) {
+    if (indexPath.section == HomePageBannerSection) {
         return KHomePageCollectionByBannerSize;
-    }else if (indexPath.section == 1){
+    }else if (indexPath.section == HomePageWikipediaSection){
         _layout.minimumInteritemSpacing =KlayoutMinimumLineSpacing;
         _layout.minimumLineSpacing = KlayoutMinimumInteritemSpacing;
         return KHomePageCollectionByClassificationAndTeacher;
-    }else if (indexPath.section == 2){
+    }else if (indexPath.section == HomePageSchoolSection){
         return KHomePageCollectionByClassificationAndTeacher;
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == HomePageEmployedSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         return KHomePageCollectionByLessons;
     }

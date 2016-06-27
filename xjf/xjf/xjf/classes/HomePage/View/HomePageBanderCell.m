@@ -14,7 +14,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         self.contentView.backgroundColor = [UIColor clearColor];
         
         self.carouselView = [[XRCarouselView alloc] initWithFrame:CGRectMake(0, 10, self.contentView.bounds.size.width, self.contentView.bounds.size.height - 10) imageArray:nil];
