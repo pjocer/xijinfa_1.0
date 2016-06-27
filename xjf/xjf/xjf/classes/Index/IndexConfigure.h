@@ -6,7 +6,6 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "IndexMoreViewController.h"
 #import "IndexBannerCell.h"
 #import "IndexAppCell.h"
 #import "IndexTalkCell.h"
@@ -14,8 +13,6 @@
 #import "IndexTeacherCell.h"
 #import "IndexCourseCell.h"
 #import "MoreBannerCell.h"
-#import "MoreRecommendCell.h"
-#import "MoreSubscribeCell.h"
 #import "playerConfigure.h"
 #import "XRCarouselView.h"
 #import "WikipediaViewController.h"

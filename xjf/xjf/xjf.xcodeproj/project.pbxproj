@@ -176,7 +176,6 @@
 		AA5B96201D1C0DF60088A196 /* TaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96131D1C0DF60088A196 /* TaViewController.m */; };
 		AA5B96211D1C0DF60088A196 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96151D1C0DF60088A196 /* UserInfoModel.m */; };
 		C397B48DFAE47D8F0F3C8A55 /* libPods-xjf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */; };
-		CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */; };
 		CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF11CBB732900A0636D /* AppGridViewCell.m */; };
 		CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF31CBB732900A0636D /* BaikeGridViewCell.m */; };
 		CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF51CBB732900A0636D /* CourseGridViewCell.m */; };
@@ -190,8 +189,6 @@
 		CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F051CBB732900A0636D /* TalkGridViewCell.m */; };
 		CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F071CBB732900A0636D /* TeacherGridViewCell.m */; };
 		CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F161CBB735100A0636D /* MoreBannerCell.m */; };
-		CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F191CBB783000A0636D /* MoreRecommendCell.m */; };
-		CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F1C1CBB784300A0636D /* MoreSubscribeCell.m */; };
 		CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F481CBB95E000A0636D /* BaseUINavigationController.m */; };
 		CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCBF71CB35A2D002FC0C9 /* IndexViewController.m */; };
 		CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCBFD1CB35A2D002FC0C9 /* MyViewController.m */; };
@@ -610,8 +607,6 @@
 		AA5B96141D1C0DF60088A196 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		AA5B96151D1C0DF60088A196 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.release.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.release.xcconfig"; sourceTree = "<group>"; };
-		CD0668711CBB4BC9003CF45A /* IndexMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexMoreViewController.h; sourceTree = "<group>"; };
-		CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexMoreViewController.m; sourceTree = "<group>"; };
 		CD144EF01CBB732900A0636D /* AppGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppGridViewCell.h; sourceTree = "<group>"; };
 		CD144EF11CBB732900A0636D /* AppGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGridViewCell.m; sourceTree = "<group>"; };
 		CD144EF21CBB732900A0636D /* BaikeGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaikeGridViewCell.h; sourceTree = "<group>"; };
@@ -638,10 +633,6 @@
 		CD144F071CBB732900A0636D /* TeacherGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherGridViewCell.m; sourceTree = "<group>"; };
 		CD144F151CBB735100A0636D /* MoreBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreBannerCell.h; sourceTree = "<group>"; };
 		CD144F161CBB735100A0636D /* MoreBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreBannerCell.m; sourceTree = "<group>"; };
-		CD144F181CBB783000A0636D /* MoreRecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreRecommendCell.h; sourceTree = "<group>"; };
-		CD144F191CBB783000A0636D /* MoreRecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreRecommendCell.m; sourceTree = "<group>"; };
-		CD144F1B1CBB784300A0636D /* MoreSubscribeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreSubscribeCell.h; sourceTree = "<group>"; };
-		CD144F1C1CBB784300A0636D /* MoreSubscribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreSubscribeCell.m; sourceTree = "<group>"; };
 		CD144F471CBB95E000A0636D /* BaseUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseUINavigationController.h; sourceTree = "<group>"; };
 		CD144F481CBB95E000A0636D /* BaseUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseUINavigationController.m; sourceTree = "<group>"; };
 		CD1CCBF61CB35A2D002FC0C9 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
@@ -1528,10 +1519,6 @@
 			children = (
 				CD144F151CBB735100A0636D /* MoreBannerCell.h */,
 				CD144F161CBB735100A0636D /* MoreBannerCell.m */,
-				CD144F181CBB783000A0636D /* MoreRecommendCell.h */,
-				CD144F191CBB783000A0636D /* MoreRecommendCell.m */,
-				CD144F1B1CBB784300A0636D /* MoreSubscribeCell.h */,
-				CD144F1C1CBB784300A0636D /* MoreSubscribeCell.m */,
 				5A441C551CE5F1F3000CF748 /* VideoListCell.h */,
 				5A441C561CE5F1F3000CF748 /* VideoListCell.m */,
 			);
@@ -1557,8 +1544,6 @@
 				CD1CCBF71CB35A2D002FC0C9 /* IndexViewController.m */,
 				CD1CCC2B1CB37927002FC0C9 /* IndexBaseViewController.h */,
 				CD1CCC2C1CB37927002FC0C9 /* IndexBaseViewController.m */,
-				CD0668711CBB4BC9003CF45A /* IndexMoreViewController.h */,
-				CD0668721CBB4BC9003CF45A /* IndexMoreViewController.m */,
 				5A240DEF1CE32BD1003B7971 /* WikipediaViewController.h */,
 				5A240DF01CE32BD1003B7971 /* WikipediaViewController.m */,
 				5A105EA71CEF15B40079BEFE /* WikiMoreViewController.h */,
@@ -2218,7 +2203,6 @@
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
 				D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */,
 				5AF7C2F01CFF03F5007CC71C /* TeacherDescriptionViewController.m in Sources */,
-				CD144F1D1CBB784300A0636D /* MoreSubscribeCell.m in Sources */,
 				5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */,
 				5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */,
 				5AF7C2DC1CF96D53007CC71C /* OrderFooterView.m in Sources */,
@@ -2235,7 +2219,6 @@
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
-				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				5A240E101CE42774003B7971 /* PlayerPageCommentsFooterView.m in Sources */,
 				AA5B96201D1C0DF60088A196 /* TaViewController.m in Sources */,
@@ -2320,7 +2303,6 @@
 				5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
 				5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */,
-				CD0668731CBB4BC9003CF45A /* IndexMoreViewController.m in Sources */,
 				5A565A731D110B2100008DA9 /* CloverText.m in Sources */,
 				D04D0C1C1D0FC15C0090D2CD /* UserInfoSection3.m in Sources */,
 				5A20717F1D02BBFC00462D65 /* MyFavoredsSchoolViewController.m in Sources */,
