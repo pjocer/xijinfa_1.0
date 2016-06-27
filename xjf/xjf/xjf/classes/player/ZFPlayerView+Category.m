@@ -8,7 +8,6 @@
 
 #import "ZFPlayerView+Category.h"
 #import <objc/runtime.h>
-#import <AVFoundation/AVFoundation.h>
 @implementation ZFPlayerView (Category)
 - (void)setXjfloading_image:(UIImage *)xjfloading_image {
     self.layer.contents = (id) xjfloading_image.CGImage;

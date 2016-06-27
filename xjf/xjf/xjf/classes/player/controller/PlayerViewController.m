@@ -15,18 +15,6 @@
 #import <AFNetworkReachabilityManager.h>
 #import "ZPlatformShare.h"
 
-@implementation ZFPlayerView (LoadingImageUrl)
-
-- (void)setXjfloading_image:(UIImage *)xjfloading_image {
-    self.layer.contents = (id) xjfloading_image.CGImage;
-    objc_setAssociatedObject(self, @selector(xjfloading_image), xjfloading_image, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (UIImage *)xjfloading_image {
-    return objc_getAssociatedObject(self, @selector(xjfloading_image));
-}
-@end
-
 @interface PlayerViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout,
