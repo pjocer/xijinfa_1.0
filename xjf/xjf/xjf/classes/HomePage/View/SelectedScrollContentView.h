@@ -8,6 +8,8 @@
 
 #import "XJFBaseView.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SelectedScrollContentView : XJFBaseView
 
 /**
@@ -15,12 +17,18 @@
  *
  *  @param frame                frame
  *  @param targetViewController targetViewController
- *  @param block      block初始化ChildViewControllers
+ *  @param block      blockReturnChildViewControllers
  *
  *  @return SelectedScrollContentView
  */
-- (instancetype)initWithFrame:(CGRect)frame
+- (nullable instancetype)initWithFrame:(CGRect)frame
          targetViewController:(UIViewController *)targetViewController
-  addChildViewControllerBlock:(void(^)())block;
+  addChildViewControllerBlock:(void(^)())block NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 @end
+
+NS_ASSUME_NONNULL_END

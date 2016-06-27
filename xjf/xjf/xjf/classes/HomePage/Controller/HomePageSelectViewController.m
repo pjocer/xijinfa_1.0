@@ -111,7 +111,7 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
                                     HomePageSelectViewControllerText_Cell
                                     forIndexPath:indexPath];
 
-
+    cell.backgroundColor = [UIColor orangeColor];
     return cell;
 }
 

@@ -38,8 +38,8 @@
  *  初始化所有的子控制器
  */
 - (void)setupAllChildViewControllers {
-//    HomePageMainViewController *vc1 = [[HomePageMainViewController alloc] init];
-    IndexViewController *vc1 = [[IndexViewController alloc] init];
+    HomePageMainViewController *vc1 = [[HomePageMainViewController alloc] init];
+//    IndexViewController *vc1 = [[IndexViewController alloc] init];
     vc1.tabBarItem.badgeValue = @"8";
     [self setupChildViewController:vc1
                              title:@"首页"
