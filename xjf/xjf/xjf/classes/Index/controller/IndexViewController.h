@@ -8,6 +8,9 @@
 
 #import "IndexBaseViewController.h"
 
+/**
+ * 首页,主页
+ */
 @interface IndexViewController : IndexBaseViewController
 
 @end

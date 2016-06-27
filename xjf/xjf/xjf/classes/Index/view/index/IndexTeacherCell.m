@@ -61,7 +61,7 @@
 }
 
 - (NSInteger)numberOfCellsInGridView:(UzysGridView *)gridview {
-    return 3;
+    return [self.teacherListHostModel.result.data count];
 }
 
 - (UzysGridViewCell *)gridView:(UzysGridView *)gridview cellAtIndex:(NSUInteger)index {

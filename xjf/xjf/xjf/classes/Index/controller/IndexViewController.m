@@ -268,7 +268,7 @@ NSString *const CONGYE_CELL = @"congyecell";
             if (indexPath.section == 0) {
                 XRCarouselView *carouselView = obj;
                 carouselView.imageClickBlock = ^(NSInteger index) {
-                    NSLog(@"第%ld张图片被点击", (long)index);
+                    NSLog(@"第%ld张图片被点击", (long) index);
                     BannerWebViewViewController *bannerWebViewViewController = [BannerWebViewViewController new];
                     BannerResultModel *model = (BannerResultModel *) key;
                     bannerWebViewViewController.webHtmlUrl = model.link;
