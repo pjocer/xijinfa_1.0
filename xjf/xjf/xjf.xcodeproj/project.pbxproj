@@ -22,7 +22,6 @@
 		5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */; };
 		5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */; };
 		5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */; };
-		5A105E741CEC149A0079BEFE /* LessonPlayerVideoBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E731CEC149A0079BEFE /* LessonPlayerVideoBottomView.m */; };
 		5A105E781CEC31F80079BEFE /* LessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E771CEC31F80079BEFE /* LessonListCell.m */; };
 		5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E7D1CED5A4E0079BEFE /* LessonListViewController.m */; };
 		5A105E921CED880D0079BEFE /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8D1CED880D0079BEFE /* BannerModel.m */; };
@@ -147,6 +146,7 @@
 		644C11751CBA920A00892E2C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11741CBA920A00892E2C /* libz.tbd */; };
 		644C11771CBA921800892E2C /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11761CBA921800892E2C /* libiconv.tbd */; };
 		644C11911CBA93A500892E2C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11901CBA93A500892E2C /* libc++.tbd */; };
+		68AD357B1BFC5D287517F2E7 /* LessonPlayerVideoBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */; };
 		68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */; };
 		AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EB1D1948790088A196 /* BaikeCell.m */; };
 		AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B95EC1D1948790088A196 /* BaikeCell.xib */; };
@@ -307,8 +307,6 @@
 		5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonCommentsViewController.m; sourceTree = "<group>"; };
 		5A105E6F1CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonRecommendedViewController.h; sourceTree = "<group>"; };
 		5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonRecommendedViewController.m; sourceTree = "<group>"; };
-		5A105E721CEC149A0079BEFE /* LessonPlayerVideoBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonPlayerVideoBottomView.h; path = xjf/classes/player/controller/LessonPlayerVCChildVideController/LessonPlayerVideoBottomView.h; sourceTree = SOURCE_ROOT; };
-		5A105E731CEC149A0079BEFE /* LessonPlayerVideoBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonPlayerVideoBottomView.m; path = xjf/classes/player/controller/LessonPlayerVCChildVideController/LessonPlayerVideoBottomView.m; sourceTree = SOURCE_ROOT; };
 		5A105E761CEC31F80079BEFE /* LessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonListCell.h; sourceTree = "<group>"; };
 		5A105E771CEC31F80079BEFE /* LessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonListCell.m; sourceTree = "<group>"; };
 		5A105E7C1CED5A4E0079BEFE /* LessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonListViewController.h; path = ../../player/controller/LessonListViewController.h; sourceTree = "<group>"; };
@@ -554,6 +552,8 @@
 		644C117E1CBA927F00892E2C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		644C118E1CBA92F800892E2C /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		644C11901CBA93A500892E2C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		68AD30462D242D0BB1E3452F /* LessonPlayerVideoBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerVideoBottomView.h; sourceTree = "<group>"; };
+		68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerVideoBottomView.m; sourceTree = "<group>"; };
 		68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRecommendedHeaderView.m; sourceTree = "<group>"; };
 		68AD3F14C5FECC832471B24F /* LessonRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRecommendedHeaderView.h; sourceTree = "<group>"; };
 		9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xjf.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1504,6 +1504,8 @@
 				AA5B96911D222BE20088A196 /* PlayerPageRecommendedHeaderView.m */,
 				68AD3F14C5FECC832471B24F /* LessonRecommendedHeaderView.h */,
 				68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */,
+				68AD30462D242D0BB1E3452F /* LessonPlayerVideoBottomView.h */,
+				68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1871,8 +1873,6 @@
 		CD1CCC511CB39B3D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				5A105E721CEC149A0079BEFE /* LessonPlayerVideoBottomView.h */,
-				5A105E731CEC149A0079BEFE /* LessonPlayerVideoBottomView.m */,
 				5A105E751CEC31D90079BEFE /* LessonPlayerVCChildVideView */,
 			);
 			path = view;
@@ -2202,7 +2202,6 @@
 				5A105EAC1CEF17AC0079BEFE /* WikiMoreClassificationCell.m in Sources */,
 				AA5B96951D222BE20088A196 /* PlayerPageDescribeCell.m in Sources */,
 				D04F5E4C1CFEB6EB008386CE /* NewTopicViewController.m in Sources */,
-				5A105E741CEC149A0079BEFE /* LessonPlayerVideoBottomView.m in Sources */,
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
 				AA5B96961D222BE20088A196 /* PlayerPageDescribeFooterView.m in Sources */,
@@ -2421,6 +2420,7 @@
 				CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */,
 				5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */,
 				68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */,
+				68AD357B1BFC5D287517F2E7 /* LessonPlayerVideoBottomView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
