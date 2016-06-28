@@ -45,6 +45,9 @@ NSString *const Subscribe = @"SubscribeViewController";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(id x) {
+        [self setTopicRightItem];
+    }];
     self.nav_title = @"";
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
@@ -73,24 +76,28 @@ NSString *const Subscribe = @"SubscribeViewController";
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 15;
         self.navigationItem.rightBarButtonItems = @[item, item2];
-        UIImage *image = nil;
-        if ([[XJAccountManager defaultManager] accessToken]) {
-            image = [UIImage imageWithData:UserDefaultObjectForKey(@"user_icon")];
-        }else {
-            image = [UIImage imageNamed:@"user_unload"];
-        }
-        UIButton *user_icon = [UIButton buttonWithType:UIButtonTypeSystem];
-        [user_icon setBackgroundImage:image forState:UIControlStateNormal];
-        user_icon.tag = 16;
-        user_icon.frame = CGRectMake(0, 0, 30, 30);
-        user_icon.layer.cornerRadius = 15;
-        user_icon.layer.masksToBounds = YES;
-        [user_icon addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:user_icon];
-        self.navigationItem.leftBarButtonItem = right;
+        [self setTopicRightItem];
     } else if ([name isEqualToString:Vip]) {
 
     }
+}
+- (void)setTopicRightItem {
+    UIImage *image = nil;
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        image = [UIImage imageWithData:UserDefaultObjectForKey(@"user_icon")];
+    }else {
+        image = [UIImage imageNamed:@"user_unload"];
+    }
+    UIButton *user_icon = [UIButton buttonWithType:UIButtonTypeSystem];
+    [user_icon setBackgroundImage:image forState:UIControlStateNormal];
+    user_icon.tag = 16;
+    user_icon.frame = CGRectMake(0, 0, 30, 30);
+    user_icon.layer.cornerRadius = 15;
+    user_icon.layer.masksToBounds = YES;
+    [user_icon addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:user_icon];
+    UINavigationController *topicNac = [self.navigationController.tabBarController.childViewControllers objectAtIndex:1];
+    [topicNac.viewControllers objectAtIndex:0].navigationItem.leftBarButtonItem = left;
 }
 - (void)headerClickEvent:(id)sender {
     UIButton *btn = (UIButton *) sender;
