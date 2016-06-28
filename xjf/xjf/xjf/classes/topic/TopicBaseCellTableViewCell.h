@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TopicModel.h"
 #import "TopicDetailModel.h"
+#import "XJFBaseTableViewCell.h"
 
-@interface TopicBaseCellTableViewCell : UITableViewCell
+@interface TopicBaseCellTableViewCell : XJFBaseTableViewCell
 @property (nonatomic, strong) TopicDataModel *model;
-@property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, assign) CGFloat cellHeight __deprecated_msg("user xib instead");
 @end

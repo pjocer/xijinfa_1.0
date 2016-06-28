@@ -8,6 +8,13 @@
 
 #import "TopicBaseViewController.h"
 
-@interface NewCommentViewController : TopicBaseViewController
+typedef enum : NSUInteger {
+    NewTopic,
+    NewComment,
+} NewStyle;
+
+@interface NewComment_Topic : TopicBaseViewController
 @property (nonatomic, copy) NSString *topic_id;
+@property (nonatomic, copy) NSString *type;
+-(instancetype)initWithType:(NewStyle)aNewStyle;
 @end

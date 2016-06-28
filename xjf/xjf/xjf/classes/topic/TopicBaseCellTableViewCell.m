@@ -12,19 +12,19 @@
 #import "XjfRequest.h"
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
-#import "NewCommentViewController.h"
+#import "NewComment_Topic.h"
 #import "TaViewController.h"
 
 @interface TopicBaseCellTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *identity;
-@property (weak, nonatomic) IBOutlet UILabel *extension;
 @property (weak, nonatomic) IBOutlet UILabel *update_at;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
-@property (weak, nonatomic) IBOutlet UILabel *content;
-@property (weak, nonatomic) IBOutlet UILabel *segment_line;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *left_width;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *right_width;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *left_constrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *right_constrain;
+@property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UIView *comment;
 @property (weak, nonatomic) IBOutlet UIView *praise;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
@@ -36,12 +36,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.avatar.layer.cornerRadius = 20;
-    self.avatar.layer.masksToBounds = YES;
-    self.extension.layer.cornerRadius = 5;
-    self.extension.layer.masksToBounds = YES;
-    _left_constrain.constant = SCREENWITH / 4 - 18.5;
-    _right_constrain.constant = SCREENWITH / 4 - 18.5;
+    _left_width.constant = (SCREENWITH-20)/2.0;
+    _right_width.constant = (SCREENWITH-20)/2.0-1;
+    _left_constrain.constant = (SCREENWITH-20)/2.0/2.0-17.5;
+    _right_constrain.constant = ((SCREENWITH-20)/2.0-1.0)/2.0-17.5;
     UITapGestureRecognizer *avatar_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarClicked:)];
     [_avatar addGestureRecognizer:avatar_tap];
     UITapGestureRecognizer *comment_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentClicked:)];
@@ -62,8 +60,9 @@
 
 - (void)commentClicked:(UITapGestureRecognizer *)gesture {
     if ([[XJAccountManager defaultManager] accessToken]) {
-        NewCommentViewController *controler = [[NewCommentViewController alloc] init];
+        NewComment_Topic *controler = [[NewComment_Topic alloc] initWithType:NewComment];
         controler.topic_id = self.model.id;
+        controler.type = self.model.type;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controler];
         UIViewController *vc = getCurrentDisplayController();
         [vc.navigationController presentViewController:nav animated:YES completion:nil];
@@ -130,83 +129,6 @@
     _commentLabel.text = model.replies_count;
     _praiseLabel.text = model.likes_count;
     _praiseImageView.highlighted = model.user_liked;
-    if (![model.type isEqualToString:@"qa"]) {
-        _extension.backgroundColor = [UIColor xjfStringToColor:@"#FFA53C"];
-        _extension.text = @"讨论";
-    } else {
-        _extension.backgroundColor = [UIColor xjfStringToColor:@"#3FA9F5"];
-        _extension.text = @"问答";
-    }
-    [self heightByModel:model];
-}
-
-- (CGFloat)heightByModel:(TopicDataModel *)model {
-    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH - 20 fontsize:15];
-    CGFloat height = 10 + 40 + 10 + contentHeight;
-    if (model.taxonomy_tags.count > 0) {
-        if (self.contentView.subviews.count == 11) {
-            [self addSubviewsWithModel:model];
-        } else {
-            [self removeSubviews];
-            [self addSubviewsWithModel:model];
-        }
-    } else {
-        self.cellHeight = height + 10 + 36;
-        if (self.contentView.subviews.count != 11) {
-            [self removeSubviews];
-        }
-    }
-    return self.cellHeight;
-}
-
-- (void)removeSubviews {
-    for (UIView *view in self.contentView.subviews) {
-        if (view.tag >= 350) {
-            [view removeFromSuperview];
-        }
-    }
-}
-
-- (void)addSubviewsWithModel:(TopicDataModel *)model {
-    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH - 20 fontsize:15];
-    CGFloat height = 10 + 40 + 10 + contentHeight;
-    CGFloat all = 0;
-    CGFloat alll = 0;
-    CGFloat x = 0;
-    CGFloat y = 0;
-    CGFloat tap = 10;
-    NSMutableArray *labels = [NSMutableArray array];
-    for (CategoryLabel *label in model.taxonomy_tags) {
-        [labels addObject:label.title];
-    }
-    for (int i = 0; i < labels.count; i++) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSString *title = [NSString stringWithFormat:@"#%@#", labels[i]];
-        CGSize size = [title sizeWithFont:FONT12 constrainedToSize:CGSizeMake(SCREENWITH, 14) lineBreakMode:1];
-        all = all + tap + size.width;
-        if (all <= SCREENWITH) {
-            x = all - size.width;
-            y = contentHeight + 70;
-            button.frame = CGRectMake(x, y, size.width, 14);
-            self.cellHeight = height + 34 + 36;
-        } else if (all <= SCREENWITH * 2 && all > SCREENWITH) {
-            alll = alll + tap + size.width;
-            if (alll <= SCREENWITH) {
-                x = alll - size.width;
-                y = contentHeight + 94;
-                button.frame = CGRectMake(x, y, size.width, 14);
-                self.cellHeight = height + 30 + 28 + 36;
-            } else {
-                continue;
-            }
-        }
-        [button setTitle:title forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor xjfStringToColor:@"#0061B0"] forState:UIControlStateNormal];
-        button.titleLabel.font = FONT12;
-        button.tag = 350 + i;
-        [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:button];
-    }
 }
 
 - (void)buttonClicked:(UIButton *)button {

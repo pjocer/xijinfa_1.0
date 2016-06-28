@@ -16,13 +16,12 @@
 #import "CommentListCell.h"
 #import "StringUtil.h"
 #import "XJAccountManager.h"
-#import "NewCommentViewController.h"
+#import "NewComment_Topic.h"
 
 @interface TopicDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) TopicDetailModel *model;
 @property (nonatomic, strong) TopicCommentList *commentList;
-@property (nonatomic, strong) CommentDetailHeader *header;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) UIView *footer;
 @property (nonatomic, strong) UIImageView *like_imageView;
@@ -109,8 +108,9 @@
 
 - (void)commentClicked:(UIButton *)button {
     if ([[XJAccountManager defaultManager] accessToken]) {
-        NewCommentViewController *controler = [[NewCommentViewController alloc] init];
+        NewComment_Topic *controler = [[NewComment_Topic alloc] initWithType:NewComment];
         controler.topic_id = self.topic_id;
+        controler.type = self.model.result.type;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controler];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
     } else {
@@ -200,9 +200,11 @@
         _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             [self requestData:_commentList.result.next_page_url method:GET];
         }];
+        _tableView.estimatedRowHeight = 1000;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
     }
     return _tableView;
 }
@@ -224,18 +226,18 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 1) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-        view.backgroundColor = [UIColor whiteColor];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH - 10, 18)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 33)];
+        view.backgroundColor = [UIColor clearColor];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, SCREENWITH - 10, 18)];
         label.font = FONT15;
         label.textColor = NormalColor;
         label.text = @"评论";
         [view addSubview:label];
-        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
-        line.backgroundColor = BackgroundColor;
-        [view addSubview:line];
         if (_dataSource.count == 0) {
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, SCREENWITH, 200)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 43, SCREENWITH-20, 200)];
+            label.backgroundColor = [UIColor whiteColor];
+            label.layer.cornerRadius = 5;
+            label.layer.masksToBounds = YES;
             label.font = FONT12;
             label.textAlignment = 1;
             label.textColor = AssistColor;
@@ -250,9 +252,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 1) {
         if (_dataSource.count == 0) {
-            return 235;
+            return 243;
         } else {
-            return 35;
+            return 33;
         }
     } else {
         return 0;
@@ -261,10 +263,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        _header = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
-        _header.model = _model.result;
-        _header.selectionStyle = UITableViewCellSelectionStyleNone;
-        return _header;
+        CommentDetailHeader *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
+        cell.model = _model.result;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     } else {
         CommentListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentListCell" forIndexPath:indexPath];
         if (_dataSource && _dataSource.count > 0) {
@@ -275,19 +277,6 @@
         return cell;
     }
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return _header.cellHeight;
-    } else if (indexPath.section == 1) {
-        if (self.dataSource && self.dataSource.count > 0) {
-            TopicDataModel *data = [self.dataSource objectAtIndex:indexPath.row];
-            return [StringUtil calculateLabelHeight:data.content width:SCREENWITH - 70 fontsize:15] + 71;
-        }
-    }
-    return 0;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

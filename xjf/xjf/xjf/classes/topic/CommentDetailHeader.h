@@ -11,5 +11,5 @@
 
 @interface CommentDetailHeader : UITableViewCell
 @property (nonatomic, strong) TopicDataModel *model;
-@property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, assign) CGFloat cellHeight __deprecated_msg("user xib instead");
 @end

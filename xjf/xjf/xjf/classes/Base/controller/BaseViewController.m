@@ -15,6 +15,8 @@
 #import "ZToastManager.h"
 #import "MyPlayerHistoryViewController.h"
 #import "RegistViewController.h"
+#import "NewComment_Topic.h"
+#import "UIImageView+WebCache.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -71,38 +73,25 @@ NSString *const Subscribe = @"SubscribeViewController";
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 15;
         self.navigationItem.rightBarButtonItems = @[item, item2];
+        UIImage *image = nil;
+        if ([[XJAccountManager defaultManager] accessToken]) {
+            image = [UIImage imageWithData:UserDefaultObjectForKey(@"user_icon")];
+        }else {
+            image = [UIImage imageNamed:@"user_unload"];
+        }
+        UIButton *user_icon = [UIButton buttonWithType:UIButtonTypeSystem];
+        [user_icon setBackgroundImage:image forState:UIControlStateNormal];
+        user_icon.tag = 16;
+        user_icon.frame = CGRectMake(0, 0, 30, 30);
+        user_icon.layer.cornerRadius = 15;
+        user_icon.layer.masksToBounds = YES;
+        [user_icon addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:user_icon];
+        self.navigationItem.leftBarButtonItem = right;
     } else if ([name isEqualToString:Vip]) {
 
     }
-    [self initLeftItemWith:name];
 }
-
-- (void)initLeftItemWith:(NSString *)name {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 86, 22)];
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 34, 18)];
-    if ([name isEqualToString:My]) {
-        title.text = @"我的";
-        title.hidden = NO;
-    } else if ([name isEqualToString:Index]) {
-        title.hidden = YES;
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:view.frame];
-        imageView.image = [UIImage imageNamed:@"indexLogo"];
-        [view addSubview:imageView];
-        title.text = @"首页";
-    } else if ([name isEqualToString:Topic]) {
-        title.text = @"话题";
-        title.hidden = NO;
-    } else if ([name isEqualToString:Vip]) {
-        title.text = @"会员";
-        title.hidden = NO;
-    }
-    title.font = FONT(17);
-    [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
-    [view addSubview:title];
-    UIBarButtonItem *item_left = [[UIBarButtonItem alloc] initWithCustomView:view];
-    self.navigationItem.leftBarButtonItem = item_left;
-}
-
 - (void)headerClickEvent:(id)sender {
     UIButton *btn = (UIButton *) sender;
     switch (btn.tag) {
@@ -149,13 +138,7 @@ NSString *const Subscribe = @"SubscribeViewController";
                 [[ZToastManager ShardInstance] showtoast:@"请先登录"];
                 return;
             }
-            NewTopicStyle style = NewTopicDefaultStyle;
-            if (self.topicTag == 1) {
-                style = NewTopicQAStyle;
-            } else if (self.topicTag == 2) {
-                style = NewTopicDiscussStyle;
-            }
-            NewTopicViewController *controller = [[NewTopicViewController alloc] initWithStyle:style];
+            NewComment_Topic *controller = [[NewComment_Topic alloc] initWithType:NewTopic];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
             [self.navigationController presentViewController:nav animated:YES completion:nil];
         }
@@ -164,6 +147,16 @@ NSString *const Subscribe = @"SubscribeViewController";
         {
             SearchViewController *download = [[SearchViewController alloc] init];
             [self.navigationController pushViewController:download animated:YES];
+        }
+            break;
+        case 16:
+        {
+            if ([[XJAccountManager defaultManager] accessToken]) {
+                NSLog(@"用户个人中心页");
+            }else {
+                LoginViewController *login = [[LoginViewController alloc] init];
+                [getCurrentDisplayController().navigationController pushViewController:login animated:YES];
+            }
         }
             break;
         default:

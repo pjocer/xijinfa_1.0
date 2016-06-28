@@ -6,23 +6,29 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "NewCommentViewController.h"
+#import "NewComment_Topic.h"
 #import "ZToastManager.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "XjfRequest.h"
 
-@interface NewCommentViewController ()
+@interface NewComment_Topic ()
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UILabel *placeholder;
+@property (nonatomic, assign) NewStyle style;
 @end
 
-@implementation NewCommentViewController
+@implementation NewComment_Topic
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
 }
-
+-(instancetype)initWithType:(NewStyle)aNewStyle {
+    if (self = [super init]) {
+        _style = aNewStyle;
+    }
+    return self;
+}
 - (void)initMainUI {
     UIBarButtonItem *cancel_item = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancleClicked:)];
     cancel_item.tintColor = NormalColor;
@@ -30,8 +36,8 @@
     send_item.tintColor = NormalColor;
     self.navigationItem.leftBarButtonItem = cancel_item;
     self.navigationItem.rightBarButtonItem = send_item;
-    self.nav_title = @"评论";
     [self.view addSubview:self.textView];
+    self.nav_title = self.style==NewTopic?@"新增话题":@"新增评论";
     [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
         if (![x isEqualToString:@""]) {
             _placeholder.hidden = YES;
@@ -78,8 +84,10 @@
         [[ZToastManager ShardInstance] showtoast:@"内容不能为空"];
         return;
     }
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@/reply", topic_all, self.topic_id] RequestMethod:POST];
-    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"content" : _textView.text}];
+    APIName *api = self.style == NewTopic?topic_all:[NSString stringWithFormat:@"%@%@/reply", topic_all, self.topic_id];
+    NSDictionary *params = self.style == NewTopic?@{@"content":_textView.text}:@{@"content" : _textView.text,@"client":@"ios",@"type":self.type};
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:POST];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:params];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
         if ([dic[@"errCode"] integerValue] == 0) {

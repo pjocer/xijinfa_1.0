@@ -25,22 +25,47 @@ typedef enum : NSUInteger {
 } AcccountType;
 
 @interface XJAccountManager : NSObject
+/**
+ *  User Info Model
+ */
 @property (nonatomic, strong) UserProfileModel *user_model;
+/**
+ *  Vip Or Normal Account Type
+ */
 @property (nonatomic, assign) AcccountType account_type;
 
 + (instancetype)defaultManager;
-
+/**
+ *  Verify The Validty Of Account Info
+ *
+ *  @return Valid Or Not
+ */
 - (BOOL)verifyValid;
-
+/**
+ *  Get Account Access Token
+ *
+ *  @return Access Token
+ */
 - (NSString *)accessToken;
-
+/**
+ *  Get Account User ID
+ *
+ *  @return User ID
+ */
 - (NSString *)user_id;
-
+/**
+ *  Set User Info By Model Which Request From Server
+ *
+ *  @param info AccountFinalModel To Dictionary
+ */
 - (void)setAccuontInfo:(NSDictionary *)info;
-
+/**
+ *  Update User Info
+ */
 - (void)updateUserInfo;
-
-- (instancetype)init NS_UNAVAILABLE;
-
+/**
+ *  Logout
+ */
 - (void)logout;
+- (instancetype)init NS_UNAVAILABLE;
 @end

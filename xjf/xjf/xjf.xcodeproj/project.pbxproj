@@ -247,7 +247,7 @@
 		D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */; };
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
 		D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A81ED1CEEA0E8002C1297 /* XJMarket.m */; };
-		D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D140E1CFFE0960018F41B /* NewCommentViewController.m */; };
+		D06D140F1CFFE0960018F41B /* NewComment_Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D140E1CFFE0960018F41B /* NewComment_Topic.m */; };
 		D06D14121D000BB10018F41B /* NewSharpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D14111D000BB10018F41B /* NewSharpViewController.m */; };
 		D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF6E1CFBF089002D3FAF /* TopicModel.m */; };
 		D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */; };
@@ -743,8 +743,8 @@
 		D0698E801CE45AED003BF1F3 /* NotificationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationUtil.m; path = ../NotificationUtil.m; sourceTree = "<group>"; };
 		D06A81EC1CEEA0E8002C1297 /* XJMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJMarket.h; sourceTree = "<group>"; };
 		D06A81ED1CEEA0E8002C1297 /* XJMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMarket.m; sourceTree = "<group>"; };
-		D06D140D1CFFE0960018F41B /* NewCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCommentViewController.h; sourceTree = "<group>"; };
-		D06D140E1CFFE0960018F41B /* NewCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentViewController.m; sourceTree = "<group>"; };
+		D06D140D1CFFE0960018F41B /* NewComment_Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewComment_Topic.h; sourceTree = "<group>"; };
+		D06D140E1CFFE0960018F41B /* NewComment_Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewComment_Topic.m; sourceTree = "<group>"; };
 		D06D14101D000BB10018F41B /* NewSharpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSharpViewController.h; sourceTree = "<group>"; };
 		D06D14111D000BB10018F41B /* NewSharpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSharpViewController.m; sourceTree = "<group>"; };
 		D073CF6D1CFBF089002D3FAF /* TopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicModel.h; path = xjf/classes/topic/TopicModel.h; sourceTree = SOURCE_ROOT; };
@@ -1697,8 +1697,8 @@
 				D073CF761CFC55CB002D3FAF /* TopicDetailViewController.m */,
 				D04F5E4A1CFEB6EB008386CE /* NewTopicViewController.h */,
 				D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */,
-				D06D140D1CFFE0960018F41B /* NewCommentViewController.h */,
-				D06D140E1CFFE0960018F41B /* NewCommentViewController.m */,
+				D06D140D1CFFE0960018F41B /* NewComment_Topic.h */,
+				D06D140E1CFFE0960018F41B /* NewComment_Topic.m */,
 				D06D14101D000BB10018F41B /* NewSharpViewController.h */,
 				D06D14111D000BB10018F41B /* NewSharpViewController.m */,
 				CD1CCC311CB37946002FC0C9 /* TopicBaseViewController.h */,
@@ -2125,7 +2125,6 @@
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				5A6CF4501D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
-				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
 				AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */,
 				D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
@@ -2302,7 +2301,7 @@
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				5A6CF3A11D1CED6500676255 /* XJFBaseTableViewCell.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
-				D06D140F1CFFE0960018F41B /* NewCommentViewController.m in Sources */,
+				D06D140F1CFFE0960018F41B /* NewComment_Topic.m in Sources */,
 				AA5B961E1D1C0DF60088A196 /* TaBaseViewController.m in Sources */,
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A6CF3B51D1CEE8000676255 /* HomePageBaseViewController.m in Sources */,
