@@ -1358,55 +1358,6 @@
 			path = ShareUtil;
 			sourceTree = "<group>";
 		};
-		644C113C1CBA90A000892E2C /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				644C113D1CBA90A000892E2C /* QQSDK */,
-				644C11401CBA90A000892E2C /* SinaWeiboSDK */,
-				644C114D1CBA90A000892E2C /* WeChatSDK */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		644C113D1CBA90A000892E2C /* QQSDK */ = {
-			isa = PBXGroup;
-			children = (
-				644C113E1CBA90A000892E2C /* TencentOpenAPI.framework */,
-				644C113F1CBA90A000892E2C /* TencentOpenApi_IOS_Bundle.bundle */,
-			);
-			path = QQSDK;
-			sourceTree = "<group>";
-		};
-		644C11401CBA90A000892E2C /* SinaWeiboSDK */ = {
-			isa = PBXGroup;
-			children = (
-				644C11411CBA90A000892E2C /* libWeiboSDK.a */,
-				644C11421CBA90A000892E2C /* WBHttpRequest+WeiboGame.h */,
-				644C11431CBA90A000892E2C /* WBHttpRequest+WeiboShare.h */,
-				644C11441CBA90A000892E2C /* WBHttpRequest+WeiboToken.h */,
-				644C11451CBA90A000892E2C /* WBHttpRequest+WeiboUser.h */,
-				644C11461CBA90A000892E2C /* WBHttpRequest.h */,
-				644C11471CBA90A000892E2C /* WBSDKBasicButton.h */,
-				644C11481CBA90A000892E2C /* WBSDKCommentButton.h */,
-				644C11491CBA90A000892E2C /* WBSDKRelationshipButton.h */,
-				644C114A1CBA90A000892E2C /* WeiboSDK.bundle */,
-				644C114B1CBA90A000892E2C /* WeiboSDK.h */,
-				644C114C1CBA90A000892E2C /* WeiboUser.h */,
-			);
-			path = SinaWeiboSDK;
-			sourceTree = "<group>";
-		};
-		644C114D1CBA90A000892E2C /* WeChatSDK */ = {
-			isa = PBXGroup;
-			children = (
-				644C114E1CBA90A000892E2C /* libWeChatSDK.a */,
-				644C114F1CBA90A000892E2C /* read_me.txt */,
-				644C11501CBA90A000892E2C /* WXApi.h */,
-				644C11511CBA90A000892E2C /* WXApiObject.h */,
-			);
-			path = WeChatSDK;
-			sourceTree = "<group>";
-		};
 		68AD34831315063118675167 /* category */ = {
 			isa = PBXGroup;
 			children = (
