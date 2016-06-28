@@ -888,14 +888,6 @@
 			path = LessonPlayerVCChildVideController;
 			sourceTree = "<group>";
 		};
-		5A105E751CEC31D90079BEFE /* LessonPlayerVCChildVideView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = LessonPlayerVCChildVideView;
-			path = xjf/classes/player/controller/LessonPlayerVCChildVideController/LessonPlayerVCChildVideView;
-			sourceTree = SOURCE_ROOT;
-		};
 		5A105E8B1CED880D0079BEFE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1838,7 +1830,6 @@
 				AA5B96831D222BE20088A196 /* View */,
 				CD1CCC4B1CB39B3D002FC0C9 /* controller */,
 				CD1CCC501CB39B3D002FC0C9 /* model */,
-				CD1CCC511CB39B3D002FC0C9 /* view */,
 				CD1CCC5A1CB39BE4002FC0C9 /* playerConfigure.h */,
 			);
 			name = Player;
@@ -1868,14 +1859,6 @@
 				5A105E531CEAE3B00079BEFE /* CommentsModel.m */,
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		CD1CCC511CB39B3D002FC0C9 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				5A105E751CEC31D90079BEFE /* LessonPlayerVCChildVideView */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		CDF57AB71C9F825D00049AF0 = {
