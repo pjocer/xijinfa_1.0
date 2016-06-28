@@ -60,13 +60,17 @@ NSString *const Subscribe = @"SubscribeViewController";
 }
 
 - (void)extendheadViewFor:(NSString *)name {
+    UILabel *leftTitle = [[UILabel alloc] init];
+    [leftTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftTitle];
+    leftTitle.frame = CGRectMake(0, 0, 50, 20);
     if ([name isEqualToString:My]) {
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 13;
         self.navigationItem.rightBarButtonItem = item2;
+        leftTitle.text = @"我的";
     } else if ([name isEqualToString:Index]) {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
-        item.tag = 10;
+
         //commentsButton
         UIButton *commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [commentsButton setTitle:@"🔎 输入你想找的内容" forState:UIControlStateNormal];
@@ -76,10 +80,13 @@ NSString *const Subscribe = @"SubscribeViewController";
         commentsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         commentsButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
         ViewRadius(commentsButton, 5.0);
-        commentsButton.frame = CGRectMake(0, 0, 300, 30);
+        commentsButton.frame = CGRectMake(0, 0, 224, 30);
         commentsButton.tag = 12;
         [commentsButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.titleView = commentsButton;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"indexLogo"]]];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
+        item.tag = 10;
         self.navigationItem.rightBarButtonItem = item;
     } else if ([name isEqualToString:Topic]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pulish"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
@@ -89,7 +96,7 @@ NSString *const Subscribe = @"SubscribeViewController";
         self.navigationItem.rightBarButtonItems = @[item, item2];
         [self setTopicRightItem];
     } else if ([name isEqualToString:Vip]) {
-
+        leftTitle.text = @"会员";
     }
 }
 - (void)setTopicRightItem {
