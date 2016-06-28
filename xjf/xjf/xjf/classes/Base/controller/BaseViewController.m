@@ -67,9 +67,20 @@ NSString *const Subscribe = @"SubscribeViewController";
     } else if ([name isEqualToString:Index]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 10;
-        UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
-        item2.tag = 12;
-        self.navigationItem.rightBarButtonItems = @[item, item2];
+        //commentsButton
+        UIButton *commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [commentsButton setTitle:@"🔎 输入你想找的内容" forState:UIControlStateNormal];
+        commentsButton.backgroundColor = BackgroundColor;
+        commentsButton.titleLabel.font = FONT13;
+        [commentsButton setTintColor:[UIColor xjfStringToColor:@"#9a9a9a"]];
+        commentsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+        commentsButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+        ViewRadius(commentsButton, 5.0);
+        commentsButton.frame = CGRectMake(0, 0, 300, 30);
+        commentsButton.tag = 12;
+        [commentsButton addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.titleView = commentsButton;
+        self.navigationItem.rightBarButtonItem = item;
     } else if ([name isEqualToString:Topic]) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pulish"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item.tag = 14;

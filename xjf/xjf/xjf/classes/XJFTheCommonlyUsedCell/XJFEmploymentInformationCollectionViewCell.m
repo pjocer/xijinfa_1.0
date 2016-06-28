@@ -31,6 +31,7 @@
     [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.videoTitle.text = model.title;
     self.viedoDetail.text = [NSString filterHTML:model.content];
+    self.Date.text = model.updated_at;
 }
 
 @end

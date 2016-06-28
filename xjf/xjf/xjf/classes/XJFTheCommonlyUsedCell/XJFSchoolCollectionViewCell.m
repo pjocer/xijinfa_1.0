@@ -7,6 +7,7 @@
 //
 
 #import "XJFSchoolCollectionViewCell.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 @interface XJFSchoolCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *videoImg;
@@ -30,11 +31,12 @@
     
     [self.videoImg sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.title.text = model.title;
-//    self.describe.text = 
-    if (model.taxonomy_gurus.count != 0 && model.taxonomy_gurus) {
-        taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
-        [self.teacherCoverImg.imageView sd_setImageWithURL:[NSURL URLWithString:gurus.guru_avatar]];
-    }
+    self.describe.text = [NSString stringWithFormat:@"%@ 人看过",model.view];
+    [self.teacherCoverImg sd_setBackgroundImageWithURL:[NSURL URLWithString:model.thumbnail] forState:UIControlStateNormal];
+//    if (_model.taxonomy_gurus.count != 0 && _model.taxonomy_gurus) {
+//        taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
+//        [self.teacherCoverImg sd_setBackgroundImageWithURL:[NSURL URLWithString:gurus.guru_avatar] forState:UIControlStateNormal];
+//    }
 }
 
 @end
