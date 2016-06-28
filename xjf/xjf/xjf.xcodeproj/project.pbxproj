@@ -54,7 +54,6 @@
 		5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C531CE5E001000CF748 /* VideolistViewController.m */; };
 		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
-		5A441C5D1CE5FC32000CF748 /* CommentsPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C5C1CE5FC32000CF748 /* CommentsPageCommentsCell.m */; };
 		5A565A0C1D02D78C00008DA9 /* MyFavoredsWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0B1D02D78C00008DA9 /* MyFavoredsWikiViewController.m */; };
 		5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */; };
 		5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A121D05A8DE00008DA9 /* MyLessonsSchoolViewController.m */; };
@@ -175,6 +174,7 @@
 		AA5B96961D222BE20088A196 /* PlayerPageDescribeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B968D1D222BE20088A196 /* PlayerPageDescribeFooterView.m */; };
 		AA5B96971D222BE20088A196 /* PlayerPageDescribeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B968F1D222BE20088A196 /* PlayerPageDescribeHeaderView.m */; };
 		AA5B96981D222BE20088A196 /* PlayerPageRecommendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96911D222BE20088A196 /* PlayerPageRecommendedHeaderView.m */; };
+		AA5B969B1D2244F60088A196 /* CommentsPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B969A1D2244F60088A196 /* CommentsPageCommentsCell.m */; };
 		C397B48DFAE47D8F0F3C8A55 /* libPods-xjf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */; };
 		CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF11CBB732900A0636D /* AppGridViewCell.m */; };
 		CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF31CBB732900A0636D /* BaikeGridViewCell.m */; };
@@ -371,8 +371,6 @@
 		5A441C561CE5F1F3000CF748 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
 		5A441C581CE5FB03000CF748 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
 		5A441C591CE5FB03000CF748 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
-		5A441C5B1CE5FC32000CF748 /* CommentsPageCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsPageCommentsCell.h; path = xjf/classes/player/controller/CommentsPageCommentsCell.h; sourceTree = SOURCE_ROOT; };
-		5A441C5C1CE5FC32000CF748 /* CommentsPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsPageCommentsCell.m; path = xjf/classes/player/controller/CommentsPageCommentsCell.m; sourceTree = SOURCE_ROOT; };
 		5A565A0A1D02D78C00008DA9 /* MyFavoredsWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavoredsWikiViewController.h; sourceTree = "<group>"; };
 		5A565A0B1D02D78C00008DA9 /* MyFavoredsWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavoredsWikiViewController.m; sourceTree = "<group>"; };
 		5A565A0E1D05A8A100008DA9 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
@@ -606,6 +604,8 @@
 		AA5B968F1D222BE20088A196 /* PlayerPageDescribeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerPageDescribeHeaderView.m; sourceTree = "<group>"; };
 		AA5B96901D222BE20088A196 /* PlayerPageRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerPageRecommendedHeaderView.h; sourceTree = "<group>"; };
 		AA5B96911D222BE20088A196 /* PlayerPageRecommendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerPageRecommendedHeaderView.m; sourceTree = "<group>"; };
+		AA5B96991D2244F60088A196 /* CommentsPageCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsPageCommentsCell.h; sourceTree = "<group>"; };
+		AA5B969A1D2244F60088A196 /* CommentsPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsPageCommentsCell.m; sourceTree = "<group>"; };
 		AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.release.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.release.xcconfig"; sourceTree = "<group>"; };
 		CD144EF01CBB732900A0636D /* AppGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppGridViewCell.h; sourceTree = "<group>"; };
 		CD144EF11CBB732900A0636D /* AppGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGridViewCell.m; sourceTree = "<group>"; };
@@ -1486,6 +1486,8 @@
 		AA5B96831D222BE20088A196 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AA5B96991D2244F60088A196 /* CommentsPageCommentsCell.h */,
+				AA5B969A1D2244F60088A196 /* CommentsPageCommentsCell.m */,
 				AA5B96841D222BE20088A196 /* PlayerPageCommentsCell.h */,
 				AA5B96851D222BE20088A196 /* PlayerPageCommentsCell.m */,
 				AA5B96861D222BE20088A196 /* PlayerPageCommentsFooterView.h */,
@@ -1867,8 +1869,6 @@
 		CD1CCC511CB39B3D002FC0C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				5A441C5B1CE5FC32000CF748 /* CommentsPageCommentsCell.h */,
-				5A441C5C1CE5FC32000CF748 /* CommentsPageCommentsCell.m */,
 				5A105E721CEC149A0079BEFE /* LessonPlayerVideoBottomView.h */,
 				5A105E731CEC149A0079BEFE /* LessonPlayerVideoBottomView.m */,
 				5A105E791CEC59270079BEFE /* LessonRecommendedHeaderView.h */,
@@ -2277,7 +2277,6 @@
 				D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */,
 				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
 				5A565A1E1D066B2900008DA9 /* EmployedViewController.m in Sources */,
-				5A441C5D1CE5FC32000CF748 /* CommentsPageCommentsCell.m in Sources */,
 				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
 				5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */,
 				5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */,
@@ -2327,6 +2326,7 @@
 				D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */,
 				5A105E971CED91040079BEFE /* TalkGridModel.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
+				AA5B969B1D2244F60088A196 /* CommentsPageCommentsCell.m in Sources */,
 				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,
 				D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
