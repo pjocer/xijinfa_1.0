@@ -22,7 +22,6 @@
 		5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */; };
 		5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */; };
 		5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */; };
-		5A105E781CEC31F80079BEFE /* LessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E771CEC31F80079BEFE /* LessonListCell.m */; };
 		5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E7D1CED5A4E0079BEFE /* LessonListViewController.m */; };
 		5A105E921CED880D0079BEFE /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8D1CED880D0079BEFE /* BannerModel.m */; };
 		5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */; };
@@ -148,6 +147,7 @@
 		644C11911CBA93A500892E2C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11901CBA93A500892E2C /* libc++.tbd */; };
 		68AD357B1BFC5D287517F2E7 /* LessonPlayerVideoBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */; };
 		68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */; };
+		68AD3F4CC52500888AAC5A04 /* LessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31B0B566B66344E27190 /* LessonListCell.m */; };
 		AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EB1D1948790088A196 /* BaikeCell.m */; };
 		AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B95EC1D1948790088A196 /* BaikeCell.xib */; };
 		AA5B95F81D1948790088A196 /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EE1D1948790088A196 /* SearchResultController.m */; };
@@ -307,8 +307,6 @@
 		5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonCommentsViewController.m; sourceTree = "<group>"; };
 		5A105E6F1CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonRecommendedViewController.h; sourceTree = "<group>"; };
 		5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonRecommendedViewController.m; sourceTree = "<group>"; };
-		5A105E761CEC31F80079BEFE /* LessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonListCell.h; sourceTree = "<group>"; };
-		5A105E771CEC31F80079BEFE /* LessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonListCell.m; sourceTree = "<group>"; };
 		5A105E7C1CED5A4E0079BEFE /* LessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonListViewController.h; path = ../../player/controller/LessonListViewController.h; sourceTree = "<group>"; };
 		5A105E7D1CED5A4E0079BEFE /* LessonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonListViewController.m; path = ../../player/controller/LessonListViewController.m; sourceTree = "<group>"; };
 		5A105E8C1CED880D0079BEFE /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
@@ -554,6 +552,8 @@
 		644C11901CBA93A500892E2C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		68AD30462D242D0BB1E3452F /* LessonPlayerVideoBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerVideoBottomView.h; sourceTree = "<group>"; };
 		68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerVideoBottomView.m; sourceTree = "<group>"; };
+		68AD31B0B566B66344E27190 /* LessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonListCell.m; sourceTree = "<group>"; };
+		68AD37A2134425D78AF3416C /* LessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonListCell.h; sourceTree = "<group>"; };
 		68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRecommendedHeaderView.m; sourceTree = "<group>"; };
 		68AD3F14C5FECC832471B24F /* LessonRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRecommendedHeaderView.h; sourceTree = "<group>"; };
 		9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xjf.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -891,8 +891,6 @@
 		5A105E751CEC31D90079BEFE /* LessonPlayerVCChildVideView */ = {
 			isa = PBXGroup;
 			children = (
-				5A105E761CEC31F80079BEFE /* LessonListCell.h */,
-				5A105E771CEC31F80079BEFE /* LessonListCell.m */,
 			);
 			name = LessonPlayerVCChildVideView;
 			path = xjf/classes/player/controller/LessonPlayerVCChildVideController/LessonPlayerVCChildVideView;
@@ -1506,6 +1504,8 @@
 				68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */,
 				68AD30462D242D0BB1E3452F /* LessonPlayerVideoBottomView.h */,
 				68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */,
+				68AD37A2134425D78AF3416C /* LessonListCell.h */,
+				68AD31B0B566B66344E27190 /* LessonListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2360,7 +2360,6 @@
 				AA5B96931D222BE20088A196 /* PlayerPageCommentsFooterView.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				D04D0C171D0FBD280090D2CD /* UserInfoSection2.m in Sources */,
-				5A105E781CEC31F80079BEFE /* LessonListCell.m in Sources */,
 				5A565A221D066C2D00008DA9 /* EmployedbannerHeaderView.m in Sources */,
 				5A6CF3B21D1CEE6100676255 /* HomePageBaseView.m in Sources */,
 				5A0C3F9C1CF69C0400D7EEEB /* MyMoneyViewController.m in Sources */,
@@ -2421,6 +2420,7 @@
 				5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */,
 				68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */,
 				68AD357B1BFC5D287517F2E7 /* LessonPlayerVideoBottomView.m in Sources */,
+				68AD3F4CC52500888AAC5A04 /* LessonListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
