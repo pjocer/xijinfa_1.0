@@ -12,7 +12,6 @@
 		5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */; };
 		5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */; };
 		5A0C3F9C1CF69C0400D7EEEB /* MyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */; };
-		5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E531CEAE3B00079BEFE /* CommentsModel.m */; };
 		5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E561CEB17450079BEFE /* LessonViewController.m */; };
 		5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */; };
 		5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */; };
@@ -147,6 +146,7 @@
 		644C11911CBA93A500892E2C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11901CBA93A500892E2C /* libc++.tbd */; };
 		68AD357B1BFC5D287517F2E7 /* LessonPlayerVideoBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */; };
 		68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */; };
+		68AD3DF8B96C85E22B19B04F /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD33F1B17C2AECCECD2936 /* CommentsModel.m */; };
 		68AD3F4CC52500888AAC5A04 /* LessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31B0B566B66344E27190 /* LessonListCell.m */; };
 		AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EB1D1948790088A196 /* BaikeCell.m */; };
 		AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B95EC1D1948790088A196 /* BaikeCell.xib */; };
@@ -287,8 +287,6 @@
 		5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyHeaderView.m; sourceTree = "<group>"; };
 		5A0C3F991CF69C0400D7EEEB /* MyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoneyViewController.h; sourceTree = "<group>"; };
 		5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyViewController.m; sourceTree = "<group>"; };
-		5A105E521CEAE3B00079BEFE /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsModel.h; path = xjf/classes/player/controller/CommentsModel.h; sourceTree = SOURCE_ROOT; };
-		5A105E531CEAE3B00079BEFE /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsModel.m; path = xjf/classes/player/controller/CommentsModel.m; sourceTree = SOURCE_ROOT; };
 		5A105E551CEB17450079BEFE /* LessonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonViewController.h; sourceTree = "<group>"; };
 		5A105E561CEB17450079BEFE /* LessonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonViewController.m; sourceTree = "<group>"; };
 		5A105E591CEB1BE20079BEFE /* LessonIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonIndexCell.h; sourceTree = "<group>"; };
@@ -553,8 +551,10 @@
 		68AD30462D242D0BB1E3452F /* LessonPlayerVideoBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerVideoBottomView.h; sourceTree = "<group>"; };
 		68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerVideoBottomView.m; sourceTree = "<group>"; };
 		68AD31B0B566B66344E27190 /* LessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonListCell.m; sourceTree = "<group>"; };
+		68AD33F1B17C2AECCECD2936 /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModel.m; sourceTree = "<group>"; };
 		68AD37A2134425D78AF3416C /* LessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonListCell.h; sourceTree = "<group>"; };
 		68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRecommendedHeaderView.m; sourceTree = "<group>"; };
+		68AD3E6DB29D6A23F8CF2B42 /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
 		68AD3F14C5FECC832471B24F /* LessonRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRecommendedHeaderView.h; sourceTree = "<group>"; };
 		9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xjf.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5B95EA1D1948790088A196 /* BaikeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaikeCell.h; sourceTree = "<group>"; };
@@ -1384,6 +1384,64 @@
 			path = ShareUtil;
 			sourceTree = "<group>";
 		};
+		644C113C1CBA90A000892E2C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				644C113D1CBA90A000892E2C /* QQSDK */,
+				644C11401CBA90A000892E2C /* SinaWeiboSDK */,
+				644C114D1CBA90A000892E2C /* WeChatSDK */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		644C113D1CBA90A000892E2C /* QQSDK */ = {
+			isa = PBXGroup;
+			children = (
+				644C113E1CBA90A000892E2C /* TencentOpenAPI.framework */,
+				644C113F1CBA90A000892E2C /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			path = QQSDK;
+			sourceTree = "<group>";
+		};
+		644C11401CBA90A000892E2C /* SinaWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				644C11411CBA90A000892E2C /* libWeiboSDK.a */,
+				644C11421CBA90A000892E2C /* WBHttpRequest+WeiboGame.h */,
+				644C11431CBA90A000892E2C /* WBHttpRequest+WeiboShare.h */,
+				644C11441CBA90A000892E2C /* WBHttpRequest+WeiboToken.h */,
+				644C11451CBA90A000892E2C /* WBHttpRequest+WeiboUser.h */,
+				644C11461CBA90A000892E2C /* WBHttpRequest.h */,
+				644C11471CBA90A000892E2C /* WBSDKBasicButton.h */,
+				644C11481CBA90A000892E2C /* WBSDKCommentButton.h */,
+				644C11491CBA90A000892E2C /* WBSDKRelationshipButton.h */,
+				644C114A1CBA90A000892E2C /* WeiboSDK.bundle */,
+				644C114B1CBA90A000892E2C /* WeiboSDK.h */,
+				644C114C1CBA90A000892E2C /* WeiboUser.h */,
+			);
+			path = SinaWeiboSDK;
+			sourceTree = "<group>";
+		};
+		644C114D1CBA90A000892E2C /* WeChatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				644C114E1CBA90A000892E2C /* libWeChatSDK.a */,
+				644C114F1CBA90A000892E2C /* read_me.txt */,
+				644C11501CBA90A000892E2C /* WXApi.h */,
+				644C11511CBA90A000892E2C /* WXApiObject.h */,
+			);
+			path = WeChatSDK;
+			sourceTree = "<group>";
+		};
+		68AD36A35487A8D34CEA8859 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				68AD3E6DB29D6A23F8CF2B42 /* CommentsModel.h */,
+				68AD33F1B17C2AECCECD2936 /* CommentsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AA5B95E91D1948790088A196 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1829,8 +1887,10 @@
 			children = (
 				AA5B96831D222BE20088A196 /* View */,
 				CD1CCC4B1CB39B3D002FC0C9 /* controller */,
-				CD1CCC501CB39B3D002FC0C9 /* model */,
 				CD1CCC5A1CB39BE4002FC0C9 /* playerConfigure.h */,
+				D09B5C071D1B787F0018387B /* ZFPlayerView+Category.h */,
+				D09B5C081D1B787F0018387B /* ZFPlayerView+Category.m */,
+				68AD36A35487A8D34CEA8859 /* Model */,
 			);
 			name = Player;
 			path = classes/player;
@@ -1850,15 +1910,6 @@
 				5A105E651CEC08E30079BEFE /* LessonPlayerVCChildVideController */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		CD1CCC501CB39B3D002FC0C9 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				5A105E521CEAE3B00079BEFE /* CommentsModel.h */,
-				5A105E531CEAE3B00079BEFE /* CommentsModel.m */,
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		CDF57AB71C9F825D00049AF0 = {
@@ -2393,7 +2444,6 @@
 				5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */,
 				5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */,
 				5A565A371D069F5800008DA9 /* EmployedLawsViewController.m in Sources */,
-				5A105E541CEAE3B00079BEFE /* CommentsModel.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,
 				5AF7C2EC1CFF0292007CC71C /* TeacherDetailViewController.m in Sources */,
 				D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */,
@@ -2404,6 +2454,7 @@
 				68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */,
 				68AD357B1BFC5D287517F2E7 /* LessonPlayerVideoBottomView.m in Sources */,
 				68AD3F4CC52500888AAC5A04 /* LessonListCell.m in Sources */,
+				68AD3DF8B96C85E22B19B04F /* CommentsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
