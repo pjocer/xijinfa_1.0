@@ -51,7 +51,7 @@ static CGFloat animateWithDuration = 0.3;
 #pragma mark  setupTitleScrollView
 
 - (void)setupTitleScrollView {
-    CGRect rect = CGRectMake(0, kStatusBarH + kNavigationBarH + titleViewTopClearance, SCREENWITH, titleViewH);
+    CGRect rect = CGRectMake(0, titleViewTopClearance, SCREENWITH, titleViewH);
     self.titleScrollView = [[UIScrollView alloc] initWithFrame:rect];
     self.titleScrollView.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.titleScrollView];

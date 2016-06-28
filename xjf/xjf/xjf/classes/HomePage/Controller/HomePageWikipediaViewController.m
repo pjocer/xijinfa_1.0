@@ -8,11 +8,13 @@
 
 #import "HomePageWikipediaViewController.h"
 #import "HomePageConfigure.h"
+#import "WikiPediaCategoriesModel.h"
+#import "VideolistViewController.h"
+#import "WikiMoreViewController.h"
 
 @interface HomePageWikipediaViewController ()<UICollectionViewDataSource,
                                                     UICollectionViewDelegate,
                                                     UICollectionViewDelegateFlowLayout,
-                                                    XRCarouselViewDelegate,
                                                     HomePageScrollCellDelegate>
 
 typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
@@ -23,8 +25,10 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
-@property (nonatomic, retain) NSMutableArray *dataArrayByBanner;
+@property (nonatomic, retain) NSMutableArray *dataArrayThumbnailByBanner;
 @property (nonatomic, strong) BannerModel *bannermodel;
+@property (nonatomic, strong) TablkListModel *tablkListModel;
+@property (nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
 @end
 
 @implementation HomePageWikipediaViewController
@@ -32,7 +36,62 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCollectionView];
+    [self RequestData];
 }
+
+#pragma mark - RequestData
+
+- (void)RequestData {
+    RACSignal *requestBannerData = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        @weakify(self)
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:appHomeCarousel RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.bannermodel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
+    
+    RACSignal *talkGridCategoriesSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        @weakify(self)
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:talkGridCategories RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.wikiPediaCategoriesModel = [[WikiPediaCategoriesModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.wikiPediaCategoriesModel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
+    
+    RACSignal *requestCategoriesTalkGridData = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:talkGrid RequestMethod:GET];
+        @weakify(self);
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self);
+            self.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.tablkListModel];
+        }failedBlock:^(NSError *_Nullable error) {
+            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        }];
+        return nil;
+    }];
+    
+    [self rac_liftSelector:@selector(updateUI:data2:data3:) withSignalsFromArray:@[talkGridCategoriesSignal, requestCategoriesTalkGridData,requestBannerData]];
+}
+
+- (void)updateUI:(ProjectListByModel *)data1 data2:(TablkListModel *)data2 data3:(BannerModel *)data3{
+    if (data3.result != nil) {
+        self.dataArrayThumbnailByBanner = [NSMutableArray array];
+        for (BannerResultModel *model in self.bannermodel.result.data) {
+            [self.dataArrayThumbnailByBanner addObject:model.thumbnail];
+        }
+    }
+    [self.collectionView reloadData];
+}
+
 
 #pragma mark -- CollectionView
 
@@ -71,11 +130,9 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     if (section == HomePageBannerSection) {
         return 1;
     }else if (section == HomePageClassificationSection) {
-        //        return self.teacherListHostModel.result.data.count > 3 ? 3 : self.teacherListHostModel.result.data.count;
         return 1;
     }else if (section == HomePageWikipediaSection) {
-        //        return self.teacherListHostModel.result.data.count > 3 ? 3 : self.teacherListHostModel.result.data.count;
-        return 4;
+        return self.tablkListModel.result.data.count;
     }
     return 0;
 }
@@ -87,19 +144,29 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
                                     dequeueReusableCellWithReuseIdentifier:
                                     HomePageSelectViewControllerBander_CellID
                                     forIndexPath:indexPath];
-        cell.carouselView.delegate = self;
+        cell.carouselView.imageArray = self.dataArrayThumbnailByBanner;
+        @weakify(self);
+        cell.carouselView.imageClickBlock = ^(NSInteger index) {
+            @strongify(self);
+            BannerWebViewViewController *bannerWebViewViewController = [BannerWebViewViewController new];
+            BannerResultModel *model = self.bannermodel.result.data[index];
+            bannerWebViewViewController.webHtmlUrl = model.link;
+            [self.navigationController pushViewController:bannerWebViewViewController animated:YES];
+        };
         return cell;
     }else if (indexPath.section == HomePageClassificationSection){
         HomePageScrollCell *cell = [collectionView
                                     dequeueReusableCellWithReuseIdentifier:
                                     HomePageSelectViewControllerHomePageScrollCell_CellID
                                     forIndexPath:indexPath];
-        cell.cellType = ClassificationCell;
+        cell.ClassificationType = HomePageWikiClassification;
         cell.delegate = self;
+        cell.wikiPediaCategoriesModel = self.wikiPediaCategoriesModel;
         return cell;
     }else if (indexPath.section == HomePageWikipediaSection){
         XJFBigWikipediaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionByWikipediaBig_CellID forIndexPath:indexPath];
-                return cell;
+        cell.model = self.tablkListModel.result.data[indexPath.row];
+        return cell;
     }
     
     UICollectionViewCell *cell = [collectionView
@@ -118,7 +185,9 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
     sectionHeaderView.sectionTitle.text = @[@"",@"全部分类",@"析金百科"][indexPath.section];
-    sectionHeaderView.SectionMore.text = @"更多";
+    sectionHeaderView.sectionMore.text = @"更多";
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
+    [sectionHeaderView addGestureRecognizer:tap];
     return sectionHeaderView;
 }
 
@@ -127,8 +196,12 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     
     if (section == HomePageBannerSection) {
         return CGSizeZero;
+    }else if (section == HomePageClassificationSection && self.wikiPediaCategoriesModel.result.data.count > 0){
+        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+    }else if (section == HomePageWikipediaSection && self.tablkListModel.result.data.count > 0){
+        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
     }
-    return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+    return CGSizeZero;
 }
 
 #pragma mark FlowLayoutDelegate
@@ -140,13 +213,32 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         return KHomePageCollectionByBannerSize;
     }else if (indexPath.section == HomePageClassificationSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        return KHomePageCollectionByLessons;
+        return KHomePageCollectionByClassificationAndTeacher;
     }else if (indexPath.section == HomePageWikipediaSection){
-        _layout.minimumLineSpacing = 10.0;
+        _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
         return KHomePageCollectionByWikipediaSize;
     }
     
     return CGSizeZero;
+}
+
+#pragma mark - sectionHeaderViewTapPUSHMorePage
+
+- (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
+{
+    HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
+    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"全部分类"]) {
+        WikiMoreViewController *wikiMoreViewController = [WikiMoreViewController new];
+        [self.navigationController pushViewController:wikiMoreViewController animated:YES];
+        wikiMoreViewController.dataArray = [NSMutableArray array];
+        for (WikiPediaCategoriesDataModel *model in self.wikiPediaCategoriesModel.result.data) {
+            [wikiMoreViewController.dataArray addObject:model];
+        }
+    }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]){
+        VideolistViewController *videolListPage = [VideolistViewController new];
+        videolListPage.title = @"析金百科更多";
+        [self.navigationController pushViewController:videolListPage animated:YES];
+    }
 }
 
 #pragma mark - delegate
@@ -154,34 +246,24 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 #pragma mark homePageScrollCell didSelectItemAtIndexPath
 - (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.result.data[indexPath.row];
     
-}
-
-#pragma mark carouselView didClickImage
-- (void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index
-{
+    VideolistViewController *videolistViewController = [VideolistViewController new];
+    videolistViewController.ID = model.id;
+    videolistViewController.title = model.title;
     
+    [self.navigationController pushViewController:videolistViewController animated:YES];
 }
 
 #pragma mark CollectionView DidSelected
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    //    if (indexPath.section == 0) {
-    //        if ([[XJAccountManager defaultManager] accessToken] == nil ||
-    //            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
-    //            [self LoginPrompt];
-    //        } else {
-    //            LessonListViewController *lessonListViewController = [LessonListViewController new];
-    //            ProjectList *model = self.projectListByModel.result.data[indexPath.row];;
-    //            lessonListViewController.LessonListTitle = model.title;
-    //            lessonListViewController.ID = model.id;
-    //            [self.navigationController pushViewController:lessonListViewController animated:YES];
-    //        }
-    //    }
-    //    else if (indexPath.section == 1) {
-    //        TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
-    //        teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
-    //        [self.navigationController pushViewController:teacherDetailViewController animated:YES];
-    //    }
+    if (indexPath.section == HomePageWikipediaSection) {
+        PlayerViewController *playerPage = [PlayerViewController new];
+        TalkGridModel *model = self.tablkListModel.result.data[indexPath.row];
+        playerPage.talkGridModel = model;
+        playerPage.talkGridListModel = self.tablkListModel;
+        [self.navigationController pushViewController:playerPage animated:YES];
+    }
 }
 
 

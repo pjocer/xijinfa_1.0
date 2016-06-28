@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TalkGridModel.h"
 
 @interface XJFBigWikipediaCollectionViewCell : UICollectionViewCell
-
+@property (nonatomic, strong) TalkGridModel *model;
 @end

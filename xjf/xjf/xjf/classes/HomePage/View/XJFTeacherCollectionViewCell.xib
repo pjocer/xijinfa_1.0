@@ -40,6 +40,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ADF-jE-9MY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="63Z-zY-uOT"/>
                 <constraint firstItem="0EL-DK-0RG" firstAttribute="top" secondItem="EM0-dN-JWw" secondAttribute="bottom" constant="5" id="8K0-N7-bVf"/>
@@ -51,6 +52,12 @@
                 <constraint firstItem="EM0-dN-JWw" firstAttribute="top" secondItem="ADF-jE-9MY" secondAttribute="bottom" constant="8" id="mdZ-7V-Fae"/>
                 <constraint firstItem="ADF-jE-9MY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rvl-Q4-TfC"/>
             </constraints>
+            <connections>
+                <outlet property="teacherDetail" destination="0EL-DK-0RG" id="Sr2-5J-pJ2"/>
+                <outlet property="teacherImage" destination="ADF-jE-9MY" id="rgK-et-xKv"/>
+                <outlet property="teacherName" destination="EM0-dN-JWw" id="bgE-Us-4aZ"/>
+            </connections>
+            <point key="canvasLocation" x="592" y="362"/>
         </collectionViewCell>
     </objects>
 </document>

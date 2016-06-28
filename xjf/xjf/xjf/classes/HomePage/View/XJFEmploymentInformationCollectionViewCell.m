@@ -8,11 +8,29 @@
 
 #import "XJFEmploymentInformationCollectionViewCell.h"
 
+@interface XJFEmploymentInformationCollectionViewCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *videoImage;
+@property (weak, nonatomic) IBOutlet UILabel *videoTitle;
+@property (weak, nonatomic) IBOutlet UILabel *Date;
+@property (weak, nonatomic) IBOutlet UILabel *viedoDetail;
+
+@end
+
 @implementation XJFEmploymentInformationCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    ViewRadius(self, 5.0);
+}
+
+- (void)setModel:(TalkGridModel *)model
+{
+    if (model) {
+        _model = model;
+    }
+    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.videoTitle.text = model.title;
+    self.viedoDetail.text = [NSString filterHTML:model.content];
 }
 
 @end

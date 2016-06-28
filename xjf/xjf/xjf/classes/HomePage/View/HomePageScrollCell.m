@@ -18,7 +18,6 @@
 @end
 
 @implementation HomePageScrollCell
-static NSString *HomePageScrollCellText_CellID = @"HomePageScrollCellText_CellID";
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -29,60 +28,96 @@ static NSString *HomePageScrollCellText_CellID = @"HomePageScrollCellText_CellID
     return self;
 }
 
+#pragma mark -- setter
+
+- (void)setProjectListByModel:(ProjectListByModel *)projectListByModel
+{
+    if (projectListByModel && !_projectListByModel) {
+         _projectListByModel = projectListByModel;
+        [self.collectionView reloadData];
+    }
+}
+
+- (void)setWikiPediaCategoriesModel:(WikiPediaCategoriesModel *)wikiPediaCategoriesModel
+{
+    if (wikiPediaCategoriesModel && !_wikiPediaCategoriesModel) {
+        _wikiPediaCategoriesModel = wikiPediaCategoriesModel;
+        [self.collectionView reloadData];
+    }
+}
+
 #pragma mark -- CollectionView
 
 - (void)initCollectionView {
-    self.layout = [[UICollectionViewFlowLayout alloc] init];
-    _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 0);
-    _layout.itemSize = CGSizeMake(100, 140);
-
-    _layout.minimumLineSpacing = 10.0;
-    _layout.minimumInteritemSpacing = 0.0;
-    _layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:self.contentView.bounds
-                           collectionViewLayout:_layout];
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.showsVerticalScrollIndicator = NO;
-    self.collectionView.showsHorizontalScrollIndicator = NO;
-    
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    [self.contentView addSubview:self.collectionView];
-    
-    [_collectionView registerNib:[UINib nibWithNibName:@"XJFClassificationCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByClassification_CellID];
-    [_collectionView registerNib:[UINib nibWithNibName:@"XJFTeacherCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByTeacher_CellID];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomePageScrollCellText_CellID];
+    if (!self.collectionView) {
+        self.layout = [[UICollectionViewFlowLayout alloc] init];
+        _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 0);
+        _layout.itemSize = CGSizeMake(100, 140);
+        
+        _layout.minimumLineSpacing = 10.0;
+        _layout.minimumInteritemSpacing = 0.0;
+        _layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        
+        self.collectionView = [[UICollectionView alloc]
+                               initWithFrame:self.contentView.bounds
+                               collectionViewLayout:_layout];
+        self.collectionView.backgroundColor = [UIColor clearColor];
+        self.collectionView.showsVerticalScrollIndicator = NO;
+        self.collectionView.showsHorizontalScrollIndicator = NO;
+        
+        self.collectionView.delegate = self;
+        self.collectionView.dataSource = self;
+        [self.contentView addSubview:self.collectionView];
+        
+        [_collectionView registerNib:[UINib nibWithNibName:@"XJFClassificationCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByClassification_CellID];
+    }
 }
 
+#pragma mark -- CollectionViewDataSourse
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+
+            switch (self.ClassificationType) {
+                case HomePageWikiClassification: {
+                     return self.wikiPediaCategoriesModel.result.data.count > 0 ? self.wikiPediaCategoriesModel.result.data.count : 0;
+                }
+                    break;
+                case HomePageSchoolClassification: {
+                    return self.projectListByModel.result.data.count > 0 ? self.projectListByModel.result.data.count : 0;
+                }
+                    break;
+                case HomePageEmployedassification: {
+                    return self.projectListByModel.result.data.count > 0 ? self.projectListByModel.result.data.count : 0;
+                }
+                    break;
+                default:
+                    break;
+            }
+
+    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    switch (self.cellType) {
-        case ClassificationCell: {
-            XJFClassificationCollectionViewCell *cell = [collectionView
-                                          dequeueReusableCellWithReuseIdentifier:HomePageCollectionByClassification_CellID forIndexPath:indexPath];
-            return cell;
+    XJFClassificationCollectionViewCell *cell = [collectionView
+                                                 dequeueReusableCellWithReuseIdentifier:HomePageCollectionByClassification_CellID forIndexPath:indexPath];
+    switch (self.ClassificationType) {
+        case HomePageWikiClassification: {
+            cell.wikiPediaCategoriesDataModel = self.wikiPediaCategoriesModel.result.data[indexPath.row];
         }
             break;
-        case TeacherCell: {
-            XJFTeacherCollectionViewCell *cell = [collectionView
-                                          dequeueReusableCellWithReuseIdentifier:HomePageCollectionByTeacher_CellID forIndexPath:indexPath];
-            return cell;
+        case HomePageSchoolClassification: {
+            cell.model = self.projectListByModel.result.data[indexPath.row];
+        }
+            break;
+        case HomePageEmployedassification: {
+            cell.model = self.projectListByModel.result.data[indexPath.row];
         }
             break;
         default:
             break;
     }
-    
-    UICollectionViewCell *cell = [collectionView
-                                  dequeueReusableCellWithReuseIdentifier:HomePageScrollCellText_CellID forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 

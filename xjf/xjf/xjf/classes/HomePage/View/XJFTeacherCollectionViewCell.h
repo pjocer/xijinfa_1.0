@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TeacherListHostModel.h"
 
 @interface XJFTeacherCollectionViewCell : UICollectionViewCell
-
+@property (nonatomic, strong) TeacherListData *model;
 @end

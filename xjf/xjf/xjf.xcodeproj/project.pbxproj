@@ -105,6 +105,7 @@
 		5A6CF44B1D21426C00676255 /* XJFBigWikipediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4491D21426C00676255 /* XJFBigWikipediaCollectionViewCell.xib */; };
 		5A6CF44F1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF44D1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.m */; };
 		5A6CF4501D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF44E1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.xib */; };
+		5A6CF4531D22773D00676255 /* TeacherScrollCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4521D22773D00676255 /* TeacherScrollCollectionViewCell.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -465,6 +466,8 @@
 		5A6CF44C1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFEmploymentInformationCollectionViewCell.h; sourceTree = "<group>"; };
 		5A6CF44D1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFEmploymentInformationCollectionViewCell.m; sourceTree = "<group>"; };
 		5A6CF44E1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFEmploymentInformationCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF4511D22773D00676255 /* TeacherScrollCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherScrollCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6CF4521D22773D00676255 /* TeacherScrollCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherScrollCollectionViewCell.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -1116,6 +1119,8 @@
 				5A6CF3DB1D1D506D00676255 /* HomePageBanderCell.m */,
 				5A6CF3DD1D1D552F00676255 /* HomePageScrollCell.h */,
 				5A6CF3DE1D1D552F00676255 /* HomePageScrollCell.m */,
+				5A6CF4511D22773D00676255 /* TeacherScrollCollectionViewCell.h */,
+				5A6CF4521D22773D00676255 /* TeacherScrollCollectionViewCell.m */,
 				5A6CF44C1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.h */,
 				5A6CF44D1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.m */,
 				5A6CF44E1D21466D00676255 /* XJFEmploymentInformationCollectionViewCell.xib */,
@@ -2216,6 +2221,7 @@
 				5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */,
 				AA5B95FC1D1948790088A196 /* SearchViewController.m in Sources */,
 				5A565A3A1D069F7200008DA9 /* EmployedGeneralViewController.m in Sources */,
+				5A6CF4531D22773D00676255 /* TeacherScrollCollectionViewCell.m in Sources */,
 				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
 				5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */,
 				D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */,

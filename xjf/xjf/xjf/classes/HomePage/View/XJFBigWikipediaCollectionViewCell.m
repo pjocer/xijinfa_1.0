@@ -8,11 +8,28 @@
 
 #import "XJFBigWikipediaCollectionViewCell.h"
 
+@interface XJFBigWikipediaCollectionViewCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *videoImg;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *playCount;
+
+@end
+
 @implementation XJFBigWikipediaCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    ViewRadius(self, 5.0);
 }
+
+- (void)setModel:(TalkGridModel *)model {
+    if (model) {
+        _model = model;
+    }
+    [self.videoImg sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.title.text = model.title;
+    self.playCount.text = [NSString stringWithFormat:@"%@ 人看过", model.view];
+}
+
 
 @end

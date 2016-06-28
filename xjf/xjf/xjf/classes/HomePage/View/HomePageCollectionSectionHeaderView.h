@@ -10,5 +10,5 @@
 
 @interface HomePageCollectionSectionHeaderView : UICollectionReusableView
 @property (nonatomic, strong) UILabel *sectionTitle;
-@property (nonatomic, strong) UILabel *SectionMore;
+@property (nonatomic, strong) UILabel *sectionMore;
 @end

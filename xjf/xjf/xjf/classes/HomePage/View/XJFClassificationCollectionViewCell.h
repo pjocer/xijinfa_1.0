@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectListByModel.h"
+#import "WikiPediaCategoriesModel.h"
 
 @interface XJFClassificationCollectionViewCell : UICollectionViewCell
-
+@property (nonatomic, strong) ProjectList *model;
+@property (nonatomic, strong) WikiPediaCategoriesDataModel *wikiPediaCategoriesDataModel;
 @end

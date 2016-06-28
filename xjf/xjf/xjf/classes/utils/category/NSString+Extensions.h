@@ -25,6 +25,8 @@
 
 - (NSString *)escapeHTML;
 
++ (NSString *)filterHTML:(NSString *)str;
+
 - (NSString *)stringByDecodingXMLEntities;
 
 - (NSString *)md5;

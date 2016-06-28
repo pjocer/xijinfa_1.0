@@ -60,6 +60,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="aM4-WR-hNO" firstAttribute="leading" secondItem="Edp-HH-veD" secondAttribute="leading" id="3CZ-xG-kWA"/>
                 <constraint firstItem="aM4-WR-hNO" firstAttribute="trailing" secondItem="Edp-HH-veD" secondAttribute="trailing" id="4cZ-Am-Q8s"/>
@@ -76,6 +77,12 @@
                 <constraint firstItem="B9L-rm-PpH" firstAttribute="top" secondItem="aM4-WR-hNO" secondAttribute="bottom" constant="10" id="tbD-jw-ths"/>
                 <constraint firstItem="B9L-rm-PpH" firstAttribute="leading" secondItem="aM4-WR-hNO" secondAttribute="leading" id="xA4-Ym-AIJ"/>
             </constraints>
+            <connections>
+                <outlet property="Date" destination="Edp-HH-veD" id="Z2r-K6-zrQ"/>
+                <outlet property="videoImage" destination="aM4-WR-hNO" id="1Of-KL-coy"/>
+                <outlet property="videoTitle" destination="9xY-fm-Yo4" id="5od-Iw-Pi1"/>
+                <outlet property="viedoDetail" destination="B9L-rm-PpH" id="rGG-R3-FJm"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

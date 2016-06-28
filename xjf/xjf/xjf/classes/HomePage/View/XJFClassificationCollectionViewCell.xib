@@ -43,6 +43,10 @@
                 <constraint firstAttribute="trailing" secondItem="VxB-me-3Jv" secondAttribute="trailing" constant="10" id="t6b-1x-z8e"/>
                 <constraint firstAttribute="bottom" secondItem="VxB-me-3Jv" secondAttribute="bottom" constant="15" id="x5Q-mp-Z9F"/>
             </constraints>
+            <connections>
+                <outlet property="describe" destination="VxB-me-3Jv" id="L9n-K3-Bbf"/>
+                <outlet property="title" destination="FXu-zp-wm3" id="8lr-Xp-vHc"/>
+            </connections>
             <point key="canvasLocation" x="452" y="357"/>
         </collectionViewCell>
     </objects>

@@ -16,7 +16,7 @@
 @interface HomePageMainViewController ()
 //@property (nonatomic, strong) NSMutableArray *buttons;
 //@property (nonatomic, strong) UIScrollView *titleScrollView;
-@property (nonatomic, strong) UIScrollView *contentScrollView;
+//@property (nonatomic, strong) UIScrollView *contentScrollView;
 @property (nonatomic, strong) HomePageSelectViewController *selectViewController;
 @property (nonatomic, strong) HomePageWikipediaViewController *wikipediaViewController;
 @property (nonatomic, strong) HomePageSchoolViewController *schoolViewController;
@@ -62,6 +62,7 @@
     [super viewDidLoad];
 //    [self initMainUI];
     self.view.backgroundColor = [UIColor clearColor];
+    [self extendheadViewFor:Index];
 }
 
 #pragma mark - initMainUI

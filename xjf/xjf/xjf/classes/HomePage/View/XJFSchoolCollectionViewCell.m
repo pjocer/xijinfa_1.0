@@ -8,11 +8,33 @@
 
 #import "XJFSchoolCollectionViewCell.h"
 
+@interface XJFSchoolCollectionViewCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *videoImg;
+@property (weak, nonatomic) IBOutlet UIButton *teacherCoverImg;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *describe;
+@end
+
 @implementation XJFSchoolCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    ViewRadius(self, 5.0);
+    ViewRadius(self.teacherCoverImg, 15.0);
+}
+
+- (void)setModel:(TalkGridModel *)model {
+    if (model) {
+        _model = model;
+    }
+    
+    [self.videoImg sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    self.title.text = model.title;
+//    self.describe.text = 
+    if (model.taxonomy_gurus.count != 0 && model.taxonomy_gurus) {
+        taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
+        [self.teacherCoverImg.imageView sd_setImageWithURL:[NSURL URLWithString:gurus.guru_avatar]];
+    }
 }
 
 @end

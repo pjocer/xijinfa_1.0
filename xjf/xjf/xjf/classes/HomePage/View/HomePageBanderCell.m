@@ -20,7 +20,9 @@
         [self.contentView addSubview:_carouselView];
         _carouselView.changeMode = ChangeModeFade;
         ViewRadius(_carouselView, 5.0);
+        
     }
     return self;
 }
+
 @end

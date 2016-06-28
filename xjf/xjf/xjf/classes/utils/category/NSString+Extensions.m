@@ -72,6 +72,23 @@
     return result;
 }
 
++ (NSString *)filterHTML:(NSString *)str
+{
+    NSScanner * scanner = [NSScanner scannerWithString:str];
+    NSString * text = nil;
+    while([scanner isAtEnd]==NO)
+    {
+        //找到标签的起始位置
+        [scanner scanUpToString:@"<" intoString:nil];
+        //找到标签的结束位置
+        [scanner scanUpToString:@">" intoString:&text];
+        //替换字符
+        str  =  [str  stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
+    }
+    
+    return str;
+}
+
 // implementation by Daniel Dickison and Walty
 // http://stackoverflow.com/questions/1105169/html-character-decoding-in-objective-c-cocoa-touch
 - (NSString *)stringByDecodingXMLEntities {

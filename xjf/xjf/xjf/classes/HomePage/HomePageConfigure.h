@@ -15,9 +15,9 @@
 #define KlayoutMinimumInteritemSpacing 7.5
 #define KlayoutMinimumLineSpacing 10
 #define KHomePageCollectionByBannerSize CGSizeMake(SCREENWITH - KlayoutMinimumLineSpacing * 2, 110)
-#define KHomePageCollectionByClassificationAndTeacher CGSizeMake((SCREENWITH - KlayoutMinimumInteritemSpacing * 2 - KlayoutMinimumLineSpacing * 2) / 2, 150)
+#define KHomePageCollectionByLessons CGSizeMake((SCREENWITH - KlayoutMinimumInteritemSpacing * 2 - KlayoutMinimumLineSpacing * 2) / 2, 145)
 #define KHomePageCollectionByWikipediaSize CGSizeMake(SCREENWITH - KlayoutMinimumLineSpacing * 2, 245)
-#define KHomePageCollectionByLessons CGSizeMake(SCREENWITH, 150)
+#define KHomePageCollectionByClassificationAndTeacher CGSizeMake(SCREENWITH, 145)
 #define KHomePageSeccontionHeader_Height 45
 
 
@@ -38,6 +38,8 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
 
 #pragma mark -- .h
 
+#import "BannerWebViewViewController.h"
+
 #import "HomePageCollectionSectionHeaderView.h"
 #import "BannerModel.h"
 #import "HomePageBanderCell.h"
@@ -48,4 +50,11 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
 #import "XJFSchoolCollectionViewCell.h"
 #import "XJFBigWikipediaCollectionViewCell.h"
 #import "XJFEmploymentInformationCollectionViewCell.h"
+#import "VideolistViewController.h"
+#import "LessonListViewController.h"
+#import "ProjectListByModel.h"
+#import "TalkGridModel.h"
+#import "PlayerViewController.h"
+#import "LessonDetailViewController.h"
+#import "EmployedLessonListViewController.h"
 #endif /* HomePageConfigure_h */

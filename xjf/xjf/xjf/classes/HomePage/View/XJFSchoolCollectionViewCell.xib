@@ -20,7 +20,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMr-R5-VYs">
-                        <rect key="frame" x="60" y="110" width="100" height="14"/>
+                        <rect key="frame" x="50" y="110" width="110" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="KlL-HY-3yc"/>
                         </constraints>
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPG-SO-bOi">
-                        <rect key="frame" x="20" y="110" width="30" height="30"/>
+                        <rect key="frame" x="10" y="110" width="30" height="30"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="MEj-JB-fMN"/>
@@ -37,7 +37,7 @@
                         </constraints>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZF-a0-BJU">
-                        <rect key="frame" x="60" y="128" width="100" height="12"/>
+                        <rect key="frame" x="50" y="128" width="110" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="7kr-mC-ZVX"/>
                         </constraints>
@@ -48,6 +48,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="7ZF-a0-BJU" firstAttribute="leading" secondItem="zMr-R5-VYs" secondAttribute="leading" id="8Zw-Nn-0E8"/>
                 <constraint firstAttribute="trailing" secondItem="WHI-c9-Zsq" secondAttribute="trailing" id="D1z-8G-VgQ"/>
@@ -57,10 +58,16 @@
                 <constraint firstItem="WHI-c9-Zsq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e8M-0f-aLk"/>
                 <constraint firstItem="7ZF-a0-BJU" firstAttribute="top" secondItem="zMr-R5-VYs" secondAttribute="bottom" constant="4" id="ftB-pM-k7J"/>
                 <constraint firstItem="fPG-SO-bOi" firstAttribute="top" secondItem="WHI-c9-Zsq" secondAttribute="bottom" constant="10" id="hnu-h6-g6M"/>
-                <constraint firstItem="fPG-SO-bOi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="nBR-MU-WDn"/>
+                <constraint firstItem="fPG-SO-bOi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="nBR-MU-WDn"/>
                 <constraint firstItem="WHI-c9-Zsq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ryW-XJ-MWY"/>
                 <constraint firstItem="zMr-R5-VYs" firstAttribute="top" secondItem="fPG-SO-bOi" secondAttribute="top" id="wav-US-Rrx"/>
             </constraints>
+            <connections>
+                <outlet property="describe" destination="7ZF-a0-BJU" id="Z5I-GQ-Dfv"/>
+                <outlet property="teacherCoverImg" destination="fPG-SO-bOi" id="3hm-ca-kEc"/>
+                <outlet property="title" destination="zMr-R5-VYs" id="Zsl-fY-S01"/>
+                <outlet property="videoImg" destination="WHI-c9-Zsq" id="eBu-lZ-p96"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

@@ -7,11 +7,15 @@
 //
 
 #import "XJFBaseCollectionViewCell.h"
+#import "ProjectListByModel.h"
+#import "WikiPediaCategoriesModel.h"
 
-typedef NS_OPTIONS(short, HomePageScrollCellType) {
-    ClassificationCell = 0,
-    TeacherCell
+typedef NS_OPTIONS(short, HomePageClassificationType) {
+    HomePageWikiClassification = 0,
+    HomePageSchoolClassification,
+    HomePageEmployedassification
 };
+
 
 @class HomePageScrollCell;
 
@@ -28,8 +32,13 @@ typedef NS_OPTIONS(short, HomePageScrollCellType) {
 @end
 
 @interface HomePageScrollCell : XJFBaseCollectionViewCell
-///CellType
-@property (nonatomic, assign) HomePageScrollCellType cellType;
+///HomePageClassificationType
+@property (nonatomic, assign) HomePageClassificationType ClassificationType;
 ///Delegate
 @property (nonatomic, assign) id<HomePageScrollCellDelegate>delegate;
+///projectListByModel
+@property (nonatomic, strong) ProjectListByModel *projectListByModel;
+///wikiPediaCategoriesModel
+@property (nonatomic, strong) WikiPediaCategoriesModel *wikiPediaCategoriesModel;
+
 @end

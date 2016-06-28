@@ -98,7 +98,7 @@
                 [sSelf.tempArray addObject:model];
             }
         }
-        sSelf.dataArray = sSelf.wikiPediaCategoriesModel.result.data;
+        sSelf.dataArray = sSelf.wikiPediaCategoriesModel.result.data.mutableCopy;
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
