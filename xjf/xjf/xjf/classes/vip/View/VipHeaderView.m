@@ -48,11 +48,8 @@ static CGFloat vipCrownH = 18;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColorByFrame:self.bounds
-                               TopColor:[UIColor xjfStringToColor:@"#fae675"]
-                            BottomColor:[UIColor xjfStringToColor:@"#ffa800"]
-                                  Layer:self.layer];
-
+        [self setBackgroundColorByTopColor:[UIColor xjfStringToColor:@"#fae675"]
+                               BottomColor:[UIColor xjfStringToColor:@"#ffa800"]];
         //bottomView
         self.bottomView = [[UIView alloc] init];
         [self addSubview:self.bottomView];

@@ -9,6 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (FirstLetter)
-//汉字字符串的首字符  北京~>BJ
 - (NSString *)firstLetter;
 @end

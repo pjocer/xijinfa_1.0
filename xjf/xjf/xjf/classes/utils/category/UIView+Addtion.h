@@ -21,8 +21,6 @@
  *  @param bottomColor ViewBottomColor
  *  @param layer       View的Layer
  */
-- (void)setBackgroundColorByFrame:(CGRect)frame
-                         TopColor:(UIColor *)topColor
-                      BottomColor:(UIColor *)bottomColor
-                            Layer:(CALayer *)layer;
+- (void)setBackgroundColorByTopColor:(UIColor *)topColor
+                         BottomColor:(UIColor *)bottomColor;
 @end

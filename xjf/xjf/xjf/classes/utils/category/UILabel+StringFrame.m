@@ -14,8 +14,7 @@
     NSDictionary *attribute = @{NSFontAttributeName : self.font};
 
     CGSize retSize = [self.text boundingRectWithSize:size
-                                             options:\
-                      NSStringDrawingTruncatesLastVisibleLine |
+                                             options:NSStringDrawingTruncatesLastVisibleLine |
                                                      NSStringDrawingUsesLineFragmentOrigin |
                                                      NSStringDrawingUsesFontLeading
                                           attributes:attribute

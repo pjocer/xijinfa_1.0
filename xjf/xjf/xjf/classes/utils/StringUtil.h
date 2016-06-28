@@ -21,4 +21,5 @@
 + (NSString *)compareCurrentTime:(NSString *)compareDate;
 
 + (NSArray *)handleTime:(NSArray <NSString *> *)times;
+
 @end

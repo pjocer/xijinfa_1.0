@@ -29,18 +29,14 @@
     return lineView;
 }
 
-- (void)setBackgroundColorByFrame:(CGRect)frame
-                         TopColor:(UIColor *)topColor
-                      BottomColor:(UIColor *)bottomColor
-                            Layer:(CALayer *)layer {
+-(void)setBackgroundColorByTopColor:(UIColor *)topColor BottomColor:(UIColor *)bottomColor {
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = frame;
+    gradientLayer.frame = self.bounds;
     gradientLayer.colors = @[(id) topColor.CGColor, (id) bottomColor.CGColor];
-    for (CALayer *sublayer in [layer sublayers]) {
+    for (CALayer *sublayer in [self.layer sublayers]) {
         [sublayer removeFromSuperlayer];
     }
-    [layer insertSublayer:gradientLayer atIndex:0];
-
+    [self.layer insertSublayer:gradientLayer atIndex:0];
 }
 
 @end

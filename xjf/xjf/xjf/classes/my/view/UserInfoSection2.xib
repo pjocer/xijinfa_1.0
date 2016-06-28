@@ -55,7 +55,7 @@
                 <outlet property="phone" destination="McH-rj-g7M" id="B9g-yS-Xdo"/>
                 <outlet property="view" destination="4fJ-WF-UVZ" id="crw-iw-Rv3"/>
             </connections>
-            <point key="canvasLocation" x="450" y="176"/>
+            <point key="canvasLocation" x="445" y="175"/>
         </tableViewCell>
     </objects>
 </document>
