@@ -58,9 +58,8 @@
         UIViewController *controller = getCurrentDisplayController();
         NSData *citiesData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"zh_CN" ofType:@"json"]];
         NSMutableArray *dataSource = [NSMutableArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:citiesData options:NSJSONReadingMutableLeaves error:nil]];;
-        CitySelector *selector = [[CitySelector alloc] initWithDataSource:dataSource];
+        CitySelector *selector = [[CitySelector alloc] initWithDataSource:dataSource navTitle:@"选择省份"];
         selector.delegate = self;
-        selector.nav_title = @"选择省份";
         [controller.navigationController pushViewController:selector animated:YES];
     } else {
         [self.alert showChoose:type handler:^id(id txt) {

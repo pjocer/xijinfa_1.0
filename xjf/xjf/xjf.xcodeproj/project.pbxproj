@@ -255,7 +255,6 @@
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
 		D073F15C1D239D99007B387D /* ZFPlayerView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */; };
-		D073F15F1D23A2AA007B387D /* XJFLegoFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F15E1D23A2AA007B387D /* XJFLegoFactory.m */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
 		D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */; };
 		D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */; };
@@ -757,8 +756,6 @@
 		D073E8181CE9E5B200AED895 /* AlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtils.m; sourceTree = "<group>"; };
 		D073F15A1D239D99007B387D /* ZFPlayerView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ZFPlayerView+Category.h"; path = "../../player/ZFPlayerView+Category.h"; sourceTree = "<group>"; };
 		D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ZFPlayerView+Category.m"; path = "../../player/ZFPlayerView+Category.m"; sourceTree = "<group>"; };
-		D073F15D1D23A2AA007B387D /* XJFLegoFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XJFLegoFactory.h; path = ../utils/XJFLegoFactory.h; sourceTree = "<group>"; };
-		D073F15E1D23A2AA007B387D /* XJFLegoFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XJFLegoFactory.m; path = ../utils/XJFLegoFactory.m; sourceTree = "<group>"; };
 		D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -1167,8 +1164,6 @@
 		5A6CF4731D23632D00676255 /* XJFTheCommonlyUsedClass */ = {
 			isa = PBXGroup;
 			children = (
-				D073F15D1D23A2AA007B387D /* XJFLegoFactory.h */,
-				D073F15E1D23A2AA007B387D /* XJFLegoFactory.m */,
 				5A6CF4741D23632D00676255 /* XJFTheCommonlyUsedCell */,
 				5A6CF4871D23632D00676255 /* XJFTheCommonlyUsedModel */,
 				5A6CF4881D23632D00676255 /* XJFTheCommonlyUsedView */,
@@ -1946,8 +1941,8 @@
 		CDF57AC21C9F825D00049AF0 /* xjf */ = {
 			isa = PBXGroup;
 			children = (
-				5A6CF38E1D1CED0B00676255 /* HomePage */,
 				5A6CF3921D1CED0B00676255 /* XJFBase */,
+				5A6CF38E1D1CED0B00676255 /* HomePage */,
 				5AF7C2CD1CF945F6007CC71C /* Order */,
 				644C11151CBA8B4B00892E2C /* User */,
 				CD1CCC4A1CB39B3D002FC0C9 /* Player */,
@@ -1955,10 +1950,10 @@
 				CD1CCBF41CB35A2D002FC0C9 /* Index */,
 				CD1CCBFA1CB35A2D002FC0C9 /* Mine */,
 				CD1CCC061CB35A2D002FC0C9 /* Topic */,
-				CD1CCC3A1CB37B89002FC0C9 /* Utils */,
 				CD1CCC0C1CB35A2D002FC0C9 /* Vip */,
 				AA5B95E91D1948790088A196 /* Search */,
 				AA5B96001D1C08800088A196 /* Ta */,
+				CD1CCC3A1CB37B89002FC0C9 /* Utils */,
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
@@ -2378,7 +2373,6 @@
 				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
 				D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */,
 				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
-				D073F15F1D23A2AA007B387D /* XJFLegoFactory.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */,
