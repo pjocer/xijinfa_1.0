@@ -43,7 +43,13 @@
 - (NSArray *)getSectionTitles {
     NSMutableArray *titles = [NSMutableArray array];
     for (NSDictionary *dic in self.dataSource) {
-        NSString *single = [[[dic objectForKey:@"areaName"] substringWithRange:NSMakeRange(0, 1)] firstLetter];
+        NSString *first = [[dic objectForKey:@"areaName"] substringWithRange:NSMakeRange(0, 1)];
+        NSString *single = nil;
+        if ([first isEqualToString:@"重"]) {
+            single = @"C";
+        }else {
+            single = [first firstLetter];
+        }
         if (![titles containsObject:single]) {
             [titles addObject:single];
         }
@@ -71,7 +77,6 @@
         if ([firstLetter isEqualToString:@"ZQ"]) {
             firstLetter = @"CQ";
         }
-
         if ([citiesFirstLetters.allKeys containsObject:firstLetter]) {
             firstLetter = [NSString stringWithFormat:@"%@%d", firstLetter, key];
             [citiesFirstLetters setObject:city forKey:firstLetter];
@@ -86,16 +91,18 @@
         return [obj1 compare:obj2];
     }];
     NSMutableArray *separate = [NSMutableArray array];
-    if (firstLetters.count > 1) {
+    if (firstLetters.count > 1) {                                                            
         for (NSInteger i = 0; i < firstLetters.count - 1; i++) {
             NSString *first = [firstLetters[i] substringWithRange:NSMakeRange(0, 1)];
             NSString *second = [firstLetters[i + 1] substringWithRange:NSMakeRange(0, 1)];
             if (![first isEqualToString:second]) {
+                //count 标识当前sameFirst的下标
                 int count = 0;
                 for (NSArray *array in separate) {
                     count += array.count;
                 }
                 NSMutableArray *sameFirst = [NSMutableArray array];
+                //key 解决河南，湖南，海南等首字母相同的问题
                 int key = 0;
                 for (NSInteger j = count; j < i + 1; j++) {
                     NSString *cityName = [citiesFirstLetters objectForKey:firstLetters[j]];
@@ -108,12 +115,16 @@
                     [sameFirst addObject:cityName];
                 }
                 [separate addObject:sameFirst];
+                if (i == firstLetters.count - 2) {
+                    [separate addObject:@[[citiesFirstLetters objectForKey:firstLetters[i+1]]]];
+                }
             }
         }
     } else {
         [separate addObject:@[[citiesFirstLetters objectForKey:firstLetters[0]]]];
     }
     objc_setAssociatedObject(self.dataSource, @"separate", separate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

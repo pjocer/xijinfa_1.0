@@ -45,7 +45,7 @@
     _data = data;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:data.user.avatar]];
     _nickname.text = data.user.nickname;
-    _invest_category.text = data.user.invest_category;
+    _invest_category.text = data.user.quote;
     _time.text = [StringUtil compareCurrentTime:data.created_at];
     _content.text = data.content;
 }

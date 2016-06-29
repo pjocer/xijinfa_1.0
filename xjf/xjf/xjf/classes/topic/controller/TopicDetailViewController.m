@@ -89,7 +89,7 @@
             _commentList = [[TopicCommentList alloc] initWithData:responseData error:nil];
             if ([_commentList.errCode isEqualToString:@"0"]) {
                 [_dataSource addObjectsFromArray:_commentList.result.data];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+                [self.tableView reloadData];
             } else {
                 [[ZToastManager ShardInstance] showtoast:_commentList.errMsg];
             }
