@@ -44,6 +44,9 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
             self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+            if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+                [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
+            }
             [subscriber sendNext:self.bannermodel];
         }failedBlock:^(NSError *_Nullable error) {
         }];
@@ -118,6 +121,7 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
 }
 
 #pragma mark CollectionView DataSource
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 3;
 }
@@ -254,6 +258,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 }
 
 #pragma mark CollectionView DidSelected
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 }

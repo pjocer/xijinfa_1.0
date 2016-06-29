@@ -49,6 +49,9 @@ typedef NS_OPTIONS(NSInteger, SelectViewControllerSectionType) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
             self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+            if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+                [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
+            }
             [subscriber sendNext:self.bannermodel];
         }failedBlock:^(NSError *_Nullable error) {
         }];

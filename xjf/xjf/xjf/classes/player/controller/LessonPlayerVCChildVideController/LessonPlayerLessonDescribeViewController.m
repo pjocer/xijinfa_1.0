@@ -26,7 +26,7 @@
     [self.view addSubview:self.web];
     [self.web mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
-        make.bottom.equalTo(self.view).with.offset(-50);
+        make.bottom.equalTo(self.view);
     }];
     [self.web loadHTMLString:self.contentText baseURL:nil];
     self.web.backgroundColor = [UIColor clearColor];
