@@ -247,7 +247,7 @@
             [self initResult];
         } else {
             [_result clearDataSource];
-            [self requestData:[NSString stringWithFormat:@"%@%@", _result.api, self.searchBar.text] Method:GET type:_result.type];
+            [self initDataResult];
         }
         [searchBar resignFirstResponder];
         [[XJMarket sharedMarket] addSearch:searchBar.text];
