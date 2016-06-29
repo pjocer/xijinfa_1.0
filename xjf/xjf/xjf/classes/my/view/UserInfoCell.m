@@ -117,6 +117,7 @@
         }];
     }else {
         [[ZToastManager ShardInstance] showtoast:@"请上传正确的图片"];
+        [picker dismissViewControllerAnimated:YES completion:nil];
     }
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
