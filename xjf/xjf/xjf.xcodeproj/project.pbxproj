@@ -22,9 +22,7 @@
 		5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */; };
 		5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */; };
 		5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E7D1CED5A4E0079BEFE /* LessonListViewController.m */; };
-		5A105E921CED880D0079BEFE /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8D1CED880D0079BEFE /* BannerModel.m */; };
 		5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */; };
-		5A105E971CED91040079BEFE /* TalkGridModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E961CED91040079BEFE /* TalkGridModel.m */; };
 		5A105E9A1CED91ED0079BEFE /* WikiPediaCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */; };
 		5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E9C1CEDBADE0079BEFE /* LessonDetailViewController.m */; };
 		5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E9F1CEDC34B0079BEFE /* LessonDetailTitleView.m */; };
@@ -89,23 +87,25 @@
 		5A6CF3CD1D1CF93600676255 /* HomePageWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3CC1D1CF93600676255 /* HomePageWikipediaViewController.m */; };
 		5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3CF1D1CF95000676255 /* HomePageSchoolViewController.m */; };
 		5A6CF3D31D1CF9AD00676255 /* HomePageEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3D21D1CF9AD00676255 /* HomePageEmployedViewController.m */; };
-		5A6CF3D61D1CFE8E00676255 /* SelectedScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3D51D1CFE8E00676255 /* SelectedScrollContentView.m */; };
 		5A6CF3D91D1D376200676255 /* HomePageCollectionSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3D81D1D376200676255 /* HomePageCollectionSectionHeaderView.m */; };
 		5A6CF3DC1D1D506D00676255 /* HomePageBanderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3DB1D1D506D00676255 /* HomePageBanderCell.m */; };
 		5A6CF3DF1D1D552F00676255 /* HomePageScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3DE1D1D552F00676255 /* HomePageScrollCell.m */; };
 		5A6CF4531D22773D00676255 /* TeacherScrollCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4521D22773D00676255 /* TeacherScrollCollectionViewCell.m */; };
-		5A6CF4671D22917600676255 /* XJFBigWikipediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4561D22917600676255 /* XJFBigWikipediaCollectionViewCell.m */; };
-		5A6CF4681D22917600676255 /* XJFBigWikipediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4571D22917600676255 /* XJFBigWikipediaCollectionViewCell.xib */; };
-		5A6CF4691D22917600676255 /* XJFClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4591D22917600676255 /* XJFClassificationCollectionViewCell.m */; };
-		5A6CF46A1D22917600676255 /* XJFClassificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF45A1D22917600676255 /* XJFClassificationCollectionViewCell.xib */; };
-		5A6CF46B1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF45C1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.m */; };
-		5A6CF46C1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF45D1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.xib */; };
-		5A6CF46D1D22917600676255 /* XJFSchoolCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF45F1D22917600676255 /* XJFSchoolCollectionViewCell.m */; };
-		5A6CF46E1D22917600676255 /* XJFSchoolCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4601D22917600676255 /* XJFSchoolCollectionViewCell.xib */; };
-		5A6CF46F1D22917600676255 /* XJFTeacherCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4621D22917600676255 /* XJFTeacherCollectionViewCell.m */; };
-		5A6CF4701D22917600676255 /* XJFTeacherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4631D22917600676255 /* XJFTeacherCollectionViewCell.xib */; };
-		5A6CF4711D22917600676255 /* XJFWikipediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4651D22917600676255 /* XJFWikipediaCollectionViewCell.m */; };
-		5A6CF4721D22917600676255 /* XJFWikipediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4661D22917600676255 /* XJFWikipediaCollectionViewCell.xib */; };
+		5A6CF4891D23632D00676255 /* XJFBigWikipediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4761D23632D00676255 /* XJFBigWikipediaCollectionViewCell.m */; };
+		5A6CF48A1D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4771D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib */; };
+		5A6CF48B1D23632D00676255 /* XJFClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4791D23632D00676255 /* XJFClassificationCollectionViewCell.m */; };
+		5A6CF48C1D23632D00676255 /* XJFClassificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF47A1D23632D00676255 /* XJFClassificationCollectionViewCell.xib */; };
+		5A6CF48D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF47C1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m */; };
+		5A6CF48E1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF47D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib */; };
+		5A6CF48F1D23632D00676255 /* XJFSchoolCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF47F1D23632D00676255 /* XJFSchoolCollectionViewCell.m */; };
+		5A6CF4901D23632D00676255 /* XJFSchoolCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4801D23632D00676255 /* XJFSchoolCollectionViewCell.xib */; };
+		5A6CF4911D23632D00676255 /* XJFTeacherCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4821D23632D00676255 /* XJFTeacherCollectionViewCell.m */; };
+		5A6CF4921D23632D00676255 /* XJFTeacherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4831D23632D00676255 /* XJFTeacherCollectionViewCell.xib */; };
+		5A6CF4931D23632D00676255 /* XJFWikipediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4851D23632D00676255 /* XJFWikipediaCollectionViewCell.m */; };
+		5A6CF4941D23632D00676255 /* XJFWikipediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4861D23632D00676255 /* XJFWikipediaCollectionViewCell.xib */; };
+		5A6CF4991D2363BD00676255 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4961D2363BD00676255 /* BannerModel.m */; };
+		5A6CF49A1D2363BD00676255 /* TalkGridModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4981D2363BD00676255 /* TalkGridModel.m */; };
+		5A6CF49D1D2363DD00676255 /* SelectedScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -307,12 +307,8 @@
 		5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonRecommendedViewController.m; sourceTree = "<group>"; };
 		5A105E7C1CED5A4E0079BEFE /* LessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonListViewController.h; path = ../../player/controller/LessonListViewController.h; sourceTree = "<group>"; };
 		5A105E7D1CED5A4E0079BEFE /* LessonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonListViewController.m; path = ../../player/controller/LessonListViewController.m; sourceTree = "<group>"; };
-		5A105E8C1CED880D0079BEFE /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
-		5A105E8D1CED880D0079BEFE /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
 		5A105E8E1CED880D0079BEFE /* ProjectListByModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListByModel.h; sourceTree = "<group>"; };
 		5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListByModel.m; sourceTree = "<group>"; };
-		5A105E951CED91040079BEFE /* TalkGridModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkGridModel.h; sourceTree = "<group>"; };
-		5A105E961CED91040079BEFE /* TalkGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkGridModel.m; sourceTree = "<group>"; };
 		5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiPediaCategoriesModel.m; sourceTree = "<group>"; };
 		5A105E991CED91ED0079BEFE /* WikiPediaCategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiPediaCategoriesModel.h; sourceTree = "<group>"; };
 		5A105E9B1CEDBADE0079BEFE /* LessonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonDetailViewController.h; path = xjf/classes/Index/controller/LessonDetailViewController.h; sourceTree = SOURCE_ROOT; };
@@ -440,8 +436,6 @@
 		5A6CF3CF1D1CF95000676255 /* HomePageSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageSchoolViewController.m; sourceTree = "<group>"; };
 		5A6CF3D11D1CF9AD00676255 /* HomePageEmployedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageEmployedViewController.h; sourceTree = "<group>"; };
 		5A6CF3D21D1CF9AD00676255 /* HomePageEmployedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageEmployedViewController.m; sourceTree = "<group>"; };
-		5A6CF3D41D1CFE8E00676255 /* SelectedScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedScrollContentView.h; sourceTree = "<group>"; };
-		5A6CF3D51D1CFE8E00676255 /* SelectedScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedScrollContentView.m; sourceTree = "<group>"; };
 		5A6CF3D71D1D376200676255 /* HomePageCollectionSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionSectionHeaderView.h; sourceTree = "<group>"; };
 		5A6CF3D81D1D376200676255 /* HomePageCollectionSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionSectionHeaderView.m; sourceTree = "<group>"; };
 		5A6CF3DA1D1D506D00676255 /* HomePageBanderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageBanderCell.h; sourceTree = "<group>"; };
@@ -450,24 +444,30 @@
 		5A6CF3DE1D1D552F00676255 /* HomePageScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageScrollCell.m; sourceTree = "<group>"; };
 		5A6CF4511D22773D00676255 /* TeacherScrollCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherScrollCollectionViewCell.h; sourceTree = "<group>"; };
 		5A6CF4521D22773D00676255 /* TeacherScrollCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherScrollCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6CF4551D22917600676255 /* XJFBigWikipediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFBigWikipediaCollectionViewCell.h; sourceTree = "<group>"; };
-		5A6CF4561D22917600676255 /* XJFBigWikipediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFBigWikipediaCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6CF4571D22917600676255 /* XJFBigWikipediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFBigWikipediaCollectionViewCell.xib; sourceTree = "<group>"; };
-		5A6CF4581D22917600676255 /* XJFClassificationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFClassificationCollectionViewCell.h; sourceTree = "<group>"; };
-		5A6CF4591D22917600676255 /* XJFClassificationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFClassificationCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6CF45A1D22917600676255 /* XJFClassificationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFClassificationCollectionViewCell.xib; sourceTree = "<group>"; };
-		5A6CF45B1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFEmploymentInformationCollectionViewCell.h; sourceTree = "<group>"; };
-		5A6CF45C1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFEmploymentInformationCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6CF45D1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFEmploymentInformationCollectionViewCell.xib; sourceTree = "<group>"; };
-		5A6CF45E1D22917600676255 /* XJFSchoolCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFSchoolCollectionViewCell.h; sourceTree = "<group>"; };
-		5A6CF45F1D22917600676255 /* XJFSchoolCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFSchoolCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6CF4601D22917600676255 /* XJFSchoolCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFSchoolCollectionViewCell.xib; sourceTree = "<group>"; };
-		5A6CF4611D22917600676255 /* XJFTeacherCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFTeacherCollectionViewCell.h; sourceTree = "<group>"; };
-		5A6CF4621D22917600676255 /* XJFTeacherCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFTeacherCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6CF4631D22917600676255 /* XJFTeacherCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFTeacherCollectionViewCell.xib; sourceTree = "<group>"; };
-		5A6CF4641D22917600676255 /* XJFWikipediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFWikipediaCollectionViewCell.h; sourceTree = "<group>"; };
-		5A6CF4651D22917600676255 /* XJFWikipediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFWikipediaCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6CF4661D22917600676255 /* XJFWikipediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFWikipediaCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF4751D23632D00676255 /* XJFBigWikipediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFBigWikipediaCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6CF4761D23632D00676255 /* XJFBigWikipediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFBigWikipediaCollectionViewCell.m; sourceTree = "<group>"; };
+		5A6CF4771D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFBigWikipediaCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF4781D23632D00676255 /* XJFClassificationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFClassificationCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6CF4791D23632D00676255 /* XJFClassificationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFClassificationCollectionViewCell.m; sourceTree = "<group>"; };
+		5A6CF47A1D23632D00676255 /* XJFClassificationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFClassificationCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF47B1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFEmploymentInformationCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6CF47C1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFEmploymentInformationCollectionViewCell.m; sourceTree = "<group>"; };
+		5A6CF47D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFEmploymentInformationCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF47E1D23632D00676255 /* XJFSchoolCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFSchoolCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6CF47F1D23632D00676255 /* XJFSchoolCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFSchoolCollectionViewCell.m; sourceTree = "<group>"; };
+		5A6CF4801D23632D00676255 /* XJFSchoolCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFSchoolCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF4811D23632D00676255 /* XJFTeacherCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFTeacherCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6CF4821D23632D00676255 /* XJFTeacherCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFTeacherCollectionViewCell.m; sourceTree = "<group>"; };
+		5A6CF4831D23632D00676255 /* XJFTeacherCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFTeacherCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF4841D23632D00676255 /* XJFWikipediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFWikipediaCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6CF4851D23632D00676255 /* XJFWikipediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFWikipediaCollectionViewCell.m; sourceTree = "<group>"; };
+		5A6CF4861D23632D00676255 /* XJFWikipediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XJFWikipediaCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A6CF4951D2363BD00676255 /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
+		5A6CF4961D2363BD00676255 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
+		5A6CF4971D2363BD00676255 /* TalkGridModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkGridModel.h; sourceTree = "<group>"; };
+		5A6CF4981D2363BD00676255 /* TalkGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkGridModel.m; sourceTree = "<group>"; };
+		5A6CF49B1D2363DD00676255 /* SelectedScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedScrollContentView.h; sourceTree = "<group>"; };
+		5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedScrollContentView.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -893,12 +893,8 @@
 			children = (
 				5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */,
 				5A105E991CED91ED0079BEFE /* WikiPediaCategoriesModel.h */,
-				5A105E8C1CED880D0079BEFE /* BannerModel.h */,
-				5A105E8D1CED880D0079BEFE /* BannerModel.m */,
 				5A105E8E1CED880D0079BEFE /* ProjectListByModel.h */,
 				5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */,
-				5A105E951CED91040079BEFE /* TalkGridModel.h */,
-				5A105E961CED91040079BEFE /* TalkGridModel.m */,
 				5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */,
 				5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */,
 				5AF7C2E61CFEF097007CC71C /* TeacherListHostModel.h */,
@@ -1111,8 +1107,6 @@
 			children = (
 				5A6CF3B01D1CEE6100676255 /* HomePageBaseView.h */,
 				5A6CF3B11D1CEE6100676255 /* HomePageBaseView.m */,
-				5A6CF3D41D1CFE8E00676255 /* SelectedScrollContentView.h */,
-				5A6CF3D51D1CFE8E00676255 /* SelectedScrollContentView.m */,
 				5A6CF3D71D1D376200676255 /* HomePageCollectionSectionHeaderView.h */,
 				5A6CF3D81D1D376200676255 /* HomePageCollectionSectionHeaderView.m */,
 				5A6CF3DA1D1D506D00676255 /* HomePageBanderCell.h */,
@@ -1167,30 +1161,60 @@
 			path = XJFBaseView;
 			sourceTree = "<group>";
 		};
-		5A6CF4541D22917600676255 /* XJFTheCommonlyUsedCell */ = {
+		5A6CF4731D23632D00676255 /* XJFTheCommonlyUsedClass */ = {
 			isa = PBXGroup;
 			children = (
-				5A6CF4551D22917600676255 /* XJFBigWikipediaCollectionViewCell.h */,
-				5A6CF4561D22917600676255 /* XJFBigWikipediaCollectionViewCell.m */,
-				5A6CF4571D22917600676255 /* XJFBigWikipediaCollectionViewCell.xib */,
-				5A6CF4581D22917600676255 /* XJFClassificationCollectionViewCell.h */,
-				5A6CF4591D22917600676255 /* XJFClassificationCollectionViewCell.m */,
-				5A6CF45A1D22917600676255 /* XJFClassificationCollectionViewCell.xib */,
-				5A6CF45B1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.h */,
-				5A6CF45C1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.m */,
-				5A6CF45D1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.xib */,
-				5A6CF45E1D22917600676255 /* XJFSchoolCollectionViewCell.h */,
-				5A6CF45F1D22917600676255 /* XJFSchoolCollectionViewCell.m */,
-				5A6CF4601D22917600676255 /* XJFSchoolCollectionViewCell.xib */,
-				5A6CF4611D22917600676255 /* XJFTeacherCollectionViewCell.h */,
-				5A6CF4621D22917600676255 /* XJFTeacherCollectionViewCell.m */,
-				5A6CF4631D22917600676255 /* XJFTeacherCollectionViewCell.xib */,
-				5A6CF4641D22917600676255 /* XJFWikipediaCollectionViewCell.h */,
-				5A6CF4651D22917600676255 /* XJFWikipediaCollectionViewCell.m */,
-				5A6CF4661D22917600676255 /* XJFWikipediaCollectionViewCell.xib */,
+				5A6CF4741D23632D00676255 /* XJFTheCommonlyUsedCell */,
+				5A6CF4871D23632D00676255 /* XJFTheCommonlyUsedModel */,
+				5A6CF4881D23632D00676255 /* XJFTheCommonlyUsedView */,
 			);
-			name = XJFTheCommonlyUsedCell;
-			path = classes/XJFTheCommonlyUsedCell;
+			name = XJFTheCommonlyUsedClass;
+			path = classes/XJFTheCommonlyUsedClass;
+			sourceTree = "<group>";
+		};
+		5A6CF4741D23632D00676255 /* XJFTheCommonlyUsedCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A6CF4751D23632D00676255 /* XJFBigWikipediaCollectionViewCell.h */,
+				5A6CF4761D23632D00676255 /* XJFBigWikipediaCollectionViewCell.m */,
+				5A6CF4771D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib */,
+				5A6CF4781D23632D00676255 /* XJFClassificationCollectionViewCell.h */,
+				5A6CF4791D23632D00676255 /* XJFClassificationCollectionViewCell.m */,
+				5A6CF47A1D23632D00676255 /* XJFClassificationCollectionViewCell.xib */,
+				5A6CF47B1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.h */,
+				5A6CF47C1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m */,
+				5A6CF47D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib */,
+				5A6CF47E1D23632D00676255 /* XJFSchoolCollectionViewCell.h */,
+				5A6CF47F1D23632D00676255 /* XJFSchoolCollectionViewCell.m */,
+				5A6CF4801D23632D00676255 /* XJFSchoolCollectionViewCell.xib */,
+				5A6CF4811D23632D00676255 /* XJFTeacherCollectionViewCell.h */,
+				5A6CF4821D23632D00676255 /* XJFTeacherCollectionViewCell.m */,
+				5A6CF4831D23632D00676255 /* XJFTeacherCollectionViewCell.xib */,
+				5A6CF4841D23632D00676255 /* XJFWikipediaCollectionViewCell.h */,
+				5A6CF4851D23632D00676255 /* XJFWikipediaCollectionViewCell.m */,
+				5A6CF4861D23632D00676255 /* XJFWikipediaCollectionViewCell.xib */,
+			);
+			path = XJFTheCommonlyUsedCell;
+			sourceTree = "<group>";
+		};
+		5A6CF4871D23632D00676255 /* XJFTheCommonlyUsedModel */ = {
+			isa = PBXGroup;
+			children = (
+				5A6CF4951D2363BD00676255 /* BannerModel.h */,
+				5A6CF4961D2363BD00676255 /* BannerModel.m */,
+				5A6CF4971D2363BD00676255 /* TalkGridModel.h */,
+				5A6CF4981D2363BD00676255 /* TalkGridModel.m */,
+			);
+			path = XJFTheCommonlyUsedModel;
+			sourceTree = "<group>";
+		};
+		5A6CF4881D23632D00676255 /* XJFTheCommonlyUsedView */ = {
+			isa = PBXGroup;
+			children = (
+				5A6CF49B1D2363DD00676255 /* SelectedScrollContentView.h */,
+				5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */,
+			);
+			path = XJFTheCommonlyUsedView;
 			sourceTree = "<group>";
 		};
 		5AF7C2CD1CF945F6007CC71C /* Order */ = {
@@ -1905,7 +1929,7 @@
 		CDF57AC21C9F825D00049AF0 /* xjf */ = {
 			isa = PBXGroup;
 			children = (
-				5A6CF4541D22917600676255 /* XJFTheCommonlyUsedCell */,
+				5A6CF4731D23632D00676255 /* XJFTheCommonlyUsedClass */,
 				5A6CF38E1D1CED0B00676255 /* HomePage */,
 				5A6CF3921D1CED0B00676255 /* XJFBase */,
 				5AF7C2CD1CF945F6007CC71C /* Order */,
@@ -2120,29 +2144,27 @@
 				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
 				AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */,
 				D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */,
+				5A6CF48E1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */,
+				5A6CF48C1D23632D00676255 /* XJFClassificationCollectionViewCell.xib in Resources */,
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
-				D07D74511CED96040037B1A9 /* AlipaySDK.bundle in Resources */,
-				5A6CF4701D22917600676255 /* XJFTeacherCollectionViewCell.xib in Resources */,
+				5A6CF4901D23632D00676255 /* XJFSchoolCollectionViewCell.xib in Resources */,
+				5A6CF4941D23632D00676255 /* XJFWikipediaCollectionViewCell.xib in Resources */,
 				AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */,
 				D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				D02FB4D51D127A05006EADAD /* zh_CN.json in Resources */,
-				5A6CF46A1D22917600676255 /* XJFClassificationCollectionViewCell.xib in Resources */,
-				5A6CF4721D22917600676255 /* XJFWikipediaCollectionViewCell.xib in Resources */,
 				D04D0C131D0FA5240090D2CD /* UserInfoSection1.xib in Resources */,
-				5A6CF4681D22917600676255 /* XJFBigWikipediaCollectionViewCell.xib in Resources */,
+				5A6CF4921D23632D00676255 /* XJFTeacherCollectionViewCell.xib in Resources */,
 				D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */,
 				D04D0C181D0FBD280090D2CD /* UserInfoSection2.xib in Resources */,
 				644C10C81CBA61AC00892E2C /* icon_del.png in Resources */,
-				5A6CF46E1D22917600676255 /* XJFSchoolCollectionViewCell.xib in Resources */,
 				644C10C91CBA61AC00892E2C /* icon_del_h.png in Resources */,
 				D04D0C1D1D0FC15C0090D2CD /* UserInfoSection3.xib in Resources */,
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
 				AA5B96181D1C0DF60088A196 /* FansCell.xib in Resources */,
 				AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */,
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
-				5A6CF46C1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
 				D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */,
 				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
@@ -2150,6 +2172,7 @@
 				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
 				68AD3FF9DA7BD76D1724229B /* icon_del.png in Resources */,
 				68AD307AD4257CC79BFD5D57 /* icon_del_h.png in Resources */,
+				5A6CF48A1D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2238,6 +2261,8 @@
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
+				CD144F1A1CBB783000A0636D /* MoreRecommendCell.m in Sources */,
+				5A6CF49A1D2363BD00676255 /* TalkGridModel.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				AA5B96201D1C0DF60088A196 /* TaViewController.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
@@ -2256,11 +2281,11 @@
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
 				5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */,
-				5A6CF46D1D22917600676255 /* XJFSchoolCollectionViewCell.m in Sources */,
+				5A6CF48F1D23632D00676255 /* XJFSchoolCollectionViewCell.m in Sources */,
 				5A240E131CE427A3003B7971 /* PlayerPageDescribeCell.m in Sources */,
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				644C11571CBA90A000892E2C /* XMShareWechatUtil.m in Sources */,
-				5A6CF4711D22917600676255 /* XJFWikipediaCollectionViewCell.m in Sources */,
+				5A6CF4931D23632D00676255 /* XJFWikipediaCollectionViewCell.m in Sources */,
 				644C11011CBA81BF00892E2C /* UILabel+StringFrame.m in Sources */,
 				5A6CF3CD1D1CF93600676255 /* HomePageWikipediaViewController.m in Sources */,
 				5A565A161D05A8F300008DA9 /* MyLessonsEmployedViewController.m in Sources */,
@@ -2294,7 +2319,7 @@
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
 				AA5B95F81D1948790088A196 /* SearchResultController.m in Sources */,
 				5A105EB31CEF21770079BEFE /* LessonDetailTecherDescribeViewController.m in Sources */,
-				5A6CF46F1D22917600676255 /* XJFTeacherCollectionViewCell.m in Sources */,
+				5A6CF4911D23632D00676255 /* XJFTeacherCollectionViewCell.m in Sources */,
 				CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */,
 				5A6CF3A11D1CED6500676255 /* XJFBaseTableViewCell.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
@@ -2303,13 +2328,13 @@
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A6CF3B51D1CEE8000676255 /* HomePageBaseViewController.m in Sources */,
 				5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */,
-				5A105E921CED880D0079BEFE /* BannerModel.m in Sources */,
 				5A6CF3CA1D1CF90C00676255 /* HomePageSelectViewController.m in Sources */,
 				5A6CF39E1D1CED5400676255 /* XJFBaseView.m in Sources */,
 				5A20717C1D02BBA000462D65 /* MyFavoredsEmployedViewController.m in Sources */,
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
 				5AF7C2F61CFF0431007CC71C /* TeacherEmployedViewController.m in Sources */,
 				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
+				5A6CF4991D2363BD00676255 /* BannerModel.m in Sources */,
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
 				AA5B961C1D1C0DF60088A196 /* TaBaseCellFoot.m in Sources */,
 				5A6CF3981D1CED2700676255 /* XJFBaseViewController.m in Sources */,
@@ -2329,10 +2354,10 @@
 				5A240E071CE4270F003B7971 /* PlayerPageDescribeFooterView.m in Sources */,
 				5A6CF3A41D1CED7600676255 /* XJFBaseCollectionViewCell.m in Sources */,
 				D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */,
-				5A105E971CED91040079BEFE /* TalkGridModel.m in Sources */,
 				CD144F0E1CBB732900A0636D /* IndexBannerCell.m in Sources */,
 				AA5B969B1D2244F60088A196 /* CommentsPageCommentsCell.m in Sources */,
 				5A105E611CEB30C30079BEFE /* TeacherListViewController.m in Sources */,
+				5A6CF49D1D2363DD00676255 /* SelectedScrollContentView.m in Sources */,
 				D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
 				5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */,
@@ -2371,9 +2396,9 @@
 				644C11561CBA90A000892E2C /* XMShareUtil.m in Sources */,
 				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
-				5A6CF46B1D22917600676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */,
 				5AF7C2E81CFEF097007CC71C /* TeacherListHostModel.m in Sources */,
-				5A6CF4691D22917600676255 /* XJFClassificationCollectionViewCell.m in Sources */,
+				5A6CF48D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */,
+				5A6CF48B1D23632D00676255 /* XJFClassificationCollectionViewCell.m in Sources */,
 				5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */,
 				AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */,
 				5A105EB91CF004870079BEFE /* LessonDetailNoPayHeaderView.m in Sources */,
@@ -2411,8 +2436,7 @@
 				5AF7C2EC1CFF0292007CC71C /* TeacherDetailViewController.m in Sources */,
 				D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */,
 				AA5B961F1D1C0DF60088A196 /* TaTopicViewController.m in Sources */,
-				5A6CF4671D22917600676255 /* XJFBigWikipediaCollectionViewCell.m in Sources */,
-				5A6CF3D61D1CFE8E00676255 /* SelectedScrollContentView.m in Sources */,
+				5A6CF4891D23632D00676255 /* XJFBigWikipediaCollectionViewCell.m in Sources */,
 				CD144F0B1CBB732900A0636D /* CourseGridViewCell.m in Sources */,
 				5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */,
 				68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */,

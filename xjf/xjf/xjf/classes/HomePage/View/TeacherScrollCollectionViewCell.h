@@ -16,7 +16,7 @@
 /**
  *  DidSelected
  *
- *  @param homePageScrollCell homePageScrollCell
+ *  @param homePageScrollCell teacherScrollCollectionViewCell
  *  @param indexPath          indexPath
  */
 - (void)teacherScrollCollectionViewCell:(TeacherScrollCollectionViewCell *)teacherScrollCollectionViewCell
