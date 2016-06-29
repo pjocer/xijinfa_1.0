@@ -16,5 +16,5 @@
 @property (nonatomic, copy) NSString *cityChoosed;
 @property (nonatomic, weak) id <CityDidChoosedDelegate> delegate;
 
-- (instancetype)initWithDataSource:(NSMutableArray *)dataSource;
+- (instancetype)initWithDataSource:(NSMutableArray *)dataSource navTitle:(NSString *)title;
 @end

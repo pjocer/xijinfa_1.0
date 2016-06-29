@@ -14,18 +14,21 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *sectionTitles;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, copy) NSString *atitle;
 @end
 
 @implementation CitySelector
-- (instancetype)initWithDataSource:(NSMutableArray *)dataSource {
+- (instancetype)initWithDataSource:(NSMutableArray *)dataSource navTitle:(NSString *)title{
     if (self = [super init]) {
         self.dataSource = dataSource;
+        self.atitle = title;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.nav_title = self.atitle;
     [self initDataSource];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - HEADHEIGHT) style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -175,12 +178,14 @@
             nextDataSource = [dic objectForKey:@"cities"];
         }
     }
-    CitySelector *next = [[CitySelector alloc] initWithDataSource:nextDataSource];
+    
+    NSString *title = nil;
     if ([self.nav_title isEqualToString:@"选择省份"]) {
-        next.nav_title = @"选择市";
+        title = @"选择市";
     } else if ([self.nav_title isEqualToString:@"选择市"]) {
-        next.nav_title = @"选择区/县";
+        title = @"选择区/县";
     }
+    CitySelector *next = [[CitySelector alloc] initWithDataSource:nextDataSource navTitle:title];
     if (self.cityChoosed) {
         next.cityChoosed = [NSString stringWithFormat:@"%@,%@", self.cityChoosed, text];
     } else {
@@ -194,8 +199,9 @@
         UIViewController *controller = [self.navigationController.childViewControllers objectAtIndex:1];
         [self.navigationController popToViewController:controller animated:YES];
         return;
+    }else {
+        [self.navigationController pushViewController:next animated:YES];
     }
-    [self.navigationController pushViewController:next animated:YES];
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
