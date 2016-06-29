@@ -255,6 +255,7 @@
 		D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8141CE9D66C00AED895 /* RegistFinalModel.m */; };
 		D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D073E8181CE9E5B200AED895 /* AlertUtils.m */; };
 		D073F15C1D239D99007B387D /* ZFPlayerView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */; };
+		D073F15F1D23A2AA007B387D /* XJFLegoFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F15E1D23A2AA007B387D /* XJFLegoFactory.m */; };
 		D07D743C1CED61BA0037B1A9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */; };
 		D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */; };
 		D07D74411CED6DBF0037B1A9 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */; };
@@ -468,8 +469,8 @@
 		5A6CF4981D2363BD00676255 /* TalkGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkGridModel.m; sourceTree = "<group>"; };
 		5A6CF49B1D2363DD00676255 /* SelectedScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedScrollContentView.h; sourceTree = "<group>"; };
 		5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedScrollContentView.m; sourceTree = "<group>"; };
-		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = classes/utils/Header.h; sourceTree = "<group>"; };
+		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = classes/utils/PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
 		5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailBaseViewController.m; sourceTree = "<group>"; };
 		5AF7C2D41CF94694007CC71C /* OrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetaiViewController.h; sourceTree = "<group>"; };
@@ -548,7 +549,7 @@
 		68AD38EDE180EC504F15C896 /* XMShareWechatUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShareWechatUtil.h; sourceTree = "<group>"; };
 		68AD38FCE1858A761939DF2B /* NSDate+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Convenience.m"; sourceTree = "<group>"; };
 		68AD399D59746063E1B7B1EB /* LPPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPopup.h; sourceTree = "<group>"; };
-		68AD39FD9A28D219A2CA50BB /* ZPlatformShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPlatformShare.m; sourceTree = "<group>"; };
+		68AD39FD9A28D219A2CA50BB /* ZPlatformShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZPlatformShare.m; path = ../../classes/utils/ZPlatformShare.m; sourceTree = "<group>"; };
 		68AD3A218CB2A29F5D9FAADC /* XMShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShareView.h; sourceTree = "<group>"; };
 		68AD3A756AAFA9F843389DC5 /* icon_del_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del_h.png; sourceTree = "<group>"; };
 		68AD3AF38ED8BC896AB07EF7 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
@@ -563,7 +564,7 @@
 		68AD3E5FD4E53AB9D8968210 /* NSString+FirstLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FirstLetter.h"; sourceTree = "<group>"; };
 		68AD3E6DB29D6A23F8CF2B42 /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
 		68AD3F14C5FECC832471B24F /* LessonRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRecommendedHeaderView.h; sourceTree = "<group>"; };
-		68AD3F2685D08B5C32396B63 /* ZPlatformShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPlatformShare.h; sourceTree = "<group>"; };
+		68AD3F2685D08B5C32396B63 /* ZPlatformShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPlatformShare.h; path = ../../classes/utils/ZPlatformShare.h; sourceTree = "<group>"; };
 		68AD3F4A2359113E77262F8B /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringUtil.m; path = xjf/classes/utils/StringUtil.m; sourceTree = SOURCE_ROOT; };
 		68AD3FEDF1438D46B161A46C /* XMShareUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShareUtil.h; sourceTree = "<group>"; };
 		9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xjf.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -665,7 +666,7 @@
 		CD1CCC351CB37950002FC0C9 /* VipBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipBaseViewController.m; sourceTree = "<group>"; };
 		CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBaseViewController.m; sourceTree = "<group>"; };
-		CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xjfConfigure.h; sourceTree = "<group>"; };
+		CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xjfConfigure.h; path = classes/utils/xjfConfigure.h; sourceTree = "<group>"; };
 		CD1CCC411CB37BDB002FC0C9 /* XjfRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XjfRequest.h; sourceTree = "<group>"; };
 		CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XjfRequest.m; sourceTree = "<group>"; };
 		CD1CCC471CB37D54002FC0C9 /* IndexConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexConfigure.h; sourceTree = "<group>"; };
@@ -754,8 +755,10 @@
 		D073E8161CE9DA4E00AED895 /* NotificationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationSet.h; path = ../NotificationSet.h; sourceTree = "<group>"; };
 		D073E8171CE9E5B200AED895 /* AlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtils.h; sourceTree = "<group>"; };
 		D073E8181CE9E5B200AED895 /* AlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtils.m; sourceTree = "<group>"; };
-		D073F15A1D239D99007B387D /* ZFPlayerView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZFPlayerView+Category.h"; sourceTree = "<group>"; };
-		D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZFPlayerView+Category.m"; sourceTree = "<group>"; };
+		D073F15A1D239D99007B387D /* ZFPlayerView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ZFPlayerView+Category.h"; path = "../../player/ZFPlayerView+Category.h"; sourceTree = "<group>"; };
+		D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ZFPlayerView+Category.m"; path = "../../player/ZFPlayerView+Category.m"; sourceTree = "<group>"; };
+		D073F15D1D23A2AA007B387D /* XJFLegoFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XJFLegoFactory.h; path = ../utils/XJFLegoFactory.h; sourceTree = "<group>"; };
+		D073F15E1D23A2AA007B387D /* XJFLegoFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XJFLegoFactory.m; path = ../utils/XJFLegoFactory.m; sourceTree = "<group>"; };
 		D07D743A1CED61BA0037B1A9 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		D07D743B1CED61BA0037B1A9 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -1164,12 +1167,14 @@
 		5A6CF4731D23632D00676255 /* XJFTheCommonlyUsedClass */ = {
 			isa = PBXGroup;
 			children = (
+				D073F15D1D23A2AA007B387D /* XJFLegoFactory.h */,
+				D073F15E1D23A2AA007B387D /* XJFLegoFactory.m */,
 				5A6CF4741D23632D00676255 /* XJFTheCommonlyUsedCell */,
 				5A6CF4871D23632D00676255 /* XJFTheCommonlyUsedModel */,
 				5A6CF4881D23632D00676255 /* XJFTheCommonlyUsedView */,
 			);
 			name = XJFTheCommonlyUsedClass;
-			path = classes/XJFTheCommonlyUsedClass;
+			path = ../XJFTheCommonlyUsedClass;
 			sourceTree = "<group>";
 		};
 		5A6CF4741D23632D00676255 /* XJFTheCommonlyUsedCell */ = {
@@ -1292,22 +1297,23 @@
 		644C11151CBA8B4B00892E2C /* User */ = {
 			isa = PBXGroup;
 			children = (
-				644C11161CBA8B4B00892E2C /* view */,
-				644C11171CBA8B4B00892E2C /* controller */,
-				644C11181CBA8B4B00892E2C /* model */,
+				644C11161CBA8B4B00892E2C /* View */,
+				644C11171CBA8B4B00892E2C /* Controller */,
+				644C11181CBA8B4B00892E2C /* Model */,
 			);
 			name = User;
 			path = classes/user;
 			sourceTree = "<group>";
 		};
-		644C11161CBA8B4B00892E2C /* view */ = {
+		644C11161CBA8B4B00892E2C /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = View;
 			path = view;
 			sourceTree = "<group>";
 		};
-		644C11171CBA8B4B00892E2C /* controller */ = {
+		644C11171CBA8B4B00892E2C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				644C11191CBA8B9F00892E2C /* UserDelegate.h */,
@@ -1322,21 +1328,25 @@
 				644C11251CBA8DAA00892E2C /* UserThirdLogin.h */,
 				644C11261CBA8DAA00892E2C /* UserThirdLogin.m */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
-		644C11181CBA8B4B00892E2C /* model */ = {
+		644C11181CBA8B4B00892E2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				D065BFE21CE5751800D11804 /* ImageCodeModel.h */,
 				D065BFE31CE5751800D11804 /* ImageCodeModel.m */,
 			);
+			name = Model;
 			path = model;
 			sourceTree = "<group>";
 		};
-		68AD34831315063118675167 /* category */ = {
+		68AD34831315063118675167 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				D073F15A1D239D99007B387D /* ZFPlayerView+Category.h */,
+				D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */,
 				68AD381ACE31F1C4CA5171CF /* UIColor+hexColor.h */,
 				68AD3CEE7EF36DDE25CB4647 /* UIColor+hexColor.m */,
 				68AD33BD094873F69C35AF58 /* ZToastManager.h */,
@@ -1354,6 +1364,7 @@
 				68AD30C32084019191D45362 /* NSDate+Convenience.h */,
 				68AD38FCE1858A761939DF2B /* NSDate+Convenience.m */,
 			);
+			name = Category;
 			path = category;
 			sourceTree = "<group>";
 		};
@@ -1404,6 +1415,8 @@
 			children = (
 				68AD35E84703E1D0CAE64179 /* ExtView */,
 				68AD3499267BC5C51FC555DE /* ShareUtil */,
+				68AD3F2685D08B5C32396B63 /* ZPlatformShare.h */,
+				68AD39FD9A28D219A2CA50BB /* ZPlatformShare.m */,
 				68AD3BB1670E7B9182A3A74C /* CommonMarco.h */,
 				68AD399D59746063E1B7B1EB /* LPPopup.h */,
 				68AD3603F56348155F120E0A /* LPPopup.m */,
@@ -1420,7 +1433,7 @@
 				68AD3D8E614F007F0514EC7B /* UzysGridView */,
 			);
 			name = ThirdUtils;
-			path = vendor;
+			path = ../../vendor;
 			sourceTree = "<group>";
 		};
 		68AD3D8E614F007F0514EC7B /* UzysGridView */ = {
@@ -1599,15 +1612,15 @@
 			isa = PBXGroup;
 			children = (
 				5A105E8B1CED880D0079BEFE /* Model */,
-				CD1CCBF51CB35A2D002FC0C9 /* controller */,
-				CD1CCBF91CB35A2D002FC0C9 /* view */,
+				CD1CCBF51CB35A2D002FC0C9 /* Controller */,
+				CD1CCBF91CB35A2D002FC0C9 /* View */,
 				CD1CCC471CB37D54002FC0C9 /* IndexConfigure.h */,
 			);
 			name = Index;
 			path = classes/Index;
 			sourceTree = "<group>";
 		};
-		CD1CCBF51CB35A2D002FC0C9 /* controller */ = {
+		CD1CCBF51CB35A2D002FC0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CD1CCBF61CB35A2D002FC0C9 /* IndexViewController.h */,
@@ -1634,10 +1647,11 @@
 				5AF7C2E91CFF0271007CC71C /* TeacherDetail */,
 				5A105EAD1CEF21230079BEFE /* LessonDetail */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
-		CD1CCBF91CB35A2D002FC0C9 /* view */ = {
+		CD1CCBF91CB35A2D002FC0C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				5A565A1F1D066C0400008DA9 /* Employed */,
@@ -1648,22 +1662,23 @@
 				CD144EEF1CBB732900A0636D /* index */,
 				CD144F081CBB732900A0636D /* more */,
 			);
+			name = View;
 			path = view;
 			sourceTree = "<group>";
 		};
 		CD1CCBFA1CB35A2D002FC0C9 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				CD1CCBFB1CB35A2D002FC0C9 /* controller */,
+				CD1CCBFB1CB35A2D002FC0C9 /* Controller */,
 				D02FB4D61D127A0F006EADAD /* Model */,
-				CD1CCBFF1CB35A2D002FC0C9 /* view */,
+				CD1CCBFF1CB35A2D002FC0C9 /* View */,
 				644C11121CBA8A1300892E2C /* myConfigure.h */,
 			);
 			name = Mine;
 			path = classes/my;
 			sourceTree = "<group>";
 		};
-		CD1CCBFB1CB35A2D002FC0C9 /* controller */ = {
+		CD1CCBFB1CB35A2D002FC0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CD1CCBFC1CB35A2D002FC0C9 /* MyViewController.h */,
@@ -1689,10 +1704,11 @@
 				5A2071701D02BA9800462D65 /* MyFavoreds */,
 				5A0C3F8D1CF6939E00D7EEEB /* Mymoney */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
-		CD1CCBFF1CB35A2D002FC0C9 /* view */ = {
+		CD1CCBFF1CB35A2D002FC0C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */,
@@ -1728,22 +1744,23 @@
 				5A20716A1D02ADBE00462D65 /* MyLessonsTableFooterView.h */,
 				5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */,
 			);
+			name = View;
 			path = view;
 			sourceTree = "<group>";
 		};
 		CD1CCC061CB35A2D002FC0C9 /* Topic */ = {
 			isa = PBXGroup;
 			children = (
-				CD1CCC071CB35A2D002FC0C9 /* controller */,
-				CD1CCC0A1CB35A2D002FC0C9 /* model */,
-				CD1CCC0B1CB35A2D002FC0C9 /* view */,
+				CD1CCC071CB35A2D002FC0C9 /* Controller */,
+				CD1CCC0A1CB35A2D002FC0C9 /* Model */,
+				CD1CCC0B1CB35A2D002FC0C9 /* View */,
 				644C10EA1CBA785400892E2C /* TopicConfigure.h */,
 			);
 			name = Topic;
 			path = classes/topic;
 			sourceTree = "<group>";
 		};
-		CD1CCC071CB35A2D002FC0C9 /* controller */ = {
+		CD1CCC071CB35A2D002FC0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CD1CCC081CB35A2D002FC0C9 /* TopicViewController.h */,
@@ -1759,10 +1776,11 @@
 				CD1CCC311CB37946002FC0C9 /* TopicBaseViewController.h */,
 				CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
-		CD1CCC0A1CB35A2D002FC0C9 /* model */ = {
+		CD1CCC0A1CB35A2D002FC0C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				D073CF6D1CFBF089002D3FAF /* TopicModel.h */,
@@ -1772,10 +1790,11 @@
 				D055EE9F1CFD30CE004DDD7E /* TopicCommentList.h */,
 				D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */,
 			);
+			name = Model;
 			path = model;
 			sourceTree = "<group>";
 		};
-		CD1CCC0B1CB35A2D002FC0C9 /* view */ = {
+		CD1CCC0B1CB35A2D002FC0C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */,
@@ -1788,6 +1807,7 @@
 				D04F5E461CFE76F1008386CE /* CommentListCell.m */,
 				D04F5E471CFE76F1008386CE /* CommentListCell.xib */,
 			);
+			name = View;
 			path = view;
 			sourceTree = "<group>";
 		};
@@ -1796,13 +1816,13 @@
 			children = (
 				5A565A3B1D07C03F00008DA9 /* Model */,
 				5A565A3C1D07C03F00008DA9 /* View */,
-				CD1CCC0D1CB35A2D002FC0C9 /* controller */,
+				CD1CCC0D1CB35A2D002FC0C9 /* Controller */,
 			);
 			name = Vip;
 			path = classes/vip;
 			sourceTree = "<group>";
 		};
-		CD1CCC0D1CB35A2D002FC0C9 /* controller */ = {
+		CD1CCC0D1CB35A2D002FC0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CD1CCC0E1CB35A2D002FC0C9 /* VipViewController.h */,
@@ -1812,21 +1832,22 @@
 				5A565A4C1D0BAC8E00008DA9 /* VipPayListViewController.h */,
 				5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
 		CD1CCC171CB36386002FC0C9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				CD1CCC181CB36386002FC0C9 /* controller */,
-				CD1CCC1B1CB36386002FC0C9 /* model */,
-				CD1CCC1C1CB36386002FC0C9 /* view */,
+				CD1CCC181CB36386002FC0C9 /* Controller */,
+				CD1CCC1B1CB36386002FC0C9 /* Model */,
+				CD1CCC1C1CB36386002FC0C9 /* View */,
 			);
 			name = Base;
 			path = classes/Base;
 			sourceTree = "<group>";
 		};
-		CD1CCC181CB36386002FC0C9 /* controller */ = {
+		CD1CCC181CB36386002FC0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CD1CCC1A1CB36386002FC0C9 /* BaseViewController.h */,
@@ -1836,43 +1857,40 @@
 				CD144F471CBB95E000A0636D /* BaseUINavigationController.h */,
 				CD144F481CBB95E000A0636D /* BaseUINavigationController.m */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
-		CD1CCC1B1CB36386002FC0C9 /* model */ = {
+		CD1CCC1B1CB36386002FC0C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = Model;
 			path = model;
 			sourceTree = "<group>";
 		};
-		CD1CCC1C1CB36386002FC0C9 /* view */ = {
+		CD1CCC1C1CB36386002FC0C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				644C10B11CB8C8C400892E2C /* BaseViewCell.h */,
 				644C10B21CB8C8C400892E2C /* BaseViewCell.m */,
 			);
+			name = View;
 			path = view;
 			sourceTree = "<group>";
 		};
 		CD1CCC3A1CB37B89002FC0C9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5A6CF4731D23632D00676255 /* XJFTheCommonlyUsedClass */,
 				D04D0C0E1D0D33FB0090D2CD /* XJCache */,
 				D07D74541CED9E640037B1A9 /* XJPay */,
 				D07D74531CED9E340037B1A9 /* XJAccount */,
 				D0698E781CE447F9003BF1F3 /* XJFRequest */,
 				D05985231CF6D76500BF2A30 /* Notification */,
 				D05985241CF6D99200BF2A30 /* Utils */,
-				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
-				D0A254431D1948CC00BDD146 /* PhotoHandler.h */,
-				D0A254441D1948CC00BDD146 /* PhotoHandler.m */,
-				5A7EEE931CE0299C007BAECD /* Header.h */,
-				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 				5A565A6E1D110B1200008DA9 /* CustomView */,
-				68AD34831315063118675167 /* category */,
-				68AD39FD9A28D219A2CA50BB /* ZPlatformShare.m */,
-				68AD3F2685D08B5C32396B63 /* ZPlatformShare.h */,
+				68AD34831315063118675167 /* Category */,
 			);
 			name = Utils;
 			path = classes/utils;
@@ -1882,17 +1900,15 @@
 			isa = PBXGroup;
 			children = (
 				AA5B96831D222BE20088A196 /* View */,
-				CD1CCC4B1CB39B3D002FC0C9 /* controller */,
+				CD1CCC4B1CB39B3D002FC0C9 /* Controller */,
 				CD1CCC5A1CB39BE4002FC0C9 /* playerConfigure.h */,
-				D073F15A1D239D99007B387D /* ZFPlayerView+Category.h */,
-				D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */,
 				68AD36A35487A8D34CEA8859 /* Model */,
 			);
 			name = Player;
 			path = classes/player;
 			sourceTree = "<group>";
 		};
-		CD1CCC4B1CB39B3D002FC0C9 /* controller */ = {
+		CD1CCC4B1CB39B3D002FC0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CD1CCC4D1CB39B3D002FC0C9 /* PlayerBaseViewController.h */,
@@ -1905,6 +1921,7 @@
 				5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */,
 				5A105E651CEC08E30079BEFE /* LessonPlayerVCChildVideController */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
@@ -1929,7 +1946,6 @@
 		CDF57AC21C9F825D00049AF0 /* xjf */ = {
 			isa = PBXGroup;
 			children = (
-				5A6CF4731D23632D00676255 /* XJFTheCommonlyUsedClass */,
 				5A6CF38E1D1CED0B00676255 /* HomePage */,
 				5A6CF3921D1CED0B00676255 /* XJFBase */,
 				5AF7C2CD1CF945F6007CC71C /* Order */,
@@ -1943,7 +1959,6 @@
 				CD1CCC0C1CB35A2D002FC0C9 /* Vip */,
 				AA5B95E91D1948790088A196 /* Search */,
 				AA5B96001D1C08800088A196 /* Ta */,
-				68AD3B532B544C93103E205E /* ThirdUtils */,
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
@@ -1961,6 +1976,9 @@
 				CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */,
 				CDF57AD41C9F825D00049AF0 /* Info.plist */,
 				CDF57AC41C9F825D00049AF0 /* main.m */,
+				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
+				5A7EEE931CE0299C007BAECD /* Header.h */,
+				5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1994,6 +2012,9 @@
 		D05985241CF6D99200BF2A30 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				68AD3B532B544C93103E205E /* ThirdUtils */,
+				D0A254441D1948CC00BDD146 /* PhotoHandler.m */,
+				D0A254431D1948CC00BDD146 /* PhotoHandler.h */,
 				D073E8171CE9E5B200AED895 /* AlertUtils.h */,
 				D073E8181CE9E5B200AED895 /* AlertUtils.m */,
 			);
@@ -2357,6 +2378,7 @@
 				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
 				D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */,
 				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
+				D073F15F1D23A2AA007B387D /* XJFLegoFactory.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */,
