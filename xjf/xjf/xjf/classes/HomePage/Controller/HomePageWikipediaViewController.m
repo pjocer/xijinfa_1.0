@@ -89,7 +89,10 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     if (data3.result != nil) {
         self.dataArrayThumbnailByBanner = [NSMutableArray array];
         for (BannerResultModel *model in self.bannermodel.result.data) {
-            [self.dataArrayThumbnailByBanner addObject:model.thumbnail];
+            if (model.cover && model.cover.count > 0) {
+                ProjectListCover *cover = model.cover.firstObject;
+                [self.dataArrayThumbnailByBanner addObject:cover.url];
+            }
         }
     }
     [self.collectionView reloadData];

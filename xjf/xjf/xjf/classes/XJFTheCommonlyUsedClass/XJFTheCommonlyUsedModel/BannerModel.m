@@ -21,9 +21,13 @@
 @end
 
 @implementation BannerModel
-
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
+@end
 
+@implementation BannerCover
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
 @end

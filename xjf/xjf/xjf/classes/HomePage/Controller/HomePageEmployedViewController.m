@@ -83,8 +83,11 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
 - (void)updateUI:(TablkListModel *)data1 data2:(ProjectListByModel *)data2 data3:(BannerModel *)data3{
     if (data3.result != nil) {
         self.dataArrayThumbnailByBanner = [NSMutableArray array];
-        for (BannerResultModel *model in self.bannermodel.result.data) {
-            [self.dataArrayThumbnailByBanner addObject:model.thumbnail];
+        for (BannerResultModel *model in self.bannermodel.result.data) {   
+            if (model.cover && model.cover.count > 0) {
+                ProjectListCover *cover = model.cover.firstObject;
+                [self.dataArrayThumbnailByBanner addObject:cover.url];
+            }
         }
     }
     [self.collectionView reloadData];

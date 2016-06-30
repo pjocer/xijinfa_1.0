@@ -41,3 +41,8 @@
 }
 @end
 
+@implementation LessonDetailListCover
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end

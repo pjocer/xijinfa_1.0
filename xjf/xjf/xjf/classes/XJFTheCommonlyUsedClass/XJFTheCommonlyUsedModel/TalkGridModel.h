@@ -17,6 +17,9 @@
 @protocol taxonomy_gurus
 @end
 
+@protocol TalkGridCover
+@end
+
 @interface taxonomy_gurus : JSONModel
 @property (nonatomic, assign) int id;
 @property (nonatomic, strong) NSString *type;
@@ -38,13 +41,19 @@
 @end
 
 
+@interface TalkGridCover : JSONModel
+@property (nonatomic, strong) NSString *size;
+@property (nonatomic, strong) NSString *url;
+@end
+
 @interface TalkGridModel : JSONModel
 @property (nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *children;
 @property (nonatomic, strong) NSString *api_href;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *created_at;
 @property (nonatomic, strong) NSString *department;
-@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *icon NS_UNAVAILABLE;
+@property (nonatomic, strong) NSArray <TalkGridCover> *cover;
 @property (nonatomic, strong) NSString *id_;
 @property (nonatomic, strong) NSString *is_album;
 ///关键字
@@ -61,7 +70,7 @@
 @property (nonatomic, strong) NSString *subscribed;
 @property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) NSString *summary;
-@property (nonatomic, strong) NSString *thumbnail;
+@property (nonatomic, strong) NSString *thumbnail NS_UNAVAILABLE;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *updated_at;

@@ -12,14 +12,23 @@
 
 @end
 
+@protocol ProjectListCover
+
+@end
+
+@interface ProjectListCover : JSONModel
+@property (nonatomic, strong) NSString *size;
+@property (nonatomic, strong) NSString *url;
+@end
 
 @interface ProjectList : JSONModel
-@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *icon NS_UNAVAILABLE;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *summary;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSString *thumbnail;
+@property (nonatomic, strong) NSString *thumbnail NS_UNAVAILABLE;
+@property (nonatomic, strong) NSArray <ProjectListCover> *cover;
 @property (nonatomic, strong) NSMutableArray <ProjectList> *children;
 @end
 

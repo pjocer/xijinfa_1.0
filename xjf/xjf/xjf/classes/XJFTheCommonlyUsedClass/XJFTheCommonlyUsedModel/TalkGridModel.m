@@ -44,3 +44,12 @@
     return YES;
 }
 @end
+
+@implementation TalkGridCover
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+
+

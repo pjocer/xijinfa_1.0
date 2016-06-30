@@ -67,7 +67,10 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
         [[ZToastManager ShardInstance] hideprogress];
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
         for (BannerResultModel *model in sSelf.bannermodel.result.data) {
-            [sSelf.dataArrayByBanner addObject:model.thumbnail];
+            if (model.cover && model.cover.count > 0) {
+                BannerCover *tempCover = model.cover.firstObject;
+                [sSelf.dataArrayByBanner addObject:tempCover.url];
+            }
         }
         [sSelf.collectionView reloadData];
     }                  failedBlock:^(NSError *_Nullable error) {

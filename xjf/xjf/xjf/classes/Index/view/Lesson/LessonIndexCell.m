@@ -73,7 +73,10 @@
     if (model) {
         _model = model;
     }
-    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (model.cover && model.cover.count > 0) {
+        ProjectListCover *tempCover = model.cover.firstObject;
+        [self.titleImage sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
+    }
     self.titleLable.text = model.title;
     self.detailLable.text = model.summary;
 }

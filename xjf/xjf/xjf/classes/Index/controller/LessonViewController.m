@@ -75,7 +75,10 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
             @strongify(self)
             self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
             for (BannerResultModel *model in self.bannermodel.result.data) {
-                [self.dataArrayByBanner addObject:model.thumbnail];
+                if (model.cover && model.cover.count) {
+                    BannerCover *tempCover = model.cover.firstObject;
+                   [self.dataArrayByBanner addObject:tempCover.url];
+                }
             }
             [subscriber sendNext:self.dataArrayByBanner];
         }                  failedBlock:^(NSError *_Nullable error) {

@@ -161,8 +161,10 @@
         _model = model;
     }
 
-
-    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (model.cover && model.cover.count > 0) {
+        TalkGridCover *tempCover = model.cover.firstObject;
+        [self.videoImage sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
+    }
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
     self.lessonCount.text = [NSString stringWithFormat:@"课时: %@", model.lessons_count];

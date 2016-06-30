@@ -77,7 +77,10 @@
     if (model) {
         _model = model;
     }
-    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (model.cover && model.cover.count > 0) {
+        TalkGridCover *tempCover = model.cover.firstObject;
+        [self.titleImage sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
+    }
     self.titleLable.text = model.title;
     self.detailLable.text = [NSString stringWithFormat:@"%@ 人看过", model.view];
 }

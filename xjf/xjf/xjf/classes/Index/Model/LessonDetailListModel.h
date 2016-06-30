@@ -19,6 +19,8 @@
 @protocol Taxonomy_categories
 @end
 
+@protocol LessonDetailListCover
+@end
 
 @interface Taxonomy_categories : JSONModel
 @property (nonatomic, strong) NSString *id;
@@ -42,6 +44,11 @@
 @property (nonatomic, strong) NSString *updated_at;
 @end
 
+@interface LessonDetailListCover : JSONModel
+@property (nonatomic, strong) NSString *size;
+@property (nonatomic, strong) NSString *url;
+@end
+
 @interface LessonDetailListResultModel : JSONModel
 
 @property (nonatomic, strong) NSArray <TalkGridModel> *lessons_menu;
@@ -51,7 +58,7 @@
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *created_at;
 @property (nonatomic, strong) NSString *department;
-@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *icon NS_UNAVAILABLE;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *is_album;
 ///关键字
@@ -67,7 +74,8 @@
 @property (nonatomic, strong) NSString *subscribed;
 @property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) NSString *summary;
-@property (nonatomic, strong) NSString *thumbnail;
+@property (nonatomic, strong) NSString *thumbnail NS_UNAVAILABLE;
+@property (nonatomic, strong) NSArray <LessonDetailListCover> *cover;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSArray *package;

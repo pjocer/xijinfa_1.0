@@ -261,8 +261,12 @@ static CGFloat selViewH = 3;
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
 
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-    _playerView.xjfloading_image = [UIImage imageWithData:
-            [NSData dataWithContentsOfURL:[NSURL URLWithString:self.lessonDetailListModel.result.thumbnail]]];
+    if (self.lessonDetailListModel.result.cover && self.lessonDetailListModel.result.cover.count > 0) {
+        LessonDetailListCover *tempCover =  self.lessonDetailListModel.result.cover.firstObject;
+        _playerView.xjfloading_image = [UIImage imageWithData:
+                                        [NSData dataWithContentsOfURL:[NSURL URLWithString:tempCover.url]]];
+    }
+ 
 }
 
 - (void)setBackGroudView
@@ -340,7 +344,10 @@ static CGFloat selViewH = 3;
             _shareView.shareTitle = self.playTalkGridModel.title;
             _shareView.shareText = self.playTalkGridModel.content;
             _shareView.shareUrl = self.playUrl;
-            _shareView.shareImage = self.playTalkGridModel.thumbnail;
+            if (self.playTalkGridModel.cover && self.playTalkGridModel.cover.count > 0) {
+                TalkGridCover *tempCover = self.playTalkGridModel.cover.firstObject;
+              _shareView.shareImage = tempCover.url;
+            }
             _shareView.hidden = _shareView.hidden ? NO : YES;
         }
             //点赞
@@ -403,8 +410,11 @@ static CGFloat selViewH = 3;
             TalkGridVideo *gridVideomodel = tempSelf.playTalkGridModel.video_player.firstObject;
             tempSelf.playUrl = gridVideomodel.url;
             tempSelf.playerView.videoURL = [NSURL URLWithString:tempSelf.playUrl];
-            tempSelf.playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
-                    [NSURL URLWithString:tempSelf.playTalkGridModel.thumbnail]]];
+            if (tempSelf.playTalkGridModel.cover && tempSelf.playTalkGridModel.cover.count > 0) {
+                TalkGridCover *tempCover = tempSelf.playTalkGridModel.cover.firstObject;
+                tempSelf.playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
+                                                                               [NSURL URLWithString:tempCover.url]]];
+            }
             [tempSelf.playerView play];
         }
         //视频是否收藏过

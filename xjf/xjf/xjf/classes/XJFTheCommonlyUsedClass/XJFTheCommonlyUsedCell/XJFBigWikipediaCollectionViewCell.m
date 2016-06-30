@@ -26,7 +26,10 @@
     if (model) {
         _model = model;
     }
-    [self.videoImg sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (model.cover && model.cover.count > 0) {
+        TalkGridCover *tempCover = model.cover.firstObject;
+        [self.videoImg sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
+    }
     self.title.text = model.title;
     self.playCount.text = [NSString stringWithFormat:@"%@ 人看过", model.view];
 }

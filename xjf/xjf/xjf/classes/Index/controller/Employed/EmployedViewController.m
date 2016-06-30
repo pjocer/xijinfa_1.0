@@ -59,10 +59,13 @@ static CGFloat bannerHeaderViewH = 175;
         __strong typeof(self) sSelf = wSelf;
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
         for (BannerResultModel *model in sSelf.bannermodel.result.data) {
-            [sSelf.dataArrayByBanner addObject:model.thumbnail];
+            if (model.cover && model.cover.count > 0) {
+                ProjectListCover *cover = model.cover.firstObject;
+                 [sSelf.dataArrayByBanner addObject:cover.url];
+            }
         }
         [sSelf.tableView reloadData];
-    }                  failedBlock:^(NSError *_Nullable error) {
+    }failedBlock:^(NSError *_Nullable error) {
 
     }];
 }

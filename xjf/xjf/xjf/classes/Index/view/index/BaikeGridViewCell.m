@@ -103,8 +103,10 @@
     if (model) {
         _model = model;
     }
-
-    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (_model.cover && _model.cover.count > 0) {
+        TalkGridCover *cover = _model.cover.firstObject;
+      [self.titleImage sd_setImageWithURL:[NSURL URLWithString:cover.url]];
+    }
     self.titleLable.text = model.title;
     self.classesLable.text = [NSString stringWithFormat:@"课时: %@", model.lessons_count];
     if (model.taxonomy_gurus.count != 0 && model.taxonomy_gurus) {

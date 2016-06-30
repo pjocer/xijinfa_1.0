@@ -27,3 +27,9 @@
     return YES;
 }
 @end
+
+@implementation ProjectListCover
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end

@@ -70,7 +70,10 @@
         [[ZToastManager ShardInstance] hideprogress];
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
         for (BannerResultModel *model in sSelf.bannermodel.result.data) {
-            [tempArray addObject:model.thumbnail];
+            if (model.cover && model.cover.count > 0) {
+                BannerCover *cover = model.cover.firstObject;
+                [tempArray addObject:cover.url];
+            }
         }
         sSelf.carouselView.imageArray = tempArray;
     }                  failedBlock:^(NSError *_Nullable error) {

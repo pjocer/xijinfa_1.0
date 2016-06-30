@@ -304,8 +304,12 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-    _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
-            [NSURL URLWithString:self.talkGridModel.thumbnail]]];
+    if (self.talkGridModel.cover && self.talkGridModel.cover.count > 0) {
+        TalkGridCover *tempCover = self.talkGridModel.cover.firstObject;
+        _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
+                                                               [NSURL URLWithString:tempCover.url]]];
+    }
+  
 }
 #pragma mark CollectionView
 
@@ -572,8 +576,11 @@ referenceSizeForFooterInSection:(NSInteger)section {
         TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
         self.playUrl = gridVideomodel.url;
         _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-        _playerView.xjfloading_image = [UIImage imageWithData:
-                [NSData dataWithContentsOfURL:[NSURL URLWithString:self.talkGridModel.thumbnail]]];
+        if (self.talkGridModel.cover && self.talkGridModel.cover.count > 0) {
+            TalkGridCover *tempCover = self.talkGridModel.cover.firstObject;
+            _playerView.xjfloading_image = [UIImage imageWithData:
+                                            [NSData dataWithContentsOfURL:[NSURL URLWithString:tempCover.url]]];
+        }
         [_playerView play];
 
         [self sendPlayerHistoryToServerData:history method:POST];
@@ -631,7 +638,10 @@ referenceSizeForFooterInSection:(NSInteger)section {
     _shareView.shareTitle = self.talkGridModel.title;
     _shareView.shareText = self.talkGridModel.content;
     _shareView.shareUrl = self.playUrl;
-    _shareView.shareImage = self.talkGridModel.thumbnail;
+    if (self.talkGridModel.cover && self.talkGridModel.cover.count > 0) {
+        TalkGridCover *tempCover = self.talkGridModel.cover.firstObject;
+        _shareView.shareImage = tempCover.url;
+    }
     _shareView.hidden = _shareView.hidden ? NO : YES;
 }
 

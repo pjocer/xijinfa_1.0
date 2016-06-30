@@ -29,7 +29,10 @@
     if (model) {
         _model = model;
     }
-    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (model.cover && model.cover.count > 0) {
+        TalkGridCover *tempCover = model.cover.firstObject;
+        [self.videoImage sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
+    }
     self.videoTitle.text = model.title;
     self.viedoDetail.text = [NSString filterHTML:model.content];
     self.Date.text = [StringUtil compareCurrentTime:model.updated_at];

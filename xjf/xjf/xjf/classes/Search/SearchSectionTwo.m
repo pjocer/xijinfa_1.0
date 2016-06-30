@@ -24,7 +24,10 @@
 
 - (void)setModel:(TalkGridModel *)model {
     _model = model;
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (model.cover && model.cover.count > 0) {
+        TalkGridCover *tempCover = model.cover.firstObject;
+        [_avatar sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
+    }
     _className.text = model.title;
     _teacher.text = [NSString stringWithFormat:@"主讲: Mr.Ji"];
     _period.text = [NSString stringWithFormat:@"10000000节课爽不爽？"];

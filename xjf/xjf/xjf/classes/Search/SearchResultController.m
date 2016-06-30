@@ -308,7 +308,10 @@
         BaikeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaikeCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (model) {
-            [cell.avatar sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+            if (model.cover && model.cover.count > 0) {
+                TalkGridCover *tempCover = model.cover.firstObject;
+                [cell.avatar sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
+            }
             cell.title.text = model.title;
             cell.everWatched.text = [NSString stringWithFormat:@"%@人看过", model.video_view];
         }

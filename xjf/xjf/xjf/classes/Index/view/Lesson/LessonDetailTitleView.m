@@ -114,7 +114,10 @@
     if (model) {
         _model = model;
     }
-    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.result.thumbnail]];
+    if (_model.result.cover && _model.result.cover.count > 0) {
+        LessonDetailListCover *cover = _model.result.cover.firstObject;
+        [self.videoImage sd_setImageWithURL:[NSURL URLWithString:cover.url]];
+    }
     self.videoTitle.text = model.result.title;
 
     CGFloat tempPrice = [model.result.price floatValue];

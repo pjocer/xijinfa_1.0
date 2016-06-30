@@ -79,7 +79,10 @@
     if (model) {
         _model = model;
     }
-    [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    if (_model.cover && _model.cover.count > 0) {
+        TalkGridCover *cover = _model.cover.firstObject;
+        [self.videoImage sd_setImageWithURL:[NSURL URLWithString:cover.url]];
+    }
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
 }
