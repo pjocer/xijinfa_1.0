@@ -85,6 +85,17 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    if (_playerView) {
+        [_playerView cancelAutoFadeOutControlBar];
+        [_playerView pause];
+        [_playerView resetPlayer];
+        [_playerView removeFromSuperview];
+        _playerView = nil;
+    }
+    if (_playView) {
+        [_playView removeFromSuperview];
+        _playView = nil;
+    }
 }
 
 - (void)viewDidLoad {
@@ -114,7 +125,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             [[ZToastManager ShardInstance] hideprogress];
             self.commentsModel = [[CommentsAllDataList alloc] initWithData:responseData error:nil];
             [self.collectionView reloadData];
-        }                  failedBlock:^(NSError *_Nullable error) {
+        }failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
     }
@@ -132,7 +143,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
             [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments",
                                        talkGridcomments, self.talkGridModel.id_]
                                method:GET];
-        }                  failedBlock:^(NSError *_Nullable error) {
+        }failedBlock:^(NSError *_Nullable error) {
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         }];
 
@@ -150,8 +161,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             __strong typeof(self) sSelf = wSelf;
-            sSelf.tempLessonDetailModel = [[LessonDetailListModel alloc]
-                    initWithData:responseData error:nil];
+            sSelf.tempLessonDetailModel = [[LessonDetailListModel alloc] initWithData:responseData error:nil];
             [self.collectionView reloadData];
             [[ZToastManager ShardInstance] hideprogress];
         }                  failedBlock:^(NSError *_Nullable error) {
@@ -177,7 +187,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.tempLessonDetailModel.result.id]
                              method:GET];
-    }                  failedBlock:^(NSError *_Nullable error) {
+    }failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
@@ -192,7 +202,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                     @"duration" : @"1"}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
-    }                  failedBlock:^(NSError *_Nullable error) {
+    }failedBlock:^(NSError *_Nullable error) {
 
     }];
 }
@@ -206,18 +216,16 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                     @"department" : [NSString stringWithFormat:@"%@", self.talkGridModel.department]}];
     if (method == POST) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            [self requestLessonListData:
-                    [NSString stringWithFormat:@"%@/%@", talkGrid,
+            [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid,
                      self.tempLessonDetailModel.result.id] method:GET];
-        }                  failedBlock:^(NSError *_Nullable error) {
+        }failedBlock:^(NSError *_Nullable error) {
         }];
     } else if (method == DELETE) {
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             [self requestLessonListData:[NSString stringWithFormat:
                                          @"%@/%@", talkGrid,
-                                         self.tempLessonDetailModel.result.id]
-                                 method:GET];
-        }                  failedBlock:^(NSError *_Nullable error) {
+                                         self.tempLessonDetailModel.result.id] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
         }];
     }
 }

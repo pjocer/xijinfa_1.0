@@ -24,10 +24,10 @@ static CGFloat selViewH = 3;
 @property (nonatomic, strong) UIView *playView;
 @property (strong, nonatomic) ZFPlayerView *playerView;
 @property (nonatomic, strong) LessonPlayerVideoBottomView *videoBottomView;
-@property (nonatomic, weak) UIScrollView *titleScrollView;
-@property (nonatomic, weak) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIScrollView *titleScrollView;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 /// 选中按钮
-@property (nonatomic, weak) UIButton *selTitleButton;
+@property (nonatomic, strong) UIButton *selTitleButton;
 ///展示按钮下View
 @property (nonatomic, strong) UIView *selView;
 @property (nonatomic, strong) UIView *selBackGroundView;
@@ -51,6 +51,17 @@ static CGFloat selViewH = 3;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    if (_playerView) {
+        [_playerView cancelAutoFadeOutControlBar];
+        [_playerView pause];
+        [_playerView resetPlayer];
+        [_playerView removeFromSuperview];
+        _playerView = nil;
+    }
+    if (_playView) {
+        [_playView removeFromSuperview];
+        _playView = nil;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,8 +89,7 @@ static CGFloat selViewH = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
-    [self requestLessonListData:[NSString stringWithFormat:@"%@/%@",
-                                                           coursesProjectLessonDetailList, self.lesssonID] method:GET];
+    [self requestLessonListData:[NSString stringWithFormat:@"%@/%@",coursesProjectLessonDetailList, self.lesssonID] method:GET];
     [self sendPlayerHistoryToServerData:history method:POST];
 
 }
@@ -123,8 +133,8 @@ static CGFloat selViewH = 3;
             }
             [sSelf.lessonPlayerLessonListViewController.tableView reloadData];
 
-        }                  failedBlock:^(NSError *_Nullable error) {
-//
+        } failedBlock:^(NSError *_Nullable error) {
+
         }];
     }
     if (method == POST) {
@@ -142,10 +152,12 @@ static CGFloat selViewH = 3;
             @{@"id" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.id_],
                     @"type" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.type],
                     @"department" : [NSString stringWithFormat:@"%@", self.playTalkGridModel.department]}];
+    @weakify(self)
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [self                                                                         requestLessonListData:
-                [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
-    }                  failedBlock:^(NSError *_Nullable error) {
+        @strongify(self)
+        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+        
+    } failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
@@ -162,7 +174,7 @@ static CGFloat selViewH = 3;
 
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
-    }                  failedBlock:^(NSError *_Nullable error) {
+    }failedBlock:^(NSError *_Nullable error) {
 
     }];
 }
@@ -175,16 +187,18 @@ static CGFloat selViewH = 3;
                     @"type" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.type],
                     @"department" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.department]}];
     if (method == POST) {
+        @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            [self                                                                         requestLessonListData:
-                    [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
-        }                  failedBlock:^(NSError *_Nullable error) {
+            @strongify(self)
+            [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
         }];
     } else if (method == DELETE) {
+        @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            [self                                                                         requestLessonListData:
-                    [NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
-        }                  failedBlock:^(NSError *_Nullable error) {
+            @strongify(self)
+            [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+        }failedBlock:^(NSError *_Nullable error) {
         }];
     }
 }
@@ -575,10 +589,11 @@ static CGFloat selViewH = 3;
                     @"type" : [NSString stringWithFormat:@"%@", model.type],
                     @"department" : [NSString stringWithFormat:@"%@", model.department],
                     @"status" : @"1"}];
+    @weakify(self)
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID]
-                             method:GET];
-    }                  failedBlock:^(NSError *_Nullable error) {
+        @strongify(self)
+        [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", coursesProjectLessonDetailList, self.lesssonID] method:GET];
+    }failedBlock:^(NSError *_Nullable error) {
 
     }];
 }
