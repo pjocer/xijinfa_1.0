@@ -7,6 +7,7 @@
 //
 
 #import "XJFEmploymentInformationCollectionViewCell.h"
+#import "StringUtil.h"
 
 @interface XJFEmploymentInformationCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *videoImage;
@@ -31,7 +32,7 @@
     [self.videoImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.videoTitle.text = model.title;
     self.viedoDetail.text = [NSString filterHTML:model.content];
-    self.Date.text = model.updated_at;
+    self.Date.text = [StringUtil compareCurrentTime:model.updated_at];
 }
 
 @end

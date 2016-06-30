@@ -218,7 +218,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         return KHomePageCollectionByClassificationAndTeacher;
     }else if (indexPath.section == HomePageWikipediaSection){
-        _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
+        _layout.minimumLineSpacing = KMargin;
         return KHomePageCollectionByWikipediaSize;
     }
     

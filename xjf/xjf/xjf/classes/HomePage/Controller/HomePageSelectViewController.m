@@ -230,7 +230,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     if (indexPath.section == HomePageBannerSection) {
         return KHomePageCollectionByBannerSize;
     }else if (indexPath.section == HomePageWikipediaSection){
-        _layout.sectionInset = UIEdgeInsetsMake(0, KlayoutMinimumLineSpacing, 0, KlayoutMinimumLineSpacing);
+        _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
         _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageSchoolSection){

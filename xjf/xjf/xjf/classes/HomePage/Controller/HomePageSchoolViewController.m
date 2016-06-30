@@ -243,7 +243,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         return KHomePageCollectionByClassificationAndTeacher;
     }else if (indexPath.section == HomePageSchoolViewControllerLessonSection){
-        _layout.sectionInset = UIEdgeInsetsMake(0, KlayoutMinimumLineSpacing, 0, KlayoutMinimumLineSpacing);
+        _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
         _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageSchoolViewControllerTeacher){

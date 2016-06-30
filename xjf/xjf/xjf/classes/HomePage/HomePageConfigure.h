@@ -13,10 +13,11 @@
 #pragma mark -- SizeAboutItem
 
 #define KlayoutMinimumInteritemSpacing 7.5
-#define KlayoutMinimumLineSpacing 10
-#define KHomePageCollectionByBannerSize CGSizeMake(SCREENWITH - KlayoutMinimumLineSpacing * 2, 110)
-#define KHomePageCollectionByLessons CGSizeMake((SCREENWITH - KlayoutMinimumInteritemSpacing * 2 - KlayoutMinimumLineSpacing * 2) / 2, 145)
-#define KHomePageCollectionByWikipediaSize CGSizeMake(SCREENWITH - KlayoutMinimumLineSpacing * 2, 245)
+#define KlayoutMinimumLineSpacing 15
+#define KMargin 10
+#define KHomePageCollectionByBannerSize CGSizeMake(SCREENWITH - KMargin * 2, 110)
+#define KHomePageCollectionByLessons CGSizeMake((SCREENWITH - KlayoutMinimumInteritemSpacing * 2 - KMargin * 2) / 2, 145)
+#define KHomePageCollectionByWikipediaSize CGSizeMake(SCREENWITH - KMargin * 2, 245)
 #define KHomePageCollectionByClassificationAndTeacher CGSizeMake(SCREENWITH, 145)
 #define KHomePageSeccontionHeader_Height 45
 
