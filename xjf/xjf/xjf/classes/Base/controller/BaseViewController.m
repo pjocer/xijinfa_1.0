@@ -112,20 +112,28 @@ NSString *const Subscribe = @"SubscribeViewController";
     }];
 }
 - (void)setUpTopicLeftItemWithImage:(UIImage *)image {
-    UIButton *user_icon = [UIButton buttonWithType:UIButtonTypeSystem];
-    [user_icon setBackgroundImage:image forState:UIControlStateNormal];
-    user_icon.tag = 16;
-    user_icon.frame = CGRectMake(0, 0, 30, 30);
-    user_icon.layer.cornerRadius = 15;
-    user_icon.layer.masksToBounds = YES;
-    [user_icon addTarget:self action:@selector(headerClickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:user_icon];
+    UIImageView *user = [[UIImageView alloc] initWithImage:image];
+    user.tag = 16;
+    user.frame = CGRectMake(0, 0, 30, 30);
+    user.layer.cornerRadius = 15;
+    user.layer.masksToBounds = YES;
+    user.userInteractionEnabled = YES;
+    user.contentMode = UIViewContentModeScaleAspectFill;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerClickEvent:)];
+    [user addGestureRecognizer:tap];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:user];
     UINavigationController *topicNac = [self.navigationController.tabBarController.childViewControllers objectAtIndex:1];
     [topicNac.viewControllers objectAtIndex:0].navigationItem.leftBarButtonItem = left;
 }
 - (void)headerClickEvent:(id)sender {
-    UIButton *btn = (UIButton *) sender;
-    switch (btn.tag) {
+    NSInteger tag = 0;
+    if ([sender isKindOfClass:[UIBarButtonItem class]]) {
+        tag = [(UIBarButtonItem *)sender tag];
+    }else {
+        UIGestureRecognizer *gesture = sender;
+        tag = gesture.view.tag;
+    }
+    switch (tag) {
         case 0: {
             if (self.navigationController) {
                 if (self.navigationController.viewControllers.count == 1) {
