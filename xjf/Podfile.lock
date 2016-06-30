@@ -35,7 +35,7 @@ PODS:
   - TencentOpenApiSDK/Basic (2.9.5)
   - WeiboSDK (3.1.3)
   - XRCarouselView (2.4.4)
-  - ZFPlayer (1.1.5):
+  - ZFPlayer (1.1.6):
     - Masonry
 
 DEPENDENCIES:
@@ -51,7 +51,16 @@ DEPENDENCIES:
   - TencentOpenApiSDK (~> 2.9.5)
   - WeiboSDK (~> 3.1.3)
   - XRCarouselView (~> 2.4.4)
-  - ZFPlayer (~> 1.1.5)
+  - ZFPlayer (from `http://120.55.163.135:9001/xjf_ios/ZFPlayer.git`)
+
+EXTERNAL SOURCES:
+  ZFPlayer:
+    :git: http://120.55.163.135:9001/xjf_ios/ZFPlayer.git
+
+CHECKOUT OPTIONS:
+  ZFPlayer:
+    :commit: 4f6d28ac9478c85dcd4e623fca536aa470a9512f
+    :git: http://120.55.163.135:9001/xjf_ios/ZFPlayer.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -66,6 +75,6 @@ SPEC CHECKSUMS:
   TencentOpenApiSDK: a0d7716edd6eb438d65828168e8e5137301b436d
   WeiboSDK: acb067053668102cf07d01aa7604350162c2e466
   XRCarouselView: 9d59a0b06fe29b27492c1ddf095b290163339a53
-  ZFPlayer: d33599f3847e94d689f6ae4e8f02a9fc4ec337a0
+  ZFPlayer: b5721fef3f01022beeef66012c13cc1c145983ed
 
 COCOAPODS: 0.39.0
