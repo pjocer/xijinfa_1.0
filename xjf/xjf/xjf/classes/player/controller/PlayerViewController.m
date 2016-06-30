@@ -321,6 +321,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     
     
     _playerView.resolutionDic = dic;
+    _playerView.placeholderImageName = @"";
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
    
     
