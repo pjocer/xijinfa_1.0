@@ -13,9 +13,6 @@
 #import "ZToastManager.h"
 
 
-static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
-
-
 @interface XjfRequest ()
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, copy) NSString *api_name;
@@ -31,10 +28,10 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
         _requestMethod = method;
         _requestParams = [NSMutableDictionary dictionary];
         _requestHeaders = [NSMutableDictionary dictionary];
-        if ([apiName rangeOfString:defaultAPIHost].location != NSNotFound) {
+        if ([apiName rangeOfString:HttpBaseURL].location != NSNotFound) {
             _api_name = apiName;
         } else {
-            _api_name = [NSString stringWithFormat:@"%@%@", defaultAPIHost, apiName];
+            _api_name = [NSString stringWithFormat:@"%@%@", HttpBaseURL, apiName];
         }
         _api_name = [_api_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         _manager = [AFHTTPSessionManager manager];
