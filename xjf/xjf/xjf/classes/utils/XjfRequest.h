@@ -64,12 +64,12 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
 /**
  *  XjfRequest Initializing Method
  *
- *  @param apiName Reqeust URL
- *  @param data    Upload Data
+ *  @param apiName Reqeust API
+ *  @param fileUrl    Upload Data Url Shouldn't Be File URL
  *
  *  @return XjfRequest Object
  */
-- (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName fileURL:(nullable NSURL *)fileUrl;
+- (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName fileURL:(nullable NSURL *)url;
 
 /**
  *  Start Request Data From Host

@@ -12,7 +12,6 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 
-//static NSString *defaultAPIHost = @"http://api.rc.xijinfa.com";
 static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
 
 @interface XjfRequest ()
@@ -42,10 +41,10 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
     return self;
 }
 
-- (instancetype)initWithAPIName:(APIName *)apiName fileURL:(nullable NSURL *)fileUrl {
-    self = [self initWithAPIName:apiName RequestMethod:POST];
+- (instancetype)initWithAPIName:(APIName *)apiName fileURL:(nullable NSURL *)url {
+    self = [self initWithAPIName:apiName RequestMethod:UPLOAD];
     if (self) {
-        _url = fileUrl;
+        _url = url;
     }
     return self;
 }
@@ -124,33 +123,47 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
         }
             break;
         case UPLOAD: {
+            __block MBProgressHUD *hud = nil;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[ZToastManager ShardInstance] hideprogress];
+                UIViewController *controller = getCurrentDisplayController();
+                hud = [MBProgressHUD showHUDAddedTo:controller.view animated:YES];
+                hud.mode = MBProgressHUDModeDeterminate;
+                hud.labelText = @"正在上传图片";
+            });
+            NSLog(@"%@",_manager.requestSerializer.HTTPRequestHeaders);
             [_manager POST:_api_name parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> _Nonnull formData) {
                 if (_url) {
-                    [formData appendPartWithFileURL:_url name:@"file" error:nil];
+                    NSError *error = nil;
+                    [formData appendPartWithFileURL:_url name:@"avatar" error:&error];
                     return;
                 }
                 if (_fileData) {
-                    [formData appendPartWithFormData:_fileData name:@"file"];
+                    [formData appendPartWithFormData:_fileData name:@"avatar"];
                     return;
                 }
+                
             }     progress:^(NSProgress *_Nonnull uploadProgress) {
                 int64_t totalProgress = uploadProgress.totalUnitCount;
                 int64_t compeletedProgress = uploadProgress.completedUnitCount;
-                NSLog(@"total:%lld,compeleted:%lld", totalProgress, compeletedProgress);
-            }      success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
+                NSLog(@"total:%lld  compeleted:%lld",totalProgress,compeletedProgress);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[ZToastManager ShardInstance] hideprogress];
+                    hud.progress = uploadProgress.fractionCompleted;
                 });
+            }      success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
                 NSHTTPURLResponse *ret = (NSHTTPURLResponse *) task.response;
                 _responseStatusCode = ret.statusCode;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hide:YES];
+                });
                 if (_responseStatusCode == 200) {
-                    if (successBlock) successBlock(nil);
+                    if (successBlock) successBlock(responseObject);
                 } else {
                     if (failedBlock) failedBlock(nil);
                 }
             }      failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[ZToastManager ShardInstance] hideprogress];
+                    [hud hide:YES];
                 });
                 if (failedBlock) failedBlock(error);
             }];
@@ -160,7 +173,6 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
             break;
     }
 }
-
 
 - (void)formatSessionDataTask:(NSHTTPURLResponse *)task data:(id)responseObject {
     _responseStatusCode = task.statusCode;
@@ -172,8 +184,13 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
 }
 
 - (void)configureRequestHeaders {
-    _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    if (self.requestMethod == UPLOAD) {
+        _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        _manager.responseSerializer = [AFCompoundResponseSerializer serializer];
+    }else {
+        _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    }
     if ([[XJAccountManager defaultManager] accessToken]) {
         NSString *access_token = [NSString stringWithFormat:@"Bearer %@", [[XJAccountManager defaultManager] accessToken]];
         [_manager.requestSerializer setValue:access_token forHTTPHeaderField:@"Authorization"];

@@ -51,7 +51,9 @@
 }
 - (void)setModel:(UserProfileModel *)model {
     _model = [[XJAccountManager defaultManager] user_model];
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:_model.result.avatar]];
+    if (!_avatar.image) {
+        [_avatar sd_setImageWithURL:[NSURL URLWithString:_model.result.avatar]];
+    }
     [_nickname setTitle:_model.result.nickname forState:UIControlStateNormal];
     [_introduce setTitle:_model.result.quote == nil || _model.result.quote.length == 0 ? @"一句话介绍你自己（兴趣/职业）" : _model.result.quote forState:UIControlStateNormal];
 }
@@ -102,19 +104,28 @@
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
-        NSURL *image = [info objectForKey:UIImagePickerControllerReferenceURL];
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:upload_avatar fileURL:image];
-        request.fileData = UIImagePNGRepresentation([info objectForKey:UIImagePickerControllerOriginalImage]);
-        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"%@",dic);
-            [[XJAccountManager defaultManager] updateUserInfo];
-            _avatar.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-            [picker dismissViewControllerAnimated:YES completion:nil];
-        } failedBlock:^(NSError * _Nullable error) {
-            [picker dismissViewControllerAnimated:YES completion:nil];
-            [[ZToastManager ShardInstance] showtoast:@"上传头像失败"];
-        }];
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+        {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        }
+        CGFloat percent = image.size.width*1.0f/image.size.height*1.0f;
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(200*percent, 200), NO, 0.0);
+        [image drawInRect:CGRectMake(0, 0, 200*percent, 200)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        NSData* imageData = UIImagePNGRepresentation(image);
+        NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString* documentsDirectory = [paths objectAtIndex:0];
+        NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:@"user_icon.png"];
+        [imageData writeToFile:fullPathToFile atomically:NO];
+        NSURL *imageURL = [NSURL fileURLWithPath:fullPathToFile];
+        self.avatar.image = image;
+        if (self.AvatarBlock) {
+            if (self.AvatarBlock (image,imageURL) == YES) {
+                [picker dismissViewControllerAnimated:YES completion:nil];
+            }
+        }
     }else {
         [[ZToastManager ShardInstance] showtoast:@"请上传正确的图片"];
         [picker dismissViewControllerAnimated:YES completion:nil];

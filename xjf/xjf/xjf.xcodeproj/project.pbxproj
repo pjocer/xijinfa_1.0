@@ -2600,7 +2600,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a4971330-2d66-46af-93ae-e77b279f4a67";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2630,7 +2630,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a4971330-2d66-46af-93ae-e77b279f4a67";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -19,6 +19,8 @@
 @interface UserInfoViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UserProfileModel *model;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSURL *imageURL;
 @end
 
 @implementation UserInfoViewController
@@ -36,18 +38,53 @@
 }
 
 - (void)commitUserInfo {
-    XjfRequest *reuest = [[XjfRequest alloc] initWithAPIName:update_user_info RequestMethod:POST];
-    reuest.requestParams = self.params;
-    [reuest startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        UserProfileModel *userProfile = [[UserProfileModel alloc] initWithData:responseData error:nil];
-        if (userProfile.errCode == 0) {
-            [[XJAccountManager defaultManager] setUser_model:userProfile];
-            [[ZToastManager ShardInstance] showtoast:@"更新用户信息成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    __block int count = 0;
+    //upload user info
+    dispatch_group_async(group, global, ^{
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        XjfRequest *reuest = [[XjfRequest alloc] initWithAPIName:update_user_info RequestMethod:POST];
+        reuest.requestParams = self.params;
+        [reuest startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            self.model = [[UserProfileModel alloc] initWithData:responseData error:nil];
+            if (self.model.errCode == 0) {
+                count++;
+                dispatch_semaphore_signal(semaphore);
+            }
+        }                 failedBlock:^(NSError *_Nullable error) {
+            dispatch_semaphore_signal(semaphore);
+            [[ZToastManager ShardInstance] showtoast:@"更新用户信息失败"];
+        }];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    });
+    //upload user avatar
+    dispatch_group_async(group, global, ^{
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:upload_avatar fileURL:self.imageURL];
+        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+            self.model = [[UserProfileModel alloc] initWithData:responseData error:nil];
+            if (self.model.errCode == 0) {
+                count++;
+            }
+            dispatch_semaphore_signal(semaphore);
+        } failedBlock:^(NSError * _Nullable error) {
+            dispatch_semaphore_signal(semaphore);
+            [[ZToastManager ShardInstance] showtoast:@"上传头像失败"];
+        }];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    });
+    //handle request result
+    dispatch_group_notify(group, global, ^{
+        if (count == 2) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[XJAccountManager defaultManager] setUser_model:self.model];
+                [[ZToastManager ShardInstance] showtoast:@"更新用户信息成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+            });
         }
-    }                 failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"更新用户信息失败"];
-    }];
+    });
+    
 }
 
 - (void)initTableView {
@@ -87,6 +124,11 @@
     if (indexPath.row == 0) {
         UserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.AvatarBlock = ^(UIImage *image,NSURL *imageURL) {
+            self.image = image;
+            self.imageURL = imageURL;
+            return YES;
+        };
         cell.NicknameBlock = ^(NSString *nickname) {
             [self.params setObject:nickname forKey:@"nickname"];
         };
