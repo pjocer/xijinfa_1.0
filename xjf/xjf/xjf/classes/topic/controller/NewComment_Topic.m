@@ -85,7 +85,7 @@
         return;
     }
     APIName *api = self.style == NewTopic?topic_all:[NSString stringWithFormat:@"%@%@/reply", topic_all, self.topic_id];
-    NSDictionary *params = self.style == NewTopic?@{@"content":_textView.text}:@{@"content" : _textView.text,@"client":@"ios",@"type":self.type};
+    NSDictionary *params = @{@"content" : _textView.text,@"client":@"ios",@"type":self.type};
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:POST];
     request.requestParams = [NSMutableDictionary dictionaryWithDictionary:params];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {

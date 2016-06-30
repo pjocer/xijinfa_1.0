@@ -106,6 +106,12 @@ NSString *const Subscribe = @"SubscribeViewController";
     }else {
         image = [UIImage imageNamed:@"user_unload"];
     }
+    [self setUpTopicLeftItemWithImage:image];
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(id x) {
+        [self setUpTopicLeftItemWithImage:[UIImage imageWithData:UserDefaultObjectForKey(@"user_icon")]];
+    }];
+}
+- (void)setUpTopicLeftItemWithImage:(UIImage *)image {
     UIButton *user_icon = [UIButton buttonWithType:UIButtonTypeSystem];
     [user_icon setBackgroundImage:image forState:UIControlStateNormal];
     user_icon.tag = 16;

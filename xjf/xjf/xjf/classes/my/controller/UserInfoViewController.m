@@ -59,32 +59,44 @@
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     });
     //upload user avatar
-    dispatch_group_async(group, global, ^{
-        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:upload_avatar fileURL:self.imageURL];
-        [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
-            self.model = [[UserProfileModel alloc] initWithData:responseData error:nil];
-            if (self.model.errCode == 0) {
-                count++;
-            }
-            dispatch_semaphore_signal(semaphore);
-        } failedBlock:^(NSError * _Nullable error) {
-            dispatch_semaphore_signal(semaphore);
-            [[ZToastManager ShardInstance] showtoast:@"上传头像失败"];
-        }];
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    });
+    if (self.imageURL) {
+        dispatch_group_async(group, global, ^{
+            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+            XjfRequest *request = [[XjfRequest alloc] initWithAPIName:upload_avatar fileURL:self.imageURL];
+            [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+                self.model = [[UserProfileModel alloc] initWithData:responseData error:nil];
+                if (self.model.errCode == 0) {
+                    count++;
+                }
+                dispatch_semaphore_signal(semaphore);
+            } failedBlock:^(NSError * _Nullable error) {
+                dispatch_semaphore_signal(semaphore);
+                [[ZToastManager ShardInstance] showtoast:@"上传头像失败"];
+            }];
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        });
+    }
     //handle request result
     dispatch_group_notify(group, global, ^{
-        if (count == 2) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[XJAccountManager defaultManager] setUser_model:self.model];
-                [[ZToastManager ShardInstance] showtoast:@"更新用户信息成功"];
-                [self.navigationController popViewControllerAnimated:YES];
-            });
+        if (self.imageURL || self.image) {
+            if (count == 2) {
+                [self handleResult];
+            }
+        }else {
+            if (count == 1) {
+                [self handleResult];
+            }
         }
     });
     
+}
+
+- (void)handleResult {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[XJAccountManager defaultManager] setUser_model:self.model];
+        [[ZToastManager ShardInstance] showtoast:@"更新用户信息成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+    });
 }
 
 - (void)initTableView {

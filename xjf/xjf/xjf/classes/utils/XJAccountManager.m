@@ -71,7 +71,7 @@
 
 - (void)setUser_model:(UserProfileModel *)user_model {
     _user_model = user_model;
-    UserDefaultSetObjectForKey([user_model toDictionary], USER_INFO);
+    [self getAccountInfo];
 }
 
 - (void)setAccuontInfo:(NSDictionary *)info {
@@ -91,8 +91,11 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:_user_model.result.avatar] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
             UserDefaultSetObjectForKey(data, @"user_icon");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                SendNotification(UserInfoDidChangedNotification, _user_model);
+            });
         }];
-        SendNotification(UserInfoDidChangedNotification, _user_model);
+       
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"获取用户信息失败"];
     }];

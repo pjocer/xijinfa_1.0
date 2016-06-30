@@ -114,10 +114,10 @@
         [image drawInRect:CGRectMake(0, 0, 200*percent, 200)];
         image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        NSData* imageData = UIImagePNGRepresentation(image);
+        NSData* imageData = UIImageJPEGRepresentation(image,0.1);
         NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString* documentsDirectory = [paths objectAtIndex:0];
-        NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:@"user_icon.png"];
+        NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:@"user_icon.jpg"];
         [imageData writeToFile:fullPathToFile atomically:NO];
         NSURL *imageURL = [NSURL fileURLWithPath:fullPathToFile];
         self.avatar.image = image;

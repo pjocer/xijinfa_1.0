@@ -12,7 +12,9 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 
+
 static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
+
 
 @interface XjfRequest ()
 @property (nonatomic, strong) NSURL *url;
@@ -129,9 +131,8 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
                 UIViewController *controller = getCurrentDisplayController();
                 hud = [MBProgressHUD showHUDAddedTo:controller.view animated:YES];
                 hud.mode = MBProgressHUDModeDeterminate;
-                hud.labelText = @"正在上传图片";
+                hud.labelText = @"正在上传头像";
             });
-            NSLog(@"%@",_manager.requestSerializer.HTTPRequestHeaders);
             [_manager POST:_api_name parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> _Nonnull formData) {
                 if (_url) {
                     NSError *error = nil;
@@ -144,9 +145,6 @@ static NSString *defaultAPIHost = @"http://api.dev.xijinfa.com";
                 }
                 
             }     progress:^(NSProgress *_Nonnull uploadProgress) {
-                int64_t totalProgress = uploadProgress.totalUnitCount;
-                int64_t compeletedProgress = uploadProgress.completedUnitCount;
-                NSLog(@"total:%lld  compeleted:%lld",totalProgress,compeletedProgress);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     hud.progress = uploadProgress.fractionCompleted;
                 });
