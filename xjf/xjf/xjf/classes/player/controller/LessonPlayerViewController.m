@@ -51,17 +51,6 @@ static CGFloat selViewH = 3;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    if (_playerView) {
-        [_playerView cancelAutoFadeOutControlBar];
-        [_playerView pause];
-        [_playerView resetPlayer];
-        [_playerView removeFromSuperview];
-        _playerView = nil;
-    }
-    if (_playView) {
-        [_playView removeFromSuperview];
-        _playView = nil;
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

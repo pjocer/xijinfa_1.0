@@ -85,24 +85,12 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    if (_playerView) {
-        [_playerView cancelAutoFadeOutControlBar];
-        [_playerView pause];
-        [_playerView resetPlayer];
-        [_playerView removeFromSuperview];
-        _playerView = nil;
-    }
-    if (_playView) {
-        [_playView removeFromSuperview];
-        _playView = nil;
-    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
     [self handleData];
-
 }
 
 - (void)handleData {
@@ -288,8 +276,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 
     //    self.playUrl = @"http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4";
     //    self.playUrl = @"http://api.dev.xijinfa.com/api/video-player/51197.m3u8";
-    TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
-    self.playUrl = gridVideomodel.url;
+
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
         [_playerView resetPlayer];
@@ -311,7 +298,34 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
+    
+    
+    
+//    TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
+//    self.playUrl = gridVideomodel.url;
+//    TalkGridVideo *gridVideomodelLast = self.talkGridModel.video_player.lastObject;
+//    _playerView.resolutionDic = @{@"xxx":self.playUrl,@"aaa":gridVideomodelLast.url};
+
+    NSDictionary *dic = [NSMutableDictionary dictionary];
+    for (TalkGridVideo *video in self.talkGridModel.video_player) {
+        if ([video.resolution isEqualToString:@"auto"]) {
+            self.playUrl = video.url;
+        } else if ([video.resolution isEqualToString:@"nhd"]){
+            [dic setValue:video.url forKey:@"标清"];
+        } else if ([video.resolution isEqualToString:@"hd"]){
+            [dic setValue:video.url forKey:@"高清"];
+        } else if ([video.resolution isEqualToString:@"fhd"]){
+            [dic setValue:video.url forKey:@"超清"];
+        }
+    }
+    
+    
+    _playerView.resolutionDic = dic;
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
+   
+    
+    [_playerView autoPlayTheVideo];
+    
     if (self.talkGridModel.cover && self.talkGridModel.cover.count > 0) {
         TalkGridCover *tempCover = self.talkGridModel.cover.firstObject;
         _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:

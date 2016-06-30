@@ -45,7 +45,9 @@ NSString *const Subscribe = @"SubscribeViewController";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(id x) {
+        @strongify(self)
         [self setTopicRightItem];
     }];
     self.nav_title = @"";
