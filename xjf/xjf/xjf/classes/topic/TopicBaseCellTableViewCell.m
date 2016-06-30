@@ -62,8 +62,6 @@
     if ([[XJAccountManager defaultManager] accessToken]) {
         NewComment_Topic *controler = [[NewComment_Topic alloc] initWithType:NewComment];
         controler.topic_id = self.model.id;
-        controler.type = self.model.type;
-        NSLog(@"%@",self.model.type);
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controler];
         UIViewController *vc = getCurrentDisplayController();
         [vc.navigationController presentViewController:nav animated:YES completion:nil];
