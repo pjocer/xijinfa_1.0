@@ -15,8 +15,8 @@
 #import <MJRefresh/MJRefresh.h>
 #import "TopicDetailViewController.h"
 #import "XJAccountManager.h"
-#import "TaViewController.h"
 #import "LessonDetailViewController.h"
+#import "UserInfoController.h"
 
 @interface SearchResultController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIView *header;
@@ -374,10 +374,9 @@
         }
         [current.navigationController pushViewController:lessonDetailViewController animated:YES];
     } else {
-        TaViewController *controller = [[TaViewController alloc] init];
         UserInfoModel *model = [self.personsDataSource objectAtIndex:indexPath.row];
-        controller.model = model;
-        [current.navigationController pushViewController:controller animated:YES];
+        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:model];
+        [current.navigationController pushViewController:ta animated:YES];
     }
 }
 

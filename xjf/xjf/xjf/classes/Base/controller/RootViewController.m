@@ -10,10 +10,11 @@
 #import "IndexViewController.h"
 #import "TopicViewController.h"
 #import "VipViewController.h"
-#import "MyViewController.h"
 #import "PlayerViewController.h"
 #import "LessonPlayerViewController.h"
 #import "HomePageMainViewController.h"
+#import "UserInfoController.h"
+#import "XJAccountManager.h"
 @interface RootViewController ()
 
 @end
@@ -58,7 +59,8 @@
                          imageName:@"tab_vip"
                  selectedImageName:@"tab_vip_selected"];
 
-    MyViewController *vc5 = [[MyViewController alloc] init];
+    UserInfoController *vc5 = [[UserInfoController alloc] initWithUserType:Myself
+                                                                  userInfo:[[[XJAccountManager defaultManager] user_model] result]];
     [self setupChildViewController:vc5
                              title:@"我的"
                          imageName:@"tab_user"

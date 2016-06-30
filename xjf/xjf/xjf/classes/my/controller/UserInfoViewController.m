@@ -21,6 +21,7 @@
 @property (strong, nonatomic) UserProfileModel *model;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) NSMutableDictionary *params;
 @end
 
 @implementation UserInfoViewController

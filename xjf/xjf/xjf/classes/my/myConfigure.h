@@ -7,12 +7,9 @@
 //
 
 #import "SettingViewController.h"
-#import "UserUnLoadCell.h"
-#import "UserLoadCell.h"
 #import "SettingViewController.h"
 #import "LoginViewController.h"
 #import "UserDelegate.h"
-#import "UserComponentCell.h"
 #import "RegistFinalModel.h"
 #import "UserProfileModel.h"
 #import "UserInfoViewController.h"

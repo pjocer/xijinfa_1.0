@@ -196,7 +196,6 @@
 		CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F161CBB735100A0636D /* MoreBannerCell.m */; };
 		CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F481CBB95E000A0636D /* BaseUINavigationController.m */; };
 		CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCBF71CB35A2D002FC0C9 /* IndexViewController.m */; };
-		CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCBFD1CB35A2D002FC0C9 /* MyViewController.m */; };
 		CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */; };
 		CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC0F1CB35A2D002FC0C9 /* VipViewController.m */; };
 		CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC191CB36386002FC0C9 /* BaseViewController.m */; };
@@ -221,8 +220,6 @@
 		D02FB4D51D127A05006EADAD /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4D41D127A05006EADAD /* zh_CN.json */; };
 		D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA4E1CEC041600CD5359 /* XJAccountManager.m */; };
 		D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA511CEC047600CD5359 /* UserProfileModel.m */; };
-		D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D049BA541CEC0D3400CD5359 /* UserLoadCell.m */; };
-		D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */; };
 		D04D0C0C1D07EA5D0090D2CD /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04D0C0A1D07EA5D0090D2CD /* CommentCell.m */; };
 		D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04D0C0B1D07EA5D0090D2CD /* CommentCell.xib */; };
 		D04D0C121D0FA5240090D2CD /* UserInfoSection1.m in Sources */ = {isa = PBXBuildFile; fileRef = D04D0C101D0FA5240090D2CD /* UserInfoSection1.m */; };
@@ -237,6 +234,10 @@
 		D055EEA11CFD30CE004DDD7E /* TopicCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */; };
 		D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D055EEA61CFD375F004DDD7E /* CommentDetailHeader.m */; };
 		D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055EEA71CFD375F004DDD7E /* CommentDetailHeader.xib */; };
+		D055F24E1D24ECB300F80AAD /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F24C1D24ECB300F80AAD /* UserInfoController.m */; };
+		D055F24F1D24ECB300F80AAD /* UserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F24D1D24ECB300F80AAD /* UserInfoController.xib */; };
+		D055F2531D2513F000F80AAD /* UserInfoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2511D2513F000F80AAD /* UserInfoListCell.m */; };
+		D055F2541D2513F000F80AAD /* UserInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F2521D2513F000F80AAD /* UserInfoListCell.xib */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -270,9 +271,6 @@
 		D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */; };
 		D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D083C8F01CF450630028DE8A /* SettingRowOneCell.m */; };
 		D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */; };
-		D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */; };
-		D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */; };
-		D08534A21CE1DD1F00F0047B /* UserComponentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D08534A01CE1DD1F00F0047B /* UserComponentCell.m */; };
 		D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A254441D1948CC00BDD146 /* PhotoHandler.m */; };
 		D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A254521D1A3E6100BDD146 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
@@ -647,8 +645,6 @@
 		CD144F481CBB95E000A0636D /* BaseUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseUINavigationController.m; sourceTree = "<group>"; };
 		CD1CCBF61CB35A2D002FC0C9 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		CD1CCBF71CB35A2D002FC0C9 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
-		CD1CCBFC1CB35A2D002FC0C9 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
-		CD1CCBFD1CB35A2D002FC0C9 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		CD1CCC081CB35A2D002FC0C9 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
 		CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
 		CD1CCC0E1CB35A2D002FC0C9 /* VipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipViewController.h; sourceTree = "<group>"; };
@@ -696,9 +692,6 @@
 		D049BA4E1CEC041600CD5359 /* XJAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAccountManager.m; sourceTree = "<group>"; tabWidth = 4; };
 		D049BA501CEC047600CD5359 /* UserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModel.h; sourceTree = "<group>"; };
 		D049BA511CEC047600CD5359 /* UserProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileModel.m; sourceTree = "<group>"; };
-		D049BA531CEC0D3400CD5359 /* UserLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoadCell.h; sourceTree = "<group>"; };
-		D049BA541CEC0D3400CD5359 /* UserLoadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoadCell.m; sourceTree = "<group>"; };
-		D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserLoadCell.xib; sourceTree = "<group>"; };
 		D04D0C091D07EA5D0090D2CD /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		D04D0C0A1D07EA5D0090D2CD /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		D04D0C0B1D07EA5D0090D2CD /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -721,6 +714,12 @@
 		D055EEA51CFD375F004DDD7E /* CommentDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailHeader.h; path = xjf/classes/topic/CommentDetailHeader.h; sourceTree = SOURCE_ROOT; };
 		D055EEA61CFD375F004DDD7E /* CommentDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailHeader.m; path = xjf/classes/topic/CommentDetailHeader.m; sourceTree = SOURCE_ROOT; };
 		D055EEA71CFD375F004DDD7E /* CommentDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentDetailHeader.xib; path = xjf/classes/topic/CommentDetailHeader.xib; sourceTree = SOURCE_ROOT; };
+		D055F24B1D24ECB300F80AAD /* UserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoController.h; sourceTree = "<group>"; };
+		D055F24C1D24ECB300F80AAD /* UserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoController.m; sourceTree = "<group>"; };
+		D055F24D1D24ECB300F80AAD /* UserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoController.xib; sourceTree = "<group>"; };
+		D055F2501D2513F000F80AAD /* UserInfoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoListCell.h; sourceTree = "<group>"; };
+		D055F2511D2513F000F80AAD /* UserInfoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoListCell.m; sourceTree = "<group>"; };
+		D055F2521D2513F000F80AAD /* UserInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoListCell.xib; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
 		D05985211CF6BD8300BF2A30 /* XJOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJOrder.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -776,11 +775,6 @@
 		D083C8EF1CF450630028DE8A /* SettingRowOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingRowOneCell.h; sourceTree = "<group>"; };
 		D083C8F01CF450630028DE8A /* SettingRowOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingRowOneCell.m; sourceTree = "<group>"; };
 		D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingRowOneCell.xib; sourceTree = "<group>"; };
-		D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnLoadCell.h; sourceTree = "<group>"; };
-		D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUnLoadCell.m; sourceTree = "<group>"; };
-		D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserUnLoadCell.xib; sourceTree = "<group>"; };
-		D085349F1CE1DD1F00F0047B /* UserComponentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserComponentCell.h; sourceTree = "<group>"; };
-		D08534A01CE1DD1F00F0047B /* UserComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserComponentCell.m; sourceTree = "<group>"; };
 		D0A254431D1948CC00BDD146 /* PhotoHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHandler.h; sourceTree = "<group>"; };
 		D0A254441D1948CC00BDD146 /* PhotoHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHandler.m; sourceTree = "<group>"; };
 		D0A2544E1D1A3E0200BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -1676,8 +1670,9 @@
 		CD1CCBFB1CB35A2D002FC0C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CD1CCBFC1CB35A2D002FC0C9 /* MyViewController.h */,
-				CD1CCBFD1CB35A2D002FC0C9 /* MyViewController.m */,
+				D055F24B1D24ECB300F80AAD /* UserInfoController.h */,
+				D055F24C1D24ECB300F80AAD /* UserInfoController.m */,
+				D055F24D1D24ECB300F80AAD /* UserInfoController.xib */,
 				CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */,
 				CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */,
 				5AF7C2FD1CFFFF59007CC71C /* MyTeacherViewController.h */,
@@ -1706,14 +1701,9 @@
 		CD1CCBFF1CB35A2D002FC0C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D085349A1CE1CE8300F0047B /* UserUnLoadCell.h */,
-				D085349B1CE1CE8300F0047B /* UserUnLoadCell.m */,
-				D085349C1CE1CE8300F0047B /* UserUnLoadCell.xib */,
-				D049BA531CEC0D3400CD5359 /* UserLoadCell.h */,
-				D049BA541CEC0D3400CD5359 /* UserLoadCell.m */,
-				D049BA551CEC0D3400CD5359 /* UserLoadCell.xib */,
-				D085349F1CE1DD1F00F0047B /* UserComponentCell.h */,
-				D08534A01CE1DD1F00F0047B /* UserComponentCell.m */,
+				D055F2501D2513F000F80AAD /* UserInfoListCell.h */,
+				D055F2511D2513F000F80AAD /* UserInfoListCell.m */,
+				D055F2521D2513F000F80AAD /* UserInfoListCell.xib */,
 				D07D743D1CED6DBF0037B1A9 /* UserInfoCell.h */,
 				D07D743E1CED6DBF0037B1A9 /* UserInfoCell.m */,
 				D07D743F1CED6DBF0037B1A9 /* UserInfoCell.xib */,
@@ -2139,22 +2129,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D049BA571CEC0D3400CD5359 /* UserLoadCell.xib in Resources */,
 				D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */,
 				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
-				D085349E1CE1CE8300F0047B /* UserUnLoadCell.xib in Resources */,
 				AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */,
 				D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */,
 				5A6CF48E1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */,
 				5A6CF48C1D23632D00676255 /* XJFClassificationCollectionViewCell.xib in Resources */,
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
+				D055F2541D2513F000F80AAD /* UserInfoListCell.xib in Resources */,
 				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
 				5A6CF4901D23632D00676255 /* XJFSchoolCollectionViewCell.xib in Resources */,
 				5A6CF4941D23632D00676255 /* XJFWikipediaCollectionViewCell.xib in Resources */,
 				AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */,
 				D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
+				D055F24F1D24ECB300F80AAD /* UserInfoController.xib in Resources */,
 				D02FB4D51D127A05006EADAD /* zh_CN.json in Resources */,
 				D04D0C131D0FA5240090D2CD /* UserInfoSection1.xib in Resources */,
 				5A6CF4921D23632D00676255 /* XJFTeacherCollectionViewCell.xib in Resources */,
@@ -2249,7 +2239,6 @@
 				5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */,
 				5AF7C2DC1CF96D53007CC71C /* OrderFooterView.m in Sources */,
 				5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */,
-				D085349D1CE1CE8300F0047B /* UserUnLoadCell.m in Sources */,
 				5AF7C2FF1CFFFF59007CC71C /* MyTeacherViewController.m in Sources */,
 				5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */,
 				AA5B95FC1D1948790088A196 /* SearchViewController.m in Sources */,
@@ -2309,7 +2298,6 @@
 				5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */,
 				D06D14121D000BB10018F41B /* NewSharpViewController.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
-				D049BA561CEC0D3400CD5359 /* UserLoadCell.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
 				AA5B95F81D1948790088A196 /* SearchResultController.m in Sources */,
@@ -2359,6 +2347,7 @@
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
+				D055F24E1D24ECB300F80AAD /* UserInfoController.m in Sources */,
 				5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */,
 				5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
@@ -2370,7 +2359,6 @@
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
 				5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */,
-				CD1CCC131CB35A2D002FC0C9 /* MyViewController.m in Sources */,
 				D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */,
 				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
@@ -2400,7 +2388,6 @@
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
 				5A565A311D069E1800008DA9 /* EmployedLessonListViewController.m in Sources */,
 				5A565A251D066C4400008DA9 /* EmployedMainTableViewCell.m in Sources */,
-				D08534A21CE1DD1F00F0047B /* UserComponentCell.m in Sources */,
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
 				AA5B961A1D1C0DF60088A196 /* TaBaseCell.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
@@ -2438,6 +2425,7 @@
 				68AD32E2FC2DEEB1C311AA39 /* ZToastManager.m in Sources */,
 				68AD370C817124BB259FF07A /* UILabel+StringFrame.m in Sources */,
 				68AD32495822B12CA68526E7 /* NSString+Extensions.m in Sources */,
+				D055F2531D2513F000F80AAD /* UserInfoListCell.m in Sources */,
 				68AD31398574E70510D4D931 /* UIView+Addtion.m in Sources */,
 				68AD3594E7A1C701ADEA6C8D /* StringUtil.m in Sources */,
 				68AD3DC80CB071C587DFF73D /* NSString+FirstLetter.m in Sources */,
@@ -2600,7 +2588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a4971330-2d66-46af-93ae-e77b279f4a67";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2630,7 +2618,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a4971330-2d66-46af-93ae-e77b279f4a67";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

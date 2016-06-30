@@ -83,6 +83,7 @@
         _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             [self requestData:self.model.result.next_page_url Method:GET];
         }];
+        _tableView.backgroundColor = BackgroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

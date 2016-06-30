@@ -186,6 +186,11 @@
                     <constraint firstItem="N4R-JW-vRO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="kpR-ow-i9g"/>
                 </constraints>
             </tableViewCellContentView>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="selectionStyle">
+                    <integer key="value" value="0"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="avatar" destination="Ru3-QR-Hqp" id="DgH-no-Ty7"/>
                 <outlet property="comment" destination="7k0-Qg-BlK" id="00w-w2-P9D"/>

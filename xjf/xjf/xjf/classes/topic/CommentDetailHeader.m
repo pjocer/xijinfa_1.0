@@ -10,7 +10,7 @@
 #import <UIImageView+WebCache.h>
 #import "StringUtil.h"
 #import "XJAccountManager.h"
-#import "TaViewController.h"
+#import "UserInfoController.h"
 
 @interface CommentDetailHeader ()
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
@@ -31,10 +31,8 @@
 
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
     if (![[[XJAccountManager defaultManager] user_id] isEqualToString:self.model.user.id]) {
+        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:self.model.user];
         UIViewController *controller = getCurrentDisplayController();
-        TaViewController *ta = [[TaViewController alloc] init];
-        ta.nav_title = [NSString stringWithFormat:@"%@的主页", self.model.user.nickname];
-        ta.model = self.model.user;
         [controller.navigationController pushViewController:ta animated:YES];
     }
 }

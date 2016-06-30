@@ -227,11 +227,9 @@ static CGFloat vipCrownH = 18;
         self.vipEndDate.textColor = [UIColor whiteColor];
         self.vipEndDate.textAlignment = NSTextAlignmentLeft;
         self.vipEndDate.font = FONT12;
-
         self.userProfileModel = [[UserProfileModel alloc]
                 initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
         [self setUserInfo];
-
         @weakify(self)
         ReceivedNotification(self, UserInfoDidChangedNotification, ^(NSNotification *notification) {
             @strongify(self)

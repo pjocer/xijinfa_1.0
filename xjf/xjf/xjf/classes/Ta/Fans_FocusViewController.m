@@ -11,7 +11,8 @@
 #import <MJRefresh/MJRefresh.h>
 #import "FansCell.h"
 #import <UIImageView+WebCache.h>
-#import "TaViewController.h"
+#import "UserInfoController.h"
+#import "XJAccountManager.h"
 
 @interface Fans_FocusViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -125,9 +126,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.dataSource != nil && self.dataSource.count > 0) {
-        TaViewController *ta = [[TaViewController alloc] init];
         UserInfoModel *model = [self.dataSource objectAtIndex:indexPath.row];
-        ta.model = model;
+        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:model];
         [self.navigationController pushViewController:ta animated:YES];
     }
 }

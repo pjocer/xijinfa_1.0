@@ -131,9 +131,11 @@ NSString *const Subscribe = @"SubscribeViewController";
     NSInteger tag = 0;
     if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         tag = [(UIBarButtonItem *)sender tag];
-    }else {
+    }else if ([sender isKindOfClass:[UITapGestureRecognizer class]]){
         UIGestureRecognizer *gesture = sender;
         tag = gesture.view.tag;
+    }else if ([sender isKindOfClass:[UIView class]]) {
+        tag = [(UIView *)sender tag];
     }
     switch (tag) {
         case 0: {

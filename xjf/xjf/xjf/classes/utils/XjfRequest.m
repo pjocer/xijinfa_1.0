@@ -181,7 +181,7 @@
 - (void)configureRequestHeaders {
     if (self.requestMethod == UPLOAD) {
         _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        _manager.responseSerializer = [AFCompoundResponseSerializer serializer];
+        _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     }else {
         _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         _manager.requestSerializer = [AFJSONRequestSerializer serializer];

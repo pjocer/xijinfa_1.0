@@ -12,7 +12,7 @@
 #import "XjfRequest.h"
 #import "ZToastManager.h"
 #import "StringUtil.h"
-#import "TaViewController.h"
+#import "UserInfoController.h"
 
 @interface CommentListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
@@ -33,10 +33,8 @@
 
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
     if (![self.data.user.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
+        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:self.data.user];
         UIViewController *controller = getCurrentDisplayController();
-        TaViewController *ta = [[TaViewController alloc] init];
-        ta.nav_title = [NSString stringWithFormat:@"%@的主页", self.data.user.nickname];
-        ta.model = self.data.user;
         [controller.navigationController pushViewController:ta animated:YES];
     }
 }

@@ -1,23 +1,19 @@
 //
-//  UserUnLoadCell.m
+//  UserInfoListCell.m
 //  xjf
 //
-//  Created by PerryJ on 16/5/10.
+//  Created by PerryJ on 16/6/30.
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "UserUnLoadCell.h"
+#import "UserInfoListCell.h"
 
-@implementation UserUnLoadCell {
-    __weak IBOutlet UILabel *bottomLine;
-}
+@implementation UserInfoListCell
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    bottomLine.backgroundColor = BackgroundColor;
-
 }
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
