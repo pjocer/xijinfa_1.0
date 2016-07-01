@@ -74,6 +74,8 @@ static APIName *user_comment_list = @"/api/user/%@/reply";
 static APIName *update_user_info = @"/api/user/profile";
 //上传头像
 static APIName *upload_avatar = @"/api/user/avatar";
+//充值余额
+static APIName *recharge = @"/api/order";
 #pragma mark- Hunter_Wang
 
 

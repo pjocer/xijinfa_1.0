@@ -22,6 +22,7 @@
 typedef enum : NSUInteger {
     Alipay,
     WechatPay,
+    UnKnown
 } PayStyle;
 
 @interface XJMarket : NSObject
@@ -29,9 +30,9 @@ typedef enum : NSUInteger {
 + (nonnull instancetype)sharedMarket;
 
 - (nonnull instancetype)init NS_UNAVAILABLE;
-
+//生成充值订单
 - (nonnull XJOrder *)createVipOrderWith:(nonnull NSDictionary *)params target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
-
+//生成普通订单
 - (nonnull XJOrder *)createOrderWith:(nullable NSArray <TalkGridModel *> *)goods target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
 
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;

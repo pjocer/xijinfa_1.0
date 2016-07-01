@@ -16,10 +16,8 @@
 #import "XJAccountManager.h"
 
 @interface MyOrderViewController () <UITableViewDelegate, UITableViewDataSource,
-        MyOrderFootrtViewDelegate, OrderInfoDidChangedDelegate>
+        MyOrderFootrtViewDelegate, OrderInfoDidChangedDelegate,PayViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) PayView *payView;
-@property (nonatomic, strong) UIView *payingBackGroudView;
 @property (nonatomic, strong) OrderHeaderView *orderheaderView;
 @property (nonatomic, strong) MyOrderFooterView *orderfooterView;
 @property (nonatomic, assign) PayStyle style;
@@ -89,7 +87,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
 - (void)initMainUI {
     [self setTableView];
-    [self setPayView];
 }
 
 #pragma mark --setTableView--
@@ -205,13 +202,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 - (void)MyOrderFootrtView:(MyOrderFooterView *)orderFooterView goPayOrCancelOreder:(UIButton *)sender {
     self.orderfooterView.model = self.orderModel.result.data[orderFooterView.section];
     if ([sender.titleLabel.text isEqualToString:@"去付款"]) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.payView.frame = CGRectMake(0,
-                    self.view.bounds.size.height - payViewH,
-                    self.view.bounds.size.width,
-                    payViewH);
-        }];
-        self.payingBackGroudView.hidden = NO;
+        [PayView showWithTarget:self];
     }
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
         [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
@@ -221,36 +212,9 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         }];
     }
 }
-
-#pragma mark --setPayView--
-
-- (void)setPayView {
-
-    //PayView
-    self.payingBackGroudView = [[UIView alloc] initWithFrame:self.view.bounds];
-    self.payingBackGroudView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:self.payingBackGroudView];
-    self.payingBackGroudView.hidden = YES;
-    self.payingBackGroudView.alpha = 0.2;
-
-    self.payView = [[NSBundle mainBundle]
-            loadNibNamed:@"PayView" owner:self options:nil].firstObject;
-    self.payView.frame = CGRectMake(0,
-            self.view.bounds.size.height,
-            self.view.bounds.size.width,
-            payViewH);
-    [self.view addSubview:self.payView];
-    [self.payView.aliPay addTarget:self
-                            action:@selector(aliPay:)
-                  forControlEvents:UIControlEventTouchUpInside];
-    [self.payView.WeixinPay addTarget:self
-                               action:@selector(WeixinPay:)
-                     forControlEvents:UIControlEventTouchUpInside];
-    [self.payView.cancel addTarget:self
-                            action:@selector(payViewCancel:)
-                  forControlEvents:UIControlEventTouchUpInside];
+-(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
+    [self payByPayStyle:type];
 }
-
 #pragma mark tableViewDidSelected
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -259,29 +223,16 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     [self.navigationController pushViewController:orderDetail animated:YES];
 }
 
-#pragma mark - aliPay
-
-- (void)aliPay:(UIButton *)sender {
-    [self payByPayStyle:Alipay];
-}
-
-#pragma mark - WeixinPay
-
-- (void)WeixinPay:(UIButton *)sender {
-    [self payByPayStyle:WechatPay];
-}
-
 - (void)payByPayStyle:(PayStyle)stayle {
-    self.style = stayle;
-    NSMutableArray *tempArray = [NSMutableArray array];
-    for (TalkGridModel *c in self.orderfooterView.model.items) {
-        [tempArray addObject:c];
-    }
     if ([[XJAccountManager defaultManager] accessToken] == nil ||
             [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
-    }
-    {
+    }else{
+        self.style = stayle;
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (TalkGridModel *c in self.orderfooterView.model.items) {
+            [tempArray addObject:c];
+        }
         if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] ||
                 self.orderfooterView.model.items.count == 0) {
             //Vip
@@ -291,17 +242,14 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
             [dic setValue:self.orderfooterView.model.membership.period forKey:@"period"];
             [dicData setValue:dic forKey:@"membership"];
             self.order = [[XJMarket sharedMarket] createVipOrderWith:dicData target:self];
-            [self orderInfoDidChanged:self.order];
         } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
             //lessons
             self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
-            [self orderInfoDidChanged:self.order];
         }
 
     }
 
 }
-
 - (void)orderInfoDidChanged:(XJOrder *)order {
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
@@ -316,17 +264,4 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
     }];
 }
-
-#pragma mark - payViewCancel
-
-- (void)payViewCancel:(UIButton *)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.payView.frame = CGRectMake(0,
-                self.view.bounds.size.height,
-                self.view.bounds.size.width,
-                payViewH);
-    }];
-    self.payingBackGroudView.hidden = YES;
-}
-
 @end

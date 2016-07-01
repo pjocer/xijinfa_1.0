@@ -15,12 +15,10 @@
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
 
-@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate>
+@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate,PayViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *cancel;
 @property (nonatomic, strong) UIButton *nowPay;
-@property (nonatomic, strong) PayView *payView;
-@property (nonatomic, strong) UIView *payingBackGroudView;
 @property (nonatomic, strong) OrderHeaderView *orderheaderView;
 @property (nonatomic, strong) OrderFooterView *orderfooterView;
 @property (nonatomic, strong) NSDictionary *requestParams;
@@ -218,30 +216,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     self.nowPay.titleLabel.font = FONT15;
     [self.nowPay addTarget:self action:@selector(nowPay:)
           forControlEvents:UIControlEventTouchUpInside];
-
-    //PayView
-    self.payingBackGroudView = [[UIView alloc] initWithFrame:self.view.bounds];
-    self.payingBackGroudView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:self.payingBackGroudView];
-    self.payingBackGroudView.hidden = YES;
-    self.payingBackGroudView.alpha = 0.2;
-
-    self.payView = [[NSBundle mainBundle]
-            loadNibNamed:@"PayView" owner:self options:nil].firstObject;
-    self.payView.frame = CGRectMake(0,
-            self.view.bounds.size.height,
-            self.view.bounds.size.width,
-            payViewH);
-    [self.view addSubview:self.payView];
-    [self.payView.aliPay addTarget:self
-                            action:@selector(aliPay:)
-                  forControlEvents:UIControlEventTouchUpInside];
-    [self.payView.WeixinPay addTarget:self
-                               action:@selector(WeixinPay:)
-                     forControlEvents:UIControlEventTouchUpInside];
-    [self.payView.cancel addTarget:self
-                            action:@selector(payViewCancel:)
-                  forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark cancel
@@ -264,25 +238,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 #pragma mark nowPay
 
 - (void)nowPay:(UIButton *)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.payView.frame = CGRectMake(0,
-                self.view.bounds.size.height - payViewH,
-                self.view.bounds.size.width,
-                payViewH);
-    }];
-    self.payingBackGroudView.hidden = NO;
-}
-
-#pragma mark - aliPay
-
-- (void)aliPay:(UIButton *)sender {
-    [self payByPayStyle:Alipay];
-}
-
-#pragma mark - WeixinPay
-
-- (void)WeixinPay:(UIButton *)sender {
-    [self payByPayStyle:WechatPay];
+    [PayView showWithTarget:self];
 }
 
 - (void)payByPayStyle:(PayStyle)stayle {
@@ -350,17 +306,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     }];
 }
 
-#pragma mark - payViewCancel
-
-- (void)payViewCancel:(UIButton *)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.payView.frame = CGRectMake(0,
-                self.view.bounds.size.height,
-                self.view.bounds.size.width,
-                payViewH);
-    }];
-    self.payingBackGroudView.hidden = YES;
+-(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
+    [self payByPayStyle:type];
 }
-
-
 @end

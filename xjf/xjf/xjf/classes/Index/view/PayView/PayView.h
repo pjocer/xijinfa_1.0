@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XJMarket.h"
+
+@class PayView;
+@protocol PayViewDelegate <NSObject>
+- (void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type;
+@end
 
 @interface PayView : UIView
-@property (weak, nonatomic) IBOutlet UIButton *aliPay;
-@property (weak, nonatomic) IBOutlet UIButton *WeixinPay;
-@property (weak, nonatomic) IBOutlet UIButton *cancel;
-
++ (void)showWithTarget:(id<PayViewDelegate>)target;
 @end
