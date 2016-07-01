@@ -86,7 +86,7 @@
 @property (nonatomic, copy) NSString *created_at;
 @property (nonatomic, copy) NSString *department;
 @property (nonatomic, copy) NSString *icon;
-@property (nonatomic, assign) NSInteger favorites_count;
+@property (nonatomic, assign) NSInteger favorite_count;
 @property (nonatomic, assign) NSInteger finish;
 @property (nonatomic, assign) NSInteger likes_count;
 @property (nonatomic, assign) NSInteger origin;
