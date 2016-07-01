@@ -26,9 +26,16 @@
 #import "FeedbackViewController.h"
 #import "TopicBaseCellTableViewCell.h"
 #import "XjfRequest.h"
+#import "StringUtil.h"
+#import "TaTopicViewController.h"
+#import "UITableViewCell+AvatarEnabled.h"
+#import "TopicDetailViewController.h"
 
 @interface UserInfoController () <UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIButton *focusButton;
+@property (weak, nonatomic) IBOutlet UIButton *back;
 @property (assign, nonatomic) BOOL hasLogined;
+@property (weak, nonatomic) IBOutlet UIButton *setting;
 @property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
 @property (weak, nonatomic) IBOutlet UIView *topic;
 @property (weak, nonatomic) IBOutlet UIView *comment;
@@ -97,11 +104,16 @@
     if (self.userType == Myself) {
         [_tableView registerNib:[UINib nibWithNibName:@"UserInfoListCell" bundle:nil] forCellReuseIdentifier:@"UserInfoListCell"];
         _tableView.scrollEnabled = NO;
+        _setting.hidden = NO;
+        _focusButton.hidden = YES;
+        _back.hidden = YES;
     }else {
         _tableView.scrollEnabled = YES;
         [_tableView registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
+        _setting.hidden = YES;
+        _focusButton.hidden = NO;
+        _back.hidden = NO;
     }
-    _tableView.estimatedRowHeight = 1000;
     [_userAvatar.layer setCornerRadius:35];
     [_userAvatar.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [_userAvatar.layer setBorderWidth:5.f];
@@ -158,55 +170,68 @@
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }
+- (IBAction)focusButtonClicked:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+- (IBAction)backButtonClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (IBAction)settingButtonClicked:(UIButton *)sender {
     SettingViewController *setting = [[SettingViewController alloc] init];
     [self.navigationController pushViewController:setting animated:YES];
 }
 - (void)viewDidClicked:(UITapGestureRecognizer *)tap {
     NSInteger tag = tap.view.tag;
-    if (!self.hasLogined) {
-        if (tag != 774) {
-            [self loginPrompt];
-        }else {
-            LoginViewController *login = [[LoginViewController alloc] init];
-            [self.navigationController pushViewController:login animated:YES];
+        if (!self.hasLogined) {
+            if (tag != 774) {
+                [self loginPrompt];
+            }else {
+                LoginViewController *login = [[LoginViewController alloc] init];
+                [self.navigationController pushViewController:login animated:YES];
+            }
+            return;
         }
-        return;
-    }
-    switch (tag) {
-        case 770:
-        {
-            Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:0 nickname:self.model.result.nickname];
-            [self.navigationController pushViewController:fans_focus animated:YES];
+        switch (tag) {
+            case 770:
+            {
+                Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:0 nickname:self.model.result.nickname];
+                [self.navigationController pushViewController:fans_focus animated:YES];
+            }
+                break;
+            case 771:
+            {
+                Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:1 nickname:self.model.result.nickname];
+                [self.navigationController pushViewController:fans_focus animated:YES];
+            }
+                break;
+            case 772:
+            {
+                if (self.userType == Myself) {
+                    MyTopicViewController *controller = [[MyTopicViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                }else {
+                    TaTopicViewController *controller = [[TaTopicViewController alloc] initWithID:self.model.result.id nickname:self.model.result.nickname];
+                    [self.navigationController pushViewController:controller animated:YES];
+                }
+            }
+                break;
+            case 773:
+            {
+                MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *)self.model.result];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+                break;
+            case 774:
+            {
+                if (self.userType == Myself) {
+                    UserInfoViewController *userInfo = [[UserInfoViewController alloc] init];
+                    [self.navigationController pushViewController:userInfo animated:YES];
+                }
+            }
+                break;
+            default:
+                break;
         }
-            break;
-        case 771:
-        {
-            Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:1 nickname:self.model.result.nickname];
-            [self.navigationController pushViewController:fans_focus animated:YES];
-        }
-            break;
-        case 772:
-        {
-            MyTopicViewController *controller = [[MyTopicViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case 773:
-        {
-            MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *) [[XJAccountManager defaultManager] user_model].result];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case 774:
-        {
-            UserInfoViewController *userInfo = [[UserInfoViewController alloc] init];
-            [self.navigationController pushViewController:userInfo animated:YES];
-        }
-            break;
-        default:
-            break;
-    }
 }
 
 - (void)loginPrompt {
@@ -235,48 +260,68 @@
         return cell;
     }else {
         TopicBaseCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopicBaseCellTableViewCell"];
+        cell.avatarEnabled = NO;
         cell.model = self.dataSource&&self.dataSource.count>0?self.dataSource[indexPath.row]:nil;
         return cell;
     }
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.userType == Myself) {
+        return 60;
+    }else {
+        TopicDataModel *model = self.dataSource&&self.dataSource.count>0?self.dataSource[indexPath.row]:nil;
+        CGFloat height = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-40 fontsize:15]+81+42;
+        height = height>210?202:height;
+        return height;
+    }
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *controller = nil;
-    switch (indexPath.row) {
-        case 0:
-        {
-            controller = [[MyPlayerHistoryViewController alloc] init];
+    if (self.userType == Myself) {
+        UIViewController *controller = nil;
+        switch (indexPath.row) {
+            case 0:
+            {
+                controller = [[MyPlayerHistoryViewController alloc] init];
+            }
+                break;
+            case 1:
+            {
+                controller = [[MyFavoredsViewController alloc] init];
+            }
+                break;
+            case 2:
+            {
+                controller = [[MyMoneyViewController alloc] init];
+            }
+                break;
+            case 3:
+            {
+                controller = [[MyOrderViewController alloc] init];
+            }
+                break;
+            case 4:
+            {
+                controller = [[ShoppingCartViewController alloc] init];
+            }
+                break;
+            case 5:
+            {
+                controller = [[FeedbackViewController alloc] init];
+            }
+                break;
+            default:
+                break;
         }
-            break;
-        case 1:
-        {
-            controller = [[MyFavoredsViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }else {
+        TopicDataModel *model = self.dataSource&&self.dataSource.count>0?[self.dataSource objectAtIndex:indexPath.row]:nil;
+        if (model) {
+            TopicDetailViewController *controller = [[TopicDetailViewController alloc] init];
+            controller.topic_id = model.id;
+            [self.navigationController pushViewController:controller animated:YES];
         }
-            break;
-        case 2:
-        {
-            controller = [[MyMoneyViewController alloc] init];
-        }
-            break;
-        case 3:
-        {
-            controller = [[MyOrderViewController alloc] init];
-        }
-            break;
-        case 4:
-        {
-            controller = [[ShoppingCartViewController alloc] init];
-        }
-            break;
-        case 5:
-        {
-            controller = [[FeedbackViewController alloc] init];
-        }
-            break;
-        default:
-            break;
     }
-    [self.navigationController pushViewController:controller animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

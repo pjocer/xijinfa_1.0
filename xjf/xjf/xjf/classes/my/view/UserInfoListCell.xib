@@ -66,7 +66,7 @@
             <connections>
                 <outlet property="titleLabel" destination="LVT-xD-zVz" id="rGE-xQ-CCv"/>
             </connections>
-            <point key="canvasLocation" x="41" y="232"/>
+            <point key="canvasLocation" x="216" y="257"/>
         </tableViewCell>
     </objects>
     <resources>

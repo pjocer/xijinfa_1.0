@@ -211,7 +211,6 @@
 		CDF57AC51C9F825D00049AF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF57AC41C9F825D00049AF0 /* main.m */; };
 		CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF57AC71C9F825D00049AF0 /* AppDelegate.m */; };
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
-		CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
 		D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D11D0181E0000888D4 /* MyTopicViewController.m */; };
 		D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */; };
@@ -239,6 +238,8 @@
 		D055F24F1D24ECB300F80AAD /* UserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F24D1D24ECB300F80AAD /* UserInfoController.xib */; };
 		D055F2531D2513F000F80AAD /* UserInfoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2511D2513F000F80AAD /* UserInfoListCell.m */; };
 		D055F2541D2513F000F80AAD /* UserInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F2521D2513F000F80AAD /* UserInfoListCell.xib */; };
+		D055F2561D26140F00F80AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D055F2551D26140F00F80AAD /* Assets.xcassets */; };
+		D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F25B1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -678,7 +679,6 @@
 		CDF57AC61C9F825D00049AF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CDF57AC71C9F825D00049AF0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CDF57ACD1C9F825D00049AF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF57AD21C9F825D00049AF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D01F77D01D0181E0000888D4 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
@@ -723,6 +723,9 @@
 		D055F2501D2513F000F80AAD /* UserInfoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoListCell.h; sourceTree = "<group>"; };
 		D055F2511D2513F000F80AAD /* UserInfoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoListCell.m; sourceTree = "<group>"; };
 		D055F2521D2513F000F80AAD /* UserInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoListCell.xib; sourceTree = "<group>"; };
+		D055F2551D26140F00F80AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D055F25A1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+AvatarEnabled.h"; sourceTree = "<group>"; };
+		D055F25B1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AvatarEnabled.m"; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
 		D05985211CF6BD8300BF2A30 /* XJOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJOrder.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -1365,6 +1368,8 @@
 				68AD33E53D90A8D61621893F /* NSString+FirstLetter.m */,
 				68AD30C32084019191D45362 /* NSDate+Convenience.h */,
 				68AD38FCE1858A761939DF2B /* NSDate+Convenience.m */,
+				D055F25A1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.h */,
+				D055F25B1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m */,
 			);
 			name = Category;
 			path = category;
@@ -1970,8 +1975,8 @@
 			isa = PBXGroup;
 			children = (
 				CDF57ACC1C9F825D00049AF0 /* Main.storyboard */,
-				CDF57ACF1C9F825D00049AF0 /* Assets.xcassets */,
 				CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */,
+				D055F2551D26140F00F80AAD /* Assets.xcassets */,
 				CDF57AD41C9F825D00049AF0 /* Info.plist */,
 				CDF57AC41C9F825D00049AF0 /* main.m */,
 				CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */,
@@ -2148,10 +2153,10 @@
 				AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */,
 				D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */,
 				5A6CF48E1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */,
+				D055F2561D26140F00F80AAD /* Assets.xcassets in Resources */,
 				5A6CF48C1D23632D00676255 /* XJFClassificationCollectionViewCell.xib in Resources */,
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				D055F2541D2513F000F80AAD /* UserInfoListCell.xib in Resources */,
-				CDF57AD01C9F825D00049AF0 /* Assets.xcassets in Resources */,
 				5A6CF4901D23632D00676255 /* XJFSchoolCollectionViewCell.xib in Resources */,
 				5A6CF4941D23632D00676255 /* XJFWikipediaCollectionViewCell.xib in Resources */,
 				AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */,
@@ -2334,6 +2339,7 @@
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
 				AA5B961C1D1C0DF60088A196 /* TaBaseCellFoot.m in Sources */,
 				5A6CF3981D1CED2700676255 /* XJFBaseViewController.m in Sources */,
+				D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */,
 				AA5B95FA1D1948790088A196 /* SearchSectionTwo.m in Sources */,
 				5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,

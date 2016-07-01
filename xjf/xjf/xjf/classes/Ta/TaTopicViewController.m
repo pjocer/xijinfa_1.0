@@ -13,6 +13,7 @@
 #import "ZToastManager.h"
 #import <MJRefresh/MJRefresh.h>
 #import "TopicDetailViewController.h"
+#import "UITableViewCell+AvatarEnabled.h"
 
 @interface TaTopicViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -65,44 +66,6 @@
     }
     return _tableView;
 }
-
-- (CGFloat)cellHeightByModel:(TopicDataModel *)model {
-    CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH - 20 fontsize:15];
-    CGFloat height = 10 + 40 + 10 + contentHeight + 10;
-    CGFloat all = 0;
-    CGFloat alll = 0;
-    CGFloat x = 0;
-    CGFloat y = 0;
-    CGFloat tap = 10;
-    NSMutableArray *labels = [NSMutableArray array];
-    for (CategoryLabel *label in model.taxonomy_tags) {
-        [labels addObject:label.title];
-    }
-    for (int i = 0; i < labels.count; i++) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSString *title = [NSString stringWithFormat:@"#%@#", labels[i]];
-        CGSize size = [title sizeWithFont:FONT12 constrainedToSize:CGSizeMake(SCREENWITH, 14) lineBreakMode:1];
-        all = all + tap + size.width;
-        if (all <= SCREENWITH) {
-            x = all - size.width;
-            y = contentHeight + 70;
-            button.frame = CGRectMake(x, y, size.width, 14);
-            return height + 34 + 36;
-        } else if (all <= SCREENWITH * 2 && all > SCREENWITH) {
-            alll = alll + tap + size.width;
-            if (alll <= SCREENWITH) {
-                x = alll - size.width;
-                y = contentHeight + 94;
-                button.frame = CGRectMake(x, y, size.width, 14);
-                return height + 30 + 28 + 36;
-            } else {
-                return height + 36 + 10;
-            }
-        }
-    }
-    return height + 36 + 10;
-}
-
 - (void)requestData:(APIName *)api Method:(RequestMethod)method {
     if (api == nil) {
         [self hiddenMJRefresh:self.tableView];
@@ -150,22 +113,16 @@
         TopicDataModel *model = [self.dataSource objectAtIndex:indexPath.row];
         cell.model = model;
     }
+    cell.avatarEnabled = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.dataSource.count > 0) {
-        TopicDataModel *model = [self.dataSource objectAtIndex:indexPath.row];
-        if (model.taxonomy_tags.count > 0) {
-            return [self cellHeightByModel:model];
-        } else {
-            CGFloat contentHeight = [StringUtil calculateLabelHeight:model.content width:SCREENWITH - 20 fontsize:15];
-            CGFloat height = 10 + 40 + 10 + contentHeight + 10;
-            return height + 46;
-        }
-    }
-    return 0;
+    TopicDataModel *model = self.dataSource&&self.dataSource.count>0?self.dataSource[indexPath.row]:nil;
+    CGFloat height = [StringUtil calculateLabelHeight:model.content width:SCREENWITH-40 fontsize:15]+81+42;
+    height = height>210?202:height;
+    return height;
 }
 
 - (void)didReceiveMemoryWarning {

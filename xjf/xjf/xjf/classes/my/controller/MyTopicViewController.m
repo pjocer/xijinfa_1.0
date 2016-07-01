@@ -14,6 +14,7 @@
 #import "ZToastManager.h"
 #import <MJRefresh/MJRefresh.h>
 #import "TopicDetailViewController.h"
+#import "UITableViewCell+AvatarEnabled.h"
 
 @interface MyTopicViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -153,6 +154,7 @@
         TopicDataModel *model = [self.dataSource objectAtIndex:indexPath.row];
         cell.model = model;
     }
+    cell.avatarEnabled = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

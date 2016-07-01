@@ -15,6 +15,7 @@
 #import "ZToastManager.h"
 #import "TopicDetailViewController.h"
 #import "XJAccountManager.h"
+#import "UITableViewCell+AvatarEnabled.h"
 
 @interface TopicViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIButton *all;
@@ -109,6 +110,7 @@
             model = [_allDataSource objectAtIndex:indexPath.row];
         }
     }
+    cell.avatarEnabled = ![model.user.id isEqualToString:[[XJAccountManager defaultManager] user_id]];
     cell.model = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

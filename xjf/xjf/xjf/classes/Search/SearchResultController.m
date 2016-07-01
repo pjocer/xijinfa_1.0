@@ -17,6 +17,7 @@
 #import "XJAccountManager.h"
 #import "LessonDetailViewController.h"
 #import "UserInfoController.h"
+#import "UITableViewCell+AvatarEnabled.h"
 
 @interface SearchResultController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIView *header;
@@ -323,6 +324,7 @@
         if (model) {
             cell.model = model;
         }
+        cell.avatarEnabled = ![model.user.id isEqualToString:[[XJAccountManager defaultManager] user_id]];
         return cell;
     } else if (tableView == self.lessons) {
         TalkGridModel *model = self.lessonsDataSource.count > 0 ? [self.lessonsDataSource objectAtIndex:indexPath.row] : nil;

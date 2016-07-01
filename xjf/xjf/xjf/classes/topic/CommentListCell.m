@@ -13,7 +13,7 @@
 #import "ZToastManager.h"
 #import "StringUtil.h"
 #import "UserInfoController.h"
-
+#import "UITableViewCell+AvatarEnabled.h"
 @interface CommentListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
@@ -32,7 +32,7 @@
 }
 
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
-    if (![self.data.user.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
+    if (self.avatarEnabled) {
         UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:self.data.user];
         UIViewController *controller = getCurrentDisplayController();
         [controller.navigationController pushViewController:ta animated:YES];

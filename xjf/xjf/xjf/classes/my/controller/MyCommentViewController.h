@@ -10,7 +10,11 @@
 #import "TopicModel.h"
 #import "UserInfoModel.h"
 
-
+/**
+ Comment VC
+    Include my comment & Others
+ - returns: instance
+ */
 @interface MyCommentViewController : MyBaseViewController
 - (instancetype)initWith:(UserInfoModel *)user;
 @end

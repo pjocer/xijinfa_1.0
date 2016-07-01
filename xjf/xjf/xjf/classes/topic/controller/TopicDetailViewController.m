@@ -17,6 +17,7 @@
 #import "StringUtil.h"
 #import "XJAccountManager.h"
 #import "NewComment_Topic.h"
+#import "UITableViewCell+AvatarEnabled.h"
 
 @interface TopicDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -264,6 +265,7 @@
     if (indexPath.section == 0) {
         CommentDetailHeader *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentDetailHeader" forIndexPath:indexPath];
         cell.model = _model.result;
+        cell.avatarEnabled = ![_model.result.user.id isEqualToString:[[XJAccountManager defaultManager] user_id]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
@@ -271,6 +273,7 @@
         if (_dataSource && _dataSource.count > 0) {
             TopicDataModel *data = [_dataSource objectAtIndex:indexPath.row];
             cell.data = data;
+            cell.avatarEnabled = ![data.user.id isEqualToString:_model.result.user.id];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

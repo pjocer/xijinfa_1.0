@@ -15,7 +15,7 @@
 #import "NewComment_Topic.h"
 #import "TaViewController.h"
 #import "UserInfoController.h"
-
+#import "UITableViewCell+AvatarEnabled.h"
 @interface TopicBaseCellTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *identity;
@@ -50,7 +50,7 @@
 }
 
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
-    if (![[[XJAccountManager defaultManager] user_id] isEqualToString:self.model.user_id]) {
+    if (self.avatarEnabled) {
         UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:self.model.user];
         UIViewController *controller = getCurrentDisplayController();
         [controller.navigationController pushViewController:ta animated:YES];
