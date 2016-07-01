@@ -7,31 +7,75 @@
 //
 
 #import "EmploymentInformationViewController.h"
+#import "HomePageConfigure.h"
 
-@interface EmploymentInformationViewController ()
-
+@interface EmploymentInformationViewController ()<UICollectionViewDataSource,
+                                                        UICollectionViewDelegate,
+                                                        UICollectionViewDelegateFlowLayout>
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, retain) UICollectionViewFlowLayout *layout;
+@property (nonatomic, strong) TablkListModel *tablkListModelByArticles;
 @end
 
 @implementation EmploymentInformationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initCollectionView];
+    [self RequestData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark - RequestData
+
+- (void)RequestData {
+        @weakify(self)
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Articles RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.tablkListModelByArticles = [[TablkListModel alloc] initWithData:responseData error:nil];
+            [self.collectionView reloadData];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark -- CollectionView
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)initCollectionView {
+    self.layout = [[UICollectionViewFlowLayout alloc] init];
+    _layout.itemSize = KHomePageCollectionByWikipediaSize;
+    _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    _layout.minimumLineSpacing = KMargin;
+    self.collectionView = [[UICollectionView alloc]
+                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH)
+                           collectionViewLayout:_layout];
+    _collectionView.backgroundColor = [UIColor clearColor];
+    _collectionView.showsVerticalScrollIndicator = NO;
+    
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    [self.view addSubview:_collectionView];
+    
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFEmploymentInformationCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:XJFEmploymentInformationCollectionViewCell_ID];
 }
-*/
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.tablkListModelByArticles.result.data.count > 0 ? self.tablkListModelByArticles.result.data.count : 0;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    XJFEmploymentInformationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XJFEmploymentInformationCollectionViewCell_ID forIndexPath:indexPath];
+    cell.model = self.tablkListModelByArticles.result.data[indexPath.row];
+    return cell;
+}
+
+#pragma mark CollectionView DidSelected
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+
 
 @end
