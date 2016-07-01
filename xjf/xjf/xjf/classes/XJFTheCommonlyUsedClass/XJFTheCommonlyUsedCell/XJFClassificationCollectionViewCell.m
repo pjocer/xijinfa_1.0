@@ -19,6 +19,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     ViewRadius(self, 5.0);
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rectangle"]];
 }
 
 - (void)setModel:(ProjectList *)model {
