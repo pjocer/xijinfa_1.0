@@ -15,7 +15,7 @@
 #import "XMShareView.h"
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
-static CGFloat selViewH = 3;
+static CGFloat selViewH = 2;
 
 
 @interface LessonPlayerViewController () <UIScrollViewDelegate, LessonPlayerVideoBottomViewDelegate,

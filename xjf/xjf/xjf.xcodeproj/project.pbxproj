@@ -86,7 +86,6 @@
 		5A6CF3CA1D1CF90C00676255 /* HomePageSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3C91D1CF90C00676255 /* HomePageSelectViewController.m */; };
 		5A6CF3CD1D1CF93600676255 /* HomePageWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3CC1D1CF93600676255 /* HomePageWikipediaViewController.m */; };
 		5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3CF1D1CF95000676255 /* HomePageSchoolViewController.m */; };
-		5A6CF3D31D1CF9AD00676255 /* HomePageEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3D21D1CF9AD00676255 /* HomePageEmployedViewController.m */; };
 		5A6CF3D91D1D376200676255 /* HomePageCollectionSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3D81D1D376200676255 /* HomePageCollectionSectionHeaderView.m */; };
 		5A6CF3DC1D1D506D00676255 /* HomePageBanderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3DB1D1D506D00676255 /* HomePageBanderCell.m */; };
 		5A6CF3DF1D1D552F00676255 /* HomePageScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3DE1D1D552F00676255 /* HomePageScrollCell.m */; };
@@ -106,6 +105,8 @@
 		5A6CF4991D2363BD00676255 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4961D2363BD00676255 /* BannerModel.m */; };
 		5A6CF49A1D2363BD00676255 /* TalkGridModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4981D2363BD00676255 /* TalkGridModel.m */; };
 		5A6CF49D1D2363DD00676255 /* SelectedScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */; };
+		5A6CF4E41D260F3E00676255 /* HomePageEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4E31D260F3E00676255 /* HomePageEmployedViewController.m */; };
+		5A6CF4E71D260F8800676255 /* EmploymentInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -432,8 +433,6 @@
 		5A6CF3CC1D1CF93600676255 /* HomePageWikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageWikipediaViewController.m; sourceTree = "<group>"; };
 		5A6CF3CE1D1CF95000676255 /* HomePageSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageSchoolViewController.h; sourceTree = "<group>"; };
 		5A6CF3CF1D1CF95000676255 /* HomePageSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageSchoolViewController.m; sourceTree = "<group>"; };
-		5A6CF3D11D1CF9AD00676255 /* HomePageEmployedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageEmployedViewController.h; sourceTree = "<group>"; };
-		5A6CF3D21D1CF9AD00676255 /* HomePageEmployedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageEmployedViewController.m; sourceTree = "<group>"; };
 		5A6CF3D71D1D376200676255 /* HomePageCollectionSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionSectionHeaderView.h; sourceTree = "<group>"; };
 		5A6CF3D81D1D376200676255 /* HomePageCollectionSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionSectionHeaderView.m; sourceTree = "<group>"; };
 		5A6CF3DA1D1D506D00676255 /* HomePageBanderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageBanderCell.h; sourceTree = "<group>"; };
@@ -466,6 +465,10 @@
 		5A6CF4981D2363BD00676255 /* TalkGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkGridModel.m; sourceTree = "<group>"; };
 		5A6CF49B1D2363DD00676255 /* SelectedScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedScrollContentView.h; sourceTree = "<group>"; };
 		5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedScrollContentView.m; sourceTree = "<group>"; };
+		5A6CF4E21D260F3E00676255 /* HomePageEmployedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageEmployedViewController.h; sourceTree = "<group>"; };
+		5A6CF4E31D260F3E00676255 /* HomePageEmployedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageEmployedViewController.m; sourceTree = "<group>"; };
+		5A6CF4E51D260F8800676255 /* EmploymentInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmploymentInformationViewController.h; sourceTree = "<group>"; };
+		5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmploymentInformationViewController.m; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = classes/utils/Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = classes/utils/PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
@@ -1081,8 +1084,7 @@
 				5A6CF3CC1D1CF93600676255 /* HomePageWikipediaViewController.m */,
 				5A6CF3CE1D1CF95000676255 /* HomePageSchoolViewController.h */,
 				5A6CF3CF1D1CF95000676255 /* HomePageSchoolViewController.m */,
-				5A6CF3D11D1CF9AD00676255 /* HomePageEmployedViewController.h */,
-				5A6CF3D21D1CF9AD00676255 /* HomePageEmployedViewController.m */,
+				5A6CF4E11D260F3E00676255 /* Employed */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1209,6 +1211,17 @@
 				5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */,
 			);
 			path = XJFTheCommonlyUsedView;
+			sourceTree = "<group>";
+		};
+		5A6CF4E11D260F3E00676255 /* Employed */ = {
+			isa = PBXGroup;
+			children = (
+				5A6CF4E21D260F3E00676255 /* HomePageEmployedViewController.h */,
+				5A6CF4E31D260F3E00676255 /* HomePageEmployedViewController.m */,
+				5A6CF4E51D260F8800676255 /* EmploymentInformationViewController.h */,
+				5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */,
+			);
+			path = Employed;
 			sourceTree = "<group>";
 		};
 		5AF7C2CD1CF945F6007CC71C /* Order */ = {
@@ -2359,6 +2372,7 @@
 				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
 				5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */,
+				5A6CF4E41D260F3E00676255 /* HomePageEmployedViewController.m in Sources */,
 				D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */,
 				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
@@ -2367,6 +2381,7 @@
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
 				5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */,
+				5A6CF4E71D260F8800676255 /* EmploymentInformationViewController.m in Sources */,
 				5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */,
 				AA5B96931D222BE20088A196 /* PlayerPageCommentsFooterView.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
@@ -2401,7 +2416,6 @@
 				D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */,
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
 				D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */,
-				5A6CF3D31D1CF9AD00676255 /* HomePageEmployedViewController.m in Sources */,
 				5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
 				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
