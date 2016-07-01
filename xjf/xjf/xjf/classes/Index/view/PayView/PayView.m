@@ -23,15 +23,6 @@
 +(void)showWithTarget:(id<PayViewDelegate>)target {
     PayView *view = [[[NSBundle mainBundle] loadNibNamed:@"PayView" owner:target options:nil] lastObject];
     view.delegate = target;
-    if ([target isKindOfClass:[UIViewController class]]) {
-        UIViewController *controller = (UIViewController *)target;
-        view.frame = CGRectMake(0, controller.view.bounds.size.height, controller.view.bounds.size.width, 282);
-        [controller.view addSubview:view];
-    }else {
-        UIViewController *controller = getCurrentDisplayController();
-        view.frame = CGRectMake(0, controller.view.bounds.size.height, controller.view.bounds.size.width, 282);
-        [controller.view addSubview:view];
-    }
     [view show];
 }
 - (void)show {
@@ -52,8 +43,10 @@
         self.background.alpha = 0;
         self.frame = CGRectMake(0, SCREENHEIGHT, SCREENWITH, 282);
     } completion:^(BOOL finished) {
+        [self.background removeFromSuperview];
         if (type != UnKnown) {
             [self.delegate payView:self DidSelectedBy:type];
+            [self removeFromSuperview];
         }
     }];
 }

@@ -12,12 +12,15 @@
 #import "XJMarket.h"
 #import "XJOrder.h"
 #import "PayView.h"
-@interface MyMoneyViewController () <OrderInfoDidChangedDelegate>
+#import "XJAccountManager.h"
+#import "ZToastManager.h"
+@interface MyMoneyViewController () <OrderInfoDidChangedDelegate,PayViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *first;
 @property (weak, nonatomic) IBOutlet UIView *second;
 @property (weak, nonatomic) IBOutlet UIView *fouth;
 @property (weak, nonatomic) IBOutlet UIView *third;
 @property (strong, nonatomic) NSMutableDictionary *params;
+@property (assign, nonatomic) PayStyle style;
 @end
 
 @implementation MyMoneyViewController
@@ -39,15 +42,33 @@
     }
 }
 - (IBAction)confirmRecharge:(UIButton *)sender {
-     [[XJMarket sharedMarket] createVipOrderWith:self.params target:self];
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        [PayView showWithTarget:self];
+    }else {
+        [[ZToastManager ShardInstance] showtoast:@"请先登录"];
+    }
 }
 - (void)orderInfoDidChanged:(XJOrder *)order {
-    NSLog(@"%@",order.order);
+    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
+        NSLog(@"支付成功");
+    } failed:^{
+        NSLog(@"支付失败");
+    }];
 }
 - (void)chooseLimit:(UITapGestureRecognizer *)tap {
     self.params = [NSMutableDictionary dictionaryWithDictionary:@{@"amount":objc_getAssociatedObject(tap.view, @"limit")}];
-    tap.view.layer.borderWidth = tap.view.layer.borderWidth != 1?1:0;
-    tap.view.layer.borderColor = tap.view.layer.borderWidth != 1?[[UIColor xjfStringToColor:@"#ff4c00"] CGColor]:nil;
+    if (tap.view.layer.borderWidth != 1) {
+        tap.view.layer.borderWidth = 1;
+        tap.view.layer.borderColor = [[UIColor xjfStringToColor:@"#ff4c00"] CGColor];
+    }else {
+        tap.view.layer.borderWidth = 0;
+        tap.view.layer.borderColor = [[UIColor clearColor] CGColor];
+    }
+    
+}
+-(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
+    self.style = type;
+    [[XJMarket sharedMarket] createVipOrderWith:self.params target:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
