@@ -11,7 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "SettingViewController.h"
 #import "MyTopicViewController.h"
-#import "MyCommentViewController.h"
+#import "CommentViewController.h"
 #import "XJAccountManager.h"
 #import "UserInfoViewController.h"
 #import "Fans_FocusViewController.h"
@@ -249,7 +249,7 @@
                 break;
             case 773:
             {
-                MyCommentViewController *controller = [[MyCommentViewController alloc] initWith:(UserInfoModel *)self.model.result];
+                CommentViewController *controller = [[CommentViewController alloc] initWith:(UserInfoModel *)self.model.result];
                 [self.navigationController pushViewController:controller animated:YES];
             }
                 break;

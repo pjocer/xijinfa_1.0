@@ -169,13 +169,7 @@
 		AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96041D1C0DF60088A196 /* FansCell.m */; };
 		AA5B96181D1C0DF60088A196 /* FansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B96051D1C0DF60088A196 /* FansCell.xib */; };
 		AA5B96191D1C0DF60088A196 /* FansFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96071D1C0DF60088A196 /* FansFocus.m */; };
-		AA5B961A1D1C0DF60088A196 /* TaBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96091D1C0DF60088A196 /* TaBaseCell.m */; };
-		AA5B961B1D1C0DF60088A196 /* TaBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B960A1D1C0DF60088A196 /* TaBaseCell.xib */; };
-		AA5B961C1D1C0DF60088A196 /* TaBaseCellFoot.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960C1D1C0DF60088A196 /* TaBaseCellFoot.m */; };
-		AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B960D1D1C0DF60088A196 /* TaBaseCellFoot.xib */; };
-		AA5B961E1D1C0DF60088A196 /* TaBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960F1D1C0DF60088A196 /* TaBaseViewController.m */; };
 		AA5B961F1D1C0DF60088A196 /* TaTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */; };
-		AA5B96201D1C0DF60088A196 /* TaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96131D1C0DF60088A196 /* TaViewController.m */; };
 		AA5B96211D1C0DF60088A196 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96151D1C0DF60088A196 /* UserInfoModel.m */; };
 		AA5B96921D222BE20088A196 /* PlayerPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96851D222BE20088A196 /* PlayerPageCommentsCell.m */; };
 		AA5B96931D222BE20088A196 /* PlayerPageCommentsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96871D222BE20088A196 /* PlayerPageCommentsFooterView.m */; };
@@ -217,7 +211,7 @@
 		CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57ACC1C9F825D00049AF0 /* Main.storyboard */; };
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
 		D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D11D0181E0000888D4 /* MyTopicViewController.m */; };
-		D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */; };
+		D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* CommentViewController.m */; };
 		D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */; };
 		D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */; };
 		D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4CF1D12798A006EADAD /* CitySelector.m */; };
@@ -592,27 +586,17 @@
 		AA5B95F31D1948790088A196 /* SearchSectionTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSectionTwo.xib; sourceTree = "<group>"; };
 		AA5B95F41D1948790088A196 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		AA5B95F51D1948790088A196 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		AA5B96011D1C0DF60088A196 /* Fans_FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fans_FocusViewController.h; sourceTree = "<group>"; };
-		AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fans_FocusViewController.m; sourceTree = "<group>"; };
-		AA5B96031D1C0DF60088A196 /* FansCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansCell.h; sourceTree = "<group>"; };
-		AA5B96041D1C0DF60088A196 /* FansCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansCell.m; sourceTree = "<group>"; };
-		AA5B96051D1C0DF60088A196 /* FansCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FansCell.xib; sourceTree = "<group>"; };
-		AA5B96061D1C0DF60088A196 /* FansFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansFocus.h; sourceTree = "<group>"; };
-		AA5B96071D1C0DF60088A196 /* FansFocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansFocus.m; sourceTree = "<group>"; };
-		AA5B96081D1C0DF60088A196 /* TaBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCell.h; sourceTree = "<group>"; };
-		AA5B96091D1C0DF60088A196 /* TaBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCell.m; sourceTree = "<group>"; };
-		AA5B960A1D1C0DF60088A196 /* TaBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCell.xib; sourceTree = "<group>"; };
-		AA5B960B1D1C0DF60088A196 /* TaBaseCellFoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseCellFoot.h; sourceTree = "<group>"; };
-		AA5B960C1D1C0DF60088A196 /* TaBaseCellFoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseCellFoot.m; sourceTree = "<group>"; };
-		AA5B960D1D1C0DF60088A196 /* TaBaseCellFoot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaBaseCellFoot.xib; sourceTree = "<group>"; };
-		AA5B960E1D1C0DF60088A196 /* TaBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaBaseViewController.h; sourceTree = "<group>"; };
-		AA5B960F1D1C0DF60088A196 /* TaBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaBaseViewController.m; sourceTree = "<group>"; };
-		AA5B96101D1C0DF60088A196 /* TaTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaTopicViewController.h; sourceTree = "<group>"; };
-		AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaTopicViewController.m; sourceTree = "<group>"; };
-		AA5B96121D1C0DF60088A196 /* TaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaViewController.h; sourceTree = "<group>"; };
-		AA5B96131D1C0DF60088A196 /* TaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaViewController.m; sourceTree = "<group>"; };
-		AA5B96141D1C0DF60088A196 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
-		AA5B96151D1C0DF60088A196 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
+		AA5B96011D1C0DF60088A196 /* Fans_FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fans_FocusViewController.h; path = ../../Ta/Fans_FocusViewController.h; sourceTree = "<group>"; };
+		AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fans_FocusViewController.m; path = ../../Ta/Fans_FocusViewController.m; sourceTree = "<group>"; };
+		AA5B96031D1C0DF60088A196 /* FansCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FansCell.h; path = ../../Ta/FansCell.h; sourceTree = "<group>"; };
+		AA5B96041D1C0DF60088A196 /* FansCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FansCell.m; path = ../../Ta/FansCell.m; sourceTree = "<group>"; };
+		AA5B96051D1C0DF60088A196 /* FansCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FansCell.xib; path = ../../Ta/FansCell.xib; sourceTree = "<group>"; };
+		AA5B96061D1C0DF60088A196 /* FansFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FansFocus.h; path = ../Ta/FansFocus.h; sourceTree = "<group>"; };
+		AA5B96071D1C0DF60088A196 /* FansFocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FansFocus.m; path = ../Ta/FansFocus.m; sourceTree = "<group>"; };
+		AA5B96101D1C0DF60088A196 /* TaTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaTopicViewController.h; path = ../../Ta/TaTopicViewController.h; sourceTree = "<group>"; };
+		AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaTopicViewController.m; path = ../../Ta/TaTopicViewController.m; sourceTree = "<group>"; };
+		AA5B96141D1C0DF60088A196 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoModel.h; path = ../Ta/UserInfoModel.h; sourceTree = "<group>"; };
+		AA5B96151D1C0DF60088A196 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoModel.m; path = ../Ta/UserInfoModel.m; sourceTree = "<group>"; };
 		AA5B96841D222BE20088A196 /* PlayerPageCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerPageCommentsCell.h; sourceTree = "<group>"; };
 		AA5B96851D222BE20088A196 /* PlayerPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerPageCommentsCell.m; sourceTree = "<group>"; };
 		AA5B96861D222BE20088A196 /* PlayerPageCommentsFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerPageCommentsFooterView.h; sourceTree = "<group>"; };
@@ -694,8 +678,8 @@
 		CDF57AD41C9F825D00049AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D01F77D01D0181E0000888D4 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
 		D01F77D11D0181E0000888D4 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
-		D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
-		D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
+		D01F77D61D01A1EC000888D4 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		D01F77D71D01A1EC000888D4 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		D02FB4B31D112458006EADAD /* UserInfoInterestedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoInterestedCell.h; sourceTree = "<group>"; };
 		D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoInterestedCell.m; sourceTree = "<group>"; };
 		D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoInterestedCell.xib; sourceTree = "<group>"; };
@@ -1494,59 +1478,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		AA5B96001D1C08800088A196 /* Ta */ = {
-			isa = PBXGroup;
-			children = (
-				AA5B96241D1C0E650088A196 /* Controller */,
-				AA5B96231D1C0E5A0088A196 /* View */,
-				AA5B96221D1C0E270088A196 /* Model */,
-			);
-			name = Ta;
-			path = classes/Ta;
-			sourceTree = "<group>";
-		};
-		AA5B96221D1C0E270088A196 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AA5B96061D1C0DF60088A196 /* FansFocus.h */,
-				AA5B96071D1C0DF60088A196 /* FansFocus.m */,
-				AA5B96141D1C0DF60088A196 /* UserInfoModel.h */,
-				AA5B96151D1C0DF60088A196 /* UserInfoModel.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		AA5B96231D1C0E5A0088A196 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AA5B96031D1C0DF60088A196 /* FansCell.h */,
-				AA5B96041D1C0DF60088A196 /* FansCell.m */,
-				AA5B96051D1C0DF60088A196 /* FansCell.xib */,
-				AA5B96081D1C0DF60088A196 /* TaBaseCell.h */,
-				AA5B96091D1C0DF60088A196 /* TaBaseCell.m */,
-				AA5B960A1D1C0DF60088A196 /* TaBaseCell.xib */,
-				AA5B960B1D1C0DF60088A196 /* TaBaseCellFoot.h */,
-				AA5B960C1D1C0DF60088A196 /* TaBaseCellFoot.m */,
-				AA5B960D1D1C0DF60088A196 /* TaBaseCellFoot.xib */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		AA5B96241D1C0E650088A196 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AA5B96011D1C0DF60088A196 /* Fans_FocusViewController.h */,
-				AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */,
-				AA5B960E1D1C0DF60088A196 /* TaBaseViewController.h */,
-				AA5B960F1D1C0DF60088A196 /* TaBaseViewController.m */,
-				AA5B96101D1C0DF60088A196 /* TaTopicViewController.h */,
-				AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */,
-				AA5B96121D1C0DF60088A196 /* TaViewController.h */,
-				AA5B96131D1C0DF60088A196 /* TaViewController.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
 		AA5B96831D222BE20088A196 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1694,6 +1625,10 @@
 				D055F24B1D24ECB300F80AAD /* UserInfoController.h */,
 				D055F24C1D24ECB300F80AAD /* UserInfoController.m */,
 				D055F24D1D24ECB300F80AAD /* UserInfoController.xib */,
+				AA5B96011D1C0DF60088A196 /* Fans_FocusViewController.h */,
+				AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */,
+				AA5B96101D1C0DF60088A196 /* TaTopicViewController.h */,
+				AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */,
 				CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */,
 				CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */,
 				5AF7C2FD1CFFFF59007CC71C /* MyTeacherViewController.h */,
@@ -1707,8 +1642,8 @@
 				D02FB4CF1D12798A006EADAD /* CitySelector.m */,
 				D01F77D01D0181E0000888D4 /* MyTopicViewController.h */,
 				D01F77D11D0181E0000888D4 /* MyTopicViewController.m */,
-				D01F77D61D01A1EC000888D4 /* MyCommentViewController.h */,
-				D01F77D71D01A1EC000888D4 /* MyCommentViewController.m */,
+				D01F77D61D01A1EC000888D4 /* CommentViewController.h */,
+				D01F77D71D01A1EC000888D4 /* CommentViewController.m */,
 				5A565A5D1D10F1A800008DA9 /* Feedback */,
 				5A565A171D05B10700008DA9 /* MyPlayerHistory */,
 				5A565A0D1D05A8A100008DA9 /* MyLessons */,
@@ -1746,6 +1681,9 @@
 				D04D0C091D07EA5D0090D2CD /* CommentCell.h */,
 				D04D0C0A1D07EA5D0090D2CD /* CommentCell.m */,
 				D04D0C0B1D07EA5D0090D2CD /* CommentCell.xib */,
+				AA5B96031D1C0DF60088A196 /* FansCell.h */,
+				AA5B96041D1C0DF60088A196 /* FansCell.m */,
+				AA5B96051D1C0DF60088A196 /* FansCell.xib */,
 				5A20716A1D02ADBE00462D65 /* MyLessonsTableFooterView.h */,
 				5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */,
 			);
@@ -1958,7 +1896,6 @@
 				CD1CCC061CB35A2D002FC0C9 /* Topic */,
 				CD1CCC0C1CB35A2D002FC0C9 /* Vip */,
 				AA5B95E91D1948790088A196 /* Search */,
-				AA5B96001D1C08800088A196 /* Ta */,
 				CD1CCC3A1CB37B89002FC0C9 /* Utils */,
 				CDF57AC31C9F825D00049AF0 /* Supporting Files */,
 				CDF57AC61C9F825D00049AF0 /* AppDelegate.h */,
@@ -1987,6 +1924,10 @@
 		D02FB4D61D127A0F006EADAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA5B96061D1C0DF60088A196 /* FansFocus.h */,
+				AA5B96071D1C0DF60088A196 /* FansFocus.m */,
+				AA5B96141D1C0DF60088A196 /* UserInfoModel.h */,
+				AA5B96151D1C0DF60088A196 /* UserInfoModel.m */,
 				D02FB4D41D127A05006EADAD /* zh_CN.json */,
 			);
 			name = Model;
@@ -2168,7 +2109,6 @@
 				D055F2541D2513F000F80AAD /* UserInfoListCell.xib in Resources */,
 				5A6CF4901D23632D00676255 /* XJFSchoolCollectionViewCell.xib in Resources */,
 				5A6CF4941D23632D00676255 /* XJFWikipediaCollectionViewCell.xib in Resources */,
-				AA5B961D1D1C0DF60088A196 /* TaBaseCellFoot.xib in Resources */,
 				D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				D055F24F1D24ECB300F80AAD /* UserInfoController.xib in Resources */,
@@ -2186,7 +2126,6 @@
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
 				D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */,
 				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
-				AA5B961B1D1C0DF60088A196 /* TaBaseCell.xib in Resources */,
 				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
 				68AD3FF9DA7BD76D1724229B /* icon_del.png in Resources */,
 				68AD307AD4257CC79BFD5D57 /* icon_del_h.png in Resources */,
@@ -2279,7 +2218,6 @@
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
 				5A6CF49A1D2363BD00676255 /* TalkGridModel.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
-				AA5B96201D1C0DF60088A196 /* TaViewController.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
@@ -2335,7 +2273,6 @@
 				5A6CF3A11D1CED6500676255 /* XJFBaseTableViewCell.m in Sources */,
 				644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */,
 				D06D140F1CFFE0960018F41B /* NewComment_Topic.m in Sources */,
-				AA5B961E1D1C0DF60088A196 /* TaBaseViewController.m in Sources */,
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A6CF3B51D1CEE8000676255 /* HomePageBaseViewController.m in Sources */,
 				5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */,
@@ -2347,7 +2284,6 @@
 				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
 				5A6CF4991D2363BD00676255 /* BannerModel.m in Sources */,
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
-				AA5B961C1D1C0DF60088A196 /* TaBaseCellFoot.m in Sources */,
 				5A6CF3981D1CED2700676255 /* XJFBaseViewController.m in Sources */,
 				D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */,
 				AA5B95FA1D1948790088A196 /* SearchSectionTwo.m in Sources */,
@@ -2391,7 +2327,7 @@
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
 				5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */,
 				5A6CF4E41D260F3E00676255 /* HomePageEmployedViewController.m in Sources */,
-				D01F77D81D01A1EC000888D4 /* MyCommentViewController.m in Sources */,
+				D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */,
 				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
@@ -2421,7 +2357,6 @@
 				5A565A311D069E1800008DA9 /* EmployedLessonListViewController.m in Sources */,
 				5A565A251D066C4400008DA9 /* EmployedMainTableViewCell.m in Sources */,
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
-				AA5B961A1D1C0DF60088A196 /* TaBaseCell.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				AA5B96981D222BE20088A196 /* PlayerPageRecommendedHeaderView.m in Sources */,
 				5A3B64BD1D264E00007EC1B5 /* GuideViewController.m in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "MyCommentViewController.h"
+#import "CommentViewController.h"
 #import "XJAccountManager.h"
 #import "XjfRequest.h"
 #import "ZToastManager.h"
@@ -15,14 +15,14 @@
 #import "TopicDetailViewController.h"
 #import "TopicDetailModel.h"
 
-@interface MyCommentViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CommentViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) TopicModel *model;
 @property (nonatomic, strong) UserInfoModel *user;
 @end
 
-@implementation MyCommentViewController
+@implementation CommentViewController
 - (instancetype)initWith:(UserInfoModel *)user {
     if (self == [super init]) {
 

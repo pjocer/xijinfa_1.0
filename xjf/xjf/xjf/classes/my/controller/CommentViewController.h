@@ -15,6 +15,6 @@
     Include my comment & Others
  - returns: instance
  */
-@interface MyCommentViewController : MyBaseViewController
+@interface CommentViewController : MyBaseViewController
 - (instancetype)initWith:(UserInfoModel *)user;
 @end

@@ -13,7 +13,6 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 #import "NewComment_Topic.h"
-#import "TaViewController.h"
 #import "UserInfoController.h"
 #import "UITableViewCell+AvatarEnabled.h"
 @interface TopicBaseCellTableViewCell ()

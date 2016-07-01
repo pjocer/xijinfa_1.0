@@ -6,8 +6,7 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "TaBaseViewController.h"
-
-@interface TaTopicViewController : TaBaseViewController
+#import "BaseViewController.h"
+@interface TaTopicViewController : BaseViewController
 - (instancetype)initWithID:(NSString *)userId nickname:(NSString *)nickname;
 @end
