@@ -8,26 +8,34 @@
 
 #import "HomePageEmployedViewController.h"
 #import "HomePageConfigure.h"
+#import "EmployedClassificationCollectionViewCell.h"
+#import "EmploymentInformationViewController.h"
+#import "RegistrationCenterViewController.h"
+#import "GuideViewController.h"
+#import "TestTimeViewController.h"
 
 @interface HomePageEmployedViewController ()<UICollectionViewDataSource,
                                                     UICollectionViewDelegate,
                                                     UICollectionViewDelegateFlowLayout,
-                                                    HomePageScrollCellDelegate>
+                                                    EmployedClassificationCellDelegate>
 
 typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
-    HomePageBannerSection = 0,
-    HomePageClassificationSection,
-    HomePageWikipediaSection
+    BannerSection = 0,
+    ClassificationSection,
+    SecuritiesSection,
+    FundSection,
+    FuturesSection
 };
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
 @property (nonatomic, retain) NSMutableArray *dataArrayThumbnailByBanner;
 @property (nonatomic, strong) BannerModel *bannermodel;
-@property (nonatomic, strong) ProjectListByModel *projectListByModel;
-@property (nonatomic, strong) TablkListModel *tablkListModelByArticles;
 @end
 
 @implementation HomePageEmployedViewController
+#define KEmployedClassificationCellSize CGSizeMake(SCREENWITH - KMargin * 2, 66)
+static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,35 +61,35 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
         return nil;
     }];
     
-    RACSignal *articlesSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        @weakify(self)
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Articles RequestMethod:GET];
-        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            @strongify(self)
-            self.tablkListModelByArticles = [[TablkListModel alloc] initWithData:responseData error:nil];
-            [subscriber sendNext:self.tablkListModelByArticles];
-        }failedBlock:^(NSError *_Nullable error) {
-        }];
-        return nil;
-    }];
-
-    RACSignal *ProjectListDat = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        @weakify(self)
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Employed RequestMethod:GET];
-        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            @strongify(self)
-            self.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
-            [subscriber sendNext:self.projectListByModel];
-        }failedBlock:^(NSError *_Nullable error) {
-        }];
-        return nil;
-    }];
+//    RACSignal *articlesSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+//        @weakify(self)
+//        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Articles RequestMethod:GET];
+//        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+//            @strongify(self)
+//            self.tablkListModelByArticles = [[TablkListModel alloc] initWithData:responseData error:nil];
+//            [subscriber sendNext:self.tablkListModelByArticles];
+//        }failedBlock:^(NSError *_Nullable error) {
+//        }];
+//        return nil;
+//    }];
+//
+//    RACSignal *ProjectListDat = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+//        @weakify(self)
+//        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Employed RequestMethod:GET];
+//        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+//            @strongify(self)
+//            self.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
+//            [subscriber sendNext:self.projectListByModel];
+//        }failedBlock:^(NSError *_Nullable error) {
+//        }];
+//        return nil;
+//    }];
     
-    [self rac_liftSelector:@selector(updateUI:data2:data3:) withSignalsFromArray:@[articlesSignal, ProjectListDat,requestBannerData]];
+    [self rac_liftSelector:@selector(updateUI:) withSignalsFromArray:@[requestBannerData]];
 }
 
-- (void)updateUI:(TablkListModel *)data1 data2:(ProjectListByModel *)data2 data3:(BannerModel *)data3{
-    if (data3.result != nil) {
+- (void)updateUI:(BannerModel *)bannerModel{
+    if (bannerModel.result != nil) {
         self.dataArrayThumbnailByBanner = [NSMutableArray array];
         for (BannerResultModel *model in self.bannermodel.result.data) {   
             if (model.cover && model.cover.count > 0) {
@@ -99,12 +107,12 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
 
 - (void)initCollectionView {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
-    _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
     _layout.minimumLineSpacing = 0.0;
     _layout.minimumInteritemSpacing = 0.0;
     
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH)
+                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH - KMargin)
                            collectionViewLayout:_layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = NO;
@@ -113,10 +121,10 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     _collectionView.dataSource = self;
     [self.view addSubview:_collectionView];
     
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerText_Cell];
-    [_collectionView registerNib:[UINib nibWithNibName:@"XJFEmploymentInformationCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:XJFEmploymentInformationCollectionViewCell_ID];
+
     [_collectionView registerClass:[HomePageBanderCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerBander_CellID];
-    [_collectionView registerClass:[HomePageScrollCell class] forCellWithReuseIdentifier:HomePageSelectViewControllerHomePageScrollCell_CellID];
+    [_collectionView registerNib:[UINib nibWithNibName:@"EmployedClassificationCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:EmployedClassificationCell_ID];
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFSchoolCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionBySchool_CellID];
     
     [_collectionView registerClass:[HomePageCollectionSectionHeaderView class]
         forSupplementaryViewOfKind:
@@ -126,25 +134,20 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
 #pragma mark CollectionView DataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+    return 5;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (section == HomePageBannerSection) {
+    if (section == BannerSection || section == ClassificationSection) {
         return 1;
-    }else if (section == HomePageClassificationSection) {
-        return 1;
-    }else if (section == HomePageWikipediaSection) {
-        return self.tablkListModelByArticles.result.data.count;
     }
-    return 0;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == HomePageBannerSection) {
-        HomePageBanderCell *cell = [collectionView
-                                    dequeueReusableCellWithReuseIdentifier:
+    if (indexPath.section == BannerSection) {
+        HomePageBanderCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:
                                     HomePageSelectViewControllerBander_CellID
                                     forIndexPath:indexPath];
         cell.carouselView.imageArray = self.dataArrayThumbnailByBanner;
@@ -157,27 +160,25 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
             [self.navigationController pushViewController:bannerWebViewViewController animated:YES];
         };
         return cell;
-    }else if (indexPath.section == HomePageClassificationSection){
-        HomePageScrollCell *cell = [collectionView
+    }else if (indexPath.section == ClassificationSection){
+        EmployedClassificationCollectionViewCell *cell = [collectionView
                                     dequeueReusableCellWithReuseIdentifier:
-                                    HomePageSelectViewControllerHomePageScrollCell_CellID
+                                    EmployedClassificationCell_ID
                                     forIndexPath:indexPath];
         cell.delegate = self;
-        cell.ClassificationType = HomePageEmployedassification;
-        cell.projectListByModel = self.projectListByModel;
         return cell;
-    }else if (indexPath.section == HomePageWikipediaSection){
-        XJFEmploymentInformationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XJFEmploymentInformationCollectionViewCell_ID forIndexPath:indexPath];
-        cell.model = self.tablkListModelByArticles.result.data[indexPath.row];
+    }else {
+        XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
+        if (indexPath.section == SecuritiesSection) {
+            
+        }else if (indexPath.section == FundSection){
+            
+        }else if (indexPath.section == FuturesSection){
+            
+        }
         return cell;
     }
-    
-    UICollectionViewCell *cell = [collectionView
-                                  dequeueReusableCellWithReuseIdentifier:
-                                  HomePageSelectViewControllerText_Cell
-                                  forIndexPath:indexPath];
-    
-    return cell;
+    return nil;
 }
 
 
@@ -187,8 +188,8 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     HomePageCollectionSectionHeaderView *sectionHeaderView =
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-    sectionHeaderView.sectionTitle.text = @[@"",@"课程分类",@"从业资讯"][indexPath.section];
-    sectionHeaderView.sectionMore.text = @"更多";
+    sectionHeaderView.sectionTitle.text = @[@"",@"",@"证卷从业",@"基金从业",@"期货从业"][indexPath.section];
+    sectionHeaderView.sectionMore.text = @"";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
     [sectionHeaderView addGestureRecognizer:tap];
     return sectionHeaderView;
@@ -197,14 +198,20 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
     
-    if (section == HomePageBannerSection) {
+//    if (section == BannerSection || section == ClassificationSection) {
+//        return CGSizeZero;
+//    }else if (section == SecuritiesSection && self.projectListByModel.result.data.count > 0){
+//        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+//    }else if (section == FundSection && self.tablkListModelByArticles.result.data.count > 0){
+//        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+//    }else if (section == FuturesSection && self.tablkListModelByArticles.result.data.count > 0){
+//        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+//    }
+//    return CGSizeZero;
+    if (section == BannerSection || section == ClassificationSection) {
         return CGSizeZero;
-    }else if (section == HomePageClassificationSection && self.projectListByModel.result.data.count > 0){
-        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
-    }else if (section == HomePageWikipediaSection && self.tablkListModelByArticles.result.data.count > 0){
-        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
     }
-    return CGSizeZero;
+    return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
 }
 
 #pragma mark FlowLayoutDelegate
@@ -212,17 +219,15 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == HomePageBannerSection) {
+    if (indexPath.section == BannerSection) {
+        _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
         return KHomePageCollectionByBannerSize;
-    }else if (indexPath.section == HomePageClassificationSection){
-        _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        return KHomePageCollectionByClassificationAndTeacher;
-    }else if (indexPath.section == HomePageWikipediaSection){
-        _layout.minimumLineSpacing = KMargin;
-        return KHomePageCollectionByWikipediaSize;
+    }else if (indexPath.section == ClassificationSection){
+        _layout.sectionInset = UIEdgeInsetsMake(KMargin, KMargin, 0, KMargin);
+        return KEmployedClassificationCellSize;
     }
-    
-    return CGSizeZero;
+    _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
+    return KHomePageCollectionByLessons;
 }
 
 #pragma mark - sectionHeaderViewTapPUSHMorePage
@@ -230,35 +235,16 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
 {
     HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
-    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"课程分类"]) {
+    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"证卷从业"]) {
 
-    }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"从业资讯"]){
+    }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"基金从业"]){
 
+    }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"期货从业"]){
+        
     }
 }
 
 #pragma mark - delegate
-
-#pragma mark homePageScrollCell didSelectItemAtIndexPath
-- (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
-    ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
-    
-    for (ProjectList *model in tempModel.children) {
-        if ([model.title isEqualToString:@"基础知识"]) {
-            employedLessonListViewController.employedBasisID = model.id;
-        }
-        else if ([model.title isEqualToString:@"法律法规"]) {
-            employedLessonListViewController.employedLawsID = model.id;
-        }
-        else if ([model.title isEqualToString:@"全科"]) {
-            employedLessonListViewController.employedGeneralID = model.id;
-        }
-    }
-    employedLessonListViewController.employedLessonList = tempModel.title;
-    [self.navigationController pushViewController:employedLessonListViewController animated:YES];
-}
 
 #pragma mark CollectionView DidSelected
 
@@ -266,5 +252,34 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 }
 
+#pragma mark employedClassificationCollectionViewCell didSelectButton
+
+- (void)employedClassificationCollectionViewCell:(EmployedClassificationCollectionViewCell *)Cell didSelectButton:(UIButton *)button
+{
+    switch (button.tag) {
+        case DeiveFromButton: {
+            RegistrationCenterViewController *registrationCenterViewController = [RegistrationCenterViewController new];
+            [self.navigationController pushViewController:registrationCenterViewController animated:YES];
+        }
+            break;
+        case DeiveFileButton: {
+            EmploymentInformationViewController *employmentInformationViewController = [EmploymentInformationViewController new];
+            [self.navigationController pushViewController:employmentInformationViewController animated:YES];
+        }
+            break;
+        case BookButton: {
+            GuideViewController *guideViewController = [GuideViewController new];
+            [self.navigationController pushViewController:guideViewController animated:YES];
+        }
+            break;
+        case TodayButton: {
+            TestTimeViewController *testTimeViewController = [TestTimeViewController new];
+            [self.navigationController pushViewController:testTimeViewController animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
 
 @end

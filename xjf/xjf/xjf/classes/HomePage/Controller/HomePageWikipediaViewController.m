@@ -108,7 +108,7 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     _layout.minimumInteritemSpacing = 0.0;
     
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH)
+                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH - KMargin)
                            collectionViewLayout:_layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = NO;

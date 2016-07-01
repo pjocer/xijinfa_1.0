@@ -19,6 +19,17 @@
 
 @implementation EmploymentInformationViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.title = @"从业资讯";
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCollectionView];
@@ -44,10 +55,10 @@
 - (void)initCollectionView {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.itemSize = KHomePageCollectionByWikipediaSize;
-    _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    _layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     _layout.minimumLineSpacing = KMargin;
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH)
+                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - KMargin - KMargin)
                            collectionViewLayout:_layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = NO;
