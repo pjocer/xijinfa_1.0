@@ -46,6 +46,7 @@
 		5A3B64BA1D264DB4007EC1B5 /* RegistrationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64B91D264DB4007EC1B5 /* RegistrationCenterViewController.m */; };
 		5A3B64BD1D264E00007EC1B5 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */; };
 		5A3B64C01D264E1F007EC1B5 /* TestTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */; };
+		5A3B64C31D2664AC007EC1B5 /* SelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64C21D2664AC007EC1B5 /* SelectedView.m */; };
 		5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C531CE5E001000CF748 /* VideolistViewController.m */; };
 		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
@@ -358,6 +359,8 @@
 		5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		5A3B64BE1D264E1F007EC1B5 /* TestTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTimeViewController.h; sourceTree = "<group>"; };
 		5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTimeViewController.m; sourceTree = "<group>"; };
+		5A3B64C11D2664AC007EC1B5 /* SelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedView.h; sourceTree = "<group>"; };
+		5A3B64C21D2664AC007EC1B5 /* SelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedView.m; sourceTree = "<group>"; };
 		5A441C521CE5E000000CF748 /* VideolistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideolistViewController.h; sourceTree = "<group>"; };
 		5A441C531CE5E001000CF748 /* VideolistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideolistViewController.m; sourceTree = "<group>"; };
 		5A441C551CE5F1F3000CF748 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
@@ -1106,6 +1109,8 @@
 				5A6CF4ED1D2639AE00676255 /* EmployedClassificationCollectionViewCell.h */,
 				5A6CF4EE1D2639AE00676255 /* EmployedClassificationCollectionViewCell.m */,
 				5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */,
+				5A3B64C11D2664AC007EC1B5 /* SelectedView.h */,
+				5A3B64C21D2664AC007EC1B5 /* SelectedView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2410,6 +2415,7 @@
 				5A105EB91CF004870079BEFE /* LessonDetailNoPayHeaderView.m in Sources */,
 				D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */,
 				5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */,
+				5A3B64C31D2664AC007EC1B5 /* SelectedView.m in Sources */,
 				AA5B96161D1C0DF60088A196 /* Fans_FocusViewController.m in Sources */,
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
 				5A565A311D069E1800008DA9 /* EmployedLessonListViewController.m in Sources */,

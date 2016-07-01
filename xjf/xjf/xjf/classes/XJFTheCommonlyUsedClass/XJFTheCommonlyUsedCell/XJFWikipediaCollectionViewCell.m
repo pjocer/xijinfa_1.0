@@ -30,7 +30,7 @@
         [self.videoImg sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
     }
     self.title.text = model.title;
-    self.playCount.text = [NSString stringWithFormat:@"%@ 人看过", model.view];
+    self.playCount.text = [NSString stringWithFormat:@"%@ 人看过", model.view_count];
 }
 
 

@@ -114,9 +114,9 @@
         tempStr = taxonomy_categories.title;
     }
     if (tempStr != nil || tempStr.length > 0) {
-        self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次  类型: %@", model.view, tempStr];
+        self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次  类型: %@", model.view_count, tempStr];
     } else {
-        self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次 ", model.view];
+        self.titleDetail.text = [NSString stringWithFormat:@"播放: %@次 ", model.view_count];
     }
 
 }

@@ -88,7 +88,7 @@
         [self.titleImage sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
     }
     self.titleLable.text = model.title;
-    self.detailLable.text = [NSString stringWithFormat:@"%@ 人看过", model.view];
+    self.detailLable.text = [NSString stringWithFormat:@"%@ 人看过", model.view_count];
 }
 
 

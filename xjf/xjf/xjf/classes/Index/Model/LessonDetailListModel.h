@@ -99,7 +99,7 @@
 @property (nonatomic, strong) NSString *video_duration;
 ///视频播放次数
 @property (nonatomic, strong) NSString *video_view;
-@property (nonatomic, strong) NSString *view;
+@property (nonatomic, strong) NSString *view_count;
 @property (nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video_player;
 
 @end

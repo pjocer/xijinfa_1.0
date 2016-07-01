@@ -125,7 +125,7 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     _layout.minimumInteritemSpacing = 0.0;
     
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH - KMargin)
+                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH)
                            collectionViewLayout:_layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = NO;
@@ -250,7 +250,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageSchoolViewControllerTeacher){
-        _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);
         return KHomePageCollectionByClassificationAndTeacher;
     }
     

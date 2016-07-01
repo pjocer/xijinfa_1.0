@@ -97,7 +97,7 @@
 @property (nonatomic, assign) NSInteger video_duration;
 ///视频播放次数
 @property (nonatomic, strong) NSString *video_view;
-@property (nonatomic, strong) NSString *view;
+@property (nonatomic, strong) NSString *view_count;
 @property (nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video_player;
 @property (nonatomic, strong) NSArray <taxonomy_gurus> *taxonomy_gurus;
 @property (nonatomic, assign) BOOL isSelected;

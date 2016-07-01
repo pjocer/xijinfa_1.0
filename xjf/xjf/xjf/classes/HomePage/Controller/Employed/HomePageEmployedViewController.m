@@ -112,7 +112,7 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
     _layout.minimumInteritemSpacing = 0.0;
     
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH - KMargin)
+                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - 38 - kNavigationBarH - kStatusBarH)
                            collectionViewLayout:_layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = NO;
@@ -225,6 +225,10 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     }else if (indexPath.section == ClassificationSection){
         _layout.sectionInset = UIEdgeInsetsMake(KMargin, KMargin, 0, KMargin);
         return KEmployedClassificationCellSize;
+    }
+    
+    if (indexPath.section == FuturesSection) {
+        _layout.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10);
     }
     _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
     return KHomePageCollectionByLessons;
