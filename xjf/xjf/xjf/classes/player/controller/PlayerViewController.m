@@ -298,16 +298,20 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
-    
-    
-    
-//    TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
-//    self.playUrl = gridVideomodel.url;
-//    TalkGridVideo *gridVideomodelLast = self.talkGridModel.video_player.lastObject;
-//    _playerView.resolutionDic = @{@"xxx":self.playUrl,@"aaa":gridVideomodelLast.url};
 
+    [self setPlayerViewForResolutionDic:self.talkGridModel];
+    
+    _playerView.placeholderImageName = @"";
+    _playerView.videoURL = [NSURL URLWithString:self.playUrl];
+
+    [_playerView autoPlayTheVideo];
+}
+
+///setPlayerViewForResolutionDic
+- (void)setPlayerViewForResolutionDic:(TalkGridModel *)model
+{
     NSDictionary *dic = [NSMutableDictionary dictionary];
-    for (TalkGridVideo *video in self.talkGridModel.video_player) {
+    for (TalkGridVideo *video in model.video_player) {
         if ([video.resolution isEqualToString:@"auto"]) {
             self.playUrl = video.url;
         } else if ([video.resolution isEqualToString:@"nhd"]){
@@ -319,21 +323,16 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
         }
     }
     
-    
+    _playerView.resolutionDic = nil;
     _playerView.resolutionDic = dic;
-    _playerView.placeholderImageName = @"";
-    _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-   
     
-    [_playerView autoPlayTheVideo];
-    
-    if (self.talkGridModel.cover && self.talkGridModel.cover.count > 0) {
-        TalkGridCover *tempCover = self.talkGridModel.cover.firstObject;
+    if (model.cover && model.cover.count > 0) {
+        TalkGridCover *tempCover = model.cover.firstObject;
         _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
                                                                [NSURL URLWithString:tempCover.url]]];
     }
-  
 }
+
 #pragma mark CollectionView
 
 - (void)initCollectionView {
@@ -591,19 +590,12 @@ referenceSizeForFooterInSection:(NSInteger)section {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         self.talkGridModel = self.talkGridListModel.result.data[indexPath.row];
-        [self                                                                             requestCommentsData:
-                [NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
+        [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.talkGridModel.id_] method:GET];
         [self requestLessonListData:[NSString stringWithFormat:@"%@/%@", talkGrid, self.talkGridModel.id_] method:GET];
         [_playerView pause];
         [_playerView resetToPlayNewURL];
-        TalkGridVideo *gridVideomodel = self.talkGridModel.video_player.firstObject;
-        self.playUrl = gridVideomodel.url;
+        [self setPlayerViewForResolutionDic:self.talkGridModel];
         _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-        if (self.talkGridModel.cover && self.talkGridModel.cover.count > 0) {
-            TalkGridCover *tempCover = self.talkGridModel.cover.firstObject;
-            _playerView.xjfloading_image = [UIImage imageWithData:
-                                            [NSData dataWithContentsOfURL:[NSURL URLWithString:tempCover.url]]];
-        }
         [_playerView play];
 
         [self sendPlayerHistoryToServerData:history method:POST];

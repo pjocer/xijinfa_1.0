@@ -262,14 +262,36 @@ static CGFloat selViewH = 3;
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
-
+    _playerView.placeholderImageName = @"";
+    [self setPlayerViewForResolutionDic:_playTalkGridModel];
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-    if (self.lessonDetailListModel.result.cover && self.lessonDetailListModel.result.cover.count > 0) {
-        LessonDetailListCover *tempCover =  self.lessonDetailListModel.result.cover.firstObject;
-        _playerView.xjfloading_image = [UIImage imageWithData:
-                                        [NSData dataWithContentsOfURL:[NSURL URLWithString:tempCover.url]]];
+}
+
+
+///setPlayerViewForResolutionDic
+- (void)setPlayerViewForResolutionDic:(TalkGridModel *)model
+{
+    NSDictionary *dic = [NSMutableDictionary dictionary];
+    for (TalkGridVideo *video in model.video_player) {
+        if ([video.resolution isEqualToString:@"auto"]) {
+            self.playUrl = video.url;
+        } else if ([video.resolution isEqualToString:@"nhd"]){
+            [dic setValue:video.url forKey:@"标清"];
+        } else if ([video.resolution isEqualToString:@"hd"]){
+            [dic setValue:video.url forKey:@"高清"];
+        } else if ([video.resolution isEqualToString:@"fhd"]){
+            [dic setValue:video.url forKey:@"超清"];
+        }
     }
- 
+    
+    _playerView.resolutionDic = nil;
+    _playerView.resolutionDic = dic;
+    
+    if (model.cover && model.cover.count > 0) {
+        TalkGridCover *tempCover = model.cover.firstObject;
+        _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
+                                                               [NSURL URLWithString:tempCover.url]]];
+    }
 }
 
 - (void)setBackGroudView
@@ -406,18 +428,11 @@ static CGFloat selViewH = 3;
     self.lessonPlayerLessonListViewController.actionWithDidSelectedBlock = ^(TalkGridModel *model) {
         tempSelf.playTalkGridModel = model;
         //视频换URL
-        [tempSelf.playerView pause];
         if (model.video_player.count > 0) {
             [tempSelf.playerView pause];
             [tempSelf.playerView resetToPlayNewURL];
-            TalkGridVideo *gridVideomodel = tempSelf.playTalkGridModel.video_player.firstObject;
-            tempSelf.playUrl = gridVideomodel.url;
+            [tempSelf setPlayerViewForResolutionDic:tempSelf.playTalkGridModel];
             tempSelf.playerView.videoURL = [NSURL URLWithString:tempSelf.playUrl];
-            if (tempSelf.playTalkGridModel.cover && tempSelf.playTalkGridModel.cover.count > 0) {
-                TalkGridCover *tempCover = tempSelf.playTalkGridModel.cover.firstObject;
-                tempSelf.playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
-                                                                               [NSURL URLWithString:tempCover.url]]];
-            }
             [tempSelf.playerView play];
         }
         //视频是否收藏过

@@ -172,10 +172,6 @@ static CGFloat rowHeight = 50;
     lessonPlayerViewController.lessonDetailListModel = self.lessonDetailListModel;
     lessonPlayerViewController.lesssonID = self.lessonDetailListModel.result.id;
     lessonPlayerViewController.playTalkGridModel = model;
-    if (model.video_player.count != 0) {
-        TalkGridVideo *gridVideomodel = model.video_player.firstObject;
-        lessonPlayerViewController.playUrl = gridVideomodel.url;
-    }
     //给服务器发送用户已学习消息
     if (_isPay) {
         [self sendUserLearendMessage:user_learnedApi Method:POST ByModel:model];
