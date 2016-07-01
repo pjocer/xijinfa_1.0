@@ -10,8 +10,6 @@
 		5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F861CF4272B00D7EEEB /* PayView.m */; };
 		5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C3F881CF4279200D7EEEB /* PayView.xib */; };
 		5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */; };
-		5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */; };
-		5A0C3F9C1CF69C0400D7EEEB /* MyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */; };
 		5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E561CEB17450079BEFE /* LessonViewController.m */; };
 		5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */; };
 		5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */; };
@@ -230,7 +228,6 @@
 		D04D0C1D1D0FC15C0090D2CD /* UserInfoSection3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04D0C1B1D0FC15C0090D2CD /* UserInfoSection3.xib */; };
 		D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E461CFE76F1008386CE /* CommentListCell.m */; };
 		D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F5E471CFE76F1008386CE /* CommentListCell.xib */; };
-		D04F5E4C1CFEB6EB008386CE /* NewTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */; };
 		D055EEA11CFD30CE004DDD7E /* TopicCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */; };
 		D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D055EEA61CFD375F004DDD7E /* CommentDetailHeader.m */; };
 		D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055EEA71CFD375F004DDD7E /* CommentDetailHeader.xib */; };
@@ -240,6 +237,8 @@
 		D055F2541D2513F000F80AAD /* UserInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F2521D2513F000F80AAD /* UserInfoListCell.xib */; };
 		D055F2561D26140F00F80AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D055F2551D26140F00F80AAD /* Assets.xcassets */; };
 		D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F25B1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m */; };
+		D055F2611D2643D600F80AAD /* MyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F25F1D2643D600F80AAD /* MyMoneyViewController.m */; };
+		D055F2621D2643D600F80AAD /* MyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F2601D2643D600F80AAD /* MyMoneyViewController.xib */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -249,7 +248,6 @@
 		D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E801CE45AED003BF1F3 /* NotificationUtil.m */; };
 		D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A81ED1CEEA0E8002C1297 /* XJMarket.m */; };
 		D06D140F1CFFE0960018F41B /* NewComment_Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D140E1CFFE0960018F41B /* NewComment_Topic.m */; };
-		D06D14121D000BB10018F41B /* NewSharpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06D14111D000BB10018F41B /* NewSharpViewController.m */; };
 		D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF6E1CFBF089002D3FAF /* TopicModel.m */; };
 		D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D073CF711CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m */; };
 		D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073CF721CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib */; };
@@ -283,10 +281,6 @@
 		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayView.xib; sourceTree = "<group>"; };
 		5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailListModel.h; sourceTree = "<group>"; };
 		5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailListModel.m; sourceTree = "<group>"; };
-		5A0C3F921CF6940F00D7EEEB /* MyMoneyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoneyHeaderView.h; sourceTree = "<group>"; };
-		5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyHeaderView.m; sourceTree = "<group>"; };
-		5A0C3F991CF69C0400D7EEEB /* MyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoneyViewController.h; sourceTree = "<group>"; };
-		5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyViewController.m; sourceTree = "<group>"; };
 		5A105E551CEB17450079BEFE /* LessonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonViewController.h; sourceTree = "<group>"; };
 		5A105E561CEB17450079BEFE /* LessonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonViewController.m; sourceTree = "<group>"; };
 		5A105E591CEB1BE20079BEFE /* LessonIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonIndexCell.h; sourceTree = "<group>"; };
@@ -710,8 +704,6 @@
 		D04F5E451CFE76F1008386CE /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentListCell.h; path = xjf/classes/topic/CommentListCell.h; sourceTree = SOURCE_ROOT; };
 		D04F5E461CFE76F1008386CE /* CommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentListCell.m; path = xjf/classes/topic/CommentListCell.m; sourceTree = SOURCE_ROOT; };
 		D04F5E471CFE76F1008386CE /* CommentListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentListCell.xib; path = xjf/classes/topic/CommentListCell.xib; sourceTree = SOURCE_ROOT; };
-		D04F5E4A1CFEB6EB008386CE /* NewTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTopicViewController.h; sourceTree = "<group>"; };
-		D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTopicViewController.m; sourceTree = "<group>"; };
 		D055EE9F1CFD30CE004DDD7E /* TopicCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicCommentList.h; path = xjf/classes/topic/controller/TopicCommentList.h; sourceTree = SOURCE_ROOT; };
 		D055EEA01CFD30CE004DDD7E /* TopicCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicCommentList.m; path = xjf/classes/topic/controller/TopicCommentList.m; sourceTree = SOURCE_ROOT; };
 		D055EEA51CFD375F004DDD7E /* CommentDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailHeader.h; path = xjf/classes/topic/CommentDetailHeader.h; sourceTree = SOURCE_ROOT; };
@@ -726,6 +718,9 @@
 		D055F2551D26140F00F80AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D055F25A1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+AvatarEnabled.h"; sourceTree = "<group>"; };
 		D055F25B1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+AvatarEnabled.m"; sourceTree = "<group>"; };
+		D055F25E1D2643D600F80AAD /* MyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoneyViewController.h; sourceTree = "<group>"; };
+		D055F25F1D2643D600F80AAD /* MyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyViewController.m; sourceTree = "<group>"; };
+		D055F2601D2643D600F80AAD /* MyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMoneyViewController.xib; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
 		D05985211CF6BD8300BF2A30 /* XJOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJOrder.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -743,8 +738,6 @@
 		D06A81ED1CEEA0E8002C1297 /* XJMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMarket.m; sourceTree = "<group>"; };
 		D06D140D1CFFE0960018F41B /* NewComment_Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewComment_Topic.h; sourceTree = "<group>"; };
 		D06D140E1CFFE0960018F41B /* NewComment_Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewComment_Topic.m; sourceTree = "<group>"; };
-		D06D14101D000BB10018F41B /* NewSharpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSharpViewController.h; sourceTree = "<group>"; };
-		D06D14111D000BB10018F41B /* NewSharpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSharpViewController.m; sourceTree = "<group>"; };
 		D073CF6D1CFBF089002D3FAF /* TopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicModel.h; path = xjf/classes/topic/TopicModel.h; sourceTree = SOURCE_ROOT; };
 		D073CF6E1CFBF089002D3FAF /* TopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicModel.m; path = xjf/classes/topic/TopicModel.m; sourceTree = SOURCE_ROOT; };
 		D073CF701CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicBaseCellTableViewCell.h; path = xjf/classes/topic/TopicBaseCellTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -830,24 +823,6 @@
 				5A0C3F881CF4279200D7EEEB /* PayView.xib */,
 			);
 			path = PayView;
-			sourceTree = "<group>";
-		};
-		5A0C3F8D1CF6939E00D7EEEB /* Mymoney */ = {
-			isa = PBXGroup;
-			children = (
-				5A0C3F991CF69C0400D7EEEB /* MyMoneyViewController.h */,
-				5A0C3F9A1CF69C0400D7EEEB /* MyMoneyViewController.m */,
-			);
-			path = Mymoney;
-			sourceTree = "<group>";
-		};
-		5A0C3F911CF693E900D7EEEB /* MyMoneyView */ = {
-			isa = PBXGroup;
-			children = (
-				5A0C3F921CF6940F00D7EEEB /* MyMoneyHeaderView.h */,
-				5A0C3F931CF6940F00D7EEEB /* MyMoneyHeaderView.m */,
-			);
-			path = MyMoneyView;
 			sourceTree = "<group>";
 		};
 		5A105E581CEB1A9F0079BEFE /* Lesson */ = {
@@ -1710,7 +1685,7 @@
 				5A565A171D05B10700008DA9 /* MyPlayerHistory */,
 				5A565A0D1D05A8A100008DA9 /* MyLessons */,
 				5A2071701D02BA9800462D65 /* MyFavoreds */,
-				5A0C3F8D1CF6939E00D7EEEB /* Mymoney */,
+				D055F25D1D2643A900F80AAD /* MyMoney */,
 			);
 			name = Controller;
 			path = controller;
@@ -1743,7 +1718,6 @@
 				D04D0C091D07EA5D0090D2CD /* CommentCell.h */,
 				D04D0C0A1D07EA5D0090D2CD /* CommentCell.m */,
 				D04D0C0B1D07EA5D0090D2CD /* CommentCell.xib */,
-				5A0C3F911CF693E900D7EEEB /* MyMoneyView */,
 				5A20716A1D02ADBE00462D65 /* MyLessonsTableFooterView.h */,
 				5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */,
 			);
@@ -1770,12 +1744,8 @@
 				CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */,
 				D073CF751CFC55CB002D3FAF /* TopicDetailViewController.h */,
 				D073CF761CFC55CB002D3FAF /* TopicDetailViewController.m */,
-				D04F5E4A1CFEB6EB008386CE /* NewTopicViewController.h */,
-				D04F5E4B1CFEB6EB008386CE /* NewTopicViewController.m */,
 				D06D140D1CFFE0960018F41B /* NewComment_Topic.h */,
 				D06D140E1CFFE0960018F41B /* NewComment_Topic.m */,
-				D06D14101D000BB10018F41B /* NewSharpViewController.h */,
-				D06D14111D000BB10018F41B /* NewSharpViewController.m */,
 				CD1CCC311CB37946002FC0C9 /* TopicBaseViewController.h */,
 				CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */,
 			);
@@ -2001,6 +1971,16 @@
 			name = XJCache;
 			sourceTree = "<group>";
 		};
+		D055F25D1D2643A900F80AAD /* MyMoney */ = {
+			isa = PBXGroup;
+			children = (
+				D055F25E1D2643D600F80AAD /* MyMoneyViewController.h */,
+				D055F25F1D2643D600F80AAD /* MyMoneyViewController.m */,
+				D055F2601D2643D600F80AAD /* MyMoneyViewController.xib */,
+			);
+			name = MyMoney;
+			sourceTree = "<group>";
+		};
 		D05985231CF6D76500BF2A30 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -2150,6 +2130,7 @@
 				D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */,
 				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
+				D055F2621D2643D600F80AAD /* MyMoneyViewController.xib in Resources */,
 				AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */,
 				D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */,
 				5A6CF48E1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */,
@@ -2241,7 +2222,6 @@
 			files = (
 				5A105EAC1CEF17AC0079BEFE /* WikiMoreClassificationCell.m in Sources */,
 				AA5B96951D222BE20088A196 /* PlayerPageDescribeCell.m in Sources */,
-				D04F5E4C1CFEB6EB008386CE /* NewTopicViewController.m in Sources */,
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
 				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
 				AA5B96961D222BE20088A196 /* PlayerPageDescribeFooterView.m in Sources */,
@@ -2314,7 +2294,6 @@
 				5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */,
 				CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */,
 				5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */,
-				D06D14121D000BB10018F41B /* NewSharpViewController.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
@@ -2368,6 +2347,7 @@
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
 				D055F24E1D24ECB300F80AAD /* UserInfoController.m in Sources */,
 				5AF7C2FC1CFFD9F7007CC71C /* TeacherDetailModel.m in Sources */,
+				D055F2611D2643D600F80AAD /* MyMoneyViewController.m in Sources */,
 				5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
 				AA5B96211D1C0DF60088A196 /* UserInfoModel.m in Sources */,
@@ -2388,13 +2368,11 @@
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
 				5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */,
 				5A6CF4E71D260F8800676255 /* EmploymentInformationViewController.m in Sources */,
-				5A0C3F941CF6940F00D7EEEB /* MyMoneyHeaderView.m in Sources */,
 				AA5B96931D222BE20088A196 /* PlayerPageCommentsFooterView.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				D04D0C171D0FBD280090D2CD /* UserInfoSection2.m in Sources */,
 				5A565A221D066C2D00008DA9 /* EmployedbannerHeaderView.m in Sources */,
 				5A6CF3B21D1CEE6100676255 /* HomePageBaseView.m in Sources */,
-				5A0C3F9C1CF69C0400D7EEEB /* MyMoneyViewController.m in Sources */,
 				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				5AF7C2E81CFEF097007CC71C /* TeacherListHostModel.m in Sources */,

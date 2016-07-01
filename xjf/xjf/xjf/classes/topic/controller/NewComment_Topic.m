@@ -10,6 +10,7 @@
 #import "ZToastManager.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "XjfRequest.h"
+#import "XJAccountManager.h"
 
 @interface NewComment_Topic ()
 @property (nonatomic, strong) UITextView *textView;
@@ -93,6 +94,7 @@
         if ([dic[@"errCode"] integerValue] == 0) {
             [[ZToastManager ShardInstance] showtoast:@"发表成功"];
             [_textView resignFirstResponder];
+            [[XJAccountManager defaultManager] updateUserInfo];
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         } else {
             [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];

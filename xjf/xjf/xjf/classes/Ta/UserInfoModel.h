@@ -44,5 +44,7 @@
 @property (nonatomic, copy) NSString *updated_at;
 @property (nonatomic, assign) NSInteger topic_count;
 @property (nonatomic, assign) NSInteger reply_count;
+@property (nonatomic, assign) NSInteger guru_count;
+@property (nonatomic, assign) NSInteger course_count;
 @property (nonatomic, strong) NSMutableArray <UserMembership> *membership;
 @end

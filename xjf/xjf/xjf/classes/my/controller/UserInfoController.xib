@@ -244,8 +244,8 @@
                         </mask>
                     </variation>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hpc-Di-MVe">
-                    <rect key="frame" x="0.0" y="234" width="600" height="366"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hpc-Di-MVe">
+                    <rect key="frame" x="0.0" y="234" width="600" height="317"/>
                     <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="sectionIndexTrackingBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -260,7 +260,7 @@
                 <constraint firstItem="gks-sW-2UN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Cyu-kJ-1KU"/>
                 <constraint firstItem="Hpc-Di-MVe" firstAttribute="top" secondItem="gks-sW-2UN" secondAttribute="bottom" id="MOQ-Vd-f9r"/>
                 <constraint firstAttribute="trailing" secondItem="Hpc-Di-MVe" secondAttribute="trailing" id="SGZ-Pe-aMw"/>
-                <constraint firstAttribute="bottom" secondItem="Hpc-Di-MVe" secondAttribute="bottom" id="j9W-y9-BOh"/>
+                <constraint firstAttribute="bottom" secondItem="Hpc-Di-MVe" secondAttribute="bottom" constant="49" id="j9W-y9-BOh"/>
                 <constraint firstItem="Hpc-Di-MVe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mHi-YY-vBh"/>
                 <constraint firstItem="gks-sW-2UN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pLn-T8-Frm"/>
                 <constraint firstAttribute="trailing" secondItem="gks-sW-2UN" secondAttribute="trailing" id="qyr-bz-cTd"/>

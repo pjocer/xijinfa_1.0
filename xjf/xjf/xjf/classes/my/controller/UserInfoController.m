@@ -90,29 +90,30 @@
     @weakify(self);
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(NSNotification *x) {
         @strongify(self);
-        if (x.object){
-            self.model = x.object;
-            self.hasLogined = YES;
-        }else {
-            self.model = nil;
-            self.hasLogined = NO;
+        if (self.userType == Myself) {
+            if (x.object){
+                self.model = x.object;
+                self.hasLogined = YES;
+            }else {
+                self.model = nil;
+                self.hasLogined = NO;
+            }
+            [self initData];
         }
-        [self initData];
     }];
 }
 - (void)initUI {
     if (self.userType == Myself) {
         [_tableView registerNib:[UINib nibWithNibName:@"UserInfoListCell" bundle:nil] forCellReuseIdentifier:@"UserInfoListCell"];
-        _tableView.scrollEnabled = NO;
         _setting.hidden = NO;
         _focusButton.hidden = YES;
         _back.hidden = YES;
     }else {
-        _tableView.scrollEnabled = YES;
         [_tableView registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _setting.hidden = YES;
         _focusButton.hidden = NO;
         _back.hidden = NO;
+        [self requestData];
     }
     [_userAvatar.layer setCornerRadius:35];
     [_userAvatar.layer setBorderColor:[[UIColor whiteColor] CGColor]];
@@ -144,6 +145,7 @@
     }else {
         [self initUserInfo];
         [self requestData];
+        [self requestDataWithApi:focusOrNot method:POST];
     }
 }
 - (void)initUserInfo {
@@ -171,7 +173,37 @@
     }];
 }
 - (IBAction)focusButtonClicked:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
+    APIName *api = nil;
+    if (sender.selected) {
+        api = focus_off;
+    }else {
+        api = focus_on;
+    }
+    [self requestDataWithApi:api method:POST];
+}
+- (void)requestDataWithApi:(APIName *)api method:(RequestMethod)method {
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:POST];
+    request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"ref_user_id":self.model.result.id}];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+        if ([api isEqualToString:focusOrNot]) {
+            if ([dic[@"errCode"] integerValue] == 0) {
+                _focusButton.selected = [dic[@"result"][@"success"] boolValue];
+            }else {
+                NSLog(@"检查是否关注失败");
+            }
+        }else {
+            if ([dic[@"errCode"] integerValue] == 0) {
+                [[ZToastManager ShardInstance] showtoast:_focusButton.selected?@"取消关注成功":@"关注成功"];
+                _focusButton.selected = !_focusButton.isSelected;
+                [[XJAccountManager defaultManager] updateUserInfo];
+            }else {
+                [[ZToastManager ShardInstance] showtoast:@"请求失败"];
+            }
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"请求失败"];
+    }];
 }
 - (IBAction)backButtonClicked:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
