@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, SelecteButtonType) {
     LeftButton,
     RightButton
@@ -22,8 +22,9 @@ typedef NS_ENUM(NSInteger, SelecteButtonType) {
 
 @interface SelecteButtonView : UIView
 @property (nonatomic, weak, nullable) id <SelecteButtonViewDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UILabel *leftButtonLabelName;
-@property (weak, nonatomic) IBOutlet UIImageView *leftShowIcon;
-@property (weak, nonatomic) IBOutlet UILabel *rightButtonLabelName;
-@property (weak, nonatomic) IBOutlet UIImageView *rightShowIcon;
+@property (weak, nonatomic, nullable) IBOutlet UILabel *leftButtonLabelName;
+@property (weak, nonatomic, nullable) IBOutlet UIImageView *leftShowIcon;
+@property (weak, nonatomic, nullable) IBOutlet UILabel *rightButtonLabelName;
+@property (weak, nonatomic, nullable) IBOutlet UIImageView *rightShowIcon;
 @end
+NS_ASSUME_NONNULL_END
