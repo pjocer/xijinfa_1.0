@@ -262,6 +262,9 @@
 #pragma mark - 获取缓存路径
 
 + (NSString *)cachePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSLog(@"xxx------%@",path);
     return [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches"];
 }
 

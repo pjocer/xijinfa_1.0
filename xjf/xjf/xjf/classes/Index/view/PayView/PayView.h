@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "XJMarket.h"
-
+@class TalkGridModel;
 @class PayView;
 @protocol PayViewDelegate <NSObject>
 - (void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type;
+@optional
+- (NSDictionary *)paramsForCurrentpayView:(PayView *)payView;
+- (NSArray <TalkGridModel *>*)tradesForCurrentpayView:(PayView *)payView;
 @end
 
 @interface PayView : UIView

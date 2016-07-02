@@ -17,9 +17,6 @@
 
 @implementation PayView
 
-- (void)awakeFromNib {
-    self.backgroundColor = BackgroundColor;
-}
 +(void)showWithTarget:(id<PayViewDelegate>)target {
     PayView *view = [[[NSBundle mainBundle] loadNibNamed:@"PayView" owner:target options:nil] lastObject];
     view.delegate = target;
