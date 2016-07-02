@@ -314,6 +314,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     for (TalkGridVideo *video in model.video_player) {
         if ([video.resolution isEqualToString:@"auto"]) {
             self.playUrl = video.url;
+            [dic setValue:video.url forKey:@"自动"];
         } else if ([video.resolution isEqualToString:@"nhd"]){
             [dic setValue:video.url forKey:@"标清"];
         } else if ([video.resolution isEqualToString:@"hd"]){
