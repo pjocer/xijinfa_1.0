@@ -122,7 +122,7 @@ NSString *const Subscribe = @"SubscribeViewController";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerClickEvent:)];
     [user addGestureRecognizer:tap];
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:user];
-    UINavigationController *topicNac = [self.navigationController.tabBarController.childViewControllers objectAtIndex:1];
+    UINavigationController *topicNac = [self.navigationController.tabBarController.childViewControllers objectAtIndex:2];
     [topicNac.viewControllers objectAtIndex:0].navigationItem.leftBarButtonItem = left;
 }
 - (void)headerClickEvent:(id)sender {
