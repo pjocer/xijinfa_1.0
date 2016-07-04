@@ -22,8 +22,8 @@
  *
  *  @return NSMutableAttributedString
  */
-- (NSMutableAttributedString *)changeColorWithString:(NSString *)string
-                                               light:(NSString *)light
-                                                Font:(CGFloat)font
-                                               Color:(UIColor *)color;
+- (void)changeColorWithString:(NSString *)string
+                        light:(NSString *)light
+                         Font:(CGFloat)font
+                        Color:(UIColor *)color;
 @end
