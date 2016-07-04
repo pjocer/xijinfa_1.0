@@ -55,7 +55,7 @@
 
     TopicViewController *vc3 = [[TopicViewController alloc] init];
     [self setupChildViewController:vc3
-                             title:@"话题"
+                             title:@"讨论"
                          imageName:@"tab_topic"
                  selectedImageName:@"tab_topic_selected"];
 
