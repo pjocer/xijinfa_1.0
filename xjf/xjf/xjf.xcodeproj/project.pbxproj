@@ -83,7 +83,6 @@
 		5A5B740B1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B740A1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m */; };
 		5A5B740F1D2A323400D24CBA /* AllLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B740E1D2A323400D24CBA /* AllLessonListViewController.m */; };
 		5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF1D41D126FA700676255 /* AppDelegateManager.m */; };
-		5A6CF3981D1CED2700676255 /* XJFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3971D1CED2700676255 /* XJFBaseViewController.m */; };
 		5A6CF39B1D1CED4300676255 /* XJFBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF39A1D1CED4300676255 /* XJFBaseModel.m */; };
 		5A6CF39E1D1CED5400676255 /* XJFBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF39D1D1CED5400676255 /* XJFBaseView.m */; };
 		5A6CF3A11D1CED6500676255 /* XJFBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3A01D1CED6500676255 /* XJFBaseTableViewCell.m */; };
@@ -253,6 +252,7 @@
 		D055F2791D2A2C3400F80AAD /* RechargeList.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2781D2A2C3400F80AAD /* RechargeList.m */; };
 		D055F27D1D2A425D00F80AAD /* RechargeResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F27B1D2A425D00F80AAD /* RechargeResultController.m */; };
 		D055F27E1D2A425D00F80AAD /* RechargeResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F27C1D2A425D00F80AAD /* RechargeResultController.xib */; };
+		D055F28A1D2A860700F80AAD /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2891D2A860700F80AAD /* BaseNavigationController.m */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -438,8 +438,6 @@
 		5A5B740E1D2A323400D24CBA /* AllLessonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllLessonListViewController.m; sourceTree = "<group>"; };
 		5A6CF1D31D126FA600676255 /* AppDelegateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateManager.h; sourceTree = "<group>"; };
 		5A6CF1D41D126FA700676255 /* AppDelegateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateManager.m; sourceTree = "<group>"; };
-		5A6CF3961D1CED2700676255 /* XJFBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFBaseViewController.h; sourceTree = "<group>"; };
-		5A6CF3971D1CED2700676255 /* XJFBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFBaseViewController.m; sourceTree = "<group>"; };
 		5A6CF3991D1CED4300676255 /* XJFBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFBaseModel.h; sourceTree = "<group>"; };
 		5A6CF39A1D1CED4300676255 /* XJFBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFBaseModel.m; sourceTree = "<group>"; };
 		5A6CF39C1D1CED5400676255 /* XJFBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFBaseView.h; sourceTree = "<group>"; };
@@ -761,6 +759,8 @@
 		D055F27A1D2A425D00F80AAD /* RechargeResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeResultController.h; sourceTree = "<group>"; };
 		D055F27B1D2A425D00F80AAD /* RechargeResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeResultController.m; sourceTree = "<group>"; };
 		D055F27C1D2A425D00F80AAD /* RechargeResultController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeResultController.xib; sourceTree = "<group>"; };
+		D055F2881D2A860700F80AAD /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		D055F2891D2A860700F80AAD /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
 		D05985211CF6BD8300BF2A30 /* XJOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJOrder.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -1170,21 +1170,11 @@
 		5A6CF3921D1CED0B00676255 /* XJFBase */ = {
 			isa = PBXGroup;
 			children = (
-				5A6CF3931D1CED0B00676255 /* XJFBaseController */,
 				5A6CF3941D1CED0B00676255 /* XJFBaseModel */,
 				5A6CF3951D1CED0B00676255 /* XJFBaseView */,
 			);
 			name = XJFBase;
 			path = classes/XJFBase;
-			sourceTree = "<group>";
-		};
-		5A6CF3931D1CED0B00676255 /* XJFBaseController */ = {
-			isa = PBXGroup;
-			children = (
-				5A6CF3961D1CED2700676255 /* XJFBaseViewController.h */,
-				5A6CF3971D1CED2700676255 /* XJFBaseViewController.m */,
-			);
-			path = XJFBaseController;
 			sourceTree = "<group>";
 		};
 		5A6CF3941D1CED0B00676255 /* XJFBaseModel */ = {
@@ -1862,6 +1852,8 @@
 			children = (
 				CD1CCC1A1CB36386002FC0C9 /* BaseViewController.h */,
 				CD1CCC191CB36386002FC0C9 /* BaseViewController.m */,
+				D055F2881D2A860700F80AAD /* BaseNavigationController.h */,
+				D055F2891D2A860700F80AAD /* BaseNavigationController.m */,
 				CD1CCC1E1CB363F5002FC0C9 /* RootViewController.h */,
 				CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */,
 				CD144F471CBB95E000A0636D /* BaseUINavigationController.h */,
@@ -2373,7 +2365,6 @@
 				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
 				5A6CF4991D2363BD00676255 /* BannerModel.m in Sources */,
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
-				5A6CF3981D1CED2700676255 /* XJFBaseViewController.m in Sources */,
 				D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */,
 				AA5B95FA1D1948790088A196 /* SearchSectionTwo.m in Sources */,
 				5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */,
@@ -2482,6 +2473,7 @@
 				68AD3DF8B96C85E22B19B04F /* CommentsModel.m in Sources */,
 				68AD3A56F861785951BB9107 /* UIColor+hexColor.m in Sources */,
 				D055F26D1D2A094200F80AAD /* RechargeStreamModel.m in Sources */,
+				D055F28A1D2A860700F80AAD /* BaseNavigationController.m in Sources */,
 				68AD32E2FC2DEEB1C311AA39 /* ZToastManager.m in Sources */,
 				68AD370C817124BB259FF07A /* UILabel+StringFrame.m in Sources */,
 				68AD32495822B12CA68526E7 /* NSString+Extensions.m in Sources */,

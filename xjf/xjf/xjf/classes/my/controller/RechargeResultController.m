@@ -8,6 +8,7 @@
 
 #import "RechargeResultController.h"
 #import "UILabel+StringFrame.h"
+#import "MyOrderViewController.h"
 @interface RechargeResultController ()
 @property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
@@ -46,7 +47,8 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (void)compeleteOrder {
-    NSLog(@"订单页");
+    MyOrderViewController *order = [[MyOrderViewController alloc] init];
+    [self.navigationController pushViewController:order animated:YES];
 }
 -(instancetype)initWithSuccess:(BOOL)isSuccess orderID:(NSString *)order_id{
     self = [super init];

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "XJFBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface HomePageBaseViewController : XJFBaseViewController
+@interface HomePageBaseViewController : BaseViewController
 
 @end

@@ -227,7 +227,6 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
                     self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
             tempVC.requestParams = @{@"status" : [NSString stringWithFormat:@"2"]};
             [tempVC requestAllOrderData:[NSString stringWithFormat:@"/api/order/%@", self.orderDataModel.id] method:PUT];
-
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];

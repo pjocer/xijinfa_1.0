@@ -15,6 +15,7 @@
 #import "HomePageMainViewController.h"
 #import "UserInfoController.h"
 #import "XJAccountManager.h"
+#import "BaseNavigationController.h"
 @interface RootViewController ()
 
 @end
@@ -79,8 +80,7 @@
                            title:(NSString *)title
                        imageName:(NSString *)imageName
                selectedImageName:(NSString *)selectedImageName {
-
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:childVc];
+    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:childVc];
     // 1.设置控制器的属性
 //    childVc.title = title;
     // 3.添加tabbar内部的按钮

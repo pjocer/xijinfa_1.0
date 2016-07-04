@@ -23,7 +23,8 @@ NSString *const Topic = @"TopicViewController";
 NSString *const Vip = @"VipViewController";
 NSString *const Subscribe = @"SubscribeViewController";
 
-@interface BaseViewController () <UserDelegate>
+@interface BaseViewController () <UserDelegate,UINavigationControllerDelegate>
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactiveTransition;
 @end
 
 @implementation BaseViewController
@@ -49,17 +50,21 @@ NSString *const Subscribe = @"SubscribeViewController";
         @strongify(self)
         [self setTopicLeftItem];
     }];
-    self.nav_title = @"";
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [self.navigationController.navigationBar addShadow];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    self.view.backgroundColor = BackgroundColor;
+    [self setNavigationRelated];
 }
-
+- (void)setNavigationRelated {
+    if (self.navigationController) {
+        self.nav_title = @"";
+        self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.translucent = NO;
+        [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+        [self.navigationController.navigationBar addShadow];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        self.view.backgroundColor = BackgroundColor;
+    }
+}
 - (void)extendheadViewFor:(NSString *)name {
     UILabel *leftTitle = [[UILabel alloc] init];
     [leftTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
@@ -227,5 +232,4 @@ NSString *const Subscribe = @"SubscribeViewController";
                 [self.navigationController pushViewController:registPage animated:YES];
             }];
 }
-
 @end

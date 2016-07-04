@@ -9,7 +9,9 @@
 #import "OrderDetailBaseViewController.h"
 
 @interface MyOrderViewController : OrderDetailBaseViewController
+
 - (void)requestAllOrderData:(APIName *)api method:(RequestMethod)method;
 
 @property (nonatomic, strong) NSDictionary *requestParams;
+
 @end

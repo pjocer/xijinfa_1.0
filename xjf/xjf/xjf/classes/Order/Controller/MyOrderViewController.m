@@ -72,7 +72,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         }];
     } else if (method == PUT) {
         request.requestParams = self.requestParams.mutableCopy;
-
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             [self requestAllOrderData:queryAllOrder method:GET];
         }                  failedBlock:^(NSError *_Nullable error) {
