@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface RechargeResultController : BaseViewController
-
+- (instancetype)initWithSuccess:(BOOL)isSuccess orderID:(NSString *)order_id;
 @end

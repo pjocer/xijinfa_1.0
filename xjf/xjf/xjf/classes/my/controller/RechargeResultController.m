@@ -7,18 +7,55 @@
 //
 
 #import "RechargeResultController.h"
-
+#import "UILabel+StringFrame.h"
 @interface RechargeResultController ()
-
+@property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIView *orderCompelete;
+@property (weak, nonatomic) IBOutlet UIView *back;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *backToHomeConstrained;
+@property (weak, nonatomic) IBOutlet UILabel *help;
+@property (assign, nonatomic) BOOL isSuccess;
+@property (copy, nonatomic) NSString *orderID;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeight;
 @end
 
 @implementation RechargeResultController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self initControl];
+    [self initProperties];
 }
-
+- (void)initProperties {
+    _statusImageView.highlighted = !_isSuccess;
+    _backToHomeConstrained.constant = _isSuccess?80:15;
+    _orderCompelete.hidden = !_isSuccess;
+    _statusLabel.text = _isSuccess?@"充值成功":@"充值失败";
+    _help.hidden = _isSuccess;
+    [_help changeColorWithString:@"需要帮助请致电 021-50265022 联系客服" light:@"021-50265022" Font:12 Color:[UIColor xjfStringToColor:@"#0061b0"]];
+    _headerHeight.constant = _isSuccess?133:162;
+}
+- (void)initControl {
+    UITapGestureRecognizer *back = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backToHome)];
+    [_back addGestureRecognizer:back];
+    UITapGestureRecognizer *order = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(compeleteOrder)];
+    [_orderCompelete addGestureRecognizer:order];
+}
+- (void)backToHome {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+- (void)compeleteOrder {
+    NSLog(@"订单页");
+}
+-(instancetype)initWithSuccess:(BOOL)isSuccess orderID:(NSString *)order_id{
+    self = [super init];
+    if (self) {
+        _isSuccess = isSuccess;
+        _orderID = order_id;
+    }
+    return self;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

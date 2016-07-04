@@ -16,6 +16,7 @@
 #import "ZToastManager.h"
 #import "RechargeStream.h"
 #import "RechargeList.h"
+#import "RechargeResultController.h"
 @interface MyMoneyViewController () <OrderInfoDidChangedDelegate,PayViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *first;
 @property (weak, nonatomic) IBOutlet UIView *second;
@@ -43,7 +44,7 @@
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"recharge_right"] style:UIBarButtonItemStylePlain target:self action:@selector(rechargeStream)];
     self.navigationItem.rightBarButtonItem = right;
     self.nav_title = @"我的余额";
-    self.balance.text = [NSString stringWithFormat:@"%.2f",[[[[XJAccountManager defaultManager] user_model] result] account_balance]/100.0f];
+    self.balance.text = [NSString stringWithFormat:@"%.2f",[[[[XJAccountManager defaultManager] user_model] result] account_balance]*0.01f];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:recharge_list RequestMethod:GET];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         RechargeList *model = [[RechargeList alloc] initWithData:responseData error:nil];
@@ -73,7 +74,7 @@
         titleLabel.text = [NSString stringWithFormat:@"¥ %.2f",deal.amount/100.0f];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseLimit:)];
         view.tag = 880+i;
-        objc_setAssociatedObject(view,@"limit", @(deal.amount), OBJC_ASSOCIATION_COPY_NONATOMIC);
+        objc_setAssociatedObject(view,@"limit", @(deal.amount), OBJC_ASSOCIATION_ASSIGN);
         [view addGestureRecognizer:tap];
     }
 }
@@ -88,9 +89,12 @@
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
         [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
             _balance.text = [NSString stringWithFormat:@"%.2f",model.result.account_balance*0.01f];
+            RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:YES orderID:self.order.order.result.id];
+            [self.navigationController pushViewController:result animated:YES];
         }];
     } failed:^{
-        NSLog(@"支付失败");
+        RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:NO orderID:nil];
+        [self.navigationController pushViewController:result animated:YES];
     }];
 }
 - (void)chooseLimit:(UITapGestureRecognizer *)tap {
