@@ -47,7 +47,7 @@ NSString *const Subscribe = @"SubscribeViewController";
     @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(id x) {
         @strongify(self)
-        [self setTopicRightItem];
+        [self setTopicLeftItem];
     }];
     self.nav_title = @"";
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
@@ -71,7 +71,6 @@ NSString *const Subscribe = @"SubscribeViewController";
         self.navigationItem.rightBarButtonItem = item2;
         leftTitle.text = @"我的";
     } else if ([name isEqualToString:Index]) {
-
         //commentsButton
         UIButton *commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [commentsButton setTitle:@"🔎 输入你想找的内容" forState:UIControlStateNormal];
@@ -95,12 +94,12 @@ NSString *const Subscribe = @"SubscribeViewController";
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
         item2.tag = 15;
         self.navigationItem.rightBarButtonItems = @[item, item2];
-        [self setTopicRightItem];
+        [self setTopicLeftItem];
     } else if ([name isEqualToString:Vip]) {
         leftTitle.text = @"会员";
     }
 }
-- (void)setTopicRightItem {
+- (void)setTopicLeftItem {
     UIImage *image = nil;
     if ([[XJAccountManager defaultManager] accessToken]) {
         image = [UIImage imageWithData:UserDefaultObjectForKey(@"user_icon")];
