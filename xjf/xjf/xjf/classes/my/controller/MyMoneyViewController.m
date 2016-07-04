@@ -15,38 +15,65 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 #import "RechargeStream.h"
+#import "RechargeList.h"
 @interface MyMoneyViewController () <OrderInfoDidChangedDelegate,PayViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *first;
 @property (weak, nonatomic) IBOutlet UIView *second;
 @property (weak, nonatomic) IBOutlet UIView *fouth;
 @property (weak, nonatomic) IBOutlet UIView *third;
+@property (weak, nonatomic) IBOutlet UILabel *firstTitle;
+@property (weak, nonatomic) IBOutlet UILabel *secondTitle;
+@property (weak, nonatomic) IBOutlet UILabel *ThirdTitle;
+@property (weak, nonatomic) IBOutlet UILabel *FourthTitle;
+@property (weak, nonatomic) IBOutlet UILabel *FirstContent;
+@property (weak, nonatomic) IBOutlet UILabel *SecondContent;
+@property (weak, nonatomic) IBOutlet UILabel *ThirdContent;
+@property (weak, nonatomic) IBOutlet UILabel *FourthContent;
+@property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (strong, nonatomic) NSMutableDictionary *params;
 @property (assign, nonatomic) PayStyle style;
 @property (strong, nonatomic) NSArray *views;
+@property (strong, nonatomic) XJOrder *order;
 @end
 
 @implementation MyMoneyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initControl];
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"recharge_right"] style:UIBarButtonItemStylePlain target:self action:@selector(rechargeStream)];
     self.navigationItem.rightBarButtonItem = right;
     self.nav_title = @"我的余额";
+    self.balance.text = [NSString stringWithFormat:@"%.2f",[[[[XJAccountManager defaultManager] user_model] result] account_balance]/100.0f];
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:recharge_list RequestMethod:GET];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        RechargeList *model = [[RechargeList alloc] initWithData:responseData error:nil];
+        if (model.errCode == 0) {
+            [self initControl:model.result.deal];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:@"获取充值列表失败"];
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    }];
 }
 - (void)rechargeStream {
     RechargeStream *stream = [[RechargeStream alloc] init];
     [self.navigationController pushViewController:stream animated:YES];
 }
-- (void)initControl {
+- (void)initControl:(NSMutableArray *)limits {
     self.views = @[_first,_second,_third,_fouth];
-    NSArray *limits = @[@"100",@"100",@"100",@"100"];
+    NSArray *contents = @[_FirstContent,_SecondContent,_ThirdContent,_FourthContent];
+    NSArray *titles = @[_firstTitle,_secondTitle,_ThirdTitle,_FourthTitle];
     for (int i = 0; i < self.views.count; i++) {
         UIView *view= self.views[i];
-        NSString *limit = limits[i];
+        UILabel *contentLabel = contents[i];
+        UILabel *titleLabel = titles[i];
+        RechargeDeal *deal = limits[i];
+        contentLabel.text = deal.title;
+        titleLabel.text = [NSString stringWithFormat:@"¥ %.2f",deal.amount/100.0f];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseLimit:)];
         view.tag = 880+i;
-        objc_setAssociatedObject(view,@"limit", limit, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        objc_setAssociatedObject(view,@"limit", @(deal.amount), OBJC_ASSOCIATION_COPY_NONATOMIC);
         [view addGestureRecognizer:tap];
     }
 }
@@ -59,7 +86,9 @@
 }
 - (void)orderInfoDidChanged:(XJOrder *)order {
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
-        NSLog(@"支付成功");
+        [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
+            _balance.text = [NSString stringWithFormat:@"%.2f",model.result.account_balance*0.01f];
+        }];
     } failed:^{
         NSLog(@"支付失败");
     }];
@@ -77,7 +106,7 @@
 }
 -(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
     self.style = type;
-    [[XJMarket sharedMarket] createVipOrderWith:self.params target:self];
+    self.order =[[XJMarket sharedMarket] createVipOrderWith:self.params target:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -8,9 +8,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyMoneyViewController">
             <connections>
+                <outlet property="FirstContent" destination="gPK-6h-TOY" id="fLp-VO-oCq"/>
+                <outlet property="FourthContent" destination="W1w-6w-KdH" id="IMQ-sP-Vul"/>
+                <outlet property="FourthTitle" destination="Fyt-aA-LcT" id="izS-wa-ipL"/>
+                <outlet property="SecondContent" destination="tUK-8H-IsG" id="9ZN-CL-5zV"/>
+                <outlet property="ThirdContent" destination="Jzw-ej-eFx" id="pmQ-oh-UfG"/>
+                <outlet property="ThirdTitle" destination="Mql-J5-PfH" id="9wl-TH-qlK"/>
+                <outlet property="balance" destination="i7A-fF-Jl0" id="WPE-Iq-yJi"/>
                 <outlet property="first" destination="cXG-PF-p2h" id="ku7-FC-yaH"/>
+                <outlet property="firstTitle" destination="rZR-QB-S4K" id="SDV-2v-E6m"/>
                 <outlet property="fouth" destination="6Gu-yC-qBO" id="2z3-ny-ZfR"/>
                 <outlet property="second" destination="MdC-ke-QaW" id="7Mn-GP-oR8"/>
+                <outlet property="secondTitle" destination="5Wo-dg-kTv" id="hNB-1C-qNC"/>
                 <outlet property="third" destination="k76-tU-OFs" id="y3q-33-si6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,8 +32,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjD-Tf-NQi">
                     <rect key="frame" x="10" y="15" width="580" height="106"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-nn-akr">
-                            <rect key="frame" x="270" y="20" width="40" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的牛币" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-nn-akr">
+                            <rect key="frame" x="260" y="20" width="60" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="HEo-aI-G9u"/>
                                 <constraint firstAttribute="width" constant="40" id="fOk-uz-DHW"/>
@@ -32,6 +41,11 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="fOk-uz-DHW"/>
+                                </mask>
+                            </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥50000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7A-fF-Jl0">
                             <rect key="frame" x="225" y="60" width="130" height="26"/>
@@ -70,15 +84,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXG-PF-p2h">
                     <rect key="frame" x="10" y="162" width="283" height="70"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥300" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZR-QB-S4K">
-                            <rect key="frame" x="15" y="15" width="253" height="26"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="26" id="Bmn-qW-5zW"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                            <color key="textColor" red="1" green="0.29803921568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值300送10元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPK-6h-TOY">
                             <rect key="frame" x="15" y="42" width="253" height="14"/>
                             <constraints>
@@ -86,6 +91,15 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥300" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZR-QB-S4K">
+                            <rect key="frame" x="15" y="15" width="253" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="Bmn-qW-5zW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <color key="textColor" red="1" green="0.29803921568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

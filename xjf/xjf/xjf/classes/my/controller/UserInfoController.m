@@ -197,7 +197,7 @@
             if ([dic[@"errCode"] integerValue] == 0) {
                 [[ZToastManager ShardInstance] showtoast:_focusButton.selected?@"取消关注成功":@"关注成功"];
                 _focusButton.selected = !_focusButton.isSelected;
-                [[XJAccountManager defaultManager] updateUserInfo];
+                [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:nil];
             }else {
                 [[ZToastManager ShardInstance] showtoast:@"请求失败"];
             }

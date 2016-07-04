@@ -19,11 +19,11 @@
 @end
 
 @interface UserInfoModel : JSONModel
-@property (nonatomic, copy) NSString *account_balance;
+@property (nonatomic, assign) NSInteger account_balance;
 @property (nonatomic, copy) NSString *age;
 @property (nonatomic, copy) NSString *avatar;
 @property (nonatomic, copy) NSString *city;
-@property (nonatomic, copy) NSString *coin_balance;
+@property (nonatomic, assign) NSInteger coin_balance;
 @property (nonatomic, copy) NSString *created_at;
 @property (nonatomic, copy) NSString *credit_balance;
 @property (nonatomic, copy) NSString *email;
