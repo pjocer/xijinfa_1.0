@@ -22,8 +22,8 @@
     [super viewDidLoad];
     self.nav_title = @"余额流水";
     self.dataSource = [NSMutableArray array];
-    [self requestData:recharge_stream Method:GET];
     [self.view addSubview:self.tableView];
+    [self requestData:recharge_stream Method:GET];
 }
 - (void)requestData:(APIName *)api Method:(RequestMethod)method{
     if (api == nil) {
@@ -35,6 +35,7 @@
         self.model = [[RechargeStreamModel alloc] initWithData:responseData error:nil];
         if (self.model.errCode == 0) {
             [self.dataSource addObjectsFromArray:self.model.result.data];
+            [self.tableView reloadData];
         }else {
             [[ZToastManager ShardInstance] showtoast:self.model.errMsg];
         }
@@ -55,6 +56,7 @@
         [_tableView registerNib:[UINib nibWithNibName:@"RechargeStreamCell" bundle:nil] forCellReuseIdentifier:@"RechargeStreamCell"];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self.dataSource removeAllObjects];
             [self requestData:recharge_stream Method:GET];
@@ -62,6 +64,7 @@
         _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             [self requestData:self.model.result.next_page_url Method:GET];
         }];
+        _tableView.estimatedRowHeight = 1000;
     }
     return _tableView;
 }

@@ -251,6 +251,7 @@
 		D055F26A1D29FD5B00F80AAD /* RechargeStreamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F2681D29FD5B00F80AAD /* RechargeStreamCell.xib */; };
 		D055F26D1D2A094200F80AAD /* RechargeStreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F26C1D2A094200F80AAD /* RechargeStreamModel.m */; };
 		D055F2761D2A0C4400F80AAD /* RechargeStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2751D2A0C4400F80AAD /* RechargeStream.m */; };
+		D055F2791D2A2C3400F80AAD /* RechargeList.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2781D2A2C3400F80AAD /* RechargeList.m */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -756,6 +757,8 @@
 		D055F26C1D2A094200F80AAD /* RechargeStreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeStreamModel.m; sourceTree = "<group>"; };
 		D055F2741D2A0C4400F80AAD /* RechargeStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeStream.h; sourceTree = "<group>"; };
 		D055F2751D2A0C4400F80AAD /* RechargeStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeStream.m; sourceTree = "<group>"; };
+		D055F2771D2A2C3400F80AAD /* RechargeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeList.h; sourceTree = "<group>"; };
+		D055F2781D2A2C3400F80AAD /* RechargeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeList.m; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
 		D05985211CF6BD8300BF2A30 /* XJOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJOrder.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -1998,6 +2001,8 @@
 				AA5B96151D1C0DF60088A196 /* UserInfoModel.m */,
 				D055F26B1D2A094200F80AAD /* RechargeStreamModel.h */,
 				D055F26C1D2A094200F80AAD /* RechargeStreamModel.m */,
+				D055F2771D2A2C3400F80AAD /* RechargeList.h */,
+				D055F2781D2A2C3400F80AAD /* RechargeList.m */,
 				D02FB4D41D127A05006EADAD /* zh_CN.json */,
 			);
 			name = Model;
@@ -2303,6 +2308,7 @@
 				5AF7C2F31CFF040D007CC71C /* TeacherLessonsViewController.m in Sources */,
 				AA5B96921D222BE20088A196 /* PlayerPageCommentsCell.m in Sources */,
 				5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */,
+				D055F2791D2A2C3400F80AAD /* RechargeList.m in Sources */,
 				5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */,
 				D04D0C0C1D07EA5D0090D2CD /* CommentCell.m in Sources */,
 				5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */,
