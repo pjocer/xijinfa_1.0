@@ -76,8 +76,10 @@ static APIName *update_user_info = @"/api/user/profile";
 static APIName *upload_avatar = @"/api/user/avatar";
 //充值余额
 static APIName *recharge = @"/api/order";
-//
+//充值流水
 static APIName *recharge_stream = @"/api/user/account-sequences";
+//充值列表
+static APIName *recharge_list = @"/api/quote/charge";
 #pragma mark- Hunter_Wang
 
 
