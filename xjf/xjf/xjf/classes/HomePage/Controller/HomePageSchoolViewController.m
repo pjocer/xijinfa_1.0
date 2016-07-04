@@ -263,9 +263,9 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 {
     HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"热门课程"]){
-       LessonListViewController *lessonlListPage = [[LessonListViewController alloc] init];
-       lessonlListPage.LessonListTitle = @"析金学堂更多";
-       [self.navigationController pushViewController:lessonlListPage animated:YES];
+       AllLessonListViewController *listViewController = [AllLessonListViewController new];
+       listViewController.lessonListPageLessonType = LessonListPageSchool;
+       [self.navigationController pushViewController:listViewController animated:YES];
    }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
        TeacherListViewController *teacherListViewController = [TeacherListViewController new];
        //    teacherListViewController.hostModel = self.teacherListHostModel;
@@ -288,11 +288,11 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 - (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LessonListViewController *lessonListViewController = [LessonListViewController new];
-    ProjectList *model = self.projectListByModel.result.data[indexPath.row];;
-    lessonListViewController.LessonListTitle = model.title;
-    lessonListViewController.ID = model.id;
-    [self.navigationController pushViewController:lessonListViewController animated:YES];
+    ProjectList *model = self.projectListByModel.result.data[indexPath.row];
+    AllLessonListViewController *listViewController = [AllLessonListViewController new];
+    listViewController.lessonListPageLessonType = LessonListPageSchool;
+    listViewController.ID = model.id;
+    [self.navigationController pushViewController:listViewController animated:YES];
 }
 
 #pragma mark CollectionView DidSelected

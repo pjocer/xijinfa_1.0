@@ -10,6 +10,7 @@
 #import "IndexConfigure.h"
 #import "TeacherDetailViewController.h"
 #import <MJRefresh.h>
+#import "HomePageConfigure.h"
 
 @interface TeacherListViewController () <UICollectionViewDataSource,
         UICollectionViewDelegate,
@@ -73,6 +74,8 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
         [self requestTeacherData:self.hostModel.result.next_page_url method:GET];
     } else if (self.hostModel.result.current_page == self.hostModel.result.last_page) {
         [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+        [_collectionView.mj_footer removeFromSuperview];
+        [[ZToastManager ShardInstance] showtoast:@"没有更多数据"];
     }
 }
 
@@ -81,9 +84,11 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
 
 - (void)initCollectionView {
     self.layout = [[UICollectionViewFlowLayout alloc] init];
-    _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);//针对分区
-    _layout.minimumLineSpacing = 1.0;   //最小列间距默认10
-    _layout.minimumInteritemSpacing = 0.0;//左右间隔
+    _layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    _layout.itemSize = CGSizeMake((SCREENWITH - 40) / 3, 140);
+    
+    _layout.minimumLineSpacing = 10.0;
+    _layout.minimumInteritemSpacing = 10.0;
 
     self.collectionView = [[UICollectionView alloc]
             initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
@@ -94,8 +99,7 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
     self.collectionView.dataSource = self;
     [self.view addSubview:self.collectionView];
 
-    [self.collectionView registerClass:[TearcherIndexCell class]
-            forCellWithReuseIdentifier:teacherListCell_Id];
+    [_collectionView registerNib:[UINib nibWithNibName:@"XJFTeacherCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionByTeacher_CellID];
     if (!self.collectionView.mj_footer) {
         //mj_footer
         self.collectionView.mj_footer = [MJRefreshAutoNormalFooter
@@ -107,27 +111,16 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return self.dataSource.count;
+    return self.dataSource.count > 0 ? self.dataSource.count : 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    TearcherIndexCell *cell =
-            [collectionView dequeueReusableCellWithReuseIdentifier:teacherListCell_Id forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+    XJFTeacherCollectionViewCell *cell = [collectionView
+                                          dequeueReusableCellWithReuseIdentifier:HomePageCollectionByTeacher_CellID forIndexPath:indexPath];
     cell.model = self.dataSource[indexPath.row];
     return cell;
 }
-
-#pragma mark FlowLayoutDelegate
-
-/** 每个分区item的大小 */
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((SCREENWITH - 3) / 3, 150);
-}
-
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

@@ -72,7 +72,7 @@ static NSString *videListCell_id = @"videListCell_id";
         [sSelf.tableView reloadData];
         [[ZToastManager ShardInstance] hideprogress];
 
-    }                  failedBlock:^(NSError *_Nullable error) {
+    }failedBlock:^(NSError *_Nullable error) {
         __strong typeof(self) sSelf = wSelf;
         [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];

@@ -10,6 +10,7 @@
 #import "SelecteButtonView.h"
 #import "SelectedTableView.h"
 #import "SelectedCollectionView.h"
+#import "XJAccountManager.h"
 
 @interface SelectedView ()<SelecteButtonViewDelegate,SelectedTableViewDelegate,SelectedCollectionViewDelegate>
 @property (nonatomic, assign) SelectedViewType selectedViewType;
@@ -30,7 +31,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
         self.selectedViewType = selectedViewType;
         switch (selectedViewType) {
             case ISSchool: {
@@ -59,8 +59,6 @@
             default:
                 break;
         }
-        
-
     }
     return self;
 }
@@ -77,7 +75,10 @@
 - (void)selectedViewHidenOrShow:(SelectedTableView *)selectedTableView
                      IsSelected:(BOOL)isSelected
 {
+    UIViewController *currentViewController = getCurrentDisplayController();
     if (isSelected) {
+        [currentViewController.view bringSubviewToFront:self];
+        
         [UIView animateWithDuration:0.5 animations:^{
             selectedTableView.backGroudView.alpha = 0.35;
             selectedTableView.backGroudView.hidden = NO;
@@ -86,6 +87,8 @@
        if (selectedTableView == _tableView) _selecteButtonView.leftShowIcon.image = [UIImage imageNamed:@"iconLess"];
         if (selectedTableView == _tableViewRight) _selecteButtonView.rightShowIcon.image = [UIImage imageNamed:@"iconLess"];
     }else{
+        [currentViewController.view sendSubviewToBack:self];
+        
         [UIView animateWithDuration:0.5 animations:^{
             selectedTableView.backGroudView.alpha = 0.0;
             selectedTableView.backGroudView.hidden = YES;
@@ -98,7 +101,10 @@
 
 - (void)selectedCollectionViewHidenOrShow:(BOOL)isSelected
 {
+    UIViewController *currentViewController = getCurrentDisplayController();
     if (isSelected) {
+        [currentViewController.view bringSubviewToFront:self];
+        
         [UIView animateWithDuration:0.5 animations:^{
             _selectedCollectionView.backGroudView.alpha = 0.35;
             _selectedCollectionView.backGroudView.hidden = NO;
@@ -106,6 +112,8 @@
         }];
        _selecteButtonView.rightShowIcon.image = [UIImage imageNamed:@"iconLess"];
     }else{
+        [currentViewController.view sendSubviewToBack:self];
+        
         [UIView animateWithDuration:0.5 animations:^{
             _selectedCollectionView.backGroudView.alpha = 0.0;
             _selectedCollectionView.backGroudView.hidden = YES;

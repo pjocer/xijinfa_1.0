@@ -191,7 +191,7 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
     sectionHeaderView.sectionTitle.text = @[@"",@"全部分类",@"析金百科"][indexPath.section];
-    sectionHeaderView.sectionMore.text = @"更多";
+    sectionHeaderView.sectionMore.text = @[@"",@"",@"更多"][indexPath.section];;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
     [sectionHeaderView addGestureRecognizer:tap];
     return sectionHeaderView;
@@ -234,17 +234,10 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
 {
     HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
-    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"全部分类"]) {
-        WikiMoreViewController *wikiMoreViewController = [WikiMoreViewController new];
-        [self.navigationController pushViewController:wikiMoreViewController animated:YES];
-        wikiMoreViewController.dataArray = [NSMutableArray array];
-        for (WikiPediaCategoriesDataModel *model in self.wikiPediaCategoriesModel.result.data) {
-            [wikiMoreViewController.dataArray addObject:model];
-        }
-    }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]){
-        VideolistViewController *videolListPage = [VideolistViewController new];
-        videolListPage.title = @"析金百科更多";
-        [self.navigationController pushViewController:videolListPage animated:YES];
+    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]){
+        AllLessonListViewController *listViewController = [AllLessonListViewController new];
+        listViewController.lessonListPageLessonType = LessonListPageWikipedia;
+        [self.navigationController pushViewController:listViewController animated:YES];
     }
 }
 
@@ -254,12 +247,10 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.result.data[indexPath.row];
-    
-    VideolistViewController *videolistViewController = [VideolistViewController new];
-    videolistViewController.ID = model.id;
-    videolistViewController.title = model.title;
-    
-    [self.navigationController pushViewController:videolistViewController animated:YES];
+    AllLessonListViewController *lessonListViewController = [[AllLessonListViewController alloc] init];
+    lessonListViewController.lessonListPageLessonType = LessonListPageWikipedia;
+    lessonListViewController.ID = model.id;
+    [self.navigationController pushViewController:lessonListViewController animated:YES];
 }
 
 #pragma mark CollectionView DidSelected

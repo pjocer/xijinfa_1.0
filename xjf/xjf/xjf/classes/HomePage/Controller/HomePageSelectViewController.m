@@ -252,14 +252,15 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 {
     HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
     if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]) {
-        VideolistViewController *videolListPage = [VideolistViewController new];
-        videolListPage.title = @"析金百科更多";
-        [self.navigationController pushViewController:videolListPage animated:YES];
+        AllLessonListViewController *listViewController = [AllLessonListViewController new];
+        listViewController.lessonListPageLessonType = LessonListPageWikipedia;
+        [self.navigationController pushViewController:listViewController animated:YES];
     }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金学堂"]){
-        LessonListViewController *lessonlListPage = [[LessonListViewController alloc] init];
-        lessonlListPage.LessonListTitle = @"析金学堂更多";
-        [self.navigationController pushViewController:lessonlListPage animated:YES];
+        AllLessonListViewController *listViewController = [AllLessonListViewController new];
+        listViewController.lessonListPageLessonType = LessonListPageSchool;
+        [self.navigationController pushViewController:listViewController animated:YES];
     }
+    
 }
 
 #pragma mark - delegate
@@ -267,23 +268,27 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 #pragma mark homePageScrollCell didSelectItemAtIndexPath
 - (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
-    ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
-    
-    for (ProjectList *model in tempModel.children) {
-        if ([model.title isEqualToString:@"基础知识"]) {
-            employedLessonListViewController.employedBasisID = model.id;
-        }
-        else if ([model.title isEqualToString:@"法律法规"]) {
-            employedLessonListViewController.employedLawsID = model.id;
-        }
-        else if ([model.title isEqualToString:@"全科"]) {
-            employedLessonListViewController.employedGeneralID = model.id;
-        }
-    }
-    employedLessonListViewController.employedLessonList = tempModel.title;
-    [self.navigationController pushViewController:employedLessonListViewController animated:YES];
+//        EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
+//        ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
+//    
+//        for (ProjectList *model in tempModel.children) {
+//            if ([model.title isEqualToString:@"基础知识"]) {
+//                employedLessonListViewController.employedBasisID = model.id;
+//            }
+//            else if ([model.title isEqualToString:@"法律法规"]) {
+//                employedLessonListViewController.employedLawsID = model.id;
+//            }
+//            else if ([model.title isEqualToString:@"全科"]) {
+//                employedLessonListViewController.employedGeneralID = model.id;
+//            }
+//        }
+//        employedLessonListViewController.employedLessonList = tempModel.title;
+//        [self.navigationController pushViewController:employedLessonListViewController animated:YES];
+    AllLessonListViewController *listViewController = [AllLessonListViewController new];
+    listViewController.lessonListPageLessonType = LessonListPageEmployed;
+    [self.navigationController pushViewController:listViewController animated:YES];
 }
+
 
 #pragma mark CollectionView DidSelected
 

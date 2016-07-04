@@ -15,6 +15,6 @@ typedef NS_OPTIONS(NSInteger, LessonListPageLessonType) {
     LessonListPageEmployed
 };
 
-@property(nonatomic, assign) LessonListPageLessonType lessonListPageLessonType;
-
+@property (nonatomic, assign) LessonListPageLessonType lessonListPageLessonType;
+@property (nonatomic, strong) NSString *ID;
 @end
