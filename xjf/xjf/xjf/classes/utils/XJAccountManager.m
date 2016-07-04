@@ -67,7 +67,6 @@
     });
     return NO;
 }
-
 - (void)setUser_model:(UserProfileModel *)user_model {
     _user_model = user_model;
     [self getAccountInfo:^(UserProfileModel *model) {
@@ -104,7 +103,7 @@
 }
 
 - (NSString *)user_id {
-    return self.user_model.result.id;
+    return _user_model.result.id;
 }
 
 - (NSString *)accessToken {

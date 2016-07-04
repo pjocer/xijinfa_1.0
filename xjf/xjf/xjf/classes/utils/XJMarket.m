@@ -73,8 +73,13 @@
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc] init];
     [pay buyTradeImmediately:order.order.result.payment by:style success:success failed:failed];
-    ReceivedNotification(self, PayLessonsSuccess, ^(NSNotification *notification) {
-        if (success) success();
+    ReceivedNotification(self, PayLessonsResult, ^(NSNotification *notification) {
+        NSNumber *num = notification.object;
+        if (num.boolValue) {
+            if (success) success();
+        }else {
+            if (failed) failed();
+        }
     });
 }
 

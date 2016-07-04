@@ -84,8 +84,7 @@
         tempPeriod = @"一年:";
         self.vipDescribeDetail.text = [NSString stringWithFormat:@"￥%.2lf/月", [model.price floatValue] / 100 / 12];
     }
-
-    self.vipDescribe.attributedText = [self.vipDescribe changeColorWithString:[NSString stringWithFormat:@"%@ %@", tempPeriod, [NSString stringWithFormat:@"￥%.2lf", [model.price floatValue] / 100]] light:[NSString stringWithFormat:@"￥%.2lf", [model.price floatValue] / 100] Font:15 Color:[UIColor redColor]];
+    [self.vipDescribe changeColorWithString:[NSString stringWithFormat:@"%@ %@", tempPeriod, [NSString stringWithFormat:@"￥%.2lf", [model.price floatValue] / 100]] light:[NSString stringWithFormat:@"￥%.2lf", [model.price floatValue] / 100] Font:15 Color:[UIColor redColor]];
 
 }
 

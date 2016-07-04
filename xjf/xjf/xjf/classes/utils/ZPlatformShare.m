@@ -70,9 +70,9 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             BOOL isSuccess = [self parseResult:resultDic];
             if (isSuccess) {
-                SendNotification(PayLessonsSuccess, nil);
+                SendNotification(PayLessonsResult, @(YES));
             } else {
-                NSLog(@"支付失败 type:2");
+                SendNotification(PayLessonsResult, @(NO));
             }
         }];
     }
@@ -175,6 +175,7 @@
 - (void)weiChatPay:(NSString *)data success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     if (![WXApi isWXAppInstalled]) {
         if (failed) failed();
+        return;
     }
     self.success = success;
     self.failed = failed;

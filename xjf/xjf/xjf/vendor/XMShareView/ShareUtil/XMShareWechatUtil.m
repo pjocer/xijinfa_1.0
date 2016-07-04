@@ -65,9 +65,7 @@
         if (aresp.errCode == 0) {
             NSString *code = aresp.code;
             NSString *url = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code", kWXAppID, kWXAppKey, code];
-
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
                 NSURL *zoneUrl = [NSURL URLWithString:url];
                 NSString *zoneStr = [NSString stringWithContentsOfURL:zoneUrl encoding:NSUTF8StringEncoding error:nil];
                 NSData *data = [zoneStr dataUsingEncoding:NSUTF8StringEncoding];
