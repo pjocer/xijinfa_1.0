@@ -59,7 +59,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ZFPlayer:
-    :commit: 4f6d28ac9478c85dcd4e623fca536aa470a9512f
+    :commit: 03446da89da679625fb2cc5e7aed0a961fbd8bd9
     :git: http://120.55.163.135:9001/xjf_ios/ZFPlayer.git
 
 SPEC CHECKSUMS:
