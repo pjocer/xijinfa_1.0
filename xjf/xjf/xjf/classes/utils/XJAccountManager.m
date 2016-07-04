@@ -39,9 +39,8 @@
     }
     return self;
 }
-
-- (void)updateUserInfo{
-    [self getAccountInfo];
+- (void)updateUserInfoCompeletionBlock:(void (^)(UserProfileModel *model))compeletionBlock{
+    [self getAccountInfo:compeletionBlock];
 }
 
 - (BOOL)verifyValid {
@@ -71,7 +70,9 @@
 
 - (void)setUser_model:(UserProfileModel *)user_model {
     _user_model = user_model;
-    [self getAccountInfo];
+    [self getAccountInfo:^(UserProfileModel *model) {
+        NSLog(@"%s",__func__);
+    }];
 }
 
 - (void)setAccuontInfo:(NSDictionary *)info {
@@ -79,10 +80,10 @@
     [[NSUserDefaults standardUserDefaults] setObject:info forKey:ACCOUNT_INFO];
     [[NSUserDefaults standardUserDefaults] setObject:self.accountFinalModel.result.credential.bearer forKey:ACCOUNT_ACCESS_TOKEN];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self getAccountInfo];
+    [self getAccountInfo:nil];
 }
 
-- (void)getAccountInfo {
+- (void)getAccountInfo:(void (^)(UserProfileModel *model))compeletionBlock {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:user_info RequestMethod:GET];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         _user_model = [[UserProfileModel alloc] initWithData:responseData error:nil];
@@ -93,6 +94,7 @@
             UserDefaultSetObjectForKey(data, @"user_icon");
             dispatch_async(dispatch_get_main_queue(), ^{
                 SendNotification(UserInfoDidChangedNotification, _user_model);
+                if (compeletionBlock) compeletionBlock(_user_model);
             });
         }];
        

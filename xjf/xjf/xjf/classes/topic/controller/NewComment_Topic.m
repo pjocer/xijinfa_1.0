@@ -94,8 +94,9 @@
         if ([dic[@"errCode"] integerValue] == 0) {
             [[ZToastManager ShardInstance] showtoast:@"发表成功"];
             [_textView resignFirstResponder];
-            [[XJAccountManager defaultManager] updateUserInfo];
-            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            }];
         } else {
             [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
         }

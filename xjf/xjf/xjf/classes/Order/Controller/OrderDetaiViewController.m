@@ -290,7 +290,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
         } else {
             if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
                 [[XJAccountManager defaultManager]
-                        updateUserInfo];
+                        updateUserInfoCompeletionBlock:nil];
             }
         }
 

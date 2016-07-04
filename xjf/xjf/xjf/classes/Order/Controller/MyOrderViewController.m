@@ -256,7 +256,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
         [self requestAllOrderData:queryAllOrder method:GET];
         if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] ||
                 self.orderfooterView.model.items.count == 0) {
-            [[XJAccountManager defaultManager] updateUserInfo];
+            [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:nil];
         }
 
 

@@ -62,7 +62,7 @@ typedef enum : NSUInteger {
 /**
  *  Update User Info
  */
-- (void)updateUserInfo;
+- (void)updateUserInfoCompeletionBlock:(void (^) (UserProfileModel *model))compeletionBlock;
 /**
  *  Logout
  */
