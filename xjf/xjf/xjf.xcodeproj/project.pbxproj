@@ -46,7 +46,6 @@
 		5A3B64BA1D264DB4007EC1B5 /* RegistrationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64B91D264DB4007EC1B5 /* RegistrationCenterViewController.m */; };
 		5A3B64BD1D264E00007EC1B5 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */; };
 		5A3B64C01D264E1F007EC1B5 /* TestTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */; };
-		5A3B64D01D2694AD007EC1B5 /* TestLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64CF1D2694AD007EC1B5 /* TestLessonListViewController.m */; };
 		5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C531CE5E001000CF748 /* VideolistViewController.m */; };
 		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
@@ -82,6 +81,8 @@
 		5A5B74041D27C1E100D24CBA /* SelectedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B73FE1D27C1E100D24CBA /* SelectedTableView.m */; };
 		5A5B74051D27C1E100D24CBA /* SelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B74001D27C1E100D24CBA /* SelectedView.m */; };
 		5A5B74081D27DA8900D24CBA /* SelectedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B74071D27DA8900D24CBA /* SelectedCollectionViewCell.m */; };
+		5A5B740B1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B740A1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m */; };
+		5A5B740F1D2A323400D24CBA /* AllLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B740E1D2A323400D24CBA /* AllLessonListViewController.m */; };
 		5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF1D41D126FA700676255 /* AppDelegateManager.m */; };
 		5A6CF3981D1CED2700676255 /* XJFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF3971D1CED2700676255 /* XJFBaseViewController.m */; };
 		5A6CF39B1D1CED4300676255 /* XJFBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF39A1D1CED4300676255 /* XJFBaseModel.m */; };
@@ -360,8 +361,6 @@
 		5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		5A3B64BE1D264E1F007EC1B5 /* TestTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTimeViewController.h; sourceTree = "<group>"; };
 		5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTimeViewController.m; sourceTree = "<group>"; };
-		5A3B64CE1D2694AD007EC1B5 /* TestLessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLessonListViewController.h; sourceTree = "<group>"; };
-		5A3B64CF1D2694AD007EC1B5 /* TestLessonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLessonListViewController.m; sourceTree = "<group>"; };
 		5A441C521CE5E000000CF748 /* VideolistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideolistViewController.h; sourceTree = "<group>"; };
 		5A441C531CE5E001000CF748 /* VideolistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideolistViewController.m; sourceTree = "<group>"; };
 		5A441C551CE5F1F3000CF748 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
@@ -429,6 +428,10 @@
 		5A5B74001D27C1E100D24CBA /* SelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedView.m; sourceTree = "<group>"; };
 		5A5B74061D27DA8900D24CBA /* SelectedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedCollectionViewCell.h; sourceTree = "<group>"; };
 		5A5B74071D27DA8900D24CBA /* SelectedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedCollectionViewCell.m; sourceTree = "<group>"; };
+		5A5B74091D2A05DC00D24CBA /* SelectedCollectionViewFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedCollectionViewFooter.h; sourceTree = "<group>"; };
+		5A5B740A1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedCollectionViewFooter.m; sourceTree = "<group>"; };
+		5A5B740D1D2A323400D24CBA /* AllLessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllLessonListViewController.h; sourceTree = "<group>"; };
+		5A5B740E1D2A323400D24CBA /* AllLessonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllLessonListViewController.m; sourceTree = "<group>"; };
 		5A6CF1D31D126FA600676255 /* AppDelegateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateManager.h; sourceTree = "<group>"; };
 		5A6CF1D41D126FA700676255 /* AppDelegateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateManager.m; sourceTree = "<group>"; };
 		5A6CF3961D1CED2700676255 /* XJFBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFBaseViewController.h; sourceTree = "<group>"; };
@@ -1066,6 +1069,8 @@
 				5A5B73FA1D27C1E100D24CBA /* SelecteButtonView.xib */,
 				5A5B73FB1D27C1E100D24CBA /* SelectedCollectionView.h */,
 				5A5B73FC1D27C1E100D24CBA /* SelectedCollectionView.m */,
+				5A5B74091D2A05DC00D24CBA /* SelectedCollectionViewFooter.h */,
+				5A5B740A1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m */,
 				5A5B74061D27DA8900D24CBA /* SelectedCollectionViewCell.h */,
 				5A5B74071D27DA8900D24CBA /* SelectedCollectionViewCell.m */,
 				5A5B73FD1D27C1E100D24CBA /* SelectedTableView.h */,
@@ -1076,10 +1081,20 @@
 			path = SelectedView;
 			sourceTree = "<group>";
 		};
+		5A5B740C1D2A320D00D24CBA /* LessonListPage */ = {
+			isa = PBXGroup;
+			children = (
+				5A5B740D1D2A323400D24CBA /* AllLessonListViewController.h */,
+				5A5B740E1D2A323400D24CBA /* AllLessonListViewController.m */,
+			);
+			path = LessonListPage;
+			sourceTree = "<group>";
+		};
 		5A6CF38E1D1CED0B00676255 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
 				5A6CF3A61D1CEDC600676255 /* HomePageConfigure.h */,
+				5A5B740C1D2A320D00D24CBA /* LessonListPage */,
 				5A6CF38F1D1CED0B00676255 /* Controller */,
 				5A6CF3901D1CED0B00676255 /* Model */,
 				5A5B73F71D27C1E100D24CBA /* SelectedView */,
@@ -1102,8 +1117,6 @@
 				5A6CF3CC1D1CF93600676255 /* HomePageWikipediaViewController.m */,
 				5A6CF3CE1D1CF95000676255 /* HomePageSchoolViewController.h */,
 				5A6CF3CF1D1CF95000676255 /* HomePageSchoolViewController.m */,
-				5A3B64CE1D2694AD007EC1B5 /* TestLessonListViewController.h */,
-				5A3B64CF1D2694AD007EC1B5 /* TestLessonListViewController.m */,
 				5A6CF4E11D260F3E00676255 /* Employed */,
 			);
 			path = Controller;
@@ -2390,6 +2403,7 @@
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				5AF7C2E81CFEF097007CC71C /* TeacherListHostModel.m in Sources */,
 				5A6CF48D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */,
+				5A5B740F1D2A323400D24CBA /* AllLessonListViewController.m in Sources */,
 				5A6CF48B1D23632D00676255 /* XJFClassificationCollectionViewCell.m in Sources */,
 				5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */,
 				AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */,
@@ -2414,9 +2428,9 @@
 				CD144F121CBB732900A0636D /* IndexTeacherCell.m in Sources */,
 				5A5B74081D27DA8900D24CBA /* SelectedCollectionViewCell.m in Sources */,
 				D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */,
+				5A5B740B1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m in Sources */,
 				5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
-				5A3B64D01D2694AD007EC1B5 /* TestLessonListViewController.m in Sources */,
 				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
 				5AF7C2F91CFF049A007CC71C /* TeacherDetailHeaderView.m in Sources */,
 				D073CF771CFC55CB002D3FAF /* TopicDetailViewController.m in Sources */,

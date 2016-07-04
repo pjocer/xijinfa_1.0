@@ -46,18 +46,18 @@
                              title:@"首页"
                          imageName:@"tab_home"
                  selectedImageName:@"tab_home_selected"];
-
-    TopicViewController *vc2 = [[TopicViewController alloc] init];
+    
+    VipViewController *vc2 = [[VipViewController alloc] init];
     [self setupChildViewController:vc2
+                             title:@"学习"
+                         imageName:@"tab_study"
+                 selectedImageName:@"tab_study_selected"];
+
+    TopicViewController *vc3 = [[TopicViewController alloc] init];
+    [self setupChildViewController:vc3
                              title:@"话题"
                          imageName:@"tab_topic"
                  selectedImageName:@"tab_topic_selected"];
-
-    VipViewController *vc3 = [[VipViewController alloc] init];
-    [self setupChildViewController:vc3
-                             title:@"会员"
-                         imageName:@"tab_vip"
-                 selectedImageName:@"tab_vip_selected"];
 
     UserInfoController *vc5 = [[UserInfoController alloc] initWithUserType:Myself
                                                                   userInfo:[[[XJAccountManager defaultManager] user_model] result]];

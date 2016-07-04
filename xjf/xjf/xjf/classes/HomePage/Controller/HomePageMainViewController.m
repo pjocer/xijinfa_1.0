@@ -12,7 +12,6 @@
 #import "HomePageSchoolViewController.h"
 #import "HomePageEmployedViewController.h"
 #import "SelectedScrollContentView.h"
-#import "TestLessonListViewController.h"
 
 @interface HomePageMainViewController ()
 @property (nonatomic, strong) HomePageSelectViewController *selectViewController;
@@ -45,11 +44,6 @@
         self.employedViewController = [[HomePageEmployedViewController alloc] init];
         _employedViewController.title = @"从业";
         [self addChildViewController:_employedViewController];
-        
-        
-        TestLessonListViewController *testLessonListViewController = [[TestLessonListViewController alloc] init];
-        testLessonListViewController.title = @"testLessonList";
-        [self addChildViewController:testLessonListViewController];
     }];
     self.view = selectedScrollContentView;
 }

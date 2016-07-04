@@ -9,6 +9,7 @@
 #import "WikiMoreViewController.h"
 #import "WikiMoreClassificationCell.h"
 #import "VideolistViewController.h"
+#import "AllLessonListViewController.h"
 
 @interface WikiMoreViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
         UICollectionViewDelegateFlowLayout>
@@ -75,11 +76,13 @@ static NSString *WikiMoreCell_Id = @"WikiMoreCell_Id";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    WikiPediaCategoriesDataModel *model = self.dataArray[indexPath.row];
+//    WikiPediaCategoriesDataModel *model = self.dataArray[indexPath.row];
     VideolistViewController *videolistViewController = [VideolistViewController new];
-    videolistViewController.ID = model.id;
-    videolistViewController.title = model.title;
-    [self.navigationController pushViewController:videolistViewController animated:YES];
+//    videolistViewController.ID = model.id;
+//    videolistViewController.title = model.title;
+//    [self.navigationController pushViewController:videolistViewController animated:YES];
+    AllLessonListViewController *lessonListViewController = [[AllLessonListViewController alloc] init];
+    [self.navigationController pushViewController:lessonListViewController animated:YES];
 }
 
 

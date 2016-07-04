@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL isSelectedRightButton;
 
 @property (nonatomic, strong) SelectedTableView *tableView;
-@property (nonatomic, strong) SelectedTableView *testTableView;
+@property (nonatomic, strong) SelectedTableView *tableViewRight;
 @property (nonatomic, strong) SelectedCollectionView *selectedCollectionView;
 @end
 
@@ -84,7 +84,7 @@
             selectedTableView.frame = CGRectMake(0, CGRectGetMaxY(_selecteButtonView.frame), self.frame.size.width, self.frame.size.height - CGRectGetMaxY(_selecteButtonView.frame));
         }];
        if (selectedTableView == _tableView) _selecteButtonView.leftShowIcon.image = [UIImage imageNamed:@"iconLess"];
-        if (selectedTableView == _testTableView) _selecteButtonView.rightShowIcon.image = [UIImage imageNamed:@"iconLess"];
+        if (selectedTableView == _tableViewRight) _selecteButtonView.rightShowIcon.image = [UIImage imageNamed:@"iconLess"];
     }else{
         [UIView animateWithDuration:0.5 animations:^{
             selectedTableView.backGroudView.alpha = 0.0;
@@ -92,7 +92,7 @@
             selectedTableView.frame = CGRectMake(0, CGRectGetMaxY(_selecteButtonView.frame), self.frame.size.width, 0.01);
         }];
         if (selectedTableView == _tableView) _selecteButtonView.leftShowIcon.image = [UIImage imageNamed:@"iconMore"];
-        if (selectedTableView == _testTableView) _selecteButtonView.rightShowIcon.image = [UIImage imageNamed:@"iconMore"];
+        if (selectedTableView == _tableViewRight) _selecteButtonView.rightShowIcon.image = [UIImage imageNamed:@"iconMore"];
     }
 }
 
@@ -169,7 +169,7 @@
          [self selectedCollectionViewHidenOrShow:isSelectedRightButton];
     }else if (_selectedViewType == ISEmployed){
         _isSelectedRightButton = isSelectedRightButton;
-        [self selectedViewHidenOrShow:_testTableView IsSelected:isSelectedRightButton];
+        [self selectedViewHidenOrShow:_tableViewRight IsSelected:isSelectedRightButton];
     }
 }
 
@@ -202,7 +202,7 @@
     if (testTableDataSource) {
         _testTableDataSource = testTableDataSource;
     }
-    if (_selectedViewType == ISEmployed) _testTableView.dataSource = _testTableDataSource;
+    if (_selectedViewType == ISEmployed) _tableViewRight.dataSource = _testTableDataSource;
     if (_selectedViewType == ISSchool) _selectedCollectionView.dataSource = _testTableDataSource;
 }
 
@@ -233,16 +233,16 @@
 
 - (SelectedTableView *)testTableView
 {
-    if (!_testTableView) {
-        self.testTableView = [[SelectedTableView alloc] initWithFrame:CGRectNull];
-        _testTableView.delegate = self;
+    if (!_tableViewRight) {
+        self.tableViewRight = [[SelectedTableView alloc] initWithFrame:CGRectNull];
+        _tableViewRight.delegate = self;
         @weakify(self)
-        _testTableView.selectedTableViewFrameUnShow = ^(){
+        _tableViewRight.selectedTableViewFrameUnShow = ^(){
             @strongify(self)
             self.isSelectedRightButton = !self.isSelectedRightButton;
         };
     }
-    return _testTableView;
+    return _tableViewRight;
 }
 
 - (SelectedCollectionView *)selectedCollectionView
