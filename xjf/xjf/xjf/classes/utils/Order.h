@@ -130,6 +130,7 @@
 @interface Membership : JSONModel
 @property (nonatomic, copy) NSString *period;
 @property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *title;
 @end
 
 @interface Payment : JSONModel

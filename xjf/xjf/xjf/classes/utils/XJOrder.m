@@ -31,7 +31,8 @@
 }
 
 - (instancetype)initWithParams:(NSDictionary *)params {
-    if (self == [super init]) {
+    self = [super init];
+    if (self) {
         [self initVipOrder:params];
     }
     return self;
@@ -46,6 +47,8 @@
     @weakify(self)
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         @strongify(self)
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"%@",dic);
         self.order = [[Order alloc] initWithData:responseData error:nil];
         if (self.order.errCode.integerValue == 0) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)]) {

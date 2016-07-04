@@ -247,6 +247,10 @@
 		D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F25B1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m */; };
 		D055F2611D2643D600F80AAD /* MyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F25F1D2643D600F80AAD /* MyMoneyViewController.m */; };
 		D055F2621D2643D600F80AAD /* MyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F2601D2643D600F80AAD /* MyMoneyViewController.xib */; };
+		D055F2691D29FD5B00F80AAD /* RechargeStreamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2671D29FD5B00F80AAD /* RechargeStreamCell.m */; };
+		D055F26A1D29FD5B00F80AAD /* RechargeStreamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F2681D29FD5B00F80AAD /* RechargeStreamCell.xib */; };
+		D055F26D1D2A094200F80AAD /* RechargeStreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F26C1D2A094200F80AAD /* RechargeStreamModel.m */; };
+		D055F2761D2A0C4400F80AAD /* RechargeStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2751D2A0C4400F80AAD /* RechargeStream.m */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
 		D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0698E641CE41A4D003BF1F3 /* RegistViewController.m */; };
@@ -745,6 +749,13 @@
 		D055F25E1D2643D600F80AAD /* MyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoneyViewController.h; sourceTree = "<group>"; };
 		D055F25F1D2643D600F80AAD /* MyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoneyViewController.m; sourceTree = "<group>"; };
 		D055F2601D2643D600F80AAD /* MyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMoneyViewController.xib; sourceTree = "<group>"; };
+		D055F2661D29FD5B00F80AAD /* RechargeStreamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeStreamCell.h; sourceTree = "<group>"; };
+		D055F2671D29FD5B00F80AAD /* RechargeStreamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeStreamCell.m; sourceTree = "<group>"; };
+		D055F2681D29FD5B00F80AAD /* RechargeStreamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeStreamCell.xib; sourceTree = "<group>"; };
+		D055F26B1D2A094200F80AAD /* RechargeStreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeStreamModel.h; sourceTree = "<group>"; };
+		D055F26C1D2A094200F80AAD /* RechargeStreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeStreamModel.m; sourceTree = "<group>"; };
+		D055F2741D2A0C4400F80AAD /* RechargeStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeStream.h; sourceTree = "<group>"; };
+		D055F2751D2A0C4400F80AAD /* RechargeStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeStream.m; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
 		D05985211CF6BD8300BF2A30 /* XJOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJOrder.m; sourceTree = "<group>"; };
 		D065BFE21CE5751800D11804 /* ImageCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCodeModel.h; path = xjf/classes/utils/ImageCodeModel.h; sourceTree = SOURCE_ROOT; };
@@ -1740,6 +1751,9 @@
 				AA5B96051D1C0DF60088A196 /* FansCell.xib */,
 				5A20716A1D02ADBE00462D65 /* MyLessonsTableFooterView.h */,
 				5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */,
+				D055F2661D29FD5B00F80AAD /* RechargeStreamCell.h */,
+				D055F2671D29FD5B00F80AAD /* RechargeStreamCell.m */,
+				D055F2681D29FD5B00F80AAD /* RechargeStreamCell.xib */,
 			);
 			name = View;
 			path = view;
@@ -1982,6 +1996,8 @@
 				AA5B96071D1C0DF60088A196 /* FansFocus.m */,
 				AA5B96141D1C0DF60088A196 /* UserInfoModel.h */,
 				AA5B96151D1C0DF60088A196 /* UserInfoModel.m */,
+				D055F26B1D2A094200F80AAD /* RechargeStreamModel.h */,
+				D055F26C1D2A094200F80AAD /* RechargeStreamModel.m */,
 				D02FB4D41D127A05006EADAD /* zh_CN.json */,
 			);
 			name = Model;
@@ -2000,6 +2016,8 @@
 				D055F25E1D2643D600F80AAD /* MyMoneyViewController.h */,
 				D055F25F1D2643D600F80AAD /* MyMoneyViewController.m */,
 				D055F2601D2643D600F80AAD /* MyMoneyViewController.xib */,
+				D055F2741D2A0C4400F80AAD /* RechargeStream.h */,
+				D055F2751D2A0C4400F80AAD /* RechargeStream.m */,
 			);
 			name = MyMoney;
 			sourceTree = "<group>";
@@ -2174,6 +2192,7 @@
 				D04D0C181D0FBD280090D2CD /* UserInfoSection2.xib in Resources */,
 				D04D0C1D1D0FC15C0090D2CD /* UserInfoSection3.xib in Resources */,
 				5A6CF4F11D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib in Resources */,
+				D055F26A1D29FD5B00F80AAD /* RechargeStreamCell.xib in Resources */,
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
 				AA5B96181D1C0DF60088A196 /* FansCell.xib in Resources */,
 				AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */,
@@ -2274,6 +2293,7 @@
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
 				5A6CF49A1D2363BD00676255 /* TalkGridModel.m in Sources */,
+				D055F2691D29FD5B00F80AAD /* RechargeStreamCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
@@ -2438,6 +2458,7 @@
 				5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */,
 				5A565A371D069F5800008DA9 /* EmployedLawsViewController.m in Sources */,
 				5A5B73F31D278C5500D24CBA /* UIGestureRecognizer+Block.m in Sources */,
+				D055F2761D2A0C4400F80AAD /* RechargeStream.m in Sources */,
 				CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */,
 				5AF7C2EC1CFF0292007CC71C /* TeacherDetailViewController.m in Sources */,
 				D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */,
@@ -2450,6 +2471,7 @@
 				68AD3F4CC52500888AAC5A04 /* LessonListCell.m in Sources */,
 				68AD3DF8B96C85E22B19B04F /* CommentsModel.m in Sources */,
 				68AD3A56F861785951BB9107 /* UIColor+hexColor.m in Sources */,
+				D055F26D1D2A094200F80AAD /* RechargeStreamModel.m in Sources */,
 				68AD32E2FC2DEEB1C311AA39 /* ZToastManager.m in Sources */,
 				68AD370C817124BB259FF07A /* UILabel+StringFrame.m in Sources */,
 				68AD32495822B12CA68526E7 /* NSString+Extensions.m in Sources */,

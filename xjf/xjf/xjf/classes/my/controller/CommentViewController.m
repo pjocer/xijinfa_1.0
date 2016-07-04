@@ -24,8 +24,8 @@
 
 @implementation CommentViewController
 - (instancetype)initWith:(UserInfoModel *)user {
-    if (self == [super init]) {
-
+    self = [super init];
+    if (self) {
         _user = user;
     }
     return self;

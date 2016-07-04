@@ -82,9 +82,9 @@
 
 - (BOOL)parseResult:(NSDictionary *)result {
     NSString *resultSting = result[@"result"];
-    BOOL codeIsOK;
-    BOOL SuccessIsOk;
-    BOOL signIsOK;
+    BOOL codeIsOK = NO;
+    BOOL SuccessIsOk = NO;
+    BOOL signIsOK = NO;
     if ([result[@"resultStatus"] isEqualToString:@"9000"]) {
         codeIsOK = YES;
     } else {

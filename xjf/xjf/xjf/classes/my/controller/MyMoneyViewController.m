@@ -14,6 +14,7 @@
 #import "PayView.h"
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
+#import "RechargeStream.h"
 @interface MyMoneyViewController () <OrderInfoDidChangedDelegate,PayViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *first;
 @property (weak, nonatomic) IBOutlet UIView *second;
@@ -29,11 +30,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initControl];
-    
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"recharge_right"] style:UIBarButtonItemStylePlain target:self action:@selector(rechargeStream)];
+    self.navigationItem.rightBarButtonItem = right;
+    self.nav_title = @"我的余额";
+}
+- (void)rechargeStream {
+    RechargeStream *stream = [[RechargeStream alloc] init];
+    [self.navigationController pushViewController:stream animated:YES];
 }
 - (void)initControl {
     self.views = @[_first,_second,_third,_fouth];
-    NSArray *limits = @[@"300",@"500",@"800",@"1000"];
+    NSArray *limits = @[@"100",@"100",@"100",@"100"];
     for (int i = 0; i < self.views.count; i++) {
         UIView *view= self.views[i];
         NSString *limit = limits[i];

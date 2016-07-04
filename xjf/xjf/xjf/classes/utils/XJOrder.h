@@ -16,8 +16,12 @@ typedef NS_OPTIONS(NSUInteger, OrderStatus) {
     OrderStatusUndetermined
 } NS_ENUM_AVAILABLE_IOS(8_0);
 @class XJOrder;
-
 @protocol OrderInfoDidChangedDelegate <NSObject>
+/**
+ *  Call Back When Create Order Successed
+ *
+ *  @param order Current XJOrder Instance
+ */
 - (void)orderInfoDidChanged:(XJOrder *)order;
 @end
 

@@ -74,6 +74,7 @@
     [self setNeedsStatusBarAppearanceUpdate];
 }
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self initProperties];
     [self initUI];
     [self initControl];
