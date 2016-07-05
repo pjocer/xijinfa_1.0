@@ -107,7 +107,17 @@
     [_backView removeFromSuperview];
     _backView = nil;
 }
+- (BOOL)shouldAutorotate {
+    return [[self.viewControllers lastObject] shouldAutorotate];
+}
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return [[self.viewControllers lastObject] supportedInterfaceOrientations];
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return [[self.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
+}
 /*
 #pragma mark - Navigation
 

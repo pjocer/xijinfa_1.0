@@ -199,7 +199,6 @@
 		CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F051CBB732900A0636D /* TalkGridViewCell.m */; };
 		CD144F141CBB732900A0636D /* TeacherGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F071CBB732900A0636D /* TeacherGridViewCell.m */; };
 		CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F161CBB735100A0636D /* MoreBannerCell.m */; };
-		CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144F481CBB95E000A0636D /* BaseUINavigationController.m */; };
 		CD1CCC121CB35A2D002FC0C9 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCBF71CB35A2D002FC0C9 /* IndexViewController.m */; };
 		CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */; };
 		CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC0F1CB35A2D002FC0C9 /* VipViewController.m */; };
@@ -665,8 +664,6 @@
 		CD144F071CBB732900A0636D /* TeacherGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherGridViewCell.m; sourceTree = "<group>"; };
 		CD144F151CBB735100A0636D /* MoreBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreBannerCell.h; sourceTree = "<group>"; };
 		CD144F161CBB735100A0636D /* MoreBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreBannerCell.m; sourceTree = "<group>"; };
-		CD144F471CBB95E000A0636D /* BaseUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseUINavigationController.h; sourceTree = "<group>"; };
-		CD144F481CBB95E000A0636D /* BaseUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseUINavigationController.m; sourceTree = "<group>"; };
 		CD1CCBF61CB35A2D002FC0C9 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		CD1CCBF71CB35A2D002FC0C9 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
 		CD1CCC081CB35A2D002FC0C9 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
@@ -1856,8 +1853,6 @@
 				D055F2891D2A860700F80AAD /* BaseNavigationController.m */,
 				CD1CCC1E1CB363F5002FC0C9 /* RootViewController.h */,
 				CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */,
-				CD144F471CBB95E000A0636D /* BaseUINavigationController.h */,
-				CD144F481CBB95E000A0636D /* BaseUINavigationController.m */,
 			);
 			name = Controller;
 			path = controller;
@@ -2287,7 +2282,6 @@
 				5A5B74051D27C1E100D24CBA /* SelectedView.m in Sources */,
 				5A565A3A1D069F7200008DA9 /* EmployedGeneralViewController.m in Sources */,
 				5A6CF4531D22773D00676255 /* TeacherScrollCollectionViewCell.m in Sources */,
-				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
 				5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */,
 				D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */,
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
