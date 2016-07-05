@@ -14,6 +14,7 @@
 #import "ZToastManager.h"
 #import "SearchSectionTwo.h"
 #import "SearchResultController.h"
+#import "XJFCacheHandler.h"
 
 @interface SearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, TableViewRefreshDelegate>
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -250,14 +251,16 @@
             [self initDataResult];
         }
         [searchBar resignFirstResponder];
-        [[XJMarket sharedMarket] addSearch:searchBar.text];
+        [[XJFCacheHandler sharedInstance] addSearch:searchBar.text];
+//        [[XJMarket sharedMarket] addSearch:searchBar.text];
     }
 }
 
 #pragma mark - Action
 
 - (void)deleteRencentlySearch {
-    [[XJMarket sharedMarket] clearRecentlySearched];
+//    [[XJMarket sharedMarket] clearRecentlySearched];
+    [[XJFCacheHandler sharedInstance] clearRecentlySearched];
     [self.tableView reloadData];
 }
 

@@ -8,7 +8,7 @@
 
 #import "SearchSectionOne.h"
 #import "XJMarket.h"
-
+#import "XJFCacheHandler.h"
 @implementation SearchSectionOne
 
 - (void)initSubViews {
@@ -23,7 +23,7 @@
     CGFloat x = 0;
     CGFloat y = 0;
     CGFloat tap = 10;
-    NSArray *results = [[XJMarket sharedMarket] recentlySearched];
+    NSArray *results = [[XJFCacheHandler sharedInstance] recentlySearched];
     for (int i = 0; i < results.count; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.layer.borderColor = [[UIColor xjfStringToColor:@"#9a9a9a"] CGColor];
@@ -67,7 +67,7 @@
 }
 
 - (void)resultClicked:(UIButton *)button {
-    NSArray *results = [[XJMarket sharedMarket] recentlySearched];
+    NSArray *results = [[XJFCacheHandler sharedInstance] recentlySearched];
     if (self.SearchHandler) self.SearchHandler([results objectAtIndex:button.tag - 180]);
 }
 

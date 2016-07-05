@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "XJAccountManager.h"
 #import "AlertUtils.h"
+#import "XJFCacheHandler.h"
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
@@ -60,7 +61,7 @@
         [switchB addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
         cell.accessoryView = switchB;
     } else if (indexPath.row == 2) {
-        NSAttributedString *string = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2fMB",[NSString folderSizeAtPath:[NSString cachePath]]] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : color}];
+        NSAttributedString *string = [[NSAttributedString alloc] initWithString:[[XJFCacheHandler sharedInstance] getSize] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : color}];
         [cell.detailTextLabel setAttributedText:string];
     }
     NSAttributedString *string = [[NSAttributedString alloc] initWithString:_dataSource[indexPath.row] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : color}];
@@ -78,15 +79,9 @@
 {
     if (indexPath.row == 2) {
         [AlertUtils alertWithTarget:self title:@"提示" content:@"确定清除当前缓存?" confirmBlock:^{
-            [NSString deletecachePath:[NSString cachePath] Success:^{
+            [[XJFCacheHandler sharedInstance] clearDiskOnCompeletion:^{
                 [[ZToastManager ShardInstance] showtoast:@"清除缓存成功"];
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-            } WithFailure:^{
-                if ([NSString folderSizeAtPath:[NSString cachePath]] == 0) {
-                    [[ZToastManager ShardInstance] showtoast:@"当前无缓存"];
-                }else{
-                    [[ZToastManager ShardInstance] showtoast:@"清除缓存失败"];
-                }
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }];
         }];
     }
