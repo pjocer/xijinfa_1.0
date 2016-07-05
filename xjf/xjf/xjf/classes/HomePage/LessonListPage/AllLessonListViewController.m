@@ -129,8 +129,8 @@ UICollectionViewDelegateFlowLayout>
     
     _selectedView.leftButtonName = @"Left";
     _selectedView.rightButtonName = @"Right";
-    _selectedView.testTableDataSource = @[@"xxxxx",@"xxaaaaxxxxxbb",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd"].mutableCopy;
-    _selectedView.tableDataSource = @[@"1",@"2",@"3",@"4",@"5"].mutableCopy;
+    _selectedView.leftTableDataSource = @[@"xxxxx",@"xxaaaaxxxxxbb",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd"].mutableCopy;
+    _selectedView.rightTableDataSource = @[@"1",@"2",@"3",@"4",@"5"].mutableCopy;
     _selectedView.handlerData = ^(id data) {
         //reloadData at here.
         NSLog(@"%@",data);
@@ -142,10 +142,10 @@ UICollectionViewDelegateFlowLayout>
     self.selectedView = [[SelectedView alloc] initWithFrame:self.view.frame SelectedViewType:ISEmployed];
     [self.view addSubview:_selectedView];
     
-    _selectedView.leftButtonName = @"Left";
-    _selectedView.rightButtonName = @"Right";
-    _selectedView.testTableDataSource = @[@"xxxxx",@"xxaaaaxxxxxbb",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd"].mutableCopy;
-    _selectedView.tableDataSource = @[@"1",@"2",@"3",@"4",@"5"].mutableCopy;
+    _selectedView.leftButtonName = @"基金从业";
+    _selectedView.rightButtonName = @"全科";
+    _selectedView.rightTableDataSource = @[@"证卷从业",@"期货从业",@"基金从业"].mutableCopy;
+    _selectedView.leftTableDataSource = @[@"基础知识",@"法律法规",@"全科"].mutableCopy;
     _selectedView.handlerData = ^(id data) {
         //reloadData at here.
         NSLog(@"%@",data);

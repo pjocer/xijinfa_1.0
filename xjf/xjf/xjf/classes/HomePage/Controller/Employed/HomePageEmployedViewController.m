@@ -10,7 +10,7 @@
 #import "HomePageConfigure.h"
 #import "EmployedClassificationCollectionViewCell.h"
 #import "EmploymentInformationViewController.h"
-#import "RegistrationCenterViewController.h"
+#import "AllLessonListViewController.h"
 #import "GuideViewController.h"
 #import "TestTimeViewController.h"
 
@@ -262,8 +262,9 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 {
     switch (button.tag) {
         case DeiveFromButton: {
-            RegistrationCenterViewController *registrationCenterViewController = [RegistrationCenterViewController new];
-            [self.navigationController pushViewController:registrationCenterViewController animated:YES];
+            AllLessonListViewController *listViewController = [AllLessonListViewController new];
+            listViewController.lessonListPageLessonType = LessonListPageEmployed;
+            [self.navigationController pushViewController:listViewController animated:YES];
         }
             break;
         case DeiveFileButton: {

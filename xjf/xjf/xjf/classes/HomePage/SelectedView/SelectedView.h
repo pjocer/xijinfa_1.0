@@ -19,8 +19,8 @@ typedef NS_OPTIONS(NSUInteger, SelectedViewType) {
 };
 @property (nonatomic, strong) NSString *leftButtonName;
 @property (nonatomic, strong) NSString *rightButtonName;
-@property (nonatomic, strong) NSMutableArray <NSString *>*tableDataSource;
-@property (nonatomic, strong) NSMutableArray <NSString *>*testTableDataSource;
+@property (nonatomic, strong) NSMutableArray <NSString *>*rightTableDataSource;
+@property (nonatomic, strong) NSMutableArray <NSString *>*leftTableDataSource;
 @property(nullable, nonatomic, copy) SelectedViewCompletionHandler handlerData;
 - (instancetype)initWithFrame:(CGRect)frame
              SelectedViewType:(SelectedViewType)selectedViewType NS_DESIGNATED_INITIALIZER;

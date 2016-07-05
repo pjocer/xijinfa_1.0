@@ -197,21 +197,21 @@
     _selecteButtonView.rightButtonLabelName.text = _rightButtonName;
 }
 
-- (void)setTableDataSource:(NSMutableArray<NSString *> *)tableDataSource
+- (void)setRightTableDataSource:(NSMutableArray<NSString *> *)rightTableDataSource
 {
-    if (tableDataSource) {
-        _tableDataSource = tableDataSource;
+    if (rightTableDataSource) {
+        _rightTableDataSource = rightTableDataSource;
     }
-    _tableView.dataSource = _tableDataSource;
+    _tableView.dataSource = _rightTableDataSource;
 }
 
-- (void)setTestTableDataSource:(NSMutableArray<NSString *> *)testTableDataSource
+- (void)setLeftTableDataSource:(NSMutableArray<NSString *> *)leftTableDataSource
 {
-    if (testTableDataSource) {
-        _testTableDataSource = testTableDataSource;
+    if (leftTableDataSource) {
+        _leftTableDataSource = leftTableDataSource;
     }
-    if (_selectedViewType == ISEmployed) _tableViewRight.dataSource = _testTableDataSource;
-    if (_selectedViewType == ISSchool) _selectedCollectionView.dataSource = _testTableDataSource;
+    if (_selectedViewType == ISEmployed) _tableViewRight.dataSource = _leftTableDataSource;
+    if (_selectedViewType == ISSchool) _selectedCollectionView.dataSource = _leftTableDataSource;
 }
 
 #pragma mark - getter

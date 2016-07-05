@@ -43,7 +43,6 @@
 		5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */; };
 		5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */; };
 		5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */; };
-		5A3B64BA1D264DB4007EC1B5 /* RegistrationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64B91D264DB4007EC1B5 /* RegistrationCenterViewController.m */; };
 		5A3B64BD1D264E00007EC1B5 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */; };
 		5A3B64C01D264E1F007EC1B5 /* TestTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */; };
 		5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C531CE5E001000CF748 /* VideolistViewController.m */; };
@@ -362,8 +361,6 @@
 		5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiFirstSectionCell.m; path = ../index/WikiFirstSectionCell.m; sourceTree = "<group>"; };
 		5A240DFF1CE34377003B7971 /* WikiTalkGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WikiTalkGridViewCell.h; path = ../index/WikiTalkGridViewCell.h; sourceTree = "<group>"; };
 		5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiTalkGridViewCell.m; path = ../index/WikiTalkGridViewCell.m; sourceTree = "<group>"; };
-		5A3B64B81D264DB4007EC1B5 /* RegistrationCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationCenterViewController.h; sourceTree = "<group>"; };
-		5A3B64B91D264DB4007EC1B5 /* RegistrationCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationCenterViewController.m; sourceTree = "<group>"; };
 		5A3B64BB1D264E00007EC1B5 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		5A3B64BE1D264E1F007EC1B5 /* TestTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTimeViewController.h; sourceTree = "<group>"; };
@@ -1275,8 +1272,6 @@
 				5A6CF4E31D260F3E00676255 /* HomePageEmployedViewController.m */,
 				5A6CF4E51D260F8800676255 /* EmploymentInformationViewController.h */,
 				5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */,
-				5A3B64B81D264DB4007EC1B5 /* RegistrationCenterViewController.h */,
-				5A3B64B91D264DB4007EC1B5 /* RegistrationCenterViewController.m */,
 				5A3B64BB1D264E00007EC1B5 /* GuideViewController.h */,
 				5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */,
 				5A3B64BE1D264E1F007EC1B5 /* TestTimeViewController.h */,
@@ -2401,7 +2396,6 @@
 				5A6CF49D1D2363DD00676255 /* SelectedScrollContentView.m in Sources */,
 				D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
-				5A3B64BA1D264DB4007EC1B5 /* RegistrationCenterViewController.m in Sources */,
 				5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */,
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
