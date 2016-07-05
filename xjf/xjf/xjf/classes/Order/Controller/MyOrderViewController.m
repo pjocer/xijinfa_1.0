@@ -240,7 +240,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
             [dic setValue:self.orderfooterView.model.membership.type forKey:@"type"];
             [dic setValue:self.orderfooterView.model.membership.period forKey:@"period"];
             [dicData setValue:dic forKey:@"membership"];
-            self.order = [[XJMarket sharedMarket] createVipOrderWith:dicData target:self];
+            self.order = [[XJMarket sharedMarket] createRechargeOrderWith:dicData target:self];
         } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
             //lessons
             self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];

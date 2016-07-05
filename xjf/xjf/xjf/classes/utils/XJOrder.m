@@ -33,12 +33,12 @@
 - (instancetype)initWithParams:(NSDictionary *)params {
     self = [super init];
     if (self) {
-        [self initVipOrder:params];
+        [self initRechargeOrder:params];
     }
     return self;
 }
 
-- (void)initVipOrder:(NSDictionary *)params {
+- (void)initRechargeOrder:(NSDictionary *)params {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:buy_trade RequestMethod:POST];
     NSString *access_token = [[XJAccountManager defaultManager] accessToken];
     NSString *authorization = [NSString stringWithFormat:@"Bearer %@", access_token];

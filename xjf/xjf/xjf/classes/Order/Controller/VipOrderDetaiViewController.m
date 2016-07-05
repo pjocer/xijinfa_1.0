@@ -206,7 +206,7 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
             [[[XJAccountManager defaultManager] accessToken] length] == 0) {
         [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
     } else {
-        self.order = [[XJMarket sharedMarket] createVipOrderWith:self.dicData target:self];
+        self.order = [[XJMarket sharedMarket] createRechargeOrderWith:self.dicData target:self];
     }
 }
 

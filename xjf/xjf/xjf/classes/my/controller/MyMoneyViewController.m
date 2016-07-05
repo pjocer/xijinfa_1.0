@@ -110,7 +110,7 @@
 }
 -(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
     self.style = type;
-    self.order =[[XJMarket sharedMarket] createVipOrderWith:self.params target:self];
+    self.order =[[XJMarket sharedMarket] createRechargeOrderWith:self.params target:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
