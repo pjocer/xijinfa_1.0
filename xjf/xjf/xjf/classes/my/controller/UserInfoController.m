@@ -311,42 +311,46 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.userType == Myself) {
-        UIViewController *controller = nil;
-        switch (indexPath.row) {
-            case 0:
-            {
-                controller = [[MyPlayerHistoryViewController alloc] init];
+        if ([[XJAccountManager defaultManager] accessToken]) {
+            UIViewController *controller = nil;
+            switch (indexPath.row) {
+                case 0:
+                {
+                    controller = [[MyPlayerHistoryViewController alloc] init];
+                }
+                    break;
+                case 1:
+                {
+                    controller = [[MyFavoredsViewController alloc] init];
+                }
+                    break;
+                case 2:
+                {
+                    controller = [[MyMoneyViewController alloc] init];
+                }
+                    break;
+                case 3:
+                {
+                    controller = [[MyOrderViewController alloc] init];
+                }
+                    break;
+                case 4:
+                {
+                    controller = [[ShoppingCartViewController alloc] init];
+                }
+                    break;
+                case 5:
+                {
+                    controller = [[FeedbackViewController alloc] init];
+                }
+                    break;
+                default:
+                    break;
             }
-                break;
-            case 1:
-            {
-                controller = [[MyFavoredsViewController alloc] init];
-            }
-                break;
-            case 2:
-            {
-                controller = [[MyMoneyViewController alloc] init];
-            }
-                break;
-            case 3:
-            {
-                controller = [[MyOrderViewController alloc] init];
-            }
-                break;
-            case 4:
-            {
-                controller = [[ShoppingCartViewController alloc] init];
-            }
-                break;
-            case 5:
-            {
-                controller = [[FeedbackViewController alloc] init];
-            }
-                break;
-            default:
-                break;
+            [self.navigationController pushViewController:controller animated:YES];
+        }else {
+            [self loginPrompt];
         }
-        [self.navigationController pushViewController:controller animated:YES];
     }else {
         TopicDataModel *model = self.dataSource&&self.dataSource.count>0?[self.dataSource objectAtIndex:indexPath.row]:nil;
         if (model) {

@@ -26,6 +26,9 @@
     self.background = [[UILabel alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.background.backgroundColor = [UIColor blackColor];
     self.background.alpha = 0;
+    self.background.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidden)];
+    [self.background addGestureRecognizer:tap];
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     [window addSubview:self.background];
     self.frame = CGRectMake(0, SCREENHEIGHT, SCREENWITH, 282);
@@ -46,6 +49,9 @@
             [self removeFromSuperview];
         }
     }];
+}
+- (void)hidden {
+    [self hidden:UnKnown];
 }
 - (IBAction)alipay:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(payView:DidSelectedBy:)]) {
