@@ -9,21 +9,6 @@
 #import "NSString+Extensions.h"
 
 @implementation NSString (Extensions)
-
-#pragma mark - 转换string大小写
-
-- (NSString *)lowercaseFirstCharacter {
-    NSRange range = NSMakeRange(0, 1);
-    NSString *lowerFirstCharacter = [[self substringToIndex:1] lowercaseString];
-    return [self stringByReplacingCharactersInRange:range withString:lowerFirstCharacter];
-}
-
-- (NSString *)uppercaseFirstCharacter {
-    NSRange range = NSMakeRange(0, 1);
-    NSString *upperFirstCharacter = [[self substringToIndex:1] uppercaseString];
-    return [self stringByReplacingCharactersInRange:range withString:upperFirstCharacter];
-}
-
 #pragma mark - trim string
 
 - (NSString *)trim {
@@ -189,27 +174,6 @@
                                       result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]];
 }
 
-//自适应文字大小
-- (CGFloat)fontSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size {
-    if (self == nil)
-        return 0;
-    CGFloat fontSize = [font pointSize];
-    CGSize sizeName = [self boundingRectWithSize:CGSizeMake(size.width, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
-
-    CGFloat height = sizeName.height;//[self sizeWithFont:font constrainedToSize:CGSizeMake(size.width,FLT_MAX) lineBreakMode:UILineBreakModeWordWrap].height;
-    UIFont *newFont = font;
-
-    //Reduce font size while too large, break if no height (empty string)
-    while (height > size.height && height != 0) {
-        fontSize--;
-        newFont = [UIFont fontWithName:font.fontName size:fontSize];
-        CGSize sizeName1 = [self boundingRectWithSize:CGSizeMake(size.width, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : newFont} context:nil].size;
-        height = sizeName1.height;//[self sizeWithFont:newFont constrainedToSize:CGSizeMake(size.width,FLT_MAX) lineBreakMode:UILineBreakModeWordWrap].height;
-    };
-
-    return fontSize;
-}
-
 #pragma mark - tokeniztion string
 
 /**
@@ -283,10 +247,6 @@
     }
 
     return path;
-}
-
-+ (NSString *)localShoppingCartPath {
-    return [[self cachePath] stringByAppendingPathComponent:@"/cart.plist"];
 }
 
 #pragma mark - 验证邮箱格式
@@ -609,6 +569,19 @@
     CFStringTransform((CFMutableStringRef) str, NULL, kCFStringTransformStripDiacritics, NO);
     NSString *pinYin = [str capitalizedString];
     return [pinYin substringToIndex:1];
+}
+#pragma mark - 转换string大小写
+
+- (NSString *)lowercaseFirstCharacter {
+    NSRange range = NSMakeRange(0, 1);
+    NSString *lowerFirstCharacter = [[self substringToIndex:1] lowercaseString];
+    return [self stringByReplacingCharactersInRange:range withString:lowerFirstCharacter];
+}
+
+- (NSString *)uppercaseFirstCharacter {
+    NSRange range = NSMakeRange(0, 1);
+    NSString *upperFirstCharacter = [[self substringToIndex:1] uppercaseString];
+    return [self stringByReplacingCharactersInRange:range withString:upperFirstCharacter];
 }
 
 @end

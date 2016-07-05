@@ -216,6 +216,7 @@
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
 		D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D11D0181E0000888D4 /* MyTopicViewController.m */; };
 		D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* CommentViewController.m */; };
+		D0290ED21D2B7F6900FF823C /* XJFCacheHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D0290ED11D2B7F6900FF823C /* XJFCacheHandler.m */; };
 		D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */; };
 		D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */; };
 		D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4CF1D12798A006EADAD /* CitySelector.m */; };
@@ -699,6 +700,8 @@
 		D01F77D11D0181E0000888D4 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
 		D01F77D61D01A1EC000888D4 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		D01F77D71D01A1EC000888D4 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		D0290ED01D2B7F6900FF823C /* XJFCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFCacheHandler.h; sourceTree = "<group>"; };
+		D0290ED11D2B7F6900FF823C /* XJFCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFCacheHandler.m; sourceTree = "<group>"; };
 		D02FB4B31D112458006EADAD /* UserInfoInterestedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoInterestedCell.h; sourceTree = "<group>"; };
 		D02FB4B41D112458006EADAD /* UserInfoInterestedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoInterestedCell.m; sourceTree = "<group>"; };
 		D02FB4B51D112458006EADAD /* UserInfoInterestedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoInterestedCell.xib; sourceTree = "<group>"; };
@@ -1993,6 +1996,8 @@
 		D04D0C0E1D0D33FB0090D2CD /* XJCache */ = {
 			isa = PBXGroup;
 			children = (
+				D0290ED01D2B7F6900FF823C /* XJFCacheHandler.h */,
+				D0290ED11D2B7F6900FF823C /* XJFCacheHandler.m */,
 			);
 			name = XJCache;
 			sourceTree = "<group>";
@@ -2398,6 +2403,7 @@
 				D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */,
 				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
+				D0290ED21D2B7F6900FF823C /* XJFCacheHandler.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */,
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,

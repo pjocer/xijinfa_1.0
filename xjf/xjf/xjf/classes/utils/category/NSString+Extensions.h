@@ -11,9 +11,6 @@
 #import <UIKit/UIKit.h>
 
 @interface NSString (Extensions)
-- (NSString *)lowercaseFirstCharacter;
-
-- (NSString *)uppercaseFirstCharacter;
 
 - (BOOL)isEmpty;
 
@@ -33,15 +30,11 @@
 
 - (NSString *)md5ForUTF16;
 
-- (CGFloat)fontSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size;
-
 - (NSMutableArray *)tokenizationStringByNSStringEnumerationOptions:(NSStringEnumerationOptions)opts;
 
 - (NSString *)languageForString;
 
 - (NSMutableArray *)analyseTextOfSentences;
-
-//
 // 获取Documents路径
 + (NSString *)documentPath;
 
@@ -49,9 +42,6 @@
 + (NSString *)cachePath;
 
 + (NSString *)imageCachePath;
-
-// 本地购物车路径
-+ (NSString *)localShoppingCartPath;
 
 //! 是否是合法邮箱
 - (BOOL)isValidEmail;
@@ -131,7 +121,16 @@
 @end
 
 @interface NSString (FirstLetter)
-
+/**
+ *  @return First Letters From Chinese String
+ */
 - (NSString *)firstLetter;
-
+/**
+ *  @return Lowercase First Character
+ */
+- (NSString *)lowercaseFirstCharacter;
+/**
+ *  @return Uppercase First Character
+ */
+- (NSString *)uppercaseFirstCharacter;
 @end
