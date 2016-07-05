@@ -23,20 +23,6 @@ static const int target_key;
     return self;
 }
 
-/**
- * Returns the value associated with a given object for a given key.
- *
- * @param object The source object for the association.
- * @param key The key for the association.
- *
- * @return The value associated with the key \e key for \e object.
- *
- * @see objc_setAssociatedObject
- */
-
-//OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
-//__OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);
-
 - (void)addActionBlock:(HTGestureBlock)block {
     if (block) {
         objc_setAssociatedObject(self, &target_key, block, OBJC_ASSOCIATION_COPY_NONATOMIC);

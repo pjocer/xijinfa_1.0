@@ -16,6 +16,7 @@
 #import "RegistViewController.h"
 #import "NewComment_Topic.h"
 #import "UIImageView+WebCache.h"
+#import "BaseNavigationController.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -36,13 +37,6 @@ NSString *const Subscribe = @"SubscribeViewController";
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] init];
-    back.title = @"";
-    self.navigationItem.backBarButtonItem = back;;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     @weakify(self)
@@ -51,6 +45,10 @@ NSString *const Subscribe = @"SubscribeViewController";
         [self setTopicLeftItem];
     }];
     [self setNavigationRelated];
+}
+- (void)backAction {
+    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+    [nav startPopAnimation];
 }
 - (void)setNavigationRelated {
     if (self.navigationController) {
@@ -63,6 +61,14 @@ NSString *const Subscribe = @"SubscribeViewController";
         [self.navigationController.navigationBar setShadowImage:[UIImage new]];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         self.view.backgroundColor = BackgroundColor;
+        [self setBackBarButtonItem];
+    }
+}
+- (void)setBackBarButtonItem {
+    [self.navigationItem setHidesBackButton:YES animated:NO];
+    if (self.navigationItem.leftBarButtonItems.count == 0 && self.navigationController.childViewControllers.count>1) {
+        UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"topic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+        self.navigationItem.leftBarButtonItem = back;
     }
 }
 - (void)extendheadViewFor:(NSString *)name {
@@ -185,7 +191,7 @@ NSString *const Subscribe = @"SubscribeViewController";
                 return;
             }
             NewComment_Topic *controller = [[NewComment_Topic alloc] initWithType:NewTopic];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
             [self.navigationController presentViewController:nav animated:YES completion:nil];
         }
             break;

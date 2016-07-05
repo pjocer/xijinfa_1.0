@@ -111,7 +111,6 @@
     return [[self plistFolderPath] stringByAppendingPathComponent:fileName];
 }
 - (BOOL)createFileAtPath:(NSString *)path {
-    NSLog(@"%@",path);
     NSFileManager *manager = [NSFileManager defaultManager];
     if (![manager fileExistsAtPath:path]) {
         return [manager createFileAtPath:path contents:nil attributes:nil];

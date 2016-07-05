@@ -24,10 +24,6 @@ typedef void(^HTGestureBlock)(id gestureRecognizer);
  *  防止循环引用
  *
  */
-
-
 + (instancetype)ht_gestureRecognizerWithActionBlock:(HTGestureBlock)block;
-
-@property (nonatomic, strong) NSString *test;
 
 @end

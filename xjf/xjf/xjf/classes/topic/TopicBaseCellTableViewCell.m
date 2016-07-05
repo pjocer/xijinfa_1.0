@@ -15,6 +15,7 @@
 #import "NewComment_Topic.h"
 #import "UserInfoController.h"
 #import "UITableViewCell+AvatarEnabled.h"
+#import "BaseNavigationController.h"
 @interface TopicBaseCellTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *identity;
@@ -60,7 +61,7 @@
     if ([[XJAccountManager defaultManager] accessToken]) {
         NewComment_Topic *controler = [[NewComment_Topic alloc] initWithType:NewComment];
         controler.topic_id = self.model.id;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controler];
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controler];
         UIViewController *vc = getCurrentDisplayController();
         [vc.navigationController presentViewController:nav animated:YES completion:nil];
     } else {

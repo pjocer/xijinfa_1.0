@@ -12,8 +12,11 @@
 @property (strong, nonatomic)UIPanGestureRecognizer *panGestureRecognizer;
 @property (strong, nonatomic)UIImageView *backView;
 @property (strong, nonatomic)NSMutableArray *backImgs;
+@property (strong, nonatomic)NSMutableArray *popImgs;
 @property (assign) CGPoint panBeginPoint;
 @property (assign) CGPoint panEndPoint;
+@property (strong, nonatomic) UIViewController *next;
+@property (assign) BOOL hadPushed;
 @end
 
 @implementation BaseNavigationController
@@ -38,6 +41,7 @@
 
 - (void)initilization{
     self.backImgs = [[NSMutableArray alloc] init];
+    self.popImgs = [[NSMutableArray alloc] init];
 }
 
 - (void)loadBaseUI{
@@ -47,14 +51,22 @@
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    UIGraphicsBeginImageContextWithOptions([UIScreen mainScreen].bounds.size, YES, 1.0);
+    [self.backImgs addObject:[self screenShot]];
+    [super pushViewController:viewController animated:NO];
+    if (!self.hadPushed && self.childViewControllers.count>1) {
+        [self.popImgs addObject:[self screenShot]];
+        [self popViewControllerAnimated:NO];
+        self.next = viewController;
+        [self startPushAnimation];
+    }
+}
+- (UIImage *)screenShot {
+    UIGraphicsBeginImageContextWithOptions([UIScreen mainScreen].bounds.size, YES, 0);
     [[UIApplication sharedApplication].keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    [self.backImgs addObject:img];
-    [super pushViewController:viewController animated:animated];
+    return img;
 }
-
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated{
     [_backImgs removeLastObject];
     return [super popViewControllerAnimated:animated];
@@ -89,21 +101,46 @@
         }
     }
 }
-
-- (void)moveNavigationViewWithLenght:(CGFloat)lenght{
-    self.view.frame = CGRectMake(lenght, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-//    暂时去掉虚化
-//    _backView.alpha = (lenght/[UIScreen mainScreen].bounds.size.width)*2/3 + 0.33;
+- (void)startPushAnimation {
+    [self insertNextViewFromSuperView:self.view.superview];
+    [UIView animateWithDuration:0.2 animations:^{
+        [self moveNavigationViewWithLenght:-SCREENWITH];
+        _backView.frame = [[UIScreen mainScreen] bounds];
+    } completion:^(BOOL finished) {
+        [self removeLastViewFromSuperView];
+        [self moveNavigationViewWithLenght:0];
+        self.hadPushed = YES;
+        [self pushViewController:self.next animated:NO];
+        self.hadPushed = NO;
+    }];
 }
-
+- (void)startPopAnimation {
+    [self insertLastViewFromSuperView:self.view.superview];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = CGRectMake(SCREENWITH, self.view.frame.origin.y, SCREENWITH, SCREENHEIGHT);
+    } completion:^(BOOL finished) {
+        [self removeLastViewFromSuperView];
+        [self moveNavigationViewWithLenght:0];
+        [self popViewControllerAnimated:NO];
+    }];
+}
+- (void)moveNavigationViewWithLenght:(CGFloat)lenght{
+    self.view.frame = CGRectMake(lenght, self.view.frame.origin.y, SCREENWITH, SCREENHEIGHT);
+}
+- (void)insertNextViewFromSuperView:(UIView *)superView {
+    if (_backView == nil) {
+        _backView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREENWITH, self.view.frame.origin.y, SCREENWITH, SCREENHEIGHT)];
+        _backView.image = [_popImgs lastObject];
+    }
+    [superView insertSubview:_backView aboveSubview:self.view];
+}
 - (void)insertLastViewFromSuperView:(UIView *)superView{
     if (_backView == nil) {
         _backView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _backView.image = [_backImgs lastObject];;
     }
-    [self.view.superview insertSubview:_backView belowSubview:self.view];
+    [superView insertSubview:_backView belowSubview:self.view];
 }
-
 - (void)removeLastViewFromSuperView{
     [_backView removeFromSuperview];
     _backView = nil;

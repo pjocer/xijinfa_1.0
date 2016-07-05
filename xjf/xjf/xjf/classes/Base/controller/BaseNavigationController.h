@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <Foundation/Foundation.h>
 @interface BaseNavigationController : UINavigationController
-
+- (void)startPopAnimation;
+- (void)startPushAnimation;
 @end

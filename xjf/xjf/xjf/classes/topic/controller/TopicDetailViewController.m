@@ -18,6 +18,7 @@
 #import "XJAccountManager.h"
 #import "NewComment_Topic.h"
 #import "UITableViewCell+AvatarEnabled.h"
+#import "BaseNavigationController.h"
 
 @interface TopicDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -111,7 +112,7 @@
     if ([[XJAccountManager defaultManager] accessToken]) {
         NewComment_Topic *controler = [[NewComment_Topic alloc] initWithType:NewComment];
         controler.topic_id = self.topic_id;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controler];
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controler];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
     } else {
         [[ZToastManager ShardInstance] showtoast:@"请先登录"];
