@@ -92,7 +92,8 @@
 
 - (void)moveNavigationViewWithLenght:(CGFloat)lenght{
     self.view.frame = CGRectMake(lenght, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-    _backView.alpha = (lenght/[UIScreen mainScreen].bounds.size.width)*2/3 + 0.33;
+//    暂时去掉虚化
+//    _backView.alpha = (lenght/[UIScreen mainScreen].bounds.size.width)*2/3 + 0.33;
 }
 
 - (void)insertLastViewFromSuperView:(UIView *)superView{

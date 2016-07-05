@@ -159,7 +159,6 @@
 		68AD3BF397B66B652C2C0009 /* LPPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3603F56348155F120E0A /* LPPopup.m */; };
 		68AD3CC47E1DB30DC837E078 /* ZPlatformShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD39FD9A28D219A2CA50BB /* ZPlatformShare.m */; };
 		68AD3D15322D6A8D42CF0DD0 /* XMShareUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD361AE62A75F033930DA7 /* XMShareUtil.m */; };
-		68AD3DC80CB071C587DFF73D /* NSString+FirstLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD33E53D90A8D61621893F /* NSString+FirstLetter.m */; };
 		68AD3DF8B96C85E22B19B04F /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD33F1B17C2AECCECD2936 /* CommentsModel.m */; };
 		68AD3EDC390F0F57F21DB2CA /* VerticalUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD311A9C35493EFF83D8DA /* VerticalUIButton.m */; };
 		68AD3F4CC52500888AAC5A04 /* LessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31B0B566B66344E27190 /* LessonListCell.m */; };
@@ -563,7 +562,6 @@
 		68AD32FED2EE7CBB15554F09 /* XMShareQQUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMShareQQUtil.m; sourceTree = "<group>"; };
 		68AD33BD094873F69C35AF58 /* ZToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZToastManager.h; sourceTree = "<group>"; };
 		68AD33C01DDC0A80D0B7F227 /* XMShareWeiboUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMShareWeiboUtil.m; sourceTree = "<group>"; };
-		68AD33E53D90A8D61621893F /* NSString+FirstLetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FirstLetter.m"; sourceTree = "<group>"; };
 		68AD33F1B17C2AECCECD2936 /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModel.m; sourceTree = "<group>"; };
 		68AD345638F9EF3864F89596 /* UIView+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addtion.m"; sourceTree = "<group>"; };
 		68AD3503E537CB05B93330B5 /* XMShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMShareView.m; sourceTree = "<group>"; };
@@ -591,7 +589,6 @@
 		68AD3D200365BFD839AAB6F0 /* XMShareQQUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShareQQUtil.h; sourceTree = "<group>"; };
 		68AD3D5FF22C8247903484E9 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringUtil.h; path = xjf/classes/utils/StringUtil.h; sourceTree = SOURCE_ROOT; };
 		68AD3E3B02B4D256989AE3EB /* UzysGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysGridViewCell.m; sourceTree = "<group>"; };
-		68AD3E5FD4E53AB9D8968210 /* NSString+FirstLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FirstLetter.h"; sourceTree = "<group>"; };
 		68AD3E6DB29D6A23F8CF2B42 /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
 		68AD3F14C5FECC832471B24F /* LessonRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRecommendedHeaderView.h; sourceTree = "<group>"; };
 		68AD3F2685D08B5C32396B63 /* ZPlatformShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPlatformShare.h; path = ../../classes/utils/ZPlatformShare.h; sourceTree = "<group>"; };
@@ -1404,8 +1401,6 @@
 				68AD345638F9EF3864F89596 /* UIView+Addtion.m */,
 				68AD3D5FF22C8247903484E9 /* StringUtil.h */,
 				68AD3F4A2359113E77262F8B /* StringUtil.m */,
-				68AD3E5FD4E53AB9D8968210 /* NSString+FirstLetter.h */,
-				68AD33E53D90A8D61621893F /* NSString+FirstLetter.m */,
 				68AD30C32084019191D45362 /* NSDate+Convenience.h */,
 				68AD38FCE1858A761939DF2B /* NSDate+Convenience.m */,
 				D055F25A1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.h */,
@@ -2475,7 +2470,6 @@
 				68AD31398574E70510D4D931 /* UIView+Addtion.m in Sources */,
 				5A5B74011D27C1E100D24CBA /* SelecteButtonView.m in Sources */,
 				68AD3594E7A1C701ADEA6C8D /* StringUtil.m in Sources */,
-				68AD3DC80CB071C587DFF73D /* NSString+FirstLetter.m in Sources */,
 				68AD37781B81D79E2DF95952 /* NSDate+Convenience.m in Sources */,
 				68AD3CC47E1DB30DC837E078 /* ZPlatformShare.m in Sources */,
 				68AD3BF397B66B652C2C0009 /* LPPopup.m in Sources */,
@@ -2630,7 +2624,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b9c4dffc-5fb4-4069-a61e-1ac07f662ed7";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2655,7 +2649,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xijinfa.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b9c4dffc-5fb4-4069-a61e-1ac07f662ed7";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

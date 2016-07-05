@@ -13,6 +13,7 @@
 
 - (UIView *)addBottomLine;
 
+- (UIView *)addBottomLine:(CGFloat)lineHeight;
 /**
  *  颜色渐变(上下)
  *

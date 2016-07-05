@@ -78,7 +78,6 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *  @param failedBlock  Return If Server Did Not Response
  */
 - (void)startWithSuccessBlock:(nullable SuccessBlock)successBlock failedBlock:(nullable FailedBlock)failedBlock;
-
 /**
  *  Set HTTPHeaderFile
  *

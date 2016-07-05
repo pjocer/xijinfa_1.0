@@ -28,7 +28,12 @@
     [self addSubview:lineView];
     return lineView;
 }
-
+- (UIView *)addBottomLine:(CGFloat)lineHeight {
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,self.frame.size.height - lineHeight / [UIScreen mainScreen].scale,SCREENWITH,lineHeight / [UIScreen mainScreen].scale)];
+    lineView.backgroundColor = GrayColorLine;
+    [self addSubview:lineView];
+    return lineView;
+}
 -(void)setBackgroundColorByTopColor:(UIColor *)topColor BottomColor:(UIColor *)bottomColor {
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = self.bounds;

@@ -72,6 +72,12 @@
                                     <constraint firstItem="Svw-eM-Kfi" firstAttribute="centerY" secondItem="Act-pr-Qr0" secondAttribute="centerY" id="RzE-pp-cd6"/>
                                     <constraint firstItem="Svw-eM-Kfi" firstAttribute="leading" secondItem="5v7-MC-Q6W" secondAttribute="trailing" constant="10" id="TsT-4i-INw"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQa-II-Ifa">
                                 <rect key="frame" x="60" y="36" width="31" height="14"/>
