@@ -7,7 +7,7 @@
 //
 
 #import "CitySelector.h"
-#import "NSString+FirstLetter.h"
+#import "NSString+Extensions.h"
 #import <objc/runtime.h>
 
 @interface CitySelector () <UITableViewDelegate, UITableViewDataSource>

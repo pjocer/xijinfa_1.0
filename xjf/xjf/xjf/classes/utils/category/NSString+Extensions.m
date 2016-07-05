@@ -586,17 +586,29 @@
     }else
     {
         NSLog(@" have");
-        BOOL blDele= [fileManager removeItemAtPath:path error:nil];
+        NSError *error = nil;
+        BOOL blDele= [fileManager removeItemAtPath:path error:&error];
         if (blDele)
         {
             success();
         }
         else
         {
+            NSLog(@"%@",error.description);
             failure();
         }
     }
 }
+@end
 
+@implementation NSString (FirstLetter)
+
+- (NSString *)firstLetter {
+    NSMutableString *str = [NSMutableString stringWithString:self];
+    CFStringTransform((CFMutableStringRef) str, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((CFMutableStringRef) str, NULL, kCFStringTransformStripDiacritics, NO);
+    NSString *pinYin = [str capitalizedString];
+    return [pinYin substringToIndex:1];
+}
 
 @end

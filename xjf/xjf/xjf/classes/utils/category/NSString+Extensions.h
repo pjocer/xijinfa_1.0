@@ -129,3 +129,9 @@
                Success:(void(^)())success
             WithFailure:(void (^)())failure;
 @end
+
+@interface NSString (FirstLetter)
+
+- (NSString *)firstLetter;
+
+@end
