@@ -2329,7 +2329,6 @@
 				5A565A3A1D069F7200008DA9 /* EmployedGeneralViewController.m in Sources */,
 				5A6CF4531D22773D00676255 /* TeacherScrollCollectionViewCell.m in Sources */,
 				5A1DF58D1D2B88920078BD0B /* TeacherListHostModel.m in Sources */,
-				CD144F491CBB95E000A0636D /* BaseUINavigationController.m in Sources */,
 				5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */,
 				D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */,
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
