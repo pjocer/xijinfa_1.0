@@ -20,3 +20,9 @@
     return YES;
 }
 @end
+
+@implementation TeacherDetailCover
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end

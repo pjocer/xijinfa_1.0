@@ -11,7 +11,7 @@
 #import "TeacherListHostModel.h"
 #import "TeacherScrollCollectionViewCell.h"
 #import "TeacherListViewController.h"
-#import "TeacherDetailViewController.h"
+#import "TeacherDetalPage.h"
 
 @interface HomePageSchoolViewController ()<UICollectionViewDataSource,
                                                 UICollectionViewDelegate,
@@ -241,6 +241,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == HomePageSchoolViewControllerBannerSection) {
+        _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
         return KHomePageCollectionByBannerSize;
     }else if (indexPath.section == HomePageSchoolViewControllerClassificationSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -279,7 +280,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 -(void)teacherScrollCollectionViewCell:(TeacherScrollCollectionViewCell *)teacherScrollCollectionViewCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+    TeacherDetalPage *teacherDetailViewController = [[TeacherDetalPage alloc] init];
     teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
     [self.navigationController pushViewController:teacherDetailViewController animated:YES];
 }

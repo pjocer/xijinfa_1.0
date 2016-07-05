@@ -75,7 +75,7 @@ static CGFloat BottomPayButtonH = 50;
 
             sSelf.teacherDetailModel = [[TeacherDetailModel alloc] initWithData:responseData error:nil];
             [self.teacherDescriptionViewController.web loadHTMLString:self.teacherDetailModel.result.content baseURL:nil];
-            for (TalkGridModel *model in sSelf.teacherDetailModel.result.courses) {
+            for (TalkGridModel *model in sSelf.teacherDetailModel.result.guru_courses) {
                 if ([model.department isEqualToString:@"dept3"]) {
                     [sSelf.dataSourcerDep3_Lesson addObject:model];
                 } else if ([model.department isEqualToString:@"dept4"]) {

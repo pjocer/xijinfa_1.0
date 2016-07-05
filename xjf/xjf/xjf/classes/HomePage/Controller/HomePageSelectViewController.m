@@ -231,12 +231,15 @@ referenceSizeForHeaderInSection:(NSInteger)section {
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.section == HomePageBannerSection) {
+        _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
         return KHomePageCollectionByBannerSize;
     }else if (indexPath.section == HomePageWikipediaSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
         _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageSchoolSection){
+        _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
+        _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageEmployedSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);

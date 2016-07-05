@@ -263,7 +263,6 @@ UICollectionViewDelegateFlowLayout>
 #pragma mark Search
 
 - (void)rightBarButtonItemAction:(UIBarButtonItem *)sender {
-    //导航栏右按钮 搜索
     SearchViewController *searchViewController = [SearchViewController new];
     [self.navigationController pushViewController:searchViewController animated:YES];
 }

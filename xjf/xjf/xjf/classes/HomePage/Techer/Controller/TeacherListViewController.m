@@ -8,7 +8,7 @@
 
 #import "TeacherListViewController.h"
 #import "IndexConfigure.h"
-#import "TeacherDetailViewController.h"
+#import "TeacherDetalPage.h"
 #import <MJRefresh.h>
 #import "HomePageConfigure.h"
 
@@ -124,9 +124,8 @@ static NSString *teacherListCell_Id = @"teacherListCell_Id";
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+    TeacherDetalPage *teacherDetailViewController = [[TeacherDetalPage alloc] init];
     teacherDetailViewController.teacherListDataModel = self.dataSource[indexPath.row];
     [self.navigationController pushViewController:teacherDetailViewController animated:YES];
-
 }
 @end
