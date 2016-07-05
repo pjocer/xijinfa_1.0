@@ -7,7 +7,7 @@
 //
 
 #import "MyTeacherViewController.h"
-#import "TeacherDetailViewController.h"
+#import "TeacherDetalPage.h"
 #import "TearcherIndexCell.h"
 #import "TeacherListHostModel.h"
 
@@ -107,7 +107,7 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
 
 /** 点击方法 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+    TeacherDetalPage *teacherDetailViewController = [[TeacherDetalPage alloc] init];
     teacherDetailViewController.teacherListDataModel = self.dataSource[indexPath.row];
     [self.navigationController pushViewController:teacherDetailViewController animated:YES];
 

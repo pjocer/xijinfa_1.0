@@ -22,7 +22,8 @@
                 self.bounds.size.height - 1)];
         [self addSubview:self.indexSectionView];
         self.indexSectionView.moreLabel.text = @"";
-        self.indexSectionView.titleLabel.text = @"推荐";
+        self.indexSectionView.titleLabel.text = @"推荐视频";
+        self.indexSectionView.backgroundColor = [UIColor clearColor];
     }
     return self;
 }

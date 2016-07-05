@@ -10,7 +10,6 @@
 #import "IndexConfigure.h"
 #import "LessonListViewController.h"
 #import "LessonDetailViewController.h"
-#import "TeacherDetailViewController.h"
 #import "EmployedViewController.h"
 #import "EmployedLessonListViewController.h"
 #import "BannerWebViewViewController.h"
@@ -304,10 +303,7 @@ NSString *const CONGYE_CELL = @"congyecell";
                 lessonDetailViewController.apiType = coursesProjectLessonDetailList;
                 [self.navigationController pushViewController:lessonDetailViewController animated:YES];
             } else if (indexPath.section == 4) {
-                //析金讲师
-                TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
-                teacherDetailViewController.teacherListDataModel = (TeacherListData *) obj;
-                [self.navigationController pushViewController:teacherDetailViewController animated:YES];
+
             } else if (indexPath.section == 5) {
                 //从业培训
                 EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];

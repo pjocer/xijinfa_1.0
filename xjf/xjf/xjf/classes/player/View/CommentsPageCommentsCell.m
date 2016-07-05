@@ -30,19 +30,19 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
 
         //separator
         self.customSeparator = [[UIView alloc] init];
-        self.customSeparator.backgroundColor = BackgroundColor;
+        self.customSeparator.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.customSeparator];
         [self.customSeparator mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.contentView);
-            make.bottom.mas_equalTo(self.contentView).with.offset(-1);
-            make.height.mas_equalTo(1);
+            make.left.equalTo(self.contentView).with.offset(10);
+            make.right.equalTo(self.contentView).with.offset(-10);
+            make.top.bottom.mas_equalTo(self.contentView);
         }];
+        ViewRadius(self.customSeparator, 5.0);
 
-        self.backgroundColor = [UIColor whiteColor];
         //userImage
         self.userImage = [[UIImageView alloc] init];
         self.userImage.backgroundColor = BackgroundColor;

@@ -30,6 +30,7 @@
         [self addSubview:self.indexSectionView];
         self.indexSectionView.moreLabel.text = @"";
         self.indexSectionView.titleLabel.text = @"评论";
+        self.indexSectionView.backgroundColor = [UIColor clearColor];
         [self.indexSectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self).with.offset(10);
             make.left.right.equalTo(self);
@@ -39,9 +40,11 @@
         // backGroundView
         self.backGroundView = [[UIView alloc] init];
         self.backGroundView.backgroundColor = [UIColor whiteColor];
+        ViewRadius(self.backGroundView, 5.0);
         [self addSubview:self.backGroundView];
         [self.backGroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self);
+            make.left.equalTo(self).with.offset(10);
+            make.right.equalTo(self).with.offset(-10);
             make.top.equalTo(self.indexSectionView.mas_bottom).with.offset(1);
             make.bottom.equalTo(self).with.offset(-1);
         }];

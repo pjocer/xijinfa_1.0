@@ -11,7 +11,6 @@
 #import "BannerModel.h"
 #import "LessonListViewController.h"
 #import "XJAccountManager.h"
-#import "TeacherDetailViewController.h"
 #import "SearchViewController.h"
 
 @interface LessonViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
@@ -251,9 +250,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         }
     }
     else if (indexPath.section == 1) {
-        TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
-        teacherDetailViewController.teacherListDataModel = self.teacherListHostModel.result.data[indexPath.row];
-        [self.navigationController pushViewController:teacherDetailViewController animated:YES];
+
     }
 }
 

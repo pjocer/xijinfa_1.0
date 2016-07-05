@@ -7,28 +7,30 @@
 //
 
 #import "CloverText.h"
+#import "UIGestureRecognizer+Block.h"
+
+@interface CloverText ()
+@property (nonatomic, strong) UILabel *placeHolderLabel;
+@end
 
 @implementation CloverText
 
 - (id)initWithFrame:(CGRect)frame placeholder:(NSString *)placeholder {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        self.TV = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        self.TV.text = placeholder;
-        self.TV.font = [UIFont boldSystemFontOfSize:15];
-        self.TV.textColor = [UIColor lightGrayColor];
-        self.TV.backgroundColor = [UIColor clearColor];
-        self.TV.editable = NO;
-        [self addSubview:self.TV];
-        [self sendSubviewToBack:self.TV];
+        self.placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, self.frame.size.width, 18)];
+        [self addSubview:_placeHolderLabel];
+        _placeHolderLabel.text = placeholder;
+        _placeHolderLabel.font = FONT15;
+        _placeHolderLabel.textColor = AssistColor;
+
         self.delegate = self;
     }
     return self;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    self.TV.hidden = self.text.length != 0;
+    self.placeHolderLabel.hidden = self.text.length != 0;
 }
 
 @end

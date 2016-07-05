@@ -8,7 +8,7 @@
 
 #import "LessonDetailTecherDescribeViewController.h"
 #import "LessonDetailTecherDescribeCell.h"
-#import "TeacherDetailViewController.h"
+#import "TeacherDetalPage.h"
 
 @interface LessonDetailTecherDescribeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -63,7 +63,7 @@ static CGFloat rowHeight = 100;
 #pragma mark Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TeacherDetailViewController *teacherDetailViewController = [[TeacherDetailViewController alloc] init];
+    TeacherDetalPage *teacherDetailViewController = [[TeacherDetalPage alloc] init];
     teacherDetailViewController.teacherListDataModel = self.dataSourceModel.result.taxonomy_gurus[indexPath.row];
     [self.navigationController pushViewController:teacherDetailViewController animated:YES];
 }

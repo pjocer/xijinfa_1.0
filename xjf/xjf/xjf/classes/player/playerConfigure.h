@@ -9,7 +9,6 @@
 
 //cellAndFooterAndHeaderByPlayerPage
 #import "PlayerPageDescribeHeaderView.h"
-#import "PlayerPageDescribeFooterView.h"
 #import "PlayerPageRecommendedHeaderView.h"
 #import "PlayerPageCommentsHeaderView.h"
 #import "PlayerPageCommentsFooterView.h"

@@ -24,6 +24,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.title = @"全部评论";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -42,7 +43,6 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"全部评论";
     [self initTabelView];
     [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.ID] method:GET];
 }
@@ -52,7 +52,6 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 
 - (void)requestCommentsData:(APIName *)api method:(RequestMethod)method {
 
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     @weakify(self)
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -61,10 +60,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
         [self.dataSource addObjectsFromArray:self.commentsModel.result.data];
         [self.tableView.mj_footer isRefreshing] ? [self.tableView.mj_footer endRefreshing] : nil;
         [self.tableView reloadData];
-        [[ZToastManager ShardInstance] hideprogress];
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+    } failedBlock:^(NSError *_Nullable error) {
         [self.tableView.mj_footer isRefreshing] ? [self.tableView.mj_footer endRefreshing] : nil;
     }];
 
@@ -75,6 +71,8 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
         [self requestCommentsData:self.commentsModel.result.next_page_url method:GET];
     } else if (self.commentsModel.result.current_page == self.commentsModel.result.last_page) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        [[ZToastManager ShardInstance] showtoast:@"没有更多数据"];
+        [self.tableView.mj_footer removeFromSuperview];
     }
 }
 
@@ -82,7 +80,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 30)
-                                                  style:UITableViewStylePlain];
+                                                  style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -99,19 +97,33 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 #pragma mark TabelViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return self.dataSource.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentsPageCommentsCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CommentsCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.commentsModel = self.dataSource[indexPath.row];
-
+    cell.commentsModel = self.dataSource[indexPath.section];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CommentsModel *model = self.dataSource[indexPath.row];
+    CommentsModel *model = self.dataSource[indexPath.section];
     CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:15];
     return tempRect.size.height + 60;
 }

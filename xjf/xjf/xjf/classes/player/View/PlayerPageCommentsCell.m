@@ -31,6 +31,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        ViewRadius(self, 5);
+        
         //userImage
         self.userImage = [[UIImageView alloc] init];
         self.userImage.backgroundColor = BackgroundColor;
