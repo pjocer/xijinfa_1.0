@@ -15,6 +15,7 @@
 #import "XJAccountManager.h"
 #import "StudyCenterWikiCell.h"
 #import "ZToastManager.h"
+#import "HomePageMainViewController.h"
 
 @interface StudyCenter () <UICollectionViewDelegateFlowLayout,UICollectionViewDataSource> {
     TablkListModel *_list;
@@ -122,6 +123,9 @@
         
     }else {
         UITabBarController *tab = self.tabBarController;
+        UINavigationController *nav = [tab.viewControllers objectAtIndex:0];
+        HomePageMainViewController *controller = [nav.viewControllers objectAtIndex:0];
+        [controller changCurrunViewLocation:indexPath.item+1];
         [tab setSelectedIndex:0];
     }
 }
