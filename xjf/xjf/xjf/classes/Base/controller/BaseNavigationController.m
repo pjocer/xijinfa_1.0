@@ -52,7 +52,6 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     [self.backImgs addObject:[self screenShot]];
-    self.next = viewController;
     [super pushViewController:viewController animated:animated];
 }
 -(void)pushViewControllerByCustomAnimation:(UIViewController *)viewController {
