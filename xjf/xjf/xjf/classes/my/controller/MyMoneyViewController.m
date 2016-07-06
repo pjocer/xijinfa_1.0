@@ -43,7 +43,7 @@
     [super viewDidLoad];
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"recharge_right"] style:UIBarButtonItemStylePlain target:self action:@selector(rechargeStream)];
     self.navigationItem.rightBarButtonItem = right;
-    self.nav_title = @"我的余额";
+    self.navigationItem.title = @"我的余额";
     self.balance.text = [NSString stringWithFormat:@"%.2f",[[[[XJAccountManager defaultManager] user_model] result] account_balance]*0.01f];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:recharge_list RequestMethod:GET];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {

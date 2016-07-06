@@ -43,7 +43,7 @@
 }
 
 - (void)initMainUI {
-    self.nav_title = @"我的话题";
+    self.navigationItem.title = @"我的话题";
     self.dataSource = [NSMutableArray array];
     [self requestData:USER_TOPIC_API Method:GET];
     [self.view addSubview:self.tableView];

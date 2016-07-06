@@ -27,7 +27,7 @@
 @implementation UserInfoViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.nav_title = @"修改个人信息";
+    self.navigationItem.title = @"修改个人信息";
     if (!self.params) {
         self.params = [NSMutableDictionary dictionaryWithDictionary:@{@"nickname" : @"", @"sex" : @"", @"quote" : @"", @"city" : @"", @"age" : @"", @"invest_category" : @"", @"invest_age" : @"", @"invest_type" : @""}];
     }

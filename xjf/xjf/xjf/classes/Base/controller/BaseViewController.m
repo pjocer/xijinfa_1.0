@@ -23,6 +23,7 @@ NSString *const My = @"MyViewController";
 NSString *const Topic = @"TopicViewController";
 NSString *const Vip = @"VipViewController";
 NSString *const Subscribe = @"SubscribeViewController";
+NSString *const Study = @"StudyCenter";
 
 @interface BaseViewController () <UserDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactiveTransition;
@@ -32,9 +33,6 @@ NSString *const Subscribe = @"SubscribeViewController";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.nav_title) {
-        self.navigationItem.title = self.nav_title;
-    }
 }
 
 - (void)viewDidLoad {
@@ -52,7 +50,7 @@ NSString *const Subscribe = @"SubscribeViewController";
 }
 - (void)setNavigationRelated {
     if (self.navigationController) {
-        self.nav_title = @"";
+        self.navigationItem.title = @"";
         self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
         self.navigationController.navigationBar.translucent = NO;
         [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
@@ -104,6 +102,11 @@ NSString *const Subscribe = @"SubscribeViewController";
         [self setTopicLeftItem];
     } else if ([name isEqualToString:Vip]) {
         leftTitle.text = @"会员";
+    }else if ([name isEqualToString:Study]) {
+        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
+        right.tag = 17;
+        self.navigationItem.rightBarButtonItem = right;
+        self.navigationItem.title = @"学习中心";
     }
 }
 - (void)setTopicLeftItem {
@@ -155,31 +158,19 @@ NSString *const Subscribe = @"SubscribeViewController";
             }
         }
             break;
-        case 10://历史
+        case 10:
         {
             MyPlayerHistoryViewController *history = [[MyPlayerHistoryViewController alloc] init];
             [self.navigationController pushViewController:history animated:YES];
         }
             break;
-        case 11://下载
-        {
-//            PlayerDownLoadViewController *download =[[PlayerDownLoadViewController alloc] init];
-//            [self.navigationController pushViewController:download animated:YES];
-        }
-            break;
-        case 12://搜索 #import "SearchViewController.h"
+        case 12:
         {
             SearchViewController *download = [[SearchViewController alloc] init];
             [self.navigationController pushViewController:download animated:YES];
         }
             break;
-        case 13://设置
-        {
-            
-            break;
-        }
-            break;
-        case 14://发表
+        case 14:
         {
             if (![[XJAccountManager defaultManager] accessToken]) {
                 [[ZToastManager ShardInstance] showtoast:@"请先登录"];
@@ -190,7 +181,7 @@ NSString *const Subscribe = @"SubscribeViewController";
             [self.navigationController presentViewController:nav animated:YES completion:nil];
         }
             break;
-        case 15://搜索
+        case 15:
         {
             SearchViewController *download = [[SearchViewController alloc] init];
             [self.navigationController pushViewController:download animated:YES];
@@ -206,14 +197,15 @@ NSString *const Subscribe = @"SubscribeViewController";
             }
         }
             break;
+        case 17:
+        {
+            SearchViewController *download = [[SearchViewController alloc] init];
+            [self.navigationController pushViewController:download animated:YES];
+        }
+            break;
         default:
             break;
     }
-}
-
-- (void)setNav_title:(NSString *)nav_title {
-    _nav_title = nav_title;
-    self.navigationItem.title = nav_title;
 }
 
 - (void)LoginPrompt {

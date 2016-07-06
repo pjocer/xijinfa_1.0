@@ -67,7 +67,7 @@
 - (void)initMainUI {
     self.view.backgroundColor = BackgroundColor;
     [self.view addSubview:self.tableView_all];
-    self.nav_title = @"讨论";
+    self.navigationItem.title = @"讨论";
 }
 
 - (UITableView *)tableView_all {

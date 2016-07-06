@@ -60,7 +60,7 @@
 }
 
 - (void)initNavBar {
-    self.nav_title = [NSString stringWithFormat:@"%@%@", self.nickname, self.type == 0 ? @"的粉丝" : @"关注的人"];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@%@", self.nickname, self.type == 0 ? @"的粉丝" : @"关注的人"];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting_ta"] style:UIBarButtonItemStylePlain target:self action:@selector(settingAction:)];
     self.navigationItem.rightBarButtonItem = item;
 }

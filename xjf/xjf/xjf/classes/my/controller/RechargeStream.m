@@ -20,7 +20,7 @@
 @implementation RechargeStream
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.nav_title = @"余额流水";
+    self.navigationItem.title = @"余额流水";
     self.dataSource = [NSMutableArray array];
     [self.view addSubview:self.tableView];
     [self requestData:recharge_stream Method:GET];

@@ -38,7 +38,7 @@
     self.navigationItem.leftBarButtonItem = cancel_item;
     self.navigationItem.rightBarButtonItem = send_item;
     [self.view addSubview:self.textView];
-    self.nav_title = self.style==NewTopic?@"新增话题":@"新增评论";
+    self.navigationItem.title = self.style==NewTopic?@"新增话题":@"新增评论";
     [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
         if (![x isEqualToString:@""]) {
             _placeholder.hidden = YES;

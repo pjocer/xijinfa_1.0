@@ -8,13 +8,13 @@
 
 #import "RootViewController.h"
 #import "TopicViewController.h"
-#import "StudyCenterViewController.h"
 #import "PlayerViewController.h"
 #import "LessonPlayerViewController.h"
 #import "HomePageMainViewController.h"
 #import "UserInfoController.h"
 #import "XJAccountManager.h"
 #import "BaseNavigationController.h"
+#import "StudyCenter.h"
 @interface RootViewController ()
 
 @end
@@ -31,13 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 初始化所有的子控制器
     [self setupAllChildViewControllers];
 }
-
-/**
- *  初始化所有的子控制器
- */
 - (void)setupAllChildViewControllers {
     HomePageMainViewController *vc1 = [[HomePageMainViewController alloc] init];
     vc1.tabBarItem.badgeValue = @"8";
@@ -46,7 +41,7 @@
                          imageName:@"tab_home"
                  selectedImageName:@"tab_home_selected"];
     
-    StudyCenterViewController *vc2 = [[StudyCenterViewController alloc] init];
+    StudyCenter *vc2 = [[StudyCenter alloc] init];
     [self setupChildViewController:vc2
                              title:@"学习"
                          imageName:@"tab_study"
@@ -58,30 +53,18 @@
                          imageName:@"tab_topic"
                  selectedImageName:@"tab_topic_selected"];
 
-    UserInfoController *vc5 = [[UserInfoController alloc] initWithUserType:Myself
+    UserInfoController *vc4 = [[UserInfoController alloc] initWithUserType:Myself
                                                                   userInfo:[[[XJAccountManager defaultManager] user_model] result]];
-    [self setupChildViewController:vc5
+    [self setupChildViewController:vc4
                              title:@"我的"
                          imageName:@"tab_user"
                  selectedImageName:@"tab_user_selected"];
 }
-
-/**
- *  初始化一个子控制器
- *
- *  @param childVc           需要初始化的子控制器
- *  @param title             标题
- *  @param imageName         图标
- *  @param selectedImageName 选中的图标
- */
 - (void)setupChildViewController:(UIViewController *)childVc
                            title:(NSString *)title
                        imageName:(NSString *)imageName
                selectedImageName:(NSString *)selectedImageName {
     BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:childVc];
-    // 1.设置控制器的属性
-//    childVc.title = title;
-    // 3.添加tabbar内部的按钮
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:title
                                                        image:[UIImage imageNamed:imageName]
                                                selectedImage:[UIImage imageNamed:selectedImageName]];

@@ -18,10 +18,9 @@ FOUNDATION_EXTERN NSString *const My;
 FOUNDATION_EXTERN NSString *const Topic;
 FOUNDATION_EXTERN NSString *const Vip;
 FOUNDATION_EXTERN NSString *const Subscribe;
+FOUNDATION_EXTERN NSString *const Study;
 
 @interface BaseViewController : UIViewController
-
-@property (nonatomic, copy) NSString *nav_title;
 
 - (void)extendheadViewFor:(NSString *)name;
 

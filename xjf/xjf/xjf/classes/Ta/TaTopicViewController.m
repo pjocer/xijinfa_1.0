@@ -41,7 +41,7 @@
 }
 
 - (void)initMainUI {
-    self.nav_title = [NSString stringWithFormat:@"%@的话题", self.nickname];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@的话题", self.nickname];
     self.dataSource = [NSMutableArray array];
     [self requestData:USER_TOPIC_API Method:GET];
     [self.view addSubview:self.tableView];

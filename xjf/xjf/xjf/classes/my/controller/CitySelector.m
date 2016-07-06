@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.nav_title = self.atitle;
+    self.navigationItem.title = self.atitle;
     [self initDataSource];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - HEADHEIGHT) style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -180,9 +180,9 @@
     }
     
     NSString *title = nil;
-    if ([self.nav_title isEqualToString:@"选择省份"]) {
+    if ([self.navigationItem.title isEqualToString:@"选择省份"]) {
         title = @"选择市";
-    } else if ([self.nav_title isEqualToString:@"选择市"]) {
+    } else if ([self.navigationItem.title isEqualToString:@"选择市"]) {
         title = @"选择区/县";
     }
     CitySelector *next = [[CitySelector alloc] initWithDataSource:nextDataSource navTitle:title];
@@ -192,7 +192,7 @@
         next.cityChoosed = text;
     }
     next.delegate = self.delegate;
-    if ([self.nav_title isEqualToString:@"选择区/县"]) {
+    if ([self.navigationItem.title isEqualToString:@"选择区/县"]) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(cityDidChoosed:)]) {
             [self.delegate cityDidChoosed:next.cityChoosed];
         }

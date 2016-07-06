@@ -50,7 +50,7 @@
     self.dataSource = [NSMutableArray array];
     [self.view addSubview:self.tableView];
     [self requestData:[NSString stringWithFormat:user_comment_list, self.user.id] Method:GET];
-    self.nav_title = [NSString stringWithFormat:@"%@的回答", [_user.id isEqualToString:[[XJAccountManager defaultManager] user_id]] ? @"我" : _user.nickname];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@的回答", [_user.id isEqualToString:[[XJAccountManager defaultManager] user_id]] ? @"我" : _user.nickname];
 }
 
 - (void)requestData:(APIName *)api Method:(RequestMethod)method {

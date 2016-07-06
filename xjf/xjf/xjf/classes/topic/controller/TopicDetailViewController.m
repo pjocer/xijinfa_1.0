@@ -104,7 +104,7 @@
 }
 
 - (void)initMainUI {
-    self.nav_title = @"话题详情";
+    self.navigationItem.title = @"话题详情";
     [self.view addSubview:self.tableView];
 }
 
@@ -228,7 +228,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 1) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 33)];
-        view.backgroundColor = [UIColor clearColor];
+        view.backgroundColor = BackgroundColor;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, SCREENWITH - 10, 18)];
         label.font = FONT15;
         label.textColor = NormalColor;

@@ -32,6 +32,7 @@
         TalkGridCover *tempCover = model.cover.firstObject;
         [self.videoImg sd_setImageWithURL:[NSURL URLWithString:tempCover.url]];
     }
+    
     self.title.text = model.title;
     self.describe.text = [NSString stringWithFormat:@"%@ 人看过",model.view_count];
 //    if (_model.taxonomy_gurus.count != 0 && _model.taxonomy_gurus) {
