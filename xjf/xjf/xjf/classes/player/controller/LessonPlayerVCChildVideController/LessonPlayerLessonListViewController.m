@@ -11,13 +11,13 @@
 #import "IndexSectionView.h"
 
 @interface LessonPlayerLessonListViewController () <UITableViewDelegate, UITableViewDataSource>
-
+//@property (nonatomic, assign) BOOL unDefaultSelected;
 @end
 
 @implementation LessonPlayerLessonListViewController
 static NSString *LessonListCell_id = @"LessonListCell_id";
 //static CGFloat offset = 60;
-static CGFloat rowHeight = 50;
+static CGFloat rowHeight = 60;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,15 +38,15 @@ static CGFloat rowHeight = 50;
         make.top.left.right.equalTo(self.view);
         make.bottom.equalTo(self.view);
     }];
-
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
     self.tableView.rowHeight = rowHeight;
-    //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.showsVerticalScrollIndicator = NO;
-
+    
     [self.tableView registerClass:[LessonDetailLessonListCell class]
            forCellReuseIdentifier:LessonListCell_id];
 
@@ -77,6 +77,7 @@ static CGFloat rowHeight = 50;
     return 1;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LessonDetailLessonListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonListCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -90,17 +91,16 @@ static CGFloat rowHeight = 50;
     if ([model.type isEqualToString:@"dir"]) {
         TalkGridModel *tempModel = model.children[indexPath.row];
         cell.talkGridModel = tempModel;
-        [self lessonDetailLessonListCellJudge:cell];
+        [self lessonDetailLessonListCellJudge:cell indexPath:indexPath];
     } else if ([model.type isEqualToString:@"lesson"]) {
         cell.talkGridModel = model;
-        [self lessonDetailLessonListCellJudge:cell];
+        [self lessonDetailLessonListCellJudge:cell indexPath:indexPath];
     }
-
     return cell;
 }
 
 ///Cell 判断性操作
-- (void)lessonDetailLessonListCellJudge:(LessonDetailLessonListCell *)cell {
+- (void)lessonDetailLessonListCellJudge:(LessonDetailLessonListCell *)cell indexPath:(NSIndexPath *)indexpatch {
     //是否免费试看
     if ([cell.talkGridModel.package containsObject:@"visitor"]) {
         cell.freeVideoLogo.hidden = NO;
@@ -119,6 +119,14 @@ static CGFloat rowHeight = 50;
     } else {
         cell.title.textColor = [UIColor blackColor];
     }
+//    //是否第一次进入,默认选中第一个
+//    if (!_unDefaultSelected) {
+//        if (indexpatch.section == 0 && indexpatch.row == 0) {
+//            cell.title.textColor = BlueColor;
+//        }else{
+//            cell.title.textColor = [UIColor blackColor];
+//        }
+//    }
     //是否学习过
     if (cell.talkGridModel.user_learned == 1) {
         cell.studyImage.hidden = NO;
@@ -135,6 +143,10 @@ static CGFloat rowHeight = 50;
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[section];
     if ([model.type isEqualToString:@"dir"]) {
         return 35;
+    }else{
+        if (section == 0) {
+            return 10;
+        }
     }
     return 0;
 }
@@ -148,6 +160,7 @@ static CGFloat rowHeight = 50;
         //        bottomView.backgroundColor = BackgroundColor;
         sectionView.moreLabel.hidden = YES;
         sectionView.titleLabel.text = model.title;
+        sectionView.backgroundColor = [UIColor clearColor];
         return sectionView;
     }
     return nil;
@@ -156,6 +169,8 @@ static CGFloat rowHeight = 50;
 #pragma mark Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    _unDefaultSelected = YES; //不默认选择
+    
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[indexPath.section];
     if ([model.type isEqualToString:@"dir"]) {
         self.selectedModel = model.children[indexPath.row];
@@ -164,14 +179,14 @@ static CGFloat rowHeight = 50;
         self.selectedModel = model;
     }
 
-    if (!_isPay && ![self.selectedModel.package containsObject:@"visitor"]) {
-        [[ZToastManager ShardInstance] showtoast:@"只有购买后才可以观看哦"];
-    } else {
+//    if (!_isPay && ![self.selectedModel.package containsObject:@"visitor"]) {
+//        [[ZToastManager ShardInstance] showtoast:@"只有购买后才可以观看哦"];
+//    } else {
         //Block回掉换视频
         if (self.actionWithDidSelectedBlock) {
             self.actionWithDidSelectedBlock(self.selectedModel);
         }
-    }
+//    }
 
     //给服务器发送用户已学习消息
     if (_isPay) {

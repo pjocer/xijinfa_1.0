@@ -25,11 +25,22 @@
     self.web = [[UIWebView alloc] init];
     [self.view addSubview:self.web];
     [self.web mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
+        make.top.left.equalTo(self.view).with.offset(10);
+        make.bottom.right.equalTo(self.view).with.offset (-10);
     }];
-    [self.web loadHTMLString:self.contentText baseURL:nil];
+    
+    ViewRadius(self.web, 5);
     self.web.backgroundColor = [UIColor clearColor];
+    [self.web loadHTMLString:self.contentText baseURL:nil];
+}
+
+- (void)setContentText:(NSString *)contentText
+{
+    if (contentText) {
+        _contentText = contentText;
+    }
+   [self.web loadHTMLString:self.contentText baseURL:nil];
+    
 }
 
 @end

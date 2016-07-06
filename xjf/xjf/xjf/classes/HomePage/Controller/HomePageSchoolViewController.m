@@ -12,6 +12,7 @@
 #import "TeacherScrollCollectionViewCell.h"
 #import "TeacherListViewController.h"
 #import "TeacherDetalPage.h"
+#import "LessonPlayerViewController.h"
 
 @interface HomePageSchoolViewController ()<UICollectionViewDataSource,
                                                 UICollectionViewDelegate,
@@ -300,10 +301,17 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == HomePageSchoolViewControllerLessonSection) {
-        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-        lessonDetailViewController.model = self.tablkListModel_Lesson.result.data[indexPath.row];
-        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+//        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
+//        lessonDetailViewController.model = self.tablkListModel_Lesson.result.data[indexPath.row];
+//        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
+//        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+        
+         TalkGridModel *model = self.tablkListModel_Lesson.result.data[indexPath.row];
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+//        lessonPlayerViewController.lessonDetailListModel = self.tablkListModel_Lesson.result.data[indexPath.row];
+        lessonPlayerViewController.lesssonID = model.id_;
+        lessonPlayerViewController.playTalkGridModel = model;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
     }
 }
 

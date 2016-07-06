@@ -63,6 +63,8 @@ static NSString *LessonCommentsCel_id = @"LessonCommentsCel_id";
         [self requesData:self.tablkListModel.result.next_page_url method:GET];
     } else if (self.tablkListModel.result.current_page == self.tablkListModel.result.last_page) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        [[ZToastManager ShardInstance] showtoast:@"没有更多数据"];
+        [self.tableView.mj_footer removeFromSuperview];
     }
 }
 

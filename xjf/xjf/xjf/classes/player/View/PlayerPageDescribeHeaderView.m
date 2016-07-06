@@ -73,7 +73,7 @@
         _model = model;
     }
     
-    self.thumbUpLabel.text = model.likes_count;
+    self.thumbUpLabel.text = model.like_count;
     if (model.user_liked) {
         [self.thumbUpButton setImage:[[UIImage imageNamed:@"iconLikeOn"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     } else {

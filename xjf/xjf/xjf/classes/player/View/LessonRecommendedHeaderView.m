@@ -22,15 +22,20 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.backgroundColor = [UIColor clearColor];
+        
         // backGroundView
         self.backGroundView = [[UIView alloc] init];
         self.backGroundView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.backGroundView];
         [self.backGroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self);
+            make.left.equalTo(self).with.offset(10);
+            make.right.equalTo(self).with.offset(-10);
             make.top.equalTo(self);
-            make.bottom.equalTo(self).with.offset(-1);
+            make.bottom.equalTo(self);
         }];
+        ViewRadius(self.backGroundView, 5);
 
         //userImage
         self.userImage = [[UIImageView alloc] init];

@@ -55,6 +55,7 @@
 @property (nonatomic, strong) NSString *icon NS_UNAVAILABLE;
 @property (nonatomic, strong) NSArray <TalkGridCover> *cover;
 @property (nonatomic, strong) NSString *id_;
+@property (nonatomic, strong) NSString *parent_id;
 @property (nonatomic, strong) NSString *is_album;
 ///关键字
 @property (nonatomic, strong) NSString *keywords;

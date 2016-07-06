@@ -125,7 +125,7 @@
     _update_at.text = [StringUtil compareCurrentTime:model.updated_at];
     _content.text = model.content;
     _commentLabel.text = model.replies_count;
-    _praiseLabel.text = model.likes_count;
+    _praiseLabel.text = model.like_count;
     _praiseImageView.highlighted = model.user_liked;
 }
 

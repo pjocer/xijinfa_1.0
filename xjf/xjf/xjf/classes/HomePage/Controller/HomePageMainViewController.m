@@ -18,6 +18,8 @@
 @property (nonatomic, strong) HomePageWikipediaViewController *wikipediaViewController;
 @property (nonatomic, strong) HomePageSchoolViewController *schoolViewController;
 @property (nonatomic, strong) HomePageEmployedViewController *employedViewController;
+
+@property (nonatomic, strong) SelectedScrollContentView *selectedScrollContentView;
 @end
 
 @implementation HomePageMainViewController
@@ -27,7 +29,7 @@
     [super loadView];
     
     @weakify(self)
-    SelectedScrollContentView *selectedScrollContentView = [[SelectedScrollContentView alloc]initWithFrame:self.view.bounds targetViewController:self addChildViewControllerBlock:^{
+    self.selectedScrollContentView = [[SelectedScrollContentView alloc]initWithFrame:self.view.bounds targetViewController:self addChildViewControllerBlock:^{
         @strongify(self)
         self.selectViewController = [[HomePageSelectViewController alloc] init];
         _selectViewController.title = @"精选";
@@ -45,13 +47,18 @@
         _employedViewController.title = @"从业";
         [self addChildViewController:_employedViewController];
     }];
-    self.view = selectedScrollContentView;
+    self.view = _selectedScrollContentView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     [self extendheadViewFor:Index];
+}
+
+- (void)changCurrunViewLocation:(NSInteger)index
+{
+    self.selectedScrollContentView.contentScrollView.contentOffset = CGPointMake(index * self.view.frame.size.width, 0);
 }
 
 

@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
          targetViewController:(UIViewController *)targetViewController
   addChildViewControllerBlock:(void(^)())block NS_DESIGNATED_INITIALIZER;
 
+@property (nonatomic, strong) UIScrollView *contentScrollView;
+
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;

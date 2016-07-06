@@ -88,7 +88,7 @@
 @property (nonatomic, copy) NSString *icon;
 @property (nonatomic, assign) NSInteger favorite_count;
 @property (nonatomic, assign) NSInteger finish;
-@property (nonatomic, assign) NSInteger likes_count;
+@property (nonatomic, assign) NSInteger like_count;
 @property (nonatomic, assign) NSInteger origin;
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *is_album;

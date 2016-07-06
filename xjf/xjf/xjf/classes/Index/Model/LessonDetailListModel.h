@@ -84,7 +84,7 @@
 @property (nonatomic, assign) BOOL user_favored;
 @property (nonatomic, strong) NSString *user_id;
 ///点赞次数
-@property (nonatomic, strong) NSString *likes_count;
+@property (nonatomic, strong) NSString *like_count;
 ///(已登录用户)是否已点赞
 @property (nonatomic, assign) BOOL user_liked;
 ///(已登录用户)是否已付费(含购买订阅但不含免费)

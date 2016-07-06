@@ -82,7 +82,7 @@ static NSInteger collectionLogoTag = 103;
         _model = model;
     }
     if (model.user_favored) {
-        [self.collection                                                   setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
+        [self.collection setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     } else {
         [self.collection setImage:[UIImage imageNamed:@"iconFavorites"] forState:UIControlStateNormal];

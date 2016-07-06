@@ -104,18 +104,27 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
         [self requestCommentsData:self.commentsModel.result.next_page_url method:GET];
     } else if (self.commentsModel.result.current_page == self.commentsModel.result.last_page) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        [[ZToastManager ShardInstance] showtoast:@"没有更多数据"];
+        [self.tableView.mj_footer removeFromSuperview];
     }
 }
 
 #pragma mark- initTabelView
 
 - (void)initTabelView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset(10);
+        make.left.right.bottom.equalTo(self.view);
+        make.bottom.equalTo(self.view).with.offset(-10);
 
     }];
+    self.tableHeaderView = [[LessonRecommendedHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 50)];
+    [self.tableHeaderView.commentsButton addTarget:self action:@selector(comments:)
+                                  forControlEvents:UIControlEventTouchUpInside];
+    self.tableView.tableHeaderView = self.tableHeaderView;
+    
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -133,30 +142,34 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 #pragma mark TabelViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return self.dataSource.count;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentsPageCommentsCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonRecommendedCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.commentsModel = self.dataSource[indexPath.row];
+    cell.commentsModel = self.dataSource[indexPath.section];
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    //tableHeaderView
-    self.tableHeaderView = [[LessonRecommendedHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 50)];
-    [self.tableHeaderView.commentsButton addTarget:self action:@selector(comments:)
-                                  forControlEvents:UIControlEventTouchUpInside];
-    return self.tableHeaderView;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 50;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CommentsModel *model = self.dataSource[indexPath.row];
+    CommentsModel *model = self.dataSource[indexPath.section];
     CGRect tempRect = [StringUtil calculateLabelRect:model.content width:SCREENWITH - 70 fontsize:15];
     return tempRect.size.height + 60;
 }
@@ -165,7 +178,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 #pragma mark Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"点击CommentsPageCommentsCell : %ld", (long)indexPath.row);
+    NSLog(@"点击CommentsPageCommentsCell : %ld", (long)indexPath.section);
 
 }
 

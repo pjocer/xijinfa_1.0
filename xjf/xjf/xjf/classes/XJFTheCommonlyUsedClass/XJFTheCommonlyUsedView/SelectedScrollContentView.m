@@ -13,7 +13,6 @@
 @property (nonatomic, strong) UIViewController *targetViewController;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) UIScrollView *titleScrollView;
-@property (nonatomic, strong) UIScrollView *contentScrollView;
 @property (nonatomic, strong) UIView *selBackGroundView;
 @property (nonatomic, strong) UIView *selView;
 @end

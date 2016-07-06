@@ -34,8 +34,11 @@ static CGFloat selViewH = 2;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @property (nonatomic, strong) LessonPlayerLessonListViewController *lessonPlayerLessonListViewController;
+@property (nonatomic, strong) LessonPlayerLessonDescribeViewController *describeViewController;
 @property (nonatomic, strong) XMShareView *shareView;
 @property (nonatomic, strong) UIView *backGroudView;
+
+@property (nonatomic, assign) BOOL isFirstComeIn; ///是否为第一次进入， 默认选择播放第一节
 @end
 
 @implementation LessonPlayerViewController
@@ -100,14 +103,22 @@ static CGFloat selViewH = 2;
                             sSelf.playTalkGridModel = dirModel;
                         }
                     }
+                    if (!_isFirstComeIn) {
+                        //首次进入默认选择第一节
+                        sSelf.playTalkGridModel = model.children.firstObject;
+                    }
                 } else if ([model.type isEqualToString:@"lesson"]) {
                     if ([model.id_ isEqualToString:self.playTalkGridModel.id_]) {
                         sSelf.playTalkGridModel = model;
                     }
+                    if (!_isFirstComeIn) {
+                        //首次进入默认选择第一节
+                        sSelf.playTalkGridModel = sSelf.tempLessonDetailModel.result.lessons_menu.firstObject;
+                    }
                 }
             }
             sSelf.videoBottomView.model = sSelf.playTalkGridModel;
-            sSelf.videoBottomView.collectionCount.text = sSelf.tempLessonDetailModel.result.likes_count;
+            sSelf.videoBottomView.collectionCount.text = sSelf.tempLessonDetailModel.result.like_count;
             if (sSelf.tempLessonDetailModel.result.user_liked) {
                 [sSelf.videoBottomView.collectionLogo                              setImage:[[UIImage imageNamed:@"iconLikeOn"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
@@ -156,9 +167,9 @@ static CGFloat selViewH = 2;
 - (void)sendPlayerHistoryToServerData:(APIName *)api method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
-            @{@"id" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.id],
-                    @"type" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.type],
-                    @"department" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.department],
+            @{@"id" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.id],
+                    @"type" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.department],
                     @"duration" : @"1"}];
 
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -172,9 +183,9 @@ static CGFloat selViewH = 2;
 - (void)PraiseAction:(APIName *)api Method:(RequestMethod)method {
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     request.requestParams = [NSMutableDictionary dictionaryWithDictionary:
-            @{@"id" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.id],
-                    @"type" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.type],
-                    @"department" : [NSString stringWithFormat:@"%@", self.lessonDetailListModel.result.department]}];
+            @{@"id" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.id],
+                    @"type" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.type],
+                    @"department" : [NSString stringWithFormat:@"%@", self.tempLessonDetailModel.result.department]}];
     if (method == POST) {
         @weakify(self)
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -262,9 +273,10 @@ static CGFloat selViewH = 2;
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
-    _playerView.placeholderImageName = @"";
+//    _playerView.placeholderImageName = nil;
     [self setPlayerViewForResolutionDic:_playTalkGridModel];
     _playerView.videoURL = [NSURL URLWithString:self.playUrl];
+    [_playerView autoPlayTheVideo];
 }
 
 
@@ -428,6 +440,9 @@ static CGFloat selViewH = 2;
     ///选择Cell 切换播放Model
     self.lessonPlayerLessonListViewController.actionWithDidSelectedBlock = ^(TalkGridModel *model) {
         tempSelf.playTalkGridModel = model;
+        //用户已经选择
+        tempSelf.isFirstComeIn = YES;
+        
         //视频换URL
         if (model.video_player.count > 0) {
             [tempSelf.playerView pause];
@@ -435,21 +450,18 @@ static CGFloat selViewH = 2;
             [tempSelf setPlayerViewForResolutionDic:tempSelf.playTalkGridModel];
             tempSelf.playerView.videoURL = [NSURL URLWithString:tempSelf.playUrl];
             [tempSelf.playerView play];
+            [tempSelf.playerView autoPlayTheVideo];
         }
         //视频是否收藏过
-        if (tempSelf.playTalkGridModel.user_favored) {
-            [tempSelf.videoBottomView.collection                               setImage:[[UIImage imageNamed:@"iconFavoritesOn"]
-                    imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-        } else {
-            [tempSelf.videoBottomView.collection setImage:[UIImage imageNamed:@"iconFavorites"]
-                                                 forState:UIControlStateNormal];
-        }
+        tempSelf.videoBottomView.model = tempSelf.playTalkGridModel;
+        //切换课程描述
+        tempSelf.describeViewController.contentText = tempSelf.playTalkGridModel.content;
     };
 
-    LessonPlayerLessonDescribeViewController *vc1 = [[LessonPlayerLessonDescribeViewController alloc] init];
-    vc1.contentText = self.lessonDetailListModel.result.content;
-    vc1.title = @"课程介绍";
-    [self addChildViewController:vc1];
+    self.describeViewController = [[LessonPlayerLessonDescribeViewController alloc] init];
+    _describeViewController.contentText = self.playTalkGridModel.content;
+    _describeViewController.title = @"课程介绍";
+    [self addChildViewController:_describeViewController];
 
 //    LessonPlayerLessonCommentsViewController *vc2 = [[LessonPlayerLessonCommentsViewController alloc] init];
 //    vc2.title = @"推荐课程";
