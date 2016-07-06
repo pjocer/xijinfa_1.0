@@ -42,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = _title_item;
     self.codeImage.layer.cornerRadius = 5;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeCodeImage:)];
     [self.codeImage addGestureRecognizer:tap];
@@ -77,11 +78,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self requestData:get_image_code method:GET];
-}
-
-- (void)setTitle_item:(NSString *)title_item {
-    _title_item = title_item;
-    self.navigationItem.title = title_item;
 }
 
 //点击更换图片验证码

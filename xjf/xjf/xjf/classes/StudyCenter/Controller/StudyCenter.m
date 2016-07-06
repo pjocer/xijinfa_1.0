@@ -39,14 +39,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _course = [[XJAccountManager defaultManager] user_model].result.course_count>0;
-    _courseCount.text = [NSString stringWithFormat:@"%ld",[[XJAccountManager defaultManager] user_model].result.course_count];
-    _teacherCount.text = [NSString stringWithFormat:@"%ld",[[XJAccountManager defaultManager] user_model].result.guru_count];
-    _images = @[@"study_wiki",@"study_school",@"study_employee"];
-    _titles = @[@"金融小白，我想了解金融知识",@"金融爱好者，我想提高金融知识水平",@"金融从业，我想考取从业资格证书"];
+    [self initUserInfo:[[XJAccountManager defaultManager] user_model]];
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(NSNotification *x) {
+        [self initUserInfo:x.object];
+        [_colloctionView reloadData];
+    }];
     [self extendheadViewFor:Study];
     [self initCollectionView];
     if (_course) [self initData];
+}
+- (void)initUserInfo:(UserProfileModel *)model {
+    NSLog(@"%@",model);
+    _course = model.result.course_count>0;
+    _courseCount.text = [NSString stringWithFormat:@"%ld",model.result.course_count];
+    _teacherCount.text = [NSString stringWithFormat:@"%ld",model.result.guru_count];
+    _images = @[@"study_wiki",@"study_school",@"study_employee"];
+    _titles = @[@"金融小白，我想了解金融知识",@"金融爱好者，我想提高金融知识水平",@"金融从业，我想考取从业资格证书"];
 }
 - (void)initData {
     [self requestData:myLessonsApi requestMethod:GET];
@@ -113,7 +121,9 @@
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (_course) {
         HomePageCollectionSectionHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-        header.sectionTitle.text = indexPath.section==0?@"我的学堂":@"我的老师";
+        [header setTitle:indexPath.section==0?@"我的学堂":@"我的老师" moreTitle:@"查看全部" moreCallback:^(id gestureRecognizer) {
+            NSLog(@"查看更多")
+        }];
         return header;
     }else {
         return nil;
@@ -132,7 +142,11 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_course) {
-        
+        if (indexPath.section == 0) {
+            NSLog(@"学堂:%ld",indexPath.item);
+        }else {
+            NSLog(@"从业:%ld",indexPath.item);
+        }
     }else {
         UITabBarController *tab = self.tabBarController;
         UINavigationController *nav = [tab.viewControllers objectAtIndex:0];

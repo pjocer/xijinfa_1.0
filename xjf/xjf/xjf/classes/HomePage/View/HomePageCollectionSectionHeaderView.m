@@ -7,6 +7,11 @@
 //
 
 #import "HomePageCollectionSectionHeaderView.h"
+#import "UIGestureRecognizer+Block.h"
+
+@interface HomePageCollectionSectionHeaderView ()
+
+@end
 
 @implementation HomePageCollectionSectionHeaderView
 static CGFloat Pandding = 10;
@@ -30,7 +35,7 @@ static CGFloat SectionMoreH = 14;
         self.sectionMore.font = FONT12;
         self.sectionMore.textColor = AssistColor;
         self.sectionMore.textAlignment = NSTextAlignmentLeft;
-
+        self.sectionMore.userInteractionEnabled = YES;
         [self makeConstraints];
     }
     return self;
@@ -50,5 +55,12 @@ static CGFloat SectionMoreH = 14;
         make.size.mas_equalTo(CGSizeMake(SectionMoreW, SectionMoreH));
     }];
 }
-
+-(void)setTitle:(NSString *)title moreTitle:(NSString *)moreTitle moreCallback:(void (^)(id))block {
+    _sectionTitle.text = title;
+    _sectionMore.text = moreTitle;
+    if (block) {
+        UITapGestureRecognizer *tap = [UITapGestureRecognizer ht_gestureRecognizerWithActionBlock:block];
+        [_sectionMore addGestureRecognizer:tap];
+    }
+}
 @end

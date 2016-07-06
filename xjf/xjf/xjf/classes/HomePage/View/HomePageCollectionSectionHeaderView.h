@@ -11,4 +11,5 @@
 @interface HomePageCollectionSectionHeaderView : UICollectionReusableView
 @property (nonatomic, strong) UILabel *sectionTitle;
 @property (nonatomic, strong) UILabel *sectionMore;
+- (void)setTitle:(NSString *)title moreTitle:(NSString *)moreTitle moreCallback:(void (^) (id gestureRecognizer))block;
 @end

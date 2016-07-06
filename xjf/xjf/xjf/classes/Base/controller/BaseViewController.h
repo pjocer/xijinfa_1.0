@@ -24,6 +24,6 @@ FOUNDATION_EXTERN NSString *const Study;
 
 - (void)extendheadViewFor:(NSString *)name;
 
-///提示登录
 - (void)LoginPrompt;
+
 @end

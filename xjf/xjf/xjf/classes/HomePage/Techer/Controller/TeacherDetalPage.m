@@ -195,6 +195,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         } else if (self.teacherDetailModel.result.user_favored) {
             [self requestLessonListData:favorite method:DELETE];
         }
+        [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:nil];
     }
     
 }
