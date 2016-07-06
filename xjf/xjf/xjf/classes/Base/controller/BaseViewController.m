@@ -57,7 +57,6 @@ NSString *const Study = @"StudyCenter";
         [self.navigationController.navigationBar addShadow];
         [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         self.view.backgroundColor = BackgroundColor;
         [self setBackBarButtonItem];
     }

@@ -221,7 +221,7 @@
         if (!self.hasLogined) {
             if (self.userType == Myself) {
                 if (tag != 774) {
-                    [self loginPrompt];
+                    [self LoginPrompt];
                 }else {
                     LoginViewController *login = [[LoginViewController alloc] init];
                     [nav pushViewControllerByCustomAnimation:login];
@@ -272,24 +272,6 @@
         }
 }
 
-- (void)loginPrompt {
-    [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"
-                        okTitle:@"登录"
-                     otherTitle:@"注册"
-              cancelButtonTitle:@"取消"
-                        message:@"参与话题讨论\n\n播放记录云同步\n\n更多金融专业课程"
-                    cancelBlock:^{
-                    } okBlock:^{
-                        LoginViewController *loginPage = [LoginViewController new];
-                        BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-                        [nav pushViewControllerByCustomAnimation:loginPage];
-                    }        otherBlock:^{
-                        RegistViewController *registPage = [RegistViewController new];
-                        registPage.title_item = @"注册";
-                        BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-                        [nav pushViewControllerByCustomAnimation:registPage];
-                    }];
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;
 }
@@ -357,7 +339,7 @@
             BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
             [nav pushViewControllerByCustomAnimation:controller];
         }else {
-            [self loginPrompt];
+            [self LoginPrompt];
         }
     }else {
         TopicDataModel *model = self.dataSource&&self.dataSource.count>0?[self.dataSource objectAtIndex:indexPath.row]:nil;

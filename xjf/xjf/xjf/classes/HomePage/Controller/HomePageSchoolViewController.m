@@ -311,6 +311,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 //        lessonPlayerViewController.lessonDetailListModel = self.tablkListModel_Lesson.result.data[indexPath.row];
         lessonPlayerViewController.lesssonID = model.id_;
         lessonPlayerViewController.playTalkGridModel = model;
+        lessonPlayerViewController.originalTalkGridModel = model;
         [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
     }
 }

@@ -13,6 +13,8 @@
 #import "SettingViewController.h"
 #import <AFNetworkReachabilityManager.h>
 #import "XMShareView.h"
+#import "XJMarket.h"
+
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
 static CGFloat selViewH = 2;
@@ -39,6 +41,13 @@ static CGFloat selViewH = 2;
 @property (nonatomic, strong) UIView *backGroudView;
 
 @property (nonatomic, assign) BOOL isFirstComeIn; ///是否为第一次进入， 默认选择播放第一节
+
+@property (nonatomic, copy) void (^FirstComeInplayVideo)();
+
+///加入购物车按钮
+@property (nonatomic, strong) UIButton *addShoppingCart;
+///立刻购买按钮
+@property (nonatomic, strong) UIButton *nowPay;
 @end
 
 @implementation LessonPlayerViewController
@@ -54,6 +63,7 @@ static CGFloat selViewH = 2;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [self removePlayer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,12 +87,12 @@ static CGFloat selViewH = 2;
     }
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
     [self requestLessonListData:[NSString stringWithFormat:@"%@/%@",coursesProjectLessonDetailList, self.lesssonID] method:GET];
     [self sendPlayerHistoryToServerData:history method:POST];
+    
 
 }
 
@@ -103,20 +113,25 @@ static CGFloat selViewH = 2;
                             sSelf.playTalkGridModel = dirModel;
                         }
                     }
-                    if (!_isFirstComeIn) {
-                        //首次进入默认选择第一节
-                        sSelf.playTalkGridModel = model.children.firstObject;
-                    }
+
                 } else if ([model.type isEqualToString:@"lesson"]) {
                     if ([model.id_ isEqualToString:self.playTalkGridModel.id_]) {
                         sSelf.playTalkGridModel = model;
                     }
-                    if (!_isFirstComeIn) {
-                        //首次进入默认选择第一节
-                        sSelf.playTalkGridModel = sSelf.tempLessonDetailModel.result.lessons_menu.firstObject;
-                    }
+
                 }
             }
+            
+             //首次进入默认选择第一节
+            if (!_isFirstComeIn) {
+                TalkGridModel *tempModel = sSelf.tempLessonDetailModel.result.lessons_menu.firstObject;
+                if ([tempModel.type isEqualToString:@"dir"]) {
+                    sSelf.playTalkGridModel = tempModel.children.firstObject;
+                }else if ([tempModel.type isEqualToString:@"lesson"])
+                    sSelf.playTalkGridModel = tempModel;
+                sSelf.FirstComeInplayVideo();
+            }
+            
             sSelf.videoBottomView.model = sSelf.playTalkGridModel;
             sSelf.videoBottomView.collectionCount.text = sSelf.tempLessonDetailModel.result.like_count;
             if (sSelf.tempLessonDetailModel.result.user_liked) {
@@ -132,6 +147,16 @@ static CGFloat selViewH = 2;
                 sSelf.lessonPlayerLessonListViewController.isPay = YES;
             }
             [sSelf.lessonPlayerLessonListViewController.tableView reloadData];
+
+            //是否购买过此课程
+            if (sSelf.tempLessonDetailModel.result.user_purchased || sSelf.tempLessonDetailModel.result.user_subscribed) {
+                sSelf.nowPay.hidden = YES;
+                sSelf.addShoppingCart.hidden = YES;
+            } else {
+                sSelf.nowPay.hidden = NO;
+                sSelf.addShoppingCart.hidden = NO;
+                [sSelf.nowPay setTitle:[NSString stringWithFormat:@"购买整套课程 ￥%.2lf",self.tempLessonDetailModel.result.price.floatValue / 100] forState:UIControlStateNormal];
+            }
 
         } failedBlock:^(NSError *_Nullable error) {
 
@@ -209,6 +234,7 @@ static CGFloat selViewH = 2;
 - (void)initMainUI {
     [self initPlayerView];
     [self setBackGroudView];
+    [self setAddShoppingCartButtonAndNowPayButton];
     [self setVideoBottomView];
     [self setupTitleScrollView];
     [self setupContentScrollView];
@@ -229,6 +255,40 @@ static CGFloat selViewH = 2;
     _shareView.hidden = YES;
 }
 
+#pragma mark --setBottomButtonAboutPay--
+
+- (void)setAddShoppingCartButtonAndNowPayButton {
+    self.addShoppingCart = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.view addSubview:self.addShoppingCart];
+    [self.addShoppingCart mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width / 2, 50));
+    }];
+    self.addShoppingCart.backgroundColor = [UIColor orangeColor];
+    [self.addShoppingCart setTitle:@"加入购物车" forState:UIControlStateNormal];
+    self.addShoppingCart.tintColor = [UIColor whiteColor];
+    self.addShoppingCart.titleLabel.font = FONT15;
+    [self.addShoppingCart
+     addTarget:self action:@selector(addShoppingCart:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.nowPay = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.view addSubview:self.nowPay];
+    [self.nowPay mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.width.equalTo(self.view).multipliedBy(0.5);
+        make.height.mas_equalTo(50);
+    }];
+    self.nowPay.backgroundColor = [UIColor redColor];
+    self.nowPay.tintColor = [UIColor whiteColor];
+    self.nowPay.titleLabel.font = FONT15;
+    [self.nowPay addTarget:self action:@selector(nowPay:) forControlEvents:UIControlEventTouchUpInside];
+
+    self.nowPay.hidden = YES;
+    self.addShoppingCart.hidden = YES;
+    
+}
 
 #pragma mark PlayerView
 
@@ -273,10 +333,15 @@ static CGFloat selViewH = 2;
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
-//    _playerView.placeholderImageName = nil;
-    [self setPlayerViewForResolutionDic:_playTalkGridModel];
-    _playerView.videoURL = [NSURL URLWithString:self.playUrl];
-    [_playerView autoPlayTheVideo];
+    __weak LessonPlayerViewController *tempSelf = self;
+    
+    self.FirstComeInplayVideo = ^(){
+        //    _playerView.placeholderImageName = nil;
+        [tempSelf setPlayerViewForResolutionDic:tempSelf.playTalkGridModel];
+        tempSelf.playerView.videoURL = [NSURL URLWithString:tempSelf.playUrl];
+        [tempSelf.playerView autoPlayTheVideo];
+    };
+
 }
 
 
@@ -311,9 +376,17 @@ static CGFloat selViewH = 2;
 {
     self.backGroudView = [[UIView alloc] init];
     [self.view addSubview:self.backGroudView];
+     CGFloat tempHeight;
+    //是否购买过此课程
+    if (self.tempLessonDetailModel.result.user_purchased || self.tempLessonDetailModel.result.user_subscribed) {
+        tempHeight = 50;
+    }else{
+        tempHeight = 0;
+    }
     [self.backGroudView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.playerView.mas_bottom);
-        make.left.right.bottom.equalTo(self.view);
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-tempHeight);
     }];
     self.backGroudView.backgroundColor = [UIColor clearColor];
 }
@@ -332,6 +405,11 @@ static CGFloat selViewH = 2;
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(20);
         }];
+        //是否购买过此课程
+        if (!self.tempLessonDetailModel.result.user_purchased || !self.tempLessonDetailModel.result.user_subscribed) {
+            self.nowPay.hidden = NO;
+            self.addShoppingCart.hidden = NO;
+        }
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     } else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight ||
             toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
@@ -344,6 +422,11 @@ static CGFloat selViewH = 2;
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(0);
         }];
+        //是否购买过此课程
+        if (!self.tempLessonDetailModel.result.user_purchased || !self.tempLessonDetailModel.result.user_subscribed) {
+            self.nowPay.hidden = YES;
+            self.addShoppingCart.hidden = YES;
+        }
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 
@@ -370,7 +453,7 @@ static CGFloat selViewH = 2;
     {
         //收藏
         if (button.tag == 101) {
-
+            _isFirstComeIn = YES;
             if (self.playTalkGridModel.user_favored) {
                 [self requestLessonListData:favorite method:DELETE];
             } else if (!self.playTalkGridModel.user_favored) {
@@ -379,6 +462,7 @@ static CGFloat selViewH = 2;
         }
             //分享
         else if (button.tag == 102) {
+            
             _shareView.shareTitle = self.playTalkGridModel.title;
             _shareView.shareText = self.playTalkGridModel.content;
             _shareView.shareUrl = self.playUrl;
@@ -390,6 +474,7 @@ static CGFloat selViewH = 2;
         }
             //点赞
         else if (button.tag == 103) {
+            _isFirstComeIn = YES;
             //已点赞，进行取消点赞
             if (self.tempLessonDetailModel.result.user_liked) {
                 [self PraiseAction:praise Method:DELETE];
@@ -556,7 +641,13 @@ static CGFloat selViewH = 2;
         return;
     }
     CGFloat tempHeight = ScreenWidth * 9 / 16;
-    vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - tempHeight - 20 - videoBottomViewH - titleH - selViewH);
+    
+    //是否购买过此课程
+    if (self.tempLessonDetailModel.result.user_purchased || self.tempLessonDetailModel.result.user_subscribed) {
+        vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - tempHeight - 20 - videoBottomViewH - titleH - selViewH);
+    }else{
+        vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - tempHeight - 20 - videoBottomViewH - titleH - selViewH - 50);
+    }
 
     [self.contentScrollView addSubview:vc.view];
 }
@@ -615,10 +706,38 @@ static CGFloat selViewH = 2;
     }];
 }
 
+#pragma mark addShoppingCart
+
+- (void)addShoppingCart:(UIButton *)sender {
+    if ([[XJMarket sharedMarket] isAlreadyExists:self.originalTalkGridModel key:XJ_XUETANG_SHOP] || [[XJMarket sharedMarket] isAlreadyExists:self.originalTalkGridModel key:XJ_CONGYE_PEIXUN_SHOP]) {
+        [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
+    } else { 
+        if ([self.originalTalkGridModel.department isEqualToString:@"dept3"]) {
+            [[XJMarket sharedMarket] addGoods:@[self.originalTalkGridModel] key:XJ_XUETANG_SHOP];
+            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
+        } else if ([self.originalTalkGridModel.department isEqualToString:@"dept4"]) {
+            [[XJMarket sharedMarket] addGoods:@[self.originalTalkGridModel] key:XJ_CONGYE_PEIXUN_SHOP];
+            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
+        }
+    }
+}
+
+#pragma mark nowPay
+
+- (void)nowPay:(UIButton *)sender {
+//    OrderDetaiViewController *orderDetailPage = [OrderDetaiViewController new];
+//    orderDetailPage.dataSource = [NSMutableArray arrayWithObject:self.model];
+//    [self.navigationController pushViewController:orderDetailPage animated:YES];
+}
 
 #pragma mark- dealloc
 
 - (void)dealloc {
+    [self removePlayer];
+}
+
+- (void)removePlayer
+{
     if (_playerView) {
         [_playerView cancelAutoFadeOutControlBar];
         [_playerView pause];
@@ -632,4 +751,6 @@ static CGFloat selViewH = 2;
     }
     NSLog(@"%@释放了", self.class);
 }
+
+
 @end

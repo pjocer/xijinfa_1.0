@@ -14,4 +14,5 @@
 @property (nonatomic, strong) LessonDetailListModel *lessonDetailListModel;
 @property (nonatomic, strong) NSString *lesssonID;
 @property (nonatomic, strong) TalkGridModel *playTalkGridModel;
+@property (nonatomic, strong) TalkGridModel *originalTalkGridModel;
 @end

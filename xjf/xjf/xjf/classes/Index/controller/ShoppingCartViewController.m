@@ -68,8 +68,7 @@ static CGFloat submitOrdersViewHeight = 50;
                                    forControlEvents:UIControlEventTouchUpInside];
     [self.submitOrdersView.submitOrdersButton addTarget:self action:@selector(submitOrdersButtonAction:)
                                        forControlEvents:UIControlEventTouchUpInside];
-    if ([[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] mutableCopy] count] == 0 && [[[XJMarket sharedMarket]
-            shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count] == 0) {
+    if ([[[[XJMarket sharedMarket] shoppingCartFor:XJ_XUETANG_SHOP] mutableCopy] count] == 0 && [[[XJMarket sharedMarket] shoppingCartFor:XJ_CONGYE_PEIXUN_SHOP] count] == 0) {
         self.submitOrdersView.hidden = YES;
     }
 }
