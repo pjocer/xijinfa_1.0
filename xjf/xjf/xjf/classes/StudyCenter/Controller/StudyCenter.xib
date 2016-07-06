@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StudyCenter">
+            <connections>
+                <outlet property="colloctionView" destination="rrp-cB-IU4" id="e0E-dX-FW6"/>
+                <outlet property="layout" destination="Nt5-Da-GM8" id="8at-9Y-NMV"/>
+                <outlet property="myLessons" destination="8bY-Nd-rOH" id="rfW-lO-lQd"/>
+                <outlet property="myTeachers" destination="Nkr-mg-WH4" id="96o-gL-8TN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bY-Nd-rOH">
+                    <rect key="frame" x="0.0" y="0.0" width="299" height="77"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qld-Ek-VA2">
+                            <rect key="frame" x="137" y="15" width="25" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="1KA-29-xel"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的课程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vR-SY-SqZ">
+                            <rect key="frame" x="125" y="48" width="48" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="fhJ-gJ-j5l"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="qld-Ek-VA2" firstAttribute="centerX" secondItem="8bY-Nd-rOH" secondAttribute="centerX" id="DYl-Yu-UAi"/>
+                        <constraint firstAttribute="height" constant="77" id="FMv-au-cgb"/>
+                        <constraint firstItem="qld-Ek-VA2" firstAttribute="top" secondItem="8bY-Nd-rOH" secondAttribute="top" constant="15" id="Sgp-hK-C9y"/>
+                        <constraint firstAttribute="bottom" secondItem="4vR-SY-SqZ" secondAttribute="bottom" constant="15" id="st9-G2-qzn"/>
+                        <constraint firstItem="4vR-SY-SqZ" firstAttribute="centerX" secondItem="8bY-Nd-rOH" secondAttribute="centerX" id="uMs-eF-s33"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Pyg-34-YT5" appends="YES" id="X5W-MM-aFk"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nkr-mg-WH4">
+                    <rect key="frame" x="300" y="0.0" width="300" height="77"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCs-4F-mzk">
+                            <rect key="frame" x="139" y="15" width="22" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="53a-RZ-QSS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的老师" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh7-MJ-EZM">
+                            <rect key="frame" x="126" y="48" width="48" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="5Y4-qF-3xc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0078431372549019607" green="0.0078431372549019607" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="hh7-MJ-EZM" firstAttribute="centerX" secondItem="Nkr-mg-WH4" secondAttribute="centerX" id="IO8-mf-BAk"/>
+                        <constraint firstAttribute="bottom" secondItem="hh7-MJ-EZM" secondAttribute="bottom" constant="15" id="KVi-YC-c5y"/>
+                        <constraint firstItem="jCs-4F-mzk" firstAttribute="centerX" secondItem="Nkr-mg-WH4" secondAttribute="centerX" id="L2y-LP-7Bp"/>
+                        <constraint firstAttribute="height" constant="77" id="c4u-i8-mtA"/>
+                        <constraint firstItem="jCs-4F-mzk" firstAttribute="top" secondItem="Nkr-mg-WH4" secondAttribute="top" constant="15" id="ixb-dr-cm6"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="YrI-gE-3Je" appends="YES" id="hQZ-pk-HH4"/>
+                    </connections>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rrp-cB-IU4">
+                    <rect key="frame" x="0.0" y="77" width="600" height="459"/>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="Nt5-Da-GM8">
+                        <size key="itemSize" width="282.5" height="282.5"/>
+                        <size key="headerReferenceSize" width="50" height="38"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="rvd-BJ-q5k"/>
+                        <outlet property="delegate" destination="-1" id="w0d-BN-Hfc"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="rrp-cB-IU4" secondAttribute="bottom" id="0RC-BQ-AH4"/>
+                <constraint firstItem="Nkr-mg-WH4" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="6Qk-G2-jFi"/>
+                <constraint firstItem="rrp-cB-IU4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DUL-M4-BWy"/>
+                <constraint firstItem="Nkr-mg-WH4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Lc5-We-PhX"/>
+                <constraint firstAttribute="trailing" secondItem="rrp-cB-IU4" secondAttribute="trailing" id="NLH-qg-FmT"/>
+                <constraint firstItem="8bY-Nd-rOH" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" constant="-1" id="PJn-Mu-V2j"/>
+                <constraint firstAttribute="trailing" secondItem="Nkr-mg-WH4" secondAttribute="trailing" id="ZRa-mk-s4k"/>
+                <constraint firstItem="8bY-Nd-rOH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fP7-7d-ueC"/>
+                <constraint firstItem="rrp-cB-IU4" firstAttribute="top" secondItem="Nkr-mg-WH4" secondAttribute="bottom" id="jTE-5S-2Mj"/>
+                <constraint firstItem="8bY-Nd-rOH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nWl-6R-7Oe"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="-248" y="315"/>
+        </view>
+        <tapGestureRecognizer id="Pyg-34-YT5">
+            <connections>
+                <action selector="myLessons:" destination="-1" id="aPV-Yw-i0x"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="YrI-gE-3Je">
+            <connections>
+                <action selector="myTeachers:" destination="-1" id="MYC-UL-5eL"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>
