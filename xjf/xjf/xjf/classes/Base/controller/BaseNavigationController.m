@@ -53,6 +53,11 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     [self.backImgs addObject:[self screenShot]];
     self.next = viewController;
+    [super pushViewController:viewController animated:animated];
+}
+-(void)pushViewControllerByCustomAnimation:(UIViewController *)viewController {
+    [self.backImgs addObject:[self screenShot]];
+    self.next = viewController;
     [super pushViewController:viewController animated:NO];
     if (!self.hadPushed && self.childViewControllers.count>1) {
         [self.popImgs addObject:[self screenShot]];
@@ -112,6 +117,7 @@
         [self moveNavigationViewWithLenght:0];
         self.hadPushed = YES;
         [self pushViewController:self.next animated:NO];
+        self.next = nil;
         self.hadPushed = NO;
     }];
 }

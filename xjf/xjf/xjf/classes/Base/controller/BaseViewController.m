@@ -77,10 +77,6 @@ NSString *const Subscribe = @"SubscribeViewController";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftTitle];
     leftTitle.frame = CGRectMake(0, 0, 50, 20);
     if ([name isEqualToString:My]) {
-        UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(headerClickEvent:)];
-        item2.tag = 13;
-        self.navigationItem.rightBarButtonItem = item2;
-        leftTitle.text = @"我的";
     } else if ([name isEqualToString:Index]) {
         //commentsButton
         UIButton *commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -179,8 +175,7 @@ NSString *const Subscribe = @"SubscribeViewController";
             break;
         case 13://设置
         {
-            SettingViewController *download = [[SettingViewController alloc] init];
-            [self.navigationController pushViewController:download animated:YES];
+            
             break;
         }
             break;

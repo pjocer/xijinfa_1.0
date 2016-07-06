@@ -30,6 +30,7 @@
 #import "TaTopicViewController.h"
 #import "UITableViewCell+AvatarEnabled.h"
 #import "TopicDetailViewController.h"
+#import "BaseNavigationController.h"
 
 @interface UserInfoController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *focusButton;
@@ -210,19 +211,23 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)settingButtonClicked:(UIButton *)sender {
-    SettingViewController *setting = [[SettingViewController alloc] init];
-    [self.navigationController pushViewController:setting animated:YES];
+    SettingViewController *download = [[SettingViewController alloc] init];
+    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+    [nav pushViewControllerByCustomAnimation:download];
 }
 - (void)viewDidClicked:(UITapGestureRecognizer *)tap {
     NSInteger tag = tap.view.tag;
         if (!self.hasLogined) {
-            if (tag != 774) {
-                [self loginPrompt];
-            }else {
-                LoginViewController *login = [[LoginViewController alloc] init];
-                [self.navigationController pushViewController:login animated:YES];
+            if (self.userType == Myself) {
+                if (tag != 774) {
+                    [self loginPrompt];
+                }else {
+                    LoginViewController *login = [[LoginViewController alloc] init];
+                    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+                    [nav pushViewControllerByCustomAnimation:login];
+                }
+                return;
             }
-            return;
         }
         switch (tag) {
             case 770:
