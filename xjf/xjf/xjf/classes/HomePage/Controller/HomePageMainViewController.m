@@ -28,7 +28,7 @@
 {
     [super loadView];
     @weakify(self) 
-    SelectedScrollContentView *selectedScrollContentView = [[SelectedScrollContentView alloc]initWithFrame:self.view.bounds targetViewController:self addChildViewControllerBlock:^{
+    _selectedScrollContentView = [[SelectedScrollContentView alloc]initWithFrame:self.view.bounds targetViewController:self addChildViewControllerBlock:^{
         @strongify(self)
         self.selectViewController = [[HomePageSelectViewController alloc] init];
         _selectViewController.title = @"精选";
