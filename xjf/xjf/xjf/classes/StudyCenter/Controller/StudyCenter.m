@@ -16,6 +16,8 @@
 #import "StudyCenterWikiCell.h"
 #import "ZToastManager.h"
 #import "HomePageMainViewController.h"
+#import "MyLessonsViewController.h"
+#import "MyTeacherViewController.h"
 
 @interface StudyCenter () <UICollectionViewDelegateFlowLayout,UICollectionViewDataSource> {
     TablkListModel *_list;
@@ -87,10 +89,20 @@
     }
 }
 - (IBAction)myLessons:(UITapGestureRecognizer *)sender {
-    
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        MyLessonsViewController *controller = [MyLessonsViewController new];
+        [self.navigationController pushViewController:controller animated:YES];
+    }else {
+        [self LoginPrompt];
+    }
 }
 - (IBAction)myTeachers:(UITapGestureRecognizer *)sender {
-    
+    if ([[XJAccountManager defaultManager] accessToken]) {
+        MyTeacherViewController *controller = [MyTeacherViewController new];
+        [self.navigationController pushViewController:controller animated:YES];
+    }else {
+        [self LoginPrompt];
+    }
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _course?2:3;

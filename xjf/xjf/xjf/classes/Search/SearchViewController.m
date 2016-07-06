@@ -15,6 +15,7 @@
 #import "SearchSectionTwo.h"
 #import "SearchResultController.h"
 #import "XJFCacheHandler.h"
+#import "BaseNavigationController.h"
 
 @interface SearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, TableViewRefreshDelegate>
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -252,21 +253,20 @@
         }
         [searchBar resignFirstResponder];
         [[XJFCacheHandler sharedInstance] addSearch:searchBar.text];
-//        [[XJMarket sharedMarket] addSearch:searchBar.text];
     }
 }
 
 #pragma mark - Action
 
 - (void)deleteRencentlySearch {
-//    [[XJMarket sharedMarket] clearRecentlySearched];
     [[XJFCacheHandler sharedInstance] clearRecentlySearched];
     [self.tableView reloadData];
 }
 
 - (void)cancelSearchAction {
     [_searchBar resignFirstResponder];
-    [self.navigationController popViewControllerAnimated:YES];
+    BaseNavigationController *nav = (BaseNavigationController*)self.navigationController;
+    [nav startPopAnimation];
 }
 
 - (void)didReceiveMemoryWarning {

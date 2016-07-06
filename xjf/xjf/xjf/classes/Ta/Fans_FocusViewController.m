@@ -92,6 +92,7 @@
         }];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.backgroundColor = BackgroundColor;
     }
     return _tableView;
 }

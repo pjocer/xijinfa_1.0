@@ -10,6 +10,5 @@
 #import <Foundation/Foundation.h>
 @interface BaseNavigationController : UINavigationController
 - (void)startPopAnimation;
-- (void)startPushAnimation;
 -(void)pushViewControllerByCustomAnimation:(UIViewController *)viewController;
 @end

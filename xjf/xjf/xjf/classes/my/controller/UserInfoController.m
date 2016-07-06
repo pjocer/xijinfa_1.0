@@ -239,7 +239,6 @@
             case 771:
             {
                 Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:1 nickname:self.model.result.nickname];
-                [self.navigationController pushViewController:fans_focus animated:YES];
                 [nav pushViewControllerByCustomAnimation:fans_focus];
             }
                 break;
