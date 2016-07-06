@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StudyCenterSelectedView">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="77"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnI-Bh-OZA">
+                    <rect key="frame" x="0.0" y="0.0" width="175" height="77"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="MyLessonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="c8L-hv-RaY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dj-i4-gGJ">
+                    <rect key="frame" x="175" y="0.0" width="175" height="77"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="MyTeacherAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="41I-Kn-bhH"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Su-vV-lMj">
+                    <rect key="frame" x="0.0" y="15" width="175" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="SPq-8i-HzD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的课程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfw-Px-8SP">
+                    <rect key="frame" x="0.0" y="48" width="175" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="mcI-8K-6xa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PM-af-NWI">
+                    <rect key="frame" x="175" y="15" width="175" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的老师" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVh-8N-9HK">
+                    <rect key="frame" x="175" y="48" width="175" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN5-JU-S3i">
+                    <rect key="frame" x="175" y="0.0" width="1" height="77"/>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="H9Y-LZ-JmR"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="5Dj-i4-gGJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7nV-GR-KU2"/>
+                <constraint firstItem="wfw-Px-8SP" firstAttribute="trailing" secondItem="4Su-vV-lMj" secondAttribute="trailing" id="8ax-zx-93N"/>
+                <constraint firstAttribute="bottom" secondItem="5Dj-i4-gGJ" secondAttribute="bottom" id="BzX-9f-opR"/>
+                <constraint firstItem="HVh-8N-9HK" firstAttribute="trailing" secondItem="6PM-af-NWI" secondAttribute="trailing" id="CuN-L3-CoL"/>
+                <constraint firstItem="HVh-8N-9HK" firstAttribute="centerY" secondItem="wfw-Px-8SP" secondAttribute="centerY" id="DJD-aT-4ti"/>
+                <constraint firstItem="6PM-af-NWI" firstAttribute="centerY" secondItem="4Su-vV-lMj" secondAttribute="centerY" id="GBY-be-WgO"/>
+                <constraint firstItem="6PM-af-NWI" firstAttribute="leading" secondItem="5Dj-i4-gGJ" secondAttribute="leading" id="Ph7-fd-1G9"/>
+                <constraint firstItem="HVh-8N-9HK" firstAttribute="leading" secondItem="6PM-af-NWI" secondAttribute="leading" id="QN1-wW-kqp"/>
+                <constraint firstAttribute="bottom" secondItem="lnI-Bh-OZA" secondAttribute="bottom" id="QNE-2I-lhJ"/>
+                <constraint firstItem="4Su-vV-lMj" firstAttribute="trailing" secondItem="lnI-Bh-OZA" secondAttribute="trailing" id="QWf-Qu-7Ms"/>
+                <constraint firstAttribute="bottom" secondItem="wfw-Px-8SP" secondAttribute="bottom" constant="15" id="TFP-HF-LjW"/>
+                <constraint firstItem="4Su-vV-lMj" firstAttribute="leading" secondItem="lnI-Bh-OZA" secondAttribute="leading" id="TJO-mJ-ONO"/>
+                <constraint firstItem="XN5-JU-S3i" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZOK-3s-M1e"/>
+                <constraint firstItem="5Dj-i4-gGJ" firstAttribute="width" secondItem="lnI-Bh-OZA" secondAttribute="width" id="dXA-Pv-z49"/>
+                <constraint firstItem="HVh-8N-9HK" firstAttribute="bottom" secondItem="wfw-Px-8SP" secondAttribute="bottom" id="eAP-7w-U8L"/>
+                <constraint firstItem="lnI-Bh-OZA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="f2S-93-njN"/>
+                <constraint firstItem="XN5-JU-S3i" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="gri-GM-7nM"/>
+                <constraint firstItem="6PM-af-NWI" firstAttribute="trailing" secondItem="5Dj-i4-gGJ" secondAttribute="trailing" id="hl6-H5-bkX"/>
+                <constraint firstItem="6PM-af-NWI" firstAttribute="height" secondItem="4Su-vV-lMj" secondAttribute="height" id="kjY-As-pnz"/>
+                <constraint firstItem="lnI-Bh-OZA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="lAJ-jc-YuN"/>
+                <constraint firstItem="4Su-vV-lMj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="n7s-HM-2yC"/>
+                <constraint firstItem="XN5-JU-S3i" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="r58-Bg-tOx"/>
+                <constraint firstItem="wfw-Px-8SP" firstAttribute="leading" secondItem="4Su-vV-lMj" secondAttribute="leading" id="tm9-0D-9HG"/>
+                <constraint firstItem="lnI-Bh-OZA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uHB-5L-iGX"/>
+                <constraint firstAttribute="trailing" secondItem="5Dj-i4-gGJ" secondAttribute="trailing" id="z2z-np-LVu"/>
+                <constraint firstItem="wfw-Px-8SP" firstAttribute="width" secondItem="4Su-vV-lMj" secondAttribute="width" id="zuT-s4-yTU"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="rect" keyPath="frame">
+                    <rect key="value" x="0.0" y="0.0" width="220" height="77"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="zuT-s4-yTU"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="myLessonCount" destination="4Su-vV-lMj" id="2NS-Y7-z3R"/>
+                <outlet property="myTeacherCount" destination="6PM-af-NWI" id="Lgo-Kh-vrm"/>
+            </connections>
+            <point key="canvasLocation" x="422" y="283.5"/>
+        </view>
+    </objects>
+</document>

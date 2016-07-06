@@ -7,9 +7,8 @@
 //
 
 #import "RootViewController.h"
-#import "IndexViewController.h"
 #import "TopicViewController.h"
-#import "VipViewController.h"
+#import "StudyCenterViewController.h"
 #import "PlayerViewController.h"
 #import "LessonPlayerViewController.h"
 #import "HomePageMainViewController.h"
@@ -41,14 +40,13 @@
  */
 - (void)setupAllChildViewControllers {
     HomePageMainViewController *vc1 = [[HomePageMainViewController alloc] init];
-//    IndexViewController *vc1 = [[IndexViewController alloc] init];
     vc1.tabBarItem.badgeValue = @"8";
     [self setupChildViewController:vc1
                              title:@"首页"
                          imageName:@"tab_home"
                  selectedImageName:@"tab_home_selected"];
     
-    VipViewController *vc2 = [[VipViewController alloc] init];
+    StudyCenterViewController *vc2 = [[StudyCenterViewController alloc] init];
     [self setupChildViewController:vc2
                              title:@"学习"
                          imageName:@"tab_study"
