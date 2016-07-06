@@ -151,7 +151,9 @@
     if (style == Alipay) {
         [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.xijinfa.portal" callback:^(NSDictionary *resultDic) {
             if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
-                if (self.success) self.success();
+                [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
+                    if (self.success) self.success();
+                }];
             } else {
                 NSLog(@"%@", resultDic[@"memo"]);
                 if (self.failed) self.failed();

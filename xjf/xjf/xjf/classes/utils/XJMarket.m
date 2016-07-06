@@ -57,7 +57,9 @@ NSString * MY_LESSONS_PEIXUN = @"MY_LESSONS_PEIXUN";
     ReceivedNotification(self, PayLessonsResult, ^(NSNotification *notification) {
         NSNumber *num = notification.object;
         if (num.boolValue) {
-            if (success) success();
+            [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
+                if (success) success();
+            }];
         }else {
             if (failed) failed();
         }

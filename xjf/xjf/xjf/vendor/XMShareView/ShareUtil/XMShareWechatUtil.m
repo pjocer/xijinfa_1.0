@@ -10,7 +10,7 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import "ZPlatformShare.h"
-
+#import "XJAccountManager.h"
 @interface XMShareWechatUtil () <WXApiDelegate> {
 
 }
@@ -96,7 +96,9 @@
             case WXSuccess:
                 NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
                 {
-                    if ([[ZPlatformShare sharedInstance] success]) [ZPlatformShare sharedInstance].success();
+                    [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
+                        if ([[ZPlatformShare sharedInstance] success]) [ZPlatformShare sharedInstance].success();
+                    }];
                 }
                 break;
             default:
