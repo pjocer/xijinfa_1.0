@@ -9,15 +9,10 @@
 #import "StudyCenterWikiCell.h"
 
 @interface StudyCenterWikiCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *cover;
-@property (weak, nonatomic) IBOutlet UILabel *title;
-
 @end
 
 @implementation StudyCenterWikiCell
-
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
-
 @end

@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable instancetype)initWithFrame:(CGRect)frame
          targetViewController:(UIViewController *)targetViewController
-  addChildViewControllerBlock:(void(^)())block NS_DESIGNATED_INITIALIZER;
+  addChildViewControllerBlock:(dispatch_block_t)block NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, strong) UIScrollView *contentScrollView;
 

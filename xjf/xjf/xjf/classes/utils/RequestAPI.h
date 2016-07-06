@@ -141,7 +141,7 @@ static APIName *cancelOrder = @"/api/order/";
 /// 老师列表-热门
 static APIName *teacherApi = @"/api/gurus3/";
 static APIName *teacherListHot = @"/api/gurus3/hot";
-
+static APIName *my_teacher = @"/api/user/gurus";
 
 #pragma mark-- 收藏 -----------------------------
 ///收藏

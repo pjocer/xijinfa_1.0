@@ -25,7 +25,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPu-17-hNe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrows" translatesAutoresizingMaskIntoConstraints="NO" id="NPu-17-hNe">
                         <rect key="frame" x="333" y="115" width="12" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="gwr-al-bGg"/>
@@ -35,6 +35,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ei9-nO-pVy" secondAttribute="trailing" constant="32" id="35H-Io-xvK"/>
                 <constraint firstAttribute="trailing" secondItem="ui0-dZ-yDh" secondAttribute="trailing" id="6HC-QN-YWc"/>
@@ -57,4 +58,7 @@
             <point key="canvasLocation" x="295.5" y="309"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="arrows" width="13" height="21"/>
+    </resources>
 </document>

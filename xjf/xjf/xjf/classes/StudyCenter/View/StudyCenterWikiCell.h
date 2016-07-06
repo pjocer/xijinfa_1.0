@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface StudyCenterWikiCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet UILabel *title;
 @end

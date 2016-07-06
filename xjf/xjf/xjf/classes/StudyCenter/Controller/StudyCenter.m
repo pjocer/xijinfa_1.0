@@ -9,8 +9,23 @@
 #import "StudyCenter.h"
 #import "XJFSchoolCollectionViewCell.h"
 #import "HomePageConfigure.h"
+#import "XjfRequest.h"
+#import "TalkGridModel.h"
+#import "FansFocus.h"
+#import "XJAccountManager.h"
+#import "StudyCenterWikiCell.h"
+#import "ZToastManager.h"
 
-@interface StudyCenter () <UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
+@interface StudyCenter () <UICollectionViewDelegateFlowLayout,UICollectionViewDataSource> {
+    TablkListModel *_list;
+    BOOL _course;
+    NSArray *_images;
+    NSArray *_titles;
+    NSMutableArray *_schoolCourses;
+    NSMutableArray *_employedCourses;
+}
+@property (weak, nonatomic) IBOutlet UILabel *courseCount;
+@property (weak, nonatomic) IBOutlet UILabel *teacherCount;
 @property (weak, nonatomic) IBOutlet UICollectionView *colloctionView;
 @property (weak, nonatomic) IBOutlet UIView *myLessons;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
@@ -21,33 +36,109 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _course = [[XJAccountManager defaultManager] user_model].result.course_count>0;
+    _courseCount.text = [NSString stringWithFormat:@"%ld",[[XJAccountManager defaultManager] user_model].result.course_count];
+    _teacherCount.text = [NSString stringWithFormat:@"%ld",[[XJAccountManager defaultManager] user_model].result.guru_count];
+    _images = @[@"study_wiki",@"study_school",@"study_employee"];
+    _titles = @[@"金融小白，我想了解金融知识",@"金融爱好者，我想提高金融知识水平",@"金融从业，我想考取从业资格证书"];
     [self extendheadViewFor:Study];
     [self initCollectionView];
-    // Do any additional setup after loading the view from its nib.
+    if (_course) [self initData];
+}
+- (void)initData {
+    [self requestData:myLessonsApi requestMethod:GET];
+}
+- (void)requestData:(APIName *)api requestMethod:(RequestMethod)method {
+    if (!api) {
+        return;
+    }
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        _list = [[TablkListModel alloc] initWithData:responseData error:nil];
+        if (_list.errCode==0) {
+            _courseCount.text = [NSString stringWithFormat:@"%ld",_list.result.data.count>0?_list.result.data.count:0];
+            NSMutableArray *schoolCourses = [NSMutableArray array];
+            NSMutableArray *employeeCourses = [NSMutableArray array];
+            for (TalkGridModel *tempmodel in _list.result.data) {
+                if ([tempmodel.department isEqualToString:@"dept3"]) {
+                    if (schoolCourses.count<=2) [schoolCourses addObject:tempmodel];
+                }
+                if ([tempmodel.department isEqualToString:@"dept4"]) {
+                    if (employeeCourses.count<=2) [employeeCourses addObject:tempmodel];
+                }
+            }
+            _employedCourses = employeeCourses;
+            _schoolCourses = schoolCourses;
+            [_colloctionView reloadData];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:_list.errMsg];
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"网络连接异常"];
+    }];
 }
 - (void)initCollectionView {
-    [_colloctionView registerNib:[UINib nibWithNibName:@"XJFSchoolCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionBySchool_CellID];
-    [_colloctionView registerClass:[HomePageCollectionSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail];
-    _layout.itemSize = CGSizeMake((SCREENWITH-35)/2.0f, (SCREENWITH-35)/2.0f);
+    if (_course) {
+        [_colloctionView registerNib:[UINib nibWithNibName:@"XJFSchoolCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:HomePageCollectionBySchool_CellID];
+        [_colloctionView registerClass:[HomePageCollectionSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail];
+    } else {
+        [_colloctionView registerNib:[UINib nibWithNibName:@"StudyCenterWikiCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"StudyCenterWikiCell_ID"];
+    }
 }
 - (IBAction)myLessons:(UITapGestureRecognizer *)sender {
+    
 }
 - (IBAction)myTeachers:(UITapGestureRecognizer *)sender {
+    
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    return _course?2:3;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return _course?2:1;
 }
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    HomePageCollectionSectionHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-    header.sectionTitle.text = indexPath.section==0?@"我的学堂":@"我的老师";
-    return header;
+    if (_course) {
+        HomePageCollectionSectionHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
+        header.sectionTitle.text = indexPath.section==0?@"我的学堂":@"我的老师";
+        return header;
+    }else {
+        return nil;
+    }
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
-    return cell;
+    if (_course) {
+        XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
+        return cell;
+    }else {
+        StudyCenterWikiCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StudyCenterWikiCell_ID" forIndexPath:indexPath];
+        cell.cover.image = [UIImage imageNamed:_images[indexPath.item]];
+        cell.title.text = _titles[indexPath.item];
+        return cell;
+    }
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (_course) {
+        
+    }else {
+        UITabBarController *tab = self.tabBarController;
+        [tab setSelectedIndex:0];
+    }
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return _course?CGSizeMake((SCREENWITH-35)/2.0f, (SCREENWITH-35)/2.0f):CGSizeMake(SCREENWITH-20, 150);
+}
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return _course?UIEdgeInsetsMake(0, 10, 0, 10):UIEdgeInsetsMake(10, 10, 0, 10);
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return _course?0:10;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return _course?15:0;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return _course?CGSizeMake(SCREENWITH, 38):CGSizeZero;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,9 +9,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StudyCenter">
             <connections>
                 <outlet property="colloctionView" destination="rrp-cB-IU4" id="e0E-dX-FW6"/>
+                <outlet property="courseCount" destination="qld-Ek-VA2" id="zsH-WZ-N5R"/>
                 <outlet property="layout" destination="Nt5-Da-GM8" id="8at-9Y-NMV"/>
                 <outlet property="myLessons" destination="8bY-Nd-rOH" id="rfW-lO-lQd"/>
                 <outlet property="myTeachers" destination="Nkr-mg-WH4" id="96o-gL-8TN"/>
+                <outlet property="teacherCount" destination="jCs-4F-mzk" id="mGV-Br-3dr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
