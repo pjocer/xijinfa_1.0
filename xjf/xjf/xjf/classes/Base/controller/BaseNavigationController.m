@@ -52,11 +52,11 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     [self.backImgs addObject:[self screenShot]];
+    self.next = viewController;
     [super pushViewController:viewController animated:NO];
     if (!self.hadPushed && self.childViewControllers.count>1) {
         [self.popImgs addObject:[self screenShot]];
         [self popViewControllerAnimated:NO];
-        self.next = viewController;
         [self startPushAnimation];
     }
 }
@@ -101,9 +101,10 @@
         }
     }
 }
+
 - (void)startPushAnimation {
     [self insertNextViewFromSuperView:self.view.superview];
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView transitionWithView:_backView duration:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self moveNavigationViewWithLenght:-SCREENWITH];
         _backView.frame = [[UIScreen mainScreen] bounds];
     } completion:^(BOOL finished) {
