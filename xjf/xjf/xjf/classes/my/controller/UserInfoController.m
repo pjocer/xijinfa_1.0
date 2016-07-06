@@ -216,6 +216,7 @@
     [nav pushViewControllerByCustomAnimation:download];
 }
 - (void)viewDidClicked:(UITapGestureRecognizer *)tap {
+    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
     NSInteger tag = tap.view.tag;
         if (!self.hasLogined) {
             if (self.userType == Myself) {
@@ -223,7 +224,6 @@
                     [self loginPrompt];
                 }else {
                     LoginViewController *login = [[LoginViewController alloc] init];
-                    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
                     [nav pushViewControllerByCustomAnimation:login];
                 }
                 return;
@@ -233,37 +233,38 @@
             case 770:
             {
                 Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:0 nickname:self.model.result.nickname];
-                [self.navigationController pushViewController:fans_focus animated:YES];
+                [nav pushViewControllerByCustomAnimation:fans_focus];
             }
                 break;
             case 771:
             {
                 Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:1 nickname:self.model.result.nickname];
                 [self.navigationController pushViewController:fans_focus animated:YES];
+                [nav pushViewControllerByCustomAnimation:fans_focus];
             }
                 break;
             case 772:
             {
                 if (self.userType == Myself) {
                     MyTopicViewController *controller = [[MyTopicViewController alloc] init];
-                    [self.navigationController pushViewController:controller animated:YES];
+                    [nav pushViewControllerByCustomAnimation:controller];
                 }else {
                     TaTopicViewController *controller = [[TaTopicViewController alloc] initWithID:self.model.result.id nickname:self.model.result.nickname];
-                    [self.navigationController pushViewController:controller animated:YES];
+                    [nav pushViewControllerByCustomAnimation:controller];
                 }
             }
                 break;
             case 773:
             {
                 CommentViewController *controller = [[CommentViewController alloc] initWith:(UserInfoModel *)self.model.result];
-                [self.navigationController pushViewController:controller animated:YES];
+                [nav pushViewControllerByCustomAnimation:controller];
             }
                 break;
             case 774:
             {
                 if (self.userType == Myself) {
                     UserInfoViewController *userInfo = [[UserInfoViewController alloc] init];
-                    [self.navigationController pushViewController:userInfo animated:YES];
+                    [nav pushViewControllerByCustomAnimation:userInfo];
                 }
             }
                 break;
@@ -281,11 +282,13 @@
                     cancelBlock:^{
                     } okBlock:^{
                         LoginViewController *loginPage = [LoginViewController new];
-                        [self.navigationController pushViewController:loginPage animated:YES];
+                        BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+                        [nav pushViewControllerByCustomAnimation:loginPage];
                     }        otherBlock:^{
                         RegistViewController *registPage = [RegistViewController new];
                         registPage.title_item = @"注册";
-                        [self.navigationController pushViewController:registPage animated:YES];
+                        BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+                        [nav pushViewControllerByCustomAnimation:registPage];
                     }];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -352,7 +355,8 @@
                 default:
                     break;
             }
-            [self.navigationController pushViewController:controller animated:YES];
+            BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+            [nav pushViewControllerByCustomAnimation:controller];
         }else {
             [self loginPrompt];
         }
@@ -361,7 +365,8 @@
         if (model) {
             TopicDetailViewController *controller = [[TopicDetailViewController alloc] init];
             controller.topic_id = model.id;
-            [self.navigationController pushViewController:controller animated:YES];
+            BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+            [nav pushViewControllerByCustomAnimation:controller];
         }
     }
 }
