@@ -8,7 +8,7 @@
 
 #import "BaseNavigationController.h"
 
-@interface BaseNavigationController ()
+@interface BaseNavigationController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic)UIPanGestureRecognizer *panGestureRecognizer;
 @property (strong, nonatomic)UIImageView *backView;
 @property (strong, nonatomic)NSMutableArray *backImgs;
@@ -47,6 +47,7 @@
 - (void)loadBaseUI{
     self.interactivePopGestureRecognizer.enabled = NO;
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizerAction:)];
+    self.panGestureRecognizer.delegate = self;
     [self.view addGestureRecognizer:self.panGestureRecognizer];
 }
 
@@ -150,6 +151,9 @@
 - (void)removeLastViewFromSuperView{
     [_backView removeFromSuperview];
     _backView = nil;
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 - (BOOL)shouldAutorotate {
     return [[self.viewControllers lastObject] shouldAutorotate];
