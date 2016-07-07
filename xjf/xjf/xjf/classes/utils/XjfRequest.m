@@ -64,8 +64,11 @@
                 [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }      failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+                [self formatSessionDataTask:response data:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
+                    [[ZToastManager ShardInstance] showtoast:[NSString stringWithFormat:@"网络连接失败 错误码(%ld)",_responseStatusCode]];
                 });
                 if (failedBlock) failedBlock(error);
             }];
@@ -82,8 +85,11 @@
                 [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+                [self formatSessionDataTask:response data:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
+                    [[ZToastManager ShardInstance] showtoast:[NSString stringWithFormat:@"网络连接失败 错误码(%ld)",_responseStatusCode]];
                 });
                 if (failedBlock) failedBlock(error);
             }];
@@ -98,8 +104,11 @@
                 [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+                [self formatSessionDataTask:response data:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
+                    [[ZToastManager ShardInstance] showtoast:[NSString stringWithFormat:@"网络连接失败 错误码(%ld)",_responseStatusCode]];
                 });
                 if (failedBlock) failedBlock(error);
             }];
@@ -114,8 +123,11 @@
                 [self formatSessionDataTask:response data:responseObject];
                 if (successBlock) successBlock(responseObject);
             }        failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+                [self formatSessionDataTask:response data:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[ZToastManager ShardInstance] hideprogress];
+                    [[ZToastManager ShardInstance] showtoast:[NSString stringWithFormat:@"网络连接失败 错误码(%ld)",_responseStatusCode]];
                 });
                 if (failedBlock) failedBlock(error);
             }];
@@ -146,8 +158,8 @@
                     hud.progress = uploadProgress.fractionCompleted;
                 });
             }      success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-                NSHTTPURLResponse *ret = (NSHTTPURLResponse *) task.response;
-                _responseStatusCode = ret.statusCode;
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+                [self formatSessionDataTask:response data:responseObject];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hide:YES];
                 });
@@ -157,8 +169,11 @@
                     if (failedBlock) failedBlock(nil);
                 }
             }      failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+                [self formatSessionDataTask:response data:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hide:YES];
+                    [[ZToastManager ShardInstance] showtoast:[NSString stringWithFormat:@"网络连接失败 错误码(%ld)",_responseStatusCode]];
                 });
                 if (failedBlock) failedBlock(error);
             }];

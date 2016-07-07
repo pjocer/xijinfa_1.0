@@ -241,10 +241,15 @@ referenceSizeForHeaderInSection:(NSInteger)section {
                                @"type" : [NSString stringWithFormat:@"%@", self.teacherDetailModel.result.type],
                                @"department" : [NSString stringWithFormat:@"%@", self.teacherDetailModel.result.department]}];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [self requestLessonListData:[NSString stringWithFormat:@"%@%@", teacherApi, self.teacherListDataModel.id]
-                             method:GET];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+        if ([dic[@"result"][@"success"] boolValue]) {
+            [self requestLessonListData:[NSString stringWithFormat:@"%@%@", teacherApi, self.teacherListDataModel.id]
+                                 method:GET];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+        }
     }failedBlock:^(NSError *_Nullable error) {
-
+        
     }];
 }
 
