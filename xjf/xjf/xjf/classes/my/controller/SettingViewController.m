@@ -10,6 +10,7 @@
 #import "XJAccountManager.h"
 #import "AlertUtils.h"
 #import "XJFCacheHandler.h"
+#import "RegistViewController.h"
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
@@ -85,8 +86,18 @@
             }];
         }];
     }
+    if (indexPath.row == 1) {
+        RegistViewController *controller = [RegistViewController new];
+        controller.title_item = @"重设密码";
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    if (indexPath.row == 3) {
+        [AlertUtils alertWithTarget:self title:@"提示" content:@"确定清除搜索记录?" confirmBlock:^{
+            [[XJFCacheHandler sharedInstance] clearRecentlySearched];
+        }];
+        
+    }
 }
-
 - (void)switchClicked:(UISwitch *)switchButton {
     if (switchButton.isOn == YES) {
         [[ZToastManager ShardInstance] showtoast:@"已允许3G/4G播放"];

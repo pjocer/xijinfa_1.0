@@ -30,6 +30,7 @@
     self.nextButton.layer.cornerRadius = 5;
     self.password.secureTextEntry = YES;
     self.password_again.secureTextEntry = YES;
+    self.navigationItem.title = self.itemTitle;
     if (![self.itemTitle isEqualToString:@"设置密码"]) {
         self.password.placeholder = @"请输入您的新密码";
         self.password_again.placeholder = @"请再次输入您的新密码";
@@ -59,13 +60,11 @@
         [[ZToastManager ShardInstance] showtoast:@"密码不一致"];
         return;
     }
-    [[ZToastManager ShardInstance] showprogress];
     APIName *name = [self.itemTitle isEqualToString:@"重设密码"] ? reset_password : commit_register;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:name RequestMethod:POST];
     [self.dict setValue:self.password.text forKey:@"password"];
     request.requestParams = self.dict;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [[ZToastManager ShardInstance] hideprogress];
         RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
         if (model.errCode == 0) {
             XJAccountManager *manager = [XJAccountManager defaultManager];
@@ -75,8 +74,6 @@
             [[ZToastManager ShardInstance] showtoast:model.errMsg];
         }
     }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
-        [[ZToastManager ShardInstance] showtoast:@"请求失败"];
     }];
 }
 

@@ -32,7 +32,7 @@
  *  @return file size
  */
 - (nullable NSString *)getSize;
-- (nullable NSString *)pathFor:(nonnull NSString *)fileName;
+- (nullable NSString *)pathFor:(nonnull NSString *)fileName;          
 - (BOOL)createFileAtPath:(nonnull NSString *)path;
 - (BOOL)removeFileAtPath:(nonnull NSString *)path;
 @end

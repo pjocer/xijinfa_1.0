@@ -49,7 +49,6 @@
     if (_course) [self initData];
 }
 - (void)initUserInfo:(UserProfileModel *)model {
-    NSLog(@"%@",model);
     _course = model.result.course_count>0;
     _courseCount.text = [NSString stringWithFormat:@"%ld",model.result.course_count];
     _teacherCount.text = [NSString stringWithFormat:@"%ld",model.result.guru_count];
@@ -113,7 +112,7 @@
     }
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _course?2:3;
+    return _course?(section==0?_schoolCourses.count:_employedCourses.count):3;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return _course?2:1;

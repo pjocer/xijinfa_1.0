@@ -135,7 +135,6 @@
 		5AF7C2FF1CFFFF59007CC71C /* MyTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2FE1CFFFF59007CC71C /* MyTeacherViewController.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11201CBA8C4700892E2C /* LoginViewController.m */; };
-		644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11261CBA8DAA00892E2C /* UserThirdLogin.m */; };
 		644C116F1CBA91DD00892E2C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C116E1CBA91DD00892E2C /* libsqlite3.tbd */; };
 		644C11731CBA91FB00892E2C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11721CBA91FB00892E2C /* CoreTelephony.framework */; };
 		644C11751CBA920A00892E2C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11741CBA920A00892E2C /* libz.tbd */; };
@@ -537,11 +536,8 @@
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
 		644C10EA1CBA785400892E2C /* TopicConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicConfigure.h; sourceTree = "<group>"; };
 		644C11121CBA8A1300892E2C /* myConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myConfigure.h; sourceTree = "<group>"; };
-		644C11191CBA8B9F00892E2C /* UserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
 		644C111F1CBA8C4700892E2C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		644C11201CBA8C4700892E2C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		644C11251CBA8DAA00892E2C /* UserThirdLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserThirdLogin.h; sourceTree = "<group>"; };
-		644C11261CBA8DAA00892E2C /* UserThirdLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserThirdLogin.m; sourceTree = "<group>"; };
 		644C116E1CBA91DD00892E2C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		644C11721CBA91FB00892E2C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		644C11741CBA920A00892E2C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -1411,7 +1407,6 @@
 		644C11171CBA8B4B00892E2C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				644C11191CBA8B9F00892E2C /* UserDelegate.h */,
 				644C111F1CBA8C4700892E2C /* LoginViewController.h */,
 				644C11201CBA8C4700892E2C /* LoginViewController.m */,
 				D0698E631CE41A4D003BF1F3 /* RegistViewController.h */,
@@ -1420,8 +1415,6 @@
 				D0698E681CE42B25003BF1F3 /* PasswordSettingViewController.h */,
 				D0698E691CE42B25003BF1F3 /* PasswordSettingViewController.m */,
 				D0698E6A1CE42B25003BF1F3 /* PasswordSettingViewController.xib */,
-				644C11251CBA8DAA00892E2C /* UserThirdLogin.h */,
-				644C11261CBA8DAA00892E2C /* UserThirdLogin.m */,
 			);
 			name = Controller;
 			path = controller;
@@ -2442,7 +2435,6 @@
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */,
 				5A565A341D069F1B00008DA9 /* EmployedBasisViewController.m in Sources */,
-				644C11271CBA8DAA00892E2C /* UserThirdLogin.m in Sources */,
 				5A105EA91CEF15B40079BEFE /* WikiMoreViewController.m in Sources */,
 				5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */,
 				5A6CF4E41D260F3E00676255 /* HomePageEmployedViewController.m in Sources */,
