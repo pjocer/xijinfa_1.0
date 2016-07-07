@@ -18,7 +18,8 @@
 
 @implementation PhotoHandler
 - (instancetype)initWithSourceType:(UIImagePickerControllerSourceType)type imagePickerDelegate:(id<UIImagePickerControllerDelegate,UINavigationControllerDelegate>)delegate{
-    if (self == [super init]) {
+    self = [super init];
+    if (self) {
         _type = type;
         [self initProperties];
         self.imagePicker.mediaTypes = @[(__bridge NSString *)kUTTypeImage];

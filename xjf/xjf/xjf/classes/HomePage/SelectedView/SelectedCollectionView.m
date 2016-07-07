@@ -101,7 +101,6 @@ static CGFloat CellHeight = 25;
         [_backGroudView addGestureRecognizer:[UITapGestureRecognizer ht_gestureRecognizerWithActionBlock:^(id gestureRecognizer) {
             weakSelf.selectedTableViewFrameUnShow();
         }]];
-        UIButton *button = [UIButton new];
     }
     return _backGroudView;
 }
