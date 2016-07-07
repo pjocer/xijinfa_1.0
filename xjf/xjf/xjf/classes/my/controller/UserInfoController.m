@@ -92,7 +92,7 @@
     @weakify(self);
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(NSNotification *x) {
         @strongify(self);
-        if (self.userType == Myself) {
+        if ([self.model.result.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
             if (x.object){
                 self.model = x.object;
                 self.hasLogined = YES;
@@ -100,7 +100,6 @@
                 self.model = nil;
                 self.hasLogined = NO;
             }
-            [self initData];
         }
     }];
 }
@@ -115,7 +114,6 @@
         _setting.hidden = YES;
         _focusButton.hidden = [self.model.result.id isEqualToString:[[XJAccountManager defaultManager] user_id]];
         _back.hidden = NO;
-        [self requestData];
     }
     [_userAvatar.layer setCornerRadius:35];
     [_userAvatar.layer setBorderColor:[[UIColor whiteColor] CGColor]];
