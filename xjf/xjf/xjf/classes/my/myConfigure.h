@@ -9,7 +9,6 @@
 #import "SettingViewController.h"
 #import "SettingViewController.h"
 #import "LoginViewController.h"
-#import "UserDelegate.h"
 #import "RegistFinalModel.h"
 #import "UserProfileModel.h"
 #import "UserInfoViewController.h"

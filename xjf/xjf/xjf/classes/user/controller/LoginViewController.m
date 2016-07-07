@@ -14,7 +14,7 @@
 #import "ImageCodeModel.h"
 #import "XJAccountManager.h"
 
-@interface LoginViewController () <UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UserDelegate> {
+@interface LoginViewController () <UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
 
 }
 @property (nonatomic, strong) void(^actionBlock)(id, id);
@@ -201,7 +201,7 @@
 }
 
 - (void)registAction:(UIBarButtonItem *)item {
-    RegistViewController *controller = [RegistViewController newWithDelegate:self];
+    RegistViewController *controller = [RegistViewController new];
     controller.title_item = @"注册";
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -234,7 +234,7 @@
             break;
         case 2://忘记密码
         {
-            RegistViewController *controller = [RegistViewController newWithDelegate:self];
+            RegistViewController *controller = [RegistViewController new];
             controller.title_item = @"找回密码";
             [self.navigationController pushViewController:controller animated:YES];
         }

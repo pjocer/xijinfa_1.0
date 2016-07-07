@@ -32,14 +32,6 @@
     return [super new];
 }
 
-+ (instancetype)newWithDelegate:(id <UserDelegate>)delegate {
-    RegistViewController *viewController = [RegistViewController newController];
-    if (viewController) {
-        viewController.delegate = delegate;
-    }
-    return viewController;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = _title_item;

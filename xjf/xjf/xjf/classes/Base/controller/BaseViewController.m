@@ -25,7 +25,7 @@ NSString *const Vip = @"VipViewController";
 NSString *const Subscribe = @"SubscribeViewController";
 NSString *const Study = @"StudyCenter";
 
-@interface BaseViewController () <UserDelegate,UINavigationControllerDelegate>
+@interface BaseViewController () <UINavigationControllerDelegate>
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactiveTransition;
 @end
 
