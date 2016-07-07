@@ -14,6 +14,7 @@
 #import <AFNetworkReachabilityManager.h>
 #import "XMShareView.h"
 #import "XJMarket.h"
+#import "OrderDetaiViewController.h"
 
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
@@ -722,9 +723,9 @@ static CGFloat selViewH = 2;
 #pragma mark nowPay
 
 - (void)nowPay:(UIButton *)sender {
-//    OrderDetaiViewController *orderDetailPage = [OrderDetaiViewController new];
-//    orderDetailPage.dataSource = [NSMutableArray arrayWithObject:self.model];
-//    [self.navigationController pushViewController:orderDetailPage animated:YES];
+    OrderDetaiViewController *orderDetailPage = [OrderDetaiViewController new];
+    orderDetailPage.dataSource = [NSMutableArray arrayWithObject:self.originalTalkGridModel];
+    [self.navigationController pushViewController:orderDetailPage animated:YES];
 }
 
 #pragma mark- dealloc
