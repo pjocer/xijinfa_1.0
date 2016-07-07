@@ -80,7 +80,7 @@ static CGFloat rowHeight = 50;
 
     cell.backgroundColor = [UIColor clearColor];
     if (!_isPay) {
-        cell.studyImage.hidden = YES;
+//        cell.studyImage.hidden = YES;
     }
     cell.isPay = _isPay;
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[indexPath.section];
@@ -99,9 +99,9 @@ static CGFloat rowHeight = 50;
 - (void)lessonDetailLessonListCellJudge:(LessonDetailLessonListCell *)cell {
     //是否免费试看
     if ([cell.talkGridModel.package containsObject:@"visitor"]) {
-        cell.freeVideoLogo.hidden = NO;
+//        cell.freeVideoLogo.hidden = NO;
     } else {
-        cell.freeVideoLogo.hidden = YES;
+//        cell.freeVideoLogo.hidden = YES;
     }
     //是否收藏
     if (cell.talkGridModel.user_favored) {
@@ -111,13 +111,13 @@ static CGFloat rowHeight = 50;
     }
     //是否学习过
     if (cell.talkGridModel.user_learned == 1) {
-        cell.studyImage.hidden = NO;
+//        cell.studyImage.hidden = NO;
     } else if (cell.talkGridModel.user_learned == 0) {
-        cell.studyImage.hidden = YES;
+//        cell.studyImage.hidden = YES;
     }
     //买过此课，免费试看隐藏
     if (_isPay) {
-        cell.freeVideoLogo.hidden = YES;
+//        cell.freeVideoLogo.hidden = YES;
     }
 
 }

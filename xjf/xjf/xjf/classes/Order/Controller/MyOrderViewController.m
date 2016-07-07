@@ -55,15 +55,15 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
             sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
             [sSelf.tableView reloadData];
 
-        }                  failedBlock:^(NSError *_Nullable error) {
-            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        } failedBlock:^(NSError *_Nullable error) {
+
         }];
     } else if (method == PUT) {
         request.requestParams = self.requestParams.mutableCopy;
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             [self requestAllOrderData:queryAllOrder method:GET];
-        }                  failedBlock:^(NSError *_Nullable error) {
-            [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
+        } failedBlock:^(NSError *_Nullable error) {
+
         }];
     }
 

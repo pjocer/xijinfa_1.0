@@ -10,7 +10,7 @@
 #import "VideoListCell.h"
 #import "MyLessonsTableFooterView.h"
 #import "TalkGridModel.h"
-#import "LessonDetailViewController.h"
+#import "LessonPlayerViewController.h"
 
 @interface MyLessonsSchoolViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -84,10 +84,11 @@ static CGFloat tableFooterH = 35;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-    lessonDetailViewController.model = self.dataSorce[indexPath.section];
-    lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+    LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+    lessonPlayerViewController.playTalkGridModel = self.dataSorce[indexPath.section];
+    lessonPlayerViewController.lesssonID = lessonPlayerViewController.playTalkGridModel.id_;
+    lessonPlayerViewController.originalTalkGridModel = self.dataSorce[indexPath.section];
+    [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
 }
 
 @end

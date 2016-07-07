@@ -9,14 +9,14 @@
 #import "LessonPlayerLessonListViewController.h"
 #import "LessonDetailLessonListCell.h"
 #import "IndexSectionView.h"
+#import "OrderDetaiViewController.h"
 
-@interface LessonPlayerLessonListViewController () <UITableViewDelegate, UITableViewDataSource>
-//@property (nonatomic, assign) BOOL unDefaultSelected;
+@interface LessonPlayerLessonListViewController () <UITableViewDelegate, UITableViewDataSource,LessonDetailLessonListCellDelegate>
+
 @end
 
 @implementation LessonPlayerLessonListViewController
 static NSString *LessonListCell_id = @"LessonListCell_id";
-//static CGFloat offset = 60;
 static CGFloat rowHeight = 60;
 
 - (void)viewDidLoad {
@@ -49,17 +49,6 @@ static CGFloat rowHeight = 60;
     
     [self.tableView registerClass:[LessonDetailLessonListCell class]
            forCellReuseIdentifier:LessonListCell_id];
-
-    //tableHeaderView
-//    if (_isPay) {
-//        self.tableView.tableHeaderView = [[LessonDetailHaveToPayHeaderView alloc]
-//                                          initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight * 2 + 1)];
-//        self.tableView.backgroundColor = [UIColor whiteColor];
-//    } else {
-//        self.tableView.tableHeaderView = [[LessonDetailNoPayHeaderView alloc]
-//                                          initWithFrame:CGRectMake(0, 0, SCREENWITH, rowHeight)];
-//        self.tableView.backgroundColor = [UIColor whiteColor];
-//    }
 }
 
 #pragma mark TabelViewDataSource
@@ -81,10 +70,10 @@ static CGFloat rowHeight = 60;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LessonDetailLessonListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonListCell_id];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
 
-    cell.backgroundColor = [UIColor clearColor];
     if (!_isPay) {
-        cell.studyImage.hidden = YES;
+//        cell.studyImage.hidden = YES;
     }
     cell.isPay = _isPay;
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[indexPath.section];
@@ -103,9 +92,9 @@ static CGFloat rowHeight = 60;
 - (void)lessonDetailLessonListCellJudge:(LessonDetailLessonListCell *)cell indexPath:(NSIndexPath *)indexpatch {
     //是否免费试看
     if ([cell.talkGridModel.package containsObject:@"visitor"]) {
-        cell.freeVideoLogo.hidden = NO;
+//        cell.freeVideoLogo.hidden = NO;
     } else {
-        cell.freeVideoLogo.hidden = YES;
+//        cell.freeVideoLogo.hidden = YES;
     }
     //是否收藏
     if (cell.talkGridModel.user_favored) {
@@ -119,24 +108,20 @@ static CGFloat rowHeight = 60;
     } else {
         cell.title.textColor = [UIColor blackColor];
     }
-//    //是否第一次进入,默认选中第一个
-//    if (!_unDefaultSelected) {
-//        if (indexpatch.section == 0 && indexpatch.row == 0) {
-//            cell.title.textColor = BlueColor;
-//        }else{
-//            cell.title.textColor = [UIColor blackColor];
-//        }
-//    }
+
     //是否学习过
     if (cell.talkGridModel.user_learned == 1) {
-        cell.studyImage.hidden = NO;
+//        cell.studyImage.hidden = NO;
     } else if (cell.talkGridModel.user_learned == 0) {
-        cell.studyImage.hidden = YES;
+//        cell.studyImage.hidden = YES;
     }
-    //买过此课，免费试看隐藏
+    //买过此套课，price隐藏
     if (_isPay) {
-        cell.freeVideoLogo.hidden = YES;
+        cell.lessonPrice.hidden = YES;
+    }else{
+        cell.lessonPrice.hidden = NO;
     }
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -155,9 +140,6 @@ static CGFloat rowHeight = 60;
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[section];
     if ([model.type isEqualToString:@"dir"]) {
         IndexSectionView *sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-        //        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
-        //        [sectionView addSubview:bottomView];
-        //        bottomView.backgroundColor = BackgroundColor;
         sectionView.moreLabel.hidden = YES;
         sectionView.titleLabel.text = model.title;
         sectionView.backgroundColor = [UIColor clearColor];
@@ -169,7 +151,6 @@ static CGFloat rowHeight = 60;
 #pragma mark Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    _unDefaultSelected = YES; //不默认选择
     
     TalkGridModel *model = self.lessonDetailListModel.result.lessons_menu[indexPath.section];
     if ([model.type isEqualToString:@"dir"]) {
@@ -197,4 +178,14 @@ static CGFloat rowHeight = 60;
     }
     [self.tableView reloadData];
 }
+
+///lessonDetailLessonListCell PriceButtonPushOrderDetail
+
+- (void)lessonDetailLessonListCell:(LessonDetailLessonListCell *)cell PriceButtonPushOrderDetail:(TalkGridModel *)selectModel
+{
+    OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
+    orderDetaiViewController.dataSource = [NSMutableArray arrayWithObject:selectModel];
+    [self.navigationController pushViewController:orderDetaiViewController animated:YES];
+}
+
 @end

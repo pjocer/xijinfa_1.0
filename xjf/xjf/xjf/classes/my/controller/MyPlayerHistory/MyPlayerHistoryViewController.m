@@ -69,6 +69,7 @@ static CGFloat tableHeaderH = 35;
             if (![[tempModel.user_played_at substringToIndex:10] isEqualToString:[model.user_played_at substringToIndex:10]]) {
                 tempModel = model;
                 NSMutableArray *array = [NSMutableArray array];
+                [array addObject:model];
                 [self.dicDate setObject:array forKey:[tempModel.user_played_at substringToIndex:10]];
             } else {
                 NSMutableArray *array = self.dicDate[[tempModel.user_played_at substringToIndex:10]];
@@ -79,7 +80,7 @@ static CGFloat tableHeaderH = 35;
 
 
         [self.tableView reloadData];
-    }                  failedBlock:^(NSError *_Nullable error) {
+    } failedBlock:^(NSError *_Nullable error) {
 
     }];
 }

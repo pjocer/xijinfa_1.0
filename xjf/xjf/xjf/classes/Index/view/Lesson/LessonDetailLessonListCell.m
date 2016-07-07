@@ -7,18 +7,19 @@
 //
 
 #import "LessonDetailLessonListCell.h"
+#import "XJMarket.h"
 
 @interface LessonDetailLessonListCell ()
-@property (nonatomic, strong) UILabel *lessonCount;
 @property (nonatomic, strong) UIView *backGroundView;
 @end
 
 @implementation LessonDetailLessonListCell
-static CGFloat StudyImageH = 20;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
+        self.backgroundColor = [UIColor clearColor];
         
         self.backGroundView = [[UIView alloc] init];
         [self.contentView addSubview:_backGroundView];
@@ -34,7 +35,6 @@ static CGFloat StudyImageH = 20;
 //        iconFavorites
         self.favorites = [[UIImageView alloc] init];
         [_backGroundView addSubview:self.favorites];
-//        self.favorites.image = [UIImage imageNamed:@"iconFavoritesOn"];
         [self.favorites mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_backGroundView).with.offset(10);
             make.centerY.equalTo(_backGroundView);
@@ -53,68 +53,59 @@ static CGFloat StudyImageH = 20;
         }];
         self.title.text = @"股票基础课程 第x课";
 
-        self.freeVideoLogo = [[UILabel alloc] init];
-        [_backGroundView addSubview:self.freeVideoLogo];
-        self.freeVideoLogo.font = FONT12;
-        self.freeVideoLogo.textAlignment = NSTextAlignmentCenter;
-        self.freeVideoLogo.backgroundColor = [UIColor redColor];
-        self.freeVideoLogo.textColor = [UIColor whiteColor];
-        self.freeVideoLogo.text = @"免费试看";
-        self.freeVideoLogo.layer.masksToBounds = YES;
-        self.freeVideoLogo.layer.cornerRadius = 10;
-        [self.freeVideoLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.title.mas_right).with.offset(10);
-            make.centerY.equalTo(_backGroundView);
-            make.size.mas_equalTo(CGSizeMake(60, 20));
-        }];
-        self.freeVideoLogo.hidden = YES;
-
-        self.studyImage = [[UIImageView alloc] init];
-        [_backGroundView addSubview:self.studyImage];
-        self.studyImage.layer.masksToBounds = YES;
-        self.studyImage.layer.cornerRadius = StudyImageH / 2;
-        self.studyImage.image = [[UIImage imageNamed:@"learend"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        [self.studyImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        self.lessonPrice = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_backGroundView addSubview:self.lessonPrice];
+        self.lessonPrice.titleLabel.font = FONT12;
+        [self.lessonPrice mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(_backGroundView).with.offset(-10);
             make.centerY.equalTo(_backGroundView);
-            make.size.mas_equalTo(CGSizeMake(StudyImageH, StudyImageH));
+            make.height.mas_equalTo(25);
+            make.width.mas_equalTo(80);
         }];
-
-        self.lessonCount = [[UILabel alloc] init];
-        [_backGroundView addSubview:self.lessonCount];
-        self.lessonCount.font = FONT12;
-        self.lessonCount.textAlignment = NSTextAlignmentLeft;
-        [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.studyImage.mas_left).with.offset(-15);
-            make.centerY.equalTo(_backGroundView);
-            make.height.mas_equalTo(14);
-            make.width.mas_equalTo(45);
+        [self.lessonPrice setTintColor:[UIColor whiteColor]];
+        ViewRadius(self.lessonPrice, 12.5);
+        [self.lessonPrice addTarget:self action:@selector(pushOrderDetailPage:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //shop
+        self.shop = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self addSubview:self.shop];
+        [self.shop setImage:[[UIImage imageNamed:@"LessonOneShop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        ViewRadius(self.shop, 12.5);
+        [self.shop mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.lessonPrice);
+            make.right.equalTo(self.lessonPrice.mas_left).with.offset(-10);
+            make.size.mas_equalTo(CGSizeMake(25, 25));
         }];
-        self.lessonCount.textColor = AssistColor;
+        [self.shop addTarget:self action:@selector(shop:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return self;
 }
 
+- (void)pushOrderDetailPage:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(lessonDetailLessonListCell:PriceButtonPushOrderDetail:)]) {
+        [_delegate lessonDetailLessonListCell:self PriceButtonPushOrderDetail:_talkGridModel];
+    }
+}
+
+- (void)shop:(UIButton *)sender
+{
+    if ([[XJMarket sharedMarket] isAlreadyExists:_talkGridModel key:XJ_XUETANG_SHOP] || [[XJMarket sharedMarket] isAlreadyExists:_talkGridModel key:XJ_CONGYE_PEIXUN_SHOP]) {
+        [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
+    } else {
+        if ([_talkGridModel.department isEqualToString:@"dept3"]) {
+            [[XJMarket sharedMarket] addGoods:@[_talkGridModel] key:XJ_XUETANG_SHOP];
+            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
+        } else if ([_talkGridModel.department isEqualToString:@"dept4"]) {
+            [[XJMarket sharedMarket] addGoods:@[_talkGridModel] key:XJ_CONGYE_PEIXUN_SHOP];
+            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
+        }
+    }
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
-
-    if (!self.isPay) {
-        [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(_backGroundView).with.offset(-10);
-            make.centerY.equalTo(_backGroundView);
-            make.height.mas_equalTo(14);
-            make.width.mas_equalTo(60);
-        }];
-    }
-    else {
-        [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.studyImage.mas_left).with.offset(-15);
-            make.centerY.equalTo(_backGroundView);
-            make.height.mas_equalTo(14);
-            make.width.mas_equalTo(60);
-        }];
-    }
-
 }
 
 
@@ -123,8 +114,19 @@ static CGFloat StudyImageH = 20;
         _talkGridModel = talkGridModel;
     }
     self.title.text = talkGridModel.title;
-
-    self.lessonCount.text = [NSString timeformatFromSeconds:talkGridModel.video_duration];
+   
+    //是否买过此节
+    if (_talkGridModel.user_subscribed == YES || _talkGridModel.user_purchased == YES) {
+        [self.lessonPrice setTitle:@"已购买" forState:UIControlStateNormal];
+        self.lessonPrice.backgroundColor = [UIColor xjfStringToColor:@"#3c98e8"];
+        self.shop.hidden = YES;
+    }else{
+        [self.lessonPrice setTitle:[NSString stringWithFormat:@"单节 ￥%.2lf",_talkGridModel.price.floatValue / 100] forState:UIControlStateNormal];
+        self.lessonPrice.backgroundColor = [UIColor xjfStringToColor:@"#ea5f5f"];
+        self.shop.hidden = NO;
+    }
+    
+   
 }
 
 

@@ -63,7 +63,6 @@ static CGFloat selViewH = 2;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    [self removePlayer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,9 +90,6 @@ static CGFloat selViewH = 2;
     [super viewDidLoad];
     [self initMainUI];
     [self requestLessonListData:[NSString stringWithFormat:@"%@/%@",coursesProjectLessonDetailList, self.lesssonID] method:GET];
-    [self sendPlayerHistoryToServerData:history method:POST];
-    
-
 }
 
 - (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
@@ -130,6 +126,7 @@ static CGFloat selViewH = 2;
                 }else if ([tempModel.type isEqualToString:@"lesson"])
                     sSelf.playTalkGridModel = tempModel;
                 sSelf.FirstComeInplayVideo();
+                [self sendPlayerHistoryToServerData:history method:POST];
             }
             
             sSelf.videoBottomView.model = sSelf.playTalkGridModel;
@@ -149,7 +146,7 @@ static CGFloat selViewH = 2;
             [sSelf.lessonPlayerLessonListViewController.tableView reloadData];
 
             //是否购买过此课程
-            if (sSelf.tempLessonDetailModel.result.user_purchased || sSelf.tempLessonDetailModel.result.user_subscribed) {
+            if (sSelf.originalTalkGridModel.user_purchased || sSelf.originalTalkGridModel.user_subscribed) {
                 sSelf.nowPay.hidden = YES;
                 sSelf.addShoppingCart.hidden = YES;
             } else {
@@ -265,7 +262,7 @@ static CGFloat selViewH = 2;
         make.left.equalTo(self.view);
         make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width / 2, 50));
     }];
-    self.addShoppingCart.backgroundColor = [UIColor orangeColor];
+    self.addShoppingCart.backgroundColor = [UIColor xjfStringToColor:@"#f87c47"];
     [self.addShoppingCart setTitle:@"加入购物车" forState:UIControlStateNormal];
     self.addShoppingCart.tintColor = [UIColor whiteColor];
     self.addShoppingCart.titleLabel.font = FONT15;
@@ -280,7 +277,7 @@ static CGFloat selViewH = 2;
         make.width.equalTo(self.view).multipliedBy(0.5);
         make.height.mas_equalTo(50);
     }];
-    self.nowPay.backgroundColor = [UIColor redColor];
+    self.nowPay.backgroundColor = [UIColor xjfStringToColor:@"#ea5f5f"];
     self.nowPay.tintColor = [UIColor whiteColor];
     self.nowPay.titleLabel.font = FONT15;
     [self.nowPay addTarget:self action:@selector(nowPay:) forControlEvents:UIControlEventTouchUpInside];
@@ -378,10 +375,10 @@ static CGFloat selViewH = 2;
     [self.view addSubview:self.backGroudView];
      CGFloat tempHeight;
     //是否购买过此课程
-    if (self.tempLessonDetailModel.result.user_purchased || self.tempLessonDetailModel.result.user_subscribed) {
-        tempHeight = 50;
-    }else{
+    if (self.originalTalkGridModel.user_purchased || self.originalTalkGridModel.user_subscribed) {
         tempHeight = 0;
+    }else{
+        tempHeight = 50;
     }
     [self.backGroudView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.playerView.mas_bottom);
@@ -406,7 +403,7 @@ static CGFloat selViewH = 2;
             make.top.equalTo(self.view).offset(20);
         }];
         //是否购买过此课程
-        if (!self.tempLessonDetailModel.result.user_purchased || !self.tempLessonDetailModel.result.user_subscribed) {
+        if (!self.originalTalkGridModel.user_purchased || !self.originalTalkGridModel.user_subscribed) {
             self.nowPay.hidden = NO;
             self.addShoppingCart.hidden = NO;
         }
@@ -423,7 +420,7 @@ static CGFloat selViewH = 2;
             make.top.equalTo(self.view).offset(0);
         }];
         //是否购买过此课程
-        if (!self.tempLessonDetailModel.result.user_purchased || !self.tempLessonDetailModel.result.user_subscribed) {
+        if (!self.originalTalkGridModel.user_purchased || !self.originalTalkGridModel.user_subscribed) {
             self.nowPay.hidden = YES;
             self.addShoppingCart.hidden = YES;
         }
@@ -643,7 +640,7 @@ static CGFloat selViewH = 2;
     CGFloat tempHeight = ScreenWidth * 9 / 16;
     
     //是否购买过此课程
-    if (self.tempLessonDetailModel.result.user_purchased || self.tempLessonDetailModel.result.user_subscribed) {
+    if (self.originalTalkGridModel.user_purchased || self.originalTalkGridModel.user_subscribed) {
         vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - tempHeight - 20 - videoBottomViewH - titleH - selViewH);
     }else{
         vc.view.frame = CGRectMake(x, 0, SCREENWITH, SCREENHEIGHT - tempHeight - 20 - videoBottomViewH - titleH - selViewH - 50);
