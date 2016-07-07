@@ -87,7 +87,7 @@ static CGFloat tableHeaderH = 35;
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 64) style:UITableViewStylePlain];
+            initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

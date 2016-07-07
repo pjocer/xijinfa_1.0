@@ -17,6 +17,7 @@
 #import "NewComment_Topic.h"
 #import "UIImageView+WebCache.h"
 #import "BaseNavigationController.h"
+#import "UserInfoController.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -202,10 +203,10 @@ NSString *const Study = @"StudyCenter";
         case 16:
         {
             if ([[XJAccountManager defaultManager] accessToken]) {
-                NSLog(@"用户个人中心页");
+                UserInfoController *controller = [[UserInfoController alloc] initWithUserType:Ta userInfo:[[XJAccountManager defaultManager] user_model].result];
+                [self.navigationController pushViewController:controller animated:YES];
             }else {
-                LoginViewController *login = [[LoginViewController alloc] init];
-                [getCurrentDisplayController().navigationController pushViewController:login animated:YES];
+                [self LoginPrompt];
             }
         }
             break;

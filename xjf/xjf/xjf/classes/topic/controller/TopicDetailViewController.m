@@ -34,18 +34,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (!self.tabBarController.tabBar.isHidden) {
-        ;
-        [self.view addSubview:self.footer];
-    }
+    [self.view addSubview:self.footer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.tabBarController.tabBar.isHidden) {
-        ;
-        [self.footer removeFromSuperview];
-    }
+    [self.footer removeFromSuperview];
 }
 
 - (void)viewDidLoad {
@@ -190,7 +184,7 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - HEADHEIGHT) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-kTabBarH) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         [_tableView registerNib:[UINib nibWithNibName:@"CommentDetailHeader" bundle:nil] forCellReuseIdentifier:@"CommentDetailHeader"];
         [_tableView registerNib:[UINib nibWithNibName:@"CommentListCell" bundle:nil] forCellReuseIdentifier:@"CommentListCell"];

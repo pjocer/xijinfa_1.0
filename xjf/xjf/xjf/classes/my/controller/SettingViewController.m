@@ -32,7 +32,7 @@
 
 - (void)initTableView {
     _dataSource = @[@"允许3G/4G网络时自动播放", @"更改密码", @"清除缓存", @"清除搜索记录", @"软件许可及服务协议", @"关于我们"];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - HEADHEIGHT - kTabBarH) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = self.footer;

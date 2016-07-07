@@ -60,7 +60,7 @@ static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
     _layout.minimumInteritemSpacing = 0.0;//左右间隔
 
     self.collectionView = [[UICollectionView alloc]
-            initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - 10) collectionViewLayout:_layout];
+            initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:_layout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
 

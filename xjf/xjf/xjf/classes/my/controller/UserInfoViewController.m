@@ -102,8 +102,7 @@
 
 - (void)initTableView {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    CGRect frame = CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - HEADHEIGHT);
-    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     self.tableView.backgroundColor = BackgroundColor;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

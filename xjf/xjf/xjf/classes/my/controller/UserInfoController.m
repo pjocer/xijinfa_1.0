@@ -113,7 +113,7 @@
     }else {
         [_tableView registerNib:[UINib nibWithNibName:@"TopicBaseCellTableViewCell" bundle:nil] forCellReuseIdentifier:@"TopicBaseCellTableViewCell"];
         _setting.hidden = YES;
-        _focusButton.hidden = NO;
+        _focusButton.hidden = [self.model.result.id isEqualToString:[[XJAccountManager defaultManager] user_id]];
         _back.hidden = NO;
         [self requestData];
     }
@@ -244,7 +244,7 @@
                 break;
             case 772:
             {
-                if (self.userType == Myself) {
+                if ([self.model.result.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
                     MyTopicViewController *controller = [[MyTopicViewController alloc] init];
                     [nav pushViewControllerByCustomAnimation:controller];
                 }else {
