@@ -33,20 +33,9 @@ static NSString *teacherCell_Id = @"teacherCell_Id";
 
 @implementation LessonViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    [self setNavigation];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigation];
     [self initCollectionView];
     [self racTestRequestData];
 }

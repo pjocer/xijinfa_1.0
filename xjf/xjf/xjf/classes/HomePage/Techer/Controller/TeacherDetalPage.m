@@ -34,13 +34,13 @@ static NSString *TeacherDetalPageTeacherCover_CellID = @"TeacherDetalPageTeacher
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+    ;
     self.navigationItem.title = @"讲师详情";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+    ;
 }
 
 - (void)viewDidLoad {

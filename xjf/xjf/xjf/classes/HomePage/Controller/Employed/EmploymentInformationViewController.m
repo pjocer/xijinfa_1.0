@@ -19,19 +19,9 @@
 
 @implementation EmploymentInformationViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"从业资讯";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"从业资讯";
     [self initCollectionView];
     [self RequestData];
 }

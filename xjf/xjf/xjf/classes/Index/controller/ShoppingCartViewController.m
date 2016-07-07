@@ -30,13 +30,13 @@ static CGFloat submitOrdersViewHeight = 50;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"购物车";
+    ;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+    ;
 }
 
 - (void)viewDidLoad {
@@ -51,6 +51,7 @@ static CGFloat submitOrdersViewHeight = 50;
 #pragma mark- initMainUI
 
 - (void)initMainUI {
+    self.navigationItem.title = @"购物车";
     [self setSubmitOrdersView];
     [self setTableView];
 }

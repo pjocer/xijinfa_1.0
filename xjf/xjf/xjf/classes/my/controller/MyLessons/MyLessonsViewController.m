@@ -35,19 +35,9 @@ static CGFloat selViewH = 3;
     return _buttons;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"我的课程";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"我的课程";
     [self initMainUI];
     [self requesData:myLessonsApi method:GET];
 }

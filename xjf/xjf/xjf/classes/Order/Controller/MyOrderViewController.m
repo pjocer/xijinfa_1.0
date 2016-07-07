@@ -35,18 +35,6 @@ static CGFloat tableFooter_orderSucceslH = 100;
 static NSString *LessonMyOrderCell_id = @"LessonMyOrderCell_id";
 static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"我的订单";
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
@@ -85,6 +73,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 #pragma mark - initMainUI
 
 - (void)initMainUI {
+    self.navigationItem.title = @"我的订单";
     [self setTableView];
 }
 

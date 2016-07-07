@@ -37,18 +37,12 @@ static CGFloat BottomPayButtonH = 50;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
     [self setNavigationBar];
     if (self.dataSourceModel != nil) {
         NSString *api = [NSString stringWithFormat:@"%@/%@", self.apiType, self.model.id_];
         [self requestLessonListData:api method:GET];
     }
 
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidLoad {

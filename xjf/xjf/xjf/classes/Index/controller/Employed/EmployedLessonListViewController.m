@@ -24,21 +24,11 @@
 
 @implementation EmployedLessonListViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    [self setNavigationBar];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
 
 - (void)loadView
 {
     [super loadView];
-    
+    [self setNavigationBar];
     @weakify(self)
     SelectedScrollContentView *selectedScrollContentView = [[SelectedScrollContentView alloc]initWithFrame:self.view.bounds targetViewController:self addChildViewControllerBlock:^{
         @strongify(self)

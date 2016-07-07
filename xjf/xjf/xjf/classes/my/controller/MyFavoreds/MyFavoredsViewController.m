@@ -42,17 +42,6 @@ static CGFloat selViewH = 3;
     return _buttons;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"我的收藏";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initMainUI];
@@ -106,6 +95,7 @@ static CGFloat selViewH = 3;
 #pragma mark - initMainUI
 
 - (void)initMainUI {
+    self.navigationItem.title = @"我的收藏";
     [self setupTitleScrollView];//创建小scrollview
     [self setupContentScrollView];//创建大scrollview
     [self addChildViewController];//添加子控制器

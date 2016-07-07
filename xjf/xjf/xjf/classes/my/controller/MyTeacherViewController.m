@@ -23,19 +23,9 @@
 @implementation MyTeacherViewController
 static NSString *myTeacherListCell_Id = @"myTeacherListCell_Id";
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"我的老师";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"我的老师";
     [self initCollectionView];
     [self requestCategoriesTalkGridData:favorite method:GET];
 }

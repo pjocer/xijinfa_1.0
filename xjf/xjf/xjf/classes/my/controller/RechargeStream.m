@@ -18,6 +18,9 @@
 @end
 
 @implementation RechargeStream
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"余额流水";

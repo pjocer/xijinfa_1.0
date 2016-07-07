@@ -35,13 +35,13 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+    ;
     self.navigationItem.title = @"订单详情";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+    ;
 
 }
 

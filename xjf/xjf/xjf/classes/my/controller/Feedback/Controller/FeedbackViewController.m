@@ -16,18 +16,6 @@
 
 @implementation FeedbackViewController
 
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"意见反馈";
-}
-
 - (void)loadView {
     [super loadView];
     self.feedbackView = [[FeedbackView alloc] initWithFrame:self.view.bounds];
@@ -36,6 +24,7 @@
 }
 
 - (void)viewDidLoad {
+    self.navigationItem.title = @"意见反馈";
     [super viewDidLoad];
 }
 

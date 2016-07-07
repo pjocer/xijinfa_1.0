@@ -33,10 +33,19 @@ NSString *const Study = @"StudyCenter";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (self.navigationController.viewControllers.count>1) {
+        self.tabBarController.tabBar.hidden = YES;
+    }
 }
-
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.navigationController.viewControllers.count==1) {
+        self.tabBarController.tabBar.hidden = NO;
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tabBarController.hidesBottomBarWhenPushed = YES;
     @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(id x) {
         @strongify(self)

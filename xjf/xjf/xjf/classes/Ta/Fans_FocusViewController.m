@@ -27,15 +27,6 @@
 @implementation Fans_FocusViewController
 #define FANSFOCUS_API [NSString stringWithFormat:@"/api/friendship/%@/%@",self.user_id,self.type==0?@"followers":@"followings"]
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +59,6 @@
 - (void)settingAction:(UIBarButtonItem *)item {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"回到首页" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
-        self.tabBarController.tabBar.hidden = NO;
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
     [alert addAction:action1];

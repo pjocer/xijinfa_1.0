@@ -14,22 +14,9 @@
 
 @implementation GuideViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"报考指南";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.title = @"报考指南";
 }
 
 

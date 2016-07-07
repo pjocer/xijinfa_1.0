@@ -20,18 +20,6 @@
 @implementation CommentsViewController
 static NSString *CommentsCell_id = @"CommentsCell_id";
 
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"全部评论";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -43,6 +31,7 @@ static NSString *CommentsCell_id = @"CommentsCell_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"全部评论";
     [self initTabelView];
     [self requestCommentsData:[NSString stringWithFormat:@"%@%@/comments", talkGridcomments, self.ID] method:GET];
 }

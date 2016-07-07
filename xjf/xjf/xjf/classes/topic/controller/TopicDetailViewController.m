@@ -35,7 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (!self.tabBarController.tabBar.isHidden) {
-        self.tabBarController.tabBar.hidden = YES;
+        ;
         [self.view addSubview:self.footer];
     }
 }
@@ -43,7 +43,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (self.tabBarController.tabBar.isHidden) {
-        self.tabBarController.tabBar.hidden = NO;
+        ;
         [self.footer removeFromSuperview];
     }
 }

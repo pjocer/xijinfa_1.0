@@ -36,13 +36,13 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+    ;
     [self setNavigation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+    ;
 }
 
 - (void)viewDidLoad {

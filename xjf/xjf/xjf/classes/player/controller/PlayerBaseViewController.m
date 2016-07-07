@@ -20,7 +20,7 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     self.navigationController.navigationBar.hidden = YES;
-    self.tabBarController.tabBar.hidden = YES;
+    ;
 }
 
 #pragma mark- viewWillDisappear
@@ -29,7 +29,7 @@
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarHidden = NO;
     self.navigationController.navigationBar.hidden = NO;
-    self.tabBarController.tabBar.hidden = NO;
+    ;
 }
 
 - (void)viewDidLoad {

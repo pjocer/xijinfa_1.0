@@ -29,19 +29,9 @@ static NSString *EmployedViewInformationCell_id = @"EmployedViewInformationCell_
 static CGFloat tableNormulHeaderH = 35;
 static CGFloat bannerHeaderViewH = 175;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    [self setNavigation];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigation];
     [self initTabelView];
     [self requestBannerData:appDeptCarousel3 method:GET];
     [self requesProjectListDat:Employed method:GET];

@@ -23,20 +23,9 @@
 static NSString *MyPlayerHistoryCell_id = @"MyPlayerHistoryCell_id";
 static CGFloat tableHeaderH = 35;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"播放记录";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"播放记录";
     [self initTabelView];
     [self requesData:history method:GET];
 }

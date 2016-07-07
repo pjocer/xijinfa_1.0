@@ -18,17 +18,6 @@
 @implementation LessonListViewController
 static NSString *lessonListCell_id = @"lessonListCell_id";
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = self.LessonListTitle;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -41,7 +30,7 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTabelView];
-
+    self.navigationItem.title = self.LessonListTitle;
     if (self.ID) {
         NSString *api = [NSString stringWithFormat:@"%@%@", coursesProject, self.ID];
         [self requesData:api method:GET];
