@@ -12,6 +12,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import "ZPlatformShare.h"
+#import "XjfRequest.h"
 
 
 @interface Product : NSObject
@@ -136,13 +137,15 @@
 @interface XJPay ()
 @property (nonatomic, strong) Payment *payment_alipay;
 @property (nonatomic, strong) Payment *payment_wechat;
+@property (nonatomic, strong) XJOrder *order;
 @end
 
 @implementation XJPay
-- (void)buyTradeImmediately:(NSArray<Payment *> *)payment by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
+- (void)buyTradeImmediately:(XJOrder *)order by:(PayStyle)style success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     self.success = success;
     self.failed = failed;
-    if ([self handleData:payment]) {
+    self.order = order;
+    if ([self handleData:order.order.result.payment]) {
         [self produceOrder:style];
     }
 }
@@ -161,9 +164,22 @@
                 if (self.failed) self.failed();
             }
         }];
-    } else {
+    } else if (style == WechatPay){
         [[ZPlatformShare sharedInstance] weiChatPay:self.payment_wechat.data success:self.success failed:self.failed];
+    } else if (style == BalancePay) {
+        [self balancePay:self.success failed:self.failed];
     }
+}
+
+- (void)balancePay:(dispatch_block_t)success failed:(dispatch_block_t)failed {
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:balance_pay,self.order.order.result.id] RequestMethod:POST];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        self.order.order = [[Order alloc] initWithData:responseData error:nil];
+        NSLog(@"%@",self.order.order);
+        if (success) success ();
+    } failedBlock:^(NSError * _Nullable error) {
+        if (failed) failed ();
+    }];
 }
 
 - (BOOL)handleData:(NSArray *)data {

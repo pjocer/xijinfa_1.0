@@ -289,9 +289,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A0C3F851CF4272B00D7EEEB /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayView.h; sourceTree = "<group>"; };
-		5A0C3F861CF4272B00D7EEEB /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayView.m; sourceTree = "<group>"; };
-		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayView.xib; sourceTree = "<group>"; };
+		5A0C3F851CF4272B00D7EEEB /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayView.h; path = ../Index/view/PayView/PayView.h; sourceTree = "<group>"; };
+		5A0C3F861CF4272B00D7EEEB /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayView.m; path = ../Index/view/PayView/PayView.m; sourceTree = "<group>"; };
+		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayView.xib; path = ../Index/view/PayView/PayView.xib; sourceTree = "<group>"; };
 		5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailListModel.h; sourceTree = "<group>"; };
 		5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailListModel.m; sourceTree = "<group>"; };
 		5A105E551CEB17450079BEFE /* LessonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonViewController.h; sourceTree = "<group>"; };
@@ -846,16 +846,6 @@
 				AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		5A0C3F841CF4270C00D7EEEB /* PayView */ = {
-			isa = PBXGroup;
-			children = (
-				5A0C3F851CF4272B00D7EEEB /* PayView.h */,
-				5A0C3F861CF4272B00D7EEEB /* PayView.m */,
-				5A0C3F881CF4279200D7EEEB /* PayView.xib */,
-			);
-			path = PayView;
 			sourceTree = "<group>";
 		};
 		5A105E581CEB1A9F0079BEFE /* Lesson */ = {
@@ -1682,7 +1672,6 @@
 			isa = PBXGroup;
 			children = (
 				5A565A1F1D066C0400008DA9 /* Employed */,
-				5A0C3F841CF4270C00D7EEEB /* PayView */,
 				5A105E581CEB1A9F0079BEFE /* Lesson */,
 				5A240DF51CE33DD2003B7971 /* Wikipedia */,
 				CD144EEF1CBB732900A0636D /* index */,
@@ -2099,6 +2088,9 @@
 		D07D74541CED9E640037B1A9 /* XJPay */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C3F851CF4272B00D7EEEB /* PayView.h */,
+				5A0C3F861CF4272B00D7EEEB /* PayView.m */,
+				5A0C3F881CF4279200D7EEEB /* PayView.xib */,
 				D06A81EC1CEEA0E8002C1297 /* XJMarket.h */,
 				D06A81ED1CEEA0E8002C1297 /* XJMarket.m */,
 				D05985201CF6BD8300BF2A30 /* XJOrder.h */,

@@ -22,6 +22,7 @@ FOUNDATION_EXPORT   NSString * _Nonnull MY_LESSONS_PEIXUN;
 typedef enum : NSUInteger {
     Alipay,
     WechatPay,
+    BalancePay,
     UnKnown
 } PayStyle;
 
@@ -47,7 +48,7 @@ typedef enum : NSUInteger {
  *
  *  @return XJOrder Instance
  */
-- (nonnull XJOrder *)createOrderWith:(nullable NSArray <TalkGridModel *> *)goods target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
+- (nonnull XJOrder *)createOrderWith:(nonnull NSArray <TalkGridModel *> *)goods target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
 /**
  *  Buy Trades Immediately
  *

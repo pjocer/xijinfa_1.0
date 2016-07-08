@@ -15,14 +15,12 @@
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
 
-@interface VipOrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate,PayViewDelegate>
+@interface VipOrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource,PayViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *cancel;
 @property (nonatomic, strong) UIButton *nowPay;
-@property (nonatomic, assign) PayStyle style;
 @property (nonatomic, strong) OrderHeaderView *orderheaderView;
 @property (nonatomic, strong) OrderFooterView *orderfooterView;
-@property (nonatomic, strong) XJOrder *order;
 @end
 
 @implementation VipOrderDetaiViewController
@@ -194,33 +192,20 @@ static NSString *VipOrderDetaiCell_id = @"VipOrderDetaiCell_id";
 #pragma mark nowPay
 
 - (void)nowPay:(UIButton *)sender {
-    [PayView showWithTarget:self];
+    [PayView showWithTarget:self type:PayViewDefault];
 }
--(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
-    [self payByPayStyle:type];
+-(id)paramsForCurrentpayView:(PayView *)payView {
+    return self.dicData;
 }
-
-- (void)payByPayStyle:(PayStyle)stayle {
-    self.style = stayle;
-    if ([[XJAccountManager defaultManager] accessToken] == nil ||
-            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
-        [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
-    } else {
-        self.order = [[XJMarket sharedMarket] createRechargeOrderWith:self.dicData target:self];
-    }
+-(void)payViewDidPaySuccessed:(PayView *)payView {
+    [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+    [[XJAccountManager defaultManager]
+     updateUserInfoCompeletionBlock:nil];
 }
-
-- (void)orderInfoDidChanged:(XJOrder *)order {
-    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
-        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        [[XJAccountManager defaultManager]
-                updateUserInfoCompeletionBlock:nil];
-    }                                     failed:^{
-        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-        MyOrderViewController *myOrderPage = [MyOrderViewController new];
-        [self.navigationController pushViewController:myOrderPage animated:YES];
-    }];
+-(void)payViewDidPayFailed:(PayView *)payView {
+    [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+    MyOrderViewController *myOrderPage = [MyOrderViewController new];
+    [self.navigationController pushViewController:myOrderPage animated:YES];
 }
-
 
 @end

@@ -76,6 +76,8 @@ static APIName *update_user_info = @"/api/user/profile";
 static APIName *upload_avatar = @"/api/user/avatar";
 //充值余额
 static APIName *recharge = @"/api/order";
+//余额支付
+static APIName *balance_pay = @"/api/order/%@/pay/balance";
 //充值流水
 static APIName *recharge_stream = @"/api/user/account-sequences";
 //充值列表

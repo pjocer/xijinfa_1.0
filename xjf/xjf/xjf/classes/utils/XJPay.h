@@ -17,5 +17,5 @@
 
 @property (nonatomic, copy, nullable) dispatch_block_t failed;
 
-- (void)buyTradeImmediately:(nonnull NSArray <Payment *> *)payment by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
+- (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed;
 @end

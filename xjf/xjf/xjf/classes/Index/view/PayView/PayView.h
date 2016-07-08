@@ -11,12 +11,19 @@
 @class TalkGridModel;
 @class PayView;
 @protocol PayViewDelegate <NSObject>
-- (void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type;
+- (id)paramsForCurrentpayView:(PayView *)payView;
+- (void)payViewDidPaySuccessed:(PayView *)payView;
+- (void)payViewDidPayFailed:(PayView *)payView;
 @optional
-- (NSDictionary *)paramsForCurrentpayView:(PayView *)payView;
-- (NSArray <TalkGridModel *>*)tradesForCurrentpayView:(PayView *)payView;
+- (void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type;
+- (void)payViewDidCanceled:(PayView *)payView;
 @end
 
+typedef enum : NSUInteger {
+    PayViewDefault,
+    PayViewWithoutBalance,
+} PayViewType;
+
 @interface PayView : UIView
-+ (void)showWithTarget:(id<PayViewDelegate>)target;
++ (void)showWithTarget:(id<PayViewDelegate>)target type:(PayViewType)type;
 @end

@@ -53,7 +53,7 @@ NSString * MY_LESSONS_PEIXUN = @"MY_LESSONS_PEIXUN";
 
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc] init];
-    [pay buyTradeImmediately:order.order.result.payment by:style success:success failed:failed];
+    [pay buyTradeImmediately:order by:style success:success failed:failed];
     ReceivedNotification(self, PayLessonsResult, ^(NSNotification *notification) {
         NSNumber *num = notification.object;
         if (num.boolValue) {

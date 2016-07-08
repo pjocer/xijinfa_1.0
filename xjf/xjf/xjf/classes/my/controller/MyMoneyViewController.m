@@ -17,7 +17,7 @@
 #import "RechargeStream.h"
 #import "RechargeList.h"
 #import "RechargeResultController.h"
-@interface MyMoneyViewController () <OrderInfoDidChangedDelegate,PayViewDelegate>
+@interface MyMoneyViewController () <PayViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *first;
 @property (weak, nonatomic) IBOutlet UIView *second;
 @property (weak, nonatomic) IBOutlet UIView *fouth;
@@ -32,9 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *FourthContent;
 @property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (strong, nonatomic) NSMutableDictionary *params;
-@property (assign, nonatomic) PayStyle style;
 @property (strong, nonatomic) NSArray *views;
-@property (strong, nonatomic) XJOrder *order;
 @end
 
 @implementation MyMoneyViewController
@@ -80,22 +78,24 @@
 }
 - (IBAction)confirmRecharge:(UIButton *)sender {
     if ([[XJAccountManager defaultManager] accessToken]) {
-        [PayView showWithTarget:self];
+        [PayView showWithTarget:self type:PayViewWithoutBalance];
     }else {
         [[ZToastManager ShardInstance] showtoast:@"请先登录"];
     }
 }
-- (void)orderInfoDidChanged:(XJOrder *)order {
-    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
-        [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
-            _balance.text = [NSString stringWithFormat:@"%.2f",model.result.account_balance*0.01f];
-            RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:YES orderID:self.order.order.result.id];
-            [self.navigationController pushViewController:result animated:YES];
-        }];
-    } failed:^{
-        RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:NO orderID:nil];
+-(id)paramsForCurrentpayView:(PayView *)payView {
+    return self.params;
+}
+-(void)payViewDidPaySuccessed:(PayView *)payView {
+    [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
+        _balance.text = [NSString stringWithFormat:@"%.2f",model.result.account_balance*0.01f];
+        RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:YES orderID:nil];
         [self.navigationController pushViewController:result animated:YES];
     }];
+}
+-(void)payViewDidPayFailed:(PayView *)payView {
+    RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:NO orderID:nil];
+    [self.navigationController pushViewController:result animated:YES];
 }
 - (void)chooseLimit:(UITapGestureRecognizer *)tap {
     self.params = [NSMutableDictionary dictionaryWithDictionary:@{@"amount":objc_getAssociatedObject(tap.view, @"limit")}];
@@ -107,10 +107,6 @@
     }
     tap.view.layer.borderWidth = 1;
     tap.view.layer.borderColor = [[UIColor xjfStringToColor:@"#ff4c00"] CGColor];
-}
--(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
-    self.style = type;
-    self.order =[[XJMarket sharedMarket] createRechargeOrderWith:self.params target:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

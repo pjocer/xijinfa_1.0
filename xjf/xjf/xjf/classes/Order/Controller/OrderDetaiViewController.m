@@ -16,15 +16,13 @@
 #import "XJAccountManager.h"
 #import "LessonPlayerViewController.h"
 
-@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate,PayViewDelegate>
+@interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource,PayViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *cancel;
 @property (nonatomic, strong) UIButton *nowPay;
 @property (nonatomic, strong) OrderHeaderView *orderheaderView;
 @property (nonatomic, strong) OrderFooterView *orderfooterView;
 @property (nonatomic, strong) NSDictionary *requestParams;
-@property (nonatomic, assign) PayStyle style;
-@property (nonatomic, strong) XJOrder *order;
 @end
 
 @implementation OrderDetaiViewController
@@ -239,81 +237,55 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
 #pragma mark nowPay
 
 - (void)nowPay:(UIButton *)sender {
-    [PayView showWithTarget:self];
+    [PayView showWithTarget:self type:PayViewDefault];
 }
-
-- (void)payByPayStyle:(PayStyle)stayle {
+-(id)paramsForCurrentpayView:(PayView *)payView {
     NSArray *tempArray = [NSArray array];
-    self.style = stayle;
     if (self.dataSource.count != 0) {
         tempArray = self.dataSource;
     } else {
         tempArray = self.orderDataModel.items;
     }
-
-    if ([[XJAccountManager defaultManager] accessToken] == nil ||
-            [[[XJAccountManager defaultManager] accessToken] length] == 0) {
-        [[ZToastManager ShardInstance] showtoast:@"只有登录后才可以购买哦"];
+    if (self.dataSource.count != 0) {
+        return tempArray;
+//        [self orderInfoDidChanged:self.order];
     } else {
-        if (self.dataSource != 0) {
-            self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
-            [self testOrderInfoDidChanged:self.order];
-        } else {
-            if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
-                //Vip
-                NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
-                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-                [dic setValue:self.orderDataModel.membership.type forKey:@"type"];
-                [dic setValue:self.orderDataModel.membership.period forKey:@"period"];
-                [dicData setValue:dic forKey:@"membership"];
-                self.order = [[XJMarket sharedMarket] createRechargeOrderWith:dicData target:self];
-                [self testOrderInfoDidChanged:self.order];
-            } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
+        if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
+            //Vip
+            NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            [dic setValue:self.orderDataModel.membership.type forKey:@"type"];
+            [dic setValue:self.orderDataModel.membership.period forKey:@"period"];
+            [dicData setValue:dic forKey:@"membership"];
+            return dicData;
+        } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
                 //lessons
-                self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
-                [self testOrderInfoDidChanged:self.order];
-            }
+            return tempArray;
         }
     }
+    return nil;
 }
-
-- (void)testOrderInfoDidChanged:(XJOrder *)order {
-    NSLog(@"准备支付%@",self.navigationController.viewControllers);
-    @weakify(self)
-    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
-        @strongify(self)
-        [[ZToastManager ShardInstance] showtoast:@"支付成功"];
-        if (self.dataSource && self.dataSource.count > 0) {
-            if (self.dataSourceTraining.count > 0 || self.dataSourceLesson.count > 0) {
-                [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSourceLesson];
-                [[XJMarket sharedMarket] deleteGoodsFrom:XJ_CONGYE_PEIXUN_SHOP goods:self.dataSourceTraining];
-            }
-        } else {
-            if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
-                [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:nil];
-            }
+-(void)payViewDidPaySuccessed:(PayView *)payView {
+    [[ZToastManager ShardInstance] showtoast:@"支付成功"];
+    if (self.dataSource && self.dataSource.count > 0) {
+        if (self.dataSourceTraining.count > 0 || self.dataSourceLesson.count > 0) {
+            [[XJMarket sharedMarket] deleteGoodsFrom:XJ_XUETANG_SHOP goods:self.dataSourceLesson];
+            [[XJMarket sharedMarket] deleteGoodsFrom:XJ_CONGYE_PEIXUN_SHOP goods:self.dataSourceTraining];
         }
-
-        NSLog(@"支付成功-------  %@",self.navigationController.viewControllers);
-//        if ([self.navigationController.topViewController isKindOfClass:[LessonPlayerViewController class]]) {
-//            LessonPlayerViewController *tempVC = (LessonPlayerViewController *)self.navigationController.topViewController;
-//            [self]
-//        }else{
-//           [self.navigationController popViewControllerAnimated:YES];
-//        }
-        
-
-    } failed:^{
-
-        [[ZToastManager ShardInstance] showtoast:@"支付失败"];
-        if (self.dataSource.count != 1) {
-            MyOrderViewController *myOrderPage = [MyOrderViewController new];
-            [self.navigationController pushViewController:myOrderPage animated:YES];
+    } else {
+        if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
+            [[XJAccountManager defaultManager]
+             updateUserInfoCompeletionBlock:nil];
         }
-    }];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
--(void)payView:(PayView *)payView DidSelectedBy:(PayStyle)type {
-    [self payByPayStyle:type];
+-(void)payViewDidPayFailed:(PayView *)payView {
+    [[ZToastManager ShardInstance] showtoast:@"支付失败"];
+    if (self.dataSource.count != 1) {
+        MyOrderViewController *myOrderPage = [MyOrderViewController new];
+        [self.navigationController pushViewController:myOrderPage animated:YES];
+    }
 }
 @end
