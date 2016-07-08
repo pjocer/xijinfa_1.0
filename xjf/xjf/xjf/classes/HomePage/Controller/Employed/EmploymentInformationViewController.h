@@ -10,4 +10,6 @@
 
 @interface EmploymentInformationViewController : HomePageBaseViewController
 
+@property (nonatomic, strong) NSString *ID;
+
 @end

@@ -9,10 +9,8 @@
 #import "HomePageEmployedViewController.h"
 #import "HomePageConfigure.h"
 #import "EmployedClassificationCollectionViewCell.h"
-#import "EmploymentInformationViewController.h"
 #import "AllLessonListViewController.h"
-#import "GuideViewController.h"
-#import "TestTimeViewController.h"
+#import "EmployedArticlesViewController.h"
 
 @interface HomePageEmployedViewController ()<UICollectionViewDataSource,
                                                     UICollectionViewDelegate,
@@ -346,22 +344,26 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         case DeiveFromButton: {
             AllLessonListViewController *listViewController = [AllLessonListViewController new];
             listViewController.lessonListPageLessonType = LessonListPageEmployed;
+            listViewController.lessonListTitle = @"析金从业选课中心";
             [self.navigationController pushViewController:listViewController animated:YES];
         }
             break;
         case DeiveFileButton: {
-            EmploymentInformationViewController *employmentInformationViewController = [EmploymentInformationViewController new];
-            [self.navigationController pushViewController:employmentInformationViewController animated:YES];
+            EmployedArticlesViewController *employedArticlesViewController = [EmployedArticlesViewController new];
+            employedArticlesViewController.articlesType = EmploymentInformation;
+            [self.navigationController pushViewController:employedArticlesViewController animated:YES];
         }
             break;
         case BookButton: {
-            GuideViewController *guideViewController = [GuideViewController new];
-            [self.navigationController pushViewController:guideViewController animated:YES];
+            EmployedArticlesViewController *employedArticlesViewController = [EmployedArticlesViewController new];
+            employedArticlesViewController.articlesType = Guide;
+            [self.navigationController pushViewController:employedArticlesViewController animated:YES];
         }
             break;
         case TodayButton: {
-            TestTimeViewController *testTimeViewController = [TestTimeViewController new];
-            [self.navigationController pushViewController:testTimeViewController animated:YES];
+            EmployedArticlesViewController *employedArticlesViewController = [EmployedArticlesViewController new];
+            employedArticlesViewController.articlesType = TestTime;
+            [self.navigationController pushViewController:employedArticlesViewController animated:YES];
         }
             break;
         default:

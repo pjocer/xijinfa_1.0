@@ -21,17 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"从业资讯";
     [self initCollectionView];
-    [self RequestData];
+    [self RequestDataFromID:self.ID];
 }
-
 
 #pragma mark - RequestData
 
-- (void)RequestData {
+- (void)RequestDataFromID:(NSString *)ID{
         @weakify(self)
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Articles RequestMethod:GET];
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@",articlesSpecial,ID] RequestMethod:GET];
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
             self.tablkListModelByArticles = [[TablkListModel alloc] initWithData:responseData error:nil];
@@ -48,7 +46,7 @@
     _layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     _layout.minimumLineSpacing = KMargin;
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - KMargin - KMargin)
+                           initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - kTabBarH - kNavigationBarH - 10)
                            collectionViewLayout:_layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = NO;

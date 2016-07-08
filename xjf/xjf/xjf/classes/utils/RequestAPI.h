@@ -129,6 +129,10 @@ static APIName *EmployedLessonDetailList = @"/api/courses4";
 static APIName *Articles = @"/api/articles4";
 /// 从业培训-视频列表--按专题筛选
 static APIName *employedCategory = @"/api/courses4/?category_id=";
+///资讯列表
+static APIName *articlesSpecial = @"/api/articles4?special=";
+///资讯分类
+static APIName *specials = @"/api/specials4";
 
 #pragma mark-- 订单 -----------------------------
 /// 查询所有订单

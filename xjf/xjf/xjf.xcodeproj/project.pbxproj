@@ -51,8 +51,6 @@
 		5A240DFB1CE33E99003B7971 /* WikiSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFA1CE33E99003B7971 /* WikiSectionHeaderView.m */; };
 		5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */; };
 		5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */; };
-		5A3B64BD1D264E00007EC1B5 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */; };
-		5A3B64C01D264E1F007EC1B5 /* TestTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */; };
 		5A441C541CE5E001000CF748 /* VideolistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C531CE5E001000CF748 /* VideolistViewController.m */; };
 		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
@@ -125,6 +123,7 @@
 		5A6CF4E71D260F8800676255 /* EmploymentInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */; };
 		5A6CF4F01D2639AE00676255 /* EmployedClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EE1D2639AE00676255 /* EmployedClassificationCollectionViewCell.m */; };
 		5A6CF4F11D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */; };
+		5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -375,10 +374,6 @@
 		5A240DFD1CE34238003B7971 /* WikiFirstSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiFirstSectionCell.m; path = ../index/WikiFirstSectionCell.m; sourceTree = "<group>"; };
 		5A240DFF1CE34377003B7971 /* WikiTalkGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WikiTalkGridViewCell.h; path = ../index/WikiTalkGridViewCell.h; sourceTree = "<group>"; };
 		5A240E001CE34377003B7971 /* WikiTalkGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WikiTalkGridViewCell.m; path = ../index/WikiTalkGridViewCell.m; sourceTree = "<group>"; };
-		5A3B64BB1D264E00007EC1B5 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
-		5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
-		5A3B64BE1D264E1F007EC1B5 /* TestTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTimeViewController.h; sourceTree = "<group>"; };
-		5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTimeViewController.m; sourceTree = "<group>"; };
 		5A441C521CE5E000000CF748 /* VideolistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideolistViewController.h; sourceTree = "<group>"; };
 		5A441C531CE5E001000CF748 /* VideolistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideolistViewController.m; sourceTree = "<group>"; };
 		5A441C551CE5F1F3000CF748 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
@@ -516,6 +511,8 @@
 		5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployedClassificationCollectionViewCell.xib; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = classes/utils/Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = classes/utils/PrefixHeader.pch; sourceTree = "<group>"; };
+		5AF046441D2F5A1E00790232 /* EmployedArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedArticlesViewController.h; sourceTree = "<group>"; };
+		5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedArticlesViewController.m; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
 		5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailBaseViewController.m; sourceTree = "<group>"; };
 		5AF7C2D41CF94694007CC71C /* OrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetaiViewController.h; sourceTree = "<group>"; };
@@ -1327,12 +1324,10 @@
 			children = (
 				5A6CF4E21D260F3E00676255 /* HomePageEmployedViewController.h */,
 				5A6CF4E31D260F3E00676255 /* HomePageEmployedViewController.m */,
+				5AF046441D2F5A1E00790232 /* EmployedArticlesViewController.h */,
+				5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */,
 				5A6CF4E51D260F8800676255 /* EmploymentInformationViewController.h */,
 				5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */,
-				5A3B64BB1D264E00007EC1B5 /* GuideViewController.h */,
-				5A3B64BC1D264E00007EC1B5 /* GuideViewController.m */,
-				5A3B64BE1D264E1F007EC1B5 /* TestTimeViewController.h */,
-				5A3B64BF1D264E1F007EC1B5 /* TestTimeViewController.m */,
 			);
 			path = Employed;
 			sourceTree = "<group>";
@@ -2365,7 +2360,6 @@
 				5A565A741D110B2100008DA9 /* CustomTextField.m in Sources */,
 				CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */,
 				AA5B96971D222BE20088A196 /* PlayerPageDescribeHeaderView.m in Sources */,
-				5A3B64C01D264E1F007EC1B5 /* TestTimeViewController.m in Sources */,
 				5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */,
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
 				D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */,
@@ -2472,7 +2466,6 @@
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				AA5B96981D222BE20088A196 /* PlayerPageRecommendedHeaderView.m in Sources */,
-				5A3B64BD1D264E00007EC1B5 /* GuideViewController.m in Sources */,
 				5A6CF3DC1D1D506D00676255 /* HomePageBanderCell.m in Sources */,
 				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
 				5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */,
@@ -2523,6 +2516,7 @@
 				68AD3D15322D6A8D42CF0DD0 /* XMShareUtil.m in Sources */,
 				68AD344E91C957D5F9D27817 /* XMShareWechatUtil.m in Sources */,
 				68AD38C3E792EAF7A38E4017 /* XMShareWeiboUtil.m in Sources */,
+				5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */,
 				68AD3A029EE0821362A11025 /* XMShareView.m in Sources */,
 				68AD390FD025CF7FAEAC29AA /* UzysGridView.m in Sources */,
 				68AD33A6369D5213D882BD26 /* UzysGridViewCell.m in Sources */,

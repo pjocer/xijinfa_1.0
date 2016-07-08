@@ -75,6 +75,7 @@ UICollectionViewDelegateFlowLayout>
         case LessonListPageEmployed: {
             [self setSelectedView];
             [self initCollectionView];
+            [self requesData:EmployedLessonDetailList method:GET];
         }
             break;
         default:
@@ -247,20 +248,25 @@ UICollectionViewDelegateFlowLayout>
             break;
         case LessonListPageSchool: {
             TalkGridModel *model = self.dataSource[indexPath.row];
-            LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
-            lessonPlayerViewController.lesssonID = model.id_;
-            lessonPlayerViewController.playTalkGridModel = model;
-            lessonPlayerViewController.originalTalkGridModel = model;
-            [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+            [self pushLessonPlayerPage:model];
         }
             break;
         case LessonListPageEmployed: {
-            
+            TalkGridModel *model = self.dataSource[indexPath.row];
+            [self pushLessonPlayerPage:model];
         }
             break;
         default:
             break;
     }
+}
+
+- (void)pushLessonPlayerPage:(TalkGridModel *)model{
+    LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+    lessonPlayerViewController.lesssonID = model.id_;
+    lessonPlayerViewController.playTalkGridModel = model;
+    lessonPlayerViewController.originalTalkGridModel = model;
+    [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
 }
 
 #pragma mark Search
