@@ -70,9 +70,9 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             BOOL isSuccess = [self parseResult:resultDic];
             if (isSuccess) {
-                SendNotification(PayLessonsResult, @(YES));
+                [[NSNotificationCenter defaultCenter] postNotificationName:PayLessonsResult object:@(YES)];
             } else {
-                SendNotification(PayLessonsResult, @(NO));
+                [[NSNotificationCenter defaultCenter] postNotificationName:PayLessonsResult object:@(NO)];
             }
         }];
     }

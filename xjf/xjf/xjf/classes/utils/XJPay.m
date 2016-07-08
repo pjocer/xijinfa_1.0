@@ -175,7 +175,6 @@
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:balance_pay,self.order.order.result.id] RequestMethod:POST];
     [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
         self.order.order = [[Order alloc] initWithData:responseData error:nil];
-        NSLog(@"%@",self.order.order);
         if (success) success ();
     } failedBlock:^(NSError * _Nullable error) {
         if (failed) failed ();

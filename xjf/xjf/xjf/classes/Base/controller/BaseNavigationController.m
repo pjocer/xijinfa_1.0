@@ -153,6 +153,9 @@
     _backView = nil;
 }
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if ([otherGestureRecognizer.view isMemberOfClass:[UIScrollView class]]) {
+        return NO;
+    }
     return YES;
 }
 - (BOOL)shouldAutorotate {
