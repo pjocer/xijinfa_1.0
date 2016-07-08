@@ -53,7 +53,7 @@
                          imageName:@"tab_topic"
                  selectedImageName:@"tab_topic_selected"];
 
-    UserInfoController *vc4 = [[UserInfoController alloc] initWithUserType:Myself
+    UserInfoController *vc4 = [[UserInfoController alloc] initWithUserType:Default
                                                                   userInfo:[[[XJAccountManager defaultManager] user_model] result]];
     [self setupChildViewController:vc4
                              title:@"我的"

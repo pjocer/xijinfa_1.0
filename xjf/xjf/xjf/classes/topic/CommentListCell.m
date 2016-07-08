@@ -33,7 +33,7 @@
 
 - (void)avatarClicked:(UITapGestureRecognizer *)gesture {
     if (self.avatarEnabled) {
-        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:self.data.user];
+        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Info userInfo:self.data.user];
         UIViewController *controller = getCurrentDisplayController();
         [controller.navigationController pushViewController:ta animated:YES];
     }

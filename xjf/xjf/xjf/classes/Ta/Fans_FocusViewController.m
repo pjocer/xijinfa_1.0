@@ -118,7 +118,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.dataSource != nil && self.dataSource.count > 0) {
         UserInfoModel *model = [self.dataSource objectAtIndex:indexPath.row];
-        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:model];
+        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Info userInfo:model];
         [self.navigationController pushViewController:ta animated:YES];
     }
 }

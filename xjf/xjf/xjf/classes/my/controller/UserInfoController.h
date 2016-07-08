@@ -9,8 +9,8 @@
 #import "MyBaseViewController.h"
 
 typedef enum : NSUInteger {
-    Myself,
-    Ta,
+    Default,
+    Info,
 } UserType;
 @class UserInfoModel;
 @interface UserInfoController : MyBaseViewController

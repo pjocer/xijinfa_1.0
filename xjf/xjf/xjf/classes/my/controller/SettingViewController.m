@@ -11,6 +11,7 @@
 #import "AlertUtils.h"
 #import "XJFCacheHandler.h"
 #import "RegistViewController.h"
+#import "BaseNavigationController.h"
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
@@ -125,7 +126,8 @@
 
 - (void)logout {
     [[XJAccountManager defaultManager] logout];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+    [nav startPopAnimation];
 }
 
 - (void)didReceiveMemoryWarning {

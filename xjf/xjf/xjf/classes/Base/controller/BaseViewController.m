@@ -203,7 +203,7 @@ NSString *const Study = @"StudyCenter";
         case 16:
         {
             if ([[XJAccountManager defaultManager] accessToken]) {
-                UserInfoController *controller = [[UserInfoController alloc] initWithUserType:Ta userInfo:[[XJAccountManager defaultManager] user_model].result];
+                UserInfoController *controller = [[UserInfoController alloc] initWithUserType:Info userInfo:[[XJAccountManager defaultManager] user_model].result];
                 [self.navigationController pushViewController:controller animated:YES];
             }else {
                 [self LoginPrompt];

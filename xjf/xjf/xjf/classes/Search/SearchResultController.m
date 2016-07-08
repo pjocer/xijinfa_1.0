@@ -378,7 +378,7 @@
         [current.navigationController pushViewController:lessonDetailViewController animated:YES];
     } else {
         UserInfoModel *model = [self.personsDataSource objectAtIndex:indexPath.row];
-        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Ta userInfo:model];
+        UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Info userInfo:model];
         [current.navigationController pushViewController:ta animated:YES];
     }
 }

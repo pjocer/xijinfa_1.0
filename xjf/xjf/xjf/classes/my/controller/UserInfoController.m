@@ -81,9 +81,14 @@
     [self initControl];
     [self initData];
 }
+- (void)resetUI {
+    [self initUI];
+    [self initControl];
+    [self initData];
+}
 - (void)initProperties {
     self.hasLogined = [[XJAccountManager defaultManager] accessToken]!=nil;
-    if (self.userType == Myself) {
+    if (self.userType == Default) {
         self.dataSource = [NSMutableArray arrayWithArray:@[@"播放历史",@"我的收藏",@"我的钱包",@"我的订单",@"购物车",@"我的反馈"]];
         self.model = [[XJAccountManager defaultManager] user_model];
     }else {
@@ -92,7 +97,7 @@
     @weakify(self);
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UserInfoDidChangedNotification object:nil] subscribeNext:^(NSNotification *x) {
         @strongify(self);
-        if ([self.model.result.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
+        if (self.userType == Default) {
             if (x.object){
                 self.model = x.object;
                 self.hasLogined = YES;
@@ -101,10 +106,11 @@
                 self.hasLogined = NO;
             }
         }
+        [self resetUI];
     }];
 }
 - (void)initUI {
-    if (self.userType == Myself) {
+    if (self.userType == Default) {
         [_tableView registerNib:[UINib nibWithNibName:@"UserInfoListCell" bundle:nil] forCellReuseIdentifier:@"UserInfoListCell"];
         _setting.hidden = NO;
         _focusButton.hidden = YES;
@@ -130,7 +136,7 @@
     }
 }
 - (void)initData {
-    if (self.userType == Myself) {
+    if (self.userType == Default) {
         if (self.hasLogined) {
             [self initUserInfo];
         }else {
@@ -139,8 +145,8 @@
             [_summary setText:@""];
             [_fans setText:@"粉丝"];
             [_focus setText:@"关注"];
-            [_topic_count setText:[NSString stringWithFormat:@"%ld",self.model.result.topic_count]];
-            [_comment_count setText:[NSString stringWithFormat:@"%ld",self.model.result.reply_count]];
+            [_topic_count setText:@"0"];
+            [_comment_count setText:@"0"];
         }
     }else {
         [self initUserInfo];
@@ -152,8 +158,8 @@
     [_userAvatar sd_setImageWithURL:[NSURL URLWithString:self.model.result.avatar]];
     [_nickname setText:self.model.result.nickname];
     [_summary setText:self.model.result.quote?:@"这个家伙很懒，没有简介信息~"];
-    [_fans setText:[NSString stringWithFormat:@"粉丝   %@",self.model.result.follower?:@"0"]];
-    [_focus setText:[NSString stringWithFormat:@"关注   %@",self.model.result.following?:@"0"]];
+    [_fans setText:[NSString stringWithFormat:@"粉丝   %@",self.model.result.follower?self.model.result.follower:@"0"]];
+    [_focus setText:[NSString stringWithFormat:@"关注   %@",self.model.result.following?self.model.result.following:@"0"]];
     [_topic_count setText:[NSString stringWithFormat:@"%ld",self.model.result.topic_count]];
     [_comment_count setText:[NSString stringWithFormat:@"%ld",self.model.result.reply_count]];
 }
@@ -214,67 +220,72 @@
     [nav pushViewControllerByCustomAnimation:download];
 }
 - (void)viewDidClicked:(UITapGestureRecognizer *)tap {
-    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+    
     NSInteger tag = tap.view.tag;
-        if (!self.hasLogined) {
-            if (self.userType == Myself) {
-                if (tag != 774) {
-                    [self LoginPrompt];
-                }else {
-                    LoginViewController *login = [[LoginViewController alloc] init];
-                    [nav pushViewControllerByCustomAnimation:login];
-                }
-                return;
+    if (!self.hasLogined && self.userType == Default) {
+        if (tag != 774) {
+            [self LoginPrompt];
+        }else {
+            LoginViewController *login = [[LoginViewController alloc] init];
+            [self handlePush:login];
+        }
+        return;
+    }
+    switch (tag) {
+        case 770:
+        {
+            Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:0 nickname:self.model.result.nickname];
+            [self handlePush:fans_focus];
+        }
+            break;
+        case 771:
+        {
+            Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:1 nickname:self.model.result.nickname];
+            [self handlePush:fans_focus];
+        }
+            break;
+        case 772:
+        {
+            if ([self.model.result.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
+                MyTopicViewController *controller = [[MyTopicViewController alloc] init];
+                [self handlePush:controller];
+            }else {
+                TaTopicViewController *controller = [[TaTopicViewController alloc] initWithID:self.model.result.id nickname:self.model.result.nickname];
+                [self handlePush:controller];
             }
         }
-        switch (tag) {
-            case 770:
-            {
-                Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:0 nickname:self.model.result.nickname];
-                [nav pushViewControllerByCustomAnimation:fans_focus];
-            }
-                break;
-            case 771:
-            {
-                Fans_FocusViewController *fans_focus = [[Fans_FocusViewController alloc] initWithID:self.model.result.id type:1 nickname:self.model.result.nickname];
-                [nav pushViewControllerByCustomAnimation:fans_focus];
-            }
-                break;
-            case 772:
-            {
-                if ([self.model.result.id isEqualToString:[[XJAccountManager defaultManager] user_id]]) {
-                    MyTopicViewController *controller = [[MyTopicViewController alloc] init];
-                    [nav pushViewControllerByCustomAnimation:controller];
-                }else {
-                    TaTopicViewController *controller = [[TaTopicViewController alloc] initWithID:self.model.result.id nickname:self.model.result.nickname];
-                    [nav pushViewControllerByCustomAnimation:controller];
-                }
-            }
-                break;
-            case 773:
-            {
-                CommentViewController *controller = [[CommentViewController alloc] initWith:(UserInfoModel *)self.model.result];
-                [nav pushViewControllerByCustomAnimation:controller];
-            }
-                break;
-            case 774:
-            {
-                if (self.userType == Myself) {
-                    UserInfoViewController *userInfo = [[UserInfoViewController alloc] init];
-                    [nav pushViewControllerByCustomAnimation:userInfo];
-                }
-            }
-                break;
-            default:
-                break;
+            break;
+        case 773:
+        {
+            CommentViewController *controller = [[CommentViewController alloc] initWith:(UserInfoModel *)self.model.result];
+            [self handlePush:controller];
         }
+            break;
+        case 774:
+        {
+            if (self.hasLogined && self.userType == Default) {
+                UserInfoViewController *controller = [[UserInfoViewController alloc] init];
+                [self handlePush:controller];
+            }
+        }
+            break;
+        default:
+            break;
+    }
 }
-
+- (void)handlePush:(UIViewController *)controller {
+    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+    if (self.userType == Default) {
+        [nav pushViewControllerByCustomAnimation:controller];
+    }else {
+        [nav pushViewController:controller animated:YES];
+    }
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.userType == Myself) {
+    if (self.userType == Default) {
         UserInfoListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoListCell"];
         cell.titleLabel.text = self.dataSource[indexPath.row];
         return cell;
@@ -286,7 +297,7 @@
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.userType == Myself) {
+    if (self.userType == Default) {
         return 60;
     }else {
         TopicDataModel *model = self.dataSource&&self.dataSource.count>0?self.dataSource[indexPath.row]:nil;
@@ -297,7 +308,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (self.userType == Myself) {
+    if (self.userType == Default) {
         if ([[XJAccountManager defaultManager] accessToken]) {
             UIViewController *controller = nil;
             switch (indexPath.row) {
