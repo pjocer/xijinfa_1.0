@@ -54,7 +54,7 @@ NSString * MY_LESSONS_PEIXUN = @"MY_LESSONS_PEIXUN";
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
     XJPay *pay = [[XJPay alloc] init];
     [pay buyTradeImmediately:order by:style success:success failed:failed];
-    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:PayLessonsResult object:nil] filter:nil] subscribeNext:^(NSNotification *notification) {
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:PayLessonsResult object:nil] subscribeNext:^(NSNotification *notification) {
         NSNumber *num = notification.object;
         if (num.boolValue) {
             [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {

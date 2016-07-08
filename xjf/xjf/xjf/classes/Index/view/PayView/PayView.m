@@ -64,6 +64,7 @@
 - (void)releaseSelf {
     [self removeFromSuperview];
     [self.background removeFromSuperview];
+    self.delegate = nil;
 }
 - (void)orderInfoDidChanged:(XJOrder *)order {
     [[XJMarket sharedMarket] buyTradeImmediately:self.order by:self.payStyle success:^{
