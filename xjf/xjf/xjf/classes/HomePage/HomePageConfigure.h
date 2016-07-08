@@ -59,6 +59,7 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
 #import "LessonDetailViewController.h"
 #import "EmployedLessonListViewController.h"
 #import "AllLessonListViewController.h"
+#import "LessonPlayerViewController.h"
 #endif /* HomePageConfigure_h */
 
 

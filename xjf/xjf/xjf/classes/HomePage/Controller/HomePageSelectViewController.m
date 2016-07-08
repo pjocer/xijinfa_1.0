@@ -8,7 +8,6 @@
 
 #import "HomePageSelectViewController.h"
 #import "HomePageConfigure.h"
-#import "LessonPlayerViewController.h"
 
 
 @interface HomePageSelectViewController ()<UICollectionViewDataSource,

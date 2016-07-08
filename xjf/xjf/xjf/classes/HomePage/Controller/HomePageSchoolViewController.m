@@ -12,7 +12,6 @@
 #import "TeacherScrollCollectionViewCell.h"
 #import "TeacherListViewController.h"
 #import "TeacherDetalPage.h"
-#import "LessonPlayerViewController.h"
 
 @interface HomePageSchoolViewController ()<UICollectionViewDataSource,
                                                 UICollectionViewDelegate,

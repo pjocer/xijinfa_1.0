@@ -22,14 +22,28 @@
 typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     BannerSection = 0,
     ClassificationSection,
-    SecuritiesSection,
-    FundSection,
-    FuturesSection
+    SecuritiesSection, //证券从业
+    FundSection,       //基金从业
+    FuturesSection     //期货从业
 };
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
 @property (nonatomic, retain) NSMutableArray *dataArrayThumbnailByBanner;
 @property (nonatomic, strong) BannerModel *bannermodel;
+@property (nonatomic, strong) ProjectListByModel *projectListByModel;
+
+//证券从业
+@property (nonatomic, strong) NSString *employedSecuritiesID;
+@property (nonatomic, strong) TablkListModel *securitiesModel;
+//期货从业
+@property (nonatomic, strong) NSString *employedFuturesID;
+@property (nonatomic, strong) TablkListModel *futuresModel;
+//基金从业
+@property (nonatomic, strong) NSString *employedFundID;
+@property (nonatomic, strong) TablkListModel *fundModel;
+
+
+
 @end
 
 @implementation HomePageEmployedViewController
@@ -40,7 +54,33 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCollectionView];
-    [self RequestData];
+    [self requesProjectListDat:Employed method:GET];
+    
+}
+
+//ProjectListByModel
+- (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
+    @weakify(self)
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
+    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+        @strongify(self)
+        self.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
+        
+        for (ProjectList *model in self.projectListByModel.result.data) {
+            if ([model.title isEqualToString:@"证券从业"]) {
+                self.employedSecuritiesID = model.id;
+            }
+            else if ([model.title isEqualToString:@"期货从业"]) {
+                self.employedFuturesID = model.id;
+            }
+            else if ([model.title isEqualToString:@"基金从业"]) {
+                self.employedFundID = model.id;
+            }
+        }
+
+        [self RequestData];
+    } failedBlock:^(NSError *_Nullable error) {
+    }];
 }
 
 #pragma mark - RequestData
@@ -65,34 +105,48 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
         return nil;
     }];
     
-//    RACSignal *articlesSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-//        @weakify(self)
-//        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Articles RequestMethod:GET];
-//        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-//            @strongify(self)
-//            self.tablkListModelByArticles = [[TablkListModel alloc] initWithData:responseData error:nil];
-//            [subscriber sendNext:self.tablkListModelByArticles];
-//        }failedBlock:^(NSError *_Nullable error) {
-//        }];
-//        return nil;
-//    }];
-//
-//    RACSignal *ProjectListDat = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-//        @weakify(self)
-//        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Employed RequestMethod:GET];
-//        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-//            @strongify(self)
-//            self.projectListByModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
-//            [subscriber sendNext:self.projectListByModel];
-//        }failedBlock:^(NSError *_Nullable error) {
-//        }];
-//        return nil;
-//    }];
+    RACSignal *securitiesSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        @weakify(self)
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@", employedCategory, self.employedSecuritiesID] RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.securitiesModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.securitiesModel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
+    RACSignal *futuresModelSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        @weakify(self)
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@", employedCategory, self.employedFuturesID] RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.futuresModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.futuresModel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
+    RACSignal *fundModelSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        @weakify(self)
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:[NSString stringWithFormat:@"%@%@", employedCategory, self.employedFundID] RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            @strongify(self)
+            self.fundModel = [[TablkListModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:self.fundModel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
     
-    [self rac_liftSelector:@selector(updateUI:) withSignalsFromArray:@[requestBannerData]];
+    [self rac_liftSelector:@selector(updateUI:securitiesSignal:futuresModel:fundModel:) withSignalsFromArray:@[requestBannerData,securitiesSignal,futuresModelSignal,fundModelSignal]];
 }
 
-- (void)updateUI:(BannerModel *)bannerModel{
+- (void)updateUI:(BannerModel *)bannerModel
+securitiesSignal:(TablkListModel *)securitiesSignal
+    futuresModel:(TablkListModel *)futuresModel
+       fundModel:(TablkListModel *)fundModel
+{
     if (bannerModel.result != nil) {
         self.dataArrayThumbnailByBanner = [NSMutableArray array];
         for (BannerResultModel *model in self.bannermodel.result.data) {   
@@ -144,8 +198,14 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == BannerSection || section == ClassificationSection) {
         return 1;
+    }else if (section == SecuritiesSection){
+        return self.securitiesModel.result.data.count > 4 ? 4 : self.securitiesModel.result.data.count;
+    }else if (section == FundSection){
+        return self.fundModel.result.data.count > 4 ? 4 : self.fundModel.result.data.count;
+    }else if (section == FuturesSection){
+        return self.futuresModel.result.data.count > 4 ? 4 : self.futuresModel.result.data.count;
     }
-    return 4;
+    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -174,11 +234,11 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
     }else {
         XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
         if (indexPath.section == SecuritiesSection) {
-            
+            cell.model = self.securitiesModel.result.data[indexPath.row];
         }else if (indexPath.section == FundSection){
-            
+            cell.model = self.fundModel.result.data[indexPath.row];
         }else if (indexPath.section == FuturesSection){
-            
+            cell.model = self.futuresModel.result.data[indexPath.row];
         }
         return cell;
     }
@@ -202,20 +262,16 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
     
-//    if (section == BannerSection || section == ClassificationSection) {
-//        return CGSizeZero;
-//    }else if (section == SecuritiesSection && self.projectListByModel.result.data.count > 0){
-//        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
-//    }else if (section == FundSection && self.tablkListModelByArticles.result.data.count > 0){
-//        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
-//    }else if (section == FuturesSection && self.tablkListModelByArticles.result.data.count > 0){
-//        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
-//    }
-//    return CGSizeZero;
     if (section == BannerSection || section == ClassificationSection) {
         return CGSizeZero;
+    }else if (section == SecuritiesSection && self.securitiesModel.result.data.count > 0){
+        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+    }else if (section == FundSection && self.fundModel.result.data.count > 0){
+        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+    }else if (section == FuturesSection && self.futuresModel.result.data.count > 0){
+        return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
     }
-    return CGSizeMake(SCREENWITH, KHomePageSeccontionHeader_Height);
+    return CGSizeZero;
 }
 
 #pragma mark FlowLayoutDelegate
@@ -257,7 +313,29 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 #pragma mark CollectionView DidSelected
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == SecuritiesSection) {
+        TalkGridModel *model = self.securitiesModel.result.data[indexPath.row];
+        [self pushPlayerView:model];
+    }else if (indexPath.section == FundSection){
+        TalkGridModel *model = self.fundModel.result.data[indexPath.row];
+        [self pushPlayerView:model];
+    }else if (indexPath.section == FuturesSection){
+        TalkGridModel *model = self.futuresModel.result.data[indexPath.row];
+        [self pushPlayerView:model];
+    }
+    
+    
 
+}
+
+-(void)pushPlayerView:(TalkGridModel *)model
+{
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lesssonID = model.id_;
+        lessonPlayerViewController.playTalkGridModel = model;
+        lessonPlayerViewController.originalTalkGridModel = model;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
 }
 
 #pragma mark employedClassificationCollectionViewCell didSelectButton
