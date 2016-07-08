@@ -152,12 +152,6 @@
     [_backView removeFromSuperview];
     _backView = nil;
 }
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    if ([otherGestureRecognizer.view isMemberOfClass:[UIScrollView class]]) {
-        return NO;
-    }
-    return YES;
-}
 - (BOOL)shouldAutorotate {
     return [[self.viewControllers lastObject] shouldAutorotate];
 }

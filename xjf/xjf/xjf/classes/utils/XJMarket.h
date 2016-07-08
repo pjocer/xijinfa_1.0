@@ -48,7 +48,7 @@ typedef enum : NSUInteger {
  *
  *  @return XJOrder Instance
  */
-- (void)createOrderWith:(nonnull NSArray <TalkGridModel *> *)goods success:(nullable XJMarkedBlock)success failed:(nullable XJMarkedBlock)failed;
+- (void)createOrderWith:(nonnull NSArray <TalkGridModel *> *)goods success:(nullable XJMarkedBlock)success failed:(nullable XJMarkedBlock)failed ;
 /**
  *  Buy Trades Immediately
  *
