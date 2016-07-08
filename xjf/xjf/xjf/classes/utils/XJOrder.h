@@ -9,25 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "TalkGridModel.h"
 #import "Order.h"
+@class XJOrder;
+typedef void(^XJMarkedBlock)(XJOrder  *order);
 
 typedef NS_OPTIONS(NSUInteger, OrderStatus) {
     OrderStatusSuccess,
     OrderStatusCancel,
     OrderStatusUndetermined
 } NS_ENUM_AVAILABLE_IOS(8_0);
-@class XJOrder;
-@protocol OrderInfoDidChangedDelegate <NSObject>
-/**
- *  Call Back When Create Order Successed
- *
- *  @param order Current XJOrder Instance
- */
-- (void)orderInfoDidChanged:(XJOrder *)order;
-@end
 
 @interface XJOrder : NSObject
-
-@property (nonatomic, weak) id <OrderInfoDidChangedDelegate> delegate;
 
 @property (nonatomic, assign) OrderStatus status;
 
@@ -35,9 +26,9 @@ typedef NS_OPTIONS(NSUInteger, OrderStatus) {
 
 @property (nonatomic, strong) Order *order;
 
-- (instancetype)initWith:(NSArray <TalkGridModel *> *)goods;
+- (instancetype)initWith:(NSArray <TalkGridModel *> *)goods success:(dispatch_block_t)success failed:(dispatch_block_t)failed;
 
-- (instancetype)initWithParams:(NSDictionary *)params;
+- (instancetype)initWithParams:(NSDictionary *)params success:(dispatch_block_t)success failed:(dispatch_block_t)failed;
 
 - (NSArray <TalkGridModel *> *)getClassGoods;
 

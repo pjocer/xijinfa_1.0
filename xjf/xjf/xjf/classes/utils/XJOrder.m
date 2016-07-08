@@ -10,17 +10,21 @@
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
 
-@interface XJOrder ()
+@interface XJOrder () {
+    dispatch_block_t _success;
+    dispatch_block_t _failed;
+}
 @property (nonatomic, strong) NSMutableArray *trades;
 @end
 
 @implementation XJOrder
-
-- (instancetype)initWith:(NSArray<TalkGridModel *> *)goods {
+-(instancetype)initWith:(NSArray<TalkGridModel *> *)goods success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     self = [super init];
     if (self) {
         _goods = [NSMutableArray array];
         _trades = [NSMutableArray array];
+        _success = success;
+        _failed = failed;
         for (TalkGridModel *model in goods) {
             [_goods addObject:model];
             [_trades addObject:model.id_];
@@ -29,10 +33,11 @@
     }
     return self;
 }
-
-- (instancetype)initWithParams:(NSDictionary *)params {
+-(instancetype)initWithParams:(NSDictionary *)params success:(dispatch_block_t)success failed:(dispatch_block_t)failed {
     self = [super init];
     if (self) {
+        _success = success;
+        _failed = failed;
         [self initRechargeOrder:params];
     }
     return self;
@@ -49,14 +54,14 @@
         @strongify(self)
         self.order = [[Order alloc] initWithData:responseData error:nil];
         if (self.order.errCode.integerValue == 0) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)]) {
-                [self.delegate orderInfoDidChanged:self];
-            }
+            if (_success) _success();
         } else {
             [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+            if (_failed) _failed();
         }
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+        if (_failed) _failed();
     }];
 }
 
@@ -71,14 +76,14 @@
         @strongify(self)
         self.order = [[Order alloc] initWithData:responseData error:nil];
         if (self.order.errCode.integerValue == 0) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(orderInfoDidChanged:)]) {
-                [self.delegate orderInfoDidChanged:self];
-            }
+            if (_success) _success();
         } else {
             [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+            if (_failed) _failed();
         }
     }                  failedBlock:^(NSError *_Nullable error) {
         [[ZToastManager ShardInstance] showtoast:@"生成订单失败"];
+        if (_failed) _failed();
     }];
 }
 

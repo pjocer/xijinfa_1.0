@@ -39,7 +39,7 @@ typedef enum : NSUInteger {
  *
  *  @return XJOrder Instance
  */
-- (nonnull XJOrder *)createRechargeOrderWith:(nonnull NSDictionary *)params target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
+- (void)createRechargeOrderWith:(nonnull NSDictionary *)params success:(nullable XJMarkedBlock)success failed:(nullable XJMarkedBlock)failed;
 /**
  *  Create Order About Trades
  *
@@ -48,7 +48,7 @@ typedef enum : NSUInteger {
  *
  *  @return XJOrder Instance
  */
-- (nonnull XJOrder *)createOrderWith:(nonnull NSArray <TalkGridModel *> *)goods target:(nonnull id <OrderInfoDidChangedDelegate>)delegate;
+- (void)createOrderWith:(nonnull NSArray <TalkGridModel *> *)goods success:(nullable XJMarkedBlock)success failed:(nullable XJMarkedBlock)failed;
 /**
  *  Buy Trades Immediately
  *
@@ -75,13 +75,12 @@ typedef enum : NSUInteger {
  */
 - (nullable NSMutableArray <TalkGridModel *> *)myLessonsFor:(nullable NSString *)key;
 /**
- *  Add Lessons When User Purchase Successed
- *
- *  @param lessons Lessons
- *  @param key     MY_LESSONS_XUETANG Or MY_LESSONS_PEIXUN
+ *  购买成功后，添加到本地已购买课程
  */
 - (void)addLessons:(nullable NSArray <TalkGridModel *> *)lessons key:(nonnull NSString *)key;
-
+/**
+ *  添加到本地购物车
+ */
 - (void)addGoods:(nullable NSArray <TalkGridModel *> *)goods key:(nonnull NSString *)key;
 
 - (void)deleteGoodsFrom:(nonnull NSString *)key goods:(nonnull NSArray<TalkGridModel *> *)goods;

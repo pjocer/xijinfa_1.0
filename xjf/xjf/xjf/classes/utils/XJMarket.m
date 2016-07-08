@@ -19,6 +19,7 @@ NSString * MY_LESSONS_XUETANG = @"MY_LESSONS_XUETANG";
 NSString * MY_LESSONS_PEIXUN = @"MY_LESSONS_PEIXUN";
 
 @interface XJMarket ()
+@property (nonatomic, strong) XJOrder *currentOrder;
 @end
 
 @implementation XJMarket
@@ -39,19 +40,22 @@ NSString * MY_LESSONS_PEIXUN = @"MY_LESSONS_PEIXUN";
     }
     return self;
 }
-- (XJOrder *)createRechargeOrderWith:(NSDictionary *)params target:(nonnull id <OrderInfoDidChangedDelegate>)delegate {
-    XJOrder *order = [[XJOrder alloc] initWithParams:params];
-    order.delegate = delegate;
-    return order;
+-(void)createRechargeOrderWith:(NSDictionary *)params success:(XJMarkedBlock)success failed:(XJMarkedBlock)failed {
+    _currentOrder = [[XJOrder alloc] initWithParams:params success:^{
+        if (success) success (_currentOrder);
+    } failed:^{
+        if (failed) failed (_currentOrder);
+    }];
 }
-
-- (XJOrder *)createOrderWith:(NSArray<TalkGridModel *> *)goods target:(nonnull id <OrderInfoDidChangedDelegate>)delegate {
-    XJOrder *order = [[XJOrder alloc] initWith:goods];
-    order.delegate = delegate;
-    return order;
+-(void)createOrderWith:(NSArray<TalkGridModel *> *)goods success:(XJMarkedBlock)success failed:(XJMarkedBlock)failed {
+    _currentOrder = [[XJOrder alloc] initWith:goods success:^{
+        if (success) success (_currentOrder);
+    } failed:^{
+        if (failed) failed (_currentOrder);
+    }];
 }
-
 - (void)buyTradeImmediately:(nonnull XJOrder *)order by:(PayStyle)style success:(nullable dispatch_block_t)success failed:(nullable dispatch_block_t)failed {
+    NSParameterAssert(order);
     XJPay *pay = [[XJPay alloc] init];
     [pay buyTradeImmediately:order by:style success:success failed:failed];
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:PayLessonsResult object:nil] subscribeNext:^(NSNotification *notification) {

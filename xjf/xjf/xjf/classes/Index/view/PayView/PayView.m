@@ -11,12 +11,11 @@
 #import "XJAccountManager.h"
 #import "XJMarket.h"
 
-@interface PayView () <OrderInfoDidChangedDelegate>
+@interface PayView ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vertical;
 @property (weak, nonatomic) IBOutlet UIView *balancePayView;
 @property (nonatomic, weak) id <PayViewDelegate>delegate;
 @property (nonatomic, strong) UILabel *background;
-@property (nonatomic, strong) XJOrder *order;
 @property (nonatomic, assign) PayStyle payStyle;
 @property (nonatomic, assign) PayViewType type;
 @end
@@ -24,7 +23,7 @@
 @implementation PayView
 
 +(void)showWithTarget:(id<PayViewDelegate>)target type:(PayViewType)type{
-    PayView *view = [[[NSBundle mainBundle] loadNibNamed:@"PayView" owner:target options:nil] firstObject];
+    PayView *view = [[[NSBundle mainBundle] loadNibNamed:@"PayView" owner:nil options:nil] firstObject];;
     view.delegate = target;
     view.type = type;
     [view show];
@@ -64,10 +63,10 @@
 - (void)releaseSelf {
     [self removeFromSuperview];
     [self.background removeFromSuperview];
-    self.delegate = nil;
+//    self.delegate = nil;
 }
-- (void)orderInfoDidChanged:(XJOrder *)order {
-    [[XJMarket sharedMarket] buyTradeImmediately:self.order by:self.payStyle success:^{
+- (void)purchaseOrder:(XJOrder *)order {
+    [[XJMarket sharedMarket] buyTradeImmediately:order by:self.payStyle success:^{
         if (self.delegate && [self.delegate respondsToSelector:@selector(payViewDidPaySuccessed:)]) {
             [self.delegate payViewDidPaySuccessed:self];
             [self releaseSelf];
@@ -94,10 +93,18 @@
         id params = [self.delegate paramsForCurrentpayView:self];
         NSAssert((params), @"Invalid parameter not satisfying: %@", params);
         if ([params isKindOfClass:[NSDictionary class]]) {
-            self.order = [[XJMarket sharedMarket] createRechargeOrderWith:(NSDictionary *)params target:self];
+            [[XJMarket sharedMarket] createRechargeOrderWith:(NSDictionary *)params success:^(XJOrder * _Nullable order) {
+                [self purchaseOrder:order];
+            } failed:^(XJOrder * _Nullable order) {
+                NSLog(@"生成订单失败");
+            }];
         }
         if ([params isKindOfClass:[NSArray class]]) {
-            self.order = [[XJMarket sharedMarket] createOrderWith:(NSArray *)params target:self];
+            [[XJMarket sharedMarket] createOrderWith:(NSArray *)params success:^(XJOrder * _Nullable order) {
+                [self purchaseOrder:order];
+            } failed:^(XJOrder * _Nullable order) {
+                NSLog(@"生成订单失败");
+            }];
         }
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(payView:DidSelectedBy:)]) {
