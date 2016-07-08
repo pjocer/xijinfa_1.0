@@ -9,7 +9,7 @@
 #import "MyFavoredsEmployedViewController.h"
 #import "TalkGridModel.h"
 #import "VideoListCell.h"
-#import "LessonDetailViewController.h"
+#import "LessonPlayerViewController.h"
 
 @interface MyFavoredsEmployedViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
@@ -62,10 +62,12 @@ static NSString *MyFavoredsEmployedCell_id = @"MyFavoredsEmployedCell_id";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-    lessonDetailViewController.model = self.dataSource[indexPath.row];
-    lessonDetailViewController.apiType = EmployedLessonDetailList;
-    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+    TalkGridModel *model = self.dataSource[indexPath.row];
+    LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+    lessonPlayerViewController.lesssonID = model.id_;
+    lessonPlayerViewController.playTalkGridModel = model;
+    lessonPlayerViewController.originalTalkGridModel = model;
+    [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
 }
 
 /*

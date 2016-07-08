@@ -141,7 +141,7 @@
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 100, 18)];
     title.font = FONT15;
     title.textColor = NormalColor;
-    title.text = section == 0 ? @"最近搜索" : @"热门推荐";
+    title.text = section == 0 ? @"热门搜索" : @"热门推荐";
     [header addSubview:title];
     if (section == 0) {
         UIButton *delete = [UIButton buttonWithType:UIButtonTypeSystem];

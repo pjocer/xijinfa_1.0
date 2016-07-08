@@ -13,6 +13,10 @@
 #import "StringUtil.h"
 #import "XJFCacheHandler.h"
 
+#import "XJMarket.h"
+#import "XJAccountManager.h"
+#import "ShoppingCartViewController.h"
+
 NSString * XJ_XUETANG_SHOP = @"XJ_XUETANG_SHOP";
 NSString * XJ_CONGYE_PEIXUN_SHOP = @"XJ_CONGYE_PEIXUN_SHOP";
 NSString * MY_LESSONS_XUETANG = @"MY_LESSONS_XUETANG";
@@ -186,4 +190,30 @@ NSString * MY_LESSONS_PEIXUN = @"MY_LESSONS_PEIXUN";
     }
     return array;
 }
+
+
+#pragma mark - addCard
+
+- (void)addShoppingCardByModel:(TalkGridModel *)model{
+    NSParameterAssert(model);
+    NSAssert((model), @"Model cant be nil :%@",model);
+    if ([[XJMarket sharedMarket] isAlreadyExists:model key:XJ_XUETANG_SHOP] || [[XJMarket sharedMarket] isAlreadyExists:model key:XJ_CONGYE_PEIXUN_SHOP]) {
+        [[ZToastManager ShardInstance] showtoast:@"课程不能重复购买"];
+    } else {
+        if ([model.department isEqualToString:@"dept3"]) {
+            [[XJMarket sharedMarket] addGoods:@[model] key:XJ_XUETANG_SHOP];
+            UIViewController *currentViewController = getCurrentDisplayController();
+            [AlertUtils alertWithTarget:currentViewController title:@"已加入购物车" okTitle:@"去结算" cancelButtonTitle:@"再看看" okBlock:^{
+                [currentViewController.navigationController pushViewController:[ShoppingCartViewController new] animated:YES];
+            }];
+        } else if ([model.department isEqualToString:@"dept4"]) {
+            [[XJMarket sharedMarket] addGoods:@[model] key:XJ_CONGYE_PEIXUN_SHOP];
+            UIViewController *currentViewController = getCurrentDisplayController();
+            [AlertUtils alertWithTarget:currentViewController title:@"已加入购物车" okTitle:@"去结算" cancelButtonTitle:@"再看看" okBlock:^{
+                [currentViewController.navigationController pushViewController:[ShoppingCartViewController new] animated:YES];
+            }];
+        }
+    }
+}
+
 @end

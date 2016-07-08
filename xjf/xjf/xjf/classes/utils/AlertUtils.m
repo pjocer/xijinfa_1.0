@@ -108,6 +108,27 @@
 + (void)alertWithTarget:(UIViewController *)target
                   title:(NSString *)title
                 okTitle:(NSString *)okTitle
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+                okBlock:(dispatch_block_t)okBlock
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (okBlock) {
+            okBlock();
+        }
+    }];
+    UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+    }];
+    [alertController addAction:okAction];
+    [alertController addAction:cancelButton];
+    [target presentViewController:alertController animated:YES completion:nil];
+}
+
++ (void)alertWithTarget:(UIViewController *)target
+                  title:(NSString *)title
+                okTitle:(NSString *)okTitle
              otherTitle:(NSString *)otherTitle
       cancelButtonTitle:(NSString *)cancelButtonTitle
                 message:(NSString *)message

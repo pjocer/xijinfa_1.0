@@ -213,7 +213,7 @@ static CGFloat BottomPayButtonH = 50;
 
 - (void)addShoppingCart:(UIButton *)sender {
     if ([[XJMarket sharedMarket] isAlreadyExists:self.model key:XJ_XUETANG_SHOP] || [[XJMarket sharedMarket] isAlreadyExists:self.model key:XJ_CONGYE_PEIXUN_SHOP]) {
-        [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
+        [[ZToastManager ShardInstance] showtoast:@"课程不能重复购买"];
     } else {
         [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
         if ([self.model.department isEqualToString:@"dept3"]) {

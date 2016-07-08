@@ -144,12 +144,17 @@
 #pragma mark selectedTableView didSelectRowAtIndexPath
 - (void)selectedTableView:(SelectedTableView *)selectedTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath DataSource:(NSMutableArray *)dataSource
 {
-    _handlerData(@"this is data");
+   
     if (_isSelectedLeftButton) {
       self.isSelectedLeftButton = NO; _selecteButtonView.leftButtonLabelName.text = [dataSource objectAtIndex:indexPath.row];
+        //右按钮是否可编辑
+        [self rightButtonIsEnabled];
+
     }else if (_isSelectedRightButton) {
      self.isSelectedRightButton = NO; _selecteButtonView.rightButtonLabelName.text = [dataSource objectAtIndex:indexPath.row];
     }
+    
+     _handlerData([NSString stringWithFormat:@"%@ %@",_selecteButtonView.leftButtonLabelName.text,_selecteButtonView.rightButtonLabelName.text]);
 }
 
 - (void)selectedCollectionView:(SelectedCollectionView *)selectedCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath DataSource:(NSMutableArray *)dataSource
@@ -157,6 +162,30 @@
     _handlerData(@"this is data");
     if (_isSelectedRightButton) {
         self.isSelectedRightButton = NO; _selecteButtonView.rightButtonLabelName.text = [dataSource objectAtIndex:indexPath.row];
+    }
+}
+
+///右边按钮是否可编辑(若为从业筛选是，且左按钮为"全部" 则不可编辑)
+- (void)rightButtonIsEnabled{
+    switch (self.selectedViewType) {
+        case ISSchool: {
+            
+        }
+            break;
+        case ISEmployed: {
+            if ([_selecteButtonView.leftButtonLabelName.text isEqualToString:@"全部"]) {
+                _selecteButtonView.rightButton.enabled = NO;
+                _selecteButtonView.rightShowIcon.hidden = YES;
+                _selecteButtonView.rightButtonLabelName.text = @"全科";
+            }else{
+                _selecteButtonView.rightButton.enabled = YES;
+                _selecteButtonView.rightShowIcon.hidden = NO;
+            }
+        }
+            break;
+            
+        default:
+            break;
     }
 }
 
@@ -187,6 +216,8 @@
         _leftButtonName = leftButtonName;
     }
     _selecteButtonView.leftButtonLabelName.text = _leftButtonName;
+    //右按钮是否可编辑
+    [self rightButtonIsEnabled];
 }
 
 - (void)setRightButtonName:(NSString *)rightButtonName
@@ -202,7 +233,8 @@
     if (rightTableDataSource) {
         _rightTableDataSource = rightTableDataSource;
     }
-    _tableView.dataSource = _rightTableDataSource;
+    if (_selectedViewType == ISEmployed) _tableViewRight.dataSource = _rightTableDataSource;
+    if (_selectedViewType == ISSchool) _selectedCollectionView.dataSource = _rightTableDataSource;
 }
 
 - (void)setLeftTableDataSource:(NSMutableArray<NSString *> *)leftTableDataSource
@@ -210,8 +242,7 @@
     if (leftTableDataSource) {
         _leftTableDataSource = leftTableDataSource;
     }
-    if (_selectedViewType == ISEmployed) _tableViewRight.dataSource = _leftTableDataSource;
-    if (_selectedViewType == ISSchool) _selectedCollectionView.dataSource = _leftTableDataSource;
+    _tableView.dataSource = _leftTableDataSource;
 }
 
 #pragma mark - getter

@@ -25,6 +25,14 @@ typedef enum : NSUInteger {
                 content:(NSString *)content
            confirmBlock:(dispatch_block_t)comfirmBlock;
 
+
++ (void)alertWithTarget:(UIViewController *)target
+                  title:(NSString *)title
+                okTitle:(NSString *)okTitle
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+                okBlock:(dispatch_block_t)okBlock;
+
+
 ///可改变alertview cancel 和 conform title
 + (void)alertWithTarget:(UIViewController *)target
                   title:(NSString *)title

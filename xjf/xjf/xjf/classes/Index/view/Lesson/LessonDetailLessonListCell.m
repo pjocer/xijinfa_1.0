@@ -91,17 +91,7 @@
 
 - (void)shop:(UIButton *)sender
 {
-    if ([[XJMarket sharedMarket] isAlreadyExists:_talkGridModel key:XJ_XUETANG_SHOP] || [[XJMarket sharedMarket] isAlreadyExists:_talkGridModel key:XJ_CONGYE_PEIXUN_SHOP]) {
-        [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
-    } else {
-        if ([_talkGridModel.department isEqualToString:@"dept3"]) {
-            [[XJMarket sharedMarket] addGoods:@[_talkGridModel] key:XJ_XUETANG_SHOP];
-            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
-        } else if ([_talkGridModel.department isEqualToString:@"dept4"]) {
-            [[XJMarket sharedMarket] addGoods:@[_talkGridModel] key:XJ_CONGYE_PEIXUN_SHOP];
-            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
-        }
-    }
+    [[XJMarket sharedMarket] addShoppingCardByModel:_talkGridModel];
 }
 
 - (void)layoutSubviews {

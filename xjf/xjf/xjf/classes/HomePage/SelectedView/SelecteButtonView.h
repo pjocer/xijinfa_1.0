@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger, SelecteButtonType) {
 
 
 @interface SelecteButtonView : UIView
+@property (weak, nonatomic) IBOutlet UIButton *leftButton;
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
 @property (nonatomic, weak, nullable) id <SelecteButtonViewDelegate> delegate;
 @property (weak, nonatomic, nullable) IBOutlet UILabel *leftButtonLabelName;
 @property (weak, nonatomic, nullable) IBOutlet UIImageView *leftShowIcon;

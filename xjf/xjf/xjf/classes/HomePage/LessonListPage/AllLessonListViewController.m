@@ -75,7 +75,7 @@ UICollectionViewDelegateFlowLayout>
         case LessonListPageEmployed: {
             [self setSelectedView];
             [self initCollectionView];
-            [self requesData:EmployedLessonDetailList method:GET];
+            [self requesData:contents method:GET];
         }
             break;
         default:
@@ -129,10 +129,10 @@ UICollectionViewDelegateFlowLayout>
     self.selectedView = [[SelectedView alloc] initWithFrame:self.view.frame SelectedViewType:ISSchool];
     [self.view addSubview:_selectedView];
     
-    _selectedView.leftButtonName = @"Left";
-    _selectedView.rightButtonName = @"Right";
-    _selectedView.leftTableDataSource = @[@"xxxxx",@"xxaaaaxxxxxbb",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd",@"xxxxxbb",@"xxc",@"xd"].mutableCopy;
-    _selectedView.rightTableDataSource = @[@"1",@"2",@"3",@"4",@"5"].mutableCopy;
+    _selectedView.leftButtonName = @"综合排序";
+    _selectedView.rightButtonName = @"筛选";
+    _selectedView.leftTableDataSource = @[@"综合排序",@"销量最好",@"价格由低到高",@"价格由高到低"].mutableCopy;
+    _selectedView.rightTableDataSource = @[@"学习内容",@"当前水平",@"析金名师"].mutableCopy;
     _selectedView.handlerData = ^(id data) {
         //reloadData at here.
         NSLog(@"%@",data);
@@ -144,10 +144,10 @@ UICollectionViewDelegateFlowLayout>
     self.selectedView = [[SelectedView alloc] initWithFrame:self.view.frame SelectedViewType:ISEmployed];
     [self.view addSubview:_selectedView];
     
-    _selectedView.leftButtonName = @"基金从业";
+    _selectedView.leftButtonName = @"全部";
     _selectedView.rightButtonName = @"全科";
-    _selectedView.rightTableDataSource = @[@"证卷从业",@"期货从业",@"基金从业"].mutableCopy;
-    _selectedView.leftTableDataSource = @[@"基础知识",@"法律法规",@"全科"].mutableCopy;
+    _selectedView.leftTableDataSource = @[@"全部",@"证卷从业",@"期货从业",@"基金从业"].mutableCopy;
+    _selectedView.rightTableDataSource = @[@"全科",@"基础知识",@"法律法规"].mutableCopy;
     _selectedView.handlerData = ^(id data) {
         //reloadData at here.
         NSLog(@"%@",data);

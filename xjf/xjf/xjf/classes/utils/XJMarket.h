@@ -96,4 +96,5 @@ typedef enum : NSUInteger {
  */
 - (BOOL)isAlreadyExists:(nonnull TalkGridModel *)goods key:(nonnull NSString *)key;
 
+- (void)addShoppingCardByModel:(nonnull TalkGridModel *)model;
 @end

@@ -13,8 +13,8 @@
 #import "SettingViewController.h"
 #import <AFNetworkReachabilityManager.h>
 #import "XMShareView.h"
-#import "XJMarket.h"
 #import "OrderDetaiViewController.h"
+#import "XJMarket.h"
 
 static CGFloat videoBottomViewH = 49;
 static CGFloat titleH = 35;
@@ -711,17 +711,7 @@ static CGFloat selViewH = 2;
 #pragma mark addShoppingCart
 
 - (void)addShoppingCart:(UIButton *)sender {
-    if ([[XJMarket sharedMarket] isAlreadyExists:self.originalTalkGridModel key:XJ_XUETANG_SHOP] || [[XJMarket sharedMarket] isAlreadyExists:self.originalTalkGridModel key:XJ_CONGYE_PEIXUN_SHOP]) {
-        [[ZToastManager ShardInstance] showtoast:@"此商品已添加至购物车"];
-    } else { 
-        if ([self.originalTalkGridModel.department isEqualToString:@"dept3"]) {
-            [[XJMarket sharedMarket] addGoods:@[self.originalTalkGridModel] key:XJ_XUETANG_SHOP];
-            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
-        } else if ([self.originalTalkGridModel.department isEqualToString:@"dept4"]) {
-            [[XJMarket sharedMarket] addGoods:@[self.originalTalkGridModel] key:XJ_CONGYE_PEIXUN_SHOP];
-            [[ZToastManager ShardInstance] showtoast:@"添加购物车成功"];
-        }
-    }
+    [[XJMarket sharedMarket] addShoppingCardByModel:self.originalTalkGridModel];
 }
 
 #pragma mark nowPay

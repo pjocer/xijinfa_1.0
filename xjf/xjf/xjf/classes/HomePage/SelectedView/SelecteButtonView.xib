@@ -87,8 +87,10 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="leftButton" destination="3ba-NT-mbr" id="2fY-8k-XzN"/>
                 <outlet property="leftButtonLabelName" destination="hdo-Zx-hGs" id="QUx-qH-MFt"/>
                 <outlet property="leftShowIcon" destination="CMj-JL-adg" id="ARn-Yk-Src"/>
+                <outlet property="rightButton" destination="YdO-gE-j7C" id="KmU-zy-ct5"/>
                 <outlet property="rightButtonLabelName" destination="weP-sQ-HJH" id="l75-Ay-cf0"/>
                 <outlet property="rightShowIcon" destination="GhP-Yl-EC3" id="inS-6Y-neW"/>
             </connections>
