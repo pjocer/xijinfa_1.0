@@ -12,7 +12,6 @@ target 'xjf' do
   pod 'ZFPlayer', :git => 'http://120.55.163.135:9001/xjf_ios/ZFPlayer.git' # '~> 1.1.5'
   pod 'Masonry', '~> 1.0.0'
   pod 'XRCarouselView', '~> 2.4.4'
-  pod 'RTLabel', '~> 1.0.1'
   pod 'JSONModel', '~> 1.2.0'
   pod 'ReactiveCocoa', '~> 2.5'
   pod 'MJRefresh', '~> 3.1.0'

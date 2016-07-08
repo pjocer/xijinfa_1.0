@@ -121,7 +121,7 @@
     if (_course) {
         HomePageCollectionSectionHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
         [header setTitle:indexPath.section==0?@"我的学堂":@"我的从业" moreTitle:@"查看全部" moreCallback:^(id gestureRecognizer) {
-            NSLog(@"查看更多")
+            NSLog(@"查看更多");
         }];
         return header;
     }else {

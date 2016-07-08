@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "xjfConfigure.h"
-#import "RTLabel.h"
 #import "NSString+Extensions.h"
 #import "UILabel+StringFrame.h"
 #import "UIImageView+WebCache.h"
