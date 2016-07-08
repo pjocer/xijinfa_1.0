@@ -51,11 +51,15 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:appDeptCarousel4 RequestMethod:GET];
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-            self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
-            if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+            if (self.bannermodel.errCode == 0) {
+                self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+                if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+                    [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
+                }
+                [subscriber sendNext:self.bannermodel];
+            }else{
                 [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
             }
-            [subscriber sendNext:self.bannermodel];
         }failedBlock:^(NSError *_Nullable error) {
         }];
         return nil;

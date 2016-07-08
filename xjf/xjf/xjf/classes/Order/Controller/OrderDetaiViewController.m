@@ -14,6 +14,7 @@
 #import "OrderFooterView.h"
 #import "MyOrderViewController.h"
 #import "XJAccountManager.h"
+#import "LessonPlayerViewController.h"
 
 @interface OrderDetaiViewController () <UITableViewDelegate, UITableViewDataSource, OrderInfoDidChangedDelegate,PayViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -57,6 +58,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
             self.cancel.hidden = YES;
         }
     }
+     NSLog(@"xxxxxxxxxx=======  %@",self.navigationController.viewControllers);
 }
 
 #pragma mark - initMainUI
@@ -255,7 +257,7 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     } else {
         if (self.dataSource != 0) {
             self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
-            [self orderInfoDidChanged:self.order];
+            [self testOrderInfoDidChanged:self.order];
         } else {
             if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
                 //Vip
@@ -265,21 +267,21 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
                 [dic setValue:self.orderDataModel.membership.period forKey:@"period"];
                 [dicData setValue:dic forKey:@"membership"];
                 self.order = [[XJMarket sharedMarket] createRechargeOrderWith:dicData target:self];
-                [self orderInfoDidChanged:self.order];
+                [self testOrderInfoDidChanged:self.order];
             } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
                 //lessons
                 self.order = [[XJMarket sharedMarket] createOrderWith:tempArray target:self];
-                [self orderInfoDidChanged:self.order];
+                [self testOrderInfoDidChanged:self.order];
             }
         }
     }
 }
 
-- (void)orderInfoDidChanged:(XJOrder *)order {
-
-    NSLog(@"%@", self.navigationController.viewControllers);
-
+- (void)testOrderInfoDidChanged:(XJOrder *)order {
+    NSLog(@"准备支付%@",self.navigationController.viewControllers);
+    @weakify(self)
     [[XJMarket sharedMarket] buyTradeImmediately:order by:self.style success:^{
+        @strongify(self)
         [[ZToastManager ShardInstance] showtoast:@"支付成功"];
         if (self.dataSource && self.dataSource.count > 0) {
             if (self.dataSourceTraining.count > 0 || self.dataSourceLesson.count > 0) {
@@ -288,14 +290,20 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
             }
         } else {
             if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
-                [[XJAccountManager defaultManager]
-                        updateUserInfoCompeletionBlock:nil];
+                [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:nil];
             }
         }
 
-        [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"支付成功-------  %@",self.navigationController.viewControllers);
+//        if ([self.navigationController.topViewController isKindOfClass:[LessonPlayerViewController class]]) {
+//            LessonPlayerViewController *tempVC = (LessonPlayerViewController *)self.navigationController.topViewController;
+//            [self]
+//        }else{
+//           [self.navigationController popViewControllerAnimated:YES];
+//        }
+        
 
-    }                                     failed:^{
+    } failed:^{
 
         [[ZToastManager ShardInstance] showtoast:@"支付失败"];
         if (self.dataSource.count != 1) {

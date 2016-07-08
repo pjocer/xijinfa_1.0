@@ -11,6 +11,7 @@
 #import "HomePageConfigure.h"
 #import "SelectedView.h"
 #import <MJRefresh.h>
+#import "LessonPlayerViewController.h"
 
 @interface AllLessonListViewController ()<UICollectionViewDataSource,
 UICollectionViewDelegate,
@@ -87,22 +88,24 @@ UICollectionViewDelegateFlowLayout>
 
 - (void)setNavigation {
 
-    switch (self.lessonListPageLessonType) {
-        case LessonListPageWikipedia: {
-    self.navigationItem.title = @"析金百科";
-        }
-            break;
-        case LessonListPageSchool: {
-    self.navigationItem.title = @"析金学堂";
-        }
-            break;
-        case LessonListPageEmployed: {
-    self.navigationItem.title = @"析金从业";
-        }
-            break;
-        default:
-            break;
-    }
+//    switch (self.lessonListPageLessonType) {
+//        case LessonListPageWikipedia: {
+//    self.navigationItem.title = @"析金百科";
+//    self.navigationItem.title = self.lessonListTitle;
+//        }
+//            break;
+//        case LessonListPageSchool: {
+//    self.navigationItem.title = @"析金学堂";
+//        }
+//            break;
+//        case LessonListPageEmployed: {
+//    self.navigationItem.title = @"析金从业";
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+    self.navigationItem.title = self.lessonListTitle;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithImage:[UIImage imageNamed:@"search"]
                                               style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonItemAction:)];
@@ -243,10 +246,12 @@ UICollectionViewDelegateFlowLayout>
         }
             break;
         case LessonListPageSchool: {
-            LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-            lessonDetailViewController.model = self.dataSource[indexPath.row];
-            lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-            [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+            TalkGridModel *model = self.dataSource[indexPath.row];
+            LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+            lessonPlayerViewController.lesssonID = model.id_;
+            lessonPlayerViewController.playTalkGridModel = model;
+            lessonPlayerViewController.originalTalkGridModel = model;
+            [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
         }
             break;
         case LessonListPageEmployed: {

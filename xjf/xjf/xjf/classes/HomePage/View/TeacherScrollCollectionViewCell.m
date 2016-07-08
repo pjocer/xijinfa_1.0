@@ -71,7 +71,7 @@ static NSString *HomePageScrollCellText_CellID = @"HomePageScrollCellText_CellID
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.teacherListHostModel.result.data.count > 0 ? self.teacherListHostModel.result.data.count : 0;
+    return self.teacherListHostModel.result.data.count > 8 ? 8 : self.teacherListHostModel.result.data.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView

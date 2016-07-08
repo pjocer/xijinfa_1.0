@@ -72,7 +72,9 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                                               otherButtonTitles:@"取消", nil];
         [alert show];
     }
+    [self.playerView play];
 }
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
@@ -85,6 +87,9 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    if (self.navigationController.viewControllers != nil ) {
+        [self.playerView pause];
+    }
 }
 
 - (void)viewDidLoad {
@@ -451,7 +456,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     if (section == 0) {
         return 1;
     }else if (section == 1) {
-        return self.talkGridListModel.result.data.count;
+        return self.talkGridListModel.result.data.count > 4 ? 4 : self.talkGridListModel.result.data.count;
     }
         return self.commentsModel.result.data.count;
 }

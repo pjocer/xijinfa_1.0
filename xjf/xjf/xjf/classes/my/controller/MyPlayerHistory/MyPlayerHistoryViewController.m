@@ -10,7 +10,7 @@
 #import "TalkGridModel.h"
 #import "VideoListCell.h"
 #import "IndexSectionView.h"
-#import "LessonDetailViewController.h"
+#import "LessonPlayerViewController.h"
 #import "PlayerViewController.h"
 
 @interface MyPlayerHistoryViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -165,14 +165,16 @@ static CGFloat tableHeaderH = 35;
         player.talkGridModel = model;
         [self.navigationController pushViewController:player animated:YES];
     } else {
-        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-        lessonDetailViewController.model = model;
-        if ([model.department isEqualToString:@"dept3"]) {
-            lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-        } else if ([model.department isEqualToString:@"dept4"]) {
-            lessonDetailViewController.apiType = EmployedLessonDetailList;
-        }
-        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lesssonID = model.id_;
+        lessonPlayerViewController.playTalkGridModel = model;
+        lessonPlayerViewController.originalTalkGridModel = model;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+//        if ([model.department isEqualToString:@"dept3"]) {
+//          
+//        } else if ([model.department isEqualToString:@"dept4"]) {
+//
+//        }
     }
 
 }

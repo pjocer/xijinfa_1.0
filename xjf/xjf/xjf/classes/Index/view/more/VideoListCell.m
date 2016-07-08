@@ -167,7 +167,7 @@
     }
     self.videoTitle.text = model.title;
     self.viedoDetail.text = model.content;
-    self.lessonCount.text = [NSString stringWithFormat:@"课时: %@", model.lessons_count];
+    self.lessonCount.text = [model.lessons_count isEmpty] || model.lessons_count == nil ? @"" : [NSString stringWithFormat:@"课时: %@", model.lessons_count];
     if (model.taxonomy_gurus.count != 0 && model.taxonomy_gurus) {
         taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
         self.teacherName.text = [NSString stringWithFormat:@"主讲: %@", gurus.title];

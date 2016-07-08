@@ -183,9 +183,11 @@ static CGFloat rowHeight = 60;
 
 - (void)lessonDetailLessonListCell:(LessonDetailLessonListCell *)cell PriceButtonPushOrderDetail:(TalkGridModel *)selectModel
 {
-    OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
-    orderDetaiViewController.dataSource = [NSMutableArray arrayWithObject:selectModel];
-    [self.navigationController pushViewController:orderDetaiViewController animated:YES];
+    if (!selectModel.user_paid) {
+        OrderDetaiViewController *orderDetaiViewController = [OrderDetaiViewController new];
+        orderDetaiViewController.dataSource = [NSMutableArray arrayWithObject:selectModel];
+        [self.navigationController pushViewController:orderDetaiViewController animated:YES];
+    }
 }
 
 @end

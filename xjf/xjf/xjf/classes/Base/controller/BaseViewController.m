@@ -86,7 +86,7 @@ NSString *const Study = @"StudyCenter";
     } else if ([name isEqualToString:Index]) {
         //commentsButton
         UIButton *commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [commentsButton setTitle:@"🔎 输入你想找的内容" forState:UIControlStateNormal];
+        [commentsButton setTitle:@"🔎 搜索" forState:UIControlStateNormal];
         commentsButton.backgroundColor = BackgroundColor;
         commentsButton.titleLabel.font = FONT13;
         [commentsButton setTintColor:[UIColor xjfStringToColor:@"#9a9a9a"]];
@@ -168,6 +168,10 @@ NSString *const Study = @"StudyCenter";
             break;
         case 10:
         {
+            if (![[XJAccountManager defaultManager] accessToken]) {
+                [self LoginPrompt];
+                return;
+            }
             MyPlayerHistoryViewController *history = [[MyPlayerHistoryViewController alloc] init];
             [self.navigationController pushViewController:history animated:YES];
         }

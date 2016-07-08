@@ -149,7 +149,9 @@
 
 - (void)produceOrder:(PayStyle)style {
     if (style == Alipay) {
+        @weakify(self)
         [[AlipaySDK defaultService] payOrder:self.payment_alipay.data fromScheme:@"com.xijinfa.portal" callback:^(NSDictionary *resultDic) {
+            @strongify(self)
             if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
                 [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
                     if (self.success) self.success();

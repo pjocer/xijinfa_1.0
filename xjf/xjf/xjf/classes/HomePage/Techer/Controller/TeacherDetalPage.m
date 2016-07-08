@@ -11,6 +11,7 @@
 #import "TeacherCoverCollectionViewCell.h"
 #import "TeacherDetailModel.h"
 #import "XJAccountManager.h"
+#import "LessonPlayerViewController.h"
 
 @interface TeacherDetalPage ()<UICollectionViewDataSource,
 UICollectionViewDelegate,
@@ -87,9 +88,9 @@ static NSString *TeacherDetalPageTeacherCover_CellID = @"TeacherDetalPageTeacher
     if (section == TeacherCover_Cell) {
         return 1;
     }else if (section == School_Cell){
-        return self.dataSourcerDep3_School.count > 0 ? self.dataSourcerDep3_School.count : 0;
+        return self.dataSourcerDep3_School.count > 4 ? 4 : self.dataSourcerDep3_School.count;
     }else if (section == Employed_Cell){
-        return self.dataSourcerDep4_Employed.count > 0 ? self.dataSourcerDep3_School.count : 0;
+        return self.dataSourcerDep4_Employed.count > 4 ? 4 : self.dataSourcerDep4_Employed.count;
     }
     return 0;
 }
@@ -170,15 +171,19 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == School_Cell) {
-        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-        lessonDetailViewController.model = self.dataSourcerDep3_School[indexPath.row];
-        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+        TalkGridModel *model = self.dataSourcerDep3_School[indexPath.row]; 
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lesssonID = model.id_;
+        lessonPlayerViewController.playTalkGridModel = model;
+        lessonPlayerViewController.originalTalkGridModel = model;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
     }else if (indexPath.section == Employed_Cell){
-        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-        lessonDetailViewController.model = self.dataSourcerDep4_Employed[indexPath.row];
-        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+        TalkGridModel *model = self.dataSourcerDep4_Employed[indexPath.row];
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lesssonID = model.id_;
+        lessonPlayerViewController.playTalkGridModel = model;
+        lessonPlayerViewController.originalTalkGridModel = model;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
     }
 
 }

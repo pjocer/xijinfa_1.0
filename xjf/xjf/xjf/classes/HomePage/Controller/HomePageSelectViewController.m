@@ -8,6 +8,7 @@
 
 #import "HomePageSelectViewController.h"
 #import "HomePageConfigure.h"
+#import "LessonPlayerViewController.h"
 
 
 @interface HomePageSelectViewController ()<UICollectionViewDataSource,
@@ -48,11 +49,15 @@ typedef NS_OPTIONS(NSInteger, SelectViewControllerSectionType) {
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:appHomeCarousel RequestMethod:GET];
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-            self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
-            if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+            if (self.bannermodel.errCode == 0) {
+                self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+                if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+                    [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
+                }
+                [subscriber sendNext:self.bannermodel];
+            }else{
                 [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
             }
-            [subscriber sendNext:self.bannermodel];
         }failedBlock:^(NSError *_Nullable error) {
         }];
         return nil;
@@ -149,9 +154,9 @@ typedef NS_OPTIONS(NSInteger, SelectViewControllerSectionType) {
     if (section == HomePageBannerSection) {
         return 1;
     }else if (section == HomePageWikipediaSection) {
-        return self.tablkListModel.result.data.count > 4 ? 4 : self.tablkListModel.result.data.count;
+        return self.tablkListModel.result.data.count > 8 ? 8 : self.tablkListModel.result.data.count;
     }else if (section == HomePageSchoolSection) {
-        return self.tablkListModel_Lesson.result.data.count > 4 ? 4 : self.tablkListModel_Lesson.result.data.count;
+        return self.tablkListModel_Lesson.result.data.count > 8 ? 8 : self.tablkListModel_Lesson.result.data.count;
     }else if (section == HomePageEmployedSection) {
         return 1;
     }
@@ -257,10 +262,12 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]) {
         AllLessonListViewController *listViewController = [AllLessonListViewController new];
         listViewController.lessonListPageLessonType = LessonListPageWikipedia;
+        listViewController.lessonListTitle = @"析金百科更多";
         [self.navigationController pushViewController:listViewController animated:YES];
     }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金学堂"]){
         AllLessonListViewController *listViewController = [AllLessonListViewController new];
         listViewController.lessonListPageLessonType = LessonListPageSchool;
+        listViewController.lessonListTitle = @"析金学堂更多";
         [self.navigationController pushViewController:listViewController animated:YES];
     }
     
@@ -269,7 +276,9 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 #pragma mark - delegate
 
 #pragma mark homePageScrollCell didSelectItemAtIndexPath
-- (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell
+  didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+       ClassificationTitle:(NSString *)title
 {
 //        EmployedLessonListViewController *employedLessonListViewController = [[EmployedLessonListViewController alloc] init];
 //        ProjectList *tempModel = self.projectListByModel.result.data[indexPath.row];
@@ -289,6 +298,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 //        [self.navigationController pushViewController:employedLessonListViewController animated:YES];
     AllLessonListViewController *listViewController = [AllLessonListViewController new];
     listViewController.lessonListPageLessonType = LessonListPageEmployed;
+    listViewController.lessonListTitle = title;
     [self.navigationController pushViewController:listViewController animated:YES];
 }
 
@@ -303,10 +313,13 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         playerPage.talkGridListModel = self.tablkListModel;
         [self.navigationController pushViewController:playerPage animated:YES];
     }else if (indexPath.section == HomePageSchoolSection) {
-        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-        lessonDetailViewController.model = self.tablkListModel_Lesson.result.data[indexPath.row];
-        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+        
+        TalkGridModel *model = self.tablkListModel_Lesson.result.data[indexPath.row];
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lesssonID = model.id_;
+        lessonPlayerViewController.playTalkGridModel = model;
+        lessonPlayerViewController.originalTalkGridModel = model;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
     }
 }
 

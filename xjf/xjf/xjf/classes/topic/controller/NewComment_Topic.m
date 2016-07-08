@@ -64,7 +64,7 @@
 - (UILabel *)placeholder {
     if (!_placeholder) {
         _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH - 20, 21)];
-        _placeholder.text = @"谈谈你的想法吧~";
+        _placeholder.text = @"我来说几句";
         _placeholder.textColor = AssistColor;
         _placeholder.font = FONT15;
     }

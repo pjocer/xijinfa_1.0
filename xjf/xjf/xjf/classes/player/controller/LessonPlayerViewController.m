@@ -64,6 +64,9 @@ static CGFloat selViewH = 2;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    if (self.navigationController.viewControllers != nil ) {
+        [self.playerView pause];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,6 +80,7 @@ static CGFloat selViewH = 2;
                                               cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
         [alert show];
     }
+//    [self.playerView play];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

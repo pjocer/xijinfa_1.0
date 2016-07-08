@@ -71,7 +71,7 @@
         //commentsButton
         self.commentsButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self addSubview:self.commentsButton];
-        [self.commentsButton setTitle:@"有什么感想快来说说吧" forState:UIControlStateNormal];
+        [self.commentsButton setTitle:@"我来说几句" forState:UIControlStateNormal];
         self.commentsButton.backgroundColor = BackgroundColor;
         self.commentsButton.titleLabel.font = FONT15;
         [self.commentsButton setTintColor:[UIColor xjfStringToColor:@"#9a9a9a"]];

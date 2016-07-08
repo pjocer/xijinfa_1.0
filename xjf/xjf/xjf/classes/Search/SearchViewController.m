@@ -77,7 +77,7 @@
         _searchBar.delegate = self;
         _searchBar.backgroundColor = [UIColor whiteColor];
         _searchBar.barTintColor = [UIColor whiteColor];
-        _searchBar.placeholder = @"输入你想找的内容";
+        _searchBar.placeholder = @"搜索";
         _searchBar.returnKeyType = UIReturnKeySearch;
         UITextField *searchTextField = [[[_searchBar.subviews firstObject] subviews] lastObject];
         searchTextField.backgroundColor = BackgroundColor;

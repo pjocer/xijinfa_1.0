@@ -120,7 +120,7 @@
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (_course) {
         HomePageCollectionSectionHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-        [header setTitle:indexPath.section==0?@"我的学堂":@"我的老师" moreTitle:@"查看全部" moreCallback:^(id gestureRecognizer) {
+        [header setTitle:indexPath.section==0?@"我的学堂":@"我的从业" moreTitle:@"查看全部" moreCallback:^(id gestureRecognizer) {
             NSLog(@"查看更多")
         }];
         return header;
@@ -131,6 +131,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_course) {
         XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
+        cell.model = [indexPath.section==0?_schoolCourses:_employedCourses objectAtIndex:indexPath.item];
+        
         return cell;
     }else {
         StudyCenterWikiCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StudyCenterWikiCell_ID" forIndexPath:indexPath];

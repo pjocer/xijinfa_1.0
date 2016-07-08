@@ -44,7 +44,7 @@
 @end
 
 @interface BannerModel : JSONModel
-@property (nonatomic, copy) NSString *errCode;
+@property (nonatomic, assign) int errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) BannerResultListModel *result;
 @end

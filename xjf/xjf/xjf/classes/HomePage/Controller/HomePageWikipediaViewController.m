@@ -47,11 +47,15 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
         XjfRequest *request = [[XjfRequest alloc] initWithAPIName:appHomeCarousel RequestMethod:GET];
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
             @strongify(self)
-            self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
-            if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+            if (self.bannermodel.errCode == 0) {
+                self.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
+                if (self.bannermodel.result == nil || self.bannermodel.errMsg != nil) {
+                    [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
+                }
+                [subscriber sendNext:self.bannermodel];
+            }else{
                 [[ZToastManager ShardInstance] showtoast:self.bannermodel.errMsg];
             }
-            [subscriber sendNext:self.bannermodel];
         }failedBlock:^(NSError *_Nullable error) {
         }];
         return nil;
@@ -138,7 +142,7 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     }else if (section == HomePageClassificationSection) {
         return 1;
     }else if (section == HomePageWikipediaSection) {
-        return self.tablkListModel.result.data.count;
+        return self.tablkListModel.result.data.count > 8 ? 8 : self.tablkListModel.result.data.count;
     }
     return 0;
 }
@@ -237,6 +241,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]){
         AllLessonListViewController *listViewController = [AllLessonListViewController new];
         listViewController.lessonListPageLessonType = LessonListPageWikipedia;
+        listViewController.lessonListTitle = @"析金百科更多";
         [self.navigationController pushViewController:listViewController animated:YES];
     }
 }
@@ -244,12 +249,15 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 #pragma mark - delegate
 
 #pragma mark homePageScrollCell didSelectItemAtIndexPath
-- (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell
+  didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+       ClassificationTitle:(NSString *)title
 {
     WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.result.data[indexPath.row];
     AllLessonListViewController *lessonListViewController = [[AllLessonListViewController alloc] init];
     lessonListViewController.lessonListPageLessonType = LessonListPageWikipedia;
     lessonListViewController.ID = model.id;
+    lessonListViewController.lessonListTitle = model.title;
     [self.navigationController pushViewController:lessonListViewController animated:YES];
 }
 

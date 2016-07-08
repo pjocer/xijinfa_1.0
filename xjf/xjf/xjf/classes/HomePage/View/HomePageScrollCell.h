@@ -28,7 +28,8 @@ typedef NS_OPTIONS(short, HomePageClassificationType) {
  *  @param indexPath          indexPath
  */
 - (void)homePageScrollCell:(HomePageScrollCell *)homePageScrollCell
-  didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+  didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+       ClassificationTitle:(NSString *)title;
 @end
 
 @interface HomePageScrollCell : XJFBaseCollectionViewCell

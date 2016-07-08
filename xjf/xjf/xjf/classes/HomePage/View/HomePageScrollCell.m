@@ -123,10 +123,20 @@
 
 #pragma mark CollectionView DidSelected
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    if (_delegate && [_delegate respondsToSelector:@selector(homePageScrollCell:didSelectItemAtIndexPath:)]) {
-        [_delegate homePageScrollCell:self didSelectItemAtIndexPath:indexPath];
+    if (self.ClassificationType == HomePageWikiClassification) {
+        WikiPediaCategoriesDataModel *model = self.wikiPediaCategoriesModel.result.data[indexPath.row];
+        if (_delegate && [_delegate respondsToSelector:@selector(homePageScrollCell:didSelectItemAtIndexPath:ClassificationTitle:)]) {
+            [_delegate homePageScrollCell:self didSelectItemAtIndexPath:indexPath ClassificationTitle:model.title];
+        }
+    }else{
+       ProjectList *model = self.projectListByModel.result.data[indexPath.row];
+       if (_delegate && [_delegate respondsToSelector:@selector(homePageScrollCell:didSelectItemAtIndexPath:ClassificationTitle:)]) {
+            [_delegate homePageScrollCell:self didSelectItemAtIndexPath:indexPath ClassificationTitle:model.title];
+        }
     }
+    
+    
+  
 }
 
 
