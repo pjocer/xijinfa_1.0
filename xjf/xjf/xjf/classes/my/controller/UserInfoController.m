@@ -47,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fans;
 @property (weak, nonatomic) IBOutlet UILabel *focus;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstrained;
 @property (strong, nonatomic) UserProfileModel *model;
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @end
@@ -87,6 +88,7 @@
     [self initData];
 }
 - (void)initProperties {
+    self.bottomConstrained.constant = kTabBarH;
     self.hasLogined = [[XJAccountManager defaultManager] accessToken]!=nil;
 
     if (self.userType == Default) {

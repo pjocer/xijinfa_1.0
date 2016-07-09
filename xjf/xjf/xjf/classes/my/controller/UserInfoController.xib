@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserInfoController">
             <connections>
                 <outlet property="back" destination="D1B-YN-FHe" id="i4S-Oe-N4M"/>
+                <outlet property="bottomConstrained" destination="j9W-y9-BOh" id="aQG-yj-UQa"/>
                 <outlet property="comment" destination="NL3-ur-YYE" id="maC-iR-MrH"/>
                 <outlet property="comment_count" destination="1Dh-V9-LT1" id="Laf-fz-sxP"/>
                 <outlet property="fans" destination="i8i-hX-aV0" id="W5J-bB-Jhw"/>
