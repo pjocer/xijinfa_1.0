@@ -50,7 +50,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = BackgroundColor
+    self.view.backgroundColor = BackgroundColor;
     [self initTabelView];
     [self initTextField];
     [self requestCommentsData:[NSString stringWithFormat:@"%@/%@/comments",
@@ -201,7 +201,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
     [[UIApplication sharedApplication].keyWindow addSubview:self.keyBoardView];
 
     self.textField = [[CustomTextField alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH - 70, 30)];
-    self.textField.backgroundColor = BackgroundColor
+    self.textField.backgroundColor = BackgroundColor;
     self.textField.layer.masksToBounds = YES;
     self.textField.layer.cornerRadius = 4;
     self.textField.placeholder = @"回复新内容";

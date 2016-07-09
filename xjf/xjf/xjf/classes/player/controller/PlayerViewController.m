@@ -418,7 +418,7 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
     [self.view addSubview:self.keyBoardView];
 
     self.textField = [[CustomTextField alloc] initWithFrame:CGRectMake(10, 10, SCREENWITH - 70, 30)];
-    self.textField.backgroundColor = BackgroundColor
+    self.textField.backgroundColor = BackgroundColor;
     self.textField.layer.masksToBounds = YES;
     self.textField.layer.cornerRadius = 4;
     self.textField.placeholder = @"回复新内容";

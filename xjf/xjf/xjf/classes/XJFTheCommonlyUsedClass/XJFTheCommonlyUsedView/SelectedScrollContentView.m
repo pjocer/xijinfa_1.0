@@ -105,7 +105,7 @@ static CGFloat animateWithDuration = 0.3;
     [self addSubview:self.selBackGroundView];
     
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
-    self.selView.backgroundColor = BlueColor
+    self.selView.backgroundColor = BlueColor;
     [self addSubview:self.selView];
     @weakify(self)
     [RACObserve(self.contentScrollView, contentOffset) subscribeNext:^(id x) {

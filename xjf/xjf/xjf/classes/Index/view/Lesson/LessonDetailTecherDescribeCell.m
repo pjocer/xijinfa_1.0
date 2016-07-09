@@ -33,7 +33,7 @@
 //        CGFloat FocusButtonH = 33;
         //teacherImage
         self.teacherImage = [[UIImageView alloc] init];
-        self.teacherImage.backgroundColor = BackgroundColor
+        self.teacherImage.backgroundColor = BackgroundColor;
         self.teacherImage.layer.masksToBounds = YES;
         self.teacherImage.layer.cornerRadius = teacherImageH / 2;
         [self.contentView addSubview:self.teacherImage];

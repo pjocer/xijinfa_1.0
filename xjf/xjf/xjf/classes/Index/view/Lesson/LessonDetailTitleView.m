@@ -58,7 +58,7 @@
         //teacherName
         self.teacherName = [[UILabel alloc] init];
         [self addSubview:self.teacherName];
-        self.teacherName.textColor = AssistColor
+        self.teacherName.textColor = AssistColor;
         self.teacherName.font = FONT12;
         [self.teacherName mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
@@ -70,7 +70,7 @@
         //lessonCount
         self.lessonCount = [[UILabel alloc] init];
         [self addSubview:self.lessonCount];
-        self.lessonCount.textColor = AssistColor
+        self.lessonCount.textColor = AssistColor;
         self.lessonCount.font = FONT12;
         [self.lessonCount mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.videoTitle);
@@ -97,7 +97,7 @@
         //oldPrice
         self.oldPrice = [[UILabel alloc] init];
         [self addSubview:self.oldPrice];
-        self.oldPrice.textColor = AssistColor
+        self.oldPrice.textColor = AssistColor;
 //        self.oldPrice.text = @"￥0000";
         self.oldPrice.font = FONT12;
         self.oldPrice.textAlignment = NSTextAlignmentLeft;

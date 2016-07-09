@@ -41,12 +41,12 @@
 //
 
 //Color
-#define PrimaryColor [UIColor xjfStringToColor:@"#0061b0"];
-#define NormalColor [UIColor xjfStringToColor:@"#444444"];
-#define AssistColor [UIColor xjfStringToColor:@"#9a9a9a"];
-#define SegementColor [UIColor xjfStringToColor:@"#c7c7cc"];
-#define BackgroundColor [UIColor xjfStringToColor:@"#efefef"];
-#define BlueColor [UIColor xjfStringToColor:@"0061b0"];
+#define PrimaryColor [UIColor xjfStringToColor:@"#0061b0"]
+#define NormalColor [UIColor xjfStringToColor:@"#444444"]
+#define AssistColor [UIColor xjfStringToColor:@"#9a9a9a"]
+#define SegementColor [UIColor xjfStringToColor:@"#c7c7cc"]
+#define BackgroundColor [UIColor xjfStringToColor:@"#efefef"]
+#define BlueColor [UIColor xjfStringToColor:@"0061b0"]
 //
 #define LSpacing 2
 #define PHOTO_FRAME_WIDTH_16   floor([UIScreen mainScreen].bounds.size.width/16)

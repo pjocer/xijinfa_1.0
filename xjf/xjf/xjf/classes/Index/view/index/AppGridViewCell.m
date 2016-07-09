@@ -32,7 +32,6 @@
         self.titleLable = [[UILabel alloc] init];
         [self addSubview:self.titleLable];
         self.titleLable.textColor = NormalColor;
-        BackgroundColor
         self.titleLable.font = FONT13;
         self.titleLable.textAlignment = NSTextAlignmentCenter;
 

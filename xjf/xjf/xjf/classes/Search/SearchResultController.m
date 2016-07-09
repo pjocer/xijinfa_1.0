@@ -98,7 +98,7 @@
             CGFloat height = 18;
             UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(i * width, 8, width, height)];
             [button setTitle:titles[i] forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor xjfStringToColor:@"#444444"] forState:UIControlStateNormal];
+            [button setTitleColor:NormalColor forState:UIControlStateNormal];
             button.titleLabel.font = FONT15;
             button.tag = 700 + i;
             [_header addSubview:button];
@@ -111,7 +111,7 @@
 - (UILabel *)segmentline {
     if (!_segmentline) {
         _segmentline = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, SCREENWITH / 4, 3)];
-        _segmentline.backgroundColor = [UIColor xjfStringToColor:@"#0061b0"];
+        _segmentline.backgroundColor = BlueColor;
     }
     return _segmentline;
 }

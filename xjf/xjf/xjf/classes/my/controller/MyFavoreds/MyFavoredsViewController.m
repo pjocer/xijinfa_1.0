@@ -180,7 +180,7 @@ static CGFloat selViewH = 3;
     [self.view addSubview:self.selBackGroundView];
     //
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
-    self.selView.backgroundColor = BlueColor
+    self.selView.backgroundColor = BlueColor;
     [self.view addSubview:self.selView];
     [RACObserve(self.contentScrollView, contentOffset) subscribeNext:^(id x) {
         CGPoint offSet = [x CGPointValue];

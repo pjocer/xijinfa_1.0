@@ -73,7 +73,7 @@
         //teacherName
         self.teacherName = [[UILabel alloc] init];
         [self.contentView addSubview:self.teacherName];
-        self.teacherName.textColor = AssistColor
+        self.teacherName.textColor = AssistColor;
         self.teacherName.font = FONT12;
         self.teacherName.hidden = YES;
         [self.teacherName mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,7 +86,7 @@
         //lessonCount
         self.lessonCount = [[UILabel alloc] init];
         [self.contentView addSubview:self.lessonCount];
-        self.lessonCount.textColor = AssistColor
+        self.lessonCount.textColor = AssistColor;
         self.lessonCount.font = FONT12;
         self.lessonCount.hidden = YES;
         [self.lessonCount mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -115,7 +115,7 @@
         //oldPrice
         self.oldPrice = [[UILabel alloc] init];
         [self.contentView addSubview:self.oldPrice];
-        self.oldPrice.textColor = AssistColor
+        self.oldPrice.textColor = AssistColor;
         self.oldPrice.font = FONT12;
         self.oldPrice.hidden = YES;
         self.oldPrice.textAlignment = NSTextAlignmentLeft;

@@ -609,7 +609,7 @@ static CGFloat selViewH = 2;
 
     //
     self.selView = [[UIView alloc] initWithFrame:CGRectMake(0, self.selBackGroundView.frame.origin.y, w, selViewH)];
-    self.selView.backgroundColor = BlueColor
+    self.selView.backgroundColor = BlueColor;
     [self.backGroudView addSubview:self.selView];
     @weakify(self)
     [RACObserve(self.contentScrollView, contentOffset) subscribeNext:^(id x) {
