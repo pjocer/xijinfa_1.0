@@ -17,7 +17,7 @@
 #import "ZToastManager.h"
 #import "HomePageMainViewController.h"
 #import "MyLessonsViewController.h"
-#import "MyTeacherViewController.h"
+#import "TeacherListViewController.h"
 
 @interface StudyCenter () <UICollectionViewDelegateFlowLayout,UICollectionViewDataSource> {
     TablkListModel *_list;
@@ -105,7 +105,8 @@
 }
 - (IBAction)myTeachers:(UITapGestureRecognizer *)sender {
     if ([[XJAccountManager defaultManager] accessToken]) {
-        MyTeacherViewController *controller = [MyTeacherViewController new];
+        TeacherListViewController *controller = [TeacherListViewController new];
+        controller.navigationItem.title = @"我的老师";
         [self.navigationController pushViewController:controller animated:YES];
     }else {
         [self LoginPrompt];
@@ -163,12 +164,15 @@
     return _course?UIEdgeInsetsMake(0, 10, 0, 10):UIEdgeInsetsMake(10, 10, 0, 10);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return _course?0:10;
+    return 15;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return _course?15:0;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    if (section == 0) return _schoolCourses.count > 0 ? CGSizeMake(SCREENWITH, 38) : CGSizeZero;
+    else if (section == 1) return _employedCourses.count > 0 ? CGSizeMake(SCREENWITH, 38) : CGSizeZero;
+    
     return _course?CGSizeMake(SCREENWITH, 38):CGSizeZero;
 }
 - (void)didReceiveMemoryWarning {

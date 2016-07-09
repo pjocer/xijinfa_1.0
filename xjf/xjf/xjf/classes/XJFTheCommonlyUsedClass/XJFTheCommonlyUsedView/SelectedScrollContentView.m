@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIViewController *targetViewController;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) UIScrollView *titleScrollView;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 @property (nonatomic, strong) UIView *selBackGroundView;
 @property (nonatomic, strong) UIView *selView;
 @end
@@ -171,5 +172,13 @@ static CGFloat animateWithDuration = 0.3;
     return _buttons;
 }
 
+#pragma mark - public Action
+
+- (void)selectedByType:(NSInteger)i
+{
+    CGFloat x = i * SCREENWITH;
+    [self setUpOneChildViewController:i];
+    self.contentScrollView.contentOffset = CGPointMake(x, 0);
+}
 
 @end

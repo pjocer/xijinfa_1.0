@@ -162,7 +162,9 @@ static CGFloat submitOrdersViewHeight = 50;
     self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.view);
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view).with.offset(10);
+        make.right.equalTo(self.view).with.offset(-10);
         make.bottom.equalTo(self.view).with.offset(-submitOrdersViewHeight);
     }];
 
@@ -200,8 +202,9 @@ static CGFloat submitOrdersViewHeight = 50;
     self.videoListCell.price.hidden = NO;
     self.videoListCell.oldPrice.hidden = YES;
     self.videoListCell.selectedLabel.hidden = NO;
+    self.videoListCell.rightDeleteLogo.hidden = NO;
     self.videoListCell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    ViewRadius(self.videoListCell, 5);
     if (indexPath.section == 0) {
         self.videoListCell.model = self.dataSourceLesson[indexPath.row];
     } else if (indexPath.section == 1) {
@@ -229,21 +232,19 @@ static CGFloat submitOrdersViewHeight = 50;
     if (self.dataSourceLesson.count == 0 && self.dataSourceTraining.count == 0) {
         return 0;
     }
-    return 35;
+    return 45;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    IndexSectionView *tableHeaderView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
+    IndexSectionView *tableHeaderView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 45)];
     if (section == 0) {
         tableHeaderView.titleLabel.text = @"析金学堂";
     }
     else if (section == 1) {
         tableHeaderView.titleLabel.text = @"从业培训";
     }
-
+    tableHeaderView.backgroundColor = [UIColor clearColor];
     tableHeaderView.moreLabel.text = @"";
-    tableHeaderView.bottomView.hidden = NO;
-
     return tableHeaderView;
 }
 
@@ -254,7 +255,7 @@ static CGFloat submitOrdersViewHeight = 50;
     return YES;
 }
 
-- (nullable NSString *)                 tableView:(UITableView *)tableView
+- (nullable NSString *)tableView:(UITableView *)tableView
 titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";
 }

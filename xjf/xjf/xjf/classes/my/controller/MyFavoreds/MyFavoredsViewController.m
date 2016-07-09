@@ -17,21 +17,13 @@
 
 @implementation MyFavoredsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self initMainUI];
-}
-
-
-#pragma mark - initMainUI
-
-- (void)initMainUI {
-    self.navigationItem.title = @"我的收藏";
-    
+- (void)loadView
+{
+    [super loadView];
     @weakify(self)
     SelectedScrollContentView *selectedScrollContentView = [[SelectedScrollContentView alloc]initWithFrame:self.view.bounds targetViewController:self addChildViewControllerBlock:^{
         @strongify(self)
-
+        
         AllLessonListViewController *wiki = [AllLessonListViewController new];
         wiki.title = @"析金百科";
         wiki.lessonListPageLessonType = LessonListPageWikipedia;
@@ -49,10 +41,14 @@
         employed.lessonListPageLessonType = LessonListPageEmployed;
         employed.isFavoredsList = YES;
         [self addChildViewController:employed];
-
+        
     }];
     self.view = selectedScrollContentView;
+}
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationItem.title = @"我的收藏";
 }
 
 @end

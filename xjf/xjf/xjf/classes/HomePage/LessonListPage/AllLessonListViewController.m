@@ -30,6 +30,7 @@ UICollectionViewDelegateFlowLayout>
     if (self) {
         self.dataSource = [NSMutableArray array];
         self.isFavoredsList = NO;
+        self.isMyLessonsList = NO;
     }
     return self;
 }
@@ -70,7 +71,11 @@ UICollectionViewDelegateFlowLayout>
             }else if (_isFavoredsList == YES){
                 [self initCollectionView];
                 [self requesData:favorite method:GET];
-            }else {
+            }else if (_isMyLessonsList == YES){
+                [self initCollectionView];
+                [self requesData:myLessonsApi method:GET];
+            }
+            else {
                 [self setSelectedView];
                 [self initCollectionView];
                 [self requesData:coursesProjectLessonDetailList method:GET];
@@ -82,6 +87,9 @@ UICollectionViewDelegateFlowLayout>
             if (_isFavoredsList == YES){
                 [self initCollectionView];
                 [self requesData:favorite method:GET];
+            }else if (_isMyLessonsList == YES){
+                [self initCollectionView];
+                [self requesData:myLessonsApi method:GET];
             }else {
                 [self setSelectedView];
                 [self initCollectionView];
@@ -308,17 +316,53 @@ UICollectionViewDelegateFlowLayout>
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
        @strongify(self)
         self.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-        if (_isFavoredsList == YES) {
-            [self handleDataByTypeIfIsFavoredsList];
-        }else{
-          [_dataSource addObjectsFromArray:self.tablkListModel.result.data];
+        if (self.tablkListModel.errCode==0) {
+            if (_isFavoredsList == YES) {
+                [self handleDataByTypeIfIsFavoredsList];
+            }else if (_isMyLessonsList == YES) {
+                [self handleDataIfIsMyLessonsList];
+            }else{
+                [_dataSource addObjectsFromArray:self.tablkListModel.result.data];
+            }
+            [self.collectionView.mj_footer isRefreshing] ? [self.collectionView.mj_footer endRefreshing] : nil;
+            [self.collectionView reloadData];
+    
+        }else {
+            [[ZToastManager ShardInstance] showtoast:self.tablkListModel.errMsg];
         }
-        [self.collectionView.mj_footer isRefreshing] ? [self.collectionView.mj_footer endRefreshing] : nil;
-        [self.collectionView reloadData];
     } failedBlock:^(NSError *_Nullable error) {
         @strongify(self)
         [self.collectionView.mj_footer isRefreshing] ? [self.collectionView.mj_footer endRefreshing] : nil;
     }];
+}
+
+#pragma mark handleDataIfIsMyLessonsList
+
+- (void)handleDataIfIsMyLessonsList{
+    
+    switch (self.lessonListPageLessonType) {
+        case LessonListPageWikipedia: {
+        }
+            break;
+        case LessonListPageSchool: {
+            for (TalkGridModel *tempmodel in self.tablkListModel.result.data) {
+                if ([tempmodel.department isEqualToString:@"dept3"]) {
+                    [self.dataSource addObject:tempmodel];
+                }
+            }
+        }
+            break;
+        case LessonListPageEmployed: {
+            for (TalkGridModel *tempmodel in self.tablkListModel.result.data) {
+                if ([tempmodel.department isEqualToString:@"dept4"]) {
+                    [self.dataSource addObject:tempmodel];
+                }
+            }
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark handleDataByTypeIfIsFavoredsList
@@ -330,11 +374,11 @@ UICollectionViewDelegateFlowLayout>
         }
             break;
         case LessonListPageSchool: {
-            [self handleDataByDeptType:@"dept4"];
+            [self handleDataByDeptType:@"dept3"];
         }
             break;
         case LessonListPageEmployed: {
-            [self handleDataByDeptType:@"dept5"];
+            [self handleDataByDeptType:@"dept4"];
         }
             break;
         default:

@@ -52,8 +52,6 @@
 		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
 		5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */; };
-		5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A121D05A8DE00008DA9 /* MyLessonsSchoolViewController.m */; };
-		5A565A161D05A8F300008DA9 /* MyLessonsEmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A151D05A8F300008DA9 /* MyLessonsEmployedViewController.m */; };
 		5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */; };
 		5A565A1E1D066B2900008DA9 /* EmployedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A1D1D066B2900008DA9 /* EmployedViewController.m */; };
 		5A565A221D066C2D00008DA9 /* EmployedbannerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A211D066C2D00008DA9 /* EmployedbannerHeaderView.m */; };
@@ -121,6 +119,8 @@
 		5A6CF4F11D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */; };
 		5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */; };
 		5AF046491D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */; };
+		5AF0464D1D31008E00790232 /* TeacherLisetTeacherCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0464B1D31008E00790232 /* TeacherLisetTeacherCoverCell.m */; };
+		5AF0464E1D31008E00790232 /* TeacherLisetTeacherCoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF0464C1D31008E00790232 /* TeacherLisetTeacherCoverCell.xib */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -376,10 +376,6 @@
 		5A441C591CE5FB03000CF748 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		5A565A0E1D05A8A100008DA9 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
 		5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
-		5A565A111D05A8DE00008DA9 /* MyLessonsSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsSchoolViewController.h; sourceTree = "<group>"; };
-		5A565A121D05A8DE00008DA9 /* MyLessonsSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsSchoolViewController.m; sourceTree = "<group>"; };
-		5A565A141D05A8F300008DA9 /* MyLessonsEmployedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsEmployedViewController.h; sourceTree = "<group>"; };
-		5A565A151D05A8F300008DA9 /* MyLessonsEmployedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsEmployedViewController.m; sourceTree = "<group>"; };
 		5A565A181D05B12000008DA9 /* MyPlayerHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlayerHistoryViewController.h; sourceTree = "<group>"; };
 		5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlayerHistoryViewController.m; sourceTree = "<group>"; };
 		5A565A1C1D066B2900008DA9 /* EmployedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedViewController.h; sourceTree = "<group>"; };
@@ -507,6 +503,9 @@
 		5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedArticlesViewController.m; sourceTree = "<group>"; };
 		5AF046471D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerTeacherLisetViewController.h; sourceTree = "<group>"; };
 		5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerTeacherLisetViewController.m; sourceTree = "<group>"; };
+		5AF0464A1D31008E00790232 /* TeacherLisetTeacherCoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherLisetTeacherCoverCell.h; sourceTree = "<group>"; };
+		5AF0464B1D31008E00790232 /* TeacherLisetTeacherCoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherLisetTeacherCoverCell.m; sourceTree = "<group>"; };
+		5AF0464C1D31008E00790232 /* TeacherLisetTeacherCoverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherLisetTeacherCoverCell.xib; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
 		5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailBaseViewController.m; sourceTree = "<group>"; };
 		5AF7C2D41CF94694007CC71C /* OrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetaiViewController.h; sourceTree = "<group>"; };
@@ -952,6 +951,9 @@
 				5A1DF5801D2B88340078BD0B /* TeacherCoverCollectionViewCell.h */,
 				5A1DF5811D2B88340078BD0B /* TeacherCoverCollectionViewCell.m */,
 				5A1DF5821D2B88340078BD0B /* TeacherCoverCollectionViewCell.xib */,
+				5AF0464A1D31008E00790232 /* TeacherLisetTeacherCoverCell.h */,
+				5AF0464B1D31008E00790232 /* TeacherLisetTeacherCoverCell.m */,
+				5AF0464C1D31008E00790232 /* TeacherLisetTeacherCoverCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1017,10 +1019,6 @@
 			children = (
 				5A565A0E1D05A8A100008DA9 /* MyLessonsViewController.h */,
 				5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */,
-				5A565A111D05A8DE00008DA9 /* MyLessonsSchoolViewController.h */,
-				5A565A121D05A8DE00008DA9 /* MyLessonsSchoolViewController.m */,
-				5A565A141D05A8F300008DA9 /* MyLessonsEmployedViewController.h */,
-				5A565A151D05A8F300008DA9 /* MyLessonsEmployedViewController.m */,
 			);
 			path = MyLessons;
 			sourceTree = "<group>";
@@ -2218,6 +2216,7 @@
 				AA5B96181D1C0DF60088A196 /* FansCell.xib in Resources */,
 				AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */,
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
+				5AF0464E1D31008E00790232 /* TeacherLisetTeacherCoverCell.xib in Resources */,
 				CDF57ACE1C9F825D00049AF0 /* Main.storyboard in Resources */,
 				5A1DF59B1D2BE4E20078BD0B /* StudyCenterWikiCell.xib in Resources */,
 				D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */,
@@ -2317,6 +2316,7 @@
 				D055F2691D29FD5B00F80AAD /* RechargeStreamCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
+				5AF0464D1D31008E00790232 /* TeacherLisetTeacherCoverCell.m in Sources */,
 				D055F27D1D2A425D00F80AAD /* RechargeResultController.m in Sources */,
 				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
@@ -2338,7 +2338,6 @@
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				5A6CF4931D23632D00676255 /* XJFWikipediaCollectionViewCell.m in Sources */,
 				5A6CF3CD1D1CF93600676255 /* HomePageWikipediaViewController.m in Sources */,
-				5A565A161D05A8F300008DA9 /* MyLessonsEmployedViewController.m in Sources */,
 				D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */,
 				AA5B96191D1C0DF60088A196 /* FansFocus.m in Sources */,
 				5A6CF39B1D1CED4300676255 /* XJFBaseModel.m in Sources */,
@@ -2415,7 +2414,6 @@
 				5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */,
 				D073CF7A1CFC62E1002D3FAF /* TopicDetailModel.m in Sources */,
 				AA5B96211D1C0DF60088A196 /* UserInfoModel.m in Sources */,
-				5A565A131D05A8DE00008DA9 /* MyLessonsSchoolViewController.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */,
 				5A565A341D069F1B00008DA9 /* EmployedBasisViewController.m in Sources */,

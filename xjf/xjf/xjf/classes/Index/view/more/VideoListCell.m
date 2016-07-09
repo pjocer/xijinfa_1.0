@@ -31,6 +31,16 @@
             make.bottom.mas_equalTo(self.contentView);
             make.height.mas_equalTo(1);
         }];
+        
+        //rightDeleteLogo
+        self.rightDeleteLogo = [[UIView alloc] init];
+        self.rightDeleteLogo.backgroundColor = [UIColor redColor];
+        [self.contentView addSubview:self.rightDeleteLogo];
+        [self.rightDeleteLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.bottom.equalTo(self.contentView);
+            make.width.mas_equalTo(10);
+        }];
+        self.rightDeleteLogo.hidden = YES;
 
         //videoImage
         self.videoImage = [[UIImageView alloc] init];

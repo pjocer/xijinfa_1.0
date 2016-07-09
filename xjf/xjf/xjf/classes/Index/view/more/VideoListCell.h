@@ -28,4 +28,5 @@
 @property (nonatomic, strong) VipModel *vipModel;
 @property (nonatomic, assign) BOOL isMyOrder;
 @property (nonatomic, assign) int status;
+@property (nonatomic, strong) UIView *rightDeleteLogo;
 @end

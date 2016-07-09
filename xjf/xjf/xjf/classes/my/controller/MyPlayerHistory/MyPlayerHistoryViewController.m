@@ -21,7 +21,7 @@
 
 @implementation MyPlayerHistoryViewController
 static NSString *MyPlayerHistoryCell_id = @"MyPlayerHistoryCell_id";
-static CGFloat tableHeaderH = 35;
+static CGFloat tableHeaderH = 45;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,30 +38,6 @@ static CGFloat tableHeaderH = 35;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         @strongify(self)
         self.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-
-//        NSMutableArray *array = [NSMutableArray array];
-//        for (TalkGridModel *model in self.tablkListModel.result.data) {
-//            [array addObject: model.user_played_at];
-//        }
-//        
-//        array = (NSMutableArray *)[array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//            [formatter setDateFormat:@"yyyy-MM-dd "];
-//            if (obj1 == [NSNull null]) {
-//                obj1 = @"0000-00-00";
-//            }
-//            if (obj2 == [NSNull null]) {
-//                obj2 = @"0000-00-00";
-//            }
-//            NSDate *date1 = [formatter dateFromString:obj1];
-//            NSDate *date2 = [formatter dateFromString:obj2];
-//            NSComparisonResult result = [date1 compare:date2];
-//            return result == NSOrderedAscending;
-//        }];
-//        for (int i = 0; i < [array count]; i++) {
-//            NSLog(@"%@", [array objectAtIndex:i]);
-//        }
-//
 
         self.dicDate = [NSMutableDictionary dictionary];
         TalkGridModel *tempModel = [[TalkGridModel alloc] init];
@@ -87,7 +63,7 @@ static CGFloat tableHeaderH = 35;
 
 - (void)initTabelView {
     self.tableView = [[UITableView alloc]
-            initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
+            initWithFrame:CGRectMake(10, 0, self.view.frame.size.width - 20, self.view.frame.size.height - 25) style:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -118,7 +94,8 @@ static CGFloat tableHeaderH = 35;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyPlayerHistoryCell_id];
-
+    ViewRadius(cell, 5);
+    
     NSArray *keys = [self.dicDate allKeys];
     NSString *tempStr = keys[indexPath.section];
     NSMutableArray *array = self.dicDate[tempStr];
@@ -138,10 +115,8 @@ static CGFloat tableHeaderH = 35;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    IndexSectionView *sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 35)];
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, SCREENWITH, 1)];
-    [sectionView addSubview:bottomView];
-    bottomView.backgroundColor = BackgroundColor;
+    IndexSectionView *sectionView = [[IndexSectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 45)];
+    sectionView.backgroundColor = [UIColor clearColor];
     sectionView.moreLabel.hidden = YES;
 
     NSArray *keys = [self.dicDate allKeys];
@@ -170,11 +145,7 @@ static CGFloat tableHeaderH = 35;
         lessonPlayerViewController.playTalkGridModel = model;
         lessonPlayerViewController.originalTalkGridModel = model;
         [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
-//        if ([model.department isEqualToString:@"dept3"]) {
-//          
-//        } else if ([model.department isEqualToString:@"dept4"]) {
-//
-//        }
+
     }
 
 }

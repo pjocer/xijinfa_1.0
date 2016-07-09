@@ -57,7 +57,7 @@
 
 - (void)changCurrunViewLocation:(NSInteger)index
 {
-    self.selectedScrollContentView.contentScrollView.contentOffset = CGPointMake(index * self.view.frame.size.width, 0);
+    [_selectedScrollContentView selectedByType:index];
 }
 
 

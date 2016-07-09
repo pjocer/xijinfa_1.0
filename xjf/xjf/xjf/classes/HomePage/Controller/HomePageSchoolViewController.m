@@ -269,7 +269,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
        TeacherListViewController *teacherListViewController = [TeacherListViewController new];
-       //    teacherListViewController.hostModel = self.teacherListHostModel;
+       teacherListViewController.navigationItem.title = @"全部老师";
        [self.navigationController pushViewController:teacherListViewController animated:YES];
    }
 }
