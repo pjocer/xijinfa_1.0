@@ -16,12 +16,12 @@
 
 @end
 
-@interface BannerCover : JSONModel
+@interface BannerCover : OptionalJSONModel
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *url;
 @end
 
-@interface BannerResultModel : JSONModel
+@interface BannerResultModel : OptionalJSONModel
 @property (nonatomic, copy) NSString *created_at;
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *image_id;
@@ -39,11 +39,11 @@
 @end
 
 
-@interface BannerResultListModel : JSONModel
+@interface BannerResultListModel : OptionalJSONModel
 @property (nonatomic, strong) NSMutableArray <BannerResultModel> *data;
 @end
 
-@interface BannerModel : JSONModel
+@interface BannerModel : OptionalJSONModel
 @property (nonatomic, assign) int errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) BannerResultListModel *result;

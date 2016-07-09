@@ -17,7 +17,7 @@
 
 @end
 
-@interface CategoryLabel : JSONModel
+@interface CategoryLabel : OptionalJSONModel
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *title;
@@ -26,7 +26,7 @@
 @property (nonatomic, copy) NSString *thumbnail;
 @end
 
-@interface TopicDataModel : JSONModel
+@interface TopicDataModel : OptionalJSONModel
 @property (nonatomic, copy) NSMutableArray <CategoryLabel> *taxonomy_tags;
 @property (nonatomic, copy) NSString *client;
 @property (nonatomic, copy) NSString *content;
@@ -46,7 +46,7 @@
 @property (nonatomic, strong) UserInfoModel *user;
 @end
 
-@interface TopicResultModel : JSONModel
+@interface TopicResultModel : OptionalJSONModel
 @property (nonatomic, copy) NSString *current_page;
 @property (nonatomic, copy) NSString *from;
 @property (nonatomic, copy) NSString *last_page;
@@ -58,7 +58,7 @@
 @property (nonatomic, strong) NSMutableArray <TopicDataModel> *data;
 @end
 
-@interface TopicModel : JSONModel
+@interface TopicModel : OptionalJSONModel
 @property (nonatomic, assign) int errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) TopicResultModel *result;

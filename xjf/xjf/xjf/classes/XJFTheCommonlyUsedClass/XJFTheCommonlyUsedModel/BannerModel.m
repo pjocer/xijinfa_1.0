@@ -9,25 +9,13 @@
 #import "BannerModel.h"
 
 @implementation BannerResultModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation BannerResultListModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation BannerModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation BannerCover
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
