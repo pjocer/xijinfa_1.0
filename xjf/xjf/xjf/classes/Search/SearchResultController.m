@@ -80,7 +80,7 @@
     }];
     for (UIButton *button in self.buttons) {
         [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *x) {
-            [_scrollView setContentOffset:CGPointMake(SCREENWITH * (x.tag - 700), 35) animated:YES];
+            [_scrollView setContentOffset:CGPointMake(SCREENWITH * (x.tag - 700), 0) animated:YES];
         }];
     }
 }
