@@ -7,6 +7,7 @@
 //
 
 #import "BaseNavigationController.h"
+#import "XJAccountManager.h"
 
 @interface BaseNavigationController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic)UIPanGestureRecognizer *panGestureRecognizer;
@@ -47,7 +48,7 @@
 - (void)loadBaseUI{
     self.interactivePopGestureRecognizer.enabled = NO;
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizerAction:)];
-    self.panGestureRecognizer.delegate = self;
+//    self.panGestureRecognizer.delegate = self;
     [self.view addGestureRecognizer:self.panGestureRecognizer];
 }
 
@@ -56,7 +57,6 @@
     [super pushViewController:viewController animated:animated];
 }
 -(void)pushViewControllerByCustomAnimation:(UIViewController *)viewController {
-    [self.backImgs addObject:[self screenShot]];
     self.next = viewController;
     [super pushViewController:viewController animated:NO];
     if (!self.hadPushed && self.childViewControllers.count>1) {
@@ -156,6 +156,17 @@
     return [[self.viewControllers lastObject] shouldAutorotate];
 }
 
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+//        
+//    }
+//    UIView *view = otherGestureRecognizer.view;
+//    if ([view isKindOfClass:[UIScrollView class]]) {
+//        UIScrollView *scroll = (UIScrollView *)view;
+//        
+//    }
+//    return YES;
+//}
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return [[self.viewControllers lastObject] supportedInterfaceOrientations];
 }

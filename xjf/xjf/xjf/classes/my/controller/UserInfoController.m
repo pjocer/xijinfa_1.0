@@ -355,8 +355,7 @@
         if (model) {
             TopicDetailViewController *controller = [[TopicDetailViewController alloc] init];
             controller.topic_id = model.id;
-            BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-            [nav pushViewControllerByCustomAnimation:controller];
+            [self handlePush:controller];
         }
     }
 }
