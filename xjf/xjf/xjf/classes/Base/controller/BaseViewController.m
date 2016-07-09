@@ -18,6 +18,7 @@
 #import "UIImageView+WebCache.h"
 #import "BaseNavigationController.h"
 #import "UserInfoController.h"
+#import "UILabel+StringFrame.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -219,7 +220,19 @@ NSString *const Study = @"StudyCenter";
             break;
     }
 }
-
+-(void)showEmpty:(EmptyType)empty {
+    UIView *emptyView = [[UIView alloc] initWithFrame:self.view.bounds];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREENWITH/2.0f - 35, 100, 70, 70)];
+    imageView.image = [UIImage imageNamed:@"recharge_faild"];
+    [emptyView addSubview:imageView];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, SCREENWITH, 14)];
+    label.textColor = AssistColor;
+    label.font = FONT12;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = empty==EmptyNullData?@"无数据":@"网络请求失败";
+    [emptyView addSubview:label];
+    [self.view insertSubview:emptyView atIndex:self.view.subviews.count];
+}
 - (void)LoginPrompt {
     [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"
                         okTitle:@"登录"

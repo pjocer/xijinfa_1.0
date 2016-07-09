@@ -20,9 +20,16 @@ FOUNDATION_EXTERN NSString *const Vip;
 FOUNDATION_EXTERN NSString *const Subscribe;
 FOUNDATION_EXTERN NSString *const Study;
 
+typedef enum : NSUInteger {
+    EmptyNullData,
+    EmptyNetworkFaield,
+} EmptyType;
+
 @interface BaseViewController : UIViewController
 
 - (void)extendheadViewFor:(NSString *)name;
+
+- (void)showEmpty:(EmptyType)empty;
 
 - (void)LoginPrompt;
 
