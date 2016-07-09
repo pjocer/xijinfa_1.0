@@ -31,44 +31,45 @@
     return self;
 }
 - (void)initMainUI {
+    [self setUpItem];
+    @weakify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        [self setUpTextView];
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        [self setUpPlaceHolder];
+    });
+}
+- (void)setUpItem {
     UIBarButtonItem *cancel_item = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancleClicked:)];
     cancel_item.tintColor = NormalColor;
     UIBarButtonItem *send_item = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(sendClicked:)];
     send_item.tintColor = NormalColor;
     self.navigationItem.leftBarButtonItem = cancel_item;
     self.navigationItem.rightBarButtonItem = send_item;
-    [self.view addSubview:self.textView];
-    self.navigationItem.title = self.style==NewTopic?@"新讨论":@"新评论";
+    self.navigationItem.title = self.style==NewTopic?@"新增话题":@"新增评论";
+}
+- (void)setUpPlaceHolder {
+    _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH - 20, 21)];
+    _placeholder.text = @"我来说几句";
+    _placeholder.textColor = AssistColor;
+    _placeholder.font = FONT15;
     [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
-        if (![x isEqualToString:@""]) {
-            _placeholder.hidden = YES;
-        }
+        self.placeholder.hidden = ![x isEqualToString:@""];
     }];
+    [self.textView addSubview:self.placeholder];
 }
-
-- (UITextView *)textView {
-    if (!_textView) {
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH - 20, SCREENHEIGHT - HEADHEIGHT - 258)];
-        _textView.backgroundColor = [UIColor clearColor];
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineSpacing = 3;
-        NSDictionary *attributes = @{NSFontAttributeName : FONT15, NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : [UIColor xjfStringToColor:@"#444444"]};
-        _textView.typingAttributes = attributes;
-//        _textView.textColor = NormalColor;
-        [_textView becomeFirstResponder];
-        [_textView addSubview:self.placeholder];
-    }
-    return _textView;
-}
-
-- (UILabel *)placeholder {
-    if (!_placeholder) {
-        _placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, SCREENWITH - 20, 21)];
-        _placeholder.text = @"我来说几句";
-        _placeholder.textColor = AssistColor;
-        _placeholder.font = FONT15;
-    }
-    return _placeholder;
+- (void)setUpTextView {
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 8, SCREENWITH - 20, SCREENHEIGHT - HEADHEIGHT - 258)];
+    self.textView.backgroundColor = [UIColor clearColor];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 3;
+    NSDictionary *attributes = @{NSFontAttributeName : FONT15, NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : NormalColor};
+    self.textView.typingAttributes = attributes;
+    [self.textView becomeFirstResponder];
+    [self.view addSubview:self.textView];
 }
 
 - (void)cancleClicked:(UIBarButtonItem *)item {
