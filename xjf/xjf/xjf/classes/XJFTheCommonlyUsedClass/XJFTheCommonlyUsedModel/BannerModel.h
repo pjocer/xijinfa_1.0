@@ -6,7 +6,7 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import <JSONModel/JSONModel.h>
+#import "OptionalJSONModel.h"
 
 @protocol BannerResultModel
 

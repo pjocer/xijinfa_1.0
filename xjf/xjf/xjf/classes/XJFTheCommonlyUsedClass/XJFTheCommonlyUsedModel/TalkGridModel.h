@@ -6,7 +6,7 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "OptionalJSONModel.h"
 
 @protocol TalkGridModel
 @end

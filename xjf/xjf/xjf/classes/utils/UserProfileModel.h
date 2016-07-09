@@ -6,8 +6,7 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import <JSONModel/JSONModel.h>
-#import "UserProfileModel.h"
+#import "OptionalJSONModel.h"
 #import "UserInfoModel.h"
 
 @interface UserProfileModel : JSONModel
