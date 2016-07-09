@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
-
+#import <AFNetworking/AFNetworking.h>
+typedef enum : NSInteger {
+    NetworkUnknown = AFNetworkReachabilityStatusUnknown,
+    NetworkDisconnection,
+    NetworkWWAN,
+    NetworkWIFI,
+} NetworkStatus;
 @interface AppDelegateManager : NSObject
-+ (void)initControl;
++ (instancetype)sharedInstance;
+- (NetworkStatus)currentStatus;
 @end

@@ -21,7 +21,7 @@
 #import "UIView+Addtion.h"
 #import "UILabel+StringFrame.h"
 #import "NSString+Extensions.h"
-
+#import "UIView+Boundary.h"
 //
 #import "xjfConfigure.h"
 #import "XjfRequest.h"

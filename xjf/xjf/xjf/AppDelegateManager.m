@@ -7,35 +7,54 @@
 //
 
 #import "AppDelegateManager.h"
-#import <AFNetworking/AFNetworking.h>
 #import "XJAccountManager.h"
 #import "SettingViewController.h"
 #import "ZPlatformShare.h"
 
-@interface AppDelegateManager ()
+@interface AppDelegateManager () {
+    NetworkStatus _currentStatus;
+}
 @end
 
 @implementation AppDelegateManager
-+ (void)initControl {
++(instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    static AppDelegateManager *manager = nil;
+    dispatch_once(&onceToken, ^{
+        manager = [[AppDelegateManager alloc] _init];
+    });
+    return manager;
+}
+- (instancetype)_init {
+    self = [super init];
+    if (self) {
+        [self initControl];
+    }
+    return self;
+}
+- (void)initControl {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self startMonitoringAppCurrentNetworkReachabilityStatus];
     [ZPlatformShare initPlatformData];
     [[XJAccountManager defaultManager] verifyValid];
 }
 //网络状态
-+ (void)startMonitoringAppCurrentNetworkReachabilityStatus {
+- (void)startMonitoringAppCurrentNetworkReachabilityStatus {
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        _currentStatus = (NetworkStatus)status;
         switch (status) {
             case AFNetworkReachabilityStatusUnknown:
                 break;
             case AFNetworkReachabilityStatusNotReachable:
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
+            {
                 [AlertUtils alertWithTarget:getCurrentDisplayController() title:@"提示" content:@"当前为非Wifi, 若想观看视频,请到设置中打开" confirmBlock:^{
                     UIViewController *currentViewController = getCurrentDisplayController();
                     [currentViewController.navigationController pushViewController:[SettingViewController new] animated:YES];
                 }];
+            }
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
 
@@ -43,5 +62,8 @@
         }
     }];
     [manager startMonitoring];
+}
+-(NetworkStatus)currentStatus {
+    return _currentStatus;
 }
 @end

@@ -33,8 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self extendheadViewFor:Topic];
-//    [self initMainUI];
-    [self showEmpty:EmptyNullData];
+    [self initMainUI];
     [_tableView_all.mj_header beginRefreshing];
 }
 

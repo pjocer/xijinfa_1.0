@@ -56,6 +56,7 @@
 
 -(instancetype)initWithUserType:(UserType)type userInfo:(UserInfoModel *)model {
     if (self = [super init]) {
+        NSParameterAssert(model);
         _userType = type;
         _model = [[UserProfileModel alloc] init];
         _model.result = model;
