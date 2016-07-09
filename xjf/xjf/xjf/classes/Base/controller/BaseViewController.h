@@ -23,16 +23,12 @@ FOUNDATION_EXTERN NSString *const Study;
 
 @interface BaseViewController : UIViewController <LoadingDelegate>
 @property (nonatomic, strong) LoadingView *loadingView;
-
 - (void)showLoading;
 - (void)showLoadingWithFrame:(CGRect)frame;
 - (void)showLoadingFailed;
 - (void)showLoadingFailedWithErrorType:(ErrorType)errorType;
 - (void)showLoadingEmptyWithType:(EmptyType)type;
 - (void)dismissLoading;
-
 - (void)extendheadViewFor:(NSString *)name;
-
 - (void)LoginPrompt;
-
 @end

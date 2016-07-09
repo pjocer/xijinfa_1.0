@@ -57,14 +57,12 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
 - (void)requestBannerData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     self.dataArrayByBanner = [NSMutableArray array];
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
 
     //bannermodel
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
 
         __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
         for (BannerResultModel *model in sSelf.bannermodel.result.data) {
             if (model.cover && model.cover.count > 0) {
@@ -74,7 +72,6 @@ static NSString *firstSectionCell_Id = @"firstSectionCell_Id";
         }
         [sSelf.collectionView reloadData];
     }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 

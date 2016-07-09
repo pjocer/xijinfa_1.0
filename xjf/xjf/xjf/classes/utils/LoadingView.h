@@ -13,6 +13,7 @@
  */
 typedef enum {
     EmptyTypeComment,
+    
 } EmptyType;
 /**
  *  Error Type

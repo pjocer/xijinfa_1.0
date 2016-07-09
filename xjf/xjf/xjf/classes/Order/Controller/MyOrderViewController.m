@@ -46,7 +46,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 - (void)requestAllOrderData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    [[ZToastManager ShardInstance] showprogress];
     if (method == GET) {
         //TalkGridData
         [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -54,7 +53,6 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
             __strong typeof(self) sSelf = wSelf;
             sSelf.orderModel = [[OrderModel alloc] initWithData:responseData error:nil];
             [sSelf.tableView reloadData];
-
         } failedBlock:^(NSError *_Nullable error) {
 
         }];

@@ -339,7 +339,6 @@
 }
 
 - (void)requestData:(APIName *)api method:(RequestMethod)method params:(NSMutableDictionary *)params {
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     if (params) {
         request.requestParams = params;
@@ -347,7 +346,6 @@
     }
     __weak typeof(self) wSelf = self;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        [[ZToastManager ShardInstance] hideprogress];
         if ([api isEqualToString:local_login]) {
             RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
             if (model.errCode == 0) {
@@ -368,7 +366,6 @@
             self.codeImageView.image = ret;
         }
     }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"请求失败"];
     }];
 

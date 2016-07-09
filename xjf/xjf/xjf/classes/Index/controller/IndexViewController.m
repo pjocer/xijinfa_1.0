@@ -89,7 +89,6 @@ NSString *const CONGYE_CELL = @"congyecell";
 
 - (void)requestTeacherListData:(APIName *)teacherApi
                         method:(RequestMethod)method {
-    [[ZToastManager ShardInstance] showprogress];
     __weak typeof(self) wSelf = self;
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:teacherApi RequestMethod:method];
 
@@ -98,9 +97,7 @@ NSString *const CONGYE_CELL = @"congyecell";
         __strong typeof(self) sSelf = wSelf;
         sSelf.teacherListHostModel = [[TeacherListHostModel alloc] initWithData:responseData error:nil];
         [sSelf.tableview reloadData];
-        [[ZToastManager ShardInstance] hideprogress];
     }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }

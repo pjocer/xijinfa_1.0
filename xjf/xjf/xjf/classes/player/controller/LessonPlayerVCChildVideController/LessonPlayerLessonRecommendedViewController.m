@@ -62,7 +62,6 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
 
 - (void)requestCommentsData:(APIName *)api method:(RequestMethod)method {
 
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     //GET
     if (method == GET) {
@@ -73,9 +72,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
             [self.dataSource addObjectsFromArray:self.commentsModel.result.data];
             [self.tableView reloadData];
             [self.tableView.mj_footer isRefreshing] ? [self.tableView.mj_footer endRefreshing] : nil;
-            [[ZToastManager ShardInstance] hideprogress];
         }                  failedBlock:^(NSError *_Nullable error) {
-            [[ZToastManager ShardInstance] hideprogress];
             [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
             [self.tableView.mj_footer isRefreshing] ? [self.tableView.mj_footer endRefreshing] : nil;
         }];

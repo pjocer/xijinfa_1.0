@@ -56,7 +56,6 @@ static CGFloat BottomPayButtonH = 50;
 
 - (void)requestLessonListData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
 
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
@@ -81,9 +80,7 @@ static CGFloat BottomPayButtonH = 50;
             self.addShoppingCart.hidden = NO;
             self.studing.hidden = YES;
         }
-        [[ZToastManager ShardInstance] hideprogress];
     }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }

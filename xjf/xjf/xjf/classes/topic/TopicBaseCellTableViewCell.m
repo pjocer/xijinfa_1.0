@@ -71,7 +71,6 @@
 
 - (void)praise_Clicked:(UITapGestureRecognizer *)gesture {
     if ([[XJAccountManager defaultManager] accessToken]) {
-        [[ZToastManager ShardInstance] showprogress];
         if (!_praiseImageView.isHighlighted) {
             XjfRequest *request = [[XjfRequest alloc] initWithAPIName:praise RequestMethod:POST];
             request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"type" : @"topic", @"id" : self.model.id}];
@@ -86,10 +85,8 @@
                 } else {
                     [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
                 }
-                [[ZToastManager ShardInstance] hideprogress];
             }                  failedBlock:^(NSError *_Nullable error) {
                 [[ZToastManager ShardInstance] showtoast:@"网络异常"];
-                [[ZToastManager ShardInstance] hideprogress];
             }];
         } else {
             XjfRequest *request = [[XjfRequest alloc] initWithAPIName:praise RequestMethod:DELETE];

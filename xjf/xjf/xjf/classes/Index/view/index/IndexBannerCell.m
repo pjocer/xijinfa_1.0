@@ -61,13 +61,11 @@
 - (void)requestBannerData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
     NSMutableArray *tempArray = [NSMutableArray array];
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
 
     // banner model
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
         sSelf.bannermodel = [[BannerModel alloc] initWithData:responseData error:nil];
         for (BannerResultModel *model in sSelf.bannermodel.result.data) {
             if (model.cover && model.cover.count > 0) {
@@ -77,7 +75,6 @@
         }
         sSelf.carouselView.imageArray = tempArray;
     }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
     }];
 }

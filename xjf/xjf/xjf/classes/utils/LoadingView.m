@@ -33,7 +33,7 @@
     [self removeAllSubviews];
     self.hidden = NO;
     UIImageView *loadingImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.width - 60) / 2, (self.height - 60) / 2, 60, 60)];
-    [loadingImageView setImage:[UIImage imageNamed:@"recharge_failed"]];// Default Image 暂缺
+    [loadingImageView setImage:[UIImage imageNamed:@"recharge_faild"]];// Default Image 暂缺
     [self addSubview:loadingImageView];
     [self runSpinAnimationOnView:loadingImageView duration:NSIntegerMax repeat:YES];
 }
@@ -60,10 +60,10 @@
     UIImage *image;
     if (errorType == ErrorTypeNetWorkDisconnection) {
         // 网络未连接 暂缺
-        image = [UIImage imageNamed:@"recharge_failed"];
+        image = [UIImage imageNamed:@"recharge_faild"];
     }else{
         // Normal LoadingFailedIcon 暂缺
-        image = [UIImage imageNamed:@"recharge_failed"];
+        image = [UIImage imageNamed:@"recharge_faild"];
     }
     UIImageView *iconImageView = [[UIImageView alloc] initWithImage:image];
     [self addSubview:iconImageView];

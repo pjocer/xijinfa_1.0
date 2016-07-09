@@ -53,7 +53,6 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
 - (void)requesData:(APIName *)api method:(RequestMethod)method {
 
     __weak typeof(self) wSelf = self;
-    [[ZToastManager ShardInstance] showprogress];
 
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
 
@@ -63,7 +62,6 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
         [sSelf.dataSource addObjectsFromArray:sSelf.tablkListModel.result.data];
         [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
         [sSelf.tableView reloadData];
-        [[ZToastManager ShardInstance] hideprogress];
         if (!self.tableView.mj_footer) {
             //mj_footer
             self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
@@ -71,7 +69,6 @@ static NSString *lessonListCell_id = @"lessonListCell_id";
         }
     }                  failedBlock:^(NSError *_Nullable error) {
         __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
     }];

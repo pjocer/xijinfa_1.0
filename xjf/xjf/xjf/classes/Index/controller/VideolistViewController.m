@@ -62,7 +62,6 @@ static NSString *videListCell_id = @"videListCell_id";
 
 - (void)requesData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
@@ -70,11 +69,9 @@ static NSString *videListCell_id = @"videListCell_id";
         [sSelf.dataSource addObjectsFromArray:sSelf.tablkListModel.result.data];
         [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
         [sSelf.tableView reloadData];
-        [[ZToastManager ShardInstance] hideprogress];
 
     }failedBlock:^(NSError *_Nullable error) {
         __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"网络连接失败"];
         [sSelf.tableView.mj_footer isRefreshing] ? [sSelf.tableView.mj_footer endRefreshing] : nil;
     }];

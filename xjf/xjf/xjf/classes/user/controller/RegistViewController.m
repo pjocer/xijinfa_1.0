@@ -89,7 +89,6 @@
 
 - (void)requestData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
-    [[ZToastManager ShardInstance] showprogress];
     XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
     if ([api isEqualToString:regist_message_code] || [api isEqualToString:reset_message_code]) {
         [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
@@ -106,7 +105,6 @@
     }
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         __strong typeof(self) sSelf = wSelf;
-        [[ZToastManager ShardInstance] hideprogress];
         if ([api isEqualToString:get_image_code]) {
             [sSelf.indicator stopAnimating];
             sSelf.model = [[ImageCodeModel alloc] initWithData:responseData error:nil];
@@ -152,7 +150,6 @@
             }
         }
     }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] hideprogress];
         [[ZToastManager ShardInstance] showtoast:@"请求失败"];
     }];
 }
