@@ -22,7 +22,7 @@
 @protocol LessonDetailListCover
 @end
 
-@interface Taxonomy_categories : JSONModel
+@interface Taxonomy_categories : OptionalJSONModel
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *title;
@@ -31,12 +31,12 @@
 @property (nonatomic, strong) NSString *thumbnail;
 @end
 
-@interface LessonDetailVideo : JSONModel
+@interface LessonDetailVideo : OptionalJSONModel
 @property (nonatomic, strong) NSString *resolution;
 @property (nonatomic, strong) NSString *url;
 @end
 
-@interface LessonDetailPivot : JSONModel
+@interface LessonDetailPivot : OptionalJSONModel
 @property (nonatomic, strong) NSString *attached_id;
 @property (nonatomic, strong) NSString *created_at;
 @property (nonatomic, strong) NSString *main_id;
@@ -44,12 +44,12 @@
 @property (nonatomic, strong) NSString *updated_at;
 @end
 
-@interface LessonDetailListCover : JSONModel
+@interface LessonDetailListCover : OptionalJSONModel
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *url;
 @end
 
-@interface LessonDetailListResultModel : JSONModel
+@interface LessonDetailListResultModel : OptionalJSONModel
 
 @property (nonatomic, strong) NSArray <TalkGridModel> *lessons_menu;
 @property (nonatomic, strong) NSArray <TeacherListData> *taxonomy_gurus;
@@ -104,7 +104,7 @@
 
 @end
 
-@interface LessonDetailListModel : JSONModel
+@interface LessonDetailListModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) LessonDetailListResultModel *result;
