@@ -19,6 +19,7 @@
 #import "BaseNavigationController.h"
 #import "UserInfoController.h"
 #import "UILabel+StringFrame.h"
+#import "UIGestureRecognizer+Block.h"
 
 NSString *const Index = @"IndexViewController";
 NSString *const My = @"MyViewController";
@@ -35,15 +36,7 @@ NSString *const Study = @"StudyCenter";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.navigationController.viewControllers.count>1) {
-        self.tabBarController.tabBar.hidden = YES;
-    }
-}
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    if (self.navigationController.viewControllers.count==1) {
-        self.tabBarController.tabBar.hidden = NO;
-    }
+    self.tabBarController.tabBar.hidden = self.navigationController.viewControllers.count>1;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -220,18 +213,59 @@ NSString *const Study = @"StudyCenter";
             break;
     }
 }
--(void)showEmpty:(EmptyType)empty {
-    UIView *emptyView = [[UIView alloc] initWithFrame:self.view.bounds];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREENWITH/2.0f - 35, 100, 70, 70)];
-    imageView.image = [UIImage imageNamed:@"recharge_faild"];
-    [emptyView addSubview:imageView];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, SCREENWITH, 14)];
-    label.textColor = AssistColor;
-    label.font = FONT12;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.text = empty==EmptyNullData?@"无数据":@"网络请求失败";
-    [emptyView addSubview:label];
-    [self.view insertSubview:emptyView atIndex:self.view.subviews.count];
+- (void)showLoading {
+    [self showLoadingWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT - HEADHEIGHT)];
+}
+
+- (void)showLoadingWithFrame:(CGRect)frame {
+    if (!_loadingView) {
+        _loadingView = [[LoadingView alloc] initWithFrame:frame];
+        _loadingView.delegate = self;
+    }
+    if (_loadingView.superview == nil) {
+        [self.view addSubview:_loadingView];
+    }
+    [_loadingView setFrame:frame];
+    [_loadingView showLoading];
+}
+
+- (void)showLoadingFailed {
+    if (!_loadingView) {
+        _loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT)];
+        _loadingView.delegate = self;
+    }
+    if (_loadingView.superview == nil) {
+        [self.view addSubview:_loadingView];
+    }
+    [_loadingView showLoadingFailed];
+}
+
+- (void)showLoadingFailedWithErrorType:(ErrorType)errorType{
+    if (!_loadingView) {
+        _loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT)];
+        _loadingView.delegate = self;
+    }
+    if (_loadingView.superview == nil) {
+        [self.view addSubview:_loadingView];
+    }
+    [_loadingView showLoadingFailedWithErrorType:errorType];
+}
+
+- (void)showLoadingEmptyWithType:(EmptyType)type {
+    if (!_loadingView) {
+        _loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, SCREENHEIGHT-HEADHEIGHT)];
+        _loadingView.delegate = self;
+    }
+    if (_loadingView.superview == nil) {
+        [self.view addSubview:_loadingView];
+    }
+    [_loadingView showLoadingEmptyWithType:type];
+}
+
+- (void)dismissLoading {
+    if (_loadingView != nil) {
+        [_loadingView removeFromSuperview];
+    }
 }
 - (void)LoginPrompt {
     [AlertUtils alertWithTarget:self title:@"登录您将获得更多功能"

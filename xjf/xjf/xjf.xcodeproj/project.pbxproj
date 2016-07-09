@@ -212,6 +212,8 @@
 		CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF57AD11C9F825D00049AF0 /* LaunchScreen.storyboard */; };
 		D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D11D0181E0000888D4 /* MyTopicViewController.m */; };
 		D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* CommentViewController.m */; };
+		D022D43E1D30F06E004C5857 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D022D43D1D30F06E004C5857 /* LoadingView.m */; };
+		D022D4411D30F13B004C5857 /* UIView+Boundary.m in Sources */ = {isa = PBXBuildFile; fileRef = D022D4401D30F13B004C5857 /* UIView+Boundary.m */; };
 		D0290ED21D2B7F6900FF823C /* XJFCacheHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D0290ED11D2B7F6900FF823C /* XJFCacheHandler.m */; };
 		D0290ED61D2CB60700FF823C /* StudyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D0290ED41D2CB60700FF823C /* StudyCenter.m */; };
 		D0290ED71D2CB60700FF823C /* StudyCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0290ED51D2CB60700FF823C /* StudyCenter.xib */; };
@@ -687,6 +689,10 @@
 		D01F77D11D0181E0000888D4 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
 		D01F77D61D01A1EC000888D4 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		D01F77D71D01A1EC000888D4 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		D022D43C1D30F06E004C5857 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		D022D43D1D30F06E004C5857 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		D022D43F1D30F13B004C5857 /* UIView+Boundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Boundary.h"; sourceTree = "<group>"; };
+		D022D4401D30F13B004C5857 /* UIView+Boundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Boundary.m"; sourceTree = "<group>"; };
 		D0290ED01D2B7F6900FF823C /* XJFCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFCacheHandler.h; sourceTree = "<group>"; };
 		D0290ED11D2B7F6900FF823C /* XJFCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFCacheHandler.m; sourceTree = "<group>"; };
 		D0290ED31D2CB60700FF823C /* StudyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyCenter.h; sourceTree = "<group>"; };
@@ -1406,6 +1412,8 @@
 		68AD34831315063118675167 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				D022D43F1D30F13B004C5857 /* UIView+Boundary.h */,
+				D022D4401D30F13B004C5857 /* UIView+Boundary.m */,
 				D073F15A1D239D99007B387D /* ZFPlayerView+Category.h */,
 				D073F15B1D239D99007B387D /* ZFPlayerView+Category.m */,
 				68AD381ACE31F1C4CA5171CF /* UIColor+hexColor.h */,
@@ -2048,6 +2056,8 @@
 				D0A254431D1948CC00BDD146 /* PhotoHandler.h */,
 				D073E8171CE9E5B200AED895 /* AlertUtils.h */,
 				D073E8181CE9E5B200AED895 /* AlertUtils.m */,
+				D022D43C1D30F06E004C5857 /* LoadingView.h */,
+				D022D43D1D30F06E004C5857 /* LoadingView.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2353,6 +2363,7 @@
 				5A5B74041D27C1E100D24CBA /* SelectedTableView.m in Sources */,
 				5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */,
 				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
+				D022D4411D30F13B004C5857 /* UIView+Boundary.m in Sources */,
 				5A6CF4F01D2639AE00676255 /* EmployedClassificationCollectionViewCell.m in Sources */,
 				5A240DF11CE32BD1003B7971 /* WikipediaViewController.m in Sources */,
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
@@ -2394,6 +2405,7 @@
 				D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
 				5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */,
+				D022D43E1D30F06E004C5857 /* LoadingView.m in Sources */,
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				5A240DFE1CE34238003B7971 /* WikiFirstSectionCell.m in Sources */,
