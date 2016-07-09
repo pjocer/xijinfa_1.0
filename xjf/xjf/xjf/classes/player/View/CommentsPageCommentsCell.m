@@ -50,7 +50,7 @@
         self.userImage.layer.cornerRadius = 20;
         [self.contentView addSubview:self.userImage];
         [self.userImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.equalTo(self).with.offset(10);
+            make.left.top.equalTo(self.customSeparator).with.offset(10);
             make.size.mas_offset(CGSizeMake(40, 40));
         }];
 

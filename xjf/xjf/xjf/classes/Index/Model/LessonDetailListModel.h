@@ -93,7 +93,7 @@
 @property (nonatomic, assign) BOOL user_purchased;
 ///(已登录用户)是否已订阅
 @property (nonatomic, assign) BOOL user_subscribed;
-///(已登录用户)播放历史, 秒
+///(已登录用户)播放记录 秒
 @property (nonatomic, strong) NSString *user_played;
 ///视频时长
 @property (nonatomic, strong) NSString *video_duration;

@@ -23,7 +23,7 @@
 
         // feedbackTextView
         self.feedbackTextView = [[CloverText alloc] initWithFrame:CGRectMake(10, 10, self.bounds.size.width - 20, SCREENHEIGHT / 5 * 2) placeholder:@" 输入你的反馈信息"];
-        self.feedbackTextView.font = FONT15;
+        self.feedbackTextView.font = [UIFont systemFontOfSize:20];
         [self.scrolleView addSubview:self.feedbackTextView];
         self.feedbackTextView.backgroundColor = [UIColor whiteColor];
 

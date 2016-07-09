@@ -23,4 +23,16 @@
     // Configure the view for the selected state
 }
 
+
+- (void)setTeacherModel:(TeacherListData *)teacherModel
+{
+    if (teacherModel) {
+        _teacherModel = teacherModel;
+    }
+    self.nickname.text = teacherModel.title;
+    [self.avatar sd_setImageWithURL:[NSURL URLWithString:teacherModel.guru_avatar]];
+    self.summary.text = teacherModel.subtitle;
+}
+
+
 @end

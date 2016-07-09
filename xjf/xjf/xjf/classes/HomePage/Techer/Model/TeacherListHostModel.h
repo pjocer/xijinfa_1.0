@@ -45,7 +45,7 @@
 @property (nonatomic, assign) BOOL user_liked;
 ///(已登录用户)是否已收藏
 @property (nonatomic, assign) BOOL user_favored;
-///(已登录用户)播放历史, 秒
+///(已登录用户)播放记录, 秒
 @property (nonatomic, strong) NSString *user_played;
 ///视频时长
 @property (nonatomic, strong) NSString *video_duration;

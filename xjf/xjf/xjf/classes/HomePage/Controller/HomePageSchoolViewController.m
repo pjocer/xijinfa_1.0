@@ -217,8 +217,8 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     HomePageCollectionSectionHeaderView *sectionHeaderView =
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-    sectionHeaderView.sectionTitle.text = @[@"",@"热门分类",@"热门课程",@"析金讲师"][indexPath.section];
-    sectionHeaderView.sectionMore.text = @[@"",@"",@"更多",@"更多"][indexPath.section];
+    sectionHeaderView.sectionTitle.text = @[@"",@"全部分类",@"热门课程",@"析金讲师"][indexPath.section];
+    sectionHeaderView.sectionMore.text = @[@"",@"",@"",@"更多"][indexPath.section];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
     [sectionHeaderView addGestureRecognizer:tap];
     return sectionHeaderView;
@@ -267,12 +267,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
 {
     HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
-   if ([sectionHeaderView.sectionTitle.text isEqualToString:@"热门课程"]){
-       AllLessonListViewController *listViewController = [AllLessonListViewController new];
-       listViewController.lessonListPageLessonType = LessonListPageSchool;
-       listViewController.lessonListTitle = @"析金学堂热门课程";
-       [self.navigationController pushViewController:listViewController animated:YES];
-   }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
+   if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
        TeacherListViewController *teacherListViewController = [TeacherListViewController new];
        //    teacherListViewController.hostModel = self.teacherListHostModel;
        [self.navigationController pushViewController:teacherListViewController animated:YES];

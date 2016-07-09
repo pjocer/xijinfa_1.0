@@ -194,7 +194,7 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     HomePageCollectionSectionHeaderView *sectionHeaderView =
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-    sectionHeaderView.sectionTitle.text = @[@"",@"全部分类",@"析金百科"][indexPath.section];
+    sectionHeaderView.sectionTitle.text = @[@"",@"全部分类",@"热门视频"][indexPath.section];
     sectionHeaderView.sectionMore.text = @[@"",@"",@"更多"][indexPath.section];;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
     [sectionHeaderView addGestureRecognizer:tap];
@@ -238,10 +238,10 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
 {
     HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
-    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]){
+    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"热门视频"]){
         AllLessonListViewController *listViewController = [AllLessonListViewController new];
         listViewController.lessonListPageLessonType = LessonListPageWikipedia;
-        listViewController.lessonListTitle = @"析金百科更多";
+        listViewController.lessonListTitle = @"热门视频";
         [self.navigationController pushViewController:listViewController animated:YES];
     }
 }

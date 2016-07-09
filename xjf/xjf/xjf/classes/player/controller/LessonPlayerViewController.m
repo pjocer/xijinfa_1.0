@@ -21,6 +21,8 @@ static CGFloat titleH = 35;
 static CGFloat selViewH = 2;
 
 
+#warning BUG -> 1.播放页push 然后pop 回来 播放器问题. 2.购买成功pop回来播放器问题 3.购买(套课)订单冲突问题. 4.studyCenter 跳转首页刷新数据问题
+
 @interface LessonPlayerViewController () <UIScrollViewDelegate, LessonPlayerVideoBottomViewDelegate,
         LessonPlayerLessonListViewControllerDelegate,
         UIAlertViewDelegate>
@@ -37,12 +39,12 @@ static CGFloat selViewH = 2;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) LessonDetailListModel *tempLessonDetailModel;
 @property (nonatomic, strong) LessonPlayerLessonListViewController *lessonPlayerLessonListViewController;
+@property (nonatomic, strong) LessonPlayerTeacherLisetViewController *teacherViewController;
 @property (nonatomic, strong) LessonPlayerLessonDescribeViewController *describeViewController;
 @property (nonatomic, strong) XMShareView *shareView;
 @property (nonatomic, strong) UIView *backGroudView;
 
 @property (nonatomic, assign) BOOL isFirstComeIn; ///是否为第一次进入， 默认选择播放第一节
-
 @property (nonatomic, copy) void (^FirstComeInplayVideo)();
 
 ///加入购物车按钮
@@ -137,10 +139,10 @@ static CGFloat selViewH = 2;
             sSelf.videoBottomView.model = sSelf.playTalkGridModel;
             sSelf.videoBottomView.collectionCount.text = sSelf.tempLessonDetailModel.result.like_count;
             if (sSelf.tempLessonDetailModel.result.user_liked) {
-                [sSelf.videoBottomView.collectionLogo                              setImage:[[UIImage imageNamed:@"iconLikeOn"]
+                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLikeOn"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             } else {
-                [sSelf.videoBottomView.collectionLogo                              setImage:[[UIImage imageNamed:@"iconLike"]
+                [sSelf.videoBottomView.collectionLogo setImage:[[UIImage imageNamed:@"iconLike"]
                         imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             }
             sSelf.lessonPlayerLessonListViewController.lessonDetailListModel = sSelf.tempLessonDetailModel;
@@ -150,6 +152,8 @@ static CGFloat selViewH = 2;
             }
             [sSelf.lessonPlayerLessonListViewController.tableView reloadData];
 
+            sSelf.teacherViewController.lessonDetailListModel = sSelf.tempLessonDetailModel;
+            
             //是否购买过此课程
             if (sSelf.originalTalkGridModel.user_purchased || sSelf.originalTalkGridModel.user_subscribed) {
                 sSelf.nowPay.hidden = YES;
@@ -268,7 +272,7 @@ static CGFloat selViewH = 2;
         make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width / 2, 50));
     }];
     self.addShoppingCart.backgroundColor = [UIColor xjfStringToColor:@"#f87c47"];
-    [self.addShoppingCart setTitle:@"加入购物车" forState:UIControlStateNormal];
+    [self.addShoppingCart setTitle:@"整套加入购物车" forState:UIControlStateNormal];
     self.addShoppingCart.tintColor = [UIColor whiteColor];
     self.addShoppingCart.titleLabel.font = FONT15;
     [self.addShoppingCart
@@ -547,12 +551,13 @@ static CGFloat selViewH = 2;
 
     self.describeViewController = [[LessonPlayerLessonDescribeViewController alloc] init];
     _describeViewController.contentText = self.playTalkGridModel.content;
-    _describeViewController.title = @"课程介绍";
+    _describeViewController.title = @"详情";
     [self addChildViewController:_describeViewController];
 
-//    LessonPlayerLessonCommentsViewController *vc2 = [[LessonPlayerLessonCommentsViewController alloc] init];
-//    vc2.title = @"推荐课程";
-//    [self addChildViewController:vc2];
+
+    self.teacherViewController = [[LessonPlayerTeacherLisetViewController alloc] init];
+    _teacherViewController.title = @"老师";
+    [self addChildViewController:_teacherViewController];
 
     LessonPlayerLessonRecommendedViewController *vc3 = [[LessonPlayerLessonRecommendedViewController alloc] init];
     vc3.title = @"评论";

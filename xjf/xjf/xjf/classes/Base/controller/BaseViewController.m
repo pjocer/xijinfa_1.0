@@ -60,7 +60,6 @@ NSString *const Study = @"StudyCenter";
 }
 - (void)setNavigationRelated {
     if (self.navigationController) {
-        self.navigationItem.title = @"";
         self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
         self.navigationController.navigationBar.translucent = NO;
         [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
@@ -226,7 +225,7 @@ NSString *const Study = @"StudyCenter";
                         okTitle:@"登录"
                      otherTitle:@"注册"
               cancelButtonTitle:@"取消"
-                        message:@"参与话题讨论\n\n播放记录云同步\n\n更多金融专业课程"
+                        message:@"参与讨论\n\n播放记录云同步\n\n更多金融专业课程"
                     cancelBlock:^{
                         NSLog(@"取消");
                     } okBlock:^{

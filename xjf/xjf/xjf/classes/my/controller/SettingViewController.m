@@ -32,7 +32,7 @@
 }
 
 - (void)initTableView {
-    _dataSource = @[@"允许3G/4G网络时自动播放", @"更改密码", @"清除缓存", @"清除搜索记录", @"软件许可及服务协议", @"关于我们"];
+    _dataSource = @[@"允许3G/4G网络时自动播放", @"更改密码", @"清除缓存", @"清除搜索记录", @"关于我们", @"版权声明" ,@"免责声明", @"课程购买服务协议"];
     _tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;

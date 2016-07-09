@@ -11,6 +11,7 @@
 #import "SelectedTableView.h"
 #import "SelectedCollectionView.h"
 #import "XJAccountManager.h"
+#import "ProjectListByModel.h"
 
 @interface SelectedView ()<SelecteButtonViewDelegate,SelectedTableViewDelegate,SelectedCollectionViewDelegate>
 @property (nonatomic, assign) SelectedViewType selectedViewType;
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) SelectedTableView *tableView;
 @property (nonatomic, strong) SelectedTableView *tableViewRight;
 @property (nonatomic, strong) SelectedCollectionView *selectedCollectionView;
+
+@property (nonatomic, strong) ProjectListByModel *projectListByModel_Employed;
 @end
 
 @implementation SelectedView
@@ -53,6 +56,7 @@
                 
                 self.isSelectedLeftButton = NO;
                 self.isSelectedRightButton = NO;
+                [self requestEmployedData];
             }
                 break;
 
@@ -79,7 +83,7 @@
     if (isSelected) {
         [currentViewController.view bringSubviewToFront:self];
         
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             selectedTableView.backGroudView.alpha = 0.35;
             selectedTableView.backGroudView.hidden = NO;
             selectedTableView.frame = CGRectMake(0, CGRectGetMaxY(_selecteButtonView.frame), self.frame.size.width, self.frame.size.height - CGRectGetMaxY(_selecteButtonView.frame));
@@ -89,7 +93,7 @@
     }else{
         [currentViewController.view sendSubviewToBack:self];
         
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             selectedTableView.backGroudView.alpha = 0.0;
             selectedTableView.backGroudView.hidden = YES;
             selectedTableView.frame = CGRectMake(0, CGRectGetMaxY(_selecteButtonView.frame), self.frame.size.width, 0.01);
@@ -105,7 +109,7 @@
     if (isSelected) {
         [currentViewController.view bringSubviewToFront:self];
         
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             _selectedCollectionView.backGroudView.alpha = 0.35;
             _selectedCollectionView.backGroudView.hidden = NO;
             _selectedCollectionView.frame = CGRectMake(0, CGRectGetMaxY(_selecteButtonView.frame), self.frame.size.width, self.frame.size.height - CGRectGetMaxY(_selecteButtonView.frame));
@@ -114,7 +118,7 @@
     }else{
         [currentViewController.view sendSubviewToBack:self];
         
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             _selectedCollectionView.backGroudView.alpha = 0.0;
             _selectedCollectionView.backGroudView.hidden = YES;
             _selectedCollectionView.frame = CGRectMake(0, CGRectGetMaxY(_selecteButtonView.frame), self.frame.size.width, 0.01);
@@ -146,15 +150,60 @@
 {
    
     if (_isSelectedLeftButton) {
-      self.isSelectedLeftButton = NO; _selecteButtonView.leftButtonLabelName.text = [dataSource objectAtIndex:indexPath.row];
-        //右按钮是否可编辑
-        [self rightButtonIsEnabled];
+      self.isSelectedLeftButton = NO; self.leftButtonName = [dataSource objectAtIndex:indexPath.row];
 
     }else if (_isSelectedRightButton) {
-     self.isSelectedRightButton = NO; _selecteButtonView.rightButtonLabelName.text = [dataSource objectAtIndex:indexPath.row];
+     self.isSelectedRightButton = NO; self.rightButtonName = [dataSource objectAtIndex:indexPath.row];
     }
     
-     _handlerData([NSString stringWithFormat:@"%@ %@",_selecteButtonView.leftButtonLabelName.text,_selecteButtonView.rightButtonLabelName.text]);
+    switch (self.selectedViewType) {
+        case ISSchool: {
+            
+        }
+            break;
+        case ISEmployed: {
+            [self screeningDataFromEmployed];
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+}
+
+///从业筛选数据
+- (void)screeningDataFromEmployed{
+    if ([_selecteButtonView.leftButtonLabelName.text isEqualToString:@"全部"]) {
+        _handlerData(@"全部");
+    }else{
+        for (ProjectList *model in _projectListByModel_Employed.result.data) {
+            NSLog(@"-----xxx %@ ----   -----_selecteButtonView.leftButtonLabelName.text %@  ----",model.title,_selecteButtonView.leftButtonLabelName.text);
+            if ([model.title isEqualToString:@"证券从业"] &&[_leftButtonName isEqualToString:@"证券从业"]) {
+                [self sendDataByModel:model];
+            }
+            else if ([model.title isEqualToString:@"期货从业"] && [_selecteButtonView.leftButtonLabelName.text isEqualToString:@"期货从业"]) {
+                [self sendDataByModel:model];
+            }
+            else if ([model.title isEqualToString:@"基金从业"] && [_selecteButtonView.leftButtonLabelName.text isEqualToString:@"基金从业"]) {
+                [self sendDataByModel:model];
+            }
+        }
+    }
+}
+
+///从业发送数据
+- (void)sendDataByModel:(ProjectList *)model
+{
+    if ([_selecteButtonView.rightButtonLabelName.text isEqualToString:@"全部"]) {
+        _handlerData([NSString stringWithFormat:@"%@",model.id]);
+    }else{
+        for (ProjectList *smallModel in model.children) {
+            if ([smallModel.title isEqualToString:_selecteButtonView.rightButtonLabelName.text]) {
+                _handlerData([NSString stringWithFormat:@"%@",smallModel.id]);
+            }
+        }
+    }
 }
 
 - (void)selectedCollectionView:(SelectedCollectionView *)selectedCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath DataSource:(NSMutableArray *)dataSource
@@ -165,7 +214,7 @@
     }
 }
 
-///右边按钮是否可编辑(若为从业筛选是，且左按钮为"全部" 则不可编辑)
+///右边按钮是否可编辑(若为从业筛选时，且左按钮为"全部" 则不可编辑)
 - (void)rightButtonIsEnabled{
     switch (self.selectedViewType) {
         case ISSchool: {
@@ -176,7 +225,7 @@
             if ([_selecteButtonView.leftButtonLabelName.text isEqualToString:@"全部"]) {
                 _selecteButtonView.rightButton.enabled = NO;
                 _selecteButtonView.rightShowIcon.hidden = YES;
-                _selecteButtonView.rightButtonLabelName.text = @"全科";
+                _selecteButtonView.rightButtonLabelName.text = @"全部";
             }else{
                 _selecteButtonView.rightButton.enabled = YES;
                 _selecteButtonView.rightShowIcon.hidden = NO;
@@ -298,4 +347,25 @@
     return _selectedCollectionView;
 }
 
+#pragma mark - requestData
+
+#pragma mark requestEmployedData
+
+- (void)requestEmployedData{
+    RACSignal *projectListByModelSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Employed RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            ProjectListByModel *tempModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:tempModel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
+    
+    [self rac_liftSelector:@selector(update:) withSignalsFromArray:@[projectListByModelSignal]];
+}
+
+- (void)update:(ProjectListByModel *)model{
+    self.projectListByModel_Employed = model;
+}
 @end

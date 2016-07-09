@@ -56,6 +56,8 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
     
 }
 
+#pragma mark - RequestData
+
 //ProjectListByModel
 - (void)requesProjectListDat:(APIName *)api method:(RequestMethod)method {
     @weakify(self)
@@ -80,8 +82,6 @@ static NSString *EmployedClassificationCell_ID = @"EmployedClassificationCell_ID
     } failedBlock:^(NSError *_Nullable error) {
     }];
 }
-
-#pragma mark - RequestData
 
 - (void)RequestData {
     RACSignal *requestBannerData = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {

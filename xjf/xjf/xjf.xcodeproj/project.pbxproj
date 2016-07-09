@@ -16,7 +16,6 @@
 		5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */; };
 		5A105E681CEC09540079BEFE /* LessonPlayerLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */; };
 		5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */; };
-		5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */; };
 		5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */; };
 		5A105E7E1CED5A4E0079BEFE /* LessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E7D1CED5A4E0079BEFE /* LessonListViewController.m */; };
 		5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */; };
@@ -124,6 +123,7 @@
 		5A6CF4F01D2639AE00676255 /* EmployedClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EE1D2639AE00676255 /* EmployedClassificationCollectionViewCell.m */; };
 		5A6CF4F11D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */; };
 		5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */; };
+		5AF046491D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */; };
 		5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */; };
 		5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D51CF94694007CC71C /* OrderDetaiViewController.m */; };
 		5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2D81CF96D13007CC71C /* OrderHeaderView.m */; };
@@ -306,8 +306,6 @@
 		5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonListViewController.m; sourceTree = "<group>"; };
 		5A105E691CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonDescribeViewController.h; sourceTree = "<group>"; };
 		5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonDescribeViewController.m; sourceTree = "<group>"; };
-		5A105E6C1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonCommentsViewController.h; sourceTree = "<group>"; };
-		5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonCommentsViewController.m; sourceTree = "<group>"; };
 		5A105E6F1CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonRecommendedViewController.h; sourceTree = "<group>"; };
 		5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonRecommendedViewController.m; sourceTree = "<group>"; };
 		5A105E7C1CED5A4E0079BEFE /* LessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonListViewController.h; path = ../../player/controller/LessonListViewController.h; sourceTree = "<group>"; };
@@ -513,6 +511,8 @@
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = classes/utils/PrefixHeader.pch; sourceTree = "<group>"; };
 		5AF046441D2F5A1E00790232 /* EmployedArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedArticlesViewController.h; sourceTree = "<group>"; };
 		5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedArticlesViewController.m; sourceTree = "<group>"; };
+		5AF046471D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerTeacherLisetViewController.h; sourceTree = "<group>"; };
+		5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerTeacherLisetViewController.m; sourceTree = "<group>"; };
 		5AF7C2D11CF94662007CC71C /* OrderDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailBaseViewController.h; sourceTree = "<group>"; };
 		5AF7C2D21CF94662007CC71C /* OrderDetailBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailBaseViewController.m; sourceTree = "<group>"; };
 		5AF7C2D41CF94694007CC71C /* OrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetaiViewController.h; sourceTree = "<group>"; };
@@ -878,8 +878,8 @@
 				5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */,
 				5A105E691CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.h */,
 				5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */,
-				5A105E6C1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.h */,
-				5A105E6D1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m */,
+				5AF046471D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.h */,
+				5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */,
 				5A105E6F1CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.h */,
 				5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */,
 			);
@@ -2289,7 +2289,6 @@
 				5A105EAC1CEF17AC0079BEFE /* WikiMoreClassificationCell.m in Sources */,
 				AA5B96951D222BE20088A196 /* PlayerPageDescribeCell.m in Sources */,
 				5A105E571CEB17450079BEFE /* LessonViewController.m in Sources */,
-				5A105E6E1CEC09B40079BEFE /* LessonPlayerLessonCommentsViewController.m in Sources */,
 				CD1CCC2D1CB37927002FC0C9 /* IndexBaseViewController.m in Sources */,
 				5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */,
 				D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */,
@@ -2493,6 +2492,7 @@
 				68AD3A56F861785951BB9107 /* UIColor+hexColor.m in Sources */,
 				D055F26D1D2A094200F80AAD /* RechargeStreamModel.m in Sources */,
 				D055F28A1D2A860700F80AAD /* BaseNavigationController.m in Sources */,
+				5AF046491D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m in Sources */,
 				68AD32E2FC2DEEB1C311AA39 /* ZToastManager.m in Sources */,
 				68AD370C817124BB259FF07A /* UILabel+StringFrame.m in Sources */,
 				68AD32495822B12CA68526E7 /* NSString+Extensions.m in Sources */,

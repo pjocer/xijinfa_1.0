@@ -88,8 +88,9 @@
 }
 - (void)initProperties {
     self.hasLogined = [[XJAccountManager defaultManager] accessToken]!=nil;
-    if (self.userType == Default) {
-        self.dataSource = [NSMutableArray arrayWithArray:@[@"播放历史",@"我的收藏",@"我的钱包",@"我的订单",@"购物车",@"我的反馈"]];
+
+    if (self.userType == Myself) {
+        self.dataSource = [NSMutableArray arrayWithArray:@[@"播放记录",@"我的收藏",@"我的钱包",@"我的订单",@"购物车",@"意见反馈"]];
         self.model = [[XJAccountManager defaultManager] user_model];
     }else {
         self.dataSource = [NSMutableArray array];
@@ -141,7 +142,7 @@
             [self initUserInfo];
         }else {
             [_userAvatar setImage:[UIImage imageNamed:@"user_unload"]];
-            [_nickname setText:@"登录"];
+            [_nickname setText:@"登录/注册"];
             [_summary setText:@""];
             [_fans setText:@"粉丝"];
             [_focus setText:@"关注"];

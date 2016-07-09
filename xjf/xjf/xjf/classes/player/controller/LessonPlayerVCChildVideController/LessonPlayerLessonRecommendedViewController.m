@@ -120,7 +120,7 @@ static NSString *LessonRecommendedFooter_id = @"LessonRecommendedFooter_id";
         make.bottom.equalTo(self.view).with.offset(-10);
 
     }];
-    self.tableHeaderView = [[LessonRecommendedHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 50)];
+    self.tableHeaderView = [[LessonRecommendedHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREENWITH, 60)];
     [self.tableHeaderView.commentsButton addTarget:self action:@selector(comments:)
                                   forControlEvents:UIControlEventTouchUpInside];
     self.tableView.tableHeaderView = self.tableHeaderView;

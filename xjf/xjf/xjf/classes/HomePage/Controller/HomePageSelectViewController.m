@@ -208,9 +208,7 @@ typedef NS_OPTIONS(NSInteger, SelectViewControllerSectionType) {
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
     sectionHeaderView.sectionTitle.text = @[@"",@"析金百科",@"析金学堂",@"析金从业"][indexPath.section];
-    sectionHeaderView.sectionMore.text = @[@"",@"更多",@"更多",@""][indexPath.section];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
-    [sectionHeaderView addGestureRecognizer:tap];
+    sectionHeaderView.sectionMore.text = @[@"",@"",@"",@""][indexPath.section];
     return sectionHeaderView;
 }
 
@@ -251,25 +249,6 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     }
     
     return CGSizeZero;
-}
-
-#pragma mark - sectionHeaderViewTapPUSHMorePage
-
-- (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
-{
-    HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
-    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金百科"]) {
-        AllLessonListViewController *listViewController = [AllLessonListViewController new];
-        listViewController.lessonListPageLessonType = LessonListPageWikipedia;
-        listViewController.lessonListTitle = @"析金百科更多";
-        [self.navigationController pushViewController:listViewController animated:YES];
-    }else if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金学堂"]){
-        AllLessonListViewController *listViewController = [AllLessonListViewController new];
-        listViewController.lessonListPageLessonType = LessonListPageSchool;
-        listViewController.lessonListTitle = @"析金学堂更多";
-        [self.navigationController pushViewController:listViewController animated:YES];
-    }
-    
 }
 
 #pragma mark - delegate

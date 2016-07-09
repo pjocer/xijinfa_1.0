@@ -57,7 +57,7 @@
         [self addSubview:self.userImage];
         [self.userImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.backGroundView);
-            make.left.equalTo(self).with.offset(10);
+            make.left.equalTo(self.backGroundView).with.offset(10);
             make.size.mas_offset(CGSizeMake(40, 40));
         }];
         if ([[XJAccountManager defaultManager] accessToken] != nil ||

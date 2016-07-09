@@ -20,7 +20,7 @@
 
 #import "LessonPlayerLessonListViewController.h"
 #import "LessonPlayerLessonDescribeViewController.h"
-#import "LessonPlayerLessonCommentsViewController.h"
+#import "LessonPlayerTeacherLisetViewController.h"
 #import "LessonPlayerLessonRecommendedViewController.h"
 #import "LessonPlayerVideoBottomView.h"
 

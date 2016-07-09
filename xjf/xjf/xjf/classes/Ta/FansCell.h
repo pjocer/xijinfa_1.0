@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LessonDetailListModel.h"
 
 @interface FansCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *summary;
+@property (nonatomic, strong) TeacherListData *teacherModel;
 @end

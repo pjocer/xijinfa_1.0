@@ -92,7 +92,7 @@
         [_header addSubview:self.segmentline];
         [_header addShadow];
         self.buttons = [NSMutableArray arrayWithCapacity:4];
-        NSArray *titles = @[@"百科", @"课程", @"话题", @"找人"];
+        NSArray *titles = @[@"百科", @"课程", @"讨论", @"用户"];
         for (int i = 0; i < 4; i++) {
             CGFloat width = SCREENWITH / 4;
             CGFloat height = 18;

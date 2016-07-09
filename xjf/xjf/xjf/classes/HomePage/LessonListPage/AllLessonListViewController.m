@@ -133,9 +133,12 @@ UICollectionViewDelegateFlowLayout>
     _selectedView.rightButtonName = @"筛选";
     _selectedView.leftTableDataSource = @[@"综合排序",@"销量最好",@"价格由低到高",@"价格由高到低"].mutableCopy;
     _selectedView.rightTableDataSource = @[@"学习内容",@"当前水平",@"析金名师"].mutableCopy;
+    @weakify(self)
     _selectedView.handlerData = ^(id data) {
+        @strongify(self)
         //reloadData at here.
         NSLog(@"%@",data);
+
     };
 }
 
@@ -145,11 +148,23 @@ UICollectionViewDelegateFlowLayout>
     [self.view addSubview:_selectedView];
     
     _selectedView.leftButtonName = @"全部";
-    _selectedView.rightButtonName = @"全科";
+    _selectedView.rightButtonName = @"全部";
     _selectedView.leftTableDataSource = @[@"全部",@"证卷从业",@"期货从业",@"基金从业"].mutableCopy;
-    _selectedView.rightTableDataSource = @[@"全科",@"基础知识",@"法律法规"].mutableCopy;
+    _selectedView.rightTableDataSource = @[@"全部",@"全科",@"基础知识",@"法律法规"].mutableCopy;
+    @weakify(self)
     _selectedView.handlerData = ^(id data) {
+        @strongify(self)
         //reloadData at here.
+        if (self.dataSource.count > 0) {
+            [self.dataSource removeAllObjects];
+        }
+        if ([data isEqualToString:@"全部"]) {
+            self.collectionView.mj_footer.hidden = NO;
+            [self requesData:contents method:GET];
+        }else{
+           [self requesData:[NSString stringWithFormat:@"%@%@", test, data] method:GET];
+        }
+        
         NSLog(@"%@",data);
     };
 }
@@ -283,7 +298,7 @@ UICollectionViewDelegateFlowLayout>
     } else if (_tablkListModel.result.current_page == _tablkListModel.result.last_page) {
         
         [_collectionView.mj_footer endRefreshingWithNoMoreData];
-           [_collectionView.mj_footer removeFromSuperview];
+           _collectionView.mj_footer.hidden = YES;
            [[ZToastManager ShardInstance] showtoast:@"没有更多数据"];
     }
 }

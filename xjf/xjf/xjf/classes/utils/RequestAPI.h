@@ -43,7 +43,7 @@ static APIName *verify_user = @"/api/auth/verify-bearer";
 //购买API
 static APIName *buy_trade = @"/api/order";
 
-//话题
+//讨论
 static APIName *topic_all = @"/api/topic/";
 static APIName *topic_qa = @"/api/topic/?type=qa";
 static APIName *topic_discuss = @"/api/topic/?type=discuss";
@@ -62,7 +62,7 @@ static APIName *focusOrNot = @"/api/friendship/check";
 static APIName *search_baike = @"/api/search/wikis?s=";
 //搜索课程
 static APIName *search_lesson = @"/api/search/courses?s=";
-//搜索话题
+//搜索讨论
 static APIName *search_topic = @"/api/search/topics?s=";
 //搜索用户
 static APIName *search_person = @"/api/search/users?s=";
@@ -131,6 +131,7 @@ static APIName *EmployedLessonDetailList = @"/api/courses4";
 static APIName *Articles = @"/api/articles4";
 /// 从业培训-视频列表--按专题筛选
 static APIName *employedCategory = @"/api/courses4/?category_id=";
+static APIName *test = @"/api/contents4/?category_id=";
 ///资讯列表
 static APIName *articlesSpecial = @"/api/articles4?special_id=";
 ///资讯分类
@@ -166,8 +167,8 @@ static APIName *user_learnedApi = @"/api/learn";
 static APIName *myLessonsApi = @"/api/user/courses";
 
 
-#pragma mark-- 播放历史 ------------------------
-///播放历史
+#pragma mark-- 播放记录 ------------------------
+///播放记录
 static APIName *history = @"/api/history";
 
 #pragma mark-- Vip ------------------------

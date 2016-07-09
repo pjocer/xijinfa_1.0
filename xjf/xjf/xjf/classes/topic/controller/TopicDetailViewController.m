@@ -98,7 +98,7 @@
 }
 
 - (void)initMainUI {
-    self.navigationItem.title = @"话题详情";
+    self.navigationItem.title = @"讨论详情";
     [self.view addSubview:self.tableView];
 }
 
