@@ -8,7 +8,7 @@
 
 #import "OptionalJSONModel.h"
 
-@interface PaymentData : JSONModel
+@interface PaymentData : OptionalJSONModel
 /** 商家向财付通申请的商家id */
 @property (nonatomic, copy) NSString *partnerid;
 /** 预支付订单 */
@@ -42,16 +42,12 @@
 
 @end
 
-@protocol TaxonomyTags
-
-@end
-
-@interface OrderItemVideo : JSONModel
+@interface OrderItemVideo : OptionalJSONModel
 @property (nonatomic, copy) NSString *resolution;
 @property (nonatomic, copy) NSString *url;
 @end
 
-@interface TaxonomyCategories : JSONModel
+@interface TaxonomyCategories : OptionalJSONModel
 @property (nonatomic, copy) NSString *icon;
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, copy) NSString *summary;
@@ -60,7 +56,7 @@
 @property (nonatomic, copy) NSString *type;
 @end
 
-@interface TaxonomyGurus : JSONModel
+@interface TaxonomyGurus : OptionalJSONModel
 @property (nonatomic, assign) NSInteger comments_count;
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, assign) NSInteger user_favored;
@@ -75,11 +71,7 @@
 @property (nonatomic, copy) NSString *user_played_at;
 @end
 
-@interface TaxonomyTags : JSONModel
-
-@end
-
-@interface OrderItem : JSONModel
+@interface OrderItem : OptionalJSONModel
 @property (nonatomic, copy) NSString *api_uri;
 @property (nonatomic, assign) NSInteger comments_count;
 @property (nonatomic, copy) NSString *content;
@@ -124,21 +116,20 @@
 @property (nonatomic, strong) OrderItemVideo *video_player;
 @property (nonatomic, strong) NSMutableArray <TaxonomyCategories> *taxonomy_categories;
 @property (nonatomic, strong) NSMutableArray <TaxonomyGurus> *taxonomy_gurus;
-@property (nonatomic, strong) NSMutableArray <TaxonomyTags> *taxonomy_tags;
 @end
 
-@interface Membership : JSONModel
+@interface Membership : OptionalJSONModel
 @property (nonatomic, copy) NSString *period;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *title;
 @end
 
-@interface Payment : JSONModel
+@interface Payment : OptionalJSONModel
 @property (nonatomic, copy) NSString *channel;
 @property (nonatomic, copy) NSString *data;
 @end
 
-@interface OrderResult : JSONModel
+@interface OrderResult : OptionalJSONModel
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *updated_at;
@@ -155,7 +146,7 @@
 @property (nonatomic, strong) NSMutableArray <Payment> *payment;
 @end
 
-@interface Order : JSONModel
+@interface Order : OptionalJSONModel
 @property (nonatomic, copy) NSString *errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, copy) OrderResult *result;
