@@ -13,7 +13,7 @@
 
 @end
 
-@interface FansFocusResult : JSONModel
+@interface FansFocusResult : OptionalJSONModel
 @property (nonatomic, copy) NSString *current_page;
 @property (nonatomic, copy) NSString *from;
 @property (nonatomic, copy) NSString *last_page;
@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSMutableArray <UserInfoModel> *data;
 @end
 
-@interface FansFocus : JSONModel
+@interface FansFocus : OptionalJSONModel
 @property (nonatomic, copy) NSString *errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) FansFocusResult *result;

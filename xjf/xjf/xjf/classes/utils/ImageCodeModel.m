@@ -9,13 +9,7 @@
 #import "ImageCodeModel.h"
 
 @implementation ResultModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation ImageCodeModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end

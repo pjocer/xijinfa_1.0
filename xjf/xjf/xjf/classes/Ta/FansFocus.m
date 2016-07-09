@@ -9,13 +9,7 @@
 #import "FansFocus.h"
 
 @implementation FansFocusResult
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation FansFocus
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end

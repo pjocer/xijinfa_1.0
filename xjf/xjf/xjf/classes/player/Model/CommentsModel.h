@@ -11,7 +11,7 @@
 @protocol CommentsModel
 @end
 
-@interface CommentsModel : JSONModel
+@interface CommentsModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *created_at;
 @property (nonatomic, assign) int id;
@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSString *user_nickname;
 @end
 
-@interface CommentsResultModel : JSONModel
+@interface CommentsResultModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *current_page;
 @property (nonatomic, strong) NSArray <CommentsModel> *data;
 @property (nonatomic, strong) NSString *from;
@@ -35,10 +35,8 @@
 @property (nonatomic, strong) NSString *total;
 @end
 
-@interface CommentsAllDataList : JSONModel
+@interface CommentsAllDataList : OptionalJSONModel
 @property (nonatomic, strong) NSString *errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) CommentsResultModel *result;
 @end
-
-

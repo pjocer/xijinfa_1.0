@@ -9,7 +9,7 @@
 #import "OptionalJSONModel.h"
 #import "TopicModel.h"
 
-@interface CommentListResult : JSONModel
+@interface CommentListResult : OptionalJSONModel
 @property (nonatomic, copy) NSString *total;
 @property (nonatomic, copy) NSString *per_page;
 @property (nonatomic, copy) NSString *current_page;
@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSMutableArray <TopicDataModel> *data;
 @end
 
-@interface TopicCommentList : JSONModel
+@interface TopicCommentList : OptionalJSONModel
 @property (nonatomic, copy) NSString *errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) CommentListResult *result;

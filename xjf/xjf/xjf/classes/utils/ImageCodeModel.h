@@ -8,13 +8,13 @@
 
 #import "OptionalJSONModel.h"
 
-@interface ResultModel : JSONModel
+@interface ResultModel : OptionalJSONModel
 @property (nonatomic, copy) NSString *secure_code;
 @property (nonatomic, copy) NSString *secure_image;
 @property (nonatomic, copy) NSString *secure_key;
 @end
 
-@interface ImageCodeModel : JSONModel
+@interface ImageCodeModel : OptionalJSONModel
 @property (nonatomic, assign) NSInteger errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) ResultModel *result;
