@@ -14,12 +14,12 @@
 
 @end
 
-@interface TeacherDetailCover : JSONModel
+@interface TeacherDetailCover : OptionalJSONModel
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *url;
 @end
 
-@interface TeacherDetailResult : JSONModel
+@interface TeacherDetailResult : OptionalJSONModel
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *department;
 @property (nonatomic, assign) int id;
@@ -39,7 +39,7 @@
 @end
 
 
-@interface TeacherDetailModel : JSONModel
+@interface TeacherDetailModel : OptionalJSONModel
 @property (nonatomic, assign) int errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) TeacherDetailResult *result;

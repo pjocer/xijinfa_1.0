@@ -15,7 +15,7 @@
 @end
 
 
-@interface VipModel : JSONModel
+@interface VipModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *period;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *title;
@@ -23,14 +23,14 @@
 @end
 
 
-@interface VipResultModel : JSONModel
+@interface VipResultModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSArray <VipModel> *deal;
 @end
 
 
-@interface VipListModel : JSONModel
+@interface VipListModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) NSArray <VipResultModel> *result;

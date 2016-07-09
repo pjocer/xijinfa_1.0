@@ -9,13 +9,7 @@
 #import "UserInfoModel.h"
 
 @implementation UserMembership
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation UserInfoModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end

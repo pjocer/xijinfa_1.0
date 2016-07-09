@@ -12,13 +12,13 @@
 
 @end
 
-@interface UserMembership : JSONModel
+@interface UserMembership : OptionalJSONModel
 @property (nonatomic, copy) NSString *end_time;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *type;
 @end
 
-@interface UserInfoModel : JSONModel
+@interface UserInfoModel : OptionalJSONModel
 @property (nonatomic, assign) NSInteger account_balance;
 @property (nonatomic, copy) NSString *age;
 @property (nonatomic, copy) NSString *avatar;

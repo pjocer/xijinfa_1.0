@@ -9,20 +9,11 @@
 #import "TeacherDetailModel.h"
 
 @implementation TeacherDetailResult
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 
 @implementation TeacherDetailModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation TeacherDetailCover
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end

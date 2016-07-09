@@ -16,13 +16,13 @@
 @end
 
 
-@interface TeacherListVideo : JSONModel
+@interface TeacherListVideo : OptionalJSONModel
 @property (nonatomic, strong) NSString *resolution;
 @property (nonatomic, strong) NSString *url;
 @end
 
 
-@interface TeacherListData : JSONModel
+@interface TeacherListData : OptionalJSONModel
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *user_id;
 @property (nonatomic, strong) NSString *type;
@@ -55,7 +55,7 @@
 @end
 
 
-@interface TeacherListResult : JSONModel
+@interface TeacherListResult : OptionalJSONModel
 @property (nonatomic, assign) int current_page;
 @property (nonatomic, strong) NSArray <TeacherListData, ConvertOnDemand> *data;
 @property (nonatomic, strong) NSString *from;
@@ -68,7 +68,7 @@
 @end
 
 
-@interface TeacherListHostModel : JSONModel
+@interface TeacherListHostModel : OptionalJSONModel
 @property (nonatomic, assign) int errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) TeacherListResult *result;

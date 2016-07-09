@@ -9,7 +9,4 @@
 #import "UserProfileModel.h"
 
 @implementation UserProfileModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end

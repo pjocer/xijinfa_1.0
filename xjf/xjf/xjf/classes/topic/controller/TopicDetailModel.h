@@ -9,7 +9,7 @@
 #import "OptionalJSONModel.h"
 #import "TopicModel.h"
 
-@interface TopicDetailModel : JSONModel
+@interface TopicDetailModel : OptionalJSONModel
 @property (nonatomic, copy) NSString *errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) TopicDataModel *result;

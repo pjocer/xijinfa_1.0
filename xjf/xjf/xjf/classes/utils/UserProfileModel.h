@@ -9,7 +9,7 @@
 #import "OptionalJSONModel.h"
 #import "UserInfoModel.h"
 
-@interface UserProfileModel : JSONModel
+@interface UserProfileModel : OptionalJSONModel
 @property (nonatomic, assign) NSInteger errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) UserInfoModel *result;
