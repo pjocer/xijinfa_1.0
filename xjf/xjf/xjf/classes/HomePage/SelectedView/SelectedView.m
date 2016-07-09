@@ -11,7 +11,6 @@
 #import "SelectedTableView.h"
 #import "SelectedCollectionView.h"
 #import "XJAccountManager.h"
-#import "ProjectListByModel.h"
 
 @interface SelectedView ()<SelecteButtonViewDelegate,SelectedTableViewDelegate,SelectedCollectionViewDelegate>
 @property (nonatomic, assign) SelectedViewType selectedViewType;
@@ -23,7 +22,6 @@
 @property (nonatomic, strong) SelectedTableView *tableViewRight;
 @property (nonatomic, strong) SelectedCollectionView *selectedCollectionView;
 
-@property (nonatomic, strong) ProjectListByModel *projectListByModel_Employed;
 @end
 
 @implementation SelectedView
@@ -56,7 +54,6 @@
                 
                 self.isSelectedLeftButton = NO;
                 self.isSelectedRightButton = NO;
-                [self requestEmployedData];
             }
                 break;
 
@@ -151,9 +148,10 @@
    
     if (_isSelectedLeftButton) {
       self.isSelectedLeftButton = NO; self.leftButtonName = [dataSource objectAtIndex:indexPath.row];
-
+        self.rightTableDataSource = [_employedDataDic objectForKey:_employedDataDic.allKeys[indexPath.row]];
     }else if (_isSelectedRightButton) {
      self.isSelectedRightButton = NO; self.rightButtonName = [dataSource objectAtIndex:indexPath.row];
+        self.leftTableDataSource = _employedDataDic.allKeys.mutableCopy;
     }
     
     switch (self.selectedViewType) {
@@ -178,14 +176,13 @@
         _handlerData(@"全部");
     }else{
         for (ProjectList *model in _projectListByModel_Employed.result.data) {
-            NSLog(@"-----xxx %@ ----   -----_selecteButtonView.leftButtonLabelName.text %@  ----",model.title,_selecteButtonView.leftButtonLabelName.text);
-            if ([model.title isEqualToString:@"证券从业"] &&[_leftButtonName isEqualToString:@"证券从业"]) {
+            if ([model.title isEqualToString:_leftButtonName]) {
                 [self sendDataByModel:model];
             }
-            else if ([model.title isEqualToString:@"期货从业"] && [_selecteButtonView.leftButtonLabelName.text isEqualToString:@"期货从业"]) {
+            else if ([model.title isEqualToString:_leftButtonName]) {
                 [self sendDataByModel:model];
             }
-            else if ([model.title isEqualToString:@"基金从业"] && [_selecteButtonView.leftButtonLabelName.text isEqualToString:@"基金从业"]) {
+            else if ([model.title isEqualToString:_leftButtonName]) {
                 [self sendDataByModel:model];
             }
         }
@@ -196,6 +193,7 @@
 - (void)sendDataByModel:(ProjectList *)model
 {
     if ([_selecteButtonView.rightButtonLabelName.text isEqualToString:@"全部"]) {
+        _handlerData([NSString stringWithFormat:@"%@",model.id]);
         _handlerData([NSString stringWithFormat:@"%@",model.id]);
     }else{
         for (ProjectList *smallModel in model.children) {
@@ -294,6 +292,14 @@
     _tableView.dataSource = _leftTableDataSource;
 }
 
+- (void)setEmployedDataDic:(NSDictionary *)employedDataDic
+{
+    if (employedDataDic) {
+        _employedDataDic = employedDataDic;
+    }
+    self.leftTableDataSource = employedDataDic.allKeys.mutableCopy;
+}
+
 #pragma mark - getter
 
 - (SelecteButtonView *)selecteButtonView
@@ -347,25 +353,4 @@
     return _selectedCollectionView;
 }
 
-#pragma mark - requestData
-
-#pragma mark requestEmployedData
-
-- (void)requestEmployedData{
-    RACSignal *projectListByModelSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Employed RequestMethod:GET];
-        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            ProjectListByModel *tempModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
-            [subscriber sendNext:tempModel];
-        }failedBlock:^(NSError *_Nullable error) {
-        }];
-        return nil;
-    }];
-    
-    [self rac_liftSelector:@selector(update:) withSignalsFromArray:@[projectListByModelSignal]];
-}
-
-- (void)update:(ProjectListByModel *)model{
-    self.projectListByModel_Employed = model;
-}
 @end

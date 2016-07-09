@@ -344,7 +344,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         case DeiveFromButton: {
             AllLessonListViewController *listViewController = [AllLessonListViewController new];
             listViewController.lessonListPageLessonType = LessonListPageEmployed;
-            listViewController.lessonListTitle = @"析金从业选课中心";
+            listViewController.lessonListTitle = @"选课中心";
             [self.navigationController pushViewController:listViewController animated:YES];
         }
             break;

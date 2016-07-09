@@ -146,15 +146,15 @@ UICollectionViewDelegateFlowLayout>
 {
     self.selectedView = [[SelectedView alloc] initWithFrame:self.view.frame SelectedViewType:ISEmployed];
     [self.view addSubview:_selectedView];
-    
     _selectedView.leftButtonName = @"全部";
     _selectedView.rightButtonName = @"全部";
-    _selectedView.leftTableDataSource = @[@"全部",@"证卷从业",@"期货从业",@"基金从业"].mutableCopy;
-    _selectedView.rightTableDataSource = @[@"全部",@"全科",@"基础知识",@"法律法规"].mutableCopy;
+    
+    [self requestEmployedData];
+    
+    //reloadData at here.
     @weakify(self)
     _selectedView.handlerData = ^(id data) {
         @strongify(self)
-        //reloadData at here.
         if (self.dataSource.count > 0) {
             [self.dataSource removeAllObjects];
         }
@@ -164,9 +164,8 @@ UICollectionViewDelegateFlowLayout>
         }else{
            [self requesData:[NSString stringWithFormat:@"%@%@", test, data] method:GET];
         }
-        
-        NSLog(@"%@",data);
     };
+
 }
 
 #pragma mark -- CollectionView
@@ -322,5 +321,35 @@ UICollectionViewDelegateFlowLayout>
     }];
 }
 
+#pragma mark requestEmployedData
+
+- (void)requestEmployedData{
+    RACSignal *projectListByModelSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        XjfRequest *request = [[XjfRequest alloc] initWithAPIName:Employed RequestMethod:GET];
+        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+            ProjectListByModel *tempModel = [[ProjectListByModel alloc] initWithData:responseData error:nil];
+            [subscriber sendNext:tempModel];
+        }failedBlock:^(NSError *_Nullable error) {
+        }];
+        return nil;
+    }];
+    
+    [self rac_liftSelector:@selector(update:) withSignalsFromArray:@[projectListByModelSignal]];
+}
+
+- (void)update:(ProjectListByModel *)model{
+    self.selectedView.projectListByModel_Employed = model;
+    NSMutableDictionary *tempDic = [NSMutableDictionary dictionary];
+    for (ProjectList *tempModel in model.result.data) {
+        NSMutableArray *smallArray = [NSMutableArray array];
+        for (ProjectList *childrenModel in tempModel.children) {
+            [smallArray addObject:childrenModel.title];
+        }
+        [smallArray addObject:@"全部"];
+         [tempDic setValue:smallArray forKey:tempModel.title];
+    }
+     [tempDic setValue:@[@"全部"] forKey:@"全部"];
+    self.selectedView.employedDataDic = tempDic;
+}
 
 @end

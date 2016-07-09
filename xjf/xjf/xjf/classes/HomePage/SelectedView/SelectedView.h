@@ -7,6 +7,7 @@
 //
 
 #import "XJFBaseView.h"
+#import "ProjectListByModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^SelectedViewCompletionHandler)(id data);
@@ -22,6 +23,9 @@ typedef NS_OPTIONS(NSUInteger, SelectedViewType) {
 @property (nonatomic, strong) NSMutableArray <NSString *>*rightTableDataSource;
 @property (nonatomic, strong) NSMutableArray <NSString *>*leftTableDataSource;
 @property(nullable, nonatomic, copy) SelectedViewCompletionHandler handlerData;
+@property (nonatomic, strong) ProjectListByModel *projectListByModel_Employed;
+@property (nonatomic, strong) NSDictionary *employedDataDic;
+
 - (instancetype)initWithFrame:(CGRect)frame
              SelectedViewType:(SelectedViewType)selectedViewType NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
