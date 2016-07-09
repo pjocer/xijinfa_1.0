@@ -20,7 +20,7 @@
 @protocol TalkGridCover
 @end
 
-@interface taxonomy_gurus : JSONModel
+@interface taxonomy_gurus : OptionalJSONModel
 @property (nonatomic, assign) int id;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *title;
@@ -35,18 +35,18 @@
 @property (nonatomic, strong) NSString *user_liked;
 @end
 
-@interface TalkGridVideo : JSONModel
+@interface TalkGridVideo : OptionalJSONModel
 @property (nonatomic, strong) NSString *resolution;
 @property (nonatomic, strong) NSString *url;
 @end
 
 
-@interface TalkGridCover : JSONModel
+@interface TalkGridCover : OptionalJSONModel
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *url;
 @end
 
-@interface TalkGridModel : JSONModel
+@interface TalkGridModel : OptionalJSONModel
 @property (nonatomic, strong) NSArray <TalkGridModel, ConvertOnDemand> *children;
 @property (nonatomic, strong) NSString *api_href;
 @property (nonatomic, strong) NSString *content;
@@ -105,7 +105,7 @@
 @end
 
 
-@interface TablkResultModel : JSONModel
+@interface TablkResultModel : OptionalJSONModel
 @property (nonatomic, assign) int current_page;
 @property (nonatomic, strong) NSArray <TalkGridModel> *data;
 @property (nonatomic, strong) NSString *from;
@@ -118,13 +118,10 @@
 
 @end
 
-@interface TablkListModel : JSONModel
+@interface TablkListModel : OptionalJSONModel
 
 @property (nonatomic, assign) int errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) TablkResultModel *result;
 
 @end
-
-
-

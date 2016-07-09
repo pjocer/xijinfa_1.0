@@ -9,10 +9,6 @@
 #import "TalkGridModel.h"
 
 @implementation TalkGridModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
-
 + (JSONKeyMapper *)keyMapper {
     return [[JSONKeyMapper alloc] initWithDictionary:@{@"id" : @"id_"}];
 }
@@ -20,36 +16,18 @@
 
 
 @implementation TablkResultModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 
 @implementation TablkListModel
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 
 @implementation TalkGridVideo
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation taxonomy_gurus
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation TalkGridCover
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
-
-
-

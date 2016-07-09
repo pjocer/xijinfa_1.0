@@ -11,18 +11,19 @@
 @protocol RechargeDeal <NSObject>
 
 @end
-@interface RechargeDeal : JSONModel
+
+@interface RechargeDeal : OptionalJSONModel
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) NSInteger amount;
 @property (nonatomic, assign) NSInteger bonus;
 @end
 
-@interface RechargeResult : JSONModel
+@interface RechargeResult : OptionalJSONModel
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) NSMutableArray <RechargeDeal>*deal;
+@property (nonatomic, strong) NSMutableArray <RechargeDeal> *deal;
 @end
 
-@interface RechargeList : JSONModel
+@interface RechargeList : OptionalJSONModel
 @property (nonatomic, assign) NSInteger errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) RechargeResult *result;

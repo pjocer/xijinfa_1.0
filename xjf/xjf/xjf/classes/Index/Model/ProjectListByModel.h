@@ -16,12 +16,12 @@
 
 @end
 
-@interface ProjectListCover : JSONModel
+@interface ProjectListCover : OptionalJSONModel
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *url;
 @end
 
-@interface ProjectList : JSONModel
+@interface ProjectList : OptionalJSONModel
 @property (nonatomic, assign) NSInteger favorite_count;
 @property (nonatomic, assign) NSInteger like_count;
 @property (nonatomic, assign) NSInteger sale_count;
@@ -34,11 +34,11 @@
 @property (nonatomic, strong) NSMutableArray <ProjectList> *children;
 @end
 
-@interface ProjectListResult : JSONModel
+@interface ProjectListResult : OptionalJSONModel
 @property (nonatomic, strong) NSMutableArray <ProjectList> *data;
 @end
 
-@interface ProjectListByModel : JSONModel
+@interface ProjectListByModel : OptionalJSONModel
 @property (nonatomic, copy) NSString *errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) ProjectListResult *result;

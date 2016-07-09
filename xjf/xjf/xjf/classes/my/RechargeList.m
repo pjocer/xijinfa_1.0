@@ -9,19 +9,10 @@
 #import "RechargeList.h"
 
 @implementation RechargeDeal
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation RechargeResult
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end
 
 @implementation RechargeList
-+(BOOL)propertyIsOptional:(NSString *)propertyName {
-    return YES;
-}
 @end

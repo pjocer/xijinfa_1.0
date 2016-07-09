@@ -13,12 +13,12 @@
 @end
 
 
-@interface OrderMembershipModel : JSONModel
+@interface OrderMembershipModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *period;
 @end
 
-@interface OrderDataModel : JSONModel
+@interface OrderDataModel : OptionalJSONModel
 ///订单号
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *user_id;
@@ -37,7 +37,7 @@
 @end
 
 
-@interface OrderResultModel : JSONModel
+@interface OrderResultModel : OptionalJSONModel
 @property (nonatomic, strong) NSString *total;
 @property (nonatomic, strong) NSString *per_page;
 @property (nonatomic, strong) NSString *current_page;
@@ -50,7 +50,7 @@
 @end
 
 
-@interface OrderModel : JSONModel
+@interface OrderModel : OptionalJSONModel
 @property (nonatomic, assign) int errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) OrderResultModel *result;

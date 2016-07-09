@@ -12,7 +12,7 @@
 
 @end
 
-@interface RechargeStreamResultData : JSONModel
+@interface RechargeStreamResultData : OptionalJSONModel
 @property (assign, nonatomic) NSInteger id;
 @property (assign, nonatomic) NSInteger account_id;
 @property (assign, nonatomic) NSInteger amount;
@@ -24,7 +24,7 @@
 @property (copy, nonatomic) NSString *updated_at;
 @end
 
-@interface RechargeStreamResult : JSONModel
+@interface RechargeStreamResult : OptionalJSONModel
 @property (assign, nonatomic) NSInteger total;
 @property (assign, nonatomic) NSInteger per_page;
 @property (assign, nonatomic) NSInteger current_page;
@@ -33,10 +33,10 @@
 @property (assign, nonatomic) NSInteger to;
 @property (copy, nonatomic) NSString *next_page_url;
 @property (copy, nonatomic) NSString *prev_page_url;
-@property (strong, nonatomic) NSMutableArray <RechargeStreamResultData>*data;
+@property (strong, nonatomic) NSMutableArray <RechargeStreamResultData> *data;
 @end
 
-@interface RechargeStreamModel : JSONModel
+@interface RechargeStreamModel : OptionalJSONModel
 @property (assign, nonatomic) NSInteger errCode;
 @property (copy, nonatomic) NSString *errMsg;
 @property (strong, nonatomic) RechargeStreamResult *result;

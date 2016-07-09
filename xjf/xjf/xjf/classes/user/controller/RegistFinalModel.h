@@ -8,7 +8,7 @@
 
 #import "OptionalJSONModel.h"
 
-@interface ResultUserModel : JSONModel
+@interface ResultUserModel : OptionalJSONModel
 @property (nonatomic, copy) NSString *avatar;
 @property (nonatomic, copy) NSString *created_at;
 @property (nonatomic, copy) NSString *id;
@@ -16,17 +16,17 @@
 @property (nonatomic, copy) NSString *updated_at;
 @end
 
-@interface ResultCredentialModel : JSONModel
+@interface ResultCredentialModel : OptionalJSONModel
 @property (nonatomic, copy) NSString *bearer;
 @property (nonatomic, copy) NSString *expired_at;
 @end
 
-@interface RegistFinalResultModel : JSONModel
+@interface RegistFinalResultModel : OptionalJSONModel
 @property (nonatomic, strong) ResultCredentialModel *credential;
 @property (nonatomic, strong) ResultUserModel *user;
 @end
 
-@interface RegistFinalModel : JSONModel
+@interface RegistFinalModel : OptionalJSONModel
 @property (nonatomic, assign) NSInteger errCode;
 @property (nonatomic, copy) NSString *errMsg;
 @property (nonatomic, strong) RegistFinalResultModel *result;
