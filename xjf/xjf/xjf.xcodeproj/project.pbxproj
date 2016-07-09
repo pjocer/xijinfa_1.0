@@ -182,6 +182,7 @@
 		AA5B96971D222BE20088A196 /* PlayerPageDescribeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B968F1D222BE20088A196 /* PlayerPageDescribeHeaderView.m */; };
 		AA5B96981D222BE20088A196 /* PlayerPageRecommendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96911D222BE20088A196 /* PlayerPageRecommendedHeaderView.m */; };
 		AA5B969B1D2244F60088A196 /* CommentsPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B969A1D2244F60088A196 /* CommentsPageCommentsCell.m */; };
+		AAC68BFD1D30BFE600685262 /* OptionalJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC68BFC1D30BFE500685262 /* OptionalJSONModel.m */; };
 		C397B48DFAE47D8F0F3C8A55 /* libPods-xjf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */; };
 		CD144F091CBB732900A0636D /* AppGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF11CBB732900A0636D /* AppGridViewCell.m */; };
 		CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EF31CBB732900A0636D /* BaikeGridViewCell.m */; };
@@ -628,6 +629,8 @@
 		AA5B96911D222BE20088A196 /* PlayerPageRecommendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerPageRecommendedHeaderView.m; sourceTree = "<group>"; };
 		AA5B96991D2244F60088A196 /* CommentsPageCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsPageCommentsCell.h; sourceTree = "<group>"; };
 		AA5B969A1D2244F60088A196 /* CommentsPageCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsPageCommentsCell.m; sourceTree = "<group>"; };
+		AAC68BFB1D30BFE500685262 /* OptionalJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalJSONModel.h; sourceTree = "<group>"; };
+		AAC68BFC1D30BFE500685262 /* OptionalJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalJSONModel.m; sourceTree = "<group>"; };
 		AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.release.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.release.xcconfig"; sourceTree = "<group>"; };
 		CD144EF01CBB732900A0636D /* AppGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppGridViewCell.h; sourceTree = "<group>"; };
 		CD144EF11CBB732900A0636D /* AppGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGridViewCell.m; sourceTree = "<group>"; };
@@ -1980,6 +1983,8 @@
 				CDF57AC71C9F825D00049AF0 /* AppDelegate.m */,
 				5A6CF1D31D126FA600676255 /* AppDelegateManager.h */,
 				5A6CF1D41D126FA700676255 /* AppDelegateManager.m */,
+				AAC68BFB1D30BFE500685262 /* OptionalJSONModel.h */,
+				AAC68BFC1D30BFE500685262 /* OptionalJSONModel.m */,
 			);
 			path = xjf;
 			sourceTree = "<group>";
@@ -2428,6 +2433,7 @@
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				D0290ED21D2B7F6900FF823C /* XJFCacheHandler.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
+				AAC68BFD1D30BFE600685262 /* OptionalJSONModel.m in Sources */,
 				5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */,
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
 				CD144F0D1CBB732900A0636D /* IndexBaikeCell.m in Sources */,
