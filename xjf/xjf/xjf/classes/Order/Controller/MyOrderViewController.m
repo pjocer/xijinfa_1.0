@@ -83,8 +83,9 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
+        make.left.equalTo(self.view).with.offset(10);
+        make.right.equalTo(self.view).with.offset(-10);
+        make.top.bottom.equalTo(self.view);
     }];
 
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -175,8 +176,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
     if ([self.orderfooterView.model.type isEqualToString:@"subscribe"] || self.orderfooterView.model.items.count == 0) {
         //Vip
-        self.orderfooterView.orderDescription.text = [NSString
-                stringWithFormat:@"共1件商品 实际付款:￥%.2lf", [self.orderfooterView.model.amount_display floatValue]];
+        self.orderfooterView.orderDescription.text = [NSString stringWithFormat:@"共1件商品 实际付款:￥%.2lf", [self.orderfooterView.model.amount_display floatValue]];
 
     } else if ([self.orderfooterView.model.type isEqualToString:@"purchase"]) {
         //lessons
@@ -195,8 +195,7 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
         [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
             self.requestParams = @{@"status" : [NSString stringWithFormat:@"2"]};
-            [self                                                       requestAllOrderData:[NSString
-                    stringWithFormat:@"%@%@", cancelOrder, orderFooterView.model.id] method:PUT];
+            [self requestAllOrderData:[NSString stringWithFormat:@"%@%@", cancelOrder, orderFooterView.model.id] method:PUT];
         }];
     }
 }

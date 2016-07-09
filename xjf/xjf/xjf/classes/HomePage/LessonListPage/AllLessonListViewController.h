@@ -18,4 +18,5 @@ typedef NS_OPTIONS(NSInteger, LessonListPageLessonType) {
 @property (nonatomic, assign) LessonListPageLessonType lessonListPageLessonType;
 @property (nonatomic, strong) NSString *ID;
 @property (nonatomic, strong) NSString *lessonListTitle;
+@property (nonatomic, assign) BOOL isFavoredsList;
 @end

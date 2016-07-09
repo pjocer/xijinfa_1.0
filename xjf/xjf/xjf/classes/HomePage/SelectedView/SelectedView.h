@@ -10,6 +10,8 @@
 #import "ProjectListByModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+///reloadData
 typedef void (^SelectedViewCompletionHandler)(id data);
 
 
@@ -20,8 +22,6 @@ typedef NS_OPTIONS(NSUInteger, SelectedViewType) {
 };
 @property (nonatomic, strong) NSString *leftButtonName;
 @property (nonatomic, strong) NSString *rightButtonName;
-@property (nonatomic, strong) NSMutableArray <NSString *>*rightTableDataSource;
-@property (nonatomic, strong) NSMutableArray <NSString *>*leftTableDataSource;
 @property(nullable, nonatomic, copy) SelectedViewCompletionHandler handlerData;
 @property (nonatomic, strong) ProjectListByModel *projectListByModel_Employed;
 @property (nonatomic, strong) NSDictionary *employedDataDic;
@@ -33,4 +33,6 @@ typedef NS_OPTIONS(NSUInteger, SelectedViewType) {
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 @end
+
 NS_ASSUME_NONNULL_END
+

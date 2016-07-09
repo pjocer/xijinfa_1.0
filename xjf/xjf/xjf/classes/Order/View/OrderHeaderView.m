@@ -14,6 +14,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        
+        ViewRadius(self, 5);
 
         CGFloat labelW = (self.frame.size.width - 20) / 2;
         CGFloat labelH = 14;

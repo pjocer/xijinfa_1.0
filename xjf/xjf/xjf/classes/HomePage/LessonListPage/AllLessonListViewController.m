@@ -19,9 +19,8 @@ UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) SelectedView *selectedView;
-
-@property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) TablkListModel *tablkListModel;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation AllLessonListViewController
@@ -30,6 +29,7 @@ UICollectionViewDelegateFlowLayout>
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.dataSource = [NSMutableArray array];
+        self.isFavoredsList = NO;
     }
     return self;
 }
@@ -50,32 +50,43 @@ UICollectionViewDelegateFlowLayout>
     
     switch (self.lessonListPageLessonType) {
         case LessonListPageWikipedia: {
-            [self setSelectedView];
             [self initCollectionView];
             if (self.ID) {
                 NSString *api = [NSString stringWithFormat:@"%@%@", categoriesVideoList, self.ID];
                 [self requesData:api method:GET];
-            } else {
+            }else if (_isFavoredsList == YES){
+                [self requesData:favorite method:GET];
+            }else {
                 [self requesData:talkGrid method:GET];
             }
         }
             break;
         case LessonListPageSchool: {
-            
-            [self setSelectedView];
-            [self initCollectionView];
             if (self.ID) {
+                [self setSelectedView];
+                [self initCollectionView];
                 NSString *api = [NSString stringWithFormat:@"%@%@", coursesProject, self.ID];
                 [self requesData:api method:GET];
-            } else {
+            }else if (_isFavoredsList == YES){
+                [self initCollectionView];
+                [self requesData:favorite method:GET];
+            }else {
+                [self setSelectedView];
+                [self initCollectionView];
                 [self requesData:coursesProjectLessonDetailList method:GET];
             }
         }
             break;
         case LessonListPageEmployed: {
-            [self setSelectedView];
-            [self initCollectionView];
-            [self requesData:contents method:GET];
+
+            if (_isFavoredsList == YES){
+                [self initCollectionView];
+                [self requesData:favorite method:GET];
+            }else {
+                [self setSelectedView];
+                [self initCollectionView];
+                [self requesData:contents method:GET];
+            }
         }
             break;
         default:
@@ -89,23 +100,6 @@ UICollectionViewDelegateFlowLayout>
 
 - (void)setNavigation {
 
-//    switch (self.lessonListPageLessonType) {
-//        case LessonListPageWikipedia: {
-//    self.navigationItem.title = @"析金百科";
-//    self.navigationItem.title = self.lessonListTitle;
-//        }
-//            break;
-//        case LessonListPageSchool: {
-//    self.navigationItem.title = @"析金学堂";
-//        }
-//            break;
-//        case LessonListPageEmployed: {
-//    self.navigationItem.title = @"析金从业";
-//        }
-//            break;
-//        default:
-//            break;
-//    }
     self.navigationItem.title = self.lessonListTitle;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithImage:[UIImage imageNamed:@"search"]
@@ -131,12 +125,11 @@ UICollectionViewDelegateFlowLayout>
     
     _selectedView.leftButtonName = @"综合排序";
     _selectedView.rightButtonName = @"筛选";
-    _selectedView.leftTableDataSource = @[@"综合排序",@"销量最好",@"价格由低到高",@"价格由高到低"].mutableCopy;
-    _selectedView.rightTableDataSource = @[@"学习内容",@"当前水平",@"析金名师"].mutableCopy;
+//    _selectedView.leftTableDataSource = @[@"综合排序",@"销量最好",@"价格由低到高",@"价格由高到低"].mutableCopy;
+//    _selectedView.rightTableDataSource = @[@"学习内容",@"当前水平",@"析金名师"].mutableCopy;
     @weakify(self)
     _selectedView.handlerData = ^(id data) {
         @strongify(self)
-        //reloadData at here.
         NSLog(@"%@",data);
 
     };
@@ -146,9 +139,9 @@ UICollectionViewDelegateFlowLayout>
 {
     self.selectedView = [[SelectedView alloc] initWithFrame:self.view.frame SelectedViewType:ISEmployed];
     [self.view addSubview:_selectedView];
+
     _selectedView.leftButtonName = @"全部";
     _selectedView.rightButtonName = @"全部";
-    
     [self requestEmployedData];
     
     //reloadData at here.
@@ -176,7 +169,7 @@ UICollectionViewDelegateFlowLayout>
     _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
     
     self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectMake(0, _lessonListPageLessonType == LessonListPageWikipedia ? 0 : 35, SCREENWITH, _lessonListPageLessonType == LessonListPageWikipedia ? self.view.frame.size.height - 20:self.view.frame.size.height - 94)
+                           initWithFrame:CGRectMake(0, _selectedView ? 35 : 0, SCREENWITH, _selectedView ? self.view.frame.size.height - 94:self.view.frame.size.height - 20)
                            collectionViewLayout:_layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = NO;
@@ -214,7 +207,7 @@ UICollectionViewDelegateFlowLayout>
         default:
             break;
     }
-    return self.dataSource.count;
+    return _dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -222,11 +215,11 @@ UICollectionViewDelegateFlowLayout>
 
     if (self.lessonListPageLessonType == LessonListPageWikipedia){
         XJFWikipediaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionByWikipedia_CellID forIndexPath:indexPath];
-        cell.model = self.dataSource[indexPath.row];
+        cell.model = _dataSource[indexPath.row];
         return cell;
     }else{
         XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
-        cell.model = self.dataSource[indexPath.row];
+        cell.model = _dataSource[indexPath.row];
         if (self.lessonListPageLessonType == LessonListPageSchool) {
    
         } else if (self.lessonListPageLessonType == LessonListPageEmployed){
@@ -254,19 +247,19 @@ UICollectionViewDelegateFlowLayout>
     switch (self.lessonListPageLessonType) {
         case LessonListPageWikipedia: {
             PlayerViewController *playerPage = [PlayerViewController new];
-            TalkGridModel *model = self.dataSource[indexPath.row];
+            TalkGridModel *model = _dataSource[indexPath.row];
             playerPage.talkGridModel = model;
             playerPage.talkGridListModel = self.tablkListModel;
             [self.navigationController pushViewController:playerPage animated:YES];
         }
             break;
         case LessonListPageSchool: {
-            TalkGridModel *model = self.dataSource[indexPath.row];
+            TalkGridModel *model = _dataSource[indexPath.row];
             [self pushLessonPlayerPage:model];
         }
             break;
         case LessonListPageEmployed: {
-            TalkGridModel *model = self.dataSource[indexPath.row];
+            TalkGridModel *model = _dataSource[indexPath.row];
             [self pushLessonPlayerPage:model];
         }
             break;
@@ -291,6 +284,9 @@ UICollectionViewDelegateFlowLayout>
 }
 
 #pragma mark - handle data
+
+///)loadMoreData
+
 - (void)loadMoreData {
     if (self.tablkListModel.result.next_page_url != nil) {
         [self requesData:_tablkListModel.result.next_page_url method:GET];
@@ -312,7 +308,11 @@ UICollectionViewDelegateFlowLayout>
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
        @strongify(self)
         self.tablkListModel = [[TablkListModel alloc] initWithData:responseData error:nil];
-        [self.dataSource addObjectsFromArray:self.tablkListModel.result.data];
+        if (_isFavoredsList == YES) {
+            [self handleDataByTypeIfIsFavoredsList];
+        }else{
+          [_dataSource addObjectsFromArray:self.tablkListModel.result.data];
+        }
         [self.collectionView.mj_footer isRefreshing] ? [self.collectionView.mj_footer endRefreshing] : nil;
         [self.collectionView reloadData];
     } failedBlock:^(NSError *_Nullable error) {
@@ -321,7 +321,37 @@ UICollectionViewDelegateFlowLayout>
     }];
 }
 
-#pragma mark requestEmployedData
+#pragma mark handleDataByTypeIfIsFavoredsList
+
+- (void)handleDataByTypeIfIsFavoredsList{
+    switch (self.lessonListPageLessonType) {
+        case LessonListPageWikipedia: {
+            [self handleDataByDeptType:@"dept2"];
+        }
+            break;
+        case LessonListPageSchool: {
+            [self handleDataByDeptType:@"dept4"];
+        }
+            break;
+        case LessonListPageEmployed: {
+            [self handleDataByDeptType:@"dept5"];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)handleDataByDeptType:(NSString *)str
+{
+    for (TalkGridModel *model in self.tablkListModel.result.data) {
+        if ([model.type isEqualToString:@"course"] && [model.department isEqualToString:str]) {
+            [self.dataSource addObject:model];
+        }
+    }
+}
+
+#pragma mark requestEmployedData(从业筛选数据)
 
 - (void)requestEmployedData{
     RACSignal *projectListByModelSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {

@@ -17,6 +17,8 @@
 @property (nonatomic, strong) SelecteButtonView *selecteButtonView;
 @property (nonatomic, assign) BOOL isSelectedLeftButton;
 @property (nonatomic, assign) BOOL isSelectedRightButton;
+@property (nonatomic, strong) NSMutableArray <NSString *>*rightTableDataSource;
+@property (nonatomic, strong) NSMutableArray <NSString *>*leftTableDataSource;
 
 @property (nonatomic, strong) SelectedTableView *tableView;
 @property (nonatomic, strong) SelectedTableView *tableViewRight;
