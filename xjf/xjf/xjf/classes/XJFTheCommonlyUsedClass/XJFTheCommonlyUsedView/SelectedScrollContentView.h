@@ -25,12 +25,13 @@ NS_ASSUME_NONNULL_BEGIN
          targetViewController:(UIViewController *)targetViewController
   addChildViewControllerBlock:(dispatch_block_t)block NS_DESIGNATED_INITIALIZER;
 
+
 /**
- *  改变当前控制器,也可以说改变SelectedScrollContentView.contentScrollView.contentOffset
+ *  changCurrunViewLocation
  *
- *  @param i 角标(根据数组顺序)
+ *  @param index index(角标)
  */
-- (void)selectedByType:(NSInteger)i;
+- (void)changCurrunViewLocation:(NSInteger)index;
 
 
 - (instancetype)init NS_UNAVAILABLE;

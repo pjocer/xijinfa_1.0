@@ -174,10 +174,10 @@ static CGFloat animateWithDuration = 0.3;
 
 #pragma mark - public Action
 
-- (void)selectedByType:(NSInteger)i
+- (void)changCurrunViewLocation:(NSInteger)index
 {
-    CGFloat x = i * SCREENWITH;
-    [self setUpOneChildViewController:i];
+    CGFloat x = index * SCREENWITH;
+    [self setUpOneChildViewController:index];
     self.contentScrollView.contentOffset = CGPointMake(x, 0);
 }
 

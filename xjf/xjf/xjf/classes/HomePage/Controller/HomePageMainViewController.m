@@ -57,7 +57,7 @@
 
 - (void)changCurrunViewLocation:(NSInteger)index
 {
-    [_selectedScrollContentView selectedByType:index];
+    [_selectedScrollContentView changCurrunViewLocation:index];
 }
 
 
