@@ -21,7 +21,7 @@ static CGFloat titleH = 35;
 static CGFloat selViewH = 2;
 
 
-#warning BUG -> 1.播放页push 然后pop 回来 播放器问题. 2.购买成功pop回来播放器问题 3.购买(套课)订单冲突问题. 4.studyCenter 跳转首页刷新数据问题
+#warning BUG -> 1.播放页push 然后pop 回来 播放器问题. 2.购买成功pop回来播放器问题 3.购买(套课)订单冲突问题.4播放器BUG
 
 @interface LessonPlayerViewController () <UIScrollViewDelegate, LessonPlayerVideoBottomViewDelegate,
         LessonPlayerLessonListViewControllerDelegate,

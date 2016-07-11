@@ -222,18 +222,32 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
                                 duration:(NSTimeInterval)duration {
     if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
         self.view.backgroundColor = BackgroundColor;
+        self.playerPageDescribeHeaderView.hidden = NO;
         self.collectionView.hidden = NO;
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(20);
+        }];
+        [self.playerPageDescribeHeaderView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.playerView.mas_bottom);
+            make.left.right.equalTo(self.view);
+            make.height.mas_equalTo(50);
         }];
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     } else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight ||
             toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
         self.view.backgroundColor = [UIColor blackColor];
+        self.playerPageDescribeHeaderView.hidden = YES;
         self.collectionView.hidden = YES;
         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(0);
         }];
+        
+        [self.playerPageDescribeHeaderView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.playerView.mas_bottom);
+            make.left.right.equalTo(self.view);
+            make.height.mas_equalTo(0.01);
+        }];
+        
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 }
@@ -344,14 +358,11 @@ static NSString *PlayerVC_Comments_Cell_Id = @"PlayerVC_Comments_Cell_Id";
 - (void)setPlayerPageDescribeHeaderView{
     self.playerPageDescribeHeaderView = [[PlayerPageDescribeHeaderView alloc] init];
     [self.view addSubview:_playerPageDescribeHeaderView];
-    [_playerPageDescribeHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        [self.playerPageDescribeHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.playerView.mas_bottom);
-            make.left.right.equalTo(self.view);
-            make.height.mas_equalTo(50);
-        }];
+    [self.playerPageDescribeHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.playerView.mas_bottom);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(50);
     }];
-
     [_playerPageDescribeHeaderView.thumbUpButton addTarget:self action:@selector(thumbUpAction:) forControlEvents:UIControlEventTouchUpInside];
     [_playerPageDescribeHeaderView.shareButton addTarget:self action:@selector(describeHeaderViewshareButtonAction:)forControlEvents:UIControlEventTouchUpInside];
     [_playerPageDescribeHeaderView.collectionButton addTarget:self action:@selector(describeHeaderViewcollectionButtonAction:)
