@@ -352,25 +352,37 @@ static CGFloat selViewH = 2;
 
 
 ///setPlayerViewForResolutionDic
-- (void)setPlayerViewForResolutionDic:(TalkGridModel *)model
-{
+- (void)setPlayerViewForResolutionDic:(TalkGridModel *)model {
+    // ZFPlayer需要一个字典来显示`分辨率选择按钮`, 但是没有排序
     NSDictionary *dic = [NSMutableDictionary dictionary];
-    for (TalkGridVideo *video in model.video_player) {
-        if ([video.resolution isEqualToString:@"auto"]) {
-            self.playUrl = video.url;
-            [dic setValue:video.url forKey:@"自动"];
-        } else if ([video.resolution isEqualToString:@"nhd"]){
-            [dic setValue:video.url forKey:@"标清"];
-        } else if ([video.resolution isEqualToString:@"hd"]){
-            [dic setValue:video.url forKey:@"高清"];
-        } else if ([video.resolution isEqualToString:@"fhd"]){
-            [dic setValue:video.url forKey:@"超清"];
+    NSArray *label = @[@"auto", @"nhd", @"hd", @"fhd"];
+    NSArray *label2 = @[@"自动", @"标清", @"高清", @"超清"];
+    NSMutableArray *names = [NSMutableArray array];
+    NSMutableArray *urls = [NSMutableArray array];
+
+    for (NSUInteger i = 0; i < label.count; i++) {
+        NSString *str = label[i];
+        for (TalkGridVideo *video in model.video_player) {
+            if ([video.resolution isEqualToString:str]) {
+                [names addObject:label2[i]];
+                [urls addObject:video.url];
+                [dic setValue:video.url forKey:str];
+            }
         }
     }
-    
+
     _playerView.resolutionDic = nil;
-    _playerView.resolutionDic = dic;
-    
+    if (urls.count) {
+        // 1. 所以先设置字典
+        _playerView.resolutionDic = dic;
+
+        // 2. 再重设相关的属性
+        [_playerView setValue:names forKeyPath:@"controlView.resolutionArray"];
+        _playerView.videoURLArray = urls;
+
+        self.playUrl = urls[0];
+    }
+
     if (model.cover && model.cover.count > 0) {
         TalkGridCover *tempCover = model.cover.firstObject;
         _playerView.xjfloading_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
