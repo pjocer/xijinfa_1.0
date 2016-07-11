@@ -7,7 +7,10 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "TalkGridModel.h"
 
 @interface EmployedbundleModel : JSONModel
-
+@property (nonatomic, assign) int errCode;
+@property (nonatomic, strong) NSString *errMsg;
+@property (nonatomic, strong) TalkGridModel *result;
 @end

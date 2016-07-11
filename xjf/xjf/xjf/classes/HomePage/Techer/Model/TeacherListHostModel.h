@@ -7,7 +7,7 @@
 //
 
 #import "OptionalJSONModel.h"
-
+#import "TalkGridModel.h"
 
 @protocol TeacherListData
 @end
@@ -38,7 +38,6 @@
 @property (nonatomic, strong) NSString *created_at;
 @property (nonatomic, strong) NSString *updated_at;
 @property (nonatomic, strong) NSString *api_href;
-@property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *thumbnail;
 @property (nonatomic, strong) NSArray <TeacherListVideo, ConvertOnDemand> *video_player;
 ///(已登录用户)是否已点赞
@@ -52,6 +51,7 @@
 ///视频播放次数
 @property (nonatomic, strong) NSString *video_view;
 @property (nonatomic, strong) NSString *guru_avatar;
+@property (nonatomic, strong) NSArray <TalkGridCover> *cover;
 @end
 
 

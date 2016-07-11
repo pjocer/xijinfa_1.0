@@ -7,6 +7,7 @@
 //
 
 #import "OptionalJSONModel.h"
+#import "TalkGridModel.h"
 
 @protocol WikiPediaCategoriesDataModel
 
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSArray <TalkGridCover> *cover;
 @end
 
 

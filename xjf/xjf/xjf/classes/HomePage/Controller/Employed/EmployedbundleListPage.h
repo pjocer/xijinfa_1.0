@@ -9,5 +9,5 @@
 #import "HomePageBaseViewController.h"
 
 @interface EmployedbundleListPage : HomePageBaseViewController
-
+@property (nonatomic, strong) NSString *api_uri;
 @end

@@ -10,4 +10,8 @@
 #import "TalkGridModel.h"
 @interface XJFSchoolCollectionViewCell : UICollectionViewCell
 @property (nonatomic, strong) TalkGridModel *model;
+@property (weak, nonatomic) IBOutlet UIView *priceBackGroudView;
+@property (weak, nonatomic) IBOutlet UILabel *lessonLogoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+
 @end

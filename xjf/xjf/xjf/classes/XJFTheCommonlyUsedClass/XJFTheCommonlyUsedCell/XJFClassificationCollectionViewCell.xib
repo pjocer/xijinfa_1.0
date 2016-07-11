@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -13,6 +13,9 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zTP-xd-Lpr">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXu-zp-wm3">
                         <rect key="frame" x="10" y="40" width="80" height="20"/>
                         <constraints>
@@ -35,14 +38,19 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="zTP-xd-Lpr" secondAttribute="trailing" id="8y2-nz-aic"/>
                 <constraint firstItem="VxB-me-3Jv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="MbX-CQ-kQZ"/>
                 <constraint firstItem="FXu-zp-wm3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="PUY-vF-0lD"/>
                 <constraint firstItem="FXu-zp-wm3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="TPX-V1-N4k"/>
+                <constraint firstItem="zTP-xd-Lpr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Viv-VX-f1T"/>
+                <constraint firstItem="zTP-xd-Lpr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="f6L-q4-LyT"/>
                 <constraint firstAttribute="trailing" secondItem="FXu-zp-wm3" secondAttribute="trailing" constant="10" id="kPX-U7-ohq"/>
+                <constraint firstAttribute="bottom" secondItem="zTP-xd-Lpr" secondAttribute="bottom" id="lgT-UE-84g"/>
                 <constraint firstAttribute="trailing" secondItem="VxB-me-3Jv" secondAttribute="trailing" constant="10" id="t6b-1x-z8e"/>
                 <constraint firstAttribute="bottom" secondItem="VxB-me-3Jv" secondAttribute="bottom" constant="15" id="x5Q-mp-Z9F"/>
             </constraints>
             <connections>
+                <outlet property="backGroudImage" destination="zTP-xd-Lpr" id="hKK-Sv-8Fw"/>
                 <outlet property="describe" destination="VxB-me-3Jv" id="L9n-K3-Bbf"/>
                 <outlet property="title" destination="FXu-zp-wm3" id="8lr-Xp-vHc"/>
             </connections>

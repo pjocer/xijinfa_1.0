@@ -35,10 +35,27 @@
     
     self.title.text = model.title;
     self.describe.text = [NSString stringWithFormat:@"%@ 人看过",model.view_count];
-//    if (_model.taxonomy_gurus.count != 0 && _model.taxonomy_gurus) {
-//        taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
-//        [self.teacherCoverImg sd_setBackgroundImageWithURL:[NSURL URLWithString:gurus.guru_avatar] forState:UIControlStateNormal];
-//    }
+    self.price.text = [NSString stringWithFormat:@"￥%.2lf",model.price.floatValue / 100];
+    if (model.user_paid) {
+        self.lessonLogoLabel.text = @"已购买";
+        self.price.hidden = YES;
+        self.priceBackGroudView.backgroundColor = [UIColor xjfStringToColor:@"#79AED0"];
+    }else{
+        self.price.hidden = NO;
+        self.priceBackGroudView.backgroundColor = [UIColor xjfStringToColor:@"#EA5F5F"];
+        if ([model.type isEqualToString:@"bundle"]) {
+            self.lessonLogoLabel.text = @"套餐课程购买";
+        }else if ([model.type isEqualToString:@"course"]){
+            self.lessonLogoLabel.text = @"单套课程购买";
+        }
+    }
+
+    taxonomy_gurus *gurus = model.taxonomy_gurus.firstObject;
+    for (TalkGridCover *cover in gurus.cover) {
+        if ([cover.size isEqualToString:@"default"]) {
+            [self.teacherCoverImg sd_setBackgroundImageWithURL:[NSURL URLWithString:gurus.guru_avatar] forState:UIControlStateNormal];
+        }
+    }
 }
 
 @end

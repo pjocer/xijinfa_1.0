@@ -13,7 +13,7 @@
 @property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
 @property (nonatomic, strong) UILabel *videoTitle;
-@property (nonatomic, strong) UILabel *vipLogo;
+//@property (nonatomic, strong) UILabel *vipLogo;
 @end
 
 @implementation VideoListCell
@@ -150,18 +150,18 @@
         self.selectedLabel.hidden = YES;
 
         //vipLogo
-        self.vipLogo = [[UILabel alloc] init];
-        [self.contentView addSubview:self.vipLogo];
-        [self.vipLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.right.equalTo(self.videoImage);
-            make.size.mas_equalTo(CGSizeMake(60, 20));
-        }];
-        self.vipLogo.backgroundColor = [UIColor redColor];
-        self.vipLogo.textAlignment = NSTextAlignmentCenter;
-        self.vipLogo.textColor = [UIColor whiteColor];
-        self.vipLogo.font = FONT12;
-        self.vipLogo.text = @"Vip 专享";
-        self.vipLogo.hidden = YES;
+//        self.vipLogo = [[UILabel alloc] init];
+//        [self.contentView addSubview:self.vipLogo];
+//        [self.vipLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.right.equalTo(self.videoImage);
+//            make.size.mas_equalTo(CGSizeMake(60, 20));
+//        }];
+//        self.vipLogo.backgroundColor = [UIColor redColor];
+//        self.vipLogo.textAlignment = NSTextAlignmentCenter;
+//        self.vipLogo.textColor = [UIColor whiteColor];
+//        self.vipLogo.font = FONT12;
+//        self.vipLogo.text = @"Vip 专享";
+//        self.vipLogo.hidden = YES;
     }
     return self;
 }
@@ -296,11 +296,11 @@
         }];
     }
 
-    if (self.model.package.count != 0 && [self.model.package containsObject:@"subscriber"]) {
-        self.vipLogo.hidden = NO;
-    } else {
-        self.vipLogo.hidden = YES;
-    }
+//    if (self.model.package.count != 0 && [self.model.package containsObject:@"subscriber"]) {
+//        self.vipLogo.hidden = NO;
+//    } else {
+//        self.vipLogo.hidden = YES;
+//    }
 }
 
 

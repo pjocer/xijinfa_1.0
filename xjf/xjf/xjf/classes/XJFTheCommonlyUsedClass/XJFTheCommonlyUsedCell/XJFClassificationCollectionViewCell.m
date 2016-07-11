@@ -11,6 +11,7 @@
 @interface XJFClassificationCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *describe;
+@property (weak, nonatomic) IBOutlet UIImageView *backGroudImage;
 
 @end
 
@@ -19,16 +20,20 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     ViewRadius(self, 5.0);
-    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rectangle"]];
 }
 
 - (void)setModel:(ProjectList *)model {
     if (model) {
         _model = model;
     }
-//    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.title.text = model.title;
     self.describe.text = model.summary;
+    
+    for (ProjectListCover *cover in model.cover) {
+        if ([cover.size isEqualToString:@"default"]) {
+            [_backGroudImage sd_setImageWithURL:[NSURL URLWithString:cover.url]];
+        }
+    }
 }
 
 - (void)setWikiPediaCategoriesDataModel:(WikiPediaCategoriesDataModel *)wikiPediaCategoriesDataModel
@@ -36,8 +41,13 @@
     if (wikiPediaCategoriesDataModel) {
         _wikiPediaCategoriesDataModel = wikiPediaCategoriesDataModel;
     }
-    //    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     self.title.text = wikiPediaCategoriesDataModel.title;
+    
+    for (ProjectListCover *cover in wikiPediaCategoriesDataModel.cover) {
+        if ([cover.size isEqualToString:@"default"]) {
+            [_backGroudImage sd_setImageWithURL:[NSURL URLWithString:cover.url]];
+        }
+    }
 }
 
 @end

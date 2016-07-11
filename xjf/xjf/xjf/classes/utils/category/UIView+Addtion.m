@@ -28,12 +28,14 @@
     [self addSubview:lineView];
     return lineView;
 }
+
 - (UIView *)addBottomLine:(CGFloat)lineHeight {
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,self.frame.size.height - lineHeight / [UIScreen mainScreen].scale,SCREENWITH,lineHeight / [UIScreen mainScreen].scale)];
     lineView.backgroundColor = GrayColorLine;
     [self addSubview:lineView];
     return lineView;
 }
+
 -(void)setBackgroundColorByTopColor:(UIColor *)topColor BottomColor:(UIColor *)bottomColor {
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = self.bounds;
@@ -43,5 +45,18 @@
     }
     [self.layer insertSublayer:gradientLayer atIndex:0];
 }
+
+- (void)setViewCornerRadius:(UIRectCorner)corner CornerRadii:(CGSize)cornerRadii
+{
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corner cornerRadii:cornerRadii];
+    
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    //设置大小
+    maskLayer.frame = self.bounds;
+    //设置图形样子
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
 
 @end

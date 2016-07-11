@@ -12,6 +12,7 @@
 #import "SelectedView.h"
 #import <MJRefresh.h>
 #import "LessonPlayerViewController.h"
+#import "EmployedbundleListPage.h"
 
 @interface AllLessonListViewController ()<UICollectionViewDataSource,
 UICollectionViewDelegate,
@@ -228,6 +229,12 @@ UICollectionViewDelegateFlowLayout>
     }else{
         XJFSchoolCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomePageCollectionBySchool_CellID forIndexPath:indexPath];
         cell.model = _dataSource[indexPath.row];
+        if (self.isFavoredsList == NO && self.isMyLessonsList == NO) {
+            cell.priceBackGroudView.hidden = NO;
+        }else{
+            cell.priceBackGroudView.hidden = YES;
+        }
+        
         if (self.lessonListPageLessonType == LessonListPageSchool) {
    
         } else if (self.lessonListPageLessonType == LessonListPageEmployed){
@@ -277,11 +284,19 @@ UICollectionViewDelegateFlowLayout>
 }
 
 - (void)pushLessonPlayerPage:(TalkGridModel *)model{
-    LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
-    lessonPlayerViewController.lesssonID = model.id_;
-    lessonPlayerViewController.playTalkGridModel = model;
-    lessonPlayerViewController.originalTalkGridModel = model;
-    [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+    if ([model.type isEqualToString:@"bundle"]) {
+        EmployedbundleListPage *employedbundleListPage = [EmployedbundleListPage new];
+        employedbundleListPage.api_uri = model.api_uri;
+        employedbundleListPage.navigationItem.title = model.title;
+        [self.navigationController pushViewController:employedbundleListPage animated:YES];
+        
+    }else if ([model.type isEqualToString:@"course"]){
+        LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
+        lessonPlayerViewController.lesssonID = model.id_;
+        lessonPlayerViewController.playTalkGridModel = model;
+        lessonPlayerViewController.originalTalkGridModel = model;
+        [self.navigationController pushViewController:lessonPlayerViewController animated:YES];
+    }
 }
 
 #pragma mark Search
@@ -293,8 +308,7 @@ UICollectionViewDelegateFlowLayout>
 
 #pragma mark - handle data
 
-///)loadMoreData
-
+///loadMoreData
 - (void)loadMoreData {
     if (self.tablkListModel.result.next_page_url != nil) {
         [self requesData:_tablkListModel.result.next_page_url method:GET];

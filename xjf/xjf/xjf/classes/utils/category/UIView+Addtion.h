@@ -24,4 +24,14 @@
  */
 - (void)setBackgroundColorByTopColor:(UIColor *)topColor
                          BottomColor:(UIColor *)bottomColor;
+
+
+/**
+ *  切圆角
+ *
+ *  @param corner      UIRectCorner
+ *  @param cornerRadii Size
+ */
+- (void)setViewCornerRadius:(UIRectCorner)corner CornerRadii:(CGSize)cornerRadii;
+
 @end

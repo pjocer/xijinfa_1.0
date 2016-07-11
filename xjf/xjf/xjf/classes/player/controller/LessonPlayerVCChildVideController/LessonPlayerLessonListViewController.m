@@ -32,7 +32,7 @@ static CGFloat rowHeight = 60;
 #pragma mark- initTabelView
 
 - (void)initTabelView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
@@ -131,9 +131,16 @@ static CGFloat rowHeight = 60;
     }else{
         if (section == 0) {
             return 10;
+        }else{
+            return 0.01;
         }
     }
     return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

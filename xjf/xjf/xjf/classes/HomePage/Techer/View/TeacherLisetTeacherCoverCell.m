@@ -27,7 +27,13 @@
     if (model) {
         _model = model;
     }
-    [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:model.guru_avatar]];
+    
+    for (TalkGridCover *cover in model.cover) {
+        if ([cover.size isEqualToString:@"default"]) {
+            [self.teacherImage sd_setImageWithURL:[NSURL URLWithString:cover.url]];
+        }
+    }
+
     self.teacherName.text = model.title;
     self.teacherDetail.text = model.subtitle;
 }

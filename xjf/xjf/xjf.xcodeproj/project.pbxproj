@@ -117,6 +117,8 @@
 		5A6CF4E71D260F8800676255 /* EmploymentInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */; };
 		5A6CF4F01D2639AE00676255 /* EmployedClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EE1D2639AE00676255 /* EmployedClassificationCollectionViewCell.m */; };
 		5A6CF4F11D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */; };
+		5AB241191D3365B300909BD4 /* EmployedbundleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241181D3365B300909BD4 /* EmployedbundleModel.m */; };
+		5AB2411C1D33695E00909BD4 /* EmployedbundleListPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2411B1D33695E00909BD4 /* EmployedbundleListPage.m */; };
 		5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */; };
 		5AF046491D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */; };
 		5AF0464D1D31008E00790232 /* TeacherLisetTeacherCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0464B1D31008E00790232 /* TeacherLisetTeacherCoverCell.m */; };
@@ -499,6 +501,10 @@
 		5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployedClassificationCollectionViewCell.xib; sourceTree = "<group>"; };
 		5A7EEE931CE0299C007BAECD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = classes/utils/Header.h; sourceTree = "<group>"; };
 		5A7EEE941CE02A40007BAECD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = classes/utils/PrefixHeader.pch; sourceTree = "<group>"; };
+		5AB241171D3365B300909BD4 /* EmployedbundleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedbundleModel.h; sourceTree = "<group>"; };
+		5AB241181D3365B300909BD4 /* EmployedbundleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedbundleModel.m; sourceTree = "<group>"; };
+		5AB2411A1D33695E00909BD4 /* EmployedbundleListPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedbundleListPage.h; sourceTree = "<group>"; };
+		5AB2411B1D33695E00909BD4 /* EmployedbundleListPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedbundleListPage.m; sourceTree = "<group>"; };
 		5AF046441D2F5A1E00790232 /* EmployedArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedArticlesViewController.h; sourceTree = "<group>"; };
 		5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedArticlesViewController.m; sourceTree = "<group>"; };
 		5AF046471D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerTeacherLisetViewController.h; sourceTree = "<group>"; };
@@ -1189,6 +1195,8 @@
 			children = (
 				5A6CF3AD1D1CEE4E00676255 /* HomePageBaseModel.h */,
 				5A6CF3AE1D1CEE4E00676255 /* HomePageBaseModel.m */,
+				5AB241171D3365B300909BD4 /* EmployedbundleModel.h */,
+				5AB241181D3365B300909BD4 /* EmployedbundleModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1310,6 +1318,8 @@
 				5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */,
 				5A6CF4E51D260F8800676255 /* EmploymentInformationViewController.h */,
 				5A6CF4E61D260F8800676255 /* EmploymentInformationViewController.m */,
+				5AB2411A1D33695E00909BD4 /* EmployedbundleListPage.h */,
+				5AB2411B1D33695E00909BD4 /* EmployedbundleListPage.m */,
 			);
 			path = Employed;
 			sourceTree = "<group>";
@@ -2323,6 +2333,7 @@
 				5A1DF5831D2B88340078BD0B /* TeacherDetalPage.m in Sources */,
 				5A6CF3DF1D1D552F00676255 /* HomePageScrollCell.m in Sources */,
 				D04D0C121D0FA5240090D2CD /* UserInfoSection1.m in Sources */,
+				5AB241191D3365B300909BD4 /* EmployedbundleModel.m in Sources */,
 				AA5B96921D222BE20088A196 /* PlayerPageCommentsCell.m in Sources */,
 				5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */,
 				D055F2791D2A2C3400F80AAD /* RechargeList.m in Sources */,
@@ -2332,6 +2343,7 @@
 				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,
 				AA5B95F91D1948790088A196 /* SearchSectionOne.m in Sources */,
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
+				5AB2411C1D33695E00909BD4 /* EmployedbundleListPage.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
 				5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */,
 				5A6CF48F1D23632D00676255 /* XJFSchoolCollectionViewCell.m in Sources */,

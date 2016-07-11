@@ -186,14 +186,14 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
 
 //OrderFooterViewDelegate
 - (void)MyOrderFootrtView:(MyOrderFooterView *)orderFooterView goPayOrCancelOreder:(UIButton *)sender {
-    self.orderfooterView.model = self.orderModel.result.data[orderFooterView.section];
+    OrderDataModel *model = self.orderModel.result.data[orderFooterView.section];
     if ([sender.titleLabel.text isEqualToString:@"去付款"]) {
         [PayView showWithTarget:self type:PayViewDefault];
     }
     else if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
         [AlertUtils alertWithTarget:self title:@"提示" content:@"确定取消订单？" confirmBlock:^{
             self.requestParams = @{@"status" : [NSString stringWithFormat:@"2"]};
-            [self requestAllOrderData:[NSString stringWithFormat:@"%@%@", cancelOrder, orderFooterView.model.id] method:PUT];
+            [self requestAllOrderData:[NSString stringWithFormat:@"%@%@", cancelOrder, model.id] method:PUT];
         }];
     }
 }

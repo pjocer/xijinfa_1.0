@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *summary;
-@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSArray <TalkGridCover> *cover;
 @property (nonatomic, strong) NSString *thumbnail;
 @property (nonatomic, strong) NSString *guru_avatar;
 @property (nonatomic, strong) NSString *comments_count;
@@ -101,6 +101,8 @@
 @property (nonatomic, strong) NSString *view_count;
 @property (nonatomic, strong) NSArray <TalkGridVideo, ConvertOnDemand> *video_player;
 @property (nonatomic, strong) NSArray <taxonomy_gurus> *taxonomy_gurus;
+@property (nonatomic, strong) NSArray <TalkGridModel> *courses_menu;
+@property (nonatomic, strong) NSString *api_uri;
 @property (nonatomic, assign) BOOL isSelected;
 @end
 
@@ -119,9 +121,7 @@
 @end
 
 @interface TablkListModel : OptionalJSONModel
-
 @property (nonatomic, assign) int errCode;
 @property (nonatomic, strong) NSString *errMsg;
 @property (nonatomic, strong) TablkResultModel *result;
-
 @end

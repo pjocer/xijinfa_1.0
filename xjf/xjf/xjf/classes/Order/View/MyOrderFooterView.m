@@ -7,6 +7,7 @@
 //
 
 #import "MyOrderFooterView.h"
+#import "UIView+Addtion.h"
 
 @interface MyOrderFooterView ()
 @property (nonatomic, strong) UIView *backGroudView;
@@ -22,8 +23,6 @@
         CGFloat labelW = 60;
         CGFloat labelH = 14;
         CGFloat padding = 10;
-        CGFloat buttonH = 33;
-        CGFloat buttonW = 90;
 
         self.backGroudView = [[UIView alloc] init];
         [self addSubview:_backGroudView];
@@ -61,13 +60,12 @@
         self.PayUnSuccesView = [[UIView alloc] init];
         self.PayUnSuccesView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.PayUnSuccesView];
+        ViewRadius(self.PayUnSuccesView, 5);
         [self.PayUnSuccesView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self);
             make.top.equalTo(self.backGroudView.mas_bottom).with.offset(1);
-            make.height.mas_equalTo(0.1);
+            make.height.mas_equalTo(50);
         }];
-        ViewRadius(self.PayUnSuccesView, 5);
-        self.PayUnSuccesView.hidden = YES;
 
         self.goPay = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.PayUnSuccesView addSubview:self.goPay];
@@ -75,13 +73,12 @@
             make.top.left.bottom.equalTo(self.PayUnSuccesView);
             make.width.mas_equalTo(self.PayUnSuccesView).with.multipliedBy(0.5);
         }];
-        self.goPay.backgroundColor = [UIColor xjfStringToColor:@"#ea5f5f"];
-        [self.goPay setTitle:@"去付款" forState:UIControlStateNormal];
+        self.goPay.backgroundColor = [UIColor xjfStringToColor:@"#bbbbbb"];
+        [self.goPay setTitle:@"取消订单" forState:UIControlStateNormal];
         self.goPay.tintColor = [UIColor whiteColor];
         self.goPay.titleLabel.font = FONT15;
         [self.goPay addTarget:self action:@selector(buttonAction:)
              forControlEvents:UIControlEventTouchUpInside];
-        self.goPay.hidden = YES;
 
         self.cancelOrder = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.PayUnSuccesView addSubview:self.cancelOrder];
@@ -89,13 +86,15 @@
             make.top.right.bottom.equalTo(self.PayUnSuccesView);
             make.width.mas_equalTo(self.PayUnSuccesView).with.multipliedBy(0.5);
         }];
-        self.cancelOrder.backgroundColor = [UIColor xjfStringToColor:@"#bbbbbb"];
-        [self.cancelOrder setTitle:@"取消订单" forState:UIControlStateNormal];
+        self.cancelOrder.backgroundColor = [UIColor xjfStringToColor:@"#ea5f5f"];
+        [self.cancelOrder setTitle:@"去付款" forState:UIControlStateNormal];
         self.cancelOrder.tintColor = [UIColor whiteColor];
         self.cancelOrder.titleLabel.font = FONT15;
         [self.cancelOrder addTarget:self action:@selector(buttonAction:)
                    forControlEvents:UIControlEventTouchUpInside];
-        self.cancelOrder.hidden = YES;
+
+
+        
     }
     return self;
 }
@@ -130,16 +129,10 @@
     [super layoutSubviews];
 
     if ([self.orderStatus.text isEqualToString:@"订单待支付"]) {
-        [self.PayUnSuccesView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self);
-            make.top.equalTo(self.backGroudView.mas_bottom).with.offset(1);
-            make.height.mas_equalTo(50);
-        }];
-        self.cancelOrder.hidden = NO;
         self.PayUnSuccesView.hidden = NO;
-        self.goPay.hidden = NO;
         self.backGroudView.layer.masksToBounds = NO;
     }else{
+        self.PayUnSuccesView.hidden = YES;
         ViewRadius(self.backGroudView, 5);
     }
 }
