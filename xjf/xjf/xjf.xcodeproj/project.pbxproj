@@ -251,8 +251,8 @@
 		D055F26D1D2A094200F80AAD /* RechargeStreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F26C1D2A094200F80AAD /* RechargeStreamModel.m */; };
 		D055F2761D2A0C4400F80AAD /* RechargeStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2751D2A0C4400F80AAD /* RechargeStream.m */; };
 		D055F2791D2A2C3400F80AAD /* RechargeList.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2781D2A2C3400F80AAD /* RechargeList.m */; };
-		D055F27D1D2A425D00F80AAD /* RechargeResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F27B1D2A425D00F80AAD /* RechargeResultController.m */; };
-		D055F27E1D2A425D00F80AAD /* RechargeResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F27C1D2A425D00F80AAD /* RechargeResultController.xib */; };
+		D055F27D1D2A425D00F80AAD /* PayResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F27B1D2A425D00F80AAD /* PayResultController.m */; };
+		D055F27E1D2A425D00F80AAD /* PayResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D055F27C1D2A425D00F80AAD /* PayResultController.xib */; };
 		D055F28A1D2A860700F80AAD /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055F2891D2A860700F80AAD /* BaseNavigationController.m */; };
 		D05985221CF6BD8300BF2A30 /* XJOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D05985211CF6BD8300BF2A30 /* XJOrder.m */; };
 		D065BFE41CE5751800D11804 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D065BFE31CE5751800D11804 /* ImageCodeModel.m */; };
@@ -754,9 +754,9 @@
 		D055F2751D2A0C4400F80AAD /* RechargeStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeStream.m; sourceTree = "<group>"; };
 		D055F2771D2A2C3400F80AAD /* RechargeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeList.h; sourceTree = "<group>"; };
 		D055F2781D2A2C3400F80AAD /* RechargeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeList.m; sourceTree = "<group>"; };
-		D055F27A1D2A425D00F80AAD /* RechargeResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeResultController.h; sourceTree = "<group>"; };
-		D055F27B1D2A425D00F80AAD /* RechargeResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeResultController.m; sourceTree = "<group>"; };
-		D055F27C1D2A425D00F80AAD /* RechargeResultController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeResultController.xib; sourceTree = "<group>"; };
+		D055F27A1D2A425D00F80AAD /* PayResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayResultController.h; sourceTree = "<group>"; };
+		D055F27B1D2A425D00F80AAD /* PayResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayResultController.m; sourceTree = "<group>"; };
+		D055F27C1D2A425D00F80AAD /* PayResultController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayResultController.xib; sourceTree = "<group>"; };
 		D055F2881D2A860700F80AAD /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		D055F2891D2A860700F80AAD /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		D05985201CF6BD8300BF2A30 /* XJOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJOrder.h; sourceTree = "<group>"; };
@@ -2036,9 +2036,9 @@
 				D055F25E1D2643D600F80AAD /* MyMoneyViewController.h */,
 				D055F25F1D2643D600F80AAD /* MyMoneyViewController.m */,
 				D055F2601D2643D600F80AAD /* MyMoneyViewController.xib */,
-				D055F27A1D2A425D00F80AAD /* RechargeResultController.h */,
-				D055F27B1D2A425D00F80AAD /* RechargeResultController.m */,
-				D055F27C1D2A425D00F80AAD /* RechargeResultController.xib */,
+				D055F27A1D2A425D00F80AAD /* PayResultController.h */,
+				D055F27B1D2A425D00F80AAD /* PayResultController.m */,
+				D055F27C1D2A425D00F80AAD /* PayResultController.xib */,
 				D055F2741D2A0C4400F80AAD /* RechargeStream.h */,
 				D055F2751D2A0C4400F80AAD /* RechargeStream.m */,
 			);
@@ -2213,7 +2213,7 @@
 				D02FB4B71D112458006EADAD /* UserInfoInterestedCell.xib in Resources */,
 				D073CF741CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.xib in Resources */,
 				D055F24F1D24ECB300F80AAD /* UserInfoController.xib in Resources */,
-				D055F27E1D2A425D00F80AAD /* RechargeResultController.xib in Resources */,
+				D055F27E1D2A425D00F80AAD /* PayResultController.xib in Resources */,
 				D02FB4D51D127A05006EADAD /* zh_CN.json in Resources */,
 				D04D0C131D0FA5240090D2CD /* UserInfoSection1.xib in Resources */,
 				5A6CF4921D23632D00676255 /* XJFTeacherCollectionViewCell.xib in Resources */,
@@ -2327,7 +2327,7 @@
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5AF0464D1D31008E00790232 /* TeacherLisetTeacherCoverCell.m in Sources */,
-				D055F27D1D2A425D00F80AAD /* RechargeResultController.m in Sources */,
+				D055F27D1D2A425D00F80AAD /* PayResultController.m in Sources */,
 				5A105EB01CEF215A0079BEFE /* LessonDetailLessonListViewController.m in Sources */,
 				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
 				5A1DF5831D2B88340078BD0B /* TeacherDetalPage.m in Sources */,

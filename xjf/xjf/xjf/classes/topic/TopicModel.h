@@ -34,9 +34,10 @@
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, assign) BOOL user_favored;
 @property (nonatomic, assign) BOOL user_liked;
-@property (nonatomic, copy) NSString *replies_count;
+@property (nonatomic, copy) NSString *reply_count;
 @property (nonatomic, copy) NSString *like_count;
-@property (nonatomic, copy) NSString *favorite_count;
+@property (nonatomic, copy) NSString *dislike_count;
+@property (nonatomic, copy) NSString *transfer_count;
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *updated_at;

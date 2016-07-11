@@ -10,6 +10,7 @@
 #import "XjfRequest.h"
 #import "RegistFinalModel.h"
 #import "XJAccountManager.h"
+#import "ZToastManager.h"
 
 @interface PasswordSettingViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -69,6 +70,7 @@
         if (model.errCode == 0) {
             XJAccountManager *manager = [XJAccountManager defaultManager];
             [manager setAccuontInfo:[model toDictionary]];
+            [[ZToastManager ShardInstance] showtoast:[self.itemTitle isEqualToString:@"设置密码"]?@"注册成功":@"密码修改成功"];
             [self.navigationController popToRootViewControllerAnimated:YES];
         } else {
             [[ZToastManager ShardInstance] showtoast:model.errMsg];

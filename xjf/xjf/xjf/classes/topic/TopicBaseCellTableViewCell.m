@@ -118,10 +118,10 @@
     _model = model;
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.user.avatar]];
     _nickname.text = model.user.nickname;
-    _identity.text = model.user.quote;
-    _update_at.text = [StringUtil compareCurrentTime:model.updated_at];
+    _identity.text = model.user.subtitle;
+    _update_at.text = [StringUtil compareCurrentTime:model.created_at];
     _content.text = model.content;
-    _commentLabel.text = model.replies_count;
+    _commentLabel.text = model.reply_count;
     _praiseLabel.text = model.like_count;
     _praiseImageView.highlighted = model.user_liked;
 }

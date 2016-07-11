@@ -93,11 +93,11 @@
 }
 
 - (void)handleResult {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[XJAccountManager defaultManager] setUser_model:self.model];
+    [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
+        self.model = model;
         [[ZToastManager ShardInstance] showtoast:@"更新用户信息成功"];
         [self.navigationController popViewControllerAnimated:YES];
-    });
+    }];
 }
 
 - (void)initTableView {

@@ -37,6 +37,7 @@
     [self startMonitoringAppCurrentNetworkReachabilityStatus];
     [ZPlatformShare initPlatformData];
     [[XJAccountManager defaultManager] verifyValid];
+//    [self rac]
 }
 //网络状态
 - (void)startMonitoringAppCurrentNetworkReachabilityStatus {
@@ -65,5 +66,8 @@
 }
 -(NetworkStatus)currentStatus {
     return _currentStatus;
+}
+-(void)currentDisplayed {
+    
 }
 @end

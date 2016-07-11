@@ -16,7 +16,7 @@
 #import "ZToastManager.h"
 #import "RechargeStream.h"
 #import "RechargeList.h"
-#import "RechargeResultController.h"
+#import "PayResultController.h"
 @interface MyMoneyViewController () <PayViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *first;
 @property (weak, nonatomic) IBOutlet UIView *second;
@@ -89,12 +89,12 @@
 -(void)payViewDidPaySuccessed:(PayView *)payView {
     [[XJAccountManager defaultManager] updateUserInfoCompeletionBlock:^(UserProfileModel *model) {
         _balance.text = [NSString stringWithFormat:@"%.2f",model.result.account_balance*0.01f];
-        RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:YES orderID:nil];
+        PayResultController *result = [[PayResultController alloc] initWithSuccess:YES type:RechargeType];
         [self.navigationController pushViewController:result animated:YES];
     }];
 }
 -(void)payViewDidPayFailed:(PayView *)payView {
-    RechargeResultController *result = [[RechargeResultController alloc] initWithSuccess:NO orderID:nil];
+    PayResultController *result = [[PayResultController alloc] initWithSuccess:NO type:RechargeType];
     [self.navigationController pushViewController:result animated:YES];
 }
 - (void)chooseLimit:(UITapGestureRecognizer *)tap {

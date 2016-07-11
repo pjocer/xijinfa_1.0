@@ -25,6 +25,7 @@
 - (instancetype)initWithAPIName:(nonnull APIName *)apiName RequestMethod:(RequestMethod)method {
     self = [super init];
     if (self) {
+        NSParameterAssert(apiName);
         _requestMethod = method;
         _requestParams = [NSMutableDictionary dictionary];
         _requestHeaders = [NSMutableDictionary dictionary];
@@ -43,6 +44,7 @@
 - (instancetype)initWithAPIName:(APIName *)apiName fileURL:(nullable NSURL *)url {
     self = [self initWithAPIName:apiName RequestMethod:UPLOAD];
     if (self) {
+        NSParameterAssert(apiName);
         _url = url;
     }
     return self;

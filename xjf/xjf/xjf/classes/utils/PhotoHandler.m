@@ -24,13 +24,13 @@
         [self initProperties];
         self.imagePicker.mediaTypes = @[(__bridge NSString *)kUTTypeImage];
         self.imagePicker.delegate = delegate;
+        self.currentDisplayed = getCurrentDisplayController();
     }
     return self;
 }
 - (void)initProperties {
     self.imagePicker = [[UIImagePickerController alloc] init];
     self.imagePicker.sourceType = self.type;
-    self.currentDisplayed = getCurrentDisplayController();
 }
 -(void)show {
     [self.currentDisplayed.navigationController presentViewController:self.imagePicker animated:YES completion:nil];

@@ -36,6 +36,7 @@
 @property (nonatomic, copy) NSString *level;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *nickname;
+@property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *summary;
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *quote;

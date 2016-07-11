@@ -17,5 +17,6 @@ typedef enum : NSInteger {
 } NetworkStatus;
 @interface AppDelegateManager : NSObject
 + (instancetype)sharedInstance;
+- (void)currentDisplayed;
 - (NetworkStatus)currentStatus;
 @end
