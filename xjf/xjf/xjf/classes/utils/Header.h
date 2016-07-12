@@ -32,6 +32,8 @@
 #import "AlertUtils.h"
 #import "StringUtil.h"
 #import <JSONModel.h>
+#import "BaseModel.h"
+#import "ModelProtocols.h"
 
 //RAC
 #import <ReactiveCocoa/ReactiveCocoa.h>

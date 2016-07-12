@@ -20,9 +20,6 @@
 @implementation Payment
 @end
 
-@implementation Membership
-@end
-
 @implementation OrderItemVideo
 @end
 

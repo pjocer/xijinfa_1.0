@@ -7,7 +7,7 @@
 //
 
 #import "OptionalJSONModel.h"
-
+#import "BaseModel.h"
 @interface PaymentData : OptionalJSONModel
 /** 商家向财付通申请的商家id */
 @property (nonatomic, copy) NSString *partnerid;
@@ -116,12 +116,6 @@
 @property (nonatomic, strong) OrderItemVideo *video_player;
 @property (nonatomic, strong) NSMutableArray <TaxonomyCategories> *taxonomy_categories;
 @property (nonatomic, strong) NSMutableArray <TaxonomyGurus> *taxonomy_gurus;
-@end
-
-@interface Membership : OptionalJSONModel
-@property (nonatomic, copy) NSString *period;
-@property (nonatomic, copy) NSString *type;
-@property (nonatomic, copy) NSString *title;
 @end
 
 @interface Payment : OptionalJSONModel

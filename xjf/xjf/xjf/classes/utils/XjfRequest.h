@@ -13,7 +13,7 @@ typedef NSString APIName;
 @class XjfRequest;
 
 typedef NS_OPTIONS(short, RequestMethod) {
-    GET = 0,
+    GET = 1,
     POST,
     PUT,
     DELETE,
@@ -59,7 +59,7 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *
  *  @return XjfReqeust Object
  */
-- (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName RequestMethod:(RequestMethod)method;
+- (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName RequestMethod:(RequestMethod)method DEPRECATED_MSG_ATTRIBUTE("user + (void)requestData: method: params: success: failed: instead");
 
 /**
  *  XjfRequest Initializing Method
@@ -69,7 +69,7 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *
  *  @return XjfRequest Object
  */
-- (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName fileURL:(nullable NSURL *)url;
+- (nullable instancetype)initWithAPIName:(nonnull APIName *)apiName fileURL:(nullable NSURL *)url DEPRECATED_MSG_ATTRIBUTE("user + (void)requestData: method: params: success: failed: instead");
 
 /**
  *  Start Request Data From Host
@@ -77,7 +77,7 @@ typedef void(^FailedBlock)(NSError *_Nullable error);
  *  @param successBlock Return If Server Response Whatever Response ErrorCode Counld Not Be 0
  *  @param failedBlock  Return If Server Did Not Response
  */
-- (void)startWithSuccessBlock:(nullable SuccessBlock)successBlock failedBlock:(nullable FailedBlock)failedBlock;
+- (void)startWithSuccessBlock:(nullable SuccessBlock)successBlock failedBlock:(nullable FailedBlock)failedBlock DEPRECATED_MSG_ATTRIBUTE("user + (void)requestData: method: params: success: failed: instead");
 /**
  *  Set HTTPHeaderFile
  *

@@ -14,7 +14,7 @@
 #import "SDWebImageDownloader.h"
 #import <CoreGraphics/CoreGraphics.h>
 @interface XJAccountManager ()
-@property (nonatomic, strong) RegistFinalModel *accountFinalModel;
+@property (nonatomic, strong) OriginInfo *accountFinalModel;
 @end
 
 @implementation XJAccountManager
@@ -32,7 +32,7 @@
     self = [super init];
     if (self) {
         [XJMarket sharedMarket];
-        _accountFinalModel = [[RegistFinalModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:ACCOUNT_INFO] error:nil];
+        _accountFinalModel = [[OriginInfo alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:ACCOUNT_INFO] error:nil];
         _user_model = [[UserProfileModel alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO] error:nil];
         _account_type = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] == nil ? NormalAccount : [[[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCOUNT_TYPE] intValue];
         
@@ -75,9 +75,9 @@
 }
 
 - (void)setAccuontInfo:(NSDictionary *)info {
-    self.accountFinalModel = [[RegistFinalModel alloc] initWithDictionary:info error:nil];
+    self.accountFinalModel = [[OriginInfo alloc] initWithDictionary:info error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:info forKey:ACCOUNT_INFO];
-    [[NSUserDefaults standardUserDefaults] setObject:self.accountFinalModel.result.credential.bearer forKey:ACCOUNT_ACCESS_TOKEN];
+    [[NSUserDefaults standardUserDefaults] setObject:self.accountFinalModel.credential.bearer forKey:ACCOUNT_ACCESS_TOKEN];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self getAccountInfo:nil];
 }

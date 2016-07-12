@@ -9,9 +9,15 @@
 #import "BaseModel.h"
 
 @implementation BaseModel
-+(BOOL)propertyIsIgnored:(NSString *)propertyName {return YES;};
++(BOOL)propertyIsOptional:(NSString *)propertyName {return YES;};
 @end
-
 @implementation ImageCode
-
+@end
+@implementation OriginInfo
+@end
+@implementation Membership
+@end
+@implementation Credential
+@end
+@implementation UserInfo
 @end

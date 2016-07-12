@@ -7,10 +7,10 @@
 //
 
 #import "PasswordSettingViewController.h"
-#import "XjfRequest.h"
-#import "RegistFinalModel.h"
+#import "XJRequest.h"
 #import "XJAccountManager.h"
 #import "ZToastManager.h"
+#import "BaseModel.h"
 
 @interface PasswordSettingViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -61,22 +61,21 @@
         [[ZToastManager ShardInstance] showtoast:@"密码不一致"];
         return;
     }
-    APIName *name = [self.itemTitle isEqualToString:@"重设密码"] ? reset_password : commit_register;
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:name RequestMethod:POST];
+    
     [self.dict setValue:self.password.text forKey:@"password"];
-    request.requestParams = self.dict;
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
-        if (model.errCode == 0) {
-            XJAccountManager *manager = [XJAccountManager defaultManager];
-            [manager setAccuontInfo:[model toDictionary]];
+    APIName *name = [self.itemTitle isEqualToString:@"重设密码"] ? reset_password : commit_register;
+    __typeof (self)wSelf = self;
+    [XJRequest requestData:name method:POST params:^NSDictionary *{
+        return wSelf.dict;
+    } success:^(XJRequest *request) {
+        if (request.errCode == 0) {
+            [[XJAccountManager defaultManager] setAccuontInfo:request.result];
             [[ZToastManager ShardInstance] showtoast:[self.itemTitle isEqualToString:@"设置密码"]?@"注册成功":@"密码修改成功"];
             [self.navigationController popToRootViewControllerAnimated:YES];
-        } else {
-            [[ZToastManager ShardInstance] showtoast:model.errMsg];
+        }else {
+           [[ZToastManager ShardInstance] showtoast:request.errMsg];
         }
-    }                  failedBlock:^(NSError *_Nullable error) {
-    }];
+    } failed:nil];
 }
 
 #pragma mark - TextFiled Delegate

@@ -10,9 +10,8 @@
 #import "ZPlatformShare.h"
 #import "RegistViewController.h"
 #import "PasswordSettingViewController.h"
-#import "RegistFinalModel.h"
-#import "ImageCodeModel.h"
 #import "XJAccountManager.h"
+#import "XJRequest.h"
 
 @interface LoginViewController () <UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
 
@@ -269,7 +268,8 @@
 - (void)thirdLogin:(NSDictionary *)message type:(NSString *)type {
     //third_type：第三方网站编码，0-本站，1-淘宝，2-微信，3-qq，4-微博
     NSMutableDictionary *dict = nil;
-    XjfRequest *request = nil;
+    NSMutableDictionary *params = nil;
+    APIName *api = nil;
     int typev = [type intValue];
     if (typev == 1) {
         NSString *accessToken = [message objectForKey:@"access_token"];
@@ -277,30 +277,24 @@
         dict = [NSMutableDictionary dictionary];
         [dict setObject:accessToken forKey:@"access_token"];
         [dict setObject:openid forKey:@"openid"];
-        NSMutableDictionary *param = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"qq", @"type", nil];
-        
-        request = [[XjfRequest alloc] initWithAPIName:third_login RequestMethod:POST];
-        request.requestParams = param;
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"qq", @"type", nil];
+        api = third_login;
     } else if (typev == 2) {
         dict = [NSMutableDictionary dictionaryWithDictionary:message];
-        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"wechat", @"type", nil];
-        request = [[XjfRequest alloc] initWithAPIName:third_login RequestMethod:POST];
-        request.requestParams = params;
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys:dict, @"credentials", @"wechat", @"type", nil];
     }
-    if (request) {
-        [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-            RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
-            if (model.errCode == 0) {
-                XJAccountManager *manager = [XJAccountManager defaultManager];
-                [manager setAccuontInfo:[model toDictionary]];
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            } else {
-                [[ZToastManager ShardInstance] showtoast:model.errMsg];
-            }
-        }                  failedBlock:^(NSError *_Nullable error) {
-            [[ZToastManager ShardInstance] showtoast:@"登录失败"];
-        }];
-    }
+    [XJRequest requestData:api method:POST params:^NSDictionary *{
+        return params;
+    } success:^(XJRequest *request) {
+        if (request.errCode == 0) {
+            [[XJAccountManager defaultManager] setAccuontInfo:request.result];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else {
+            [[ZToastManager ShardInstance] showtoast:request.errMsg];
+        }
+    } failed:^(XJRequest *request) {
+        [[ZToastManager ShardInstance] showtoast:@"登录失败"];
+    }];
 }
 
 - (void)btnLoginAction {
@@ -339,38 +333,28 @@
 }
 
 - (void)requestData:(APIName *)api method:(RequestMethod)method params:(NSMutableDictionary *)params {
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    if (params) {
-        request.requestParams = params;
-
-    }
     __weak typeof(self) wSelf = self;
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
+    [XJRequest requestData:api method:method params:^NSDictionary *{
+        return params?params:nil;
+    } success:^(XJRequest *request) {
         if ([api isEqualToString:local_login]) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"%@",dic);
-            RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
-            if (model.errCode == 0) {
+            if (request.errCode) {
                 XJAccountManager *manager = [XJAccountManager defaultManager];
-                [manager setAccuontInfo:[model toDictionary]];
+                [manager setAccuontInfo:request.result];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             } else {
-                [[ZToastManager ShardInstance] showtoast:model.errMsg];
+                [[ZToastManager ShardInstance] showtoast:request.errMsg];
             }
         }
-        if ([api isEqualToString:get_image_code]) {
-            ImageCodeModel *model = [[ImageCodeModel alloc] initWithData:responseData error:nil];
-            NSURL *url = [NSURL URLWithString:model.result.secure_image];
+        if ([api isEqualToString:get_image_code]) { 
+            ImageCode *model = [[ImageCode alloc] initWithDictionary:request.result error:nil];
+            NSURL *url = [NSURL URLWithString:model.secure_image];
             NSData *imageData = [NSData dataWithContentsOfURL:url];
             UIImage *ret = [UIImage imageWithData:imageData];
-            wSelf.secure_key = model.result.secure_key;
-
+            wSelf.secure_key = model.secure_key;
             self.codeImageView.image = ret;
         }
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"请求失败"];
-    }];
-
+    } failed:nil];
 }
 
 @end

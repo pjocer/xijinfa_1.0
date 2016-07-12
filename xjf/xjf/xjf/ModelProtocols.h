@@ -8,3 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol Membership
+
+@end

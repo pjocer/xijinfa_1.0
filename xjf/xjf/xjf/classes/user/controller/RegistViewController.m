@@ -8,8 +8,7 @@
 
 #import "RegistViewController.h"
 #import "PasswordSettingViewController.h"
-#import "XjfRequest.h"
-#import "ImageCodeModel.h"
+#import "XJRequest.h"
 
 @interface RegistViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
@@ -18,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtCodeImage;
 @property (weak, nonatomic) IBOutlet UIImageView *codeImage;
 @property (weak, nonatomic) IBOutlet UIButton *codeButton;
-@property (strong, nonatomic) ImageCodeModel *model;
+@property (strong, nonatomic) ImageCode *model;
 @property (assign, nonatomic) BOOL phoneIsOK;
 @property (assign, nonatomic) BOOL imageCodeIsOk;
 @property (assign, nonatomic) BOOL codeIsOk;
@@ -86,38 +85,31 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (void)requestData:(APIName *)api method:(RequestMethod)method {
     __weak typeof(self) wSelf = self;
-    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:api RequestMethod:method];
-    if ([api isEqualToString:regist_message_code] || [api isEqualToString:reset_message_code]) {
-        [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
-        [request.requestParams setObject:self.txtCodeImage.text forKey:@"secure_code"];
-        [request.requestParams setObject:self.model.result.secure_key forKey:@"secure_key"];
-    }
-    if ([api isEqualToString:check_code_message]) {
-        [request.requestParams removeAllObjects];
-        [request.requestParams setObject:self.txtPhone.text forKey:@"phone"];
-        [request.requestParams setObject:self.txtCodePhone.text forKey:@"code"];
-    }
-    if ([api isEqualToString:check_image_code]) {
-        request.requestParams = [NSMutableDictionary dictionaryWithDictionary:@{@"secure_key" : self.model.result.secure_key, @"secure_code" : self.txtCodeImage.text}];
-    }
-    [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
-        __strong typeof(self) sSelf = wSelf;
+    [XJRequest requestData:api method:method params:^NSDictionary *{
+        if ([api isEqualToString:regist_message_code] || [api isEqualToString:reset_message_code]) {
+            return @{@"phone":wSelf.txtPhone.text,@"secure_code":wSelf.txtCodeImage.text,@"secure_key":wSelf.model.secure_key};
+        } else if ([api isEqualToString:check_code_message]) {
+            return @{@"phone":wSelf.txtPhone.text,@"code":wSelf.txtCodePhone.text};
+        }
+        return nil;
+    } success:^(XJRequest *request) {
         if ([api isEqualToString:get_image_code]) {
-            [sSelf.indicator stopAnimating];
-            sSelf.model = [[ImageCodeModel alloc] initWithData:responseData error:nil];
-            NSURL *url = [NSURL URLWithString:sSelf.model.result.secure_image];
+            [wSelf.indicator stopAnimating];
+            ImageCode *code = [[ImageCode alloc] initWithDictionary:request.result error:nil];
+            NSLog(@"%@",code);
+            wSelf.model = [[ImageCode alloc] initWithDictionary:request.result error:nil];
+            NSLog(@"%@",wSelf.model);
+            NSURL *url = [NSURL URLWithString:wSelf.model.secure_image];
             NSData *imageData = [NSData dataWithContentsOfURL:url];
             UIImage *ret = [UIImage imageWithData:imageData];
-            sSelf.codeImage.image = ret;
+            wSelf.codeImage.image = ret;
         } else if ([api isEqualToString:regist_message_code] || [api isEqualToString:reset_message_code]) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-            if ([dic[@"errCode"] integerValue] == 0) {
+            if (request.errCode == 0) {
                 [[ZToastManager ShardInstance] showtoast:@"发送验证码成功"];
             } else {
-                [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+                [[ZToastManager ShardInstance] showtoast:request.errMsg];
             }
             self.codeButton.enabled = NO;
             self.codeButton.backgroundColor = SegementColor;
@@ -125,8 +117,7 @@
             [self.timer fire];
         } else if ([api isEqualToString:check_code_message]) {
             [self.txtCodePhone resignFirstResponder];
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-            if ([dic[@"errCode"] integerValue] == 0) {
+            if (request.errCode == 0) {
                 [[ZToastManager ShardInstance] showtoast:@"验证码正确"];
                 [_timer invalidate];
                 _timer = nil;
@@ -136,22 +127,19 @@
                 PasswordSettingViewController *controller = [[PasswordSettingViewController alloc] init];
                 controller.itemTitle = [self.title_item isEqualToString:@"注册"] ? @"设置密码" : @"重设密码";
                 controller.dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:wSelf.txtPhone.text, @"phone", wSelf.txtCodePhone.text, @"code", nil];
-                [sSelf.navigationController pushViewController:controller animated:YES];
+                [wSelf.navigationController pushViewController:controller animated:YES];
             } else {
-                [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+                [[ZToastManager ShardInstance] showtoast:request.errMsg];
             }
         } else if ([api isEqualToString:check_image_code]) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
-            if ([dic[@"errCode"] integerValue] == 0) {
+            if (request.errCode == 0) {
                 self.imageCodeIsOk = YES;
                 [self setCodeButtonStatus];
             } else {
-                [[ZToastManager ShardInstance] showtoast:dic[@"errMsg"]];
+                [[ZToastManager ShardInstance] showtoast:request.errMsg];
             }
         }
-    }                  failedBlock:^(NSError *_Nullable error) {
-        [[ZToastManager ShardInstance] showtoast:@"请求失败"];
-    }];
+    } failed:nil];
 }
 
 - (void)setValidateBtnTitle {
