@@ -109,13 +109,9 @@ View.layer.borderWidth = BorderWidth;
 
 //如果是 DEBUG 模式用测试服务器地址
 #if DEBUG
-
 #define     HttpBaseURL        @"http://api.dev.xijinfa.com" // 测试服务器
-
 #else
-
 #define     HttpBaseURL        @"http://api.rc.xijinfa.com" // 正式服务器
-
 #endif
 
 /**
