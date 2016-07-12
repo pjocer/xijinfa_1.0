@@ -45,9 +45,6 @@
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
 		5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */; };
 		5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */; };
-		5A565A221D066C2D00008DA9 /* EmployedbannerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A211D066C2D00008DA9 /* EmployedbannerHeaderView.m */; };
-		5A565A251D066C4400008DA9 /* EmployedMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A241D066C4400008DA9 /* EmployedMainTableViewCell.m */; };
-		5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A2A1D06979500008DA9 /* EmployedViewInformationCell.m */; };
 		5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A3E1D07C05A00008DA9 /* VipModel.m */; };
 		5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A411D07C09700008DA9 /* VipHeaderView.m */; };
 		5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */; };
@@ -352,12 +349,6 @@
 		5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
 		5A565A181D05B12000008DA9 /* MyPlayerHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlayerHistoryViewController.h; sourceTree = "<group>"; };
 		5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlayerHistoryViewController.m; sourceTree = "<group>"; };
-		5A565A201D066C2D00008DA9 /* EmployedbannerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedbannerHeaderView.h; sourceTree = "<group>"; };
-		5A565A211D066C2D00008DA9 /* EmployedbannerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedbannerHeaderView.m; sourceTree = "<group>"; };
-		5A565A231D066C4400008DA9 /* EmployedMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedMainTableViewCell.h; sourceTree = "<group>"; };
-		5A565A241D066C4400008DA9 /* EmployedMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedMainTableViewCell.m; sourceTree = "<group>"; };
-		5A565A291D06979500008DA9 /* EmployedViewInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedViewInformationCell.h; sourceTree = "<group>"; };
-		5A565A2A1D06979500008DA9 /* EmployedViewInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedViewInformationCell.m; sourceTree = "<group>"; };
 		5A565A3D1D07C05A00008DA9 /* VipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipModel.h; sourceTree = "<group>"; };
 		5A565A3E1D07C05A00008DA9 /* VipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipModel.m; sourceTree = "<group>"; };
 		5A565A401D07C09700008DA9 /* VipHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipHeaderView.h; sourceTree = "<group>"; };
@@ -987,19 +978,6 @@
 			path = MyPlayerHistory;
 			sourceTree = "<group>";
 		};
-		5A565A1F1D066C0400008DA9 /* Employed */ = {
-			isa = PBXGroup;
-			children = (
-				5A565A201D066C2D00008DA9 /* EmployedbannerHeaderView.h */,
-				5A565A211D066C2D00008DA9 /* EmployedbannerHeaderView.m */,
-				5A565A231D066C4400008DA9 /* EmployedMainTableViewCell.h */,
-				5A565A241D066C4400008DA9 /* EmployedMainTableViewCell.m */,
-				5A565A291D06979500008DA9 /* EmployedViewInformationCell.h */,
-				5A565A2A1D06979500008DA9 /* EmployedViewInformationCell.m */,
-			);
-			path = Employed;
-			sourceTree = "<group>";
-		};
 		5A565A3B1D07C03F00008DA9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1595,7 +1573,6 @@
 		CD1CCBF91CB35A2D002FC0C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5A565A1F1D066C0400008DA9 /* Employed */,
 				5A105E581CEB1A9F0079BEFE /* Lesson */,
 				5A240DF51CE33DD2003B7971 /* Wikipedia */,
 				CD144EEF1CBB732900A0636D /* index */,
@@ -2308,7 +2285,6 @@
 				CD144F0C1CBB732900A0636D /* IndexAppCell.m in Sources */,
 				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
 				5A6CF4991D2363BD00676255 /* BannerModel.m in Sources */,
-				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
 				D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */,
 				5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
@@ -2359,7 +2335,6 @@
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				D04D0C171D0FBD280090D2CD /* UserInfoSection2.m in Sources */,
 				5A1DF5841D2B88340078BD0B /* TeacherLessonsViewController.m in Sources */,
-				5A565A221D066C2D00008DA9 /* EmployedbannerHeaderView.m in Sources */,
 				5A6CF3B21D1CEE6100676255 /* HomePageBaseView.m in Sources */,
 				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
@@ -2373,7 +2348,6 @@
 				D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */,
 				AA5B96161D1C0DF60088A196 /* Fans_FocusViewController.m in Sources */,
 				CD144F0F1CBB732900A0636D /* IndexCourseCell.m in Sources */,
-				5A565A251D066C4400008DA9 /* EmployedMainTableViewCell.m in Sources */,
 				CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */,
 				5A240E011CE34377003B7971 /* WikiTalkGridViewCell.m in Sources */,
 				AA5B96981D222BE20088A196 /* PlayerPageRecommendedHeaderView.m in Sources */,
