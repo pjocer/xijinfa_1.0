@@ -10,22 +10,16 @@
 		5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F861CF4272B00D7EEEB /* PayView.m */; };
 		5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C3F881CF4279200D7EEEB /* PayView.xib */; };
 		5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */; };
-		5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */; };
-		5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */; };
 		5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */; };
 		5A105E681CEC09540079BEFE /* LessonPlayerLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */; };
 		5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */; };
 		5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */; };
 		5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */; };
 		5A105E9A1CED91ED0079BEFE /* WikiPediaCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */; };
-		5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E9F1CEDC34B0079BEFE /* LessonDetailTitleView.m */; };
 		5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */; };
 		5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EA51CEDCE2D0079BEFE /* SubmitOrdersView.m */; };
 		5A105EAC1CEF17AC0079BEFE /* WikiMoreClassificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EAB1CEF17AC0079BEFE /* WikiMoreClassificationCell.m */; };
 		5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EB51CF002DB0079BEFE /* LessonDetailLessonListCell.m */; };
-		5A105EB91CF004870079BEFE /* LessonDetailNoPayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EB81CF004870079BEFE /* LessonDetailNoPayHeaderView.m */; };
-		5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EBB1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m */; };
-		5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EBE1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m */; };
 		5A1DF5831D2B88340078BD0B /* TeacherDetalPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1DF5791D2B88340078BD0B /* TeacherDetalPage.m */; };
 		5A1DF5841D2B88340078BD0B /* TeacherLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1DF57B1D2B88340078BD0B /* TeacherLessonsViewController.m */; };
 		5A1DF5851D2B88340078BD0B /* TeacherListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1DF57D1D2B88340078BD0B /* TeacherListViewController.m */; };
@@ -114,7 +108,6 @@
 		5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2DE1CF98B07007CC71C /* MyOrderViewController.m */; };
 		5AF7C2E21CF98F25007CC71C /* MyOrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */; };
 		5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2E41CFC31AE007CC71C /* OrderModel.m */; };
-		5AF7C2FF1CFFFF59007CC71C /* MyTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7C2FE1CFFFF59007CC71C /* MyTeacherViewController.m */; };
 		644C10B31CB8C8C400892E2C /* BaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C10B21CB8C8C400892E2C /* BaseViewCell.m */; };
 		644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644C11201CBA8C4700892E2C /* LoginViewController.m */; };
 		644C116F1CBA91DD00892E2C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C116E1CBA91DD00892E2C /* libsqlite3.tbd */; };
@@ -281,10 +274,6 @@
 		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayView.xib; path = ../Index/view/PayView/PayView.xib; sourceTree = "<group>"; };
 		5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailListModel.h; sourceTree = "<group>"; };
 		5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailListModel.m; sourceTree = "<group>"; };
-		5A105E591CEB1BE20079BEFE /* LessonIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonIndexCell.h; sourceTree = "<group>"; };
-		5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonIndexCell.m; sourceTree = "<group>"; };
-		5A105E5C1CEB1C320079BEFE /* TearcherIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TearcherIndexCell.h; sourceTree = "<group>"; };
-		5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TearcherIndexCell.m; sourceTree = "<group>"; };
 		5A105E621CEBFDA30079BEFE /* LessonPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerViewController.h; sourceTree = "<group>"; };
 		5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerViewController.m; sourceTree = "<group>"; };
 		5A105E661CEC09540079BEFE /* LessonPlayerLessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonListViewController.h; sourceTree = "<group>"; };
@@ -297,8 +286,6 @@
 		5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListByModel.m; sourceTree = "<group>"; };
 		5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiPediaCategoriesModel.m; sourceTree = "<group>"; };
 		5A105E991CED91ED0079BEFE /* WikiPediaCategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiPediaCategoriesModel.h; sourceTree = "<group>"; };
-		5A105E9E1CEDC34B0079BEFE /* LessonDetailTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailTitleView.h; sourceTree = "<group>"; };
-		5A105E9F1CEDC34B0079BEFE /* LessonDetailTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailTitleView.m; sourceTree = "<group>"; };
 		5A105EA11CEDCD000079BEFE /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 		5A105EA41CEDCE2D0079BEFE /* SubmitOrdersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitOrdersView.h; sourceTree = "<group>"; };
@@ -307,12 +294,6 @@
 		5A105EAB1CEF17AC0079BEFE /* WikiMoreClassificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiMoreClassificationCell.m; sourceTree = "<group>"; };
 		5A105EB41CF002DB0079BEFE /* LessonDetailLessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailLessonListCell.h; sourceTree = "<group>"; };
 		5A105EB51CF002DB0079BEFE /* LessonDetailLessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailLessonListCell.m; sourceTree = "<group>"; };
-		5A105EB71CF004870079BEFE /* LessonDetailNoPayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailNoPayHeaderView.h; sourceTree = "<group>"; };
-		5A105EB81CF004870079BEFE /* LessonDetailNoPayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailNoPayHeaderView.m; sourceTree = "<group>"; };
-		5A105EBA1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailHaveToPayHeaderView.h; sourceTree = "<group>"; };
-		5A105EBB1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailHaveToPayHeaderView.m; sourceTree = "<group>"; };
-		5A105EBD1CF02A090079BEFE /* LessonDetailTecherDescribeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailTecherDescribeCell.h; sourceTree = "<group>"; };
-		5A105EBE1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailTecherDescribeCell.m; sourceTree = "<group>"; };
 		5A1DF5781D2B88340078BD0B /* TeacherDetalPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherDetalPage.h; sourceTree = "<group>"; };
 		5A1DF5791D2B88340078BD0B /* TeacherDetalPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDetalPage.m; sourceTree = "<group>"; };
 		5A1DF57A1D2B88340078BD0B /* TeacherLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherLessonsViewController.h; sourceTree = "<group>"; };
@@ -479,8 +460,6 @@
 		5AF7C2E11CF98F25007CC71C /* MyOrderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderFooterView.m; sourceTree = "<group>"; };
 		5AF7C2E31CFC31AE007CC71C /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		5AF7C2E41CFC31AE007CC71C /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
-		5AF7C2FD1CFFFF59007CC71C /* MyTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTeacherViewController.h; sourceTree = "<group>"; };
-		5AF7C2FE1CFFFF59007CC71C /* MyTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTeacherViewController.m; sourceTree = "<group>"; };
 		644C10B11CB8C8C400892E2C /* BaseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewCell.h; sourceTree = "<group>"; };
 		644C10B21CB8C8C400892E2C /* BaseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewCell.m; sourceTree = "<group>"; };
 		644C10EA1CBA785400892E2C /* TopicConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicConfigure.h; sourceTree = "<group>"; };
@@ -809,22 +788,10 @@
 		5A105E581CEB1A9F0079BEFE /* Lesson */ = {
 			isa = PBXGroup;
 			children = (
-				5A105E591CEB1BE20079BEFE /* LessonIndexCell.h */,
-				5A105E5A1CEB1BE20079BEFE /* LessonIndexCell.m */,
-				5A105E5C1CEB1C320079BEFE /* TearcherIndexCell.h */,
-				5A105E5D1CEB1C320079BEFE /* TearcherIndexCell.m */,
-				5A105E9E1CEDC34B0079BEFE /* LessonDetailTitleView.h */,
-				5A105E9F1CEDC34B0079BEFE /* LessonDetailTitleView.m */,
 				5A105EA41CEDCE2D0079BEFE /* SubmitOrdersView.h */,
 				5A105EA51CEDCE2D0079BEFE /* SubmitOrdersView.m */,
 				5A105EB41CF002DB0079BEFE /* LessonDetailLessonListCell.h */,
 				5A105EB51CF002DB0079BEFE /* LessonDetailLessonListCell.m */,
-				5A105EB71CF004870079BEFE /* LessonDetailNoPayHeaderView.h */,
-				5A105EB81CF004870079BEFE /* LessonDetailNoPayHeaderView.m */,
-				5A105EBA1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.h */,
-				5A105EBB1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m */,
-				5A105EBD1CF02A090079BEFE /* LessonDetailTecherDescribeCell.h */,
-				5A105EBE1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -1606,8 +1573,6 @@
 				AA5B96111D1C0DF60088A196 /* TaTopicViewController.m */,
 				CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */,
 				CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */,
-				5AF7C2FD1CFFFF59007CC71C /* MyTeacherViewController.h */,
-				5AF7C2FE1CFFFF59007CC71C /* MyTeacherViewController.m */,
 				D083C8EA1CF44A7B0028DE8A /* SettingViewController.h */,
 				D083C8EB1CF44A7B0028DE8A /* SettingViewController.m */,
 				D083C8EC1CF44A7B0028DE8A /* SettingViewController.xib */,
@@ -2207,7 +2172,6 @@
 				5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */,
 				5AF7C2DC1CF96D53007CC71C /* OrderFooterView.m in Sources */,
 				5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */,
-				5AF7C2FF1CFFFF59007CC71C /* MyTeacherViewController.m in Sources */,
 				5AF7C2D91CF96D13007CC71C /* OrderHeaderView.m in Sources */,
 				AA5B95FC1D1948790088A196 /* SearchViewController.m in Sources */,
 				5A5B74051D27C1E100D24CBA /* SelectedView.m in Sources */,
@@ -2234,7 +2198,6 @@
 				D055F2791D2A2C3400F80AAD /* RechargeList.m in Sources */,
 				5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */,
 				D04D0C0C1D07EA5D0090D2CD /* CommentCell.m in Sources */,
-				5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */,
 				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
 				5AB2411C1D33695E00909BD4 /* EmployedbundleListPage.m in Sources */,
@@ -2318,7 +2281,6 @@
 				AA5B96211D1C0DF60088A196 /* UserInfoModel.m in Sources */,
 				D0698E811CE45AED003BF1F3 /* NotificationUtil.m in Sources */,
 				AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */,
-				5A105EBC1CF004A90079BEFE /* LessonDetailHaveToPayHeaderView.m in Sources */,
 				5A6CF4E41D260F3E00676255 /* HomePageEmployedViewController.m in Sources */,
 				D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */,
 				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
@@ -2336,14 +2298,12 @@
 				D04D0C171D0FBD280090D2CD /* UserInfoSection2.m in Sources */,
 				5A1DF5841D2B88340078BD0B /* TeacherLessonsViewController.m in Sources */,
 				5A6CF3B21D1CEE6100676255 /* HomePageBaseView.m in Sources */,
-				5A105E5E1CEB1C320079BEFE /* TearcherIndexCell.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				5A6CF48D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */,
 				5A5B740F1D2A323400D24CBA /* AllLessonListViewController.m in Sources */,
 				5A6CF48B1D23632D00676255 /* XJFClassificationCollectionViewCell.m in Sources */,
 				5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */,
 				AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */,
-				5A105EB91CF004870079BEFE /* LessonDetailNoPayHeaderView.m in Sources */,
 				5A1DF58C1D2B88920078BD0B /* TeacherDetailModel.m in Sources */,
 				D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */,
 				AA5B96161D1C0DF60088A196 /* Fans_FocusViewController.m in Sources */,
@@ -2362,9 +2322,7 @@
 				5A5B74081D27DA8900D24CBA /* SelectedCollectionViewCell.m in Sources */,
 				D083C8ED1CF44A7B0028DE8A /* SettingViewController.m in Sources */,
 				5A5B740B1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m in Sources */,
-				5A105EBF1CF02A090079BEFE /* LessonDetailTecherDescribeCell.m in Sources */,
 				CD144F0A1CBB732900A0636D /* BaikeGridViewCell.m in Sources */,
-				5A105E5B1CEB1BE20079BEFE /* LessonIndexCell.m in Sources */,
 				5A1DF59A1D2BE4E20078BD0B /* StudyCenterWikiCell.m in Sources */,
 				D073CF771CFC55CB002D3FAF /* TopicDetailViewController.m in Sources */,
 				5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */,

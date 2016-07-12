@@ -20,6 +20,4 @@
 #import "WikiTalkGridViewCell.h"
 #import "WikiFirstSectionCell.h"
 #import "VideoListCell.h"
-#import "LessonIndexCell.h"
-#import "TearcherIndexCell.h"
 #import "TeacherListViewController.h"
