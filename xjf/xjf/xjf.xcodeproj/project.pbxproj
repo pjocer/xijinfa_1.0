@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F861CF4272B00D7EEEB /* PayView.m */; };
-		5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C3F881CF4279200D7EEEB /* PayView.xib */; };
 		5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */; };
 		5A105E681CEC09540079BEFE /* LessonPlayerLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */; };
 		5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */; };
@@ -83,6 +81,8 @@
 		5AB2413E1D34F02500909BD4 /* XJFBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241391D34F02500909BD4 /* XJFBaseCollectionViewCell.m */; };
 		5AB2413F1D34F02500909BD4 /* XJFBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2413B1D34F02500909BD4 /* XJFBaseTableViewCell.m */; };
 		5AB241401D34F02500909BD4 /* XJFBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2413D1D34F02500909BD4 /* XJFBaseView.m */; };
+		5AB241E61D3502CB00909BD4 /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241E41D3502CB00909BD4 /* PayView.m */; };
+		5AB241E71D3502CB00909BD4 /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB241E51D3502CB00909BD4 /* PayView.xib */; };
 		5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */; };
 		5AF046491D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */; };
 		5AF0464D1D31008E00790232 /* TeacherLisetTeacherCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0464B1D31008E00790232 /* TeacherLisetTeacherCoverCell.m */; };
@@ -237,9 +237,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A0C3F851CF4272B00D7EEEB /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayView.h; path = ../Index/view/PayView/PayView.h; sourceTree = "<group>"; };
-		5A0C3F861CF4272B00D7EEEB /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayView.m; path = ../Index/view/PayView/PayView.m; sourceTree = "<group>"; };
-		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayView.xib; path = ../Index/view/PayView/PayView.xib; sourceTree = "<group>"; };
 		5A105E621CEBFDA30079BEFE /* LessonPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerViewController.h; sourceTree = "<group>"; };
 		5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerViewController.m; sourceTree = "<group>"; };
 		5A105E661CEC09540079BEFE /* LessonPlayerLessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonListViewController.h; sourceTree = "<group>"; };
@@ -379,6 +376,9 @@
 		5AB2413B1D34F02500909BD4 /* XJFBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFBaseTableViewCell.m; sourceTree = "<group>"; };
 		5AB2413C1D34F02500909BD4 /* XJFBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFBaseView.h; sourceTree = "<group>"; };
 		5AB2413D1D34F02500909BD4 /* XJFBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFBaseView.m; sourceTree = "<group>"; };
+		5AB241E31D3502CB00909BD4 /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayView.h; sourceTree = "<group>"; };
+		5AB241E41D3502CB00909BD4 /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayView.m; sourceTree = "<group>"; };
+		5AB241E51D3502CB00909BD4 /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayView.xib; sourceTree = "<group>"; };
 		5AF046441D2F5A1E00790232 /* EmployedArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedArticlesViewController.h; sourceTree = "<group>"; };
 		5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedArticlesViewController.m; sourceTree = "<group>"; };
 		5AF046471D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerTeacherLisetViewController.h; sourceTree = "<group>"; };
@@ -1642,9 +1642,9 @@
 		D07D74541CED9E640037B1A9 /* XJPay */ = {
 			isa = PBXGroup;
 			children = (
-				5A0C3F851CF4272B00D7EEEB /* PayView.h */,
-				5A0C3F861CF4272B00D7EEEB /* PayView.m */,
-				5A0C3F881CF4279200D7EEEB /* PayView.xib */,
+				5AB241E31D3502CB00909BD4 /* PayView.h */,
+				5AB241E41D3502CB00909BD4 /* PayView.m */,
+				5AB241E51D3502CB00909BD4 /* PayView.xib */,
 				D06A81EC1CEEA0E8002C1297 /* XJMarket.h */,
 				D06A81ED1CEEA0E8002C1297 /* XJMarket.m */,
 				D05985201CF6BD8300BF2A30 /* XJOrder.h */,
@@ -1743,7 +1743,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */,
-				5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */,
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
 				D055F2621D2643D600F80AAD /* MyMoneyViewController.xib in Resources */,
 				5A5B74021D27C1E100D24CBA /* SelecteButtonView.xib in Resources */,
@@ -1779,6 +1778,7 @@
 				D04D0C0D1D07EA5D0090D2CD /* CommentCell.xib in Resources */,
 				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
 				D0290ED71D2CB60700FF823C /* StudyCenter.xib in Resources */,
+				5AB241E71D3502CB00909BD4 /* PayView.xib in Resources */,
 				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
 				D0CC73E91D33A2A9003BD7ED /* SearchRecommendCell.xib in Resources */,
 				5A1DF5871D2B88340078BD0B /* TeacherCoverCollectionViewCell.xib in Resources */,
@@ -1842,7 +1842,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA5B96951D222BE20088A196 /* PlayerPageDescribeCell.m in Sources */,
-				5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */,
 				D049BA4F1CEC041600CD5359 /* XJAccountManager.m in Sources */,
 				D0698E661CE41A4D003BF1F3 /* RegistViewController.m in Sources */,
 				D07D74401CED6DBF0037B1A9 /* UserInfoCell.m in Sources */,
@@ -1936,6 +1935,7 @@
 				D0CC73E31D3388D5003BD7ED /* RecentlySearchedCollectionCell.m in Sources */,
 				5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */,
 				D022D43E1D30F06E004C5857 /* LoadingView.m in Sources */,
+				5AB241E61D3502CB00909BD4 /* PayView.m in Sources */,
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,
 				CD1CCC531CB39B3D002FC0C9 /* PlayerViewController.m in Sources */,
 				D073CF6F1CFBF089002D3FAF /* TopicModel.m in Sources */,
