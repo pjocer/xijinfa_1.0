@@ -35,10 +35,6 @@
 		5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */; };
 		5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */; };
 		5A565A3F1D07C05A00008DA9 /* VipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A3E1D07C05A00008DA9 /* VipModel.m */; };
-		5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A411D07C09700008DA9 /* VipHeaderView.m */; };
-		5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */; };
-		5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */; };
-		5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */; };
 		5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */; };
 		5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A591D0FA81800008DA9 /* VipOrderDetaiViewController.m */; };
 		5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A601D10F1CA00008DA9 /* FeedbackViewController.m */; };
@@ -154,11 +150,9 @@
 		C397B48DFAE47D8F0F3C8A55 /* libPods-xjf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */; };
 		CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EFF1CBB732900A0636D /* IndexSectionView.m */; };
 		CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */; };
-		CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC0F1CB35A2D002FC0C9 /* VipViewController.m */; };
 		CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC191CB36386002FC0C9 /* BaseViewController.m */; };
 		CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */; };
 		CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */; };
-		CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC351CB37950002FC0C9 /* VipBaseViewController.m */; };
 		CD1CCC391CB3795D002FC0C9 /* MyBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */; };
 		CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */; };
 		CD1CCC521CB39B3D002FC0C9 /* PlayerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC4C1CB39B3D002FC0C9 /* PlayerBaseViewController.m */; };
@@ -305,14 +299,6 @@
 		5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlayerHistoryViewController.m; sourceTree = "<group>"; };
 		5A565A3D1D07C05A00008DA9 /* VipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipModel.h; sourceTree = "<group>"; };
 		5A565A3E1D07C05A00008DA9 /* VipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipModel.m; sourceTree = "<group>"; };
-		5A565A401D07C09700008DA9 /* VipHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipHeaderView.h; sourceTree = "<group>"; };
-		5A565A411D07C09700008DA9 /* VipHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipHeaderView.m; sourceTree = "<group>"; };
-		5A565A4C1D0BAC8E00008DA9 /* VipPayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListViewController.h; sourceTree = "<group>"; };
-		5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListViewController.m; sourceTree = "<group>"; };
-		5A565A4F1D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListPagePrivilegeCell.h; sourceTree = "<group>"; };
-		5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListPagePrivilegeCell.m; sourceTree = "<group>"; };
-		5A565A521D0BAF5500008DA9 /* VipPayListPageChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipPayListPageChoiceCell.h; sourceTree = "<group>"; };
-		5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipPayListPageChoiceCell.m; sourceTree = "<group>"; };
 		5A565A551D0D70A200008DA9 /* BannerWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerWebViewViewController.h; sourceTree = "<group>"; };
 		5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWebViewViewController.m; sourceTree = "<group>"; };
 		5A565A581D0FA81800008DA9 /* VipOrderDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipOrderDetaiViewController.h; sourceTree = "<group>"; };
@@ -534,16 +520,12 @@
 		CD144EFF1CBB732900A0636D /* IndexSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexSectionView.m; sourceTree = "<group>"; };
 		CD1CCC081CB35A2D002FC0C9 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
 		CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
-		CD1CCC0E1CB35A2D002FC0C9 /* VipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipViewController.h; sourceTree = "<group>"; };
-		CD1CCC0F1CB35A2D002FC0C9 /* VipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipViewController.m; sourceTree = "<group>"; };
 		CD1CCC191CB36386002FC0C9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CD1CCC1A1CB36386002FC0C9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC1E1CB363F5002FC0C9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		CD1CCC311CB37946002FC0C9 /* TopicBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicBaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC321CB37946002FC0C9 /* TopicBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicBaseViewController.m; sourceTree = "<group>"; };
-		CD1CCC341CB37950002FC0C9 /* VipBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipBaseViewController.h; sourceTree = "<group>"; };
-		CD1CCC351CB37950002FC0C9 /* VipBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipBaseViewController.m; sourceTree = "<group>"; };
 		CD1CCC371CB3795D002FC0C9 /* MyBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBaseViewController.h; sourceTree = "<group>"; };
 		CD1CCC381CB3795D002FC0C9 /* MyBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBaseViewController.m; sourceTree = "<group>"; };
 		CD1CCC3B1CB37BA0002FC0C9 /* xjfConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xjfConfigure.h; path = classes/utils/xjfConfigure.h; sourceTree = "<group>"; };
@@ -883,19 +865,6 @@
 				5A565A3E1D07C05A00008DA9 /* VipModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5A565A3C1D07C03F00008DA9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5A565A401D07C09700008DA9 /* VipHeaderView.h */,
-				5A565A411D07C09700008DA9 /* VipHeaderView.m */,
-				5A565A4F1D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.h */,
-				5A565A501D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m */,
-				5A565A521D0BAF5500008DA9 /* VipPayListPageChoiceCell.h */,
-				5A565A531D0BAF5500008DA9 /* VipPayListPageChoiceCell.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		5A565A5D1D10F1A800008DA9 /* Feedback */ = {
@@ -1602,25 +1571,9 @@
 			isa = PBXGroup;
 			children = (
 				5A565A3B1D07C03F00008DA9 /* Model */,
-				5A565A3C1D07C03F00008DA9 /* View */,
-				CD1CCC0D1CB35A2D002FC0C9 /* Controller */,
 			);
 			name = Vip;
 			path = classes/vip;
-			sourceTree = "<group>";
-		};
-		CD1CCC0D1CB35A2D002FC0C9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CD1CCC0E1CB35A2D002FC0C9 /* VipViewController.h */,
-				CD1CCC0F1CB35A2D002FC0C9 /* VipViewController.m */,
-				CD1CCC341CB37950002FC0C9 /* VipBaseViewController.h */,
-				CD1CCC351CB37950002FC0C9 /* VipBaseViewController.m */,
-				5A565A4C1D0BAC8E00008DA9 /* VipPayListViewController.h */,
-				5A565A4D1D0BAC8E00008DA9 /* VipPayListViewController.m */,
-			);
-			name = Controller;
-			path = controller;
 			sourceTree = "<group>";
 		};
 		CD1CCC171CB36386002FC0C9 /* Base */ = {
@@ -2103,7 +2056,6 @@
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
 				5AB2411C1D33695E00909BD4 /* EmployedbundleListPage.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
-				5A565A421D07C09700008DA9 /* VipHeaderView.m in Sources */,
 				5A6CF48F1D23632D00676255 /* XJFSchoolCollectionViewCell.m in Sources */,
 				CDF57AC81C9F825D00049AF0 /* AppDelegate.m in Sources */,
 				5A6CF4931D23632D00676255 /* XJFWikipediaCollectionViewCell.m in Sources */,
@@ -2123,14 +2075,12 @@
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
 				D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */,
 				D0CC73E81D33A2A9003BD7ED /* SearchRecommendCell.m in Sources */,
-				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
 				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
 				5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */,
 				5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */,
 				5A1DF5851D2B88340078BD0B /* TeacherListViewController.m in Sources */,
 				5A5B74041D27C1E100D24CBA /* SelectedTableView.m in Sources */,
 				5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */,
-				CD1CCC161CB35A2D002FC0C9 /* VipViewController.m in Sources */,
 				D022D4411D30F13B004C5857 /* UIView+Boundary.m in Sources */,
 				5A6CF4F01D2639AE00676255 /* EmployedClassificationCollectionViewCell.m in Sources */,
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
@@ -2142,7 +2092,6 @@
 				D06D140F1CFFE0960018F41B /* NewComment_Topic.m in Sources */,
 				5AF7C2DF1CF98B07007CC71C /* MyOrderViewController.m in Sources */,
 				5A6CF3B51D1CEE8000676255 /* HomePageBaseViewController.m in Sources */,
-				5A565A511D0BAF2200008DA9 /* VipPayListPagePrivilegeCell.m in Sources */,
 				5A6CF3CA1D1CF90C00676255 /* HomePageSelectViewController.m in Sources */,
 				5A6CF39E1D1CED5400676255 /* XJFBaseView.m in Sources */,
 				5A565A5A1D0FA81800008DA9 /* VipOrderDetaiViewController.m in Sources */,
@@ -2178,14 +2127,12 @@
 				AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */,
 				5A6CF4E41D260F3E00676255 /* HomePageEmployedViewController.m in Sources */,
 				D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */,
-				5A565A541D0BAF5500008DA9 /* VipPayListPageChoiceCell.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				D0290ED21D2B7F6900FF823C /* XJFCacheHandler.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				AAC68BFD1D30BFE600685262 /* OptionalJSONModel.m in Sources */,
 				5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */,
 				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
-				5A565A4E1D0BAC8E00008DA9 /* VipPayListViewController.m in Sources */,
 				5A6CF4E71D260F8800676255 /* EmploymentInformationViewController.m in Sources */,
 				AA5B96931D222BE20088A196 /* PlayerPageCommentsFooterView.m in Sources */,
 				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
