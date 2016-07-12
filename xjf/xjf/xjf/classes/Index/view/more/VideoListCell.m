@@ -13,7 +13,6 @@
 @property (nonatomic, strong) UIImageView *videoImage;
 ///视频标题
 @property (nonatomic, strong) UILabel *videoTitle;
-//@property (nonatomic, strong) UILabel *vipLogo;
 @end
 
 @implementation VideoListCell
@@ -148,20 +147,6 @@
         self.selectedLabel.layer.cornerRadius = 7;
         self.selectedLabel.layer.borderColor = [UIColor xjfStringToColor:@"#9a9a9a"].CGColor;
         self.selectedLabel.hidden = YES;
-
-        //vipLogo
-//        self.vipLogo = [[UILabel alloc] init];
-//        [self.contentView addSubview:self.vipLogo];
-//        [self.vipLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.right.equalTo(self.videoImage);
-//            make.size.mas_equalTo(CGSizeMake(60, 20));
-//        }];
-//        self.vipLogo.backgroundColor = [UIColor redColor];
-//        self.vipLogo.textAlignment = NSTextAlignmentCenter;
-//        self.vipLogo.textColor = [UIColor whiteColor];
-//        self.vipLogo.font = FONT12;
-//        self.vipLogo.text = @"Vip 专享";
-//        self.vipLogo.hidden = YES;
     }
     return self;
 }
@@ -193,35 +178,6 @@
         self.oldPrice.text = [NSString stringWithFormat:@"￥%.2lf", oldPrice / 100];
     }
 
-}
-
-- (void)setVipModel:(VipModel *)vipModel {
-    if (vipModel) {
-        _vipModel = vipModel;
-    }
-
-    if ([vipModel.period isEqualToString:@"1m"]) {
-        //月付
-        self.videoImage.image = [UIImage imageNamed:@"icon_vip_1m"];
-        CGFloat price = [vipModel.price floatValue] / 100;
-        self.videoTitle.text = [NSString stringWithFormat:@"月费会员充值%.2lf元 ￥%.2lf/月", price, price];
-    } else if ([vipModel.period isEqualToString:@"1y"]) {
-        //年付
-        self.videoImage.image = [UIImage imageNamed:@"icon_vip_12m"];
-        CGFloat price = [vipModel.price floatValue] / 100 / 12;
-        self.videoTitle.text = [NSString stringWithFormat:@"年费会员充值%.2lf元 ￥%.2lf/月",
-                                                          [vipModel.price floatValue] / 100, price];
-    }
-    self.price.text = [NSString stringWithFormat:@"￥%.2lf", [vipModel.price floatValue] / 100];
-
-    if (self.vipModel && self.vipModel != nil) {
-        [self.videoTitle mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.videoImage.mas_right).with.offset(10);
-            make.right.mas_equalTo(self.contentView).with.offset(-10);
-            make.top.equalTo(self.videoImage);
-            make.height.mas_equalTo(37);
-        }];
-    }
 }
 
 
@@ -296,11 +252,6 @@
         }];
     }
 
-//    if (self.model.package.count != 0 && [self.model.package containsObject:@"subscriber"]) {
-//        self.vipLogo.hidden = NO;
-//    } else {
-//        self.vipLogo.hidden = YES;
-//    }
 }
 
 

@@ -120,20 +120,11 @@ static NSString *TeacherMyOrderCell_id = @"TeacherMyOrderCell_id";
     VideoListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:LessonMyOrderCell_id];
     OrderDataModel *orderDataModel = self.orderModel.result.data[indexPath.section];
 
-    if ([orderDataModel.type isEqualToString:@"subscribe"] || orderDataModel.items.count == 0) {
-        //Vip
-        VipModel *vip = [[VipModel alloc] init];
-        vip.price = [NSString stringWithFormat:@"%lf", [orderDataModel.amount_display floatValue] * 100];
-        vip.period = orderDataModel.membership.period;
-        cell.vipModel = vip;
-        cell.teacherName.hidden = YES;
-        cell.lessonCount.hidden = YES;
-    } else if ([orderDataModel.type isEqualToString:@"purchase"]) {
-        //lessons
-        cell.model = orderDataModel.items[indexPath.row];
-        cell.teacherName.hidden = NO;
-        cell.lessonCount.hidden = NO;
-    }
+    //lessons
+    cell.model = orderDataModel.items[indexPath.row];
+    cell.teacherName.hidden = NO;
+    cell.lessonCount.hidden = NO;
+    
     cell.isMyOrder = YES;
     cell.oldPrice.hidden = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

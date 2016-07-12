@@ -27,7 +27,6 @@
 
 @implementation OrderDetaiViewController
 static CGFloat BottomPayButtonH = 50;
-static CGFloat payViewH = 285;
 static CGFloat tableHeader_NormalH = 35;
 static CGFloat tableFooter_NormalH = 45;
 static CGFloat tableFooter_orderSucceslH = 80;
@@ -120,18 +119,8 @@ static NSString *TeacherOrderCell_id = @"TeacherOrderCell_id";
     if (self.dataSource.count != 0) {
         cell.model = self.dataSource[indexPath.row];
     } else {
-
-
-        if ([self.orderDataModel.type isEqualToString:@"subscribe"] || self.orderDataModel.items.count == 0) {
-            //Vip
-            VipModel *vip = [[VipModel alloc] init];
-            vip.price = [NSString stringWithFormat:@"%lf", [self.orderDataModel.amount_display floatValue] * 100];
-            vip.period = self.orderDataModel.membership.period;
-            cell.vipModel = vip;
-        } else if ([self.orderDataModel.type isEqualToString:@"purchase"]) {
-            //lessons
-            cell.model = self.orderDataModel.items[indexPath.row];
-        }
+    //lessons
+    cell.model = self.orderDataModel.items[indexPath.row];
     }
     return cell;
 }

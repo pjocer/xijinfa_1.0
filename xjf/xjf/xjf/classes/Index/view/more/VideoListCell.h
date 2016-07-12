@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TalkGridModel.h"
-#import "VipModel.h"
 
 @interface VideoListCell : UITableViewCell
 @property (nonatomic, strong) TalkGridModel *model;
@@ -25,7 +24,6 @@
 ///视频详情
 @property (nonatomic, strong) UILabel *viedoDetail;
 @property (nonatomic, strong) UILabel *selectedLabel;
-@property (nonatomic, strong) VipModel *vipModel;
 @property (nonatomic, assign) BOOL isMyOrder;
 @property (nonatomic, assign) int status;
 @property (nonatomic, strong) UIView *rightDeleteLogo;
