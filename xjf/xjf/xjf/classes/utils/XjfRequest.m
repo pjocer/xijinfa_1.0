@@ -17,7 +17,6 @@
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, copy) NSString *api_name;
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
-@property (nonatomic, strong) NSData *responseData;
 @end
 
 @implementation XjfRequest
@@ -188,7 +187,9 @@
 
 - (void)formatSessionDataTask:(NSHTTPURLResponse *)task data:(id)responseObject {
     _responseStatusCode = task.statusCode;
-    _responseData = responseObject;
+    NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+    NSDictionary *result = responseDic[@"result"];
+    
 }
 
 - (NSDictionary *)requestHeaders {

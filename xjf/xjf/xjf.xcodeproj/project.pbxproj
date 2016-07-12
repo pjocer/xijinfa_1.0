@@ -242,6 +242,7 @@
 		D0CC73E81D33A2A9003BD7ED /* SearchRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC73E61D33A2A9003BD7ED /* SearchRecommendCell.m */; };
 		D0CC73E91D33A2A9003BD7ED /* SearchRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CC73E71D33A2A9003BD7ED /* SearchRecommendCell.xib */; };
 		D0CC73F51D34D20D003BD7ED /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC73F41D34D20D003BD7ED /* BaseModel.m */; };
+		D0CC73FC1D34DF02003BD7ED /* XJRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC73FB1D34DF02003BD7ED /* XJRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -677,6 +678,8 @@
 		D0CC73F31D34D20D003BD7ED /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		D0CC73F41D34D20D003BD7ED /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		D0CC73F61D34D258003BD7ED /* ModelProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelProtocols.h; sourceTree = "<group>"; };
+		D0CC73FA1D34DF02003BD7ED /* XJRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJRequest.h; sourceTree = "<group>"; };
+		D0CC73FB1D34DF02003BD7ED /* XJRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJRequest.m; sourceTree = "<group>"; };
 		FA5730763C928D50ED312F03 /* Pods-xjf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1775,6 +1778,8 @@
 			children = (
 				CD1CCC411CB37BDB002FC0C9 /* XjfRequest.h */,
 				CD1CCC421CB37BDB002FC0C9 /* XjfRequest.m */,
+				D0CC73FA1D34DF02003BD7ED /* XJRequest.h */,
+				D0CC73FB1D34DF02003BD7ED /* XJRequest.m */,
 				D0698E7E1CE45059003BF1F3 /* RequestAPI.h */,
 			);
 			name = XJFRequest;
@@ -2086,6 +2091,7 @@
 				CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */,
 				5A105E681CEC09540079BEFE /* LessonPlayerLessonListViewController.m in Sources */,
 				5A6CF3A41D1CED7600676255 /* XJFBaseCollectionViewCell.m in Sources */,
+				D0CC73FC1D34DF02003BD7ED /* XJRequest.m in Sources */,
 				D02FB4D01D12798A006EADAD /* CitySelector.m in Sources */,
 				AA5B969B1D2244F60088A196 /* CommentsPageCommentsCell.m in Sources */,
 				5A1DF5861D2B88340078BD0B /* TeacherCoverCollectionViewCell.m in Sources */,

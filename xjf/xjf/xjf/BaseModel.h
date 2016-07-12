@@ -9,6 +9,7 @@
 #import <JSONModel/JSONModel.h>
 
 @interface BaseModel : JSONModel
+
 @end
 
 @interface ImageCode : BaseModel
