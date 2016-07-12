@@ -241,6 +241,7 @@
 		D0CC73E41D3388D5003BD7ED /* RecentlySearchedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CC73E21D3388D5003BD7ED /* RecentlySearchedCollectionCell.xib */; };
 		D0CC73E81D33A2A9003BD7ED /* SearchRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC73E61D33A2A9003BD7ED /* SearchRecommendCell.m */; };
 		D0CC73E91D33A2A9003BD7ED /* SearchRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CC73E71D33A2A9003BD7ED /* SearchRecommendCell.xib */; };
+		D0CC73F51D34D20D003BD7ED /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC73F41D34D20D003BD7ED /* BaseModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -673,6 +674,9 @@
 		D0CC73E51D33A2A9003BD7ED /* SearchRecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendCell.h; sourceTree = "<group>"; };
 		D0CC73E61D33A2A9003BD7ED /* SearchRecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendCell.m; sourceTree = "<group>"; };
 		D0CC73E71D33A2A9003BD7ED /* SearchRecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchRecommendCell.xib; sourceTree = "<group>"; };
+		D0CC73F31D34D20D003BD7ED /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		D0CC73F41D34D20D003BD7ED /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		D0CC73F61D34D258003BD7ED /* ModelProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelProtocols.h; sourceTree = "<group>"; };
 		FA5730763C928D50ED312F03 /* Pods-xjf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1679,6 +1683,9 @@
 				5A6CF1D41D126FA700676255 /* AppDelegateManager.m */,
 				AAC68BFB1D30BFE500685262 /* OptionalJSONModel.h */,
 				AAC68BFC1D30BFE500685262 /* OptionalJSONModel.m */,
+				D0CC73F61D34D258003BD7ED /* ModelProtocols.h */,
+				D0CC73F31D34D20D003BD7ED /* BaseModel.h */,
+				D0CC73F41D34D20D003BD7ED /* BaseModel.m */,
 			);
 			path = xjf;
 			sourceTree = "<group>";
@@ -2100,6 +2107,7 @@
 				D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */,
 				D07D745A1CEDA4CC0037B1A9 /* Order.m in Sources */,
 				D0290ED21D2B7F6900FF823C /* XJFCacheHandler.m in Sources */,
+				D0CC73F51D34D20D003BD7ED /* BaseModel.m in Sources */,
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				AAC68BFD1D30BFE600685262 /* OptionalJSONModel.m in Sources */,
 				5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */,
