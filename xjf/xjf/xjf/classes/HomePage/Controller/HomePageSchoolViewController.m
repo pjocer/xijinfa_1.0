@@ -218,13 +218,13 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
     
-    __unsafe_unretained __typeof(sectionHeaderView) weaksectionHeaderView = sectionHeaderView;
-    [sectionHeaderView setTitle:@[@"",@"全部分类",@"热门课程",@"析金讲师"][indexPath.section] moreTitle:@[@"",@"",@"",@"更多"][indexPath.section] moreCallback:^(id gestureRecognizer) {
-        if ([weaksectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
-            TeacherListViewController *teacherListViewController = [TeacherListViewController new];
-            teacherListViewController.navigationItem.title = @"全部老师";
-            [self.navigationController pushViewController:teacherListViewController animated:YES];
-        }
+//    __unsafe_unretained __typeof(sectionHeaderView) weaksectionHeaderView = sectionHeaderView;
+    [sectionHeaderView setTitle:@[@"",@"全部分类",@"热门课程",@"析金讲师"][indexPath.section] moreTitle:@"" moreCallback:^(id gestureRecognizer) {
+//        if ([weaksectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
+//            TeacherListViewController *teacherListViewController = [TeacherListViewController new];
+//            teacherListViewController.navigationItem.title = @"全部老师";
+//            [self.navigationController pushViewController:teacherListViewController animated:YES];
+//        }
     }];
     
     
