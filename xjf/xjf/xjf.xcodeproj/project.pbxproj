@@ -9,16 +9,10 @@
 /* Begin PBXBuildFile section */
 		5A0C3F871CF4272B00D7EEEB /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F861CF4272B00D7EEEB /* PayView.m */; };
 		5A0C3F891CF4279200D7EEEB /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C3F881CF4279200D7EEEB /* PayView.xib */; };
-		5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */; };
 		5A105E641CEBFDA30079BEFE /* LessonPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */; };
 		5A105E681CEC09540079BEFE /* LessonPlayerLessonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E671CEC09540079BEFE /* LessonPlayerLessonListViewController.m */; };
 		5A105E6B1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */; };
 		5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */; };
-		5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */; };
-		5A105E9A1CED91ED0079BEFE /* WikiPediaCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */; };
-		5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */; };
-		5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EA51CEDCE2D0079BEFE /* SubmitOrdersView.m */; };
-		5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A105EB51CF002DB0079BEFE /* LessonDetailLessonListCell.m */; };
 		5A1DF5831D2B88340078BD0B /* TeacherDetalPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1DF5791D2B88340078BD0B /* TeacherDetalPage.m */; };
 		5A1DF5841D2B88340078BD0B /* TeacherLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1DF57B1D2B88340078BD0B /* TeacherLessonsViewController.m */; };
 		5A1DF5851D2B88340078BD0B /* TeacherListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1DF57D1D2B88340078BD0B /* TeacherListViewController.m */; };
@@ -30,11 +24,9 @@
 		5A1DF59B1D2BE4E20078BD0B /* StudyCenterWikiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1DF5991D2BE4E20078BD0B /* StudyCenterWikiCell.xib */; };
 		5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */; };
 		5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2071751D02BB4500462D65 /* MyFavoredsViewController.m */; };
-		5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C561CE5F1F3000CF748 /* VideoListCell.m */; };
 		5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A441C591CE5FB03000CF748 /* CommentsViewController.m */; };
 		5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */; };
 		5A565A1A1D05B12000008DA9 /* MyPlayerHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */; };
-		5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */; };
 		5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A601D10F1CA00008DA9 /* FeedbackViewController.m */; };
 		5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A661D10FD6C00008DA9 /* FeedbackView.m */; };
 		5A565A731D110B2100008DA9 /* CloverText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A565A701D110B2100008DA9 /* CloverText.m */; };
@@ -86,6 +78,15 @@
 		5A6CF4F11D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CF4EF1D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib */; };
 		5AB241191D3365B300909BD4 /* EmployedbundleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241181D3365B300909BD4 /* EmployedbundleModel.m */; };
 		5AB2411C1D33695E00909BD4 /* EmployedbundleListPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2411B1D33695E00909BD4 /* EmployedbundleListPage.m */; };
+		5AB2411F1D34E77600909BD4 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2411E1D34E77600909BD4 /* VideoListCell.m */; };
+		5AB241221D34E84400909BD4 /* IndexSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241211D34E84400909BD4 /* IndexSectionView.m */; };
+		5AB241251D34E8B100909BD4 /* LessonDetailLessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241241D34E8B100909BD4 /* LessonDetailLessonListCell.m */; };
+		5AB241281D34E8BB00909BD4 /* SubmitOrdersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241271D34E8BB00909BD4 /* SubmitOrdersView.m */; };
+		5AB2412D1D34E92B00909BD4 /* BannerWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2412A1D34E92B00909BD4 /* BannerWebViewViewController.m */; };
+		5AB2412E1D34E92B00909BD4 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2412C1D34E92B00909BD4 /* ShoppingCartViewController.m */; };
+		5AB241351D34E96400909BD4 /* LessonDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241301D34E96400909BD4 /* LessonDetailListModel.m */; };
+		5AB241361D34E96400909BD4 /* ProjectListByModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241321D34E96400909BD4 /* ProjectListByModel.m */; };
+		5AB241371D34E96400909BD4 /* WikiPediaCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB241341D34E96400909BD4 /* WikiPediaCategoriesModel.m */; };
 		5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */; };
 		5AF046491D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF046481D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.m */; };
 		5AF0464D1D31008E00790232 /* TeacherLisetTeacherCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0464B1D31008E00790232 /* TeacherLisetTeacherCoverCell.m */; };
@@ -146,7 +147,6 @@
 		AA5B969B1D2244F60088A196 /* CommentsPageCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B969A1D2244F60088A196 /* CommentsPageCommentsCell.m */; };
 		AAC68BFD1D30BFE600685262 /* OptionalJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC68BFC1D30BFE500685262 /* OptionalJSONModel.m */; };
 		C397B48DFAE47D8F0F3C8A55 /* libPods-xjf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDF5A98D9774E12CAA3FE42 /* libPods-xjf.a */; };
-		CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD144EFF1CBB732900A0636D /* IndexSectionView.m */; };
 		CD1CCC151CB35A2D002FC0C9 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */; };
 		CD1CCC1D1CB36386002FC0C9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC191CB36386002FC0C9 /* BaseViewController.m */; };
 		CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1CCC1F1CB363F5002FC0C9 /* RootViewController.m */; };
@@ -249,8 +249,6 @@
 		5A0C3F851CF4272B00D7EEEB /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayView.h; path = ../Index/view/PayView/PayView.h; sourceTree = "<group>"; };
 		5A0C3F861CF4272B00D7EEEB /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayView.m; path = ../Index/view/PayView/PayView.m; sourceTree = "<group>"; };
 		5A0C3F881CF4279200D7EEEB /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayView.xib; path = ../Index/view/PayView/PayView.xib; sourceTree = "<group>"; };
-		5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailListModel.h; sourceTree = "<group>"; };
-		5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailListModel.m; sourceTree = "<group>"; };
 		5A105E621CEBFDA30079BEFE /* LessonPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerViewController.h; sourceTree = "<group>"; };
 		5A105E631CEBFDA30079BEFE /* LessonPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerViewController.m; sourceTree = "<group>"; };
 		5A105E661CEC09540079BEFE /* LessonPlayerLessonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonListViewController.h; sourceTree = "<group>"; };
@@ -259,16 +257,6 @@
 		5A105E6A1CEC097B0079BEFE /* LessonPlayerLessonDescribeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonDescribeViewController.m; sourceTree = "<group>"; };
 		5A105E6F1CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerLessonRecommendedViewController.h; sourceTree = "<group>"; };
 		5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerLessonRecommendedViewController.m; sourceTree = "<group>"; };
-		5A105E8E1CED880D0079BEFE /* ProjectListByModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListByModel.h; sourceTree = "<group>"; };
-		5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListByModel.m; sourceTree = "<group>"; };
-		5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiPediaCategoriesModel.m; sourceTree = "<group>"; };
-		5A105E991CED91ED0079BEFE /* WikiPediaCategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiPediaCategoriesModel.h; sourceTree = "<group>"; };
-		5A105EA11CEDCD000079BEFE /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
-		5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
-		5A105EA41CEDCE2D0079BEFE /* SubmitOrdersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitOrdersView.h; sourceTree = "<group>"; };
-		5A105EA51CEDCE2D0079BEFE /* SubmitOrdersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitOrdersView.m; sourceTree = "<group>"; };
-		5A105EB41CF002DB0079BEFE /* LessonDetailLessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailLessonListCell.h; sourceTree = "<group>"; };
-		5A105EB51CF002DB0079BEFE /* LessonDetailLessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailLessonListCell.m; sourceTree = "<group>"; };
 		5A1DF5781D2B88340078BD0B /* TeacherDetalPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherDetalPage.h; sourceTree = "<group>"; };
 		5A1DF5791D2B88340078BD0B /* TeacherDetalPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDetalPage.m; sourceTree = "<group>"; };
 		5A1DF57A1D2B88340078BD0B /* TeacherLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherLessonsViewController.h; sourceTree = "<group>"; };
@@ -289,16 +277,12 @@
 		5A20716B1D02ADBE00462D65 /* MyLessonsTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsTableFooterView.m; sourceTree = "<group>"; };
 		5A2071741D02BB4500462D65 /* MyFavoredsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavoredsViewController.h; sourceTree = "<group>"; };
 		5A2071751D02BB4500462D65 /* MyFavoredsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavoredsViewController.m; sourceTree = "<group>"; };
-		5A441C551CE5F1F3000CF748 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
-		5A441C561CE5F1F3000CF748 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
 		5A441C581CE5FB03000CF748 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
 		5A441C591CE5FB03000CF748 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		5A565A0E1D05A8A100008DA9 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
 		5A565A0F1D05A8A100008DA9 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
 		5A565A181D05B12000008DA9 /* MyPlayerHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlayerHistoryViewController.h; sourceTree = "<group>"; };
 		5A565A191D05B12000008DA9 /* MyPlayerHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlayerHistoryViewController.m; sourceTree = "<group>"; };
-		5A565A551D0D70A200008DA9 /* BannerWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerWebViewViewController.h; sourceTree = "<group>"; };
-		5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWebViewViewController.m; sourceTree = "<group>"; };
 		5A565A5F1D10F1CA00008DA9 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		5A565A601D10F1CA00008DA9 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		5A565A651D10FD6C00008DA9 /* FeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackView.h; sourceTree = "<group>"; };
@@ -394,6 +378,24 @@
 		5AB241181D3365B300909BD4 /* EmployedbundleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedbundleModel.m; sourceTree = "<group>"; };
 		5AB2411A1D33695E00909BD4 /* EmployedbundleListPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedbundleListPage.h; sourceTree = "<group>"; };
 		5AB2411B1D33695E00909BD4 /* EmployedbundleListPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedbundleListPage.m; sourceTree = "<group>"; };
+		5AB2411D1D34E77600909BD4 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
+		5AB2411E1D34E77600909BD4 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
+		5AB241201D34E84400909BD4 /* IndexSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexSectionView.h; sourceTree = "<group>"; };
+		5AB241211D34E84400909BD4 /* IndexSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexSectionView.m; sourceTree = "<group>"; };
+		5AB241231D34E8B100909BD4 /* LessonDetailLessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailLessonListCell.h; sourceTree = "<group>"; };
+		5AB241241D34E8B100909BD4 /* LessonDetailLessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailLessonListCell.m; sourceTree = "<group>"; };
+		5AB241261D34E8BB00909BD4 /* SubmitOrdersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitOrdersView.h; sourceTree = "<group>"; };
+		5AB241271D34E8BB00909BD4 /* SubmitOrdersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitOrdersView.m; sourceTree = "<group>"; };
+		5AB241291D34E92B00909BD4 /* BannerWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerWebViewViewController.h; sourceTree = "<group>"; };
+		5AB2412A1D34E92B00909BD4 /* BannerWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWebViewViewController.m; sourceTree = "<group>"; };
+		5AB2412B1D34E92B00909BD4 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
+		5AB2412C1D34E92B00909BD4 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
+		5AB2412F1D34E96400909BD4 /* LessonDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonDetailListModel.h; sourceTree = "<group>"; };
+		5AB241301D34E96400909BD4 /* LessonDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonDetailListModel.m; sourceTree = "<group>"; };
+		5AB241311D34E96400909BD4 /* ProjectListByModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListByModel.h; sourceTree = "<group>"; };
+		5AB241321D34E96400909BD4 /* ProjectListByModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListByModel.m; sourceTree = "<group>"; };
+		5AB241331D34E96400909BD4 /* WikiPediaCategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiPediaCategoriesModel.h; sourceTree = "<group>"; };
+		5AB241341D34E96400909BD4 /* WikiPediaCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiPediaCategoriesModel.m; sourceTree = "<group>"; };
 		5AF046441D2F5A1E00790232 /* EmployedArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployedArticlesViewController.h; sourceTree = "<group>"; };
 		5AF046451D2F5A1E00790232 /* EmployedArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployedArticlesViewController.m; sourceTree = "<group>"; };
 		5AF046471D2FB1B400790232 /* LessonPlayerTeacherLisetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerTeacherLisetViewController.h; sourceTree = "<group>"; };
@@ -512,8 +514,6 @@
 		AAC68BFB1D30BFE500685262 /* OptionalJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalJSONModel.h; sourceTree = "<group>"; };
 		AAC68BFC1D30BFE500685262 /* OptionalJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalJSONModel.m; sourceTree = "<group>"; };
 		AD5D4B14A5D2BC8B10B6B79E /* Pods-xjf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.release.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.release.xcconfig"; sourceTree = "<group>"; };
-		CD144EFE1CBB732900A0636D /* IndexSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexSectionView.h; sourceTree = "<group>"; };
-		CD144EFF1CBB732900A0636D /* IndexSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexSectionView.m; sourceTree = "<group>"; };
 		CD1CCC081CB35A2D002FC0C9 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
 		CD1CCC091CB35A2D002FC0C9 /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
 		CD1CCC191CB36386002FC0C9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -716,17 +716,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		5A105E581CEB1A9F0079BEFE /* Lesson */ = {
-			isa = PBXGroup;
-			children = (
-				5A105EA41CEDCE2D0079BEFE /* SubmitOrdersView.h */,
-				5A105EA51CEDCE2D0079BEFE /* SubmitOrdersView.m */,
-				5A105EB41CF002DB0079BEFE /* LessonDetailLessonListCell.h */,
-				5A105EB51CF002DB0079BEFE /* LessonDetailLessonListCell.m */,
-			);
-			path = Lesson;
-			sourceTree = "<group>";
-		};
 		5A105E651CEC08E30079BEFE /* LessonPlayerVCChildVideController */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,19 +729,6 @@
 				5A105E701CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m */,
 			);
 			path = LessonPlayerVCChildVideController;
-			sourceTree = "<group>";
-		};
-		5A105E8B1CED880D0079BEFE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				5A105E981CED91ED0079BEFE /* WikiPediaCategoriesModel.m */,
-				5A105E991CED91ED0079BEFE /* WikiPediaCategoriesModel.h */,
-				5A105E8E1CED880D0079BEFE /* ProjectListByModel.h */,
-				5A105E8F1CED880D0079BEFE /* ProjectListByModel.m */,
-				5A0C3F8A1CF448A400D7EEEB /* LessonDetailListModel.h */,
-				5A0C3F8B1CF448A400D7EEEB /* LessonDetailListModel.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		5A1DF5761D2B88340078BD0B /* Techer */ = {
@@ -944,6 +920,10 @@
 		5A6CF38F1D1CED0B00676255 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5AB241291D34E92B00909BD4 /* BannerWebViewViewController.h */,
+				5AB2412A1D34E92B00909BD4 /* BannerWebViewViewController.m */,
+				5AB2412B1D34E92B00909BD4 /* ShoppingCartViewController.h */,
+				5AB2412C1D34E92B00909BD4 /* ShoppingCartViewController.m */,
 				5A6CF3B31D1CEE8000676255 /* HomePageBaseViewController.h */,
 				5A6CF3B41D1CEE8000676255 /* HomePageBaseViewController.m */,
 				5A6CF3B61D1CF20C00676255 /* HomePageMainViewController.h */,
@@ -962,6 +942,12 @@
 		5A6CF3901D1CED0B00676255 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5AB2412F1D34E96400909BD4 /* LessonDetailListModel.h */,
+				5AB241301D34E96400909BD4 /* LessonDetailListModel.m */,
+				5AB241311D34E96400909BD4 /* ProjectListByModel.h */,
+				5AB241321D34E96400909BD4 /* ProjectListByModel.m */,
+				5AB241331D34E96400909BD4 /* WikiPediaCategoriesModel.h */,
+				5AB241341D34E96400909BD4 /* WikiPediaCategoriesModel.m */,
 				5A6CF3AD1D1CEE4E00676255 /* HomePageBaseModel.h */,
 				5A6CF3AE1D1CEE4E00676255 /* HomePageBaseModel.m */,
 				5AB241171D3365B300909BD4 /* EmployedbundleModel.h */,
@@ -1036,6 +1022,10 @@
 		5A6CF4741D23632D00676255 /* XJFTheCommonlyUsedCell */ = {
 			isa = PBXGroup;
 			children = (
+				5AB241231D34E8B100909BD4 /* LessonDetailLessonListCell.h */,
+				5AB241241D34E8B100909BD4 /* LessonDetailLessonListCell.m */,
+				5AB2411D1D34E77600909BD4 /* VideoListCell.h */,
+				5AB2411E1D34E77600909BD4 /* VideoListCell.m */,
 				5A6CF4751D23632D00676255 /* XJFBigWikipediaCollectionViewCell.h */,
 				5A6CF4761D23632D00676255 /* XJFBigWikipediaCollectionViewCell.m */,
 				5A6CF4771D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib */,
@@ -1072,6 +1062,10 @@
 		5A6CF4881D23632D00676255 /* XJFTheCommonlyUsedView */ = {
 			isa = PBXGroup;
 			children = (
+				5AB241261D34E8BB00909BD4 /* SubmitOrdersView.h */,
+				5AB241271D34E8BB00909BD4 /* SubmitOrdersView.m */,
+				5AB241201D34E84400909BD4 /* IndexSectionView.h */,
+				5AB241211D34E84400909BD4 /* IndexSectionView.m */,
 				5A6CF49B1D2363DD00676255 /* SelectedScrollContentView.h */,
 				5A6CF49C1D2363DD00676255 /* SelectedScrollContentView.m */,
 			);
@@ -1361,58 +1355,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CD144EEF1CBB732900A0636D /* index */ = {
-			isa = PBXGroup;
-			children = (
-				CD144EFE1CBB732900A0636D /* IndexSectionView.h */,
-				CD144EFF1CBB732900A0636D /* IndexSectionView.m */,
-			);
-			path = index;
-			sourceTree = "<group>";
-		};
-		CD144F081CBB732900A0636D /* more */ = {
-			isa = PBXGroup;
-			children = (
-				5A441C551CE5F1F3000CF748 /* VideoListCell.h */,
-				5A441C561CE5F1F3000CF748 /* VideoListCell.m */,
-			);
-			path = more;
-			sourceTree = "<group>";
-		};
-		CD1CCBF41CB35A2D002FC0C9 /* Index */ = {
-			isa = PBXGroup;
-			children = (
-				5A105E8B1CED880D0079BEFE /* Model */,
-				CD1CCBF51CB35A2D002FC0C9 /* Controller */,
-				CD1CCBF91CB35A2D002FC0C9 /* View */,
-			);
-			name = Index;
-			path = classes/Index;
-			sourceTree = "<group>";
-		};
-		CD1CCBF51CB35A2D002FC0C9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				5A105EA11CEDCD000079BEFE /* ShoppingCartViewController.h */,
-				5A105EA21CEDCD000079BEFE /* ShoppingCartViewController.m */,
-				5A565A551D0D70A200008DA9 /* BannerWebViewViewController.h */,
-				5A565A561D0D70A200008DA9 /* BannerWebViewViewController.m */,
-			);
-			name = Controller;
-			path = controller;
-			sourceTree = "<group>";
-		};
-		CD1CCBF91CB35A2D002FC0C9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5A105E581CEB1A9F0079BEFE /* Lesson */,
-				CD144EEF1CBB732900A0636D /* index */,
-				CD144F081CBB732900A0636D /* more */,
-			);
-			name = View;
-			path = view;
-			sourceTree = "<group>";
-		};
 		CD1CCBFA1CB35A2D002FC0C9 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
@@ -1673,7 +1615,6 @@
 				644C11151CBA8B4B00892E2C /* User */,
 				CD1CCC4A1CB39B3D002FC0C9 /* Player */,
 				CD1CCC171CB36386002FC0C9 /* Base */,
-				CD1CCBF41CB35A2D002FC0C9 /* Index */,
 				CD1CCBFA1CB35A2D002FC0C9 /* Mine */,
 				CD1CCC061CB35A2D002FC0C9 /* Topic */,
 				5A1DF58E1D2BE4340078BD0B /* StudyCenter */,
@@ -2021,21 +1962,22 @@
 				D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */,
 				5AF7C2D31CF94662007CC71C /* OrderDetailBaseViewController.m in Sources */,
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
+				5AB241371D34E96400909BD4 /* WikiPediaCategoriesModel.m in Sources */,
 				5A6CF49A1D2363BD00676255 /* TalkGridModel.m in Sources */,
 				D022D4471D334B19004C5857 /* RecentlySearchedCell.m in Sources */,
 				D055F2691D29FD5B00F80AAD /* RechargeStreamCell.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
 				5AF0464D1D31008E00790232 /* TeacherLisetTeacherCoverCell.m in Sources */,
 				D055F27D1D2A425D00F80AAD /* PayResultController.m in Sources */,
-				5A105EA31CEDCD000079BEFE /* ShoppingCartViewController.m in Sources */,
 				5A1DF5831D2B88340078BD0B /* TeacherDetalPage.m in Sources */,
 				5A6CF3DF1D1D552F00676255 /* HomePageScrollCell.m in Sources */,
+				5AB241251D34E8B100909BD4 /* LessonDetailLessonListCell.m in Sources */,
 				D04D0C121D0FA5240090D2CD /* UserInfoSection1.m in Sources */,
 				5AB241191D3365B300909BD4 /* EmployedbundleModel.m in Sources */,
+				5AB2412E1D34E92B00909BD4 /* ShoppingCartViewController.m in Sources */,
 				AA5B96921D222BE20088A196 /* PlayerPageCommentsCell.m in Sources */,
 				5A565A101D05A8A100008DA9 /* MyLessonsViewController.m in Sources */,
 				D055F2791D2A2C3400F80AAD /* RechargeList.m in Sources */,
-				5A105EB61CF002DB0079BEFE /* LessonDetailLessonListCell.m in Sources */,
 				D04D0C0C1D07EA5D0090D2CD /* CommentCell.m in Sources */,
 				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
@@ -2061,11 +2003,9 @@
 				D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */,
 				D0CC73E81D33A2A9003BD7ED /* SearchRecommendCell.m in Sources */,
 				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
-				5A105EA61CEDCE2D0079BEFE /* SubmitOrdersView.m in Sources */,
 				5A6CF1D51D126FA700676255 /* AppDelegateManager.m in Sources */,
 				5A1DF5851D2B88340078BD0B /* TeacherListViewController.m in Sources */,
 				5A5B74041D27C1E100D24CBA /* SelectedTableView.m in Sources */,
-				5A105E931CED880D0079BEFE /* ProjectListByModel.m in Sources */,
 				D022D4411D30F13B004C5857 /* UIView+Boundary.m in Sources */,
 				5A6CF4F01D2639AE00676255 /* EmployedClassificationCollectionViewCell.m in Sources */,
 				D07D74571CED9EAC0037B1A9 /* XJPay.m in Sources */,
@@ -2117,18 +2057,17 @@
 				CD1CCC201CB363F5002FC0C9 /* RootViewController.m in Sources */,
 				AAC68BFD1D30BFE600685262 /* OptionalJSONModel.m in Sources */,
 				5A6CF3D01D1CF95000676255 /* HomePageSchoolViewController.m in Sources */,
-				5A441C571CE5F1F3000CF748 /* VideoListCell.m in Sources */,
+				5AB2411F1D34E77600909BD4 /* VideoListCell.m in Sources */,
 				5A6CF4E71D260F8800676255 /* EmploymentInformationViewController.m in Sources */,
 				AA5B96931D222BE20088A196 /* PlayerPageCommentsFooterView.m in Sources */,
-				CD144F101CBB732900A0636D /* IndexSectionView.m in Sources */,
 				D04D0C171D0FBD280090D2CD /* UserInfoSection2.m in Sources */,
 				5A1DF5841D2B88340078BD0B /* TeacherLessonsViewController.m in Sources */,
 				5A6CF3B21D1CEE6100676255 /* HomePageBaseView.m in Sources */,
+				5AB241221D34E84400909BD4 /* IndexSectionView.m in Sources */,
 				D0698E6B1CE42B25003BF1F3 /* PasswordSettingViewController.m in Sources */,
 				5A6CF48D1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.m in Sources */,
 				5A5B740F1D2A323400D24CBA /* AllLessonListViewController.m in Sources */,
 				5A6CF48B1D23632D00676255 /* XJFClassificationCollectionViewCell.m in Sources */,
-				5A0C3F8C1CF448A400D7EEEB /* LessonDetailListModel.m in Sources */,
 				AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */,
 				5A1DF58C1D2B88920078BD0B /* TeacherDetailModel.m in Sources */,
 				D01F77D21D0181E0000888D4 /* MyTopicViewController.m in Sources */,
@@ -2139,7 +2078,7 @@
 				D083C8F21CF450630028DE8A /* SettingRowOneCell.m in Sources */,
 				5AF7C2D61CF94694007CC71C /* OrderDetaiViewController.m in Sources */,
 				5A105E711CEC09ED0079BEFE /* LessonPlayerLessonRecommendedViewController.m in Sources */,
-				5A105E9A1CED91ED0079BEFE /* WikiPediaCategoriesModel.m in Sources */,
+				5AB241361D34E96400909BD4 /* ProjectListByModel.m in Sources */,
 				D073E8191CE9E5B200AED895 /* AlertUtils.m in Sources */,
 				D055EEA81CFD375F004DDD7E /* CommentDetailHeader.m in Sources */,
 				5A5B74081D27DA8900D24CBA /* SelectedCollectionViewCell.m in Sources */,
@@ -2147,7 +2086,6 @@
 				5A5B740B1D2A05DC00D24CBA /* SelectedCollectionViewFooter.m in Sources */,
 				5A1DF59A1D2BE4E20078BD0B /* StudyCenterWikiCell.m in Sources */,
 				D073CF771CFC55CB002D3FAF /* TopicDetailViewController.m in Sources */,
-				5A565A571D0D70A200008DA9 /* BannerWebViewViewController.m in Sources */,
 				5A5B73F31D278C5500D24CBA /* UIGestureRecognizer+Block.m in Sources */,
 				D055F2761D2A0C4400F80AAD /* RechargeStream.m in Sources */,
 				D02FB4B61D112458006EADAD /* UserInfoInterestedCell.m in Sources */,
@@ -2168,15 +2106,18 @@
 				68AD32495822B12CA68526E7 /* NSString+Extensions.m in Sources */,
 				D055F2531D2513F000F80AAD /* UserInfoListCell.m in Sources */,
 				68AD31398574E70510D4D931 /* UIView+Addtion.m in Sources */,
+				5AB241281D34E8BB00909BD4 /* SubmitOrdersView.m in Sources */,
 				5A5B74011D27C1E100D24CBA /* SelecteButtonView.m in Sources */,
 				68AD3594E7A1C701ADEA6C8D /* StringUtil.m in Sources */,
 				68AD37781B81D79E2DF95952 /* NSDate+Convenience.m in Sources */,
 				68AD3CC47E1DB30DC837E078 /* ZPlatformShare.m in Sources */,
 				68AD3BF397B66B652C2C0009 /* LPPopup.m in Sources */,
 				68AD3EDC390F0F57F21DB2CA /* VerticalUIButton.m in Sources */,
+				5AB241351D34E96400909BD4 /* LessonDetailListModel.m in Sources */,
 				68AD302828310D8E3A956786 /* XMShareQQUtil.m in Sources */,
 				68AD3D15322D6A8D42CF0DD0 /* XMShareUtil.m in Sources */,
 				68AD344E91C957D5F9D27817 /* XMShareWechatUtil.m in Sources */,
+				5AB2412D1D34E92B00909BD4 /* BannerWebViewViewController.m in Sources */,
 				68AD38C3E792EAF7A38E4017 /* XMShareWeiboUtil.m in Sources */,
 				5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */,
 				68AD3A029EE0821362A11025 /* XMShareView.m in Sources */,
