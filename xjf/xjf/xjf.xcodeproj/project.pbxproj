@@ -106,11 +106,9 @@
 		644C11771CBA921800892E2C /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11761CBA921800892E2C /* libiconv.tbd */; };
 		644C11911CBA93A500892E2C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11901CBA93A500892E2C /* libc++.tbd */; };
 		68AD302828310D8E3A956786 /* XMShareQQUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD32FED2EE7CBB15554F09 /* XMShareQQUtil.m */; };
-		68AD307AD4257CC79BFD5D57 /* icon_del_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 68AD3A756AAFA9F843389DC5 /* icon_del_h.png */; };
 		68AD31398574E70510D4D931 /* UIView+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD345638F9EF3864F89596 /* UIView+Addtion.m */; };
 		68AD32495822B12CA68526E7 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3517566067907001E01E /* NSString+Extensions.m */; };
 		68AD32E2FC2DEEB1C311AA39 /* ZToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3024B45B852F2FD71CD8 /* ZToastManager.m */; };
-		68AD33A6369D5213D882BD26 /* UzysGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3E3B02B4D256989AE3EB /* UzysGridViewCell.m */; };
 		68AD344E91C957D5F9D27817 /* XMShareWechatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3C6D5DA27EDCF7F9C9CD /* XMShareWechatUtil.m */; };
 		68AD357B1BFC5D287517F2E7 /* LessonPlayerVideoBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */; };
 		68AD3594E7A1C701ADEA6C8D /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3F4A2359113E77262F8B /* StringUtil.m */; };
@@ -118,7 +116,6 @@
 		68AD37781B81D79E2DF95952 /* NSDate+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD38FCE1858A761939DF2B /* NSDate+Convenience.m */; };
 		68AD385FD010229CE15FCF86 /* LessonRecommendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */; };
 		68AD38C3E792EAF7A38E4017 /* XMShareWeiboUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD33C01DDC0A80D0B7F227 /* XMShareWeiboUtil.m */; };
-		68AD390FD025CF7FAEAC29AA /* UzysGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3BAD1C81DEDCA2F1E866 /* UzysGridView.m */; };
 		68AD3A029EE0821362A11025 /* XMShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3503E537CB05B93330B5 /* XMShareView.m */; };
 		68AD3A56F861785951BB9107 /* UIColor+hexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3CEE7EF36DDE25CB4647 /* UIColor+hexColor.m */; };
 		68AD3BF397B66B652C2C0009 /* LPPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD3603F56348155F120E0A /* LPPopup.m */; };
@@ -127,7 +124,6 @@
 		68AD3DF8B96C85E22B19B04F /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD33F1B17C2AECCECD2936 /* CommentsModel.m */; };
 		68AD3EDC390F0F57F21DB2CA /* VerticalUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD311A9C35493EFF83D8DA /* VerticalUIButton.m */; };
 		68AD3F4CC52500888AAC5A04 /* LessonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD31B0B566B66344E27190 /* LessonListCell.m */; };
-		68AD3FF9DA7BD76D1724229B /* icon_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 68AD30C3685B0A731EB8B863 /* icon_del.png */; };
 		AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EB1D1948790088A196 /* BaikeCell.m */; };
 		AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B95EC1D1948790088A196 /* BaikeCell.xib */; };
 		AA5B95F81D1948790088A196 /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EE1D1948790088A196 /* SearchResultController.m */; };
@@ -435,9 +431,7 @@
 		644C11901CBA93A500892E2C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		68AD3024B45B852F2FD71CD8 /* ZToastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZToastManager.m; sourceTree = "<group>"; };
 		68AD30462D242D0BB1E3452F /* LessonPlayerVideoBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonPlayerVideoBottomView.h; sourceTree = "<group>"; };
-		68AD30BF6F0AA2E8AA20ADDD /* UzysGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysGridViewCell.h; sourceTree = "<group>"; };
 		68AD30C32084019191D45362 /* NSDate+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Convenience.h"; sourceTree = "<group>"; };
-		68AD30C3685B0A731EB8B863 /* icon_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del.png; sourceTree = "<group>"; };
 		68AD311A9C35493EFF83D8DA /* VerticalUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalUIButton.m; sourceTree = "<group>"; };
 		68AD31662615687C67C19213 /* LessonPlayerVideoBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonPlayerVideoBottomView.m; sourceTree = "<group>"; };
 		68AD31B0B566B66344E27190 /* LessonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonListCell.m; sourceTree = "<group>"; };
@@ -452,7 +446,6 @@
 		68AD3517566067907001E01E /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		68AD3603F56348155F120E0A /* LPPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPopup.m; sourceTree = "<group>"; };
 		68AD361AE62A75F033930DA7 /* XMShareUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMShareUtil.m; sourceTree = "<group>"; };
-		68AD362A85F4CA220579CB74 /* UzysGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysGridView.h; sourceTree = "<group>"; };
 		68AD36C5F8D24C66579E0F1D /* VerticalUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalUIButton.h; sourceTree = "<group>"; };
 		68AD373C10E3FE6565982584 /* UILabel+StringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+StringFrame.h"; sourceTree = "<group>"; };
 		68AD37A2134425D78AF3416C /* LessonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonListCell.h; sourceTree = "<group>"; };
@@ -463,16 +456,13 @@
 		68AD399D59746063E1B7B1EB /* LPPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPopup.h; sourceTree = "<group>"; };
 		68AD39FD9A28D219A2CA50BB /* ZPlatformShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZPlatformShare.m; path = ../../classes/utils/ZPlatformShare.m; sourceTree = "<group>"; };
 		68AD3A218CB2A29F5D9FAADC /* XMShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShareView.h; sourceTree = "<group>"; };
-		68AD3A756AAFA9F843389DC5 /* icon_del_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_del_h.png; sourceTree = "<group>"; };
 		68AD3AF38ED8BC896AB07EF7 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
 		68AD3B79DC9DCFE772E47B07 /* LessonRecommendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRecommendedHeaderView.m; sourceTree = "<group>"; };
-		68AD3BAD1C81DEDCA2F1E866 /* UzysGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysGridView.m; sourceTree = "<group>"; };
 		68AD3BB1670E7B9182A3A74C /* CommonMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMarco.h; sourceTree = "<group>"; };
 		68AD3C6D5DA27EDCF7F9C9CD /* XMShareWechatUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMShareWechatUtil.m; sourceTree = "<group>"; };
 		68AD3CEE7EF36DDE25CB4647 /* UIColor+hexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hexColor.m"; sourceTree = "<group>"; };
 		68AD3D200365BFD839AAB6F0 /* XMShareQQUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShareQQUtil.h; sourceTree = "<group>"; };
 		68AD3D5FF22C8247903484E9 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringUtil.h; path = xjf/classes/utils/StringUtil.h; sourceTree = SOURCE_ROOT; };
-		68AD3E3B02B4D256989AE3EB /* UzysGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysGridViewCell.m; sourceTree = "<group>"; };
 		68AD3E6DB29D6A23F8CF2B42 /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
 		68AD3F14C5FECC832471B24F /* LessonRecommendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRecommendedHeaderView.h; sourceTree = "<group>"; };
 		68AD3F2685D08B5C32396B63 /* ZPlatformShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPlatformShare.h; path = ../../classes/utils/ZPlatformShare.h; sourceTree = "<group>"; };
@@ -1241,15 +1231,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		68AD39A87DF50F9740450CA5 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				68AD30C3685B0A731EB8B863 /* icon_del.png */,
-				68AD3A756AAFA9F843389DC5 /* icon_del_h.png */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		68AD3AAAFD9A97DE47869CB6 /* XMShareView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1270,22 +1251,9 @@
 			isa = PBXGroup;
 			children = (
 				68AD3AAAFD9A97DE47869CB6 /* XMShareView */,
-				68AD3D8E614F007F0514EC7B /* UzysGridView */,
 			);
 			name = ThirdUtils;
 			path = ../../vendor;
-			sourceTree = "<group>";
-		};
-		68AD3D8E614F007F0514EC7B /* UzysGridView */ = {
-			isa = PBXGroup;
-			children = (
-				68AD39A87DF50F9740450CA5 /* Resource */,
-				68AD362A85F4CA220579CB74 /* UzysGridView.h */,
-				68AD3BAD1C81DEDCA2F1E866 /* UzysGridView.m */,
-				68AD30BF6F0AA2E8AA20ADDD /* UzysGridViewCell.h */,
-				68AD3E3B02B4D256989AE3EB /* UzysGridViewCell.m */,
-			);
-			path = UzysGridView;
 			sourceTree = "<group>";
 		};
 		AA5B95E91D1948790088A196 /* Search */ = {
@@ -1880,10 +1848,8 @@
 				D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */,
 				D0290ED71D2CB60700FF823C /* StudyCenter.xib in Resources */,
 				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
-				68AD3FF9DA7BD76D1724229B /* icon_del.png in Resources */,
 				D0CC73E91D33A2A9003BD7ED /* SearchRecommendCell.xib in Resources */,
 				5A1DF5871D2B88340078BD0B /* TeacherCoverCollectionViewCell.xib in Resources */,
-				68AD307AD4257CC79BFD5D57 /* icon_del_h.png in Resources */,
 				5A6CF48A1D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2121,8 +2087,6 @@
 				68AD38C3E792EAF7A38E4017 /* XMShareWeiboUtil.m in Sources */,
 				5AF046461D2F5A1E00790232 /* EmployedArticlesViewController.m in Sources */,
 				68AD3A029EE0821362A11025 /* XMShareView.m in Sources */,
-				68AD390FD025CF7FAEAC29AA /* UzysGridView.m in Sources */,
-				68AD33A6369D5213D882BD26 /* UzysGridViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
