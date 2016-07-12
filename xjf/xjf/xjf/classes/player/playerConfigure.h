@@ -14,7 +14,6 @@
 #import "PlayerPageCommentsFooterView.h"
 #import "PlayerPageDescribeCell.h"
 #import "PlayerPageCommentsCell.h"
-#import "WikiTalkGridViewCell.h"
 #import "CommentsViewController.h"
 #import "CommentsPageCommentsCell.h"
 

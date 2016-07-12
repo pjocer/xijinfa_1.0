@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "IndexConfigure.h"
 #import "myConfigure.h"
 #import "SearchViewController.h"
 #import "XJAccountManager.h"
