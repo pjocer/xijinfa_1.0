@@ -217,10 +217,17 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     HomePageCollectionSectionHeaderView *sectionHeaderView =
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-    sectionHeaderView.sectionTitle.text = @[@"",@"全部分类",@"热门课程",@"析金讲师"][indexPath.section];
-    sectionHeaderView.sectionMore.text = @[@"",@"",@"",@"更多"][indexPath.section];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
-    [sectionHeaderView addGestureRecognizer:tap];
+    
+    __unsafe_unretained __typeof(sectionHeaderView) weaksectionHeaderView = sectionHeaderView;
+    [sectionHeaderView setTitle:@[@"",@"全部分类",@"热门课程",@"析金讲师"][indexPath.section] moreTitle:@[@"",@"",@"",@"更多"][indexPath.section] moreCallback:^(id gestureRecognizer) {
+        if ([weaksectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
+            TeacherListViewController *teacherListViewController = [TeacherListViewController new];
+            teacherListViewController.navigationItem.title = @"全部老师";
+            [self.navigationController pushViewController:teacherListViewController animated:YES];
+        }
+    }];
+    
+    
     return sectionHeaderView;
 }
 
@@ -262,18 +269,6 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     return CGSizeZero;
 }
 
-#pragma mark - sectionHeaderViewTapPUSHMorePage
-
-- (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
-{
-    HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
-   if ([sectionHeaderView.sectionTitle.text isEqualToString:@"析金讲师"]){
-       TeacherListViewController *teacherListViewController = [TeacherListViewController new];
-       teacherListViewController.navigationItem.title = @"全部老师";
-       [self.navigationController pushViewController:teacherListViewController animated:YES];
-   }
-}
-
 #pragma mark - delegate
 
 #pragma mark TeacherScrollCollectionViewCellDelegate
@@ -303,11 +298,6 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == HomePageSchoolViewControllerLessonSection) {
-//        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-//        lessonDetailViewController.model = self.tablkListModel_Lesson.result.data[indexPath.row];
-//        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-//        [self.navigationController pushViewController:lessonDetailViewController animated:YES];
-        
          TalkGridModel *model = self.tablkListModel_Lesson.result.data[indexPath.row];
         LessonPlayerViewController *lessonPlayerViewController = [LessonPlayerViewController new];
         lessonPlayerViewController.lesssonID = model.id_;

@@ -348,7 +348,18 @@ static CGFloat selViewH = 2;
         [tempSelf.playerView autoPlayTheVideo];
     };
 
+//    [self.playerView addObserver:self forKeyPath:@"playDidEnd" options:0 context:nil];
 }
+
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+//{
+//    NSLog(@"------ %@   xx  %@    dic %@",object,keyPath,change);
+//    BOOL playDidEnd = [self.playerView valueForKeyPath:keyPath];
+//    NSLog(@"playDidEnd : %d",playDidEnd);
+//    if (playDidEnd) {
+//        [AlertUtils alertWithTarget:self title:@"" content:@"xxx" confirmBlock:nil];
+//    }
+//}
 
 
 ///setPlayerViewForResolutionDic
@@ -742,6 +753,7 @@ static CGFloat selViewH = 2;
 #pragma mark- dealloc
 
 - (void)dealloc {
+//    [self.playerView removeObserver:self forKeyPath:@"playDidEnd"];
     [self removePlayer];
 }
 

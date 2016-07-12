@@ -194,10 +194,15 @@ typedef NS_OPTIONS(NSInteger, WikipediaControllerSectionType) {
     HomePageCollectionSectionHeaderView *sectionHeaderView =
     [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:
      HomePageSelectViewControllerSeccontionHeader_identfail forIndexPath:indexPath];
-    sectionHeaderView.sectionTitle.text = @[@"",@"全部分类",@"热门视频"][indexPath.section];
-    sectionHeaderView.sectionMore.text = @[@"",@"",@"更多"][indexPath.section];;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderViewTapPUSHMorePage:)];
-    [sectionHeaderView addGestureRecognizer:tap];
+    __unsafe_unretained __typeof(sectionHeaderView) weaksectionHeaderView = sectionHeaderView;
+    [sectionHeaderView setTitle:@[@"",@"全部分类",@"热门视频"][indexPath.section] moreTitle:@[@"",@"",@"更多"][indexPath.section] moreCallback:^(id gestureRecognizer) {
+        if ([weaksectionHeaderView.sectionTitle.text isEqualToString:@"热门视频"]){
+            AllLessonListViewController *listViewController = [AllLessonListViewController new];
+            listViewController.lessonListPageLessonType = LessonListPageWikipedia;
+            listViewController.lessonListTitle = @"热门视频";
+            [self.navigationController pushViewController:listViewController animated:YES];
+        }
+    }];
     return sectionHeaderView;
 }
 
@@ -231,19 +236,6 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     }
     
     return CGSizeZero;
-}
-
-#pragma mark - sectionHeaderViewTapPUSHMorePage
-
-- (void)sectionHeaderViewTapPUSHMorePage:(UITapGestureRecognizer *)sender
-{
-    HomePageCollectionSectionHeaderView *sectionHeaderView = (HomePageCollectionSectionHeaderView *)sender.view;
-    if ([sectionHeaderView.sectionTitle.text isEqualToString:@"热门视频"]){
-        AllLessonListViewController *listViewController = [AllLessonListViewController new];
-        listViewController.lessonListPageLessonType = LessonListPageWikipedia;
-        listViewController.lessonListTitle = @"热门视频";
-        [self.navigationController pushViewController:listViewController animated:YES];
-    }
 }
 
 #pragma mark - delegate

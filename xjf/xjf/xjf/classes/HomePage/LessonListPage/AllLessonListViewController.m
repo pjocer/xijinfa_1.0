@@ -200,22 +200,6 @@ UICollectionViewDelegateFlowLayout>
 #pragma mark CollectionView DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    switch (self.lessonListPageLessonType) {
-        case LessonListPageWikipedia: {
-
-        }
-            break;
-        case LessonListPageSchool: {
-
-        }
-            break;
-        case LessonListPageEmployed: {
-
-        }
-            break;
-        default:
-            break;
-    }
     return _dataSource.count;
 }
 
@@ -233,12 +217,6 @@ UICollectionViewDelegateFlowLayout>
             cell.priceBackGroudView.hidden = NO;
         }else{
             cell.priceBackGroudView.hidden = YES;
-        }
-        
-        if (self.lessonListPageLessonType == LessonListPageSchool) {
-   
-        } else if (self.lessonListPageLessonType == LessonListPageEmployed){
-    
         }
         return cell;
     }

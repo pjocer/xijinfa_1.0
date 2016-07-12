@@ -30,7 +30,7 @@
     [AppDelegateManager sharedInstance];
     return YES;
 }
-
+ 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return [[ZPlatformShare sharedInstance] handleOpenURL:url];
 }
