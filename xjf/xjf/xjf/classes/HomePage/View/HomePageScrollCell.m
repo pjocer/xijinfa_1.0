@@ -53,7 +53,7 @@
     if (!self.collectionView) {
         self.layout = [[UICollectionViewFlowLayout alloc] init];
         _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 0);
-        _layout.itemSize = CGSizeMake(100, 140);
+        _layout.itemSize = CGSizeMake(160, 90);
         
         _layout.minimumLineSpacing = 10.0;
         _layout.minimumInteritemSpacing = 0.0;

@@ -18,7 +18,8 @@
 #define KHomePageCollectionByBannerSize CGSizeMake(SCREENWITH - KMargin * 2, 110)
 #define KHomePageCollectionByLessons CGSizeMake((SCREENWITH - KlayoutMinimumInteritemSpacing * 2 - KMargin * 2) / 2, 145)
 #define KHomePageCollectionByWikipediaSize CGSizeMake(SCREENWITH - KMargin * 2, 245)
-#define KHomePageCollectionByClassificationAndTeacher CGSizeMake(SCREENWITH, 145)
+#define KHomePageCollectionByClassification CGSizeMake(SCREENWITH, 90)
+#define KHomePageCollectionTeacher CGSizeMake(SCREENWITH, 145)
 #define KHomePageSeccontionHeader_Height 45
 
 

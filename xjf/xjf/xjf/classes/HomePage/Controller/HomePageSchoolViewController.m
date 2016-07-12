@@ -256,14 +256,14 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         return KHomePageCollectionByBannerSize;
     }else if (indexPath.section == HomePageSchoolViewControllerClassificationSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        return KHomePageCollectionByClassificationAndTeacher;
+        return KHomePageCollectionByClassification;
     }else if (indexPath.section == HomePageSchoolViewControllerLessonSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, KMargin, 0, KMargin);
         _layout.minimumLineSpacing = KlayoutMinimumLineSpacing;
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageSchoolViewControllerTeacher){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);
-        return KHomePageCollectionByClassificationAndTeacher;
+        return KHomePageCollectionTeacher;
     }
     
     return CGSizeZero;

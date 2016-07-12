@@ -245,7 +245,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         return KHomePageCollectionByLessons;
     }else if (indexPath.section == HomePageEmployedSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);
-        return KHomePageCollectionByClassificationAndTeacher;
+        return KHomePageCollectionByClassification;
     }
     
     return CGSizeZero;

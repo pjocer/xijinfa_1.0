@@ -226,7 +226,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         return KHomePageCollectionByBannerSize;
     }else if (indexPath.section == HomePageClassificationSection){
         _layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        return KHomePageCollectionByClassificationAndTeacher;
+        return KHomePageCollectionByClassification;
     }else if (indexPath.section == HomePageWikipediaSection){
         _layout.minimumLineSpacing = KMargin;
         _layout.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10);

@@ -10,7 +10,7 @@
 
 @interface XJFClassificationCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *describe;
+
 @property (weak, nonatomic) IBOutlet UIImageView *backGroudImage;
 
 @end
@@ -27,7 +27,7 @@
         _model = model;
     }
     self.title.text = model.title;
-    self.describe.text = model.summary;
+//    self.describe.text = model.summary;
     
     for (ProjectListCover *cover in model.cover) {
         if ([cover.size isEqualToString:@"default"]) {
