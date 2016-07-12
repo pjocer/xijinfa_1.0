@@ -14,7 +14,6 @@
 #import <MJRefresh/MJRefresh.h>
 #import "TopicDetailViewController.h"
 #import "XJAccountManager.h"
-#import "LessonDetailViewController.h"
 #import "UserInfoController.h"
 #import "UITableViewCell+AvatarEnabled.h"
 #import "SearchRecommendCell.h"
@@ -368,14 +367,7 @@
         controller.topic_id = model.id;
         [current.navigationController pushViewController:controller animated:YES];
     } else if (tableView == self.lessons) {
-        LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-        lessonDetailViewController.model = [self.lessonsDataSource objectAtIndex:indexPath.row];
-        if ([lessonDetailViewController.model.department isEqualToString:@"dept3"]) {
-            lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-        } else if ([lessonDetailViewController.model.department isEqualToString:@"dept4"]) {
-            lessonDetailViewController.apiType = EmployedLessonDetailList;
-        }
-        [current.navigationController pushViewController:lessonDetailViewController animated:YES];
+
     } else {
         UserInfoModel *model = [self.personsDataSource objectAtIndex:indexPath.row];
         UserInfoController *ta = [[UserInfoController alloc] initWithUserType:Info userInfo:model];

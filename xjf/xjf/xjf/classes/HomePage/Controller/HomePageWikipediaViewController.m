@@ -9,8 +9,6 @@
 #import "HomePageWikipediaViewController.h"
 #import "HomePageConfigure.h"
 #import "WikiPediaCategoriesModel.h"
-#import "VideolistViewController.h"
-#import "WikiMoreViewController.h"
 
 @interface HomePageWikipediaViewController ()<UICollectionViewDataSource,
                                                     UICollectionViewDelegate,

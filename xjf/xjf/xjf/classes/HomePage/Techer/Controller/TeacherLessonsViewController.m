@@ -8,7 +8,6 @@
 
 #import "TeacherLessonsViewController.h"
 #import "VideoListCell.h"
-#import "LessonDetailViewController.h"
 
 @interface TeacherLessonsViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
@@ -64,14 +63,7 @@ static NSString *TeacherLessonsCell_id = @"TeacherLessonsCell_id";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-    lessonDetailViewController.model = self.dataSource[indexPath.row];
-    if ([lessonDetailViewController.model.department isEqualToString:@"dept3"]) {
-        lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-    } else if ([lessonDetailViewController.model.department isEqualToString:@"dept4"]) {
-        lessonDetailViewController.apiType = EmployedLessonDetailList;
-    }
-    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+
 }
 
 

@@ -51,13 +51,9 @@ static NSString *HomePageSelectViewControllerSeccontionHeader_identfail = @"Home
 #import "XJFSchoolCollectionViewCell.h"
 #import "XJFBigWikipediaCollectionViewCell.h"
 #import "XJFEmploymentInformationCollectionViewCell.h"
-#import "VideolistViewController.h"
-#import "LessonListViewController.h"
 #import "ProjectListByModel.h"
 #import "TalkGridModel.h"
 #import "PlayerViewController.h"
-#import "LessonDetailViewController.h"
-#import "EmployedLessonListViewController.h"
 #import "AllLessonListViewController.h"
 #import "LessonPlayerViewController.h"
 #endif /* HomePageConfigure_h */

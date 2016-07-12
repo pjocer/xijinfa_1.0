@@ -11,7 +11,6 @@
 #import "VideoListCell.h"
 #import "IndexSectionView.h"
 #import "VipHeaderView.h"
-#import "LessonDetailViewController.h"
 #import "XJAccountManager.h"
 #import "LoginViewController.h"
 #import "VipPayListViewController.h"
@@ -120,11 +119,7 @@ static CGFloat tableHeaderH = 200;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //析金学堂
-    LessonDetailViewController *lessonDetailViewController = [LessonDetailViewController new];
-    lessonDetailViewController.model = self.tablkListModel.result.data[indexPath.row];
-    lessonDetailViewController.apiType = coursesProjectLessonDetailList;
-    [self.navigationController pushViewController:lessonDetailViewController animated:YES];
+
 }
 
 #pragma mark - login

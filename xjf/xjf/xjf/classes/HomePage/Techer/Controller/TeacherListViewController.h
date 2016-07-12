@@ -6,9 +6,9 @@
 //  Copyright © 2016年 lcb. All rights reserved.
 //
 
-#import "IndexBaseViewController.h"
+#import "BaseViewController.h"
 #import "TeacherListHostModel.h"
 
-@interface TeacherListViewController : IndexBaseViewController
+@interface TeacherListViewController : BaseViewController
 @property (nonatomic, strong) TeacherListHostModel *hostModel;
 @end
