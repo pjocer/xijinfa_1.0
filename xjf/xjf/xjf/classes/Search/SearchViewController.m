@@ -7,12 +7,12 @@
 //
 
 #import "SearchViewController.h"
-#import "SearchSectionOne.h"
+#import "RecentlySearchedCell.h"
 #import "XJMarket.h"
 #import "TalkGridModel.h"
 #import "XjfRequest.h"
 #import "ZToastManager.h"
-#import "SearchSectionTwo.h"
+#import "SearchRecommendCell.h"
 #import "SearchResultController.h"
 #import "XJFCacheHandler.h"
 #import "BaseNavigationController.h"
@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) SearchSectionOne *cell;
+@property (nonatomic, strong) RecentlySearchedCell *cell;
 @property (nonatomic, strong) TablkListModel *model;
 @property (nonatomic, strong) SearchResultController *result;
 @end
@@ -64,9 +64,9 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREENWITH, SCREENHEIGHT - 64) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.estimatedRowHeight = 500;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:[SearchSectionOne class] forCellReuseIdentifier:@"SearchSectionOne"];
-        [_tableView registerNib:[UINib nibWithNibName:@"SearchSectionTwo" bundle:nil] forCellReuseIdentifier:@"SearchSectionTwo"];
+        [_tableView registerNib:[UINib nibWithNibName:@"SearchRecommendCell" bundle:nil] forCellReuseIdentifier:@"SearchRecommendCell"];
     }
     return _tableView;
 }
@@ -95,16 +95,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        _cell = [tableView dequeueReusableCellWithIdentifier:@"SearchSectionOne"];
-        [_cell initSubViews];
+        _cell = [tableView dequeueReusableCellWithIdentifier:@"RecentlySearchedCell"];
+        if (!_cell) {
+            _cell = [[[NSBundle mainBundle] loadNibNamed:@"RecentlySearchedCell" owner:self options:nil] firstObject];
+        }
         @weakify(self);
-        _cell.SearchHandler = ^(NSString *text) {
+        _cell.searchHandler = ^(NSString *text) {
             @strongify(self);
             self.searchBar.text = text;
         };
         return _cell;
     } else {
-        SearchSectionTwo *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchSectionTwo" forIndexPath:indexPath];
+        SearchRecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchRecommendCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         TalkGridModel *model = [self.dataSource objectAtIndex:indexPath.row];
         cell.model = model;
         return cell;
@@ -113,10 +116,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.section == 0 ? _cell.cellHeight : 101;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

@@ -39,9 +39,24 @@
 -(instancetype)initSingle {
     self = [super init];
     if (self) {
-        //initial
+        [self performSelector:@selector(initHotSearched) withObject:nil afterDelay:5];
     }
     return self;
+}
+- (void)initHotSearched {
+    XjfRequest *request = [[XjfRequest alloc] initWithAPIName:hot_search RequestMethod:GET];
+    [request startWithSuccessBlock:^(NSData * _Nullable responseData) {
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+        if ([result[@"errCode"] integerValue] == 0) {
+            for (NSString *temp in result[@"result"]) {
+                [self addSearch:temp];
+            }
+        }else {
+            [[ZToastManager ShardInstance] showtoast:result[@"errMsg"]];
+        }
+    } failedBlock:^(NSError * _Nullable error) {
+        [[ZToastManager ShardInstance] showtoast:@"请求热门搜索列表失败"];
+    }];
 }
 -(void)clean {
     [[SDImageCache sharedImageCache] cleanDisk];

@@ -82,6 +82,8 @@ static APIName *balance_pay = @"/api/order/%@/pay/balance";
 static APIName *recharge_stream = @"/api/user/account-sequences";
 //充值列表
 static APIName *recharge_list = @"/api/quote/charge";
+//热门搜索
+static APIName *hot_search = @"/api/search/hot";
 #pragma mark- Hunter_Wang
 
 

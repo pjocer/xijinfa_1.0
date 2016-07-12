@@ -347,6 +347,8 @@
     __weak typeof(self) wSelf = self;
     [request startWithSuccessBlock:^(NSData *_Nullable responseData) {
         if ([api isEqualToString:local_login]) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dic);
             RegistFinalModel *model = [[RegistFinalModel alloc] initWithData:responseData error:nil];
             if (model.errCode == 0) {
                 XJAccountManager *manager = [XJAccountManager defaultManager];

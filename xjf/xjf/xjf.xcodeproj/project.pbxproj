@@ -164,9 +164,6 @@
 		AA5B95F61D1948790088A196 /* BaikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EB1D1948790088A196 /* BaikeCell.m */; };
 		AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B95EC1D1948790088A196 /* BaikeCell.xib */; };
 		AA5B95F81D1948790088A196 /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95EE1D1948790088A196 /* SearchResultController.m */; };
-		AA5B95F91D1948790088A196 /* SearchSectionOne.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95F01D1948790088A196 /* SearchSectionOne.m */; };
-		AA5B95FA1D1948790088A196 /* SearchSectionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95F21D1948790088A196 /* SearchSectionTwo.m */; };
-		AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5B95F31D1948790088A196 /* SearchSectionTwo.xib */; };
 		AA5B95FC1D1948790088A196 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B95F51D1948790088A196 /* SearchViewController.m */; };
 		AA5B96161D1C0DF60088A196 /* Fans_FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96021D1C0DF60088A196 /* Fans_FocusViewController.m */; };
 		AA5B96171D1C0DF60088A196 /* FansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5B96041D1C0DF60088A196 /* FansCell.m */; };
@@ -216,6 +213,8 @@
 		D01F77D81D01A1EC000888D4 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F77D71D01A1EC000888D4 /* CommentViewController.m */; };
 		D022D43E1D30F06E004C5857 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D022D43D1D30F06E004C5857 /* LoadingView.m */; };
 		D022D4411D30F13B004C5857 /* UIView+Boundary.m in Sources */ = {isa = PBXBuildFile; fileRef = D022D4401D30F13B004C5857 /* UIView+Boundary.m */; };
+		D022D4471D334B19004C5857 /* RecentlySearchedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D022D4451D334B19004C5857 /* RecentlySearchedCell.m */; };
+		D022D4481D334B19004C5857 /* RecentlySearchedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D022D4461D334B19004C5857 /* RecentlySearchedCell.xib */; };
 		D0290ED21D2B7F6900FF823C /* XJFCacheHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D0290ED11D2B7F6900FF823C /* XJFCacheHandler.m */; };
 		D0290ED61D2CB60700FF823C /* StudyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D0290ED41D2CB60700FF823C /* StudyCenter.m */; };
 		D0290ED71D2CB60700FF823C /* StudyCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0290ED51D2CB60700FF823C /* StudyCenter.xib */; };
@@ -288,6 +287,10 @@
 		D083C8F31CF450630028DE8A /* SettingRowOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D083C8F11CF450630028DE8A /* SettingRowOneCell.xib */; };
 		D0A254451D1948CC00BDD146 /* PhotoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A254441D1948CC00BDD146 /* PhotoHandler.m */; };
 		D0A254501D1A3E6100BDD146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A254521D1A3E6100BDD146 /* InfoPlist.strings */; };
+		D0CC73E31D3388D5003BD7ED /* RecentlySearchedCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC73E11D3388D5003BD7ED /* RecentlySearchedCollectionCell.m */; };
+		D0CC73E41D3388D5003BD7ED /* RecentlySearchedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CC73E21D3388D5003BD7ED /* RecentlySearchedCollectionCell.xib */; };
+		D0CC73E81D33A2A9003BD7ED /* SearchRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC73E61D33A2A9003BD7ED /* SearchRecommendCell.m */; };
+		D0CC73E91D33A2A9003BD7ED /* SearchRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CC73E71D33A2A9003BD7ED /* SearchRecommendCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -595,11 +598,6 @@
 		AA5B95EC1D1948790088A196 /* BaikeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaikeCell.xib; sourceTree = "<group>"; };
 		AA5B95ED1D1948790088A196 /* SearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultController.h; sourceTree = "<group>"; };
 		AA5B95EE1D1948790088A196 /* SearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultController.m; sourceTree = "<group>"; };
-		AA5B95EF1D1948790088A196 /* SearchSectionOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSectionOne.h; sourceTree = "<group>"; };
-		AA5B95F01D1948790088A196 /* SearchSectionOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSectionOne.m; sourceTree = "<group>"; };
-		AA5B95F11D1948790088A196 /* SearchSectionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSectionTwo.h; sourceTree = "<group>"; };
-		AA5B95F21D1948790088A196 /* SearchSectionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSectionTwo.m; sourceTree = "<group>"; };
-		AA5B95F31D1948790088A196 /* SearchSectionTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSectionTwo.xib; sourceTree = "<group>"; };
 		AA5B95F41D1948790088A196 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		AA5B95F51D1948790088A196 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		AA5B96011D1C0DF60088A196 /* Fans_FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fans_FocusViewController.h; path = ../../Ta/Fans_FocusViewController.h; sourceTree = "<group>"; };
@@ -698,6 +696,9 @@
 		D022D43D1D30F06E004C5857 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		D022D43F1D30F13B004C5857 /* UIView+Boundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Boundary.h"; sourceTree = "<group>"; };
 		D022D4401D30F13B004C5857 /* UIView+Boundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Boundary.m"; sourceTree = "<group>"; };
+		D022D4441D334B19004C5857 /* RecentlySearchedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentlySearchedCell.h; sourceTree = "<group>"; };
+		D022D4451D334B19004C5857 /* RecentlySearchedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentlySearchedCell.m; sourceTree = "<group>"; };
+		D022D4461D334B19004C5857 /* RecentlySearchedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentlySearchedCell.xib; sourceTree = "<group>"; };
 		D0290ED01D2B7F6900FF823C /* XJFCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFCacheHandler.h; sourceTree = "<group>"; };
 		D0290ED11D2B7F6900FF823C /* XJFCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFCacheHandler.m; sourceTree = "<group>"; };
 		D0290ED31D2CB60700FF823C /* StudyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyCenter.h; sourceTree = "<group>"; };
@@ -817,6 +818,12 @@
 		D0A2544E1D1A3E0200BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		D0A2544F1D1A3E0300BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		D0A254511D1A3E6100BDD146 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D0CC73E01D3388D5003BD7ED /* RecentlySearchedCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentlySearchedCollectionCell.h; sourceTree = "<group>"; };
+		D0CC73E11D3388D5003BD7ED /* RecentlySearchedCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentlySearchedCollectionCell.m; sourceTree = "<group>"; };
+		D0CC73E21D3388D5003BD7ED /* RecentlySearchedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentlySearchedCollectionCell.xib; sourceTree = "<group>"; };
+		D0CC73E51D33A2A9003BD7ED /* SearchRecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendCell.h; sourceTree = "<group>"; };
+		D0CC73E61D33A2A9003BD7ED /* SearchRecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendCell.m; sourceTree = "<group>"; };
+		D0CC73E71D33A2A9003BD7ED /* SearchRecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchRecommendCell.xib; sourceTree = "<group>"; };
 		FA5730763C928D50ED312F03 /* Pods-xjf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xjf.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-xjf/Pods-xjf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1554,11 +1561,15 @@
 				AA5B95EA1D1948790088A196 /* BaikeCell.h */,
 				AA5B95EB1D1948790088A196 /* BaikeCell.m */,
 				AA5B95EC1D1948790088A196 /* BaikeCell.xib */,
-				AA5B95EF1D1948790088A196 /* SearchSectionOne.h */,
-				AA5B95F01D1948790088A196 /* SearchSectionOne.m */,
-				AA5B95F11D1948790088A196 /* SearchSectionTwo.h */,
-				AA5B95F21D1948790088A196 /* SearchSectionTwo.m */,
-				AA5B95F31D1948790088A196 /* SearchSectionTwo.xib */,
+				D022D4441D334B19004C5857 /* RecentlySearchedCell.h */,
+				D022D4451D334B19004C5857 /* RecentlySearchedCell.m */,
+				D022D4461D334B19004C5857 /* RecentlySearchedCell.xib */,
+				D0CC73E01D3388D5003BD7ED /* RecentlySearchedCollectionCell.h */,
+				D0CC73E11D3388D5003BD7ED /* RecentlySearchedCollectionCell.m */,
+				D0CC73E21D3388D5003BD7ED /* RecentlySearchedCollectionCell.xib */,
+				D0CC73E51D33A2A9003BD7ED /* SearchRecommendCell.h */,
+				D0CC73E61D33A2A9003BD7ED /* SearchRecommendCell.m */,
+				D0CC73E71D33A2A9003BD7ED /* SearchRecommendCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2201,11 +2212,11 @@
 				D083C8EE1CF44A7B0028DE8A /* SettingViewController.xib in Resources */,
 				D055F2621D2643D600F80AAD /* MyMoneyViewController.xib in Resources */,
 				5A5B74021D27C1E100D24CBA /* SelecteButtonView.xib in Resources */,
-				AA5B95FB1D1948790088A196 /* SearchSectionTwo.xib in Resources */,
 				D04F5E491CFE76F1008386CE /* CommentListCell.xib in Resources */,
 				5A6CF48E1D23632D00676255 /* XJFEmploymentInformationCollectionViewCell.xib in Resources */,
 				D055F2561D26140F00F80AAD /* Assets.xcassets in Resources */,
 				5A6CF48C1D23632D00676255 /* XJFClassificationCollectionViewCell.xib in Resources */,
+				D022D4481D334B19004C5857 /* RecentlySearchedCell.xib in Resources */,
 				CDF57AD31C9F825D00049AF0 /* LaunchScreen.storyboard in Resources */,
 				D055F2541D2513F000F80AAD /* UserInfoListCell.xib in Resources */,
 				5A6CF4901D23632D00676255 /* XJFSchoolCollectionViewCell.xib in Resources */,
@@ -2223,6 +2234,7 @@
 				5A6CF4F11D2639AE00676255 /* EmployedClassificationCollectionViewCell.xib in Resources */,
 				D055F26A1D29FD5B00F80AAD /* RechargeStreamCell.xib in Resources */,
 				D0698E6C1CE42B25003BF1F3 /* PasswordSettingViewController.xib in Resources */,
+				D0CC73E41D3388D5003BD7ED /* RecentlySearchedCollectionCell.xib in Resources */,
 				AA5B96181D1C0DF60088A196 /* FansCell.xib in Resources */,
 				AA5B95F71D1948790088A196 /* BaikeCell.xib in Resources */,
 				D0698E671CE41A4D003BF1F3 /* RegistViewController.xib in Resources */,
@@ -2234,6 +2246,7 @@
 				D0290ED71D2CB60700FF823C /* StudyCenter.xib in Resources */,
 				D055EEA91CFD375F004DDD7E /* CommentDetailHeader.xib in Resources */,
 				68AD3FF9DA7BD76D1724229B /* icon_del.png in Resources */,
+				D0CC73E91D33A2A9003BD7ED /* SearchRecommendCell.xib in Resources */,
 				5A1DF5871D2B88340078BD0B /* TeacherCoverCollectionViewCell.xib in Resources */,
 				68AD307AD4257CC79BFD5D57 /* icon_del_h.png in Resources */,
 				5A6CF48A1D23632D00676255 /* XJFBigWikipediaCollectionViewCell.xib in Resources */,
@@ -2323,6 +2336,7 @@
 				D073CF731CFC0A8A002D3FAF /* TopicBaseCellTableViewCell.m in Sources */,
 				CD144F171CBB735100A0636D /* MoreBannerCell.m in Sources */,
 				5A6CF49A1D2363BD00676255 /* TalkGridModel.m in Sources */,
+				D022D4471D334B19004C5857 /* RecentlySearchedCell.m in Sources */,
 				D055F2691D29FD5B00F80AAD /* RechargeStreamCell.m in Sources */,
 				5A105E9D1CEDBADE0079BEFE /* LessonDetailViewController.m in Sources */,
 				D06A81EE1CEEA0E8002C1297 /* XJMarket.m in Sources */,
@@ -2341,7 +2355,6 @@
 				D04D0C0C1D07EA5D0090D2CD /* CommentCell.m in Sources */,
 				5A105EA01CEDC34B0079BEFE /* LessonDetailTitleView.m in Sources */,
 				5AF7C2E51CFC31AE007CC71C /* OrderModel.m in Sources */,
-				AA5B95F91D1948790088A196 /* SearchSectionOne.m in Sources */,
 				5A2071761D02BB4500462D65 /* MyFavoredsViewController.m in Sources */,
 				5AB2411C1D33695E00909BD4 /* EmployedbundleListPage.m in Sources */,
 				CD1CCC431CB37BDB002FC0C9 /* XjfRequest.m in Sources */,
@@ -2364,6 +2377,7 @@
 				5A441C5A1CE5FB03000CF748 /* CommentsViewController.m in Sources */,
 				CDF57AC51C9F825D00049AF0 /* main.m in Sources */,
 				D049BA521CEC047600CD5359 /* UserProfileModel.m in Sources */,
+				D0CC73E81D33A2A9003BD7ED /* SearchRecommendCell.m in Sources */,
 				CD1CCC361CB37950002FC0C9 /* VipBaseViewController.m in Sources */,
 				5A565A1E1D066B2900008DA9 /* EmployedViewController.m in Sources */,
 				D073E8151CE9D66C00AED895 /* RegistFinalModel.m in Sources */,
@@ -2395,7 +2409,6 @@
 				5A6CF4991D2363BD00676255 /* BannerModel.m in Sources */,
 				5A565A2B1D06979500008DA9 /* EmployedViewInformationCell.m in Sources */,
 				D055F25C1D261D8300F80AAD /* UITableViewCell+AvatarEnabled.m in Sources */,
-				AA5B95FA1D1948790088A196 /* SearchSectionTwo.m in Sources */,
 				5A565A621D10F1CA00008DA9 /* FeedbackViewController.m in Sources */,
 				644C11211CBA8C4700892E2C /* LoginViewController.m in Sources */,
 				5A565A671D10FD6C00008DA9 /* FeedbackView.m in Sources */,
@@ -2415,6 +2428,7 @@
 				5A6CF49D1D2363DD00676255 /* SelectedScrollContentView.m in Sources */,
 				D04F5E481CFE76F1008386CE /* CommentListCell.m in Sources */,
 				CD144F131CBB732900A0636D /* TalkGridViewCell.m in Sources */,
+				D0CC73E31D3388D5003BD7ED /* RecentlySearchedCollectionCell.m in Sources */,
 				5A20716C1D02ADBE00462D65 /* MyLessonsTableFooterView.m in Sources */,
 				D022D43E1D30F06E004C5857 /* LoadingView.m in Sources */,
 				CD1CCC331CB37946002FC0C9 /* TopicBaseViewController.m in Sources */,

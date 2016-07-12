@@ -7,7 +7,6 @@
 //
 
 #import "SearchResultController.h"
-#import "SearchSectionTwo.h"
 #import "BaikeCell.h"
 #import "UIImageView+WebCache.h"
 #import "CommentDetailHeader.h"
@@ -18,6 +17,7 @@
 #import "LessonDetailViewController.h"
 #import "UserInfoController.h"
 #import "UITableViewCell+AvatarEnabled.h"
+#import "SearchRecommendCell.h"
 
 @interface SearchResultController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIView *header;
@@ -169,7 +169,7 @@
                 [self.delegate tableViewFooterDidRefresh:_lesson_list.result.next_page_url];
             }
         }];
-        [_lessons registerNib:[UINib nibWithNibName:@"SearchSectionTwo" bundle:nil] forCellReuseIdentifier:@"SearchSectionTwo"];
+        [_lessons registerNib:[UINib nibWithNibName:@"SearchRecommendCell" bundle:nil] forCellReuseIdentifier:@"SearchRecommendCell"];
     }
     return _lessons;
 }
@@ -329,7 +329,7 @@
         return cell;
     } else if (tableView == self.lessons) {
         TalkGridModel *model = self.lessonsDataSource.count > 0 ? [self.lessonsDataSource objectAtIndex:indexPath.row] : nil;
-        SearchSectionTwo *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchSectionTwo" forIndexPath:indexPath];
+        SearchRecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchRecommendCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (model) {
             cell.model = model;
